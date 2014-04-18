@@ -31,14 +31,14 @@ public class Listing_07_02_LinkActions {
         doc.add(p);
 
         p = new Paragraph("This list can be found in a ").
-                add(new Link("separate document", PdfAction.createGotToR("movie_links_1.pdf", 1))).
+                add(new Link("separate document", PdfAction.createGoToR("movie_links_1.pdf", 1))).
                 add(".");
         doc.add(p);
 
         DummyRs rs = new DummyRs();
         p = new Paragraph(rs.getString("country")).
                 add(": ").
-                add(new Link(String.format("%d movies", rs.getInt("c")), PdfAction.createGotToR("movire_links_1.pdf", rs.getString("country_id"), true)));
+                add(new Link(String.format("%d movies", rs.getInt("c")), PdfAction.createGoToR("movire_links_1.pdf", rs.getString("country_id"), true)));
         doc.add(p);
 
         p = new Paragraph("Go to ").
