@@ -5,6 +5,7 @@ import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.elements.Paragraph;
 import com.itextpdf.model.layout.DefaultLayoutMgr;
+import com.itextpdf.model.layout.ILayoutMgr;
 import com.itextpdf.model.layout.IPlaceElementResult;
 import com.itextpdf.model.layout.shapes.BoxShape;
 import com.itextpdf.model.layout.shapes.CircleShape;
@@ -34,7 +35,7 @@ public class Listing_99_02_ComplexLayout_Option1 {
         Document doc = new Document(pdfDoc);
 
         //Set up layout manager. The layout consist of 2 vertical stripes and circle in between of them.
-        DefaultLayoutMgr layoutMgr = (DefaultLayoutMgr) doc.getLayoutMgr();
+        ILayoutMgr layoutMgr = doc.getLayoutMgr();
         List<ILayoutShape> shapes = new ArrayList<ILayoutShape>();
         shapes.add(new BoxShape(100, 100, 100, 500));
         shapes.add(new CircleShape(300, 350, 70));
@@ -45,8 +46,8 @@ public class Listing_99_02_ComplexLayout_Option1 {
         Paragraph p = new Paragraph("A very long text is here...");
         IPlaceElementResult result = layoutMgr.placeElement(p);
 
-        //If paragraph does not fit to layout completely
-        if (result.getPlacementStatus() == IPlaceElementResult.NoMorePlace) {
+        //If paragraph does not fit to layout completely. This approach is similar to what we have now in ColumnText.
+        if (result.getPlacementStatus() == IPlaceElementResult.NoMoreSpace) {
             doc.newPage();
             shapes = new ArrayList<ILayoutShape>();
             shapes.add(new BoxShape(100, 100, 400, 500));

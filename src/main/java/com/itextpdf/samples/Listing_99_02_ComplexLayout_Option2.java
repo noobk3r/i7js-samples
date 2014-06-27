@@ -6,6 +6,7 @@ import com.itextpdf.model.Document;
 import com.itextpdf.model.elements.IElement;
 import com.itextpdf.model.elements.Paragraph;
 import com.itextpdf.model.layout.DefaultLayoutMgr;
+import com.itextpdf.model.layout.ILayoutMgr;
 import com.itextpdf.model.layout.IPlaceElementResult;
 import com.itextpdf.model.layout.shapes.BoxShape;
 import com.itextpdf.model.layout.shapes.CircleShape;
@@ -35,7 +36,7 @@ public class Listing_99_02_ComplexLayout_Option2 {
         Document doc = new Document(pdfDoc);
 
         //Set up layout manager. The layout consist of 2 vertical stripes and circle in between of them.
-        MyLayoutMgr layoutMgr = new MyLayoutMgr(doc);
+        ILayoutMgr layoutMgr = new MyLayoutMgr(doc);
         List<ILayoutShape> shapes = new ArrayList<ILayoutShape>();
         shapes.add(new BoxShape(100, 100, 100, 500));
         shapes.add(new CircleShape(300, 350, 70));

@@ -38,7 +38,7 @@ public class Listing_07_02_LinkActions {
         DummyRs rs = new DummyRs();
         p = new Paragraph(rs.getString("country")).
                 add(": ").
-                add(new Link(String.format("%d movies", rs.getInt("c")), PdfAction.createGoToR("movire_links_1.pdf", rs.getString("country_id"), true)));
+                add(new Link(String.format("%d movies", rs.getInt("c")), PdfAction.createGoToR("movie_links_1.pdf", rs.getString("country_id"), true)));
         doc.add(p);
 
         p = new Paragraph("Go to ").
