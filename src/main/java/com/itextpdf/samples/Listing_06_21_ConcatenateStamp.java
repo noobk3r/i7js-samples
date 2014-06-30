@@ -22,14 +22,12 @@ public class Listing_06_21_ConcatenateStamp {
         //Initialize source document 1
         FileInputStream fis1 = new FileInputStream(SOURCE1);
         PdfReader reader1 = new PdfReader(fis1);
-        reader1.setCloseStream(true);
         PdfDocument sourceDoc1 = new PdfDocument(reader1);
         int n1 = sourceDoc1.getNumOfPages();
 
         //Initialize source document 1
         FileInputStream fis2 = new FileInputStream(SOURCE2);
         PdfReader reader2 = new PdfReader(fis2);
-        reader2.setCloseStream(true);
         PdfDocument sourceDoc2 = new PdfDocument(reader2);
         int n2 = sourceDoc2.getNumOfPages();
 

@@ -17,11 +17,10 @@ public class Listing_12_01_MetadataPdf {
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(RESULT);
         PdfWriter writer = new PdfWriter(fos);
-        writer.setCloseStream(true);
 
         //Initialize document and add page
         PdfDocument pdfDoc = new PdfDocument(writer);
-        pdfDoc.addPage(new PdfPage(pdfDoc));
+        pdfDoc.addNewPage();
 
         PdfDocumentInfo info = pdfDoc.getInfo();
         info.setTitle("Hello World example").setAuthor("Bruno Lowagie").

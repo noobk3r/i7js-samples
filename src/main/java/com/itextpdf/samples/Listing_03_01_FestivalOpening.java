@@ -22,7 +22,6 @@ public class Listing_03_01_FestivalOpening {
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(RESULT);
         PdfWriter writer = new PdfWriter(fos);
-        writer.setCloseStream(true);
 
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(writer);
@@ -33,7 +32,7 @@ public class Listing_03_01_FestivalOpening {
         doc.add(p).newPage().add(p);
 
         //Initialize canvas and write to it
-        PdfCanvas canvas = new PdfCanvas(pdfDoc.getCurrentPage().getContentStream());
+        PdfCanvas canvas = new PdfCanvas(pdfDoc.getLastPage().getContentStream());
         float sinus = (float) Math.sin(Math.PI / 60);
         float cosinus = (float) Math.cos(Math.PI / 60);
         canvas.saveState().beginText().setTextRenderingMode(2).
@@ -42,7 +41,7 @@ public class Listing_03_01_FestivalOpening {
                 showText("SOLD OUT").endText().restoreState();
 
         //Initialize "under" canvas and write to it
-        PdfCanvas underCanvas = new PdfCanvas(pdfDoc.getCurrentPage().getContentStream().addBefore());
+        PdfCanvas underCanvas = new PdfCanvas(pdfDoc.getLastPage().getContentStream().addBefore());
         underCanvas.saveState().setFillColor(new DeviceRgb(0xFF, 0xD7, 0x00)).
                 rectangle(5, 5, pageWidth - 10, pageHeight - 10).fill().restoreState();
 

@@ -19,14 +19,12 @@ public class Listing_15_01_PickABoo {
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(RESULT);
         PdfWriter writer = new PdfWriter(fos);
-        writer.setCloseStream(true);
 
-        //Initialize document and page
+        //Initialize document
         PdfDocument pdfDoc = new PdfDocument(writer);
-        pdfDoc.addPage(new PdfPage(pdfDoc));
 
         //Write to canvas
-        PdfCanvas canvas = new PdfCanvas(pdfDoc.getCurrentPage().getContentStream());
+        PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage().getContentStream());
         PdfLayer layer = new PdfLayer("Do you see me?", pdfDoc);
         layer.setOn(true);
         canvas.beginText().setFontAndSize(new Font(), 18).

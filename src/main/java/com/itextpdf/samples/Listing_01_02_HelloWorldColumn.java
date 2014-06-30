@@ -19,14 +19,13 @@ public class Listing_01_02_HelloWorldColumn {
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(RESULT);
         PdfWriter writer = new PdfWriter(fos);
-        writer.setCloseStream(true);
 
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(writer);
 
         //Add paragraph to the document
         Paragraph hello = new Paragraph("Hello World");
-        PdfCanvas canvas = new PdfCanvas(pdfDoc.getCurrentPage().getContentStream());
+        PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage().getContentStream());   //Adds new page to the document and initializes canvas by page content stream.
         DefaultLayoutMgr.showTextAligned(canvas, 0, hello, 36, 788, 0); //alignment is set to '0'. No constants for alignment are available yet.
 
         //Close document

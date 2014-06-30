@@ -19,7 +19,6 @@ public class Listing_07_02_LinkActions {
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(RESULT);
         PdfWriter writer = new PdfWriter(fos);
-        writer.setCloseStream(true);
 
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(writer);

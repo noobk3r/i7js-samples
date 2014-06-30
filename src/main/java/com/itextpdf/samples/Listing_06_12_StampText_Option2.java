@@ -23,12 +23,10 @@ public class Listing_06_12_StampText_Option2 {
         //Initialize reader
         FileInputStream fis = new FileInputStream(SOURCE);
         PdfReader reader = new PdfReader(fis);
-        reader.setCloseStream(true);
 
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(RESULT);
         PdfWriter writer = new PdfWriter(fos);
-        writer.setCloseStream(true);
 
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(reader, writer);

@@ -19,11 +19,10 @@ public class Listing_03_26_MoviePosters {
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(RESULT);
         PdfWriter writer = new PdfWriter(fos);
-        writer.setCloseStream(true);
 
         //Initialize document and add page
         PdfDocument pdfDoc = new PdfDocument(writer);
-        pdfDoc.addPage(new PdfPage(pdfDoc));
+        PdfPage page = pdfDoc.addNewPage();
 
         //Initialize form XObject and write to it
         PdfFormXObject xObj = new PdfFormXObject(pdfDoc);
@@ -38,7 +37,7 @@ public class Listing_03_26_MoviePosters {
         xObj.flush();
 
         //Add XObjects to page canvas
-        PdfCanvas canvas = new PdfCanvas(pdfDoc.getCurrentPage().getContentStream());
+        PdfCanvas canvas = new PdfCanvas(page.getContentStream());
         for (int i = 0; i < 10; i++) {
             canvas.addXObject(xObj, 0, i * 84.2f);
         }

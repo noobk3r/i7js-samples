@@ -18,7 +18,6 @@ public class Listing_99_03_PageSizeAndMargins {
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(RESULT);
         PdfWriter writer = new PdfWriter(fos);
-        writer.setCloseStream(true);
 
         //Initialize document with a certain page size.
         PdfDocument pdfDoc = new PdfDocument(writer);

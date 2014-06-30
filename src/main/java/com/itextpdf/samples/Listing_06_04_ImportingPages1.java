@@ -18,13 +18,11 @@ public class Listing_06_04_ImportingPages1 {
         //Initialize source document
         FileInputStream fis = new FileInputStream(SOURCE);
         PdfReader reader = new PdfReader(fis);
-        reader.setCloseStream(true);
         PdfDocument sourceDoc = new PdfDocument(reader);
 
         //Initialize destination document
         FileOutputStream fos = new FileOutputStream(RESULT);
         PdfWriter writer = new PdfWriter(fos);
-        writer.setCloseStream(true);
         PdfDocument resultDoc = new PdfDocument(writer);
 
         //Copy pages from source to destination

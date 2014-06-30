@@ -19,12 +19,10 @@ public class Listing_01_11_HelloWorldDirect {
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(RESULT);
         PdfWriter writer = new PdfWriter(fos);
-        writer.setCloseStream(true);
 
         //Initialize document and add page
         PdfDocument pdfDoc = new PdfDocument(writer);
-        pdfDoc.addPage(new PdfPage(pdfDoc));
-        PdfContentStream contentStream = pdfDoc.getCurrentPage().getContentStream();
+        PdfContentStream contentStream = pdfDoc.addNewPage().getContentStream();
 
         //Initialize canvas and write text to it
         PdfCanvas canvas = new PdfCanvas(contentStream);
