@@ -4,7 +4,6 @@ import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.core.fonts.Font;
 import com.itextpdf.core.pdf.PdfContentStream;
 import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfPage;
 import com.itextpdf.core.pdf.PdfWriter;
 
 import java.io.FileOutputStream;

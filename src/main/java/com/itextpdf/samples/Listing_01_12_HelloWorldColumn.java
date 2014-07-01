@@ -3,14 +3,13 @@ package com.itextpdf.samples;
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.model.Document;
 import com.itextpdf.model.elements.Paragraph;
 import com.itextpdf.model.layout.DefaultLayoutMgr;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class Listing_01_02_HelloWorldColumn {
+public class Listing_01_12_HelloWorldColumn {
 
     static private final String RESULT = "./result.pdf";
 
