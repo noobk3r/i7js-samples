@@ -29,7 +29,6 @@ public class Listing_99_02_ComplexLayout_Option2 {
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(RESULT);
         PdfWriter writer = new PdfWriter(fos);
-        writer.setCloseStream(true);
 
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(writer);
@@ -59,7 +58,7 @@ public class Listing_99_02_ComplexLayout_Option2 {
 
         //Define custom action on layout overflow
         @Override
-        public IPlaceElementResult overflow(IElement element) {
+        public IPlaceElementResult overflow(IElement element) throws IOException {
             List<ILayoutShape> shapes = new ArrayList<ILayoutShape>();
             shapes.add(new BoxShape(100, 100, 400, 500));
             setShapes(shapes);

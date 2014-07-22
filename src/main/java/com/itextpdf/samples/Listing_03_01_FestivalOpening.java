@@ -41,7 +41,7 @@ public class Listing_03_01_FestivalOpening {
                 showText("SOLD OUT").endText().restoreState();
 
         //Initialize "under" canvas and write to it
-        PdfCanvas underCanvas = new PdfCanvas(pdfDoc.getLastPage().getContentStream().addBefore());
+        PdfCanvas underCanvas = new PdfCanvas(pdfDoc.getLastPage().newContentStreamBefore());
         underCanvas.saveState().setFillColor(new DeviceRgb(0xFF, 0xD7, 0x00)).
                 rectangle(5, 5, pageWidth - 10, pageHeight - 10).fill().restoreState();
 

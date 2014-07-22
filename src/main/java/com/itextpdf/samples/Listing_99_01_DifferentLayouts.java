@@ -23,7 +23,6 @@ public class Listing_99_01_DifferentLayouts {
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(RESULT);
         PdfWriter writer = new PdfWriter(fos);
-        writer.setCloseStream(true);
 
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(writer);

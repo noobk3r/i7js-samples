@@ -34,7 +34,6 @@ public class Listing_06_21_ConcatenateStamp {
         //Initialize destination document
         FileOutputStream fos = new FileOutputStream(RESULT);
         PdfWriter writer = new PdfWriter(fos);
-        writer.setCloseStream(true);
         PdfDocument resultDoc = new PdfDocument(writer);
 
         //Copy and stamp pages from source 1 to destination
