@@ -1,13 +1,14 @@
 package com.itextpdf.samples;
 
+import com.itextpdf.core.exceptions.PdfException;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.elements.ElementPosition;
+import com.itextpdf.model.elements.Paragraph;
 import com.itextpdf.model.layout.ILayoutMgr;
 import com.itextpdf.model.layout.shapes.StartingPointShape;
-import com.itextpdf.model.elements.Paragraph;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -18,7 +19,7 @@ public class Listing_06_12_StampText_Option2 {
     static private final String RESULT = "./result.pdf";
     static private final String SOURCE = "./source.pdf";
 
-    public static void main(String args[]) throws IOException {
+    public static void main(String args[]) throws IOException, PdfException {
 
         //Initialize reader
         FileInputStream fis = new FileInputStream(SOURCE);

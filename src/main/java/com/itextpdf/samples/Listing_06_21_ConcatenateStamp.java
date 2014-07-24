@@ -1,6 +1,7 @@
 package com.itextpdf.samples;
 
 import com.itextpdf.canvas.PdfCanvas;
+import com.itextpdf.core.exceptions.PdfException;
 import com.itextpdf.core.fonts.Font;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfPage;
@@ -17,7 +18,7 @@ public class Listing_06_21_ConcatenateStamp {
     static private final String SOURCE1 = "./source1.pdf";
     static private final String SOURCE2 = "./source2.pdf";
 
-    public static void main(String args[]) throws IOException {
+    public static void main(String args[]) throws IOException, PdfException {
 
         //Initialize source document 1
         FileInputStream fis1 = new FileInputStream(SOURCE1);

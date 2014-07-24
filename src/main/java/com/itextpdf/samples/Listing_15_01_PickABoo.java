@@ -2,9 +2,9 @@ package com.itextpdf.samples;
 
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.canvas.PdfLayer;
+import com.itextpdf.core.exceptions.PdfException;
 import com.itextpdf.core.fonts.Font;
 import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfPage;
 import com.itextpdf.core.pdf.PdfWriter;
 
 import java.io.FileOutputStream;
@@ -14,7 +14,7 @@ public class Listing_15_01_PickABoo {
 
     static private final String RESULT = "./result.pdf";
 
-    public static void main(String args[]) throws IOException {
+    public static void main(String args[]) throws IOException, PdfException {
 
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(RESULT);

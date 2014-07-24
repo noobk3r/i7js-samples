@@ -1,5 +1,6 @@
 package com.itextpdf.samples;
 
+import com.itextpdf.core.exceptions.PdfException;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.model.Document;
@@ -24,7 +25,7 @@ public class Listing_99_02_ComplexLayout_Option2 {
 
     static private final String RESULT = "./result.pdf";
 
-    public static void main(String args[]) throws IOException {
+    public static void main(String args[]) throws IOException, PdfException {
 
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(RESULT);
@@ -58,7 +59,7 @@ public class Listing_99_02_ComplexLayout_Option2 {
 
         //Define custom action on layout overflow
         @Override
-        public IPlaceElementResult overflow(IElement element) throws IOException {
+        public IPlaceElementResult overflow(IElement element) throws IOException, PdfException {
             List<ILayoutShape> shapes = new ArrayList<ILayoutShape>();
             shapes.add(new BoxShape(100, 100, 400, 500));
             setShapes(shapes);

@@ -1,5 +1,6 @@
 package com.itextpdf.samples;
 
+import com.itextpdf.core.exceptions.PdfException;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -13,7 +14,7 @@ public class Listing_06_04_ImportingPages1 {
     static private final String RESULT = "./result.pdf";
     static private final String SOURCE = "./source.pdf";
 
-    public static void main(String args[]) throws IOException {
+    public static void main(String args[]) throws IOException, PdfException {
 
         //Initialize source document
         FileInputStream fis = new FileInputStream(SOURCE);

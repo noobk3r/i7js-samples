@@ -1,10 +1,10 @@
 package com.itextpdf.samples;
 
+import com.itextpdf.core.exceptions.PdfException;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.elements.Paragraph;
-import com.itextpdf.model.layout.DefaultLayoutMgr;
 import com.itextpdf.model.layout.ILayoutMgr;
 import com.itextpdf.model.layout.IPlaceElementResult;
 import com.itextpdf.model.layout.shapes.BoxShape;
@@ -23,7 +23,7 @@ public class Listing_99_02_ComplexLayout_Option1 {
 
     static private final String RESULT = "./result.pdf";
 
-    public static void main(String args[]) throws IOException {
+    public static void main(String args[]) throws IOException, PdfException {
 
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(RESULT);

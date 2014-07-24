@@ -2,6 +2,7 @@ package com.itextpdf.samples;
 
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.canvas.colors.DeviceRgb;
+import com.itextpdf.core.exceptions.PdfException;
 import com.itextpdf.core.fonts.Font;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -17,7 +18,7 @@ public class Listing_03_01_FestivalOpening {
     static private final float pageWidth = 531;
     static private final float pageHeight = 666;
 
-    public static void main(String args[]) throws IOException {
+    public static void main(String args[]) throws IOException, PdfException {
 
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(RESULT);

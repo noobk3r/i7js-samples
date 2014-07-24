@@ -1,5 +1,6 @@
 package com.itextpdf.samples;
 
+import com.itextpdf.core.exceptions.PdfException;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.model.Document;
@@ -12,7 +13,7 @@ public class Listing_01_01_HelloWorld {
 
     static private final String RESULT = "./result.pdf";
 
-    public static void main(String args[]) throws IOException {
+    public static void main(String args[]) throws IOException, PdfException {
 
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(RESULT);

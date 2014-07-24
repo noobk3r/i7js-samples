@@ -1,6 +1,7 @@
 package com.itextpdf.samples;
 
 import com.itextpdf.canvas.PdfCanvas;
+import com.itextpdf.core.exceptions.PdfException;
 import com.itextpdf.core.fonts.Font;
 import com.itextpdf.core.pdf.PdfContentStream;
 import com.itextpdf.core.pdf.PdfDocument;
@@ -13,7 +14,7 @@ public class Listing_01_11_HelloWorldDirect {
 
     static private final String RESULT = "./result.pdf";
 
-    public static void main(String args[]) throws IOException {
+    public static void main(String args[]) throws IOException, PdfException {
 
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(RESULT);
