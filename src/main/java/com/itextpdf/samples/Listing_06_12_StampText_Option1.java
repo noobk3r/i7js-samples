@@ -2,7 +2,7 @@ package com.itextpdf.samples;
 
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.core.exceptions.PdfException;
-import com.itextpdf.core.fonts.Font;
+import com.itextpdf.core.fonts.PdfStandardFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -31,7 +31,7 @@ public class Listing_06_12_StampText_Option1 {
 
         //Initialize canvas and write to it
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage().getContentStream());
-        canvas.saveState().beginText().setFontAndSize(new Font(), 12).
+        canvas.saveState().beginText().setFontAndSize(new PdfStandardFont(pdfDoc, PdfStandardFont.Helvetica), 12).
                 moveText(36, 540).showText("Hello people!").endText().restoreState();
 
         //Close document

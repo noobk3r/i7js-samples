@@ -3,7 +3,7 @@ package com.itextpdf.samples;
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.canvas.colors.DeviceRgb;
 import com.itextpdf.core.exceptions.PdfException;
-import com.itextpdf.core.fonts.Font;
+import com.itextpdf.core.fonts.PdfStandardFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.model.Document;
@@ -38,7 +38,7 @@ public class Listing_03_01_FestivalOpening {
         float cosinus = (float) Math.cos(Math.PI / 60);
         canvas.saveState().beginText().setTextRenderingMode(2).
                 setLineWidth(1.5f).setFillColor(DeviceRgb.Red).setStrokeColor(DeviceRgb.White).
-                setFontAndSize(new Font(), 36).setTextMatrix(cosinus, sinus, -sinus, cosinus, 50, 324).
+                setFontAndSize(new PdfStandardFont(pdfDoc, PdfStandardFont.Helvetica), 36).setTextMatrix(cosinus, sinus, -sinus, cosinus, 50, 324).
                 showText("SOLD OUT").endText().restoreState();
 
         //Initialize "under" canvas and write to it

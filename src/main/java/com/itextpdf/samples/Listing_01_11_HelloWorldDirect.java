@@ -2,7 +2,7 @@ package com.itextpdf.samples;
 
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.core.exceptions.PdfException;
-import com.itextpdf.core.fonts.Font;
+import com.itextpdf.core.fonts.PdfStandardFont;
 import com.itextpdf.core.pdf.PdfContentStream;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -26,8 +26,8 @@ public class Listing_01_11_HelloWorldDirect {
 
         //Initialize canvas and write text to it
         PdfCanvas canvas = new PdfCanvas(contentStream);
-        canvas.saveState().beginText().moveText(36, 788).
-                setFontAndSize(new Font(), 12).showText("Hello World").
+        canvas.saveState().beginText().moveText(36, 600).
+                setFontAndSize(new PdfStandardFont(pdfDoc, PdfStandardFont.Helvetica), 12).showText("Hello World").
                 endText().restoreState();
 
         //close document
