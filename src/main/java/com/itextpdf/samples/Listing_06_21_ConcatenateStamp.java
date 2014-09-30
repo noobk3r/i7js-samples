@@ -40,7 +40,7 @@ public class Listing_06_21_ConcatenateStamp {
         //Copy and stamp pages from source 1 to destination
         for (int i = 1; i <= n1; i++) {
             PdfPage page = resultDoc.addPage(sourceDoc1.getPage(i));
-            PdfCanvas canvas = new PdfCanvas(page.getContentStream());
+            PdfCanvas canvas = new PdfCanvas(page.getContentStream(), page.getResources());
             canvas.saveState().beginText().setFontAndSize(new PdfStandardFont(sourceDoc1, PdfStandardFont.Helvetica), 12).
                     moveText(36, 540).showText("Hello World!").endText().restoreState();
             //Flush the page immediately to reduce memory consumption
@@ -50,7 +50,7 @@ public class Listing_06_21_ConcatenateStamp {
         //Copy and stamp pages from source 2 to destination
         for (int i = 1; i <= n2; i++) {
             PdfPage page = resultDoc.addPage(sourceDoc2.getPage(i));
-            PdfCanvas canvas = new PdfCanvas(page.getContentStream());
+            PdfCanvas canvas = new PdfCanvas(page.getContentStream(), page.getResources());
             canvas.saveState().beginText().setFontAndSize(new PdfStandardFont(sourceDoc2, PdfStandardFont.Helvetica), 12).
                     moveText(36, 540).showText("Hello World!").endText().restoreState();
             //Flush the page immediately to reduce memory consumption

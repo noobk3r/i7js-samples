@@ -24,7 +24,7 @@ public class Listing_15_01_PickABoo {
         PdfDocument pdfDoc = new PdfDocument(writer);
 
         //Write to canvas
-        PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage().getContentStream());
+        PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         PdfLayer layer = new PdfLayer("Do you see me?", pdfDoc);
         layer.setOn(true);
         canvas.beginText().setFontAndSize(new PdfStandardFont(pdfDoc, PdfStandardFont.Helvetica), 18).

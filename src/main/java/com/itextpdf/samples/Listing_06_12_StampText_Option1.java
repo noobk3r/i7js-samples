@@ -30,7 +30,7 @@ public class Listing_06_12_StampText_Option1 {
         PdfDocument pdfDoc = new PdfDocument(reader, writer);
 
         //Initialize canvas and write to it
-        PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage().getContentStream());
+        PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());
         canvas.saveState().beginText().setFontAndSize(new PdfStandardFont(pdfDoc, PdfStandardFont.Helvetica), 12).
                 moveText(36, 540).showText("Hello people!").endText().restoreState();
 

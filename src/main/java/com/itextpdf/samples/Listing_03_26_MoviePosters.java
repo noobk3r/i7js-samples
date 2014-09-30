@@ -27,7 +27,7 @@ public class Listing_03_26_MoviePosters {
 
         //Initialize form XObject and write to it
         PdfFormXObject xObj = new PdfFormXObject(pdfDoc);
-        PdfCanvas celluloid = new PdfCanvas(xObj);
+        PdfCanvas celluloid = new PdfCanvas(xObj, xObj.getResources());
         celluloid.rectangle(8, 8, 579, 68);
         for (float f = 8.25f; f < 581; f += 6.5f) {
             celluloid.roundRectangle(f, 8.5f, 6, 3, 1.5f).roundRectangle(f, 72.5f, 6, 3, 1.5f);
@@ -38,7 +38,7 @@ public class Listing_03_26_MoviePosters {
         xObj.flush();
 
         //Add XObjects to page canvas
-        PdfCanvas canvas = new PdfCanvas(page.getContentStream());
+        PdfCanvas canvas = new PdfCanvas(page.getContentStream(), page.getResources());
         for (int i = 0; i < 10; i++) {
             canvas.addXObject(xObj, 0, i * 84.2f);
         }

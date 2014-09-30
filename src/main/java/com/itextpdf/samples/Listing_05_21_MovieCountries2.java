@@ -43,7 +43,7 @@ public class Listing_05_21_MovieCountries2 {
             PdfDocumentEvent docEvent = (PdfDocumentEvent) event;
             PdfPage page = docEvent.getPage();
             int pageNum = docEvent.getDocument().getPageNum(page);
-            PdfCanvas canvas = new PdfCanvas(page.getContentStream());
+            PdfCanvas canvas = new PdfCanvas(page.getContentStream(), page.getResources());
             //Watermark to be added here.
         }
     }
