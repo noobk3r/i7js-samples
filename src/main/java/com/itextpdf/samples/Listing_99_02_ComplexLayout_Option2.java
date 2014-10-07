@@ -59,7 +59,7 @@ public class Listing_99_02_ComplexLayout_Option2 {
 
         //Define custom action on layout overflow
         @Override
-        public IPlaceElementResult overflow(IElement element) throws IOException, PdfException {
+        public IPlaceElementResult overflow(IElement element) throws PdfException {
             List<ILayoutShape> shapes = new ArrayList<ILayoutShape>();
             shapes.add(new BoxShape(100, 100, 400, 500));
             setShapes(shapes);
