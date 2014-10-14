@@ -38,6 +38,4 @@ public class Listing_06_12_StampText_Option1 {
         pdfDoc.close();
 
     }
-
-
 }
