@@ -4,7 +4,7 @@ import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.canvas.colors.DeviceGray;
 import com.itextpdf.core.exceptions.PdfException;
 import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfFormXObject;
+import com.itextpdf.core.pdf.xobject.PdfFormXObject;
 import com.itextpdf.core.pdf.PdfPage;
 import com.itextpdf.core.pdf.PdfWriter;
 
