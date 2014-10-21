@@ -2,7 +2,7 @@ package com.itextpdf.samples;
 
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.canvas.colors.DeviceGray;
-import com.itextpdf.io.PdfException;
+import com.itextpdf.basics.PdfException;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.xobject.PdfFormXObject;
 import com.itextpdf.core.pdf.PdfPage;
