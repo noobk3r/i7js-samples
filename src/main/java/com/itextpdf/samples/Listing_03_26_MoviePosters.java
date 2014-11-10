@@ -38,7 +38,7 @@ public class Listing_03_26_MoviePosters {
         xObj.flush();
 
         //Add XObjects to page canvas
-        PdfCanvas canvas = new PdfCanvas(page.getContentStream(), page.getResources());
+        PdfCanvas canvas = new PdfCanvas(page.getContentStream(0), page.getResources());
         for (int i = 0; i < 10; i++) {
             canvas.addXObject(xObj, 0, i * 84.2f);
         }

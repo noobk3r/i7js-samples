@@ -44,7 +44,7 @@ public class Listing_05_21_MovieCountries2 {
             PdfPage page = docEvent.getPage();
             int pageNum = docEvent.getDocument().getPageNum(page);
             try {
-                PdfCanvas canvas = new PdfCanvas(page.getContentStream(), page.getResources());
+                PdfCanvas canvas = new PdfCanvas(page.getContentStream(0), page.getResources());
             } catch (PdfException e) {
                 e.printStackTrace();
             }
