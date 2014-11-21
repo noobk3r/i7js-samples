@@ -3,6 +3,7 @@ package com.itextpdf.samples;
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.canvas.colors.DeviceGray;
 import com.itextpdf.basics.PdfException;
+import com.itextpdf.core.geom.Rectangle;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.xobject.PdfFormXObject;
 import com.itextpdf.core.pdf.PdfPage;
@@ -26,7 +27,7 @@ public class Listing_03_26_MoviePosters {
         PdfPage page = pdfDoc.addNewPage();
 
         //Initialize form XObject and write to it
-        PdfFormXObject xObj = new PdfFormXObject(pdfDoc);
+        PdfFormXObject xObj = new PdfFormXObject(pdfDoc, new Rectangle(8, 8, 579, 68));
         PdfCanvas celluloid = new PdfCanvas(xObj);
         celluloid.rectangle(8, 8, 579, 68);
         for (float f = 8.25f; f < 581; f += 6.5f) {
@@ -40,7 +41,7 @@ public class Listing_03_26_MoviePosters {
         //Add XObjects to page canvas
         PdfCanvas canvas = new PdfCanvas(page.getContentStream(0), page.getResources());
         for (int i = 0; i < 10; i++) {
-            canvas.addXObject(xObj, 0, i * 84.2f);
+            canvas.addForm(xObj, 0, i * 84.2f);
         }
 
         //Close document
