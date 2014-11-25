@@ -27,6 +27,7 @@ public class Listing_01_12_HelloWorldColumn {
         Paragraph hello = new Paragraph("Hello World");
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());   //Adds new page to the document and initializes canvas by page content contentStream.
         DefaultLayoutMgr.showTextAligned(canvas, 0, hello, 36, 788, 0); //alignment is set to '0'. No constants for alignment are available yet.
+        canvas.release();
 
         //Close document
         pdfDoc.close();

@@ -44,11 +44,12 @@ public class Listing_05_21_MovieCountries2 {
             PdfPage page = docEvent.getPage();
             int pageNum = docEvent.getDocument().getPageNum(page);
             try {
-                PdfCanvas canvas = new PdfCanvas(page.getContentStream(0), page.getResources());
+                PdfCanvas canvas = new PdfCanvas(page);
+                //Watermark to be added here.
+                canvas.release();
             } catch (PdfException e) {
                 e.printStackTrace();
             }
-            //Watermark to be added here.
         }
     }
 

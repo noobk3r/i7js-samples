@@ -31,6 +31,7 @@ public class Listing_15_01_PickABoo {
                 moveText(50, 790).showText("Do you see me?").
                 beginLayer(layer).moveText(50, 766).showText("Peek-A-Boo!!!").endLayer().
                 endText();
+        canvas.release();
 
         //Close document
         pdfDoc.close();

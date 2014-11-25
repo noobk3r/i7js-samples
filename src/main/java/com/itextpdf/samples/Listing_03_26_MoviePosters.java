@@ -34,15 +34,17 @@ public class Listing_03_26_MoviePosters {
             celluloid.roundRectangle(f, 8.5f, 6, 3, 1.5f).roundRectangle(f, 72.5f, 6, 3, 1.5f);
         }
         celluloid.setFillColor(new DeviceGray(0.1f)).eoFill();
+        celluloid.release();
 
         //Flush xObj to output file
         xObj.flush();
 
         //Add XObjects to page canvas
-        PdfCanvas canvas = new PdfCanvas(page.getContentStream(0), page.getResources());
+        PdfCanvas canvas = new PdfCanvas(page);
         for (int i = 0; i < 10; i++) {
             canvas.addForm(xObj, 0, i * 84.2f);
         }
+        canvas.release();
 
         //Close document
         pdfDoc.close();

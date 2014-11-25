@@ -45,7 +45,7 @@ public class Listing_03_01_FestivalOpening {
         PdfCanvas underCanvas = new PdfCanvas(pdfDoc.getLastPage().newContentStreamBefore(), pdfDoc.getLastPage().getResources());
         underCanvas.saveState().setFillColor(new DeviceRgb(0xFF, 0xD7, 0x00)).
                 rectangle(5, 5, pageWidth - 10, pageHeight - 10).fill().restoreState();
-
+        canvas.release();
         //Close document
         doc.close();
 

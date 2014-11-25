@@ -27,6 +27,7 @@ public class Listing_01_11_HelloWorldDirect {
         canvas.saveState().beginText().moveText(36, 600).
                 setFontAndSize(new PdfStandardFont(pdfDoc, PdfStandardFont.Helvetica), 12).showText("Hello World").
                 endText().restoreState();
+        canvas.release();
 
         //close document
         pdfDoc.close();

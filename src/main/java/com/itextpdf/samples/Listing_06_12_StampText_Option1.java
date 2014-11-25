@@ -33,6 +33,7 @@ public class Listing_06_12_StampText_Option1 {
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());
         canvas.saveState().beginText().setFontAndSize(new PdfStandardFont(pdfDoc, PdfStandardFont.Helvetica), 12).
                 moveText(36, 540).showText("Hello people!").endText().restoreState();
+        canvas.release();
 
         //Close document
         pdfDoc.close();
