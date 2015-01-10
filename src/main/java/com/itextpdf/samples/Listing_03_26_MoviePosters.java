@@ -1,7 +1,7 @@
 package com.itextpdf.samples;
 
 import com.itextpdf.canvas.PdfCanvas;
-import com.itextpdf.canvas.colors.DeviceGray;
+import com.itextpdf.canvas.color.DeviceGray;
 import com.itextpdf.basics.PdfException;
 import com.itextpdf.core.geom.Rectangle;
 import com.itextpdf.core.pdf.PdfDocument;
