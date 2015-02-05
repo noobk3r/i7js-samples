@@ -1,7 +1,7 @@
 package com.itextpdf.samples;
 
 import com.itextpdf.canvas.PdfCanvas;
-import com.itextpdf.canvas.PdfLayer;
+import com.itextpdf.core.pdf.layer.PdfLayer;
 import com.itextpdf.basics.PdfException;
 import com.itextpdf.core.fonts.PdfStandardFont;
 import com.itextpdf.core.pdf.PdfDocument;
@@ -28,8 +28,8 @@ public class Listing_15_01_PickABoo {
         PdfLayer layer = new PdfLayer("Do you see me?", pdfDoc);
         layer.setOn(true);
         canvas.beginText().setFontAndSize(new PdfStandardFont(pdfDoc, PdfStandardFont.Helvetica), 18).
-                moveText(50, 790).showText("Do you see me?").
-                beginLayer(layer).moveText(50, 766).showText("Peek-A-Boo!!!").endLayer().
+                moveText(50, 760).showText("Do you see me?").
+                beginLayer(layer).moveText(0, -30).showText("Peek-A-Boo!!!").endLayer().
                 endText();
         canvas.release();
 
