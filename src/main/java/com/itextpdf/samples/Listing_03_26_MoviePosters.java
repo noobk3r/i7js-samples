@@ -42,7 +42,7 @@ public class Listing_03_26_MoviePosters {
         //Add XObjects to page canvas
         PdfCanvas canvas = new PdfCanvas(page);
         for (int i = 0; i < 10; i++) {
-            canvas.addForm(xObj, 0, i * 84.2f);
+            canvas.addXObject(xObj, 0, i * 84.2f);
         }
         canvas.release();
 
