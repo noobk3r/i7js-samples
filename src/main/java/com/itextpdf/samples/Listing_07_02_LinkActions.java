@@ -3,7 +3,7 @@ package com.itextpdf.samples;
 import com.itextpdf.basics.PdfException;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.pdf.actions.PdfAction;
+import com.itextpdf.core.pdf.action.PdfAction;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.elements.Link;
 import com.itextpdf.model.elements.Paragraph;
