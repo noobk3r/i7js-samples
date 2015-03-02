@@ -26,23 +26,23 @@ public class Listing_07_02_LinkActions {
         Document doc = new Document(pdfDoc);
 
         Paragraph p = new Paragraph("Click on a country, and you'll get a list of movies, containing links to the ").
-                add(new Link("Internet Movie Database", PdfAction.createURI("http://www.imdb.com"))).
+                add(new Link("Internet Movie Database", PdfAction.createURI(pdfDoc, "http://www.imdb.com"))).
                 add(".");
         doc.add(p);
 
         p = new Paragraph("This list can be found in a ").
-                add(new Link("separate document", PdfAction.createGoToR("movie_links_1.pdf", 1))).
+                add(new Link("separate document", PdfAction.createGoToR(pdfDoc, "movie_links_1.pdf", 1))).
                 add(".");
         doc.add(p);
 
         DummyRs rs = new DummyRs();
         p = new Paragraph(rs.getString("country")).
                 add(": ").
-                add(new Link(String.format("%d movies", rs.getInt("c")), PdfAction.createGoToR("movie_links_1.pdf", rs.getString("country_id"), true)));
+                add(new Link(String.format("%d movies", rs.getInt("c")), PdfAction.createGoToR(pdfDoc, "movie_links_1.pdf", rs.getString("country_id"), true)));
         doc.add(p);
 
         p = new Paragraph("Go to ").
-                add(new Link("top", PdfAction.createGoTo("top"))).
+                add(new Link("top", PdfAction.createGoTo(pdfDoc, "top"))).
                 add(".");
         doc.add(p);
 
