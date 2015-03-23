@@ -12,7 +12,9 @@ import com.itextpdf.canvas.color.PatternColor;
 import com.itextpdf.core.pdf.PdfArray;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.pdf.colorspace.PdfDeviceCs;
 import com.itextpdf.core.pdf.colorspace.PdfPattern;
+import com.itextpdf.core.pdf.colorspace.PdfSpecialCs;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -58,14 +60,20 @@ public class Listing_10_03_TilingPatternColor {
         img_pattern.setMatrix(new PdfArray(new float[]{-0.5f, 0f, 0f, 0.5f, 0f, 0f}));
         new PdfPatternCanvas(img_pattern).addImage(img, 0, 0, 20, false);
 
+        PdfSpecialCs.UncoloredTilingPattern uncoloredRGBCS = new PdfSpecialCs.UncoloredTilingPattern(pdfDoc, new PdfDeviceCs.Rgb());
+        float[] green = {0, 1, 0};
+        float[] red = {1, 0, 0};
+        float[] blue = {0, 0, 1};
+
         colorRectangle(canvas, new PatternColor(square), 36, 696, 126, 126);
         colorRectangle(canvas, new PatternColor(ellipse), 180, 696, 126, 126);
-        colorRectangle(canvas, new PatternColor(circle, new DeviceRgb(0, 0, 255)), 324, 696, 126, 126);
+        colorRectangle(canvas, new PatternColor(circle, uncoloredRGBCS, blue), 324, 696, 126, 126);
         colorRectangle(canvas, new PatternColor(line, new DeviceGray()), 36, 552, 126, 126);
         colorRectangle(canvas, new PatternColor(img_pattern), 36, 408, 126, 126);
 
-        canvas.setFillColor(new PatternColor(line, new DeviceRgb(255, 0, 0))).ellipse(180, 552, 306, 678).fillStroke();
-        canvas.setFillColor(new PatternColor(circle, new DeviceRgb(0, 255, 0))).ellipse(324, 552, 450, 678).fillStroke();
+
+        canvas.setFillColor(new PatternColor(line, uncoloredRGBCS, red)).ellipse(180, 552, 306, 678).fillStroke();
+        canvas.setFillColor(new PatternColor(circle, uncoloredRGBCS, green)).ellipse(324, 552, 450, 678).fillStroke();
         canvas.setFillColor(new PatternColor(img_pattern)).ellipse(180, 408, 450, 534).fillStroke();
 
         canvas.release();
