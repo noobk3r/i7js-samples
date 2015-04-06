@@ -34,11 +34,11 @@ public class Listing_03_01_FestivalOpening {
 
         //Initialize canvas and write to it
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getLastPage());
-        float sinus = (float) Math.sin(Math.PI / 60);
-        float cosinus = (float) Math.cos(Math.PI / 60);
+        float sine = (float) Math.sin(Math.PI / 60);
+        float cosine = (float) Math.cos(Math.PI / 60);
         canvas.saveState().beginText().setTextRenderingMode(2).
                 setLineWidth(1.5f).setFillColor(DeviceRgb.Red).setStrokeColor(DeviceRgb.White).
-                setFontAndSize(new PdfStandardFont(pdfDoc, PdfStandardFont.Helvetica), 36).setTextMatrix(cosinus, sinus, -sinus, cosinus, 50, 324).
+                setFontAndSize(new PdfStandardFont(pdfDoc, PdfStandardFont.Helvetica), 36).setTextMatrix(cosine, sine, -sine, cosine, 50, 324).
                 showText("SOLD OUT").endText().restoreState();
 
         //Initialize "under" canvas and write to it
