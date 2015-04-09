@@ -3,7 +3,7 @@ package com.itextpdf.samples;
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.canvas.PdfCanvas;
-import com.itextpdf.core.fonts.PdfType1Font;
+import com.itextpdf.core.font.PdfType1Font;
 import com.itextpdf.core.pdf.layer.PdfLayer;
 import com.itextpdf.basics.PdfException;
 import com.itextpdf.core.pdf.PdfDocument;
