@@ -1,8 +1,10 @@
 package com.itextpdf.samples;
 
 import com.itextpdf.basics.PdfException;
+import com.itextpdf.basics.font.FontConstants;
+import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.canvas.PdfCanvas;
-import com.itextpdf.core.fonts.PdfStandardFont;
+import com.itextpdf.core.fonts.PdfType1Font;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfName;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -26,7 +28,7 @@ public class Listing_15_07_LayerMembershipExample2 {
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(writer);
 
-        PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage()).setFontAndSize(new PdfStandardFont(pdfDoc, PdfStandardFont.Helvetica), 18);
+        PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage()).setFontAndSize(new PdfType1Font(pdfDoc, new Type1Font(FontConstants.HELVETICA, "")), 18);
 
         PdfLayer dog = new PdfLayer("layer 1", pdfDoc);
         PdfLayer tiger = new PdfLayer("layer 2", pdfDoc);
