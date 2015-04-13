@@ -6,17 +6,22 @@ import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.elements.Paragraph;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Listing_01_01_HelloWorld {
 
-    static private final String RESULT = "./result.pdf";
+    static public final String DEST = "./target/test/resources/Listing_01_01_HelloWorld.pdf";
 
     public static void main(String args[]) throws IOException, PdfException {
 
+        new Listing_01_01_HelloWorld().manipulatePdf(DEST);
+    }
+
+    public void manipulatePdf(String dest) throws PdfException, FileNotFoundException {
         //Initialize writer
-        FileOutputStream fos = new FileOutputStream(RESULT);
+        FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize document
@@ -28,7 +33,6 @@ public class Listing_01_01_HelloWorld {
 
         //Close document
         doc.close();
-
     }
 
 }

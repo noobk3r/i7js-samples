@@ -7,17 +7,21 @@ import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.model.elements.Paragraph;
 import com.itextpdf.model.layout.DefaultLayoutMgr;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Listing_01_12_HelloWorldColumn {
 
-    static private final String RESULT = "./result.pdf";
+    static public final String DEST = "./target/test/resources/Listing_01_12_HelloWorldColumn.pdf";
 
     public static void main(String args[]) throws IOException, PdfException {
+        new Listing_01_12_HelloWorldColumn().manipulatePdf(DEST);
+    }
 
+    public void manipulatePdf(String dest) throws FileNotFoundException, PdfException {
         //Initialize writer
-        FileOutputStream fos = new FileOutputStream(RESULT);
+        FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize document
@@ -31,7 +35,6 @@ public class Listing_01_12_HelloWorldColumn {
 
         //Close document
         pdfDoc.close();
-
     }
 
 }

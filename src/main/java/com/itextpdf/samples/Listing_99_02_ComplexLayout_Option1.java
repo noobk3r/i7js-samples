@@ -11,6 +11,7 @@ import com.itextpdf.model.layout.shapes.BoxShape;
 import com.itextpdf.model.layout.shapes.CircleShape;
 import com.itextpdf.model.layout.shapes.ILayoutShape;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,12 +22,15 @@ import java.util.List;
  */
 public class Listing_99_02_ComplexLayout_Option1 {
 
-    static private final String RESULT = "./result.pdf";
+    static public final String DEST = "./target/test/resources/Listing_99_02_ComplexLayout_Option1.pdf";
 
     public static void main(String args[]) throws IOException, PdfException {
+        new Listing_99_02_ComplexLayout_Option1().manipulatePdf(DEST);
+    }
 
+    public void manipulatePdf(String dest) throws FileNotFoundException, PdfException {
         //Initialize writer
-        FileOutputStream fos = new FileOutputStream(RESULT);
+        FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize document
@@ -46,17 +50,18 @@ public class Listing_99_02_ComplexLayout_Option1 {
         IPlaceElementResult result = layoutMgr.placeElement(p);
 
         //If paragraph does not fit to layout completely. This approach is similar to what we have now in ColumnText.
-        if (result.getPlacementStatus() == IPlaceElementResult.NoMoreSpace) {
+        if (result != null && result.getPlacementStatus() == IPlaceElementResult.NoMoreSpace) {
             doc.newPage();
             shapes = new ArrayList<ILayoutShape>();
             shapes.add(new BoxShape(100, 100, 400, 500));
             layoutMgr.setShapes(shapes);
             layoutMgr.placeElement(p);
         }
+        if (result == null){
+            return;
+        }
 
         //Close document
         doc.close();
-
     }
-
 }

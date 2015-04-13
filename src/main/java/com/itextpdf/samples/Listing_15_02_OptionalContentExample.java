@@ -9,6 +9,7 @@ import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.layer.PdfLayer;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
@@ -16,12 +17,15 @@ import java.util.List;
 
 public class Listing_15_02_OptionalContentExample {
 
-    static private final String RESULT = "./result.pdf";
+    static public final String DEST = "./target/test/resources/Listing_15_02_OptionalContentExample.pdf";
 
     public static void main(String args[]) throws IOException, PdfException {
+        new Listing_15_02_OptionalContentExample().manipulatePdf(DEST);
+    }
 
+    public void manipulatePdf(String dest) throws IOException, PdfException {
         //Initialize writer
-        FileOutputStream fos = new FileOutputStream(RESULT);
+        FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize document

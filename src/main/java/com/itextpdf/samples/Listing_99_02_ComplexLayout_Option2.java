@@ -13,6 +13,7 @@ import com.itextpdf.model.layout.shapes.BoxShape;
 import com.itextpdf.model.layout.shapes.CircleShape;
 import com.itextpdf.model.layout.shapes.ILayoutShape;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,12 +24,15 @@ import java.util.List;
  */
 public class Listing_99_02_ComplexLayout_Option2 {
 
-    static private final String RESULT = "./result.pdf";
+    static public final String DEST = "./target/test/resources/Listing_99_02_ComplexLayout_Option2.pdf";
 
     public static void main(String args[]) throws IOException, PdfException {
+        new Listing_99_02_ComplexLayout_Option2().manipulatePdf(DEST);
+    }
 
+    public void manipulatePdf(String dest) throws FileNotFoundException, PdfException {
         //Initialize writer
-        FileOutputStream fos = new FileOutputStream(RESULT);
+        FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize document

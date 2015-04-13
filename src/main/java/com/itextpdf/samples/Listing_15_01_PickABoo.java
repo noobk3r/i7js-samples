@@ -9,17 +9,21 @@ import com.itextpdf.basics.PdfException;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Listing_15_01_PickABoo {
 
-    static private final String RESULT = "./result.pdf";
+    static public final String DEST = "./target/test/resources/Listing_15_01_PickABoo.pdf";
 
     public static void main(String args[]) throws IOException, PdfException {
+        new Listing_15_01_PickABoo().manipulatePdf(DEST);
+    }
 
+    public void manipulatePdf(String dest) throws PdfException, IOException {
         //Initialize writer
-        FileOutputStream fos = new FileOutputStream(RESULT);
+        FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize document
@@ -37,7 +41,6 @@ public class Listing_15_01_PickABoo {
 
         //Close document
         pdfDoc.close();
-
     }
 
 

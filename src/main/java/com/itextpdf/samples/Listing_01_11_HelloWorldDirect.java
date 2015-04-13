@@ -8,17 +8,21 @@ import com.itextpdf.core.font.PdfType1Font;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Listing_01_11_HelloWorldDirect {
 
-    static private final String RESULT = "./result.pdf";
+    static public final String DEST = "./target/test/resources/Listing_01_11_HelloWorldDirect.pdf";
 
     public static void main(String args[]) throws IOException, PdfException {
+        new Listing_01_11_HelloWorldDirect().manipulatePdf(DEST);
+    }
 
+    public void manipulatePdf(String dest) throws PdfException, IOException {
         //Initialize writer
-        FileOutputStream fos = new FileOutputStream(RESULT);
+        FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize document and add page
