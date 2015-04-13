@@ -1,6 +1,9 @@
 package com.itextpdf.samples;
 
 import com.itextpdf.basics.PdfException;
+import com.itextpdf.basics.font.FontConstants;
+import com.itextpdf.basics.font.Type1Font;
+import com.itextpdf.core.font.PdfType1Font;
 import com.itextpdf.core.geom.Rectangle;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -15,7 +18,7 @@ import java.io.IOException;
 /**
  * Example demonstrates how to build complex layouts using layout manager
  */
-public class Listing_99_02_ComplexLayout {
+public class Listing_99_02_ComplexDocumentLayout {
 
     static private final String RESULT = "./result.pdf";
 
@@ -39,10 +42,10 @@ public class Listing_99_02_ComplexLayout {
                 if (nextAreaNumber % 2 == 0) {
                     currentPageNumber = super.getNextArea().getPageNumber();
                     nextAreaNumber++;
-                    return new LayoutArea(currentPageNumber, new Rectangle(100, 100, 100, 500));
+                    return (currentArea = new LayoutArea(currentPageNumber, new Rectangle(100, 100, 100, 500)));
                 } else {
                     nextAreaNumber++;
-                    return new LayoutArea(currentPageNumber, new Rectangle(400, 100, 100, 500));
+                    return (currentArea = new LayoutArea(currentPageNumber, new Rectangle(400, 100, 100, 500)));
                 }
             }
         });
@@ -52,7 +55,7 @@ public class Listing_99_02_ComplexLayout {
         for (int i = 0; i < 200; i++) {
             text.append("A very long text is here...");
         }
-        doc.add(new Paragraph(text.toString()));
+        doc.add(new Paragraph(text.toString()).setFont(new PdfType1Font(pdfDoc, new Type1Font(FontConstants.HELVETICA, ""))));
 
         //Close document
         doc.close();

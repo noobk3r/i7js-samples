@@ -6,10 +6,12 @@ import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.canvas.color.DeviceRgb;
 import com.itextpdf.basics.PdfException;
 import com.itextpdf.core.font.PdfType1Font;
+import com.itextpdf.core.geom.PageSize;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.model.Document;
-import com.itextpdf.model.elements.Paragraph;
+import com.itextpdf.model.element.PageBreak;
+import com.itextpdf.model.element.Paragraph;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -17,8 +19,8 @@ import java.io.IOException;
 public class Listing_03_01_FestivalOpening {
 
     static private final String RESULT = "./result.pdf";
-    static private final float pageWidth = 531;
-    static private final float pageHeight = 666;
+    static private final float pageWidth = PageSize.Default.getWidth();
+    static private final float pageHeight = PageSize.Default.getHeight();
 
     public static void main(String args[]) throws IOException, PdfException {
 
@@ -32,7 +34,7 @@ public class Listing_03_01_FestivalOpening {
 
         //Initialize paragraph, add it to document, add new page, add paragraph again
         Paragraph p = new Paragraph("Foobar Film Festival");
-        doc.add(p).newPage().add(p);
+        doc.add(p).add(new PageBreak()).add(p);
 
         //Initialize canvas and write to it
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getLastPage());
