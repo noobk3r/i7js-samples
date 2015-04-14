@@ -25,10 +25,10 @@ public class Listing_01_11_HelloWorldDirect {
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
 
-        //Initialize document and add page
+        //Initialize document
         PdfDocument pdfDoc = new PdfDocument(writer);
 
-        //Initialize canvas and write text to it
+        //Initialize canvas, add page and write text to it
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         canvas.saveState().beginText().moveText(36, 600).
                 setFontAndSize(new PdfType1Font(pdfDoc, new Type1Font(FontConstants.HELVETICA, "")), 12).showText("Hello World").
