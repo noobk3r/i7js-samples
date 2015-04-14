@@ -20,12 +20,15 @@ import java.io.IOException;
  */
 public class Listing_99_02_ComplexDocumentLayout {
 
-    static private final String RESULT = "./result.pdf";
+    static public final String DEST = "./target/test/resources/Listing_99_02_ComplexDocumentLayout.pdf";
 
     public static void main(String args[]) throws IOException, PdfException {
+        new Listing_99_02_ComplexDocumentLayout().manipulatePdf(DEST);
+    }
 
+    public void manipulatePdf(String dest) throws PdfException, IOException {
         //Initialize writer
-        FileOutputStream fos = new FileOutputStream(RESULT);
+        FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize document
@@ -59,7 +62,6 @@ public class Listing_99_02_ComplexDocumentLayout {
 
         //Close document
         doc.close();
-
     }
 
 }

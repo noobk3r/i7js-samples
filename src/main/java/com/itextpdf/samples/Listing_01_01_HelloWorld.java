@@ -15,7 +15,6 @@ public class Listing_01_01_HelloWorld {
     static public final String DEST = "./target/test/resources/Listing_01_01_HelloWorld.pdf";
 
     public static void main(String args[]) throws IOException, PdfException {
-
         new Listing_01_01_HelloWorld().manipulatePdf(DEST);
     }
 

@@ -64,7 +64,7 @@ public class GenericTest {
             return;
         LOGGER.info("Starting test " + className + ".");
         // Getting the destination PDF file (must be there!)
-        String dest= getDest();
+        String dest = getDest();
         if (dest == null || dest.length() == 0)
             throw new OperationsException("DEST cannot be empty!");
         // Compare the destination PDF with a reference PDF

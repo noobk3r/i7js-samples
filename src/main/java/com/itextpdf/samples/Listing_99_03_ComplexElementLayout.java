@@ -19,13 +19,15 @@ import java.util.List;
 
 public class Listing_99_03_ComplexElementLayout {
 
-    static private final String RESULT = "./result.pdf";
-
+    static public final String DEST = "./target/test/resources/Listing_99_03_ComplexElementLayout.pdf";
 
     public static void main(String args[]) throws IOException, PdfException {
+        new Listing_99_03_ComplexElementLayout().manipulatePdf(DEST);
+    }
 
+    public void manipulatePdf(String dest) throws PdfException, IOException {
         //Initialize writer
-        FileOutputStream fos = new FileOutputStream(RESULT);
+        FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize document
@@ -47,7 +49,6 @@ public class Listing_99_03_ComplexElementLayout {
 
         //Close document
         doc.close();
-
     }
 
     static private class TwoColumnParagraphRenderer extends BlockRenderer {

@@ -17,7 +17,7 @@ public class Listing_99_04_PageSizeAndMargins {
     static public final String DEST = "./target/test/resources/Listing_99_03_PageSizeAndMargins.pdf";
 
     public static void main(String args[]) throws IOException, PdfException {
-        new Listing_99_03_PageSizeAndMargins().manipulatePdf(DEST);
+        new Listing_99_04_PageSizeAndMargins().manipulatePdf(DEST);
     }
 
     public void manipulatePdf(String dest) throws FileNotFoundException, PdfException {
