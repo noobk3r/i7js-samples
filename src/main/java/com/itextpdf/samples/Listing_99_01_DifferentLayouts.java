@@ -6,6 +6,7 @@ import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -14,12 +15,15 @@ import java.io.IOException;
  */
 public class Listing_99_01_DifferentLayouts {
 
-    static private final String RESULT = "./result.pdf";
+    static public final String DEST = "./target/test/resources/Listing_99_01_DifferentLayouts.pdf";
 
     public static void main(String args[]) throws IOException, PdfException {
+        new Listing_99_01_DifferentLayouts().manipulatePdf(DEST);
+    }
 
+    public void manipulatePdf(String dest) throws FileNotFoundException, PdfException {
         //Initialize writer
-        FileOutputStream fos = new FileOutputStream(RESULT);
+        FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize document
@@ -35,7 +39,6 @@ public class Listing_99_01_DifferentLayouts {
 
         //Close document
         doc.close();
-
     }
 
 }

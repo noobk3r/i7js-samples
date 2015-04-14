@@ -12,17 +12,21 @@ import com.itextpdf.core.pdf.layer.PdfLayer;
 import com.itextpdf.core.pdf.layer.PdfLayerMembership;
 import com.itextpdf.core.pdf.layer.PdfVisibilityExpression;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Listing_15_07_LayerMembershipExample2 {
 
-    static private final String RESULT = "./result.pdf";
+    static public final String DEST = "./target/test/resources/Listing_15_07_LayerMembershipExample2.pdf";
 
     public static void main(String args[]) throws IOException, PdfException {
+        new Listing_15_07_LayerMembershipExample2().manipulatePdf(DEST);
+    }
 
+    public void manipulatePdf(String dest) throws IOException, PdfException {
         //Initialize writer
-        FileOutputStream fos = new FileOutputStream(RESULT);
+        FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize document
@@ -51,7 +55,6 @@ public class Listing_15_07_LayerMembershipExample2 {
 
         //Close document
         pdfDoc.close();
-
     }
 
 }

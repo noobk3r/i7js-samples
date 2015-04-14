@@ -10,21 +10,25 @@ import com.itextpdf.core.pdf.colorspace.PdfDeviceCs;
 import com.itextpdf.core.pdf.colorspace.PdfPattern;
 import com.itextpdf.core.pdf.colorspace.PdfShading;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Listing_10_04_ShadingPatternColor {
 
-    static private final String RESULT = "./result.pdf";
+    static public final String DEST = "./target/test/resources/Listing_10_04_ShadingPatternColor.pdf";
 
     public static void colorRectangle(PdfCanvas canvas, Color color, float x, float y, float width, float height) throws PdfException {
         canvas.saveState().setFillColor(color).rectangle(x, y, width, height).fillStroke().restoreState();
     }
 
     public static void main(String args[]) throws IOException, PdfException {
+        new Listing_10_04_ShadingPatternColor().manipulatePdf(DEST);
+    }
 
+    public void manipulatePdf(String dest) throws FileNotFoundException, PdfException {
         //Initialize writer
-        FileOutputStream fos = new FileOutputStream(RESULT);
+        FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize document
@@ -47,7 +51,6 @@ public class Listing_10_04_ShadingPatternColor {
 
         //Close document
         pdfDoc.close();
-
     }
 
 

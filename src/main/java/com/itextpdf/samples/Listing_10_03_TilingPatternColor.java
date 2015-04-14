@@ -16,13 +16,15 @@ import com.itextpdf.core.pdf.colorspace.PdfDeviceCs;
 import com.itextpdf.core.pdf.colorspace.PdfPattern;
 import com.itextpdf.core.pdf.colorspace.PdfSpecialCs;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.MalformedURLException;
 
 public class Listing_10_03_TilingPatternColor {
 
-    static private final String RESULT = "./result.pdf";
-    static private final String IMG_SRC = "./src/main/resources/img/info.jpg";
+    static public final String DEST = "./target/test/resources/Listing_10_03_TilingPatternColor.pdf";
+    static private final String IMG_SRC = "./src/main/resources/img/info.png";
 
 
     public static void colorRectangle(PdfCanvas canvas, Color color, float x, float y, float width, float height) throws PdfException {
@@ -30,9 +32,12 @@ public class Listing_10_03_TilingPatternColor {
     }
 
     public static void main(String args[]) throws IOException, PdfException {
+        new Listing_10_03_TilingPatternColor().manipulatePdf(DEST);
+    }
 
+    public void manipulatePdf(String dest) throws FileNotFoundException, PdfException, MalformedURLException {
         //Initialize writer
-        FileOutputStream fos = new FileOutputStream(RESULT);
+        FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize document
@@ -82,5 +87,4 @@ public class Listing_10_03_TilingPatternColor {
         pdfDoc.close();
 
     }
-
 }

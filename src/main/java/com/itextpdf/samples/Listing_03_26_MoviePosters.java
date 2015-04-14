@@ -9,17 +9,21 @@ import com.itextpdf.core.pdf.xobject.PdfFormXObject;
 import com.itextpdf.core.pdf.PdfPage;
 import com.itextpdf.core.pdf.PdfWriter;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Listing_03_26_MoviePosters {
 
-    static private final String RESULT = "./result.pdf";
+    static public final String DEST = "./target/test/resources/Listing_03_26_MoviePosters.pdf";
 
     public static void main(String args[]) throws IOException, PdfException {
+        new Listing_03_26_MoviePosters().manipulatePdf(DEST);
+    }
 
+    public  void manipulatePdf(String dest) throws FileNotFoundException, PdfException {
         //Initialize writer
-        FileOutputStream fos = new FileOutputStream(RESULT);
+        FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize document and add page
@@ -48,7 +52,6 @@ public class Listing_03_26_MoviePosters {
 
         //Close document
         pdfDoc.close();
-
     }
 
 

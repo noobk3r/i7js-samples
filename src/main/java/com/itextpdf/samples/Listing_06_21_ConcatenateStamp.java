@@ -16,12 +16,15 @@ import java.io.IOException;
 
 public class Listing_06_21_ConcatenateStamp {
 
-    static private final String RESULT = "./result.pdf";
-    static private final String SOURCE1 = "./source1.pdf";
-    static private final String SOURCE2 = "./source2.pdf";
+    static public final String DEST = "./target/test/resources/Listing_06_21_ConcatenateStamp.pdf";
+    static public final String SOURCE1 = "./src/test/resources/source.pdf";
+    static private final String SOURCE2 = "./src/test/resources/source2.pdf";
 
     public static void main(String args[]) throws IOException, PdfException {
+        new Listing_06_21_ConcatenateStamp().manipulatePdf(DEST);
+    }
 
+    public void manipulatePdf(String dest) throws PdfException, IOException {
         //Initialize source document 1
         FileInputStream fis1 = new FileInputStream(SOURCE1);
         PdfReader reader1 = new PdfReader(fis1);
@@ -35,13 +38,14 @@ public class Listing_06_21_ConcatenateStamp {
         int n2 = sourceDoc2.getNumOfPages();
 
         //Initialize destination document
-        FileOutputStream fos = new FileOutputStream(RESULT);
+        FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument resultDoc = new PdfDocument(writer);
 
         //Copy and stamp pages from source 1 to destination
         for (int i = 1; i <= n1; i++) {
-            PdfPage page = resultDoc.addPage(sourceDoc1.getPage(i));
+            PdfPage page = sourceDoc1.getPage(i).copy(resultDoc);
+            page = resultDoc.addPage(page);
             PdfCanvas canvas = new PdfCanvas(page);
             canvas.saveState().beginText().setFontAndSize(new PdfType1Font(sourceDoc1, new Type1Font(FontConstants.HELVETICA, "")), 12).
                     moveText(36, 540).showText("Hello World!").endText().restoreState();
@@ -52,7 +56,8 @@ public class Listing_06_21_ConcatenateStamp {
 
         //Copy and stamp pages from source 2 to destination
         for (int i = 1; i <= n2; i++) {
-            PdfPage page = resultDoc.addPage(sourceDoc2.getPage(i));
+            PdfPage page = sourceDoc2.getPage(i).copy(resultDoc);
+            resultDoc.addPage(page);
             PdfCanvas canvas = new PdfCanvas(page);
             canvas.saveState().beginText().setFontAndSize(new PdfType1Font(sourceDoc2, new Type1Font(FontConstants.HELVETICA, "")), 12).
                     moveText(36, 540).showText("Hello World!").endText().restoreState();
@@ -65,7 +70,6 @@ public class Listing_06_21_ConcatenateStamp {
         resultDoc.close();
         sourceDoc1.close();
         sourceDoc2.close();
-
     }
 
 

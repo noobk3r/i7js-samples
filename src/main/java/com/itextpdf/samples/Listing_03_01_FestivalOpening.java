@@ -13,19 +13,23 @@ import com.itextpdf.model.Document;
 import com.itextpdf.model.element.PageBreak;
 import com.itextpdf.model.element.Paragraph;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Listing_03_01_FestivalOpening {
 
-    static private final String RESULT = "./result.pdf";
+    static public final String DEST = "./target/test/resources/Listing_03_01_FestivalOpening.pdf";
     static private final float pageWidth = PageSize.Default.getWidth();
     static private final float pageHeight = PageSize.Default.getHeight();
 
     public static void main(String args[]) throws IOException, PdfException {
+        new Listing_03_01_FestivalOpening().manipulatePdf(DEST);
+    }
 
+    public void manipulatePdf(String dest) throws IOException, PdfException {
         //Initialize writer
-        FileOutputStream fos = new FileOutputStream(RESULT);
+        FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize document
@@ -52,8 +56,6 @@ public class Listing_03_01_FestivalOpening {
         canvas.release();
         //Close document
         doc.close();
-
     }
-
 
 }

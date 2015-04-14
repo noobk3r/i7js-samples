@@ -10,22 +10,26 @@ import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Listing_06_12_StampText_Option1 {
 
-    static private final String RESULT = "./result.pdf";
-    static private final String SOURCE = "./source.pdf";
+    static public final String DEST = "./target/test/resources/Listing_06_12_StampText_Option1.pdf";
+    static public final String SOURCE = "./src/test/resources/source.pdf";
 
     public static void main(String args[]) throws IOException, PdfException {
+        new Listing_06_12_StampText_Option1().manipulatePdf(DEST);
+    }
 
+    public void manipulatePdf(String dest) throws IOException, PdfException {
         //Initialize reader
         FileInputStream fis = new FileInputStream(SOURCE);
         PdfReader reader = new PdfReader(fis);
 
         //Initialize writer
-        FileOutputStream fos = new FileOutputStream(RESULT);
+        FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize document
@@ -39,6 +43,5 @@ public class Listing_06_12_StampText_Option1 {
 
         //Close document
         pdfDoc.close();
-
     }
 }
