@@ -41,7 +41,7 @@ public class Listing_99_03_ComplexElementLayout {
             text.append("A very long text is here...");
         }
         Paragraph twoColumnParagraph = new Paragraph();
-        twoColumnParagraph.setRenderer(new TwoColumnParagraphRenderer(twoColumnParagraph));
+        twoColumnParagraph.setNextRenderer(new TwoColumnParagraphRenderer(twoColumnParagraph));
         twoColumnParagraph.add(text.toString());
         doc.add(twoColumnParagraph.setFont(new PdfType1Font(pdfDoc, new Type1Font(FontConstants.HELVETICA, ""))));
 
