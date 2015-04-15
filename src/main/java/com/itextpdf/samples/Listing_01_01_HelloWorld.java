@@ -4,7 +4,7 @@ import com.itextpdf.basics.PdfException;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.model.Document;
-import com.itextpdf.model.elements.Paragraph;
+import com.itextpdf.model.element.Paragraph;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -15,7 +15,6 @@ public class Listing_01_01_HelloWorld {
     static public final String DEST = "./target/test/resources/Listing_01_01_HelloWorld.pdf";
 
     public static void main(String args[]) throws IOException, PdfException {
-
         new Listing_01_01_HelloWorld().manipulatePdf(DEST);
     }
 
@@ -29,7 +28,7 @@ public class Listing_01_01_HelloWorld {
         Document doc = new Document(pdfDoc);
 
         //Add paragraph to the document
-        doc.add(new Paragraph("Hello")).add(new Paragraph("World"));
+        doc.add(new Paragraph("Hello")).add(new Paragraph("World!"));
 
         //Close document
         doc.close();

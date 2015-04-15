@@ -5,10 +5,7 @@ import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.model.Document;
-import com.itextpdf.model.elements.ElementPosition;
-import com.itextpdf.model.elements.Paragraph;
-import com.itextpdf.model.layout.ILayoutMgr;
-import com.itextpdf.model.layout.shapes.StartingPointShape;
+import com.itextpdf.model.element.Paragraph;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -38,8 +35,7 @@ public class Listing_06_12_StampText_Option2 {
         Document doc = new Document(pdfDoc);
 
         //Add paragraph to a fixed position
-        Paragraph p = new Paragraph("Hello people!");
-        p.setRequestedPosition(new ElementPosition(new StartingPointShape(36, 540), ILayoutMgr.Fixed));
+        Paragraph p = new Paragraph("Hello people!").setFixedPosition(36, 540);
         doc.add(p);
 
         //close document

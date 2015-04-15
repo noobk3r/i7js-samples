@@ -5,8 +5,8 @@ import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.action.PdfAction;
 import com.itextpdf.model.Document;
-import com.itextpdf.model.elements.Link;
-import com.itextpdf.model.elements.Paragraph;
+import com.itextpdf.model.element.Link;
+import com.itextpdf.model.element.Paragraph;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
