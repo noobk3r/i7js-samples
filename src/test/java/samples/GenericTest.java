@@ -1,6 +1,6 @@
 package samples;
 
-import com.itextpdf.testutils.CompareTool;
+import com.itextpdf.core.testutils.CompareTool;
 import com.itextpdf.text.log.Logger;
 import com.itextpdf.text.log.LoggerFactory;
 import org.junit.Assert;
@@ -131,8 +131,8 @@ public class GenericTest {
         String outPath = new File(dest).getParent();
         new File(outPath).mkdirs();
         if (compareRenders) {
-            addError(compareTool.compare(dest, cmp, outPath, differenceImagePrefix));
-            addError(compareTool.compareLinks(dest, cmp));
+            addError(compareTool.compareVisually(dest, cmp, outPath, differenceImagePrefix));
+            addError(compareTool.compareLinkAnnotations(dest, cmp));
         } else {
             addError(compareTool.compareByContent(dest, cmp, outPath, differenceImagePrefix));
         }
