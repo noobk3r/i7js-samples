@@ -47,7 +47,7 @@ public class Listing_06_21_ConcatenateStamp {
             PdfPage page = sourceDoc1.getPage(i).copy(resultDoc);
             page = resultDoc.addPage(page);
             PdfCanvas canvas = new PdfCanvas(page);
-            canvas.saveState().beginText().setFontAndSize(new PdfType1Font(sourceDoc1, new Type1Font(FontConstants.HELVETICA, "")), 12).
+            canvas.saveState().beginText().setFontAndSize(new PdfType1Font(resultDoc, new Type1Font(FontConstants.HELVETICA, "")), 12).
                     moveText(36, 540).showText("Hello World!").endText().restoreState();
             canvas.release();
             //Flush the page immediately to reduce memory consumption
@@ -59,7 +59,7 @@ public class Listing_06_21_ConcatenateStamp {
             PdfPage page = sourceDoc2.getPage(i).copy(resultDoc);
             resultDoc.addPage(page);
             PdfCanvas canvas = new PdfCanvas(page);
-            canvas.saveState().beginText().setFontAndSize(new PdfType1Font(sourceDoc2, new Type1Font(FontConstants.HELVETICA, "")), 12).
+            canvas.saveState().beginText().setFontAndSize(new PdfType1Font(resultDoc, new Type1Font(FontConstants.HELVETICA, "")), 12).
                     moveText(36, 540).showText("Hello World!").endText().restoreState();
             //Flush the page immediately to reduce memory consumption
             canvas.release();
