@@ -10,10 +10,9 @@ import com.itextpdf.core.geom.PageSize;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.model.Document;
-import com.itextpdf.model.element.PageBreak;
+import com.itextpdf.model.element.AreaBreak;
 import com.itextpdf.model.element.Paragraph;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -38,7 +37,7 @@ public class Listing_03_01_FestivalOpening {
 
         //Initialize paragraph, add it to document, add new page, add paragraph again
         Paragraph p = new Paragraph("Foobar Film Festival");
-        doc.add(p).add(new PageBreak()).add(p);
+        doc.add(p).add(new AreaBreak()).add(p);
 
         //Initialize canvas and write to it
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getLastPage());

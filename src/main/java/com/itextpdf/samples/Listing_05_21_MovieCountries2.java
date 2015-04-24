@@ -9,7 +9,7 @@ import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfPage;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.model.Document;
-import com.itextpdf.model.element.PageBreak;
+import com.itextpdf.model.element.AreaBreak;
 import com.itextpdf.model.element.Paragraph;
 
 import java.io.FileNotFoundException;
@@ -35,7 +35,7 @@ public class Listing_05_21_MovieCountries2 {
         Document doc = new Document(pdfDoc);
 
         //Add element, create new page, add element
-        doc.add(new Paragraph("Hello")).add(new PageBreak()).add(new Paragraph("World"));
+        doc.add(new Paragraph("Hello")).add(new AreaBreak()).add(new Paragraph("World"));
 
         //Close document
         doc.close();

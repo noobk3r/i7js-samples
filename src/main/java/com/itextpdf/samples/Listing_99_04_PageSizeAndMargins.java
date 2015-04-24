@@ -5,7 +5,7 @@ import com.itextpdf.core.geom.PageSize;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.model.Document;
-import com.itextpdf.model.element.PageBreak;
+import com.itextpdf.model.element.AreaBreak;
 import com.itextpdf.model.element.Paragraph;
 
 import java.io.FileNotFoundException;
@@ -33,13 +33,13 @@ public class Listing_99_04_PageSizeAndMargins {
         doc.add(new Paragraph("Hello")).add(new Paragraph("World"));
 
         //Add new page with the default page size which is 100*100 and [10, 10, 10, 10] margins for this document.
-        doc.add(new PageBreak());
+        doc.add(new AreaBreak());
 
         //Add paragraph to the document
         doc.add(new Paragraph("Hello")).add(new Paragraph("World"));
 
         //Add new A4 page
-        doc.add(new PageBreak(PageSize.A4));
+        doc.add(new AreaBreak(PageSize.A4));
 
         //Add paragraph to the document
         doc.add(new Paragraph("Hello")).add(new Paragraph("World"));
