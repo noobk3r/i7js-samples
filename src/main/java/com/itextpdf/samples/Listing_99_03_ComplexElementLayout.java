@@ -10,7 +10,7 @@ import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.layout.LayoutArea;
 import com.itextpdf.model.layout.LayoutContext;
-import com.itextpdf.model.renderer.BlockRenderer;
+import com.itextpdf.model.renderer.ParagraphRenderer;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -51,7 +51,7 @@ public class Listing_99_03_ComplexElementLayout {
         doc.close();
     }
 
-    static private class TwoColumnParagraphRenderer extends BlockRenderer {
+    static private class TwoColumnParagraphRenderer extends ParagraphRenderer {
 
         public TwoColumnParagraphRenderer(Paragraph modelElement) {
             super(modelElement);
@@ -72,12 +72,12 @@ public class Listing_99_03_ComplexElementLayout {
         }
 
         @Override
-        protected BlockRenderer createSplitRenderer() {
+        protected ParagraphRenderer createSplitRenderer() {
             return new TwoColumnParagraphRenderer((Paragraph) modelElement);
         }
 
         @Override
-        protected BlockRenderer createOverflowRenderer() {
+        protected ParagraphRenderer createOverflowRenderer() {
             return new TwoColumnParagraphRenderer((Paragraph) modelElement);
         }
     }

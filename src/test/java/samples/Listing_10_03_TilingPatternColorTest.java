@@ -2,7 +2,7 @@ package samples;
 
 import org.junit.Ignore;
 
-@Ignore
+@Ignore("png exception. DEVSIX-136")
 public class Listing_10_03_TilingPatternColorTest extends GenericTest {
 
     @Override
