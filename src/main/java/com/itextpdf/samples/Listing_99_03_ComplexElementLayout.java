@@ -63,8 +63,8 @@ public class Listing_99_03_ComplexElementLayout {
             List<LayoutArea> areas = new ArrayList<LayoutArea>();
             LayoutArea firstArea = area.clone();
             LayoutArea secondArea = area.clone();
-            firstArea.getBBox().setWidth(firstArea.getBBox().getWidth() / 2);
-            secondArea.getBBox().setX(secondArea.getBBox().getX() + secondArea.getBBox().getWidth() / 2);
+            firstArea.getBBox().setWidth(firstArea.getBBox().getWidth() / 2 - 5);
+            secondArea.getBBox().setX(secondArea.getBBox().getX() + secondArea.getBBox().getWidth() / 2 + 5);
             secondArea.getBBox().setWidth(firstArea.getBBox().getWidth());
             areas.add(firstArea);
             areas.add(secondArea);
