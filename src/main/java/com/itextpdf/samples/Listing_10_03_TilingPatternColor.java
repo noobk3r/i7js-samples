@@ -76,7 +76,6 @@ public class Listing_10_03_TilingPatternColor {
         colorRectangle(canvas, new PatternColor(line, new DeviceGray()), 36, 552, 126, 126);
         colorRectangle(canvas, new PatternColor(img_pattern), 36, 408, 126, 126);
 
-
         canvas.setFillColor(new PatternColor(line, uncoloredRGBCS, red)).ellipse(180, 552, 306, 678).fillStroke();
         canvas.setFillColor(new PatternColor(circle, uncoloredRGBCS, green)).ellipse(324, 552, 450, 678).fillStroke();
         canvas.setFillColor(new PatternColor(img_pattern)).ellipse(180, 408, 450, 534).fillStroke();
