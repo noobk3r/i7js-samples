@@ -1,8 +1,7 @@
 package com.itextpdf.samples;
 
 import com.itextpdf.basics.PdfException;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.pdf.*;
 import com.itextpdf.core.pdf.action.PdfAction;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Link;
@@ -49,6 +48,15 @@ public class Listing_07_02_LinkActions {
                 add(new Link("top", PdfAction.createGoTo(pdfDoc, "top"))).
                 add(".");
         doc.add(p);
+
+        PdfArray array = new PdfArray();
+        array.add(pdfDoc.getLastPage().getPdfObject());
+        array.add(PdfName.XYZ);
+        array.add(new PdfNumber(36));
+        array.add(new PdfNumber(842));
+        array.add(new PdfNumber(1));
+
+        pdfDoc.addNewName(new PdfString("top"), array);
 
         //Close document
         doc.close();
