@@ -5,6 +5,7 @@ import com.itextpdf.basics.image.Image;
 import com.itextpdf.basics.image.ImageFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.pdf.xobject.PdfImageXObject;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.List;
 import com.itextpdf.samples.GenericTest;
@@ -15,7 +16,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 
-@Ignore("Unignore when images are supported in layout")
+@Ignore("Unignore when GIF images are supported")
 public class ListWithImageAsBullet extends GenericTest {
 
     public static final String IMG = "src/test/resources/img/bulb.gif";
@@ -34,10 +35,11 @@ public class ListWithImageAsBullet extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         Image image = ImageFactory.getImage(IMG);
+        PdfImageXObject xObject = new PdfImageXObject(pdfDoc, image);
 //        image.scaleAbsolute(12, 12);
 //        image.setScaleToFitHeight(false);
         List list = new List().
-                setListSymbol(new com.itextpdf.model.element.Image(image)).
+                setListSymbol(new com.itextpdf.model.element.Image(xObject)).
                 add("Hello World").
                 add("This is a list item with a lot of text. It will certainly take more than one line. This shows that the list item is indented and that the image is used as bullet.").
                 add("This is a test");
