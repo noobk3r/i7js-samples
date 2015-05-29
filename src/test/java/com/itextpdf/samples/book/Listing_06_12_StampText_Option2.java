@@ -35,7 +35,7 @@ public class Listing_06_12_StampText_Option2 extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         //Add paragraph to a fixed position
-        Paragraph p = new Paragraph("Hello people!").setFixedPosition(36, 540);
+        Paragraph p = new Paragraph("Hello people!").setFixedPosition(7, 36, 540);
         doc.add(p);
 
         //close document

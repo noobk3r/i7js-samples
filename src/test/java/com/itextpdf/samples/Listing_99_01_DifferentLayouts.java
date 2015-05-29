@@ -1,6 +1,7 @@
 package com.itextpdf.samples;
 
 import com.itextpdf.basics.PdfException;
+import com.itextpdf.canvas.color.Color;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.model.Document;
@@ -34,7 +35,7 @@ public class Listing_99_01_DifferentLayouts extends GenericTest {
         doc.add(new Paragraph("Flowing paragraph"));
 
         //Add fixed paragraph
-        Paragraph p = new Paragraph("Fixed paragraph").setFixedPosition(100, 100).setWidth(200).setHeight(200);
+        Paragraph p = new Paragraph("Fixed paragraph").setFixedPosition(100, 100).setWidth(200).setHeight(200).setBackgroundColor(Color.Green);
         doc.add(p);
 
         //Close document
