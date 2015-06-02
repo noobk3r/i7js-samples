@@ -35,7 +35,7 @@ public class Listing_99_01_DifferentLayouts extends GenericTest {
         doc.add(new Paragraph("Flowing paragraph"));
 
         //Add fixed paragraph
-        Paragraph p = new Paragraph("Fixed paragraph").setFixedPosition(100, 100).setWidth(200).setHeight(200).setBackgroundColor(Color.Green);
+        Paragraph p = new Paragraph("Fixed paragraph").setFixedPosition(1, 100, 100).setWidth(200).setHeight(200).setBackgroundColor(Color.Green);
         doc.add(p);
 
         //Close document
