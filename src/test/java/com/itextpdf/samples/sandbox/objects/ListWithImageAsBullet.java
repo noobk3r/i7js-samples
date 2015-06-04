@@ -1,6 +1,6 @@
 package com.itextpdf.samples.sandbox.objects;
 
-import com.itextpdf.basics.PdfException;
+import com.itextpdf.basics.PdfRuntimeException;
 import com.itextpdf.basics.image.Image;
 import com.itextpdf.basics.image.ImageFactory;
 import com.itextpdf.core.pdf.PdfDocument;
@@ -22,13 +22,13 @@ public class ListWithImageAsBullet extends GenericTest {
     public static final String IMG = "src/test/resources/img/bulb.gif";
     public static final String DEST = "./target/test/resources/sandbox/objects/list_with_image_bullet.pdf";
 
-    public static void main(String[] args) throws IOException, PdfException {
+    public static void main(String[] args) throws IOException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
         new ListWithImageAsBullet().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws IOException, PdfException {
+    public void manipulatePdf(String dest) throws IOException {
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);

@@ -1,6 +1,6 @@
 package com.itextpdf.samples.sandbox.objects;
 
-import com.itextpdf.basics.PdfException;
+import com.itextpdf.basics.PdfRuntimeException;
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.core.font.PdfFont;
@@ -24,13 +24,13 @@ public class IndentationOptions extends GenericTest {
             "fruites, carshow, monstertrucks thing, everything is startting on the " +
             "same point in the line now";
 
-    public static void main(String[] args) throws IOException, PdfException {
+    public static void main(String[] args) throws IOException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
         new IndentationOptions().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws IOException, PdfException {
+    public void manipulatePdf(String dest) throws IOException {
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);

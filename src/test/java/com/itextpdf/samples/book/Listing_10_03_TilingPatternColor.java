@@ -1,6 +1,6 @@
 package com.itextpdf.samples.book;
 
-import com.itextpdf.basics.PdfException;
+import com.itextpdf.basics.PdfRuntimeException;
 import com.itextpdf.basics.image.Image;
 import com.itextpdf.basics.image.ImageFactory;
 import com.itextpdf.canvas.PdfCanvas;
@@ -28,15 +28,15 @@ public class Listing_10_03_TilingPatternColor extends GenericTest {
     static private final String IMG_SRC = "./src/test/resources/img/info.png";
 
 
-    public static void colorRectangle(PdfCanvas canvas, Color color, float x, float y, float width, float height) throws PdfException {
+    public static void colorRectangle(PdfCanvas canvas, Color color, float x, float y, float width, float height) {
         canvas.saveState().setFillColor(color).rectangle(x, y, width, height).fillStroke().restoreState();
     }
 
-    public static void main(String args[]) throws IOException, PdfException {
+    public static void main(String args[]) throws IOException {
         new Listing_10_03_TilingPatternColor().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws FileNotFoundException, PdfException, MalformedURLException {
+    public void manipulatePdf(String dest) throws FileNotFoundException, PdfRuntimeException, MalformedURLException {
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);

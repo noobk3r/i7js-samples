@@ -3,7 +3,7 @@ package com.itextpdf.samples.book;
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.canvas.PdfCanvas;
-import com.itextpdf.basics.PdfException;
+import com.itextpdf.basics.PdfRuntimeException;
 import com.itextpdf.core.font.PdfType1Font;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -16,11 +16,11 @@ public class Listing_01_11_HelloWorldDirect extends GenericTest {
 
     static public final String DEST = "./target/test/resources/Listing_01_11_HelloWorldDirect.pdf";
 
-    public static void main(String args[]) throws IOException, PdfException {
+    public static void main(String args[]) throws IOException {
         new Listing_01_11_HelloWorldDirect().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws PdfException, IOException {
+    public void manipulatePdf(String dest) throws IOException {
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);

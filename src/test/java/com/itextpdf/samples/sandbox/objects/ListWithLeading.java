@@ -1,6 +1,6 @@
 package com.itextpdf.samples.sandbox.objects;
 
-import com.itextpdf.basics.PdfException;
+import com.itextpdf.basics.PdfRuntimeException;
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.core.font.PdfFont;
@@ -21,13 +21,13 @@ public class ListWithLeading extends GenericTest {
 
     public static final String DEST = "./target/test/resources/sandbox/objects/list_with_leading.pdf";
 
-    public static void main(String[] args) throws IOException, PdfException {
+    public static void main(String[] args) throws IOException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
         new ListWithLeading().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws IOException, PdfException {
+    public void manipulatePdf(String dest) throws IOException {
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);

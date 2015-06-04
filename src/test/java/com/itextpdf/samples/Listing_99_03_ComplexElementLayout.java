@@ -1,6 +1,5 @@
 package com.itextpdf.samples;
 
-import com.itextpdf.basics.PdfException;
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.core.font.PdfType1Font;
@@ -21,11 +20,11 @@ public class Listing_99_03_ComplexElementLayout extends GenericTest {
 
     static public final String DEST = "./target/test/resources/Listing_99_03_ComplexElementLayout.pdf";
 
-    public static void main(String args[]) throws IOException, PdfException {
+    public static void main(String args[]) throws IOException {
         new Listing_99_03_ComplexElementLayout().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws PdfException, IOException {
+    public void manipulatePdf(String dest) throws IOException {
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);

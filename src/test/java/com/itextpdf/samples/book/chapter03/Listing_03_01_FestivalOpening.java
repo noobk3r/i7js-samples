@@ -1,6 +1,6 @@
 package com.itextpdf.samples.book.chapter03;
 
-import com.itextpdf.basics.PdfException;
+import com.itextpdf.basics.PdfRuntimeException;
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.basics.image.ImageFactory;
@@ -30,11 +30,11 @@ public class Listing_03_01_FestivalOpening extends GenericTest {
     private static final float pageWidth = PageSize.A6.getWidth();
     private static final float pageHeight = PageSize.A6.getHeight();
 
-    public static void main(String args[]) throws IOException, PdfException {
+    public static void main(String args[]) throws IOException {
         new Listing_03_01_FestivalOpening().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws IOException, PdfException {
+    public void manipulatePdf(String dest) throws IOException {
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);

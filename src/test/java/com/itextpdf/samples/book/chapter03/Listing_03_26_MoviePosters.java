@@ -2,7 +2,7 @@ package com.itextpdf.samples.book.chapter03;
 
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.canvas.color.DeviceGray;
-import com.itextpdf.basics.PdfException;
+import com.itextpdf.basics.PdfRuntimeException;
 import com.itextpdf.core.geom.Rectangle;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.xobject.PdfFormXObject;
@@ -18,11 +18,11 @@ public class Listing_03_26_MoviePosters extends GenericTest {
 
     static public final String DEST = "./target/test/resources/Listing_03_26_MoviePosters.pdf";
 
-    public static void main(String args[]) throws IOException, PdfException {
+    public static void main(String args[]) throws IOException {
         new Listing_03_26_MoviePosters().manipulatePdf(DEST);
     }
 
-    public  void manipulatePdf(String dest) throws FileNotFoundException, PdfException {
+    public  void manipulatePdf(String dest) throws FileNotFoundException, PdfRuntimeException {
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);

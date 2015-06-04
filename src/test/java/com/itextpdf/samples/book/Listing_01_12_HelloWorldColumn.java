@@ -1,6 +1,6 @@
 package com.itextpdf.samples.book;
 
-import com.itextpdf.basics.PdfException;
+import com.itextpdf.basics.PdfRuntimeException;
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -17,11 +17,11 @@ public class Listing_01_12_HelloWorldColumn extends GenericTest {
 
     static public final String DEST = "./target/test/resources/Listing_01_12_HelloWorldColumn.pdf";
 
-    public static void main(String args[]) throws IOException, PdfException {
+    public static void main(String args[]) throws IOException {
         new Listing_01_12_HelloWorldColumn().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws FileNotFoundException, PdfException {
+    public void manipulatePdf(String dest) throws FileNotFoundException, PdfRuntimeException {
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);

@@ -1,6 +1,6 @@
 package com.itextpdf.samples.book;
 
-import com.itextpdf.basics.PdfException;
+import com.itextpdf.basics.PdfRuntimeException;
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.canvas.color.Color;
 import com.itextpdf.canvas.color.PatternColor;
@@ -19,15 +19,15 @@ public class Listing_10_04_ShadingPatternColor extends GenericTest {
 
     static public final String DEST = "./target/test/resources/Listing_10_04_ShadingPatternColor.pdf";
 
-    public static void colorRectangle(PdfCanvas canvas, Color color, float x, float y, float width, float height) throws PdfException {
+    public static void colorRectangle(PdfCanvas canvas, Color color, float x, float y, float width, float height) {
         canvas.saveState().setFillColor(color).rectangle(x, y, width, height).fillStroke().restoreState();
     }
 
-    public static void main(String args[]) throws IOException, PdfException {
+    public static void main(String args[]) throws IOException {
         new Listing_10_04_ShadingPatternColor().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws FileNotFoundException, PdfException {
+    public void manipulatePdf(String dest) throws FileNotFoundException, PdfRuntimeException {
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);

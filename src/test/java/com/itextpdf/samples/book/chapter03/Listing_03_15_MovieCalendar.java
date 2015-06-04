@@ -1,6 +1,5 @@
 package com.itextpdf.samples.book.chapter03;
 
-import com.itextpdf.basics.PdfException;
 import com.itextpdf.core.geom.Rectangle;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
@@ -17,7 +16,7 @@ public class Listing_03_15_MovieCalendar extends Listing_03_11_MovieTextInfo {
     }
 
     @Override
-    protected void drawMovieInfo(Screening screening, Document doc, Text press) throws PdfException {
+    protected void drawMovieInfo(Screening screening, Document doc, Text press) {
         super.drawMovieInfo(screening, doc, press);
         Rectangle rect = getPosition(screening);
 

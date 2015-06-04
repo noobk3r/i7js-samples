@@ -1,6 +1,5 @@
 package com.itextpdf.samples.book.chapter03;
 
-import com.itextpdf.basics.PdfException;
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.canvas.PdfCanvas;
@@ -99,7 +98,7 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
      * Draws some text on every calendar sheet.
      *
      */
-    protected void drawInfo(Document doc) throws PdfException {
+    protected void drawInfo(Document doc) {
         // TODO
 //        canvas.beginText();
 //        canvas.setFontAndSize(bf, 18);
@@ -138,7 +137,7 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
      * Draws some text on every calendar sheet.
      *
      */
-    protected void drawDateInfo(Date day, int d, Document doc) throws PdfException {
+    protected void drawDateInfo(Date day, int d, Document doc) {
         float x, y;
         x = OFFSET_LOCATION;
         y = OFFSET_BOTTOM + HEIGHT + 24;
@@ -160,7 +159,7 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
     /**
      * Draws the info about the movie.
      */
-    protected void drawMovieInfo(Screening screening, Document doc, Text press) throws PdfException {
+    protected void drawMovieInfo(Screening screening, Document doc, Text press) {
         if (screening.isPress()) {
             Rectangle rect = getPosition(screening);
 

@@ -1,6 +1,5 @@
 package com.itextpdf.samples.book.chapter03;
 
-import com.itextpdf.basics.PdfException;
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.canvas.color.DeviceRgb;
 import com.itextpdf.core.geom.PageSize;
@@ -82,7 +81,7 @@ public class Listing_03_05_MovieTimeBlocks extends Listing_03_03_MovieTimeTable 
      * @param    screening    a screening POJO, contains a movie and a category
      * @param    under    the canvas to which the block is drawn
      */
-    protected void drawBlock(Screening screening, PdfCanvas under, PdfCanvas over) throws PdfException {
+    protected void drawBlock(Screening screening, PdfCanvas under, PdfCanvas over) {
         under.saveState();
 
         // TODO get rid of iText5 code

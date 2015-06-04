@@ -1,6 +1,5 @@
 package com.itextpdf.samples.book.chapter03;
 
-import com.itextpdf.basics.PdfException;
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.canvas.color.DeviceGray;
 import com.itextpdf.core.geom.PageSize;
@@ -64,7 +63,7 @@ public class Listing_03_03_MovieTimeTable extends GenericTest {
      * Draws the time table for a day at the film festival.
      * @param canvas a canvas to which the time table has to be drawn.
      */
-    protected void drawTimeTable(PdfCanvas canvas) throws PdfException {
+    protected void drawTimeTable(PdfCanvas canvas) {
         canvas.saveState().
                 setLineWidth(1.2f);
 
@@ -117,7 +116,7 @@ public class Listing_03_03_MovieTimeTable extends GenericTest {
      * Draws the time slots for a day at the film festival.
      * @param canvas the canvas to which the time table has to be drawn.
      */
-    protected void drawTimeSlots(PdfCanvas canvas) throws PdfException {
+    protected void drawTimeSlots(PdfCanvas canvas) {
         canvas.saveState();
         float x;
         for (int i = 1; i < TIMESLOTS; i++) {

@@ -1,6 +1,6 @@
 package com.itextpdf.samples.book;
 
-import com.itextpdf.basics.PdfException;
+import com.itextpdf.basics.PdfRuntimeException;
 import com.itextpdf.core.pdf.*;
 import com.itextpdf.core.pdf.action.PdfAction;
 import com.itextpdf.model.Document;
@@ -16,11 +16,11 @@ public class Listing_07_02_LinkActions extends GenericTest {
 
     static public final String DEST = "./target/test/resources/Listing_07_02_LinkActions.pdf";
 
-    public static void main(String args[]) throws IOException, PdfException {
+    public static void main(String args[]) throws IOException {
         new Listing_07_02_LinkActions().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws FileNotFoundException, PdfException {
+    public void manipulatePdf(String dest) throws FileNotFoundException, PdfRuntimeException {
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);

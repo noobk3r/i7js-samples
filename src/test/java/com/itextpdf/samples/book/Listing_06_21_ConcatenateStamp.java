@@ -3,7 +3,7 @@ package com.itextpdf.samples.book;
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.canvas.PdfCanvas;
-import com.itextpdf.basics.PdfException;
+import com.itextpdf.basics.PdfRuntimeException;
 import com.itextpdf.core.font.PdfType1Font;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfPage;
@@ -21,11 +21,11 @@ public class Listing_06_21_ConcatenateStamp extends GenericTest {
     static public final String SOURCE1 = "./src/test/resources/source.pdf";
     static private final String SOURCE2 = "./src/test/resources/source2.pdf";
 
-    public static void main(String args[]) throws IOException, PdfException {
+    public static void main(String args[]) throws IOException {
         new Listing_06_21_ConcatenateStamp().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws PdfException, IOException {
+    public void manipulatePdf(String dest) throws IOException {
         //Initialize source document 1
         FileInputStream fis1 = new FileInputStream(SOURCE1);
         PdfReader reader1 = new PdfReader(fis1);

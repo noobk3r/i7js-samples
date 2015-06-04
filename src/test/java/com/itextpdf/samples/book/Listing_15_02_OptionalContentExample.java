@@ -1,6 +1,6 @@
 package com.itextpdf.samples.book;
 
-import com.itextpdf.basics.PdfException;
+import com.itextpdf.basics.PdfRuntimeException;
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.canvas.PdfCanvas;
@@ -19,11 +19,11 @@ public class Listing_15_02_OptionalContentExample extends GenericTest {
 
     static public final String DEST = "./target/test/resources/Listing_15_02_OptionalContentExample.pdf";
 
-    public static void main(String args[]) throws IOException, PdfException {
+    public static void main(String args[]) throws IOException {
         new Listing_15_02_OptionalContentExample().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws IOException, PdfException {
+    public void manipulatePdf(String dest) throws IOException {
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
