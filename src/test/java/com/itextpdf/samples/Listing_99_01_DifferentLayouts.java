@@ -22,7 +22,7 @@ public class Listing_99_01_DifferentLayouts extends GenericTest {
         new Listing_99_01_DifferentLayouts().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws FileNotFoundException, PdfRuntimeException {
+    public void manipulatePdf(String dest) throws FileNotFoundException {
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);

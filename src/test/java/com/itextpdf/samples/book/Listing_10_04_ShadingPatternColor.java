@@ -27,7 +27,7 @@ public class Listing_10_04_ShadingPatternColor extends GenericTest {
         new Listing_10_04_ShadingPatternColor().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws FileNotFoundException, PdfRuntimeException {
+    public void manipulatePdf(String dest) throws FileNotFoundException {
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);

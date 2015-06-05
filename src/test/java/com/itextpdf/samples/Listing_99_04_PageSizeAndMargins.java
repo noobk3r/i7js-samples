@@ -20,7 +20,7 @@ public class Listing_99_04_PageSizeAndMargins extends GenericTest {
         new Listing_99_04_PageSizeAndMargins().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws FileNotFoundException, PdfRuntimeException {
+    public void manipulatePdf(String dest) throws FileNotFoundException {
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);

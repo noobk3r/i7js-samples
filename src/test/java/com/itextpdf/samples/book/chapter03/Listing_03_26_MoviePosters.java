@@ -22,7 +22,7 @@ public class Listing_03_26_MoviePosters extends GenericTest {
         new Listing_03_26_MoviePosters().manipulatePdf(DEST);
     }
 
-    public  void manipulatePdf(String dest) throws FileNotFoundException, PdfRuntimeException {
+    public  void manipulatePdf(String dest) throws FileNotFoundException {
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);

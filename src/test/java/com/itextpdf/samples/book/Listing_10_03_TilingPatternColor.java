@@ -36,7 +36,7 @@ public class Listing_10_03_TilingPatternColor extends GenericTest {
         new Listing_10_03_TilingPatternColor().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws FileNotFoundException, PdfRuntimeException, MalformedURLException {
+    public void manipulatePdf(String dest) throws FileNotFoundException, MalformedURLException {
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
