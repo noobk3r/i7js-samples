@@ -1,6 +1,5 @@
 package com.itextpdf.samples.book;
 
-import com.itextpdf.basics.PdfRuntimeException;
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.canvas.color.Color;
 import com.itextpdf.canvas.color.PatternColor;

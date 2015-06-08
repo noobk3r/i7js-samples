@@ -2,7 +2,6 @@ package com.itextpdf.samples.book.chapter03;
 
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.canvas.color.DeviceGray;
-import com.itextpdf.basics.PdfRuntimeException;
 import com.itextpdf.core.geom.Rectangle;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.xobject.PdfFormXObject;

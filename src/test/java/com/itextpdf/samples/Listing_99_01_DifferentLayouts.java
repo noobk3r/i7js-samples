@@ -1,6 +1,5 @@
 package com.itextpdf.samples;
 
-import com.itextpdf.basics.PdfRuntimeException;
 import com.itextpdf.canvas.color.Color;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;

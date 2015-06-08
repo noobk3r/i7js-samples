@@ -1,6 +1,5 @@
 package com.itextpdf.samples.book.chapter03;
 
-import com.itextpdf.basics.PdfRuntimeException;
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.basics.image.ImageFactory;
