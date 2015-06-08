@@ -1,4 +1,4 @@
-package com.itextpdf.samples.book;
+package com.itextpdf.samples.book.chapter01;
 
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -28,7 +28,7 @@ public class Listing_01_01_HelloWorld extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         //Add paragraph to the document
-        doc.add(new Paragraph("Hello")).add(new Paragraph("World!"));
+        doc.add(new Paragraph("Hello World!"));
 
         //Close document
         doc.close();
