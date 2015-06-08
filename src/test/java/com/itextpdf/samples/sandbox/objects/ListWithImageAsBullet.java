@@ -15,7 +15,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 
-@Ignore("Unignore when GIF images are supported")
 public class ListWithImageAsBullet extends GenericTest {
 
     public static final String IMG = "src/test/resources/img/bulb.gif";
