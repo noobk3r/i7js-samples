@@ -77,10 +77,6 @@ public class Listing_03_16_MovieColumns1 extends GenericTest {
         doc.close();
     }
 
-    /**
-     * Creates a Phrase containing information about a movie.
-     * @param    movie    the movie for which you want to create a Paragraph
-     */
     public Paragraph createMovieInformation(Movie movie) {
         Paragraph p = new Paragraph().
                 setAlignment(Property.Alignment.JUSTIFIED).
