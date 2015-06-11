@@ -24,7 +24,7 @@ public class Listing_03_15_MovieCalendar extends Listing_03_11_MovieTextInfo {
                 setFixedPosition(rect.getX(), rect.getY()).
                 setWidth(rect.getWidth()).
                 setHeight(rect.getHeight()).
-                setAlignment(Property.Alignment.CENTER);
+                setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
         doc.add(p);
     }
 }

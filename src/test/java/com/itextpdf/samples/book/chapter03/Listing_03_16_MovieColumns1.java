@@ -79,7 +79,7 @@ public class Listing_03_16_MovieColumns1 extends GenericTest {
 
     public Paragraph createMovieInformation(Movie movie) {
         Paragraph p = new Paragraph().
-                setAlignment(Property.Alignment.JUSTIFIED).
+                setHorizontalAlignment(Property.HorizontalAlignment.JUSTIFIED).
                 setPaddingLeft(27).
                 setFirstLineIndent(-27).
                 setMultipliedLeading(1.2f);

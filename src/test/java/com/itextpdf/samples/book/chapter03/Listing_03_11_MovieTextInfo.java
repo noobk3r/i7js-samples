@@ -151,7 +151,7 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
         Paragraph p2 = new Paragraph(day.toString()).
                 setFixedPosition(d, x, y).
                 setWidth(WIDTH).
-                setAlignment(Property.Alignment.RIGHT);
+                setHorizontalAlignment(Property.HorizontalAlignment.RIGHT);
 
         doc.add(p1).add(p2);
     }
@@ -167,7 +167,7 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
                     setFixedPosition(rect.getX(), rect.getY()).
                     setWidth(rect.getWidth()).
                     setHeight(rect.getHeight()).
-                    setAlignment(Property.Alignment.CENTER);
+                    setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
             doc.add(p);
         }
     }

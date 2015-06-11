@@ -37,7 +37,7 @@ public class Listing_01_07_HelloWorldMirroredMargins extends GenericTest {
                         "the right margin 72pt (1 inch); " +
                         "the top margin 108pt (1.5 inch); " +
                         "the bottom margin 180pt (2.5 inch)."));
-        Paragraph paragraph = new Paragraph().setAlignment(Property.Alignment.JUSTIFIED);
+        Paragraph paragraph = new Paragraph().setHorizontalAlignment(Property.HorizontalAlignment.JUSTIFIED);
         for (int i = 0; i < 20; i++) {
             paragraph.add("Hello World! Hello People! " +
                     "Hello Sky! Hello Sun! Hello Moon! Hello Stars!");
