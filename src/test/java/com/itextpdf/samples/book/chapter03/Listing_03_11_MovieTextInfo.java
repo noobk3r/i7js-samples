@@ -140,7 +140,7 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
     protected void drawDateInfo(Date day, int d, Document doc) {
         float x, y;
         x = OFFSET_LOCATION;
-        y = OFFSET_BOTTOM + HEIGHT + 24;
+        y = OFFSET_BOTTOM + HEIGHT + 12;
 
         Paragraph p1 = new Paragraph("Day " + d).
                 setFontSize(18).
@@ -149,6 +149,7 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
         x = OFFSET_LEFT;
 
         Paragraph p2 = new Paragraph(day.toString()).
+                setFontSize(18).
                 setFixedPosition(d, x, y).
                 setWidth(WIDTH).
                 setHorizontalAlignment(Property.HorizontalAlignment.RIGHT);
