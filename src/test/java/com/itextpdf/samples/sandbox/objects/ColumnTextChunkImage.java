@@ -13,7 +13,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-@Ignore("image is not overflown. image is not aligned on the yLine")
 public class ColumnTextChunkImage extends GenericTest {
     public static final String DOG = "src/test/resources/img/dog.bmp";
     public static final String FOX = "src/test/resources/img/fox.bmp";
