@@ -99,39 +99,43 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
      *
      */
     protected void drawInfo(Document doc) {
-        // TODO
-//        canvas.beginText();
-//        canvas.setFontAndSize(bf, 18);
 //        float x, y;
 //        x = (OFFSET_LEFT + WIDTH + OFFSET_LOCATION) / 2;
 //        y = OFFSET_BOTTOM + HEIGHT + 24;
-//        canvas.showTextAligned(Element.ALIGN_CENTER,
-//                "FOOBAR FILM FESTIVAL", x, y, 0);
+//        doc.add(new Paragraph("FOOBAR FILM FESTIVAL").setFontSize(18)
+//                .setFixedPosition(x, y));
+//
 //        x = OFFSET_LOCATION + WIDTH_LOCATION / 2f - 6;
 //        y = OFFSET_BOTTOM + HEIGHT_LOCATION;
-//        canvas.showTextAligned(Element.ALIGN_CENTER,
-//                "The Majestic", x, y, 90);
+//        doc.add(new Paragraph("The Majestic").setFontSize(18)
+//                .setFixedPosition(x, y)
+//                .setRotateAngle(Math.PI/2));
+//
 //        y = OFFSET_BOTTOM + HEIGHT_LOCATION * 4f;
-//        canvas.showTextAligned(Element.ALIGN_CENTER,
-//                "Googolplex", x, y, 90);
+//        doc.add(new Paragraph("Googolplex").setFontSize(18)
+//                .setFixedPosition(x, y)
+//                .setRotateAngle(Math.PI/2));
+//
 //        y = OFFSET_BOTTOM + HEIGHT_LOCATION * 7.5f;
-//        canvas.showTextAligned(Element.ALIGN_CENTER,
-//                "Cinema Paradiso", x, y, 90);
-//        canvas.setFontAndSize(bf, 12);
+//        doc.add(new Paragraph("Cinema Paradiso").setFontSize(18)
+//                .setFixedPosition(x, y)
+//                .setRotateAngle(Math.PI/2));
+//
 //        x = OFFSET_LOCATION + WIDTH_LOCATION - 6;
 //        for (int i = 0; i < LOCATIONS; i++) {
 //            y = OFFSET_BOTTOM + ((8.5f - i) * HEIGHT_LOCATION);
-//            canvas.showTextAligned(Element.ALIGN_CENTER,
-//                    locations.get(i), x, y, 90);
+//            doc.add(new Paragraph(locations.get(i)).setFontSize(12)
+//                    .setFixedPosition(x, y)
+//                    .setRotateAngle(Math.PI / 2));
 //        }
-//        canvas.setFontAndSize(bf, 6);
+//
 //        y = OFFSET_BOTTOM + HEIGHT + 1;
 //        for (int i = 0; i < TIMESLOTS; i++) {
 //            x = OFFSET_LEFT + (i * WIDTH_TIMESLOT);
-//            canvas.showTextAligned(Element.ALIGN_LEFT,
-//                    TIME[i], x, y, 45);
+//            doc.add(new Paragraph(TIME[i]).setFontSize(6)
+//                    .setFixedPosition(x, y).setHorizontalAlignment(Property.HorizontalAlignment.LEFT)
+//                    .setRotateAngle(Math.PI / 4).setRotateAlignment(Property.HorizontalAlignment.LEFT));
 //        }
-//        canvas.endText();
     }
     /**
      * Draws some text on every calendar sheet.
