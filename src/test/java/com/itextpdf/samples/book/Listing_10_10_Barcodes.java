@@ -1,9 +1,6 @@
 package com.itextpdf.samples.book;
 
-import com.itextpdf.barcodes.Barcode128;
-import com.itextpdf.barcodes.Barcode1D;
-import com.itextpdf.barcodes.Barcode39;
-import com.itextpdf.barcodes.BarcodeEAN;
+import com.itextpdf.barcodes.*;
 import com.itextpdf.canvas.color.Color;
 import com.itextpdf.core.geom.PageSize;
 import com.itextpdf.core.pdf.PdfDocument;
@@ -122,18 +119,18 @@ public class Listing_10_10_Barcodes extends GenericTest {
         uccEan128.setCode("(01)28880123456788");
         doc.add(new Image(uccEan128.createFormXObjectWithBarcode(Color.Blue, Color.Black)));
 
-        //@TODO When barcode INTER25 is implemented
+
         // INTER25
-//        doc.add(new Paragraph("Barcode Interrevealed 2 of 5"));
-//        BarcodeInter25 code25 = new BarcodeInter25(pdfDoc);
-//        code25.setGenerateChecksum(true);
-//        code25.setCode("41-1200076041-001");
-//        doc.add(new Image(code25.createFormXObjectWithBarcode(null, null)));
-//        code25.setCode("411200076041001");
-//        doc.add(new Image(code25.createFormXObjectWithBarcode(null, null)));
-//        code25.setCode("0611012345678");
-//        code25.setChecksumText(true);
-//        doc.add(new Image(code25.createFormXObjectWithBarcode(null, null)));
+         doc.add(new Paragraph("Barcode Interrevealed 2 of 5"));
+         BarcodeInter25 code25 = new BarcodeInter25(pdfDoc);
+         code25.setGenerateChecksum(true);
+         code25.setCode("41-1200076041-001");
+         doc.add(new Image(code25.createFormXObjectWithBarcode(null, null)));
+         code25.setCode("411200076041001");
+         doc.add(new Image(code25.createFormXObjectWithBarcode(null, null)));
+         code25.setCode("0611012345678");
+         code25.setChecksumText(true);
+         doc.add(new Image(code25.createFormXObjectWithBarcode(null, null)));
 
         //@TODO When barcode POSTNET is implemented
         // POSTNET
