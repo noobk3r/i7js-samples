@@ -109,21 +109,21 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
         y = OFFSET_BOTTOM;
         doc.add(new Paragraph("The Majestic").setFontSize(18)
                 .setFixedPosition(x, y)
-                .setRotateAngle(Math.PI/2)
+                .setRotationAngle(Math.PI/2)
                 .setWidth(HEIGHT_LOCATION * 2)
                 .setHorizontalAlignment(Property.HorizontalAlignment.CENTER));
 
         y = OFFSET_BOTTOM + HEIGHT_LOCATION * 2;
         doc.add(new Paragraph("Googolplex").setFontSize(18)
                 .setFixedPosition(x, y)
-                .setRotateAngle(Math.PI / 2)
+                .setRotationAngle(Math.PI / 2)
                 .setWidth(HEIGHT_LOCATION * 4)
                 .setHorizontalAlignment(Property.HorizontalAlignment.CENTER));
 
         y = OFFSET_BOTTOM + HEIGHT_LOCATION * 6f;
         doc.add(new Paragraph("Cinema Paradiso").setFontSize(18)
                 .setFixedPosition(x, y)
-                .setRotateAngle(Math.PI / 2)
+                .setRotationAngle(Math.PI / 2)
                 .setWidth(HEIGHT_LOCATION * 3)
                 .setHorizontalAlignment(Property.HorizontalAlignment.CENTER));
 
@@ -132,7 +132,7 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
             y = OFFSET_BOTTOM + ((8 - i) * HEIGHT_LOCATION);
             doc.add(new Paragraph(locations.get(i)).setFontSize(12)
                     .setFixedPosition(x, y)
-                    .setRotateAngle(Math.PI / 2)
+                    .setRotationAngle(Math.PI / 2)
                     .setWidth(HEIGHT_LOCATION)
                     .setHorizontalAlignment(Property.HorizontalAlignment.CENTER));
         }
@@ -142,7 +142,7 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
             x = OFFSET_LEFT + (i * WIDTH_TIMESLOT);
             doc.add(new Paragraph(TIME[i]).setFontSize(6)
                     .setFixedPosition(x, y).setHorizontalAlignment(Property.HorizontalAlignment.LEFT)
-                    .setRotateAngle(Math.PI / 4).setRotateAlignment(Property.HorizontalAlignment.LEFT));
+                    .setRotationAngle(Math.PI / 4).setRotateAlignment(Property.HorizontalAlignment.LEFT));
         }
     }
     /**
