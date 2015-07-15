@@ -44,7 +44,6 @@ public class Listing_03_01_FestivalOpening extends GenericTest {
 
         //Initialize paragraph, add it to document, add new page, add paragraph again
         Paragraph p = new Paragraph("Foobar Film Festival").
-                // TODO check it when alignment is implemented
                         setHorizontalAlignment(Property.HorizontalAlignment.CENTER).
                 setFont(new PdfType1Font(pdfDoc, new Type1Font(FontConstants.HELVETICA, ""))).
                 setFontSize(22);

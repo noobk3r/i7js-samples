@@ -15,7 +15,7 @@ import java.io.IOException;
 
 public class Listing_03_26_MoviePosters extends GenericTest {
 
-    static public final String DEST = "./target/test/resources/Listing_03_26_MoviePosters.pdf";
+    public static final String DEST = "./target/test/resources/Listing_03_26_MoviePosters.pdf";
 
     public static void main(String args[]) throws IOException {
         new Listing_03_26_MoviePosters().manipulatePdf(DEST);

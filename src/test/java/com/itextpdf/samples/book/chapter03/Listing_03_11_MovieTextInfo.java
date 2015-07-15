@@ -99,43 +99,51 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
      *
      */
     protected void drawInfo(Document doc) {
-//        float x, y;
-//        x = (OFFSET_LEFT + WIDTH + OFFSET_LOCATION) / 2;
-//        y = OFFSET_BOTTOM + HEIGHT + 24;
-//        doc.add(new Paragraph("FOOBAR FILM FESTIVAL").setFontSize(18)
-//                .setFixedPosition(x, y));
-//
-//        x = OFFSET_LOCATION + WIDTH_LOCATION / 2f - 6;
-//        y = OFFSET_BOTTOM + HEIGHT_LOCATION;
-//        doc.add(new Paragraph("The Majestic").setFontSize(18)
-//                .setFixedPosition(x, y)
-//                .setRotateAngle(Math.PI/2));
-//
-//        y = OFFSET_BOTTOM + HEIGHT_LOCATION * 4f;
-//        doc.add(new Paragraph("Googolplex").setFontSize(18)
-//                .setFixedPosition(x, y)
-//                .setRotateAngle(Math.PI/2));
-//
-//        y = OFFSET_BOTTOM + HEIGHT_LOCATION * 7.5f;
-//        doc.add(new Paragraph("Cinema Paradiso").setFontSize(18)
-//                .setFixedPosition(x, y)
-//                .setRotateAngle(Math.PI/2));
-//
-//        x = OFFSET_LOCATION + WIDTH_LOCATION - 6;
-//        for (int i = 0; i < LOCATIONS; i++) {
-//            y = OFFSET_BOTTOM + ((8.5f - i) * HEIGHT_LOCATION);
-//            doc.add(new Paragraph(locations.get(i)).setFontSize(12)
-//                    .setFixedPosition(x, y)
-//                    .setRotateAngle(Math.PI / 2));
-//        }
-//
-//        y = OFFSET_BOTTOM + HEIGHT + 1;
-//        for (int i = 0; i < TIMESLOTS; i++) {
-//            x = OFFSET_LEFT + (i * WIDTH_TIMESLOT);
-//            doc.add(new Paragraph(TIME[i]).setFontSize(6)
-//                    .setFixedPosition(x, y).setHorizontalAlignment(Property.HorizontalAlignment.LEFT)
-//                    .setRotateAngle(Math.PI / 4).setRotateAlignment(Property.HorizontalAlignment.LEFT));
-//        }
+        float x, y;
+        x = (OFFSET_LEFT + OFFSET_LOCATION) / 2;
+        y = OFFSET_BOTTOM + HEIGHT + 24;
+        doc.add(new Paragraph("FOOBAR FILM FESTIVAL").setFontSize(18)
+                .setFixedPosition(x, y).setWidth(WIDTH).setHorizontalAlignment(Property.HorizontalAlignment.CENTER));
+
+        x = OFFSET_LOCATION + WIDTH_LOCATION / 2f - 3;
+        y = OFFSET_BOTTOM;
+        doc.add(new Paragraph("The Majestic").setFontSize(18)
+                .setFixedPosition(x, y)
+                .setRotateAngle(Math.PI/2)
+                .setWidth(HEIGHT_LOCATION * 2)
+                .setHorizontalAlignment(Property.HorizontalAlignment.CENTER));
+
+        y = OFFSET_BOTTOM + HEIGHT_LOCATION * 2;
+        doc.add(new Paragraph("Googolplex").setFontSize(18)
+                .setFixedPosition(x, y)
+                .setRotateAngle(Math.PI / 2)
+                .setWidth(HEIGHT_LOCATION * 4)
+                .setHorizontalAlignment(Property.HorizontalAlignment.CENTER));
+
+        y = OFFSET_BOTTOM + HEIGHT_LOCATION * 6f;
+        doc.add(new Paragraph("Cinema Paradiso").setFontSize(18)
+                .setFixedPosition(x, y)
+                .setRotateAngle(Math.PI / 2)
+                .setWidth(HEIGHT_LOCATION * 3)
+                .setHorizontalAlignment(Property.HorizontalAlignment.CENTER));
+
+        x = OFFSET_LOCATION + WIDTH_LOCATION - 6;
+        for (int i = 0; i < LOCATIONS; i++) {
+            y = OFFSET_BOTTOM + ((8 - i) * HEIGHT_LOCATION);
+            doc.add(new Paragraph(locations.get(i)).setFontSize(12)
+                    .setFixedPosition(x, y)
+                    .setRotateAngle(Math.PI / 2)
+                    .setWidth(HEIGHT_LOCATION)
+                    .setHorizontalAlignment(Property.HorizontalAlignment.CENTER));
+        }
+
+        y = OFFSET_BOTTOM + HEIGHT;
+        for (int i = 0; i < TIMESLOTS; i++) {
+            x = OFFSET_LEFT + (i * WIDTH_TIMESLOT);
+            doc.add(new Paragraph(TIME[i]).setFontSize(6)
+                    .setFixedPosition(x, y).setHorizontalAlignment(Property.HorizontalAlignment.LEFT)
+                    .setRotateAngle(Math.PI / 4).setRotateAlignment(Property.HorizontalAlignment.LEFT));
+        }
     }
     /**
      * Draws some text on every calendar sheet.
