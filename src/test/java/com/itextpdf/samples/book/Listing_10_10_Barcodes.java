@@ -198,12 +198,13 @@ public class Listing_10_10_Barcodes extends GenericTest {
 //        img = datamatrix.createImage();
 //        doc.add(img);
 
-        //@TODO When barcode QRCode is implemented
         //QRCode
-//        doc.add(new Paragraph("Barcode QRCode"));
-//        BarcodeQRCode qrcode = new BarcodeQRCode("Moby Dick by Herman Melville", 1, 1, null);
-//        img = qrcode.getImage();
-//        doc.add(img);
+        doc.add(new Paragraph("Barcode QRCode"));
+        BarcodeQRCode qrcode = new BarcodeQRCode("Moby Dick by Herman Melville", null);
+
+        xObject = qrcode.createFormXObject(pdfDoc, null);
+        img = new Image(xObject);
+        doc.add(img);
 
         //Close document
         pdfDoc.close();
