@@ -3,8 +3,12 @@ package com.itextpdf.samples.book;
 import com.itextpdf.barcodes.*;
 import com.itextpdf.canvas.color.Color;
 import com.itextpdf.core.geom.PageSize;
+import com.itextpdf.core.geom.Rectangle;
 import com.itextpdf.core.pdf.PdfDocument;
+import com.itextpdf.core.pdf.PdfStream;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.pdf.xobject.PdfFormXObject;
+import com.itextpdf.core.pdf.xobject.PdfImageXObject;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Image;
 import com.itextpdf.model.element.Paragraph;
@@ -173,18 +177,18 @@ public class Listing_10_10_Barcodes extends GenericTest {
 //        codabar.setStartStopText(true);
 //        doc.add(new Image(codabar.createFormXObjectWithBarcode(null, null)));
 
-        //@TODO When barcode PDF417 is implemented
         //PDF417
-//        doc.add(new Paragraph("Barcode PDF417"));
-//        BarcodePDF417 pdf417 = new BarcodePDF417();
-//        String text = "Call me Ishmael. Some years ago--never mind how long "
-//                + "precisely --having little or no money in my purse, and nothing "
-//                + "particular to interest me on shore, I thought I would sail about "
-//                + "a little and see the watery part of the world.";
-//        pdf417.setText(text);
-//        Image img = pdf417.getImage();
-//        img.scalePercent(50, 50 * pdf417.getYHeight());
-//        doc.add(img);
+        doc.add(new Paragraph("Barcode PDF417"));
+        BarcodePDF417 pdf417 = new BarcodePDF417();
+        String text = "Call me Ishmael. Some years ago--never mind how long "
+                + "precisely --having little or no money in my purse, and nothing "
+                + "particular to interest me on shore, I thought I would sail about "
+                + "a little and see the watery part of the world.";
+        pdf417.setText(text);
+
+        PdfFormXObject xObject = pdf417.createFormXObject(pdfDoc, null);
+        Image img = new Image(xObject);
+        doc.add(img);
 
         //@TODO When barcode Datamatrix is implemented
         //Datamatrix
