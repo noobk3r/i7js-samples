@@ -17,16 +17,18 @@ import com.itextpdf.samples.GenericTest;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 public class Listing_10_10_Barcodes extends GenericTest {
 
     static public final String DEST = "./target/test/resources/Listing_10_10_Barcodes.pdf";
 
+
     public static void main(String args[]) throws IOException {
         new Listing_10_10_Barcodes().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws FileNotFoundException {
+    public void manipulatePdf(String dest) throws FileNotFoundException, UnsupportedEncodingException {
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
@@ -190,13 +192,13 @@ public class Listing_10_10_Barcodes extends GenericTest {
         Image img = new Image(xObject);
         doc.add(img);
 
-        //@TODO When barcode Datamatrix is implemented
-        //Datamatrix
-//        doc.add(new Paragraph("Barcode Datamatrix"));
-//        BarcodeDatamatrix datamatrix = new BarcodeDatamatrix();
-//        datamatrix.generate(text);
-//        img = datamatrix.createImage();
-//        doc.add(img);
+
+       doc.add(new Paragraph("Barcode Datamatrix"));
+       BarcodeDataMatrix datamatrix = new BarcodeDataMatrix();
+       datamatrix.generate(text);
+       Image imgDM = new Image(datamatrix.createFormXObject(pdfDoc, null));
+       doc.add(imgDM);
+       doc.add(imgDM);
 
         //QRCode
         doc.add(new Paragraph("Barcode QRCode"));
