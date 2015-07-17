@@ -1,4 +1,4 @@
-package com.itextpdf.samples.book;
+package com.itextpdf.samples.book.chapter15;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.Type1Font;

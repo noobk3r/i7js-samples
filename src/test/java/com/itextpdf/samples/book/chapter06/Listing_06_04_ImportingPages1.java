@@ -1,4 +1,4 @@
-package com.itextpdf.samples.book;
+package com.itextpdf.samples.book.chapter06;
 
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;

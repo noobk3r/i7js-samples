@@ -1,4 +1,4 @@
-package com.itextpdf.samples.book;
+package com.itextpdf.samples.book.chapter10;
 
 import com.itextpdf.basics.image.Image;
 import com.itextpdf.basics.image.ImageFactory;

@@ -1,4 +1,4 @@
-package com.itextpdf.samples.book;
+package com.itextpdf.samples.book.chapter07;
 
 import com.itextpdf.core.pdf.*;
 import com.itextpdf.core.pdf.action.PdfAction;

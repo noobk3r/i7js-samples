@@ -1,4 +1,4 @@
-package com.itextpdf.samples.book;
+package com.itextpdf.samples.book.chapter05;
 
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.core.events.Event;

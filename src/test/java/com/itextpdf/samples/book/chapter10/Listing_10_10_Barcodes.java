@@ -1,14 +1,11 @@
-package com.itextpdf.samples.book;
+package com.itextpdf.samples.book.chapter10;
 
 import com.itextpdf.barcodes.*;
 import com.itextpdf.canvas.color.Color;
 import com.itextpdf.core.geom.PageSize;
-import com.itextpdf.core.geom.Rectangle;
 import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfStream;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.xobject.PdfFormXObject;
-import com.itextpdf.core.pdf.xobject.PdfImageXObject;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Image;
 import com.itextpdf.model.element.Paragraph;

@@ -1,12 +1,8 @@
-package com.itextpdf.samples.book;
+package com.itextpdf.samples.book.chapter10;
 
-import com.itextpdf.barcodes.Barcode1D;
 import com.itextpdf.barcodes.BarcodeEAN;
-import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfPage;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.pdf.xobject.PdfFormXObject;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Image;
 import com.itextpdf.model.element.Paragraph;
