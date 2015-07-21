@@ -3,6 +3,7 @@ package com.itextpdf.samples.book.chapter10;
 import com.itextpdf.barcodes.BarcodeEAN;
 import com.itextpdf.barcodes.BarcodePDF417;
 import com.itextpdf.basics.image.ImageFactory;
+import com.itextpdf.canvas.image.WmfImageHelper;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.xobject.PdfFormXObject;
@@ -12,7 +13,6 @@ import com.itextpdf.model.element.Image;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 
-import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -29,7 +29,7 @@ public class Listing_10_09_ImageTypes extends GenericTest {
             "info.png",
             "close.bmp",
             "movie.gif",
-//            "butterfly.wmf",
+            "butterfly.wmf",
             "animated_fox_dog.gif",
             "marbles.tif",
             "amb.jb2"
@@ -53,7 +53,14 @@ public class Listing_10_09_ImageTypes extends GenericTest {
 
         Image img;
         for (int i = 0; i < RESOURCES.length; i++) {
-            img = new Image(new PdfImageXObject(pdfDoc, ImageFactory.getImage(String.format("src/test/resources/img/%s", RESOURCES[i]))));
+            com.itextpdf.basics.image.Image image = ImageFactory.getImage(String.format("src/test/resources/img/%s", RESOURCES[i]));
+            if (image.getOriginalType() == com.itextpdf.basics.image.Image.WMF) {
+                WmfImageHelper wmf = new WmfImageHelper(image);
+                img = new Image((PdfFormXObject) wmf.createPdfForm(pdfDoc));
+            } else {
+                img = new Image(new PdfImageXObject(pdfDoc, image));
+            }
+
             if (img.getWidth() > 300 || img.getHeight() > 300) {
                 img.scaleToFit(300, 300);
             }
@@ -61,6 +68,7 @@ public class Listing_10_09_ImageTypes extends GenericTest {
             doc.add(img);
         }
 
+        //@TODO uncomment this when Itext is capable to add AWT images to document.
 //        java.awt.Image awtImage = Toolkit.getDefaultToolkit().createImage(RESOURCE);
 //        img = new Image(new PdfImageXObject(pdfDoc, ImageFactory.getImage(awtImage.getSource().toString().getBytes())));
 //        doc.add(new Paragraph(String.format("%s is an image of type %s", "java.awt.Image", img.getClass().getName())));
