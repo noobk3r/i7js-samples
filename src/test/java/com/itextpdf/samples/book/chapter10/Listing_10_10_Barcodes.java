@@ -20,7 +20,6 @@ public class Listing_10_10_Barcodes extends GenericTest {
 
     static public final String DEST = "./target/test/resources/Listing_10_10_Barcodes.pdf";
 
-
     public static void main(String args[]) throws IOException {
         new Listing_10_10_Barcodes().manipulatePdf(DEST);
     }
@@ -169,13 +168,13 @@ public class Listing_10_10_Barcodes extends GenericTest {
         code39ext.setExtended(true);
         doc.add(new Image(code39ext.createFormXObjectWithBarcode(null, null)));
 
-        //@TODO When barcode CODABAR is implemented
+
         //CODABAR
-//        doc.add(new Paragraph("Codabar"));
-//        BarcodeCodabar codabar = new BarcodeCodabar();
-//        codabar.setCode("A123A");
-//        codabar.setStartStopText(true);
-//        doc.add(new Image(codabar.createFormXObjectWithBarcode(null, null)));
+       doc.add(new Paragraph("Codabar"));
+       BarcodeCodabar codabar = new BarcodeCodabar(pdfDoc);
+       codabar.setCode("A123A");
+       codabar.setStartStopText(true);
+       doc.add(new Image(codabar.createFormXObjectWithBarcode(null, null)));
 
         //PDF417
         doc.add(new Paragraph("Barcode PDF417"));
