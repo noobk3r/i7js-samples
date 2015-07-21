@@ -71,18 +71,19 @@ public class Listing_10_10_Barcodes extends GenericTest {
         doc.add(new Image(codeEAN.createFormXObjectWithBarcode(null, null)));
         codeEAN.setBarHeight(codeEAN.getSize() * 3);
 
-        //@TODO When BarcodeEANSUPP is implemented
+
         //EANSUPP
-        doc.add(new Paragraph("Bookland"));
+        doc.add(new Paragraph("Bookland - BarcodeEANSUPP"));
         doc.add(new Paragraph("ISBN 0-321-30474-8"));
+        codeEAN = new BarcodeEAN(pdfDoc);
         codeEAN.setCodeType(BarcodeEAN.EAN13);
         codeEAN.setCode("9781935182610");
         BarcodeEAN codeSUPP = new BarcodeEAN(pdfDoc);
         codeSUPP.setCodeType(BarcodeEAN.SUPP5);
         codeSUPP.setCode("55999");
         codeSUPP.setBaseline(-2);
-//        BarcodeEANSUPP eanSupp = new BarcodeEANSUPP(codeEAN, codeSUPP);
-//        doc.add(new Image(eanSupp.createFormXObjectWithBarcode(null, Color.Blue)));
+        BarcodeEANSUPP eanSupp = new BarcodeEANSUPP(codeEAN, codeSUPP);
+        doc.add(new Image(eanSupp.createFormXObjectWithBarcode(null, Color.Blue)));
 
         // CODE 128
         doc.add(new Paragraph("Barcode 128"));
