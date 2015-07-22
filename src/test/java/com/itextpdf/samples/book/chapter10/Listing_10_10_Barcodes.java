@@ -124,36 +124,36 @@ public class Listing_10_10_Barcodes extends GenericTest {
 
 
         // INTER25
-         doc.add(new Paragraph("Barcode Interrevealed 2 of 5"));
-         BarcodeInter25 code25 = new BarcodeInter25(pdfDoc);
-         code25.setGenerateChecksum(true);
-         code25.setCode("41-1200076041-001");
-         doc.add(new Image(code25.createFormXObjectWithBarcode(null, null)));
-         code25.setCode("411200076041001");
-         doc.add(new Image(code25.createFormXObjectWithBarcode(null, null)));
-         code25.setCode("0611012345678");
-         code25.setChecksumText(true);
-         doc.add(new Image(code25.createFormXObjectWithBarcode(null, null)));
+        doc.add(new Paragraph("Barcode Interrevealed 2 of 5"));
+        BarcodeInter25 code25 = new BarcodeInter25(pdfDoc);
+        code25.setGenerateChecksum(true);
+        code25.setCode("41-1200076041-001");
+        doc.add(new Image(code25.createFormXObjectWithBarcode(null, null)));
+        code25.setCode("411200076041001");
+        doc.add(new Image(code25.createFormXObjectWithBarcode(null, null)));
+        code25.setCode("0611012345678");
+        code25.setChecksumText(true);
+        doc.add(new Image(code25.createFormXObjectWithBarcode(null, null)));
 
-        //@TODO When barcode POSTNET is implemented
+
         // POSTNET
-//        doc.add(new Paragraph("Barcode Postnet"));
-//        BarcodePostnet codePost = new BarcodePostnet();
-//        doc.add(new Paragraph("ZIP"));
-//        codePost.setCode("01234");
-//        doc.add(new Image(codePost.createFormXObjectWithBarcode(null, null)));
-//        doc.add(new Paragraph("ZIP+4"));
-//        codePost.setCode("012345678");
-//        doc.add(new Image(codePost.createFormXObjectWithBarcode(null, null)));
-//        doc.add(new Paragraph("ZIP+4 and dp"));
-//        codePost.setCode("01234567890");
-//        doc.add(new Image(codePost.createFormXObjectWithBarcode(null, null)));
-//
-//        doc.add(new Paragraph("Barcode Planet"));
-//        BarcodePostnet codePlanet = new BarcodePostnet();
-//        codePlanet.setCode("01234567890");
-//        codePlanet.setCodeType(Barcode1D.PLANET);
-//        doc.add(new Image(codePlanet.createFormXObjectWithBarcode(null, null)));
+        doc.add(new Paragraph("Barcode Postnet"));
+        BarcodePostnet codePost = new BarcodePostnet(pdfDoc);
+        doc.add(new Paragraph("ZIP"));
+        codePost.setCode("01234");
+        doc.add(new Image(codePost.createFormXObjectWithBarcode(null, null)));
+        doc.add(new Paragraph("ZIP+4"));
+        codePost.setCode("012345678");
+        doc.add(new Image(codePost.createFormXObjectWithBarcode(null, null)));
+        doc.add(new Paragraph("ZIP+4 and dp"));
+        codePost.setCode("01234567890");
+        doc.add(new Image(codePost.createFormXObjectWithBarcode(null, null)));
+
+        doc.add(new Paragraph("Barcode Planet"));
+        BarcodePostnet codePlanet = new BarcodePostnet(pdfDoc);
+        codePlanet.setCode("01234567890");
+        codePlanet.setCodeType(Barcode1D.PLANET);
+        doc.add(new Image(codePlanet.createFormXObjectWithBarcode(null, null)));
 
         //CODE 39
         doc.add(new Paragraph("Barcode 3 of 9"));
@@ -170,11 +170,11 @@ public class Listing_10_10_Barcodes extends GenericTest {
 
 
         //CODABAR
-       doc.add(new Paragraph("Codabar"));
-       BarcodeCodabar codabar = new BarcodeCodabar(pdfDoc);
-       codabar.setCode("A123A");
-       codabar.setStartStopText(true);
-       doc.add(new Image(codabar.createFormXObjectWithBarcode(null, null)));
+        doc.add(new Paragraph("Codabar"));
+        BarcodeCodabar codabar = new BarcodeCodabar(pdfDoc);
+        codabar.setCode("A123A");
+        codabar.setStartStopText(true);
+        doc.add(new Image(codabar.createFormXObjectWithBarcode(null, null)));
 
         //PDF417
         doc.add(new Paragraph("Barcode PDF417"));
@@ -190,12 +190,12 @@ public class Listing_10_10_Barcodes extends GenericTest {
         doc.add(img);
 
 
-       doc.add(new Paragraph("Barcode Datamatrix"));
-       BarcodeDataMatrix datamatrix = new BarcodeDataMatrix();
-       datamatrix.generate(text);
-       Image imgDM = new Image(datamatrix.createFormXObject(pdfDoc, null));
-       doc.add(imgDM);
-       doc.add(imgDM);
+        doc.add(new Paragraph("Barcode Datamatrix"));
+        BarcodeDataMatrix datamatrix = new BarcodeDataMatrix();
+        datamatrix.generate(text);
+        Image imgDM = new Image(datamatrix.createFormXObject(pdfDoc, null));
+        doc.add(imgDM);
+        doc.add(imgDM);
 
         //QRCode
         doc.add(new Paragraph("Barcode QRCode"));
