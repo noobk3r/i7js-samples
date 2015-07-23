@@ -46,7 +46,7 @@ public class Listing_03_26_MoviePosters extends GenericTest {
         PdfPage page = pdfDoc.addNewPage();
 
         //Initialize form XObject and write to it
-        PdfFormXObject xObj = new PdfFormXObject(pdfDoc, new Rectangle(8, 8, 579, 68));
+        PdfFormXObject xObj = new PdfFormXObject(new Rectangle(8, 8, 579, 68));
         PdfCanvas celluloid = new PdfCanvas(xObj);
         celluloid.rectangle(8, 8, 579, 68);
         for (float f = 8.25f; f < 581; f += 6.5f) {
@@ -80,7 +80,7 @@ public class Listing_03_26_MoviePosters extends GenericTest {
         float y = 769.7f;
         for (Movie movie : movies) {
             Image image = ImageFactory.getImage(String.format(RESOURCE, movie.getImdb()));
-            PdfImageXObject img = new PdfImageXObject(pdfDoc, image);
+            PdfImageXObject img = new PdfImageXObject(image);
             float scaleY = 60 / img.getHeight();
             canvas.addImage(image, img.getWidth() * scaleY, 0, 0, 60, x + (45 - image.getWidth() * scaleY) / 2, y, false);
             x += 48;

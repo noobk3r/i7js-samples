@@ -185,7 +185,7 @@ public class Listing_10_10_Barcodes extends GenericTest {
                 + "a little and see the watery part of the world.";
         pdf417.setText(text);
 
-        PdfFormXObject xObject = pdf417.createFormXObject(pdfDoc, null);
+        PdfFormXObject xObject = pdf417.createFormXObject(null);
         Image img = new Image(xObject);
         doc.add(img);
 
@@ -193,7 +193,7 @@ public class Listing_10_10_Barcodes extends GenericTest {
         doc.add(new Paragraph("Barcode Datamatrix"));
         BarcodeDataMatrix datamatrix = new BarcodeDataMatrix();
         datamatrix.generate(text);
-        Image imgDM = new Image(datamatrix.createFormXObject(pdfDoc, null));
+        Image imgDM = new Image(datamatrix.createFormXObject(null));
         doc.add(imgDM);
         doc.add(imgDM);
 
@@ -201,7 +201,7 @@ public class Listing_10_10_Barcodes extends GenericTest {
         doc.add(new Paragraph("Barcode QRCode"));
         BarcodeQRCode qrcode = new BarcodeQRCode("Moby Dick by Herman Melville", null);
 
-        xObject = qrcode.createFormXObject(pdfDoc, null);
+        xObject = qrcode.createFormXObject(null);
         img = new Image(xObject);
         doc.add(img);
 

@@ -33,7 +33,7 @@ public class ListWithImageAsBullet extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         Image image = ImageFactory.getImage(IMG);
-        PdfImageXObject xObject = new PdfImageXObject(pdfDoc, image);
+        PdfImageXObject xObject = new PdfImageXObject(image);
 //        image.scaleAbsolute(12, 12);
 //        image.setScaleToFitHeight(false);
         List list = new List().

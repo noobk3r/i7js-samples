@@ -56,9 +56,9 @@ public class Listing_10_09_ImageTypes extends GenericTest {
             com.itextpdf.basics.image.Image image = ImageFactory.getImage(String.format("src/test/resources/img/%s", RESOURCES[i]));
             if (image.getOriginalType() == com.itextpdf.basics.image.Image.WMF) {
                 WmfImageHelper wmf = new WmfImageHelper(image);
-                img = new Image((PdfFormXObject) wmf.createPdfForm(pdfDoc));
+                img = new Image((PdfFormXObject) wmf.createPdfForm());
             } else {
-                img = new Image(new PdfImageXObject(pdfDoc, image));
+                img = new Image(new PdfImageXObject(image));
             }
 
             if (img.getWidth() > 300 || img.getHeight() > 300) {
@@ -84,7 +84,7 @@ public class Listing_10_09_ImageTypes extends GenericTest {
         BarcodePDF417 pdf417 = new BarcodePDF417();
         String text = "iText in Action, a book by Bruno Lowagie.";
         pdf417.setText(text);
-        PdfFormXObject xObject = pdf417.createFormXObject(pdfDoc, null);
+        PdfFormXObject xObject = pdf417.createFormXObject(null);
         img = new Image(xObject);
         doc.add(new Paragraph(String.format("%s is an image of type %s", "Barcode", img.getClass().getName())));
         doc.add(img);

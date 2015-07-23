@@ -71,7 +71,7 @@ public class Listing_03_20_ColumnMovies1 extends GenericTest {
 
         List<Movie> movies = PojoFactory.getMovies(connection);
         for (Movie movie : movies) {
-            PdfImageXObject imageXObject = new PdfImageXObject(pdfDoc, ImageFactory.getImage(String.format(RESOURCE, movie.getImdb())));
+            PdfImageXObject imageXObject = new PdfImageXObject(ImageFactory.getImage(String.format(RESOURCE, movie.getImdb())));
             Image img = new Image(imageXObject).
                 scaleToFit(80, 1000);
             addContent(doc, movie, img);
