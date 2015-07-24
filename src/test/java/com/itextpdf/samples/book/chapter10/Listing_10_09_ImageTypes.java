@@ -77,7 +77,7 @@ public class Listing_10_09_ImageTypes extends GenericTest {
         BarcodeEAN codeEAN = new BarcodeEAN(pdfDoc);
         codeEAN.setCodeType(BarcodeEAN.EAN13);
         codeEAN.setCode("9781935182610");
-        img = new Image(codeEAN.createFormXObjectWithBarcode(null, null));
+        img = new Image(codeEAN.createFormXObject(null, null));
         doc.add(new Paragraph(String.format("%s is an image of type %s", "Barcode", img.getClass().getName())));
         doc.add(img);
 
