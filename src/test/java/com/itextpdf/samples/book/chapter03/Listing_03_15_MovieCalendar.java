@@ -21,8 +21,7 @@ public class Listing_03_15_MovieCalendar extends Listing_03_11_MovieTextInfo {
         Rectangle rect = getPosition(screening);
 
         Paragraph p = new Paragraph().add(screening.getMovie().getMovieTitle()).
-                setFixedPosition(rect.getX(), rect.getY()).
-                setWidth(rect.getWidth()).
+                setFixedPosition(rect.getX(), rect.getY(), rect.getWidth()).
                 setHeight(rect.getHeight()).
                 setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
         doc.add(p);
