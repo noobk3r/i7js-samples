@@ -7,8 +7,8 @@ import com.itextpdf.core.pdf.PdfName;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.action.PdfAction;
 import com.itextpdf.forms.PdfAcroForm;
-import com.itextpdf.forms.formfields.PdfFormField;
-import com.itextpdf.forms.formfields.PdfTextFormField;
+import com.itextpdf.forms.fields.PdfFormField;
+import com.itextpdf.forms.fields.PdfTextFormField;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.FileOutputStream;
