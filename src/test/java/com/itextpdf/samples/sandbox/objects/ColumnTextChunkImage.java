@@ -30,8 +30,8 @@ public class ColumnTextChunkImage extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        PdfImageXObject dog = new PdfImageXObject(pdfDoc, ImageFactory.getImage(DOG));
-        PdfImageXObject fox = new PdfImageXObject(pdfDoc, ImageFactory.getImage(FOX));
+        PdfImageXObject dog = new PdfImageXObject(ImageFactory.getImage(DOG));
+        PdfImageXObject fox = new PdfImageXObject(ImageFactory.getImage(FOX));
         Paragraph p = new Paragraph("quick brown fox jumps over the lazy dog.").
             add("Or, to say it in a more colorful way: quick brown ").
             add(new com.itextpdf.model.element.Image(fox)).

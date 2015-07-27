@@ -3,6 +3,7 @@ package com.itextpdf.samples;
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.core.font.PdfType1Font;
+import com.itextpdf.core.geom.Rectangle;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.model.Document;
@@ -57,14 +58,13 @@ public class Listing_99_03_ComplexElementLayout extends GenericTest {
         }
 
         @Override
-        public List<LayoutArea> initElementAreas(LayoutContext context) {
-            LayoutArea area = context.getArea();
-            List<LayoutArea> areas = new ArrayList<LayoutArea>();
-            LayoutArea firstArea = area.clone();
-            LayoutArea secondArea = area.clone();
-            firstArea.getBBox().setWidth(firstArea.getBBox().getWidth() / 2 - 5);
-            secondArea.getBBox().setX(secondArea.getBBox().getX() + secondArea.getBBox().getWidth() / 2 + 5);
-            secondArea.getBBox().setWidth(firstArea.getBBox().getWidth());
+        public List<Rectangle> initElementAreas(LayoutArea area) {
+            List<Rectangle> areas = new ArrayList<Rectangle>();
+            Rectangle firstArea = area.getBBox().clone();
+            Rectangle secondArea = area.getBBox().clone();
+            firstArea.setWidth(firstArea.getWidth() / 2 - 5);
+            secondArea.setX(secondArea.getX() + secondArea.getWidth() / 2 + 5);
+            secondArea.setWidth(firstArea.getWidth());
             areas.add(firstArea);
             areas.add(secondArea);
             return areas;

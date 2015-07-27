@@ -99,39 +99,47 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
      *
      */
     protected void drawInfo(Document doc) {
-        // TODO
-//        canvas.beginText();
-//        canvas.setFontAndSize(bf, 18);
-//        float x, y;
-//        x = (OFFSET_LEFT + WIDTH + OFFSET_LOCATION) / 2;
-//        y = OFFSET_BOTTOM + HEIGHT + 24;
-//        canvas.showTextAligned(Element.ALIGN_CENTER,
-//                "FOOBAR FILM FESTIVAL", x, y, 0);
-//        x = OFFSET_LOCATION + WIDTH_LOCATION / 2f - 6;
-//        y = OFFSET_BOTTOM + HEIGHT_LOCATION;
-//        canvas.showTextAligned(Element.ALIGN_CENTER,
-//                "The Majestic", x, y, 90);
-//        y = OFFSET_BOTTOM + HEIGHT_LOCATION * 4f;
-//        canvas.showTextAligned(Element.ALIGN_CENTER,
-//                "Googolplex", x, y, 90);
-//        y = OFFSET_BOTTOM + HEIGHT_LOCATION * 7.5f;
-//        canvas.showTextAligned(Element.ALIGN_CENTER,
-//                "Cinema Paradiso", x, y, 90);
-//        canvas.setFontAndSize(bf, 12);
-//        x = OFFSET_LOCATION + WIDTH_LOCATION - 6;
-//        for (int i = 0; i < LOCATIONS; i++) {
-//            y = OFFSET_BOTTOM + ((8.5f - i) * HEIGHT_LOCATION);
-//            canvas.showTextAligned(Element.ALIGN_CENTER,
-//                    locations.get(i), x, y, 90);
-//        }
-//        canvas.setFontAndSize(bf, 6);
-//        y = OFFSET_BOTTOM + HEIGHT + 1;
-//        for (int i = 0; i < TIMESLOTS; i++) {
-//            x = OFFSET_LEFT + (i * WIDTH_TIMESLOT);
-//            canvas.showTextAligned(Element.ALIGN_LEFT,
-//                    TIME[i], x, y, 45);
-//        }
-//        canvas.endText();
+        float x, y;
+        x = (OFFSET_LEFT + OFFSET_LOCATION) / 2;
+        y = OFFSET_BOTTOM + HEIGHT + 24;
+        doc.add(new Paragraph("FOOBAR FILM FESTIVAL").setFontSize(18)
+                .setFixedPosition(x, y, WIDTH).setHorizontalAlignment(Property.HorizontalAlignment.CENTER));
+
+        x = OFFSET_LOCATION + WIDTH_LOCATION / 2f - 3;
+        y = OFFSET_BOTTOM;
+        doc.add(new Paragraph("The Majestic").setFontSize(18)
+                .setFixedPosition(x, y, HEIGHT_LOCATION * 2)
+                .setRotationAngle(Math.PI / 2)
+                .setHorizontalAlignment(Property.HorizontalAlignment.CENTER));
+
+        y = OFFSET_BOTTOM + HEIGHT_LOCATION * 2;
+        doc.add(new Paragraph("Googolplex").setFontSize(18)
+                .setFixedPosition(x, y, HEIGHT_LOCATION * 4)
+                .setRotationAngle(Math.PI / 2)
+                .setHorizontalAlignment(Property.HorizontalAlignment.CENTER));
+
+        y = OFFSET_BOTTOM + HEIGHT_LOCATION * 6f;
+        doc.add(new Paragraph("Cinema Paradiso").setFontSize(18)
+                .setFixedPosition(x, y, HEIGHT_LOCATION * 3)
+                .setRotationAngle(Math.PI / 2)
+                .setHorizontalAlignment(Property.HorizontalAlignment.CENTER));
+
+        x = OFFSET_LOCATION + WIDTH_LOCATION - 6;
+        for (int i = 0; i < LOCATIONS; i++) {
+            y = OFFSET_BOTTOM + ((8 - i) * HEIGHT_LOCATION);
+            doc.add(new Paragraph(locations.get(i)).setFontSize(12)
+                    .setFixedPosition(x, y, HEIGHT_LOCATION)
+                    .setRotationAngle(Math.PI / 2)
+                    .setHorizontalAlignment(Property.HorizontalAlignment.CENTER));
+        }
+
+        y = OFFSET_BOTTOM + HEIGHT;
+        for (int i = 0; i < TIMESLOTS; i++) {
+            x = OFFSET_LEFT + (i * WIDTH_TIMESLOT);
+            doc.add(new Paragraph(TIME[i]).setFontSize(6)
+                    .setFixedPosition(x, y, 100).setHorizontalAlignment(Property.HorizontalAlignment.LEFT)
+                    .setRotationAngle(Math.PI / 4).setRotationAlignment(Property.HorizontalAlignment.LEFT));
+        }
     }
     /**
      * Draws some text on every calendar sheet.
@@ -144,13 +152,13 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
 
         Paragraph p1 = new Paragraph("Day " + d).
                 setFontSize(18).
-                setFixedPosition(d, x, y);
+                setFixedPosition(d, x, y, 100);
 
         x = OFFSET_LEFT;
 
         Paragraph p2 = new Paragraph(day.toString()).
                 setFontSize(18).
-                setFixedPosition(d, x, y).
+                setFixedPosition(d, x, y, 100).
                 setWidth(WIDTH).
                 setHorizontalAlignment(Property.HorizontalAlignment.RIGHT);
 
@@ -165,8 +173,7 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
             Rectangle rect = getPosition(screening);
 
             Paragraph p = new Paragraph().add(press).
-                    setFixedPosition(rect.getX(), rect.getY()).
-                    setWidth(rect.getWidth()).
+                    setFixedPosition(rect.getX(), rect.getY(), rect.getWidth()).
                     setHeight(rect.getHeight()).
                     setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
             doc.add(p);

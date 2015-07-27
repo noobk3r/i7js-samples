@@ -44,12 +44,11 @@ public class Listing_03_01_FestivalOpening extends GenericTest {
 
         //Initialize paragraph, add it to document, add new page, add paragraph again
         Paragraph p = new Paragraph("Foobar Film Festival").
-                // TODO check it when alignment is implemented
                         setHorizontalAlignment(Property.HorizontalAlignment.CENTER).
                 setFont(new PdfType1Font(pdfDoc, new Type1Font(FontConstants.HELVETICA, ""))).
                 setFontSize(22);
 
-        PdfImageXObject imageXObject = new PdfImageXObject(pdfDoc, ImageFactory.getImage(RESOURCE));
+        PdfImageXObject imageXObject = new PdfImageXObject(ImageFactory.getImage(RESOURCE));
         Image img = new Image(imageXObject);
         img.setFixedPosition((pageWidth - imageXObject.getWidth()) / 2, (pageHeight - imageXObject.getHeight()) / 2);
 

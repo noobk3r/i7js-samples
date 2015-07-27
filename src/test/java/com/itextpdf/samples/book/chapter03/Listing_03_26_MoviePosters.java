@@ -1,27 +1,42 @@
 package com.itextpdf.samples.book.chapter03;
 
+import com.itextpdf.basics.image.Image;
+import com.itextpdf.basics.image.ImageFactory;
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.canvas.color.DeviceGray;
 import com.itextpdf.core.geom.Rectangle;
 import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.xobject.PdfFormXObject;
 import com.itextpdf.core.pdf.PdfPage;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.pdf.xobject.PdfFormXObject;
+import com.itextpdf.core.pdf.xobject.PdfImageXObject;
+import com.itextpdf.model.Document;
+import com.itextpdf.model.Property;
 import com.itextpdf.samples.GenericTest;
+import com.lowagie.database.DatabaseConnection;
+import com.lowagie.database.HsqldbConnection;
+import com.lowagie.filmfestival.Movie;
+import com.lowagie.filmfestival.PojoFactory;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.sql.SQLException;
+import java.util.List;
 
 public class Listing_03_26_MoviePosters extends GenericTest {
 
-    static public final String DEST = "./target/test/resources/Listing_03_26_MoviePosters.pdf";
+    public static final String DEST = "./target/test/resources/Listing_03_26_MoviePosters.pdf";
 
-    public static void main(String args[]) throws IOException {
+    public static final String RESOURCE = "src/test/resources/img/posters/%s.jpg";
+
+    public static void main(String args[]) throws IOException, SQLException {
         new Listing_03_26_MoviePosters().manipulatePdf(DEST);
     }
 
-    public  void manipulatePdf(String dest) throws FileNotFoundException {
+    public  void manipulatePdf(String dest) throws FileNotFoundException, UnsupportedEncodingException, SQLException, MalformedURLException {
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
@@ -31,7 +46,7 @@ public class Listing_03_26_MoviePosters extends GenericTest {
         PdfPage page = pdfDoc.addNewPage();
 
         //Initialize form XObject and write to it
-        PdfFormXObject xObj = new PdfFormXObject(pdfDoc, new Rectangle(8, 8, 579, 68));
+        PdfFormXObject xObj = new PdfFormXObject(new Rectangle(8, 8, 579, 68));
         PdfCanvas celluloid = new PdfCanvas(xObj);
         celluloid.rectangle(8, 8, 579, 68);
         for (float f = 8.25f; f < 581; f += 6.5f) {
@@ -50,8 +65,52 @@ public class Listing_03_26_MoviePosters extends GenericTest {
         }
         canvas.release();
 
+        //Add XObjects to page canvas
+        canvas = new PdfCanvas(page = pdfDoc.addNewPage());
+        for (int i = 0; i < 10; i++) {
+            canvas.addXObject(xObj, 0, i * 84.2f);
+        }
+
+        // Get the movies from the database
+        DatabaseConnection connection = new HsqldbConnection("filmfestival");
+        List<Movie> movies = PojoFactory.getMovies(connection);
+
+        // Loop over the movies and add images
+        float x = 11.5f;
+        float y = 769.7f;
+        for (Movie movie : movies) {
+            Image image = ImageFactory.getImage(String.format(RESOURCE, movie.getImdb()));
+            PdfImageXObject img = new PdfImageXObject(image);
+            float scaleY = 60 / img.getHeight();
+            canvas.addImage(image, img.getWidth() * scaleY, 0, 0, 60, x + (45 - image.getWidth() * scaleY) / 2, y, false);
+            x += 48;
+            if (x > 578) {
+                x = 11.5f;
+                y -= 84.2f;
+            }
+        }
+        canvas.release();
+
+        canvas = new PdfCanvas(page = pdfDoc.addNewPage());
+        // Add the template using a different CTM
+        canvas.addXObject(xObj, 0.8f, 0, 0.35f, 0.65f, 0, 600);
+
+        Document document = new Document(pdfDoc);
+
+        com.itextpdf.model.element.Image image = new com.itextpdf.model.element.Image(xObj, 0, 480).setProperty(Property.PAGE_NUMBER, 3);
+        document.add(image);
+
+        image.setRotationAngle(Math.PI / 6).
+                scale(.8f, .8f).
+                setFixedPosition(3, 30, 500);
+        document.add(image);
+
+        image.setRotationAngle(Math.PI / 2).
+                setFixedPosition(3, 200, 300);
+        document.add(image);
+
         //Close document
-        pdfDoc.close();
+        document.close();
     }
 
 
