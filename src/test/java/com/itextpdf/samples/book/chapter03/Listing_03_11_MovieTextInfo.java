@@ -59,7 +59,7 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
         Text press = new Text("P").
                 setFont(font).
                 setFontSize(HEIGHT_LOCATION / 2).
-                setFontColor(Color.White);
+                setFontColor(Color.WHITE);
 
         try {
             DatabaseConnection connection = new HsqldbConnection("filmfestival");

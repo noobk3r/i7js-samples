@@ -58,7 +58,7 @@ public class Listing_14_09_TextStateOperators extends GenericTest {
                 newlineShowText(text).
                 setTextRise(15).
                 setFontAndSize(font, 12).
-                setFillColor(Color.Red).
+                setFillColor(Color.RED).
                 showText("2").
                 setFillColor(DeviceGray.Black).
                 // line 6
@@ -79,7 +79,7 @@ public class Listing_14_09_TextStateOperators extends GenericTest {
         canvas.showText(textArray).
                 endText();
 
-        canvas.setFillColor(Color.Blue).
+        canvas.setFillColor(Color.BLUE).
                 beginText().
                 setTextMatrix(360, 770).
                 setTextRenderingMode(PdfCanvasConstants.TextRenderingMode.TEXT_RENDERING_MODE_FILL).

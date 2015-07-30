@@ -62,7 +62,7 @@ public class Listing_03_01_FestivalOpening extends GenericTest {
         float sine = (float) Math.sin(Math.PI / 60);
         float cosine = (float) Math.cos(Math.PI / 60);
         canvas.saveState().beginText().setTextRenderingMode(2).
-                setLineWidth(1.5f).setFillColor(DeviceRgb.White).setStrokeColor(DeviceRgb.Red).
+                setLineWidth(1.5f).setFillColor(DeviceRgb.WHITE).setStrokeColor(DeviceRgb.RED).
                 setFontAndSize(new PdfType1Font(pdfDoc, new Type1Font(FontConstants.HELVETICA, "")), 36).setTextMatrix(cosine, sine, -sine, cosine, 50, 324).
                 showText("SOLD OUT").endText().restoreState();
 
