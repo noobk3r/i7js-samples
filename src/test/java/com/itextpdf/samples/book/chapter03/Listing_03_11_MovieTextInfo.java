@@ -138,7 +138,7 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
             x = OFFSET_LEFT + (i * WIDTH_TIMESLOT);
             doc.add(new Paragraph(TIME[i]).setFontSize(6)
                     .setFixedPosition(x, y, 100).setHorizontalAlignment(Property.HorizontalAlignment.LEFT)
-                    .setRotationAngle(Math.PI / 4).setRotationAlignment(Property.HorizontalAlignment.LEFT));
+                    .setRotationAngle(Math.PI / 4));
         }
     }
     /**
