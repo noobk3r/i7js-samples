@@ -36,16 +36,15 @@ public class IncompleteTable extends GenericTest {
             table.addCell(new Cell().setKeepTogether(true).add(new Paragraph("Header " + i)));
         }
 
+        doc.add(table);
         for (int i = 0; i < 500; i++) {
             if (i % 5 == 0) {
-                doc.add(table);
                 table.flush();
             }
             table.addCell(new Cell().setKeepTogether(true).add(new Paragraph("Test " + i).setMargins(0, 0, 0, 0)));
         }
 
         table.complete();
-        doc.add(table);
 
         doc.close();
     }

@@ -7,8 +7,10 @@ import com.itextpdf.core.font.PdfType1Font;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.model.Document;
+import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.List;
 import com.itextpdf.model.element.Paragraph;
+import com.itextpdf.model.element.Table;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.File;
@@ -47,14 +49,10 @@ public class IndentationOptions extends GenericTest {
             setFirstLineIndent(-indentation);
         doc.add(p);
 
-        // TODO uncomment this when table functionality is added.
-//        Table table = new Table(2);
-//        table.getDefaultCell().setBorder(Rectangle.NO_BORDER);
-//        table.setTotalWidth(new float[]{indentation + 4, 519 - indentation});
-//        table.setLockedWidth(true);
-//        table.addCell(LABEL);
-//        table.addCell(CONTENT);
-//        document.add(table);
+        Table table = new Table(new float[]{indentation + 4, 519 - indentation});
+        table.addCell(new Cell().setBorder(null).add(new Paragraph(LABEL)));
+        table.addCell(new Cell().setBorder(null).add(new Paragraph(CONTENT)));
+        doc.add(table);
 
         doc.close();
     }
