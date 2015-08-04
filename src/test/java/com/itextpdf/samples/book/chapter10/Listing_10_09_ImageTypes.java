@@ -3,6 +3,7 @@ package com.itextpdf.samples.book.chapter10;
 import com.itextpdf.barcodes.BarcodeEAN;
 import com.itextpdf.barcodes.BarcodePDF417;
 import com.itextpdf.basics.image.ImageFactory;
+import com.itextpdf.canvas.image.WmfImage;
 import com.itextpdf.canvas.image.WmfImageHelper;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -53,13 +54,14 @@ public class Listing_10_09_ImageTypes extends GenericTest {
 
         Image img;
         for (int i = 0; i < RESOURCES.length; i++) {
-            com.itextpdf.basics.image.Image image = ImageFactory.getImage(String.format("src/test/resources/img/%s", RESOURCES[i]));
-            if (image.getOriginalType() == com.itextpdf.basics.image.Image.WMF) {
-                WmfImageHelper wmf = new WmfImageHelper(image);
+            if (String.format("src/test/resources/img/%s", RESOURCES[i]).contains(".wmf")) {
+                WmfImageHelper wmf = new WmfImageHelper(new WmfImage(String.format("src/test/resources/img/%s", RESOURCES[i])));
                 img = new Image((PdfFormXObject) wmf.createPdfForm());
             } else {
+                com.itextpdf.basics.image.Image image = ImageFactory.getImage(String.format("src/test/resources/img/%s", RESOURCES[i]));
                 img = new Image(new PdfImageXObject(image));
             }
+
 
             if (img.getWidth() > 300 || img.getHeight() > 300) {
                 img.scaleToFit(300, 300);
