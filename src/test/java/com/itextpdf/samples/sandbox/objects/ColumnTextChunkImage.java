@@ -7,7 +7,6 @@ import com.itextpdf.core.pdf.xobject.PdfImageXObject;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
-import org.junit.Ignore;
 
 import java.io.File;
 import java.io.FileOutputStream;
