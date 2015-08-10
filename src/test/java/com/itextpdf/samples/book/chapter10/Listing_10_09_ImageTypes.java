@@ -26,7 +26,7 @@ public class Listing_10_09_ImageTypes extends GenericTest {
     /** Paths to images. */
     public static final String[] RESOURCES = {
             "bruno_ingeborg.jpg",
-//            "map.jp2",
+            "map.jp2",
             "info.png",
             "close.bmp",
             "movie.gif",
