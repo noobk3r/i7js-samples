@@ -125,7 +125,7 @@ public class Listing_03_03_MovieTimeTable extends GenericTest {
             canvas.lineTo(x, OFFSET_BOTTOM + HEIGHT);
         }
         canvas.setLineWidth(0.3f);
-        canvas.setStrokeColor(DeviceGray.Gray);
+        canvas.setStrokeColor(DeviceGray.GRAY);
         canvas.setLineDash(3, 1);
         canvas.stroke();
         canvas.restoreState();

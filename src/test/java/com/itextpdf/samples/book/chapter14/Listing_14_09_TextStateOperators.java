@@ -60,7 +60,7 @@ public class Listing_14_09_TextStateOperators extends GenericTest {
                 setFontAndSize(font, 12).
                 setFillColor(Color.RED).
                 showText("2").
-                setFillColor(DeviceGray.Black).
+                setFillColor(DeviceGray.BLACK).
                 // line 6
                 setLeading(56).
                 newlineShowText("Changing the leading: " + text).

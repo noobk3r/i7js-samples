@@ -1,5 +1,6 @@
 package com.itextpdf.samples.sandbox.tables;
 
+import com.itextpdf.core.geom.PageSize;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.model.Document;
@@ -11,14 +12,14 @@ import com.itextpdf.samples.GenericTest;
 import java.io.File;
 import java.io.FileOutputStream;
 
-public class IncompleteTable extends GenericTest {
+public class SimpleTable5 extends GenericTest {
 
-    public static final String DEST = "./target/test/resources/sandbox/tables/incomplete_table.pdf";
+    public static final String DEST = "./target/test/resources/sandbox/tables/simple_table5.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
-        new IncompleteTable().manipulatePdf(DEST);
+        new SimpleTable5().manipulatePdf(DEST);
     }
 
     @Override
@@ -26,23 +27,22 @@ public class IncompleteTable extends GenericTest {
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc);
+        Document doc = new Document(pdfDoc, PageSize.A4.rotate());
 
-        Table table = new Table(5, true);
-
-        for (int i = 0; i < 5; i++) {
-            table.addHeaderCell(new Cell().setKeepTogether(true).add(new Paragraph("Header " + i)));
+        Table table = new Table(5);
+        // TODO
+        //table.setWidthPercentage(100);
+        Cell cell = new Cell(1, 5).add(new Paragraph("Table XYZ (Continued)"));
+        table.addHeaderCell(cell);
+        cell = new Cell(1, 5).add(new Paragraph("Continue on next page"));
+        table.addFooterCell(cell);
+        table.setSkipFirstHeader(true);
+        table.setSkipLastFooter(true);
+        for (int i = 0; i < 350; i++) {
+            table.addCell(new Cell().add(new Paragraph(String.valueOf(i+1))));
         }
 
         doc.add(table);
-        for (int i = 0; i < 500; i++) {
-            if (i % 5 == 0) {
-                table.flush();
-            }
-            table.addCell(new Cell().setKeepTogether(true).add(new Paragraph("Test " + i).setMargins(0, 0, 0, 0)));
-        }
-
-        table.complete();
 
         doc.close();
     }
