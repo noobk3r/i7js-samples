@@ -14,6 +14,7 @@ import com.itextpdf.model.element.Image;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 
+import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -43,7 +44,7 @@ public class Listing_10_09_ImageTypes extends GenericTest {
         new Listing_10_09_ImageTypes().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws FileNotFoundException, MalformedURLException {
+    public void manipulatePdf(String dest) throws IOException {
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
@@ -71,10 +72,10 @@ public class Listing_10_09_ImageTypes extends GenericTest {
         }
 
         //@TODO uncomment this when Itext is capable to add AWT images to document.
-//        java.awt.Image awtImage = Toolkit.getDefaultToolkit().createImage(RESOURCE);
-//        img = new Image(new PdfImageXObject(pdfDoc, ImageFactory.getImage(awtImage.getSource().toString().getBytes())));
-//        doc.add(new Paragraph(String.format("%s is an image of type %s", "java.awt.Image", img.getClass().getName())));
-//        doc.add(img);
+        java.awt.Image awtImage = Toolkit.getDefaultToolkit().createImage(RESOURCE);
+        img = new Image(new PdfImageXObject(ImageFactory.getImage(awtImage, null)));
+        doc.add(new Paragraph(String.format("%s is an image of type %s", "java.awt.Image", img.getClass().getName())));
+        doc.add(img);
 
         BarcodeEAN codeEAN = new BarcodeEAN(pdfDoc);
         codeEAN.setCodeType(BarcodeEAN.EAN13);
