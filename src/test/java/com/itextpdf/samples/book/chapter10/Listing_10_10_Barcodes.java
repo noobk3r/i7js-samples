@@ -2,7 +2,7 @@ package com.itextpdf.samples.book.chapter10;
 
 import com.itextpdf.barcodes.*;
 import com.itextpdf.canvas.color.Color;
-import com.itextpdf.core.geom.PageSize;
+import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.xobject.PdfFormXObject;

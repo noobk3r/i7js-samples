@@ -1,6 +1,6 @@
 package com.itextpdf.samples.book.chapter01;
 
-import com.itextpdf.core.geom.PageSize;
+import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.model.Document;

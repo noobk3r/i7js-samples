@@ -3,7 +3,7 @@ package com.itextpdf.samples;
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.core.font.PdfType1Font;
-import com.itextpdf.core.geom.Rectangle;
+import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.model.Document;

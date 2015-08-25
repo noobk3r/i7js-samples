@@ -1,6 +1,6 @@
 package com.itextpdf.samples.book.chapter03;
 
-import com.itextpdf.core.geom.Rectangle;
+import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Paragraph;

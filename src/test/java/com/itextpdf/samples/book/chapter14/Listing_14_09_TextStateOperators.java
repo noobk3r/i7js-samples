@@ -8,7 +8,7 @@ import com.itextpdf.canvas.color.Color;
 import com.itextpdf.canvas.color.DeviceGray;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.font.PdfType1Font;
-import com.itextpdf.core.geom.Rectangle;
+import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.pdf.*;
 import com.itextpdf.core.pdf.xobject.PdfFormXObject;
 import com.itextpdf.samples.GenericTest;
