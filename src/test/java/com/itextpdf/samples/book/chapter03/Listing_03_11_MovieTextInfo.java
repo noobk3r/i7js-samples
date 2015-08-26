@@ -71,8 +71,8 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
                 PdfPage page = pdfDoc.addNewPage();
                 if (d != 1)
                     doc.add(new AreaBreak());
-                PdfCanvas over = new PdfCanvas(page.newContentStreamAfter(), page.getResources());
-                PdfCanvas under = new PdfCanvas(page.newContentStreamBefore(), page.getResources());
+                PdfCanvas over = new PdfCanvas(page.newContentStreamAfter(), page.getResources(), pdfDoc);
+                PdfCanvas under = new PdfCanvas(page.newContentStreamBefore(), page.getResources(), pdfDoc);
 
                 drawTimeTable(under);
                 drawTimeSlots(over);

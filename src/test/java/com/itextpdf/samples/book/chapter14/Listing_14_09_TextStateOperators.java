@@ -109,7 +109,7 @@ public class Listing_14_09_TextStateOperators extends GenericTest {
                 endText();
 
         PdfFormXObject xObject = new PdfFormXObject(new Rectangle(200, 36));
-        PdfCanvas xObjectCanvas = new PdfCanvas(xObject).setLineWidth(2);
+        PdfCanvas xObjectCanvas = new PdfCanvas(xObject, pdfDoc).setLineWidth(2);
         for (int i = 0; i < 6; i++) {
             xObjectCanvas.moveTo(0, i * 6);
             xObjectCanvas.lineTo(200, i * 6);

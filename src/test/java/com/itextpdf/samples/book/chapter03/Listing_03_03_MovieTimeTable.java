@@ -53,8 +53,8 @@ public class Listing_03_03_MovieTimeTable extends GenericTest {
         pdfDoc.setDefaultPageSize(PageSize.A4.rotate());
 
         PdfPage page = pdfDoc.addNewPage();
-        drawTimeTable(new PdfCanvas(page.newContentStreamBefore(), page.getResources()));
-        drawTimeSlots(new PdfCanvas(page.newContentStreamAfter(), page.getResources()));
+        drawTimeTable(new PdfCanvas(page.newContentStreamBefore(), page.getResources(), pdfDoc));
+        drawTimeSlots(new PdfCanvas(page.newContentStreamAfter(), page.getResources(), pdfDoc));
 
         pdfDoc.close();
     }

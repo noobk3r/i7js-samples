@@ -57,7 +57,7 @@ public class Listing_10_09_ImageTypes extends GenericTest {
         for (int i = 0; i < RESOURCES.length; i++) {
             if (String.format("src/test/resources/img/%s", RESOURCES[i]).contains(".wmf")) {
                 WmfImageHelper wmf = new WmfImageHelper(new WmfImage(String.format("src/test/resources/img/%s", RESOURCES[i])));
-                img = new Image((PdfFormXObject) wmf.createPdfForm());
+                img = new Image((PdfFormXObject) wmf.createPdfForm(pdfDoc));
             } else {
                 com.itextpdf.basics.image.Image image = ImageFactory.getImage(String.format("src/test/resources/img/%s", RESOURCES[i]));
                 img = new Image(new PdfImageXObject(image));
@@ -80,14 +80,14 @@ public class Listing_10_09_ImageTypes extends GenericTest {
         BarcodeEAN codeEAN = new BarcodeEAN(pdfDoc);
         codeEAN.setCodeType(BarcodeEAN.EAN13);
         codeEAN.setCode("9781935182610");
-        img = new Image(codeEAN.createFormXObject(null, null));
+        img = new Image(codeEAN.createFormXObject(null, null, pdfDoc));
         doc.add(new Paragraph(String.format("%s is an image of type %s", "Barcode", img.getClass().getName())));
         doc.add(img);
 
         BarcodePDF417 pdf417 = new BarcodePDF417();
         String text = "iText in Action, a book by Bruno Lowagie.";
         pdf417.setText(text);
-        PdfFormXObject xObject = pdf417.createFormXObject(null);
+        PdfFormXObject xObject = pdf417.createFormXObject(null, pdfDoc);
         img = new Image(xObject);
         doc.add(new Paragraph(String.format("%s is an image of type %s", "Barcode", img.getClass().getName())));
         doc.add(img);

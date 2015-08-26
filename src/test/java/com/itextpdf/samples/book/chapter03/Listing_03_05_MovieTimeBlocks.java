@@ -55,8 +55,8 @@ public class Listing_03_05_MovieTimeBlocks extends Listing_03_03_MovieTimeTable 
             List<Screening> screenings;
             for (Date day : days) {
                 PdfPage page = pdfDoc.addNewPage();
-                PdfCanvas over = new PdfCanvas(page.newContentStreamAfter(), page.getResources());
-                PdfCanvas under = new PdfCanvas(page.newContentStreamBefore(), page.getResources());
+                PdfCanvas over = new PdfCanvas(page.newContentStreamAfter(), page.getResources(), pdfDoc);
+                PdfCanvas under = new PdfCanvas(page.newContentStreamBefore(), page.getResources(), pdfDoc);
 
                 drawTimeTable(under);
                 drawTimeSlots(over);

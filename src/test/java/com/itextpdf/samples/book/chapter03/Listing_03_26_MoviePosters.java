@@ -47,7 +47,7 @@ public class Listing_03_26_MoviePosters extends GenericTest {
 
         //Initialize form XObject and write to it
         PdfFormXObject xObj = new PdfFormXObject(new Rectangle(8, 8, 579, 68));
-        PdfCanvas celluloid = new PdfCanvas(xObj);
+        PdfCanvas celluloid = new PdfCanvas(xObj, pdfDoc);
         celluloid.rectangle(8, 8, 579, 68);
         for (float f = 8.25f; f < 581; f += 6.5f) {
             celluloid.roundRectangle(f, 8.5f, 6, 3, 1.5f).roundRectangle(f, 72.5f, 6, 3, 1.5f);
