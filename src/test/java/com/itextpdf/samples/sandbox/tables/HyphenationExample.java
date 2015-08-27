@@ -28,7 +28,7 @@ public class HyphenationExample extends GenericTest {
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc, PageSize.A4.setMargins(0, 0, 0, 0));
+        Document doc = new Document(pdfDoc, new PageSize(595, 842).setMargins(0, 0, 0, 0));
         // TODO Implement hyphenation
         // Hyphenator h = new Hyphenator("de", "DE", 2, 2);
         // Hyphenation s = h.hyphenate("Leistungsscheinziffer");
