@@ -11,24 +11,8 @@
     </parent>
 
     <artifactId>samples</artifactId>
-    <version>1.0-SNAPSHOT</version>
     <name>iText 6 (Arya) - samples</name>
     <url>http://itextpdf.com/</url>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${surefire.version}</version>
-                <configuration>
-                    <includes>
-                        <include>**/*.java</include>
-                    </includes>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
     <dependencies>
         <dependency>
@@ -69,5 +53,29 @@
             <scope>runtime</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <groups>${unittests}</groups>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <configuration>
+                    <includes>
+                        <!-- The names of the sample classes do not have to end with "Test". -->
+                        <include>**/Listing_*.java</include>
+                        <include>**/*.java</include>
+                    </includes>
+                    <groups>${sampletests}</groups>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
