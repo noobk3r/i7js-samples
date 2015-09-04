@@ -199,7 +199,6 @@ public class Listing_10_10_Barcodes extends GenericTest {
         datamatrix.generate(text);
         Image imgDM = new Image(datamatrix.createFormXObject(null, pdfDoc));
         doc.add(imgDM);
-        doc.add(imgDM);
 
         //QRCode
         doc.add(new Paragraph("Barcode QRCode"));

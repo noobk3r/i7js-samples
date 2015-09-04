@@ -47,6 +47,6 @@ public class ImageNextToEachOther extends GenericTest {
 
     public static Cell createImageCell(String path) throws MalformedURLException {
         Image img = new Image(ImageFactory.getImage(path));
-        return new Cell().add(img.setAutoScaling(true));
+        return new Cell().add(img.setAutoScale(true));
     }
 }

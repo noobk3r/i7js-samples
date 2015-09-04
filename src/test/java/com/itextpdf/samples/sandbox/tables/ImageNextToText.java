@@ -48,7 +48,7 @@ public class ImageNextToText extends GenericTest {
 
     public static Cell createImageCell(String path) throws MalformedURLException {
         Image img = new Image(ImageFactory.getImage(path));
-        Cell cell = new Cell().add(img.setAutoScaling(true));
+        Cell cell = new Cell().add(img.setAutoScale(true));
         cell.setBorder(null);
         return cell;
     }
