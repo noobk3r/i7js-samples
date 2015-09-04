@@ -5,13 +5,17 @@ import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.core.font.PdfType1Font;
 import com.itextpdf.core.pdf.layer.PdfLayer;
+import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.samples.GenericTest;
 
+import org.junit.experimental.categories.Category;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+@Category(SampleTest.class)
 public class Listing_15_01_PickABoo extends GenericTest {
 
     static public final String DEST = "./target/test/resources/Listing_15_01_PickABoo.pdf";

@@ -9,6 +9,7 @@ import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Div;
@@ -23,10 +24,13 @@ import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.PojoToElementFactory;
 
+import org.junit.experimental.categories.Category;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
+@Category(SampleTest.class)
 public class Listing_03_20_ColumnMovies2 extends GenericTest {
 
     public static final String DEST = "./target/test/resources/Listing_03_20_ColumnMovies2.pdf";

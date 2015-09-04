@@ -5,16 +5,18 @@ import com.itextpdf.basics.image.ImageFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.xobject.PdfImageXObject;
+import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.List;
 import com.itextpdf.samples.GenericTest;
 import org.junit.Ignore;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-
+@Category(SampleTest.class)
 public class ListWithImageAsBullet extends GenericTest {
 
     public static final String IMG = "src/test/resources/img/bulb.gif";

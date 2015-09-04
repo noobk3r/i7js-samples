@@ -6,13 +6,17 @@ import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfName;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.action.PdfAction;
+import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.forms.fields.PdfTextFormField;
 import com.itextpdf.samples.GenericTest;
 
+import org.junit.experimental.categories.Category;
+
 import java.io.FileOutputStream;
 
+@Category(SampleTest.class)
 public class Listing_08_11_TextFieldActions extends GenericTest {
 
     static public final String DEST = "./target/test/resources/Listing_08_11_TextFieldActions.pdf";

@@ -7,13 +7,17 @@ import com.itextpdf.core.font.PdfType1Font;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.layer.PdfLayer;
+import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
+
+import org.junit.experimental.categories.Category;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+@Category(SampleTest.class)
 public class Listing_15_02_OptionalContentExample extends GenericTest {
 
     static public final String DEST = "./target/test/resources/Listing_15_02_OptionalContentExample.pdf";

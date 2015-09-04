@@ -6,10 +6,13 @@ import com.itextpdf.core.font.PdfType1Font;
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.layout.LayoutArea;
 import com.itextpdf.model.renderer.DocumentRenderer;
+
+import org.junit.experimental.categories.Category;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -17,6 +20,7 @@ import java.io.IOException;
 /**
  * Example demonstrates how to build complex layouts using layout manager
  */
+@Category(SampleTest.class)
 public class Listing_99_02_ComplexDocumentLayout extends GenericTest {
 
     static public final String DEST = "./target/test/resources/Listing_99_02_ComplexDocumentLayout.pdf";

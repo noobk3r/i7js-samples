@@ -9,15 +9,19 @@ import com.itextpdf.canvas.color.PatternColor;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.colorspace.PdfPattern;
+import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
 import com.itextpdf.samples.GenericTest;
 
+import org.junit.experimental.categories.Category;
+
 import java.io.File;
 import java.io.FileOutputStream;
 
+@Category(SampleTest.class)
 public class TiledBackground extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/tiled_background.pdf";
     public static final String IMG1 = "./src/test/resources/sandbox/tables/ALxRF.png";

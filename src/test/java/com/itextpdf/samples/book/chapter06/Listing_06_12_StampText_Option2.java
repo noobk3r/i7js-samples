@@ -3,14 +3,18 @@ package com.itextpdf.samples.book.chapter06;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+
+import org.junit.experimental.categories.Category;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+@Category(SampleTest.class)
 public class Listing_06_12_StampText_Option2 extends GenericTest {
 
     static public final String DEST = "./target/test/resources/Listing_06_12_StampText_Option2.pdf";

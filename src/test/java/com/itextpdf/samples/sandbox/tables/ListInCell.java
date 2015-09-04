@@ -3,15 +3,18 @@ package com.itextpdf.samples.sandbox.tables;
 import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.*;
 import com.itextpdf.samples.GenericTest;
 import org.junit.Ignore;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileOutputStream;
 
 @Ignore
+@Category(SampleTest.class)
 public class ListInCell extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/list_in_cell.pdf";
 

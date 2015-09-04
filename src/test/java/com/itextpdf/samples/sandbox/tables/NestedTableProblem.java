@@ -4,6 +4,7 @@ import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.canvas.color.Color;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.border.SolidBorder;
@@ -12,11 +13,13 @@ import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.samples.GenericTest;
 import org.junit.Ignore;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileOutputStream;
 
 @Ignore
+@Category(SampleTest.class)
 public class NestedTableProblem extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/nested_table_problem.pdf";
 

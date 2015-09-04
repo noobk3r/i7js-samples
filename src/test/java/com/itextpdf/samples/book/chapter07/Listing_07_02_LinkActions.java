@@ -2,15 +2,19 @@ package com.itextpdf.samples.book.chapter07;
 
 import com.itextpdf.core.pdf.*;
 import com.itextpdf.core.pdf.action.PdfAction;
+import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Link;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 
+import org.junit.experimental.categories.Category;
+
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+@Category(SampleTest.class)
 public class Listing_07_02_LinkActions extends GenericTest {
 
     static public final String DEST = "./target/test/resources/Listing_07_02_LinkActions.pdf";

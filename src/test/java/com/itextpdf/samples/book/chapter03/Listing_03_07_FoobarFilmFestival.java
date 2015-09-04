@@ -1,9 +1,12 @@
 package com.itextpdf.samples.book.chapter03;
 
+import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
 import org.junit.Ignore;
+import org.junit.experimental.categories.Category;
 
 @Ignore("Multiple font issues")
+@Category(SampleTest.class)
 public class Listing_03_07_FoobarFilmFestival extends GenericTest {
 
     public static final String DEST = "./target/test/resources/Listing_03_07_FoobarFilmFestival.pdf";

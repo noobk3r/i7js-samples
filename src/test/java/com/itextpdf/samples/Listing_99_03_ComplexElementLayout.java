@@ -6,16 +6,20 @@ import com.itextpdf.core.font.PdfType1Font;
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.layout.LayoutArea;
 import com.itextpdf.model.renderer.ParagraphRenderer;
+
+import org.junit.experimental.categories.Category;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Category(SampleTest.class)
 public class Listing_99_03_ComplexElementLayout extends GenericTest {
 
     static public final String DEST = "./target/test/resources/Listing_99_03_ComplexElementLayout.pdf";

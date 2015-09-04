@@ -3,12 +3,16 @@ package com.itextpdf.samples.book.chapter12;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfDocumentInfo;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
+
+import org.junit.experimental.categories.Category;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+@Category(SampleTest.class)
 public class Listing_12_01_MetadataPdf extends GenericTest {
 
     static public final String DEST = "./target/test/resources/Listing_12_01_MetadataPdf.pdf";

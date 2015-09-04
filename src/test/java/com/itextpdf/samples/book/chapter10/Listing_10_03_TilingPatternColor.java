@@ -14,13 +14,17 @@ import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.colorspace.PdfDeviceCs;
 import com.itextpdf.core.pdf.colorspace.PdfPattern;
 import com.itextpdf.core.pdf.colorspace.PdfSpecialCs;
+import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
+
+import org.junit.experimental.categories.Category;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
+@Category(SampleTest.class)
 public class Listing_10_03_TilingPatternColor extends GenericTest {
 
     static public final String DEST = "./target/test/resources/Listing_10_03_TilingPatternColor.pdf";

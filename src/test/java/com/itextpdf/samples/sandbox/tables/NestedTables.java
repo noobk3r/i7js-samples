@@ -3,15 +3,19 @@ package com.itextpdf.samples.sandbox.tables;
 import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.samples.GenericTest;
 
+import org.junit.experimental.categories.Category;
+
 import java.io.File;
 import java.io.FileOutputStream;
 
+@Category(SampleTest.class)
 public class NestedTables extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/nested_tables.pdf";
 

@@ -3,6 +3,7 @@ package com.itextpdf.samples.sandbox.tables;
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.border.SolidBorder;
 import com.itextpdf.model.element.Cell;
@@ -12,9 +13,12 @@ import com.itextpdf.model.renderer.CellRenderer;
 import com.itextpdf.model.renderer.TableRenderer;
 import com.itextpdf.samples.GenericTest;
 
+import org.junit.experimental.categories.Category;
+
 import java.io.File;
 import java.io.FileOutputStream;
 
+@Category(SampleTest.class)
 class CustomBorder2TableRenderer extends TableRenderer {
     static boolean isBottomToBeDrawn = false;
     static boolean isTopToBeDrawn = true;

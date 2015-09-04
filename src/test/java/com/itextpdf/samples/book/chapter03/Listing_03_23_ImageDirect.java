@@ -7,13 +7,17 @@ import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.xobject.PdfImageXObject;
+import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 
+import org.junit.experimental.categories.Category;
+
 import java.io.FileOutputStream;
 
+@Category(SampleTest.class)
 public class Listing_03_23_ImageDirect extends GenericTest {
 
     public static final String DEST = "./target/test/resources/Listing_03_23_ImageDirect.pdf";

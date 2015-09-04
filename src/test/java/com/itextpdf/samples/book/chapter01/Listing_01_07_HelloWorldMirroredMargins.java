@@ -3,15 +3,18 @@ package com.itextpdf.samples.book.chapter01;
 import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import org.junit.Ignore;
+import org.junit.experimental.categories.Category;
 
 import java.io.FileOutputStream;
 
 @Ignore
+@Category(SampleTest.class)
 public class Listing_01_07_HelloWorldMirroredMargins extends GenericTest {
 
     static public final String DEST = "./target/test/resources/Listing_01_07_HelloWorldMirroredMargins.pdf";

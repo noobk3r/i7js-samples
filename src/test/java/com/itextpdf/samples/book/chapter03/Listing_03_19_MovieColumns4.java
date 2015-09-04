@@ -7,6 +7,7 @@ import com.itextpdf.core.font.PdfType1Font;
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Paragraph;
@@ -17,9 +18,12 @@ import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 
+import org.junit.experimental.categories.Category;
+
 import java.io.FileOutputStream;
 import java.util.List;
 
+@Category(SampleTest.class)
 public class Listing_03_19_MovieColumns4 extends Listing_03_16_MovieColumns1 {
 
     public static final String DEST = "./target/test/resources/Listing_03_19_MovieColumns4.pdf";

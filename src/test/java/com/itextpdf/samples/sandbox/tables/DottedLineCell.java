@@ -4,6 +4,7 @@ import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Paragraph;
@@ -12,9 +13,12 @@ import com.itextpdf.model.renderer.CellRenderer;
 import com.itextpdf.model.renderer.TableRenderer;
 import com.itextpdf.samples.GenericTest;
 
+import org.junit.experimental.categories.Category;
+
 import java.io.File;
 import java.io.FileOutputStream;
 
+@Category(SampleTest.class)
 public class DottedLineCell extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/dotted_line_cell.pdf";
 

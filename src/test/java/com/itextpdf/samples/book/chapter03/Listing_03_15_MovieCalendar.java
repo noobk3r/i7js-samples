@@ -1,12 +1,16 @@
 package com.itextpdf.samples.book.chapter03;
 
 import com.itextpdf.basics.geom.Rectangle;
+import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Text;
 import com.lowagie.filmfestival.Screening;
 
+import org.junit.experimental.categories.Category;
+
+@Category(SampleTest.class)
 public class Listing_03_15_MovieCalendar extends Listing_03_11_MovieTextInfo {
 
     public static final String DEST = "./target/test/resources/Listing_03_15_MovieCalendar.pdf";

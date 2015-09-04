@@ -11,10 +11,14 @@ import com.itextpdf.core.font.PdfType1Font;
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.pdf.*;
 import com.itextpdf.core.pdf.xobject.PdfFormXObject;
+import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
+
+import org.junit.experimental.categories.Category;
 
 import java.io.FileOutputStream;
 
+@Category(SampleTest.class)
 public class Listing_14_09_TextStateOperators extends GenericTest {
 
     static public final String DEST = "./target/test/resources/Listing_14_09_TextStateOperators.pdf";

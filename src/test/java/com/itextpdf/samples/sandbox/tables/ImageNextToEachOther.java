@@ -3,16 +3,20 @@ package com.itextpdf.samples.sandbox.tables;
 import com.itextpdf.basics.image.ImageFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Image;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.samples.GenericTest;
 
+import org.junit.experimental.categories.Category;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.net.MalformedURLException;
 
+@Category(SampleTest.class)
 public class ImageNextToEachOther extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/image_next_to_each_other.pdf";
     public static final String IMG1 = "./src/test/resources/sandbox/tables/javaone2013.jpg";

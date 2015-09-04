@@ -10,11 +10,15 @@ import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.layer.PdfLayer;
 import com.itextpdf.core.pdf.layer.PdfLayerMembership;
 import com.itextpdf.core.pdf.layer.PdfVisibilityExpression;
+import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
+
+import org.junit.experimental.categories.Category;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+@Category(SampleTest.class)
 public class Listing_15_07_LayerMembershipExample2 extends GenericTest {
 
     static public final String DEST = "./target/test/resources/Listing_15_07_LayerMembershipExample2.pdf";

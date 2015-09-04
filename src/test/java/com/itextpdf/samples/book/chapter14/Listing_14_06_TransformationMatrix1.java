@@ -6,13 +6,16 @@ import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
 import org.junit.Ignore;
+import org.junit.experimental.categories.Category;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 @Ignore("Implement copy page as XObject (PdfImportedPage analogue). Then port the sample")
+@Category(SampleTest.class)
 public class Listing_14_06_TransformationMatrix1 extends GenericTest {
 
     static public final String DEST = "./target/test/resources/Listing_14_06_TransformationMatrix1.pdf";

@@ -3,6 +3,7 @@ package com.itextpdf.samples.sandbox.tables;
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Cell;
@@ -12,12 +13,14 @@ import com.itextpdf.model.renderer.CellRenderer;
 import com.itextpdf.model.renderer.IRenderer;
 import com.itextpdf.samples.GenericTest;
 import org.junit.Ignore;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 @Ignore
+@Category(SampleTest.class)
 public class TruncateTextInCell extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/truncate_text_in_cell.pdf";
 

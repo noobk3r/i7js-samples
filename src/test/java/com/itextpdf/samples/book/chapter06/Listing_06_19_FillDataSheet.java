@@ -2,6 +2,7 @@ package com.itextpdf.samples.book.chapter06;
 
 import com.itextpdf.basics.io.ByteArrayOutputStream;
 import com.itextpdf.core.pdf.*;
+import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.samples.GenericTest;
 import com.lowagie.database.DatabaseConnection;
@@ -11,12 +12,15 @@ import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.Screening;
 
+import org.junit.experimental.categories.Category;
+
 import java.io.ByteArrayInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+@Category(SampleTest.class)
 public class Listing_06_19_FillDataSheet extends GenericTest{
     /** The original PDF file. */
     public static final String DATASHEET
