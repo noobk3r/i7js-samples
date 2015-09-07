@@ -1,34 +1,29 @@
-package com.itextpdf.samples.book.chapter10;
+package com.itextpdf.samples;
 
 import com.itextpdf.barcodes.*;
-import com.itextpdf.canvas.color.Color;
 import com.itextpdf.basics.geom.PageSize;
+import com.itextpdf.canvas.color.Color;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.xobject.PdfFormXObject;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
+import com.itextpdf.model.element.AreaBreak;
 import com.itextpdf.model.element.Image;
 import com.itextpdf.model.element.Paragraph;
-import com.itextpdf.samples.GenericTest;
-
-import org.junit.experimental.categories.Category;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 
-@Category(SampleTest.class)
-public class Listing_10_10_Barcodes extends GenericTest {
+public class Listing_99_05_BarcodeLayout extends GenericTest {
 
-    static public final String DEST = "./target/test/resources/Listing_10_10_Barcodes.pdf";
+    static public final String DEST = "./target/test/resources/Listing_99_05_BarcodeLayout.pdf";
 
     public static void main(String args[]) throws IOException {
-        new Listing_10_10_Barcodes().manipulatePdf(DEST);
+        new Listing_99_05_BarcodeLayout().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws FileNotFoundException, UnsupportedEncodingException {
+    public void manipulatePdf(String dest) throws FileNotFoundException {
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
@@ -43,6 +38,7 @@ public class Listing_10_10_Barcodes extends GenericTest {
         BarcodeEAN codeEAN = new BarcodeEAN(pdfDoc);
         codeEAN.setCode("4512345678906");
         doc.add(new Paragraph("default:"));
+        codeEAN.fitWidth(250);
         doc.add(new Image(codeEAN.createFormXObject(pdfDoc)));
         codeEAN.setGuardBars(false);
         doc.add(new Paragraph("without guard bars:"));
@@ -64,12 +60,14 @@ public class Listing_10_10_Barcodes extends GenericTest {
         codeEAN.setCodeType(BarcodeEAN.EAN8);
         codeEAN.setBarHeight(codeEAN.getSize() * 1.5f);
         codeEAN.setCode("34569870");
+        codeEAN.fitWidth(250);
         doc.add(new Image(codeEAN.createFormXObject(pdfDoc)));
 
         //UPC E
         doc.add(new Paragraph("Barcode UPC-E"));
         codeEAN.setCodeType(BarcodeEAN.UPCE);
         codeEAN.setCode("03456781");
+        codeEAN.fitWidth(250);
         doc.add(new Image(codeEAN.createFormXObject(pdfDoc)));
         codeEAN.setBarHeight(codeEAN.getSize() * 3);
 
@@ -91,9 +89,11 @@ public class Listing_10_10_Barcodes extends GenericTest {
         doc.add(new Paragraph("Barcode 128"));
         Barcode128 code128 = new Barcode128(pdfDoc);
         code128.setCode("0123456789 hello");
-        doc.add(new Image(code128.createFormXObject(pdfDoc)));
+        code128.fitWidth(250);
+        doc.add(new Image(code128.createFormXObject(pdfDoc)).setRotationAngle(Math.PI / 2).setMargins(10, 10, 10, 10));
         code128.setCode("0123456789\uffffMy Raw Barcode (0 - 9)");
         code128.setCodeType(Barcode128.CODE128_RAW);
+        code128.fitWidth(250);
         doc.add(new Image(code128.createFormXObject(pdfDoc)));
 
         // Data for the barcode :
@@ -113,16 +113,20 @@ public class Listing_10_10_Barcodes extends GenericTest {
         shipBarCode.setBaseline(10f);
         shipBarCode.setBarHeight(50f);
         shipBarCode.setCode(data.toString());
+        shipBarCode.fitWidth(250);
         doc.add(new Image(shipBarCode.createFormXObject(Color.BLACK, Color.BLUE, pdfDoc)));
 
         // it is composed of 3 blocks whith AI 01, 3101 and 10
         Barcode128 uccEan128 = new Barcode128(pdfDoc);
         uccEan128.setCodeType(Barcode128.CODE128_UCC);
         uccEan128.setCode("(01)00000090311314(10)ABC123(15)060916");
+        uccEan128.fitWidth(250);
         doc.add(new Image(uccEan128.createFormXObject(Color.BLUE, Color.BLACK, pdfDoc)));
         uccEan128.setCode("0191234567890121310100035510ABC123");
+        uccEan128.fitWidth(250);
         doc.add(new Image(uccEan128.createFormXObject(Color.BLUE, Color.RED, pdfDoc)));
         uccEan128.setCode("(01)28880123456788");
+        uccEan128.fitWidth(250);
         doc.add(new Image(uccEan128.createFormXObject(Color.BLUE, Color.BLACK, pdfDoc)));
 
 
@@ -131,11 +135,14 @@ public class Listing_10_10_Barcodes extends GenericTest {
         BarcodeInter25 code25 = new BarcodeInter25(pdfDoc);
         code25.setGenerateChecksum(true);
         code25.setCode("41-1200076041-001");
+        code25.fitWidth(250);
         doc.add(new Image(code25.createFormXObject(pdfDoc)));
         code25.setCode("411200076041001");
+        code25.fitWidth(250);
         doc.add(new Image(code25.createFormXObject(pdfDoc)));
         code25.setCode("0611012345678");
         code25.setChecksumText(true);
+        code25.fitWidth(250);
         doc.add(new Image(code25.createFormXObject(pdfDoc)));
 
 
@@ -144,24 +151,29 @@ public class Listing_10_10_Barcodes extends GenericTest {
         BarcodePostnet codePost = new BarcodePostnet(pdfDoc);
         doc.add(new Paragraph("ZIP"));
         codePost.setCode("01234");
+        codePost.fitWidth(250);
         doc.add(new Image(codePost.createFormXObject(pdfDoc)));
         doc.add(new Paragraph("ZIP+4"));
         codePost.setCode("012345678");
+        codePost.fitWidth(250);
         doc.add(new Image(codePost.createFormXObject(pdfDoc)));
         doc.add(new Paragraph("ZIP+4 and dp"));
         codePost.setCode("01234567890");
+        codePost.fitWidth(250);
         doc.add(new Image(codePost.createFormXObject(pdfDoc)));
 
         doc.add(new Paragraph("Barcode Planet"));
         BarcodePostnet codePlanet = new BarcodePostnet(pdfDoc);
         codePlanet.setCode("01234567890");
         codePlanet.setCodeType(BarcodePostnet.TYPE_PLANET);
+        codePlanet.fitWidth(250);
         doc.add(new Image(codePlanet.createFormXObject(pdfDoc)));
 
         //CODE 39
         doc.add(new Paragraph("Barcode 3 of 9"));
         Barcode39 code39 = new Barcode39(pdfDoc);
         code39.setCode("ITEXT IN ACTION");
+        code39.fitWidth(250);
         doc.add(new Image(code39.createFormXObject(pdfDoc)));
 
         doc.add(new Paragraph("Barcode 3 of 9 extended"));
@@ -169,6 +181,7 @@ public class Listing_10_10_Barcodes extends GenericTest {
         code39ext.setCode("iText in Action");
         code39ext.setStartStopText(false);
         code39ext.setExtended(true);
+        code39ext.fitWidth(250);
         doc.add(new Image(code39ext.createFormXObject(pdfDoc)));
 
 
@@ -177,7 +190,10 @@ public class Listing_10_10_Barcodes extends GenericTest {
         BarcodeCodabar codabar = new BarcodeCodabar(pdfDoc);
         codabar.setCode("A123A");
         codabar.setStartStopText(true);
+        codabar.fitWidth(250);
         doc.add(new Image(codabar.createFormXObject(pdfDoc)));
+
+        doc.add(new AreaBreak());
 
         //PDF417
         doc.add(new Paragraph("Barcode PDF417"));
@@ -190,24 +206,22 @@ public class Listing_10_10_Barcodes extends GenericTest {
 
         PdfFormXObject xObject = pdf417.createFormXObject(pdfDoc);
         Image img = new Image(xObject);
-        doc.add(img);
-
+        doc.add(img.setAutoScale(true));
 
         doc.add(new Paragraph("Barcode Datamatrix"));
         BarcodeDataMatrix datamatrix = new BarcodeDataMatrix();
         datamatrix.setCode(text);
         Image imgDM = new Image(datamatrix.createFormXObject(pdfDoc));
-        doc.add(imgDM);
+        doc.add(imgDM.scaleToFit(250, 250));
 
         //QRCode
         doc.add(new Paragraph("Barcode QRCode"));
         BarcodeQRCode qrcode = new BarcodeQRCode("Moby Dick by Herman Melville");
-
-        xObject = qrcode.createFormXObject(pdfDoc);
-        img = new Image(xObject);
-        doc.add(img);
+        img = new Image(qrcode.createFormXObject(pdfDoc));
+        doc.add(img.scaleToFit(250, 250));
 
         //Close document
         pdfDoc.close();
     }
+
 }

@@ -18,10 +18,8 @@ import com.itextpdf.samples.GenericTest;
 import org.junit.experimental.categories.Category;
 
 import java.awt.*;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.MalformedURLException;
 
 @Category(SampleTest.class)
 public class Listing_10_09_ImageTypes extends GenericTest {
@@ -90,7 +88,7 @@ public class Listing_10_09_ImageTypes extends GenericTest {
 
         BarcodePDF417 pdf417 = new BarcodePDF417();
         String text = "iText in Action, a book by Bruno Lowagie.";
-        pdf417.setText(text);
+        pdf417.setCode(text);
         PdfFormXObject xObject = pdf417.createFormXObject(null, pdfDoc);
         img = new Image(xObject);
         doc.add(new Paragraph(String.format("%s is an image of type %s", "Barcode", img.getClass().getName())));
