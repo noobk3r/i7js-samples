@@ -12,6 +12,7 @@ import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
+import com.itextpdf.model.border.Border;
 import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
@@ -60,8 +61,7 @@ public class SimpleTable7 extends GenericTest {
 
         Table table = new Table(10);
         Cell cell = new Cell(1, 3).add(docTitle);
-        // TODO Can we do it smartly?
-        cell.setBorder(null);
+        cell.setBorder(Border.NO_BORDER);
         cell.setHorizontalAlignment(Property.HorizontalAlignment.LEFT);
         table.addCell(cell);
 

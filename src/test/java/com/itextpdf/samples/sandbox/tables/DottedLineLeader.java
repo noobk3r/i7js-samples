@@ -35,9 +35,7 @@ public class DottedLineLeader extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         Table table = new Table(new float[]{1, 3, 1});
-        table.setWidth(0);
-        // TODO Implement setWidthPercentage(float)
-        // table.setWidthPercentage(50);
+        table.setWidthPercent(50);
         // TODO Implement LineSeparator and all extended classes
         // Chunk leader = new Chunk(new DottedLineSeparator());
         Text leader = new Text("");

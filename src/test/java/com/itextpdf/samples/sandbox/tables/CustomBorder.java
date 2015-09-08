@@ -136,12 +136,9 @@ public class CustomBorder extends GenericTest {
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
-
         Table table = new Table(2);
         table.setWidth(500);
         table.setBorder(new SolidBorder(1));
-        // TODO Implement setWidthPercentage(float)
-        //table.setWidthPercentage(100);
         // TODO Implement setting-for-all-cells-specific-border method
         //table.getDefaultCell().setBorder(Rectangle.NO_BORDER);
         // TODO Implement setSplitLate(boolean)

@@ -35,8 +35,6 @@ public class FullPageTable extends GenericTest {
         Document doc = new Document(pdfDoc, new PageSize(595, 842).setMargins(0, 0, 0, 0));
 
         Table table = new Table(10);
-        // TODO Implement setWidthPercentage(float)
-        // table.setWidthPercentage(100);
         table.setMarginTop(0f);
         table.setMarginBottom(0f);
         // first row

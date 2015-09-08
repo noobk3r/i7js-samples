@@ -12,17 +12,16 @@ import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
+import com.itextpdf.model.border.Border;
 import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.samples.GenericTest;
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileOutputStream;
 
-@Ignore
 @Category(SampleTest.class)
 public class ColoredBackground extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/colored_background.pdf";
@@ -42,15 +41,13 @@ public class ColoredBackground extends GenericTest {
 
         Table table;
         Cell cell;
-        // TODO Implement usage of fontstyle Font.BOLD (itext5)
         PdfFont font = new PdfType1Font(pdfDoc,
-                (Type1Font) FontFactory.createFont(FontConstants.HELVETICA, PdfEncodings.WINANSI));
+                (Type1Font) FontFactory.createFont(FontConstants.HELVETICA_BOLD, PdfEncodings.WINANSI));
         table = new Table(16);
         for (int aw = 0; aw < 16; aw++) {
             cell = new Cell().add(new Paragraph("hi").setFont(font).setFontSize(12).setFontColor(Color.WHITE));
             cell.setBackgroundColor(Color.BLUE);
-            // TODO Is there any way to do it smartly?
-            cell.setBorder(null);
+            cell.setBorder(Border.NO_BORDER);
             cell.setVerticalAlignment(Property.VerticalAlignment.MIDDLE);
             cell.setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
             table.addCell(cell);

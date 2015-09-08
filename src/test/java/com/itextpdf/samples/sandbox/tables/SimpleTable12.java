@@ -45,8 +45,6 @@ public class SimpleTable12 extends GenericTest {
         font = new PdfType1Font(pdfDoc,
                 (Type1Font) FontFactory.createFont(FontConstants.HELVETICA, PdfEncodings.WINANSI));
         Table table = new Table(8);
-        // TODO Implement setWidthPercentage(float)
-        // table.setWidthPercentage(100);
         table.addCell(createCell("Examination", 1, 2, 15));
         table.addCell(createCell("Board", 1, 2, 15));
         table.addCell(createCell("Month and Year of Passing", 1, 2, 15));

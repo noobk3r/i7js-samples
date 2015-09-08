@@ -80,8 +80,6 @@ public class ClipCenterCellContent extends GenericTest {
         Document doc = new Document(pdfDoc, PageSize.A4.rotate());
 
         Table table = new Table(5);
-        // TODO Implement setWidthPercentage(float)
-        //table.setWidthPercentage(100);
         Cell cell;
         for (int r = 'A'; r <= 'Z'; r++) {
             for (int c = 1; c <= 5; c++) {

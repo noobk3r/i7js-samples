@@ -87,8 +87,6 @@ public class TableSplitTest extends GenericTest {
         //Chunk linebreak = new Chunk(separator);
         //doc.add(linebreak);
         for (int k = 0; k < 5; k++) {
-            // TODO Implement fontstyle Font.NORMAL
-            // Font.NORMAL
             Paragraph info = new Paragraph("Some title").setFont(new PdfType1Font(pdfDoc,
                     (Type1Font) FontFactory.createFont(FontConstants.HELVETICA, PdfEncodings.WINANSI)))
                     .setFontSize(10);

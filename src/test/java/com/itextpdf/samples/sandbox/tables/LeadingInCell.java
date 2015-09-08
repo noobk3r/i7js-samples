@@ -8,13 +8,11 @@ import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.samples.GenericTest;
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileOutputStream;
 
-@Ignore
 @Category(SampleTest.class)
 public class LeadingInCell extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/leading_in_cell.pdf";
@@ -33,17 +31,18 @@ public class LeadingInCell extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         Table table = new Table(1);
+        table.setWidthPercent(60);
         Cell cell = new Cell();
         Paragraph p;
-        p = new Paragraph("paragraph 1: leading 16").setFixedLeading(16);
+        p = new Paragraph("paragraph 1: leading 16. Text to force a wrap and check the leading. Ha-ha").setFixedLeading(16);
         cell.add(p);
-        p = new Paragraph("paragraph 2: leading 32").setFixedLeading(32);
+        p = new Paragraph("paragraph 2: leading 32. Text to force a wrap and check the leading. Ha-ha").setFixedLeading(32);
         cell.add(p);
-        p = new Paragraph("paragraph 3: leading 10").setFixedLeading(10);
+        p = new Paragraph("paragraph 3: leading 10. Text to force a wrap and check the leading. Ha-ha").setFixedLeading(10);
         cell.add(p);
-        p = new Paragraph("paragraph 4: leading 18").setFixedLeading(18);
+        p = new Paragraph("paragraph 4: leading 18. Text to force a wrap and check the leading. Ha-ha").setFixedLeading(18);
         cell.add(p);
-        p = new Paragraph("paragraph 5: leading 40").setFixedLeading(40);
+        p = new Paragraph("paragraph 5: leading 40. Text to force a wrap and check the leading. Ha-ha").setFixedLeading(40);
         cell.add(p);
         table.addCell(cell);
         doc.add(table);

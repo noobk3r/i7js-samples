@@ -1,17 +1,17 @@
 package com.itextpdf.samples.book.chapter03;
 
+import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.basics.image.Image;
 import com.itextpdf.basics.image.ImageFactory;
+import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 import java.io.FileOutputStream;
 
-@Ignore("Wait for image refactoring - now there is no way to know image width and height without PdfImageXObject creation")
 @Category(SampleTest.class)
 public class Listing_03_24_ImageSkew extends GenericTest {
 
@@ -33,7 +33,9 @@ public class Listing_03_24_ImageSkew extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
 
         Image img = ImageFactory.getImage(RESOURCE);
-        //new PdfCanvas(pdfDoc.addNewPage()).addImage(img, )
+        new PdfCanvas(pdfDoc.addNewPage(new PageSize(416, 283))).
+                addImage(img, img.getWidth(), 0, .35f * img.getHeight(),
+                        .65f * img.getHeight(), 30, 30);
 
         //Close document
         pdfDoc.close();
