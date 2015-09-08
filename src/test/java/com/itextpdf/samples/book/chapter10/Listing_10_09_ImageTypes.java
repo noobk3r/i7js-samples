@@ -65,8 +65,7 @@ public class Listing_10_09_ImageTypes extends GenericTest {
                 img = new Image(new PdfImageXObject(image));
             }
 
-
-            if (img.getWidth() > 300 || img.getHeight() > 300) {
+            if (img.getImageWidth() > 300 || img.getImageHeight() > 300) {
                 img.scaleToFit(300, 300);
             }
             doc.add(new Paragraph(String.format("%s is an image of type %s", RESOURCES[i], img.getClass().getName())));

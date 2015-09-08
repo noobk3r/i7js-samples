@@ -85,8 +85,6 @@ public class AddOverlappingImage extends GenericTest {
         Table table = new Table(5);
         table.setNextRenderer(new OverlappingImageTableRenderer(table, new Table.RowRange(0, 25),
                 ImageFactory.getImage("./src/test/resources/sandbox/tables/hero.jpg")));
-        // TODO Implement setWidthPercentage(float) method
-        //table.setWidthPercentage(100);
         Cell cell;
         for (int r = 'A'; r <= 'Z'; r++) {
             for (int c = 1; c <= 5; c++) {

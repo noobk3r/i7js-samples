@@ -15,7 +15,6 @@ import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.samples.GenericTest;
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 import java.io.BufferedReader;
@@ -24,13 +23,10 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.util.StringTokenizer;
 
-@Ignore
 @Category(SampleTest.class)
 public class UnitedStates extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/united_states.pdf";
     public static final String DATA = "./src/test/resources/sandbox/tables/united_states.csv";
-
-    private PdfFont BOLD;
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -45,17 +41,15 @@ public class UnitedStates extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc, PageSize.A4.rotate());
 
-        // TODO Implement usage of fontstyle Font.Bold (itext5)
-        BOLD = new PdfType1Font(pdfDoc, (Type1Font) FontFactory.createFont(FontConstants.HELVETICA, PdfEncodings.WINANSI));
+        PdfFont font = new PdfType1Font(pdfDoc, (Type1Font) FontFactory.createFont(FontConstants.HELVETICA, PdfEncodings.WINANSI));
+        PdfFont bold = new PdfType1Font(pdfDoc, (Type1Font) FontFactory.createFont(FontConstants.HELVETICA_BOLD, PdfEncodings.WINANSI));
         Table table = new Table(new float[]{4, 1, 3, 4, 3, 3, 3, 3, 1});
-        table.setWidth(0);
-        // TODO Implement setWidthPercentage(float)
-        // table.setWidthPercentage(100);
+        table.setWidthPercent(100);
         BufferedReader br = new BufferedReader(new FileReader(DATA));
         String line = br.readLine();
-        process(table, line, BOLD, true);
+        process(table, line, bold, true);
         while ((line = br.readLine()) != null) {
-            process(table, line, BOLD, false);
+            process(table, line, font, false);
         }
         br.close();
         doc.add(table);

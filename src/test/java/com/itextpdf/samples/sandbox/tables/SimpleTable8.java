@@ -1,7 +1,6 @@
 package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
@@ -34,8 +33,6 @@ public class SimpleTable8 extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         Table table = new Table(3);
-        // TODO Implement setWidthPercentage(float) method
-        // table.setWidthPercentage(100);
         //PdfReader reader = new PdfReader("./target/test/resources/sandbox/tables/header.pdf");
         // TODO Implement functionality to do things below
         // PdfImportedPage header = writer.getImportedPage(reader, 1);

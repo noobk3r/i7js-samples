@@ -112,11 +112,7 @@ public class NestedTableRoundedBorder extends GenericTest {
         cell = new Cell().add(innertable);
         cell.setNextRenderer(new RoundedBorderCellRenderer(cell));
         cell.setBorder(null);
-        // TODO Implement setPadding(float), which will set all for paddings
-        cell.setPaddingLeft(8);
-        cell.setPaddingTop(8);
-        cell.setPaddingRight(8);
-        cell.setPaddingBottom(8);
+        cell.setPadding(8);
         outertable.addCell(cell);
         // inner table 2
         innertable = new Table(new float[]{3, 17, 1, 16});

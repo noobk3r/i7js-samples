@@ -32,8 +32,6 @@ public class Barcodes extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         Table table = new Table(4);
-        // TODO Implement setWidthPercentage(float) method
-        // table.setWidthPercentage(100);
         for (int i = 0; i < 12; i++) {
             table.addCell(createBarcode(String.format("%08d", i), pdfDoc));
         }

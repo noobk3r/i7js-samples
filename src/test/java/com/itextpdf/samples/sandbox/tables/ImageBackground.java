@@ -6,7 +6,7 @@ import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.basics.image.ImageFactory;
 import com.itextpdf.canvas.PdfCanvas;
-import com.itextpdf.canvas.color.Color;
+import com.itextpdf.canvas.color.DeviceGray;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.font.PdfType1Font;
 import com.itextpdf.core.pdf.PdfDocument;
@@ -19,7 +19,6 @@ import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
 import com.itextpdf.samples.GenericTest;
-
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
@@ -35,7 +34,6 @@ public class ImageBackground extends GenericTest {
         file.getParentFile().mkdirs();
         new ImageBackground().manipulatePdf(DEST);
     }
-
 
     private class ImageBackgroundCellRenderer extends CellRenderer {
         protected Image img;
@@ -53,7 +51,6 @@ public class ImageBackground extends GenericTest {
         }
     }
 
-
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         FileOutputStream fos = new FileOutputStream(dest);
@@ -64,16 +61,13 @@ public class ImageBackground extends GenericTest {
         Table table = new Table(1);
         table.setWidth(400);
         Cell cell = new Cell();
-        // TODO Implement fontstyle Font.NORMAL in itext5
-        PdfFont font = new PdfType1Font(pdfDoc,
-                (Type1Font) FontFactory.createFont(FontConstants.HELVETICA, PdfEncodings.WINANSI));
-        // TODO GrayColor group (GrayColor.GRAYWHITE);
+        PdfFont font = new PdfType1Font(pdfDoc, (Type1Font) FontFactory.createFont(FontConstants.HELVETICA, PdfEncodings.WINANSI));
         Paragraph p = new Paragraph("A cell with an image as background color.")
-                .setFont(font).setFontColor(Color.LIGHT_GRAY).setFontSize(12);
+                .setFont(font).setFontColor(DeviceGray.WHITE).setFontSize(12);
         cell.add(p);
         Image img = new Image(ImageFactory.getImage(IMG));
         cell.setNextRenderer(new ImageBackgroundCellRenderer(cell, img));
-        cell.setHeight(600 * img.getHeight() / img.getWidth());
+        cell.setHeight(600 * img.getImageHeight() / img.getImageWidth());
         table.addCell(cell);
         doc.add(table);
 

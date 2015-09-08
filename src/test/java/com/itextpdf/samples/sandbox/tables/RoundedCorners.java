@@ -75,11 +75,7 @@ public class RoundedCorners extends GenericTest {
     public Cell getCell(String content) {
         Cell cell = new Cell().add(new Paragraph(content));
         cell.setNextRenderer(new RoundedCornersCellRenderer(cell));
-        // TODO Implement setPadding(float) to set all paddings
-        cell.setPaddingLeft(5);
-        cell.setPaddingTop(5);
-        cell.setPaddingRight(5);
-        cell.setPaddingBottom(5);
+        cell.setPadding(5);
         cell.setBorder(null);
         return cell;
     }

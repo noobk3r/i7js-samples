@@ -35,8 +35,6 @@ public class ArrayToTable extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         Table table = new Table(8);
-        // TODO Implement setWidthPercentage(float) method
-        // table.setWidthPercentage(100);
         List<List<String>> dataset = getData();
         for (List<String> record : dataset) {
             for (String field : record) {

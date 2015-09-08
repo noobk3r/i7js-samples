@@ -36,9 +36,7 @@ public class ImageNextToText extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
         Table table = new Table(new float[]{1, 2});
-        table.setWidth(0);
-        // TODO Implement setWidthPercentage(float)
-        // table.setWidthPercentage(100);
+        table.setWidthPercent(100);
         table.addCell(createImageCell(IMG1));
         table.addCell(createTextCell("This picture was taken at Java One.\nIt shows the iText crew at Java One in 2013."));
         doc.add(table);

@@ -1,6 +1,5 @@
 package com.itextpdf.samples.sandbox.tables;
 
-import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
@@ -40,8 +39,8 @@ public class CellWithGlue extends GenericTest {
         Cell cell;
         table = new Table(2);
         table.setHorizontalAlignment(Property.HorizontalAlignment.LEFT);
-        // TODO Implement setWidthPercentage(float)
-        //table.setWidthPercentage(60);
+        table.setWidthPercent(60);
+        // TODO margins don't work
         table.setMarginBottom(20);
         cell = new Cell().add(new Paragraph("Received Rs (in Words):"));
         cell.setBorder(null);
@@ -57,13 +56,11 @@ public class CellWithGlue extends GenericTest {
         cell.setBorderBottom(new SolidBorder(1));
         table.addCell(cell);
         doc.add(table);
-        // TODO Implement setWidthPercentage(float)
-        // table.setWidthPercentage(50);
+        table.setWidthPercent(50);
         doc.add(table);
         table = new Table(1);
         table.setHorizontalAlignment(Property.HorizontalAlignment.LEFT);
-        // TODO Implement setWidthPercentage(float)
-        //table.setWidthPercentage(50);
+        table.setWidthPercent(50);
         Paragraph p = new Paragraph();
         p.add(new Text("Received Rs (In Words):"));
         // TODO Implement VerticalPositionMark

@@ -53,11 +53,11 @@ public class PositionContentInCell extends GenericTest {
             canvas.addXObject(img.getXObject(),
                     getOccupiedAreaBBox().getX() +
                             (getOccupiedAreaBBox().getWidth()
-                                    - img.getWidth() * (float) img.getProperty(Property.HORIZONTAL_SCALING)) / 2,
+                                    - img.getImageWidth() * (float) img.getProperty(Property.HORIZONTAL_SCALING)) / 2,
                     getOccupiedAreaBBox().getY() +
                             (getOccupiedAreaBBox().getHeight()
                                     - img.getHeight() * (float) img.getProperty(Property.VERTICAL_SCALING)) / 2,
-                    img.getWidth() * (float) img.getProperty(Property.HORIZONTAL_SCALING));
+                    img.getImageWidth() * (float) img.getProperty(Property.HORIZONTAL_SCALING));
             canvas.stroke();
             canvas.beginText();
             canvas.setFontAndSize(this.getPropertyAsFont(Property.FONT), this.getPropertyAsFloat(Property.FONT_SIZE));

@@ -36,8 +36,6 @@ public class ImageNextToEachOther extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         Table table = new Table(2);
-        // TODO Implement setWidthPercentage(float)
-        // table.setWidthPercentage(100);
         table.addCell(createImageCell(IMG1));
         table.addCell(createImageCell(IMG2));
         doc.add(table);

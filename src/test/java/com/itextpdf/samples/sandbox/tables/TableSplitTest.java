@@ -46,25 +46,18 @@ public class TableSplitTest extends GenericTest {
         String[] content = new String[]{"column 1", "column 2",
                 "some Text in column 3", "Test data ", "column 5"};
         Table table = new Table(new float[]{3, 2, 4, 3, 2});
-        table.setWidth(0);
-        // TODO Implement setWidthPercentage(float)
-        //table.setWidthPercentage(98);
+        table.setWidthPercent(98);
         table.setMarginTop(15);
         // TODO Implement setSplitLate(boolean)
         //table.setSplitLate(false);
         for (String columnHeader : header) {
-            // TODO Implement fontstyle realization (Font.BOLD in itext5)
             Cell headerCell = new Cell().add(new Paragraph(columnHeader).setFont(new PdfType1Font(pdfDoc,
-                    (Type1Font) FontFactory.createFont(FontConstants.HELVETICA, PdfEncodings.WINANSI)))
+                    (Type1Font) FontFactory.createFont(FontConstants.HELVETICA_BOLD, PdfEncodings.WINANSI)))
                     .setFontSize(10));
             headerCell.setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
             headerCell.setVerticalAlignment(Property.VerticalAlignment.MIDDLE);
             headerCell.setBorder(new SolidBorder(Color.LIGHT_GRAY, 1));
-            // TODO Implement general (4-sided) realisation
-            headerCell.setPaddingLeft(8);
-            headerCell.setPaddingTop(8);
-            headerCell.setPaddingRight(8);
-            headerCell.setPaddingBottom(8);
+            headerCell.setPadding(8);
             table.addHeaderCell(headerCell);
         }
         for (int i = 0; i < 15; i++) {
@@ -74,7 +67,6 @@ public class TableSplitTest extends GenericTest {
                     text = "Test data \n Test data \n Test data";
                 }
                 j++;
-                // TODO Implement fontstyle Font.NORMAL
                 Cell cell = new Cell().add(new Paragraph(text).setFont(new PdfType1Font(pdfDoc,
                         (Type1Font) FontFactory.createFont(FontConstants.HELVETICA, PdfEncodings.WINANSI)))
                         .setFontSize(10));
@@ -103,17 +95,13 @@ public class TableSplitTest extends GenericTest {
             info.setMarginTop(12f);
             doc.add(info);
             table = new Table(new float[]{3, 2, 4, 3, 2});
-            table.setWidth(0);
-            // TODO Implement setWidthPercentage(float)
-            //table.setWidthPercentage(98);
+            table.setWidthPercent(98);
             table.setMarginTop(15);
             // TODO Implement setSplitLate(boolean)
             //table.setSplitLate(false);
             for (String columnHeader : header) {
-                // TODO Implement fontstyle Font.BOLD
-                //Font.BOLD
                 Cell headerCell = new Cell().add(new Paragraph(columnHeader).setFont(new PdfType1Font(pdfDoc,
-                        (Type1Font) FontFactory.createFont(FontConstants.HELVETICA, PdfEncodings.WINANSI)))
+                        (Type1Font) FontFactory.createFont(FontConstants.HELVETICA_BOLD, PdfEncodings.WINANSI)))
                         .setFontSize(10));
                 headerCell.setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
                 headerCell.setVerticalAlignment(Property.VerticalAlignment.MIDDLE);

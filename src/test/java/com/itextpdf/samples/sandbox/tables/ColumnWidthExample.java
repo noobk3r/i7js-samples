@@ -40,9 +40,8 @@ public class ColumnWidthExample extends GenericTest {
 
         float[] columnWidths = {1, 5, 5};
         Table table = new Table(columnWidths);
+        table.setWidthPercent(100);
         // TODO
-        //table.setWidthPercentage(100);
-        table.setWidth(770);
         //table.getDefaultCell().setUseAscender(true);
         //table.getDefaultCell().setUseDescender(true);
         PdfFont f = new PdfType1Font(pdfDoc, new Type1Font(FontConstants.HELVETICA, ""));

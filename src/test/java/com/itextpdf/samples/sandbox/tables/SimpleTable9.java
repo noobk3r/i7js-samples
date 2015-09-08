@@ -33,10 +33,9 @@ public class SimpleTable9 extends GenericTest {
 
         doc.add(new Paragraph("With 3 columns:"));
         Table table = new Table(new float[]{1, 1, 8});
-        table.setWidth(0);
+        table.setWidthPercent(100);
+        // TODO margins don't work
         table.setMarginTop(5);
-        // TODO Implement setWidthPercentage(float) method
-        // table.setWidthPercentage(100);
         table.addCell(new Cell().add(new Paragraph("Col a")));
         table.addCell(new Cell().add(new Paragraph("Col b")));
         table.addCell(new Cell().add(new Paragraph("Col c")));
@@ -48,8 +47,6 @@ public class SimpleTable9 extends GenericTest {
         doc.add(new Paragraph("With 2 columns:"));
         table = new Table(2);
         table.setMarginTop(5);
-        // TODO Implement setWidthPercentage(float) method
-        // table.setWidthPercentage(100);
         // TODO Implement setting default colsapn/rowspan characteristics for all cell in a table
         // table.getDefaultCell().setColspan(1);
         table.addCell(new Cell().add(new Paragraph("Col a")));

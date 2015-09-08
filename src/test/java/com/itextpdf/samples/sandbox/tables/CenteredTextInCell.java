@@ -15,13 +15,11 @@ import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.samples.GenericTest;
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileOutputStream;
 
-@Ignore
 @Category(SampleTest.class)
 public class CenteredTextInCell extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/centered_text_in_cell.pdf";
@@ -38,15 +36,12 @@ public class CenteredTextInCell extends GenericTest {
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
-        // TODO Implement fontstyles (Font.BOLD in itext5)
         PdfFont font = new PdfType1Font(pdfDoc,
-                (Type1Font) FontFactory.createFont(FontConstants.HELVETICA, PdfEncodings.WINANSI));
+                (Type1Font) FontFactory.createFont(FontConstants.HELVETICA_BOLD, PdfEncodings.WINANSI));
         Paragraph para = new Paragraph("Test").setFont(font).setFontSize(12);
         para.setFixedLeading(0);
         para.setMultipliedLeading(1);
         Table table = new Table(1);
-        // TODO Implement setWidthPercentage(float)
-        // table.setWidthPercentage(100);
         Cell cell = new Cell();
         cell.setHeight(50);
         cell.setVerticalAlignment(Property.VerticalAlignment.MIDDLE);
