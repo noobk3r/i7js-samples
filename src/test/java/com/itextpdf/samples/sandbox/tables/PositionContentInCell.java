@@ -12,13 +12,11 @@ import com.itextpdf.model.element.Image;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
 import com.itextpdf.samples.GenericTest;
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileOutputStream;
 
-@Ignore
 @Category(SampleTest.class)
 public class PositionContentInCell extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/position_content_in_cell.pdf";
@@ -56,43 +54,41 @@ public class PositionContentInCell extends GenericTest {
                                     - img.getImageWidth() * (float) img.getProperty(Property.HORIZONTAL_SCALING)) / 2,
                     getOccupiedAreaBBox().getY() +
                             (getOccupiedAreaBBox().getHeight()
-                                    - img.getHeight() * (float) img.getProperty(Property.VERTICAL_SCALING)) / 2,
+                                    - img.getImageHeight() * (float) img.getProperty(Property.VERTICAL_SCALING)) / 2,
                     img.getImageWidth() * (float) img.getProperty(Property.HORIZONTAL_SCALING));
             canvas.stroke();
-            canvas.beginText();
-            canvas.setFontAndSize(this.getPropertyAsFont(Property.FONT), this.getPropertyAsFloat(Property.FONT_SIZE));
 
             float x = 0;
             float y = 0;
-            //int alignment = 0;
+            Property.HorizontalAlignment alignment;
+            // TODO content has not leading yet, we can't use y = ... - canvas.getGraphicsState().getLeading();
             switch (position) {
                 case TOP_LEFT:
                     x = getOccupiedAreaBBox().getX() + 3;
-                    y = getOccupiedAreaBBox().getY() + getOccupiedAreaBBox().getHeight() - 3;
-                    // alignment = .LEFT;
+                    y = getOccupiedAreaBBox().getY() + getOccupiedAreaBBox().getHeight() - 16;
+                    alignment = Property.HorizontalAlignment.LEFT;
                     break;
                 case TOP_RIGHT:
                     x = getOccupiedAreaBBox().getX() + getOccupiedAreaBBox().getWidth() - 3;
-                    y = getOccupiedAreaBBox().getY() + getOccupiedAreaBBox().getHeight() - 3;
-                    // alignment = .RIGHT;
+                    y = getOccupiedAreaBBox().getY() + getOccupiedAreaBBox().getHeight() - 16;
+                    alignment = Property.HorizontalAlignment.RIGHT;
                     break;
                 case BOTTOM_LEFT:
                     x = getOccupiedAreaBBox().getX() + 3;
                     y = getOccupiedAreaBBox().getY() + 3;
-                    // alignment = .LEFT;
+                    alignment = Property.HorizontalAlignment.LEFT;
                     break;
                 case BOTTOM_RIGHT:
                     x = getOccupiedAreaBBox().getX() + getOccupiedAreaBBox().getWidth() - 3;
                     y = getOccupiedAreaBBox().getY() + 3;
-                    // alignment = .RIGHT;
+                    alignment = Property.HorizontalAlignment.RIGHT;
                     break;
+                default:
+                    x = 0;
+                    y = 0;
+                    alignment = Property.HorizontalAlignment.CENTER;
             }
-            canvas.moveText(x, y);
-            // TODO Implement showTextAligned
-            //ColumnText.showTextAligned(canvas, alignment, content, x, y, 0);
-            canvas.showText(content);
-            canvas.endText();
-            canvas.stroke();
+            new Document(document).showTextAligned(content, x, y, alignment);
         }
     }
 

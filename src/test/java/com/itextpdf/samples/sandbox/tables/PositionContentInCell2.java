@@ -55,17 +55,12 @@ public class PositionContentInCell2 extends GenericTest {
 
             canvas.addXObject(img.getXObject(), getOccupiedAreaBBox());
             canvas.stroke();
-            canvas.beginText();
-            canvas.setFontAndSize(this.getPropertyAsFont(Property.FONT), this.getPropertyAsFloat(Property.FONT_SIZE));
 
             float x = getOccupiedAreaBBox().getX() + wPct * getOccupiedAreaBBox().getWidth();
-            float y = getOccupiedAreaBBox().getY() + hPct * (getOccupiedAreaBBox().getHeight());
-            canvas.moveText(x, y);
-            // TODO Implement showTextAligned
-            //ColumnText.showTextAligned(canvas, alignment, content, x, y, 0);
-            canvas.showText(content);
-            canvas.endText();
-            canvas.stroke();
+            // TODO content has not leading yet, we can't use : y = ... - canvas.getGraphicsState().getLeading();
+            float y = getOccupiedAreaBBox().getY() + hPct * (getOccupiedAreaBBox().getHeight() - 16);
+            new Document(document).showTextAligned(content, x, y, alignment);
+
         }
     }
 
