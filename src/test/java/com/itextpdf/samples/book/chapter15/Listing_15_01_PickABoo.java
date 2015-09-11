@@ -1,15 +1,13 @@
 package com.itextpdf.samples.book.chapter15;
 
 import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.canvas.PdfCanvas;
-import com.itextpdf.core.font.PdfType1Font;
-import com.itextpdf.core.pdf.layer.PdfLayer;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.pdf.layer.PdfLayer;
+import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
-
 import org.junit.experimental.categories.Category;
 
 import java.io.FileOutputStream;
@@ -36,7 +34,7 @@ public class Listing_15_01_PickABoo extends GenericTest {
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         PdfLayer layer = new PdfLayer("Do you see me?", pdfDoc);
         layer.setOn(true);
-        canvas.beginText().setFontAndSize(new PdfType1Font(pdfDoc, new Type1Font(FontConstants.HELVETICA, "")), 18).
+        canvas.beginText().setFontAndSize(PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA), 18).
                 moveText(50, 760).showText("Do you see me?").
                 beginLayer(layer).moveText(0, -30).showText("Peek-A-Boo!!!").endLayer().
                 endText();

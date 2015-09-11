@@ -1,16 +1,14 @@
 package com.itextpdf.samples.book.chapter06;
 
 import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.canvas.PdfCanvas;
-import com.itextpdf.core.font.PdfType1Font;
+import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfPage;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
-
 import org.junit.experimental.categories.Category;
 
 import java.io.FileInputStream;
@@ -51,7 +49,7 @@ public class Listing_06_21_ConcatenateStamp extends GenericTest {
             PdfPage page = sourceDoc1.getPage(i).copy(resultDoc);
             page = resultDoc.addPage(page);
             PdfCanvas canvas = new PdfCanvas(page);
-            canvas.saveState().beginText().setFontAndSize(new PdfType1Font(resultDoc, new Type1Font(FontConstants.HELVETICA, "")), 12).
+            canvas.saveState().beginText().setFontAndSize(PdfFont.createStandardFont(resultDoc, FontConstants.HELVETICA), 12).
                     moveText(36, 540).showText("Hello World!").endText().restoreState();
             canvas.release();
             //Flush the page immediately to reduce memory consumption
@@ -63,7 +61,7 @@ public class Listing_06_21_ConcatenateStamp extends GenericTest {
             PdfPage page = sourceDoc2.getPage(i).copy(resultDoc);
             resultDoc.addPage(page);
             PdfCanvas canvas = new PdfCanvas(page);
-            canvas.saveState().beginText().setFontAndSize(new PdfType1Font(resultDoc, new Type1Font(FontConstants.HELVETICA, "")), 12).
+            canvas.saveState().beginText().setFontAndSize(PdfFont.createStandardFont(resultDoc, FontConstants.HELVETICA), 12).
                     moveText(36, 540).showText("Hello World!").endText().restoreState();
             //Flush the page immediately to reduce memory consumption
             canvas.release();

@@ -1,10 +1,8 @@
 package com.itextpdf.samples.book.chapter03;
 
 import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.basics.font.Type1Font;
-import com.itextpdf.core.font.PdfFont;
-import com.itextpdf.core.font.PdfType1Font;
 import com.itextpdf.basics.geom.Rectangle;
+import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
@@ -21,7 +19,6 @@ import com.lowagie.filmfestival.Country;
 import com.lowagie.filmfestival.Director;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
-
 import org.junit.experimental.categories.Category;
 
 import java.io.FileOutputStream;
@@ -48,10 +45,10 @@ public class Listing_03_16_MovieColumns1 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        normal = new PdfType1Font(pdfDoc, new Type1Font(FontConstants.HELVETICA, ""));
-        bold = new PdfType1Font(pdfDoc, new Type1Font(FontConstants.HELVETICA_BOLD, ""));
-        italic = new PdfType1Font(pdfDoc, new Type1Font(FontConstants.HELVETICA_OBLIQUE, ""));
-        boldItalic = new PdfType1Font(pdfDoc, new Type1Font(FontConstants.HELVETICA_BOLDOBLIQUE, ""));
+        normal = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA);
+        bold = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA_BOLD);
+        italic = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA_OBLIQUE);
+        boldItalic = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA_BOLDOBLIQUE);
 
         doc.setProperty(Property.FONT, normal);
 

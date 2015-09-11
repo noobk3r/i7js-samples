@@ -5,10 +5,9 @@
 package com.itextpdf.samples.sandbox.acroforms;
 
 import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.canvas.PdfCanvas;
-import com.itextpdf.core.font.PdfType1Font;
+import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.*;
 import com.itextpdf.core.pdf.action.PdfAction;
 import com.itextpdf.core.pdf.annot.PdfLinkAnnotation;
@@ -45,7 +44,7 @@ public class AddField extends GenericTest {
 
         PdfCanvas canvas = new PdfCanvas(page);
         canvas.beginText();
-        canvas.setFontAndSize(new PdfType1Font(pdfDoc, new Type1Font(FontConstants.COURIER_BOLD, "")), 14);
+        canvas.setFontAndSize(PdfFont.createStandardFont(pdfDoc, FontConstants.COURIER_BOLD), 14);
         canvas.moveText(36, 700 + 10);
         canvas.showText("POST");
         canvas.endText();

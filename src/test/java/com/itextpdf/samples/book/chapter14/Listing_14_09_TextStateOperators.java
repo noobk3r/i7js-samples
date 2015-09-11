@@ -1,19 +1,18 @@
 package com.itextpdf.samples.book.chapter14;
 
 import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.basics.font.Type1Font;
+import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.canvas.PdfCanvasConstants;
 import com.itextpdf.canvas.color.Color;
 import com.itextpdf.canvas.color.DeviceGray;
 import com.itextpdf.core.font.PdfFont;
-import com.itextpdf.core.font.PdfType1Font;
-import com.itextpdf.basics.geom.Rectangle;
-import com.itextpdf.core.pdf.*;
+import com.itextpdf.core.pdf.PdfDocument;
+import com.itextpdf.core.pdf.PdfTextArray;
+import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.xobject.PdfFormXObject;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
-
 import org.junit.experimental.categories.Category;
 
 import java.io.FileOutputStream;
@@ -36,7 +35,7 @@ public class Listing_14_09_TextStateOperators extends GenericTest {
         //Initialize document and add page
         PdfDocument pdfDoc = new PdfDocument(writer);
 
-        PdfFont font = new PdfType1Font(pdfDoc, new Type1Font(FontConstants.HELVETICA, ""));
+        PdfFont font = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA);
 
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         String text = "AWAY again";

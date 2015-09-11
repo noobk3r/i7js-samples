@@ -1,9 +1,8 @@
 package com.itextpdf.samples;
 
 import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.basics.font.Type1Font;
-import com.itextpdf.core.font.PdfType1Font;
 import com.itextpdf.basics.geom.Rectangle;
+import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
@@ -11,7 +10,6 @@ import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.layout.LayoutArea;
 import com.itextpdf.model.renderer.DocumentRenderer;
-
 import org.junit.experimental.categories.Category;
 
 import java.io.FileOutputStream;
@@ -29,6 +27,7 @@ public class Listing_99_02_ComplexDocumentLayout extends GenericTest {
         new Listing_99_02_ComplexDocumentLayout().manipulatePdf(DEST);
     }
 
+    @Override
     public void manipulatePdf(String dest) throws IOException {
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(dest);
@@ -61,7 +60,7 @@ public class Listing_99_02_ComplexDocumentLayout extends GenericTest {
         for (int i = 0; i < 200; i++) {
             text.append("A very long text is here...");
         }
-        doc.add(new Paragraph(text.toString()).setFont(new PdfType1Font(pdfDoc, new Type1Font(FontConstants.HELVETICA, ""))));
+        doc.add(new Paragraph(text.toString()).setFont(PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA)));
 
         //Close document
         doc.close();

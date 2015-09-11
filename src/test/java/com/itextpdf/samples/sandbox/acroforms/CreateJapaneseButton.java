@@ -4,12 +4,9 @@
  */
 package com.itextpdf.samples.sandbox.acroforms;
 
-import com.itextpdf.basics.Utilities;
 import com.itextpdf.basics.font.PdfEncodings;
-import com.itextpdf.basics.font.TrueTypeFont;
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.font.PdfFont;
-import com.itextpdf.core.font.PdfType0Font;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
@@ -21,7 +18,6 @@ import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
 @Ignore
@@ -42,14 +38,7 @@ public class CreateJapaneseButton extends GenericTest {
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
-        // TODO Fix some font issues (different FontNames each run)
-        PdfFont font = new PdfType0Font(
-                pdfDoc,
-                new TrueTypeFont(
-                        "Free Sans",
-                        PdfEncodings.IDENTITY_H,
-                        Utilities.inputStreamToArray(new FileInputStream(FONT))),
-                "Identity-H");
+        PdfFont font = PdfFont.createFont(pdfDoc, FONT, PdfEncodings.IDENTITY_H);
         PdfButtonFormField pushButton = PdfFormField.createPushButton(
                 pdfDoc,
                 new Rectangle(36, 780, 144 - 36, 806 - 780),

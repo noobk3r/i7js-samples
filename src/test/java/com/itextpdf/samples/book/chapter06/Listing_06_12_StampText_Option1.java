@@ -1,15 +1,13 @@
 package com.itextpdf.samples.book.chapter06;
 
 import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.canvas.PdfCanvas;
-import com.itextpdf.core.font.PdfType1Font;
+import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
-
 import org.junit.experimental.categories.Category;
 
 import java.io.FileInputStream;
@@ -40,7 +38,7 @@ public class Listing_06_12_StampText_Option1 extends GenericTest {
 
         //Initialize canvas and write to it
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());
-        canvas.saveState().beginText().setFontAndSize(new PdfType1Font(pdfDoc, new Type1Font(FontConstants.HELVETICA, "")), 12).
+        canvas.saveState().beginText().setFontAndSize(PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA), 12).
                 moveText(36, 540).showText("Hello people!").endText().restoreState();
         canvas.release();
 

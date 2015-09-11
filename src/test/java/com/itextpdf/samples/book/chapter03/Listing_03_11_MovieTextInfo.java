@@ -1,13 +1,11 @@
 package com.itextpdf.samples.book.chapter03;
 
 import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.basics.font.Type1Font;
+import com.itextpdf.basics.geom.PageSize;
+import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.canvas.color.Color;
 import com.itextpdf.core.font.PdfFont;
-import com.itextpdf.core.font.PdfType1Font;
-import com.itextpdf.basics.geom.PageSize;
-import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfPage;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -21,7 +19,6 @@ import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.Screening;
-
 import org.junit.experimental.categories.Category;
 
 import java.io.FileOutputStream;
@@ -57,7 +54,7 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4.getHeight(), PageSize.A4.getWidth(), 0, 0, 0, 0));
 
-        PdfFont font = new PdfType1Font(pdfDoc, new Type1Font(FontConstants.HELVETICA, ""));
+        PdfFont font = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA);
         doc.setProperty(Property.FONT, font);
 
         Text press = new Text("P").

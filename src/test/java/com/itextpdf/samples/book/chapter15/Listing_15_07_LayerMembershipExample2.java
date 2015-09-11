@@ -1,9 +1,8 @@
 package com.itextpdf.samples.book.chapter15;
 
 import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.canvas.PdfCanvas;
-import com.itextpdf.core.font.PdfType1Font;
+import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfName;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -12,7 +11,6 @@ import com.itextpdf.core.pdf.layer.PdfLayerMembership;
 import com.itextpdf.core.pdf.layer.PdfVisibilityExpression;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
-
 import org.junit.experimental.categories.Category;
 
 import java.io.FileOutputStream;
@@ -35,7 +33,7 @@ public class Listing_15_07_LayerMembershipExample2 extends GenericTest {
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(writer);
 
-        PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage()).setFontAndSize(new PdfType1Font(pdfDoc, new Type1Font(FontConstants.HELVETICA, "")), 18);
+        PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage()).setFontAndSize(PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA), 18);
 
         PdfLayer dog = new PdfLayer("layer 1", pdfDoc);
         PdfLayer tiger = new PdfLayer("layer 2", pdfDoc);

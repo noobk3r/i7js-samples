@@ -1,14 +1,12 @@
 package com.itextpdf.samples.book.chapter01;
 
 import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.canvas.PdfCanvas;
-import com.itextpdf.core.font.PdfType1Font;
+import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
-
 import org.junit.experimental.categories.Category;
 
 import java.io.FileOutputStream;
@@ -34,7 +32,7 @@ public class Listing_01_11_HelloWorldDirect extends GenericTest {
         //Initialize canvas, add page and write text to it
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         canvas.saveState().beginText().moveText(36, 600).
-                setFontAndSize(new PdfType1Font(pdfDoc, new Type1Font(FontConstants.HELVETICA, "")), 12).showText("Hello World").
+                setFontAndSize(PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA), 12).showText("Hello World").
                 endText().restoreState();
         canvas.release();
 

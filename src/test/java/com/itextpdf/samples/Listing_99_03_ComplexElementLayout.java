@@ -1,9 +1,8 @@
 package com.itextpdf.samples;
 
 import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.basics.font.Type1Font;
-import com.itextpdf.core.font.PdfType1Font;
 import com.itextpdf.basics.geom.Rectangle;
+import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
@@ -11,7 +10,6 @@ import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.layout.LayoutArea;
 import com.itextpdf.model.renderer.ParagraphRenderer;
-
 import org.junit.experimental.categories.Category;
 
 import java.io.FileOutputStream;
@@ -46,7 +44,7 @@ public class Listing_99_03_ComplexElementLayout extends GenericTest {
         Paragraph twoColumnParagraph = new Paragraph();
         twoColumnParagraph.setNextRenderer(new TwoColumnParagraphRenderer(twoColumnParagraph));
         twoColumnParagraph.add(text.toString());
-        doc.add(twoColumnParagraph.setFont(new PdfType1Font(pdfDoc, new Type1Font(FontConstants.HELVETICA, ""))));
+        doc.add(twoColumnParagraph.setFont(PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA)));
 
         doc.add(new Paragraph("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"));
 

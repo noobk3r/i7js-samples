@@ -1,11 +1,8 @@
 package com.itextpdf.samples.sandbox.tables;
 
-import com.itextpdf.basics.Utilities;
 import com.itextpdf.basics.font.PdfEncodings;
-import com.itextpdf.basics.font.TrueTypeFont;
 import com.itextpdf.canvas.color.Color;
 import com.itextpdf.core.font.PdfFont;
-import com.itextpdf.core.font.PdfType0Font;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
@@ -19,7 +16,6 @@ import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -53,7 +49,7 @@ public class CellMethod extends GenericTest {
     }
 
     public static PdfFont getFontForThisLanguage(String language, PdfDocument pdfDoc) throws IOException {
-        return new PdfType0Font(pdfDoc, new TrueTypeFont("Free Sans", PdfEncodings.IDENTITY_H, Utilities.inputStreamToArray(new FileInputStream(FONT))), "Identity-H");
+        return PdfFont.createFont(pdfDoc, FONT, PdfEncodings.IDENTITY_H);
 //        byte[] ttf = Utilities.inputStreamToArray(new FileInputStream(FONT));
 //        if ("czech".equals(language)) {
 //            return new PdfType0Font(pdfDoc, new TrueTypeFont("Free Sans", PdfEncodings.IDENTITY_H, Utilities.inputStreamToArray(new FileInputStream(FONT))), "Identity-H");

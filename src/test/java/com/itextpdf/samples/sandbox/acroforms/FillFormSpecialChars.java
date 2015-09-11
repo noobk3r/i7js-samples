@@ -6,11 +6,8 @@
  */
 package com.itextpdf.samples.sandbox.acroforms;
 
-import com.itextpdf.basics.Utilities;
 import com.itextpdf.basics.font.PdfEncodings;
-import com.itextpdf.basics.font.TrueTypeFont;
 import com.itextpdf.core.font.PdfFont;
-import com.itextpdf.core.font.PdfType0Font;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -45,13 +42,7 @@ public class FillFormSpecialChars extends GenericTest {
                 new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         form.setGenerateAppearance(true);
-        PdfFont font = new PdfType0Font(
-                pdfDoc,
-                new TrueTypeFont(
-                        "Free Sans",
-                        PdfEncodings.IDENTITY_H,
-                        Utilities.inputStreamToArray(new FileInputStream(FONT))),
-                "Identity-H");
+        PdfFont font = PdfFont.createFont(pdfDoc, FONT, PdfEncodings.IDENTITY_H);
         form.getFormFields().get("test").setFont(font);
         form.getFormFields().get("test").setValue(VALUE);
         // TODO THERE IS NO SUCH FIELD in itext6 but in itext5

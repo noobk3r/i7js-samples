@@ -1,15 +1,13 @@
 package com.itextpdf.samples.book.chapter15;
 
 import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.canvas.PdfCanvas;
-import com.itextpdf.core.font.PdfType1Font;
+import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.layer.PdfLayer;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
-
 import org.junit.experimental.categories.Category;
 
 import java.io.FileOutputStream;
@@ -41,7 +39,7 @@ public class Listing_15_02_OptionalContentExample extends GenericTest {
         nested.addChild(nested_1);
         nested.addChild(nested_2);
         nested_2.setLocked(true);
-        PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage()).setFontAndSize(new PdfType1Font(pdfDoc, new Type1Font(FontConstants.HELVETICA, "")), 18);
+        PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage()).setFontAndSize(PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA), 18);
         canvas.beginLayer(nested).beginText().moveText(50, 750).showText("nested layers").endText().endLayer();
         canvas.beginLayer(nested_1).beginText().moveText(100, 780).showText("nested layer 1").endText().endLayer();
         canvas.beginLayer(nested_2).beginText().moveText(100, 720).showText("nested layer 2").endText().endLayer();
