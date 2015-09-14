@@ -40,11 +40,7 @@ public class FullPageTable extends GenericTest {
         // first row
         Cell cell = new Cell(1, 10).add(new Paragraph("DateRange"));
         cell.setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
-        // TODO Implement setPadding(float value) to set all paddings' value
-        cell.setPaddingTop(5.0f);
-        cell.setPaddingRight(5.0f);
-        cell.setPaddingBottom(5.0f);
-        cell.setPaddingLeft(5.0f);
+        cell.setPadding(5.0f);
         cell.setBackgroundColor(new DeviceRgb(140, 221, 8));
         table.addCell(cell);
 

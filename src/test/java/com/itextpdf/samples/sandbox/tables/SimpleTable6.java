@@ -15,13 +15,11 @@ import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.element.Text;
 import com.itextpdf.samples.GenericTest;
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileOutputStream;
 
-@Ignore
 @Category(SampleTest.class)
 public class SimpleTable6 extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/simple_table6.pdf";
@@ -43,15 +41,12 @@ public class SimpleTable6 extends GenericTest {
         table.addCell(new Cell().add(new Paragraph("0123456789")));
         PdfFont font = new PdfType1Font(pdfDoc,
                 (Type1Font) FontFactory.createFont(FontConstants.HELVETICA, PdfEncodings.WINANSI));
-        // TODO Implement fontstyle Font.STRIKETHTU
-        table.addCell(new Cell().add(new Paragraph("0123456789").setFont(font).setFontSize(12)));
+        table.addCell(new Cell().add(new Paragraph("0123456789").setFont(font).setFontSize(12).setLineThrough()));
         Text text1 = new Text("0123456789");
-        // TODO Implement setUnderline(float, float) method
-        // chunk1.setUnderline(1.5f, -1);
+        text1.setUnderline(1.5f, -1);
         table.addCell(new Cell().add(new Paragraph().add(text1)));
         Text text2 = new Text("0123456789");
-        // TODO Implement setUnderline(float, float) method
-        //chunk2.setUnderline(1.5f, 3.5f);
+        text2.setUnderline(1.5f, 3.5f);
         table.addCell(new Cell().add(new Paragraph(text2)));
         doc.add(table);
 

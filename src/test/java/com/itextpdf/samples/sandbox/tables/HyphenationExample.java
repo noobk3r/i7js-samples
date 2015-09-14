@@ -37,8 +37,7 @@ public class HyphenationExample extends GenericTest {
         // Hyphenation s = h.hyphenate("Leistungsscheinziffer");
         // System.out.println(s);
         Table table = new Table(1);
-        // TODO Implement setWidthPercentage(float)
-        // table.setWidthPercentage(10);
+        table.setWidthPercent(10);
         Paragraph chunk = new Paragraph("Leistungsscheinziffer");
         //chunk.setHyphenation(new HyphenationAuto("de", "DE", 2, 2));
         table.addCell(new Cell().add(chunk));
