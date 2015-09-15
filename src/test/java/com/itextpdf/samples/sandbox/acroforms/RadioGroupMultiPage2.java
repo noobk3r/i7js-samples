@@ -23,7 +23,6 @@ import org.junit.experimental.categories.Category;
 import java.io.File;
 import java.io.FileOutputStream;
 
-@Ignore
 @Category(SampleTest.class)
 public class RadioGroupMultiPage2 extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/acroforms/radio_group_multi_page2.pdf";
@@ -76,7 +75,7 @@ public class RadioGroupMultiPage2 extends GenericTest {
         @Override
         public void draw(PdfDocument document, PdfCanvas canvas) {
             PdfFormField field = PdfFormField.createRadioButton(document, getOccupiedAreaBBox(), radioGroup, value);
-            field.setPage(document.getNumOfPages());
+            PdfAcroForm.getAcroForm(document, true).addFieldAppearanceToPage(field, document.getLastPage());
         }
     }
 
