@@ -19,7 +19,7 @@ import java.io.FileOutputStream;
 @Category(SampleTest.class)
 public class Listing_08_11_TextFieldActions extends GenericTest {
 
-    static public final String DEST = "./target/test/resources/Listing_08_11_TextFieldActions.pdf";
+    static public final String DEST = "./target/test/resources/Listing_08_11_TextFieldActions/Listing_08_11_TextFieldActions.pdf";
 
     public static void main(String[] args) throws Exception {
         new Listing_08_11_TextFieldActions().manipulatePdf(DEST);

@@ -27,7 +27,7 @@ import java.util.List;
 @Category(SampleTest.class)
 public class Listing_03_16_MovieColumns1 extends GenericTest {
 
-    public static final String DEST = "./target/test/resources/Listing_03_16_MovieColumns1.pdf";
+    public static final String DEST = "./target/test/resources/Listing_03_16_MovieColumns1/Listing_03_16_MovieColumns1.pdf";
 
     protected PdfFont normal, bold, italic, boldItalic;
 

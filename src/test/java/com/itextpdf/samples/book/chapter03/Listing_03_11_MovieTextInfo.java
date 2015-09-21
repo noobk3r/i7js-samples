@@ -29,7 +29,7 @@ import java.util.List;
 @Category(SampleTest.class)
 public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
 
-    public static final String DEST = "./target/test/resources/Listing_03_11_MovieTextInfo.pdf";
+    public static final String DEST = "./target/test/resources/Listing_03_11_MovieTextInfo/Listing_03_11_MovieTextInfo.pdf";
 
     /** The different time slots. */
     public static String[] TIME =

@@ -27,7 +27,7 @@ public class Listing_06_19_FillDataSheet extends GenericTest{
             = "./src/test/resources/pdfs/datasheet.pdf";
     /** The resulting PDF file. */
     public static final String DEST
-            = "./target/test/resources/Listing_06_19_FillDataSheet.pdf";
+            = "./target/test/resources/Listing_06_19_FillDataSheet/Listing_06_19_FillDataSheet.pdf";
 
     /**
      * Main method.

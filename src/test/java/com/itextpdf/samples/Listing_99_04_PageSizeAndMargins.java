@@ -17,7 +17,7 @@ import java.io.IOException;
 @Category(SampleTest.class)
 public class Listing_99_04_PageSizeAndMargins extends GenericTest {
 
-    static public final String DEST = "./target/test/resources/Listing_99_03_PageSizeAndMargins.pdf";
+    static public final String DEST = "./target/test/resources/Listing_99_03_PageSizeAndMargins/Listing_99_03_PageSizeAndMargins.pdf";
 
     public static void main(String args[]) throws IOException {
         new Listing_99_04_PageSizeAndMargins().manipulatePdf(DEST);

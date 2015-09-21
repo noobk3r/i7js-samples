@@ -20,7 +20,7 @@ import java.io.FileOutputStream;
 @Category(SampleTest.class)
 public class Listing_03_23_ImageDirect extends GenericTest {
 
-    public static final String DEST = "./target/test/resources/Listing_03_23_ImageDirect.pdf";
+    public static final String DEST = "./target/test/resources/Listing_03_23_ImageDirect/Listing_03_23_ImageDirect.pdf";
 
     public static final String RESOURCE = "src/test/resources/img/loa.jpg";
 

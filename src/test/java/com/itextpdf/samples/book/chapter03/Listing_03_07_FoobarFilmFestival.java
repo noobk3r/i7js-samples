@@ -9,7 +9,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class Listing_03_07_FoobarFilmFestival extends GenericTest {
 
-    public static final String DEST = "./target/test/resources/Listing_03_07_FoobarFilmFestival.pdf";
+    public static final String DEST = "./target/test/resources/Listing_03_07_FoobarFilmFestival/Listing_03_07_FoobarFilmFestival.pdf";
 
     public static void main(String[] args) throws Exception {
         new Listing_03_07_FoobarFilmFestival().manipulatePdf(DEST);

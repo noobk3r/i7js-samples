@@ -33,7 +33,7 @@ import java.util.List;
 @Category(SampleTest.class)
 public class Listing_03_20_ColumnMovies2 extends GenericTest {
 
-    public static final String DEST = "./target/test/resources/Listing_03_20_ColumnMovies2.pdf";
+    public static final String DEST = "./target/test/resources/Listing_03_20_ColumnMovies2/Listing_03_20_ColumnMovies2.pdf";
 
     public static final Rectangle[] COLUMNS = {
             new Rectangle(36, 36, 188, 543), new Rectangle(230, 36, 188, 543),

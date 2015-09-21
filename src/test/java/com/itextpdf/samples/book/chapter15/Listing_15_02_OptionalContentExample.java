@@ -18,7 +18,7 @@ import java.util.List;
 @Category(SampleTest.class)
 public class Listing_15_02_OptionalContentExample extends GenericTest {
 
-    static public final String DEST = "./target/test/resources/Listing_15_02_OptionalContentExample.pdf";
+    static public final String DEST = "./target/test/resources/Listing_15_02_OptionalContentExample/Listing_15_02_OptionalContentExample.pdf";
 
     public static void main(String args[]) throws IOException {
         new Listing_15_02_OptionalContentExample().manipulatePdf(DEST);

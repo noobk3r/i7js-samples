@@ -18,7 +18,7 @@ import java.io.IOException;
 @Category(SampleTest.class)
 public class Listing_06_21_ConcatenateStamp extends GenericTest {
 
-    static public final String DEST = "./target/test/resources/Listing_06_21_ConcatenateStamp.pdf";
+    static public final String DEST = "./target/test/resources/Listing_06_21_ConcatenateStamp/Listing_06_21_ConcatenateStamp.pdf";
     static public final String SOURCE1 = "./src/test/resources/source.pdf";
     static private final String SOURCE2 = "./src/test/resources/source2.pdf";
 

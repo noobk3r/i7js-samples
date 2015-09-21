@@ -13,7 +13,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class Listing_03_15_MovieCalendar extends Listing_03_11_MovieTextInfo {
 
-    public static final String DEST = "./target/test/resources/Listing_03_15_MovieCalendar.pdf";
+    public static final String DEST = "./target/test/resources/Listing_03_15_MovieCalendar/Listing_03_15_MovieCalendar.pdf";
 
     public static void main(String[] args) throws Exception {
         new Listing_03_15_MovieCalendar().manipulatePdf(DEST);

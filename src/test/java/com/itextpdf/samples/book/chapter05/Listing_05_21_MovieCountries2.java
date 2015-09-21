@@ -22,7 +22,7 @@ import java.io.IOException;
 @Category(SampleTest.class)
 public class Listing_05_21_MovieCountries2 extends GenericTest {
 
-    static public final String DEST = "./target/test/resources/Listing_05_21_MovieCountries2.pdf";
+    static public final String DEST = "./target/test/resources/Listing_05_21_MovieCountries2/Listing_05_21_MovieCountries2.pdf";
 
     public static void main(String args[]) throws IOException {
         new Listing_05_21_MovieCountries2().manipulatePdf(DEST);

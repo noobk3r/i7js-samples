@@ -26,7 +26,7 @@ import java.util.List;
 @Category(SampleTest.class)
 public class Listing_02_10_MovieChain extends GenericTest {
 
-    static public final String DEST = "./target/test/resources/Listing_02_10_MovieChain.pdf";
+    static public final String DEST = "./target/test/resources/Listing_02_10_MovieChain/Listing_02_10_MovieChain.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_02_10_MovieChain().manipulatePdf(DEST);

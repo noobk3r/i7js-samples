@@ -17,7 +17,7 @@ import java.io.IOException;
 @Category(SampleTest.class)
 public class Listing_06_12_StampText_Option2 extends GenericTest {
 
-    static public final String DEST = "./target/test/resources/Listing_06_12_StampText_Option2.pdf";
+    static public final String DEST = "./target/test/resources/Listing_06_12_StampText_Option2/Listing_06_12_StampText_Option2.pdf";
     static public final String SOURCE = "./src/test/resources/source.pdf";
 
     public static void main(String args[]) throws IOException {

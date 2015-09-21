@@ -27,7 +27,7 @@ import java.net.MalformedURLException;
 @Category(SampleTest.class)
 public class Listing_10_03_TilingPatternColor extends GenericTest {
 
-    static public final String DEST = "./target/test/resources/Listing_10_03_TilingPatternColor.pdf";
+    static public final String DEST = "./target/test/resources/Listing_10_03_TilingPatternColor/Listing_10_03_TilingPatternColor.pdf";
     static private final String IMG_SRC = "./src/test/resources/img/info.png";
 
 

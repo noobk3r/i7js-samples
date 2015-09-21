@@ -19,7 +19,7 @@ import java.io.IOException;
 @Category(SampleTest.class)
 public class Listing_99_01_DifferentLayouts extends GenericTest {
 
-    static public final String DEST = "./target/test/resources/Listing_99_01_DifferentLayouts.pdf";
+    static public final String DEST = "./target/test/resources/Listing_99_01_DifferentLayouts/Listing_99_01_DifferentLayouts.pdf";
 
     public static void main(String args[]) throws IOException {
         new Listing_99_01_DifferentLayouts().manipulatePdf(DEST);

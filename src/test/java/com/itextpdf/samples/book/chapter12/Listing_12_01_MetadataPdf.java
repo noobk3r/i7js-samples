@@ -15,7 +15,7 @@ import java.io.IOException;
 @Category(SampleTest.class)
 public class Listing_12_01_MetadataPdf extends GenericTest {
 
-    static public final String DEST = "./target/test/resources/Listing_12_01_MetadataPdf.pdf";
+    static public final String DEST = "./target/test/resources/Listing_12_01_MetadataPdf/Listing_12_01_MetadataPdf.pdf";
 
     public static void main(String args[]) throws IOException {
         new Listing_12_01_MetadataPdf().manipulatePdf(DEST);

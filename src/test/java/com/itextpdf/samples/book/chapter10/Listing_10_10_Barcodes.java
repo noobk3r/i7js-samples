@@ -22,7 +22,7 @@ import java.io.UnsupportedEncodingException;
 @Category(SampleTest.class)
 public class Listing_10_10_Barcodes extends GenericTest {
 
-    static public final String DEST = "./target/test/resources/Listing_10_10_Barcodes.pdf";
+    static public final String DEST = "./target/test/resources/Listing_10_10_Barcodes/Listing_10_10_Barcodes.pdf";
 
     public static void main(String args[]) throws IOException {
         new Listing_10_10_Barcodes().manipulatePdf(DEST);

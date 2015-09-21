@@ -21,7 +21,7 @@ import java.io.IOException;
 @Category(SampleTest.class)
 public class Listing_99_02_ComplexDocumentLayout extends GenericTest {
 
-    static public final String DEST = "./target/test/resources/Listing_99_02_ComplexDocumentLayout.pdf";
+    static public final String DEST = "./target/test/resources/Listing_99_02_ComplexDocumentLayout/Listing_99_02_ComplexDocumentLayout.pdf";
 
     public static void main(String args[]) throws IOException {
         new Listing_99_02_ComplexDocumentLayout().manipulatePdf(DEST);

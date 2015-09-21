@@ -24,7 +24,7 @@ import java.io.IOException;
 @Category(SampleTest.class)
 public class Listing_03_01_FestivalOpening extends GenericTest {
 
-    public static final String DEST = "./target/test/resources/Listing_03_01_FestivalOpening.pdf";
+    public static final String DEST = "./target/test/resources/Listing_03_01_FestivalOpening/Listing_03_01_FestivalOpening.pdf";
 
     private static final String RESOURCE = "src/test/resources/img/loa.jpg";
 

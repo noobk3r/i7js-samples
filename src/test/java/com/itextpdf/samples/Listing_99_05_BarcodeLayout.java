@@ -17,7 +17,7 @@ import java.io.IOException;
 
 public class Listing_99_05_BarcodeLayout extends GenericTest {
 
-    static public final String DEST = "./target/test/resources/Listing_99_05_BarcodeLayout.pdf";
+    static public final String DEST = "./target/test/resources/Listing_99_05_BarcodeLayout/Listing_99_05_BarcodeLayout.pdf";
 
     public static void main(String args[]) throws IOException {
         new Listing_99_05_BarcodeLayout().manipulatePdf(DEST);

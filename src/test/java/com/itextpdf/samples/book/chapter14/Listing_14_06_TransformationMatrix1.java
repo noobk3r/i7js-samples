@@ -18,7 +18,7 @@ import java.io.IOException;
 @Category(SampleTest.class)
 public class Listing_14_06_TransformationMatrix1 extends GenericTest {
 
-    static public final String DEST = "./target/test/resources/Listing_14_06_TransformationMatrix1.pdf";
+    static public final String DEST = "./target/test/resources/Listing_14_06_TransformationMatrix1/Listing_14_06_TransformationMatrix1.pdf";
     public static final String RESOURCE = "src/test/resources/pdfs/logo.pdf";
 
     public static void main(String args[]) throws IOException {

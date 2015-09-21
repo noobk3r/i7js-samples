@@ -16,7 +16,7 @@ import java.io.IOException;
 @Category(SampleTest.class)
 public class Listing_01_01_HelloWorld extends GenericTest {
 
-    static public final String DEST = "./target/test/resources/Listing_01_01_HelloWorld.pdf";
+    static public final String DEST = "./target/test/resources/Listing_01_01_HelloWorld/Listing_01_01_HelloWorld.pdf";
 
     public static void main(String args[]) throws IOException {
         new Listing_01_01_HelloWorld().manipulatePdf(DEST);

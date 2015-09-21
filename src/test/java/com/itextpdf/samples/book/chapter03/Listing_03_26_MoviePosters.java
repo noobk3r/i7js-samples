@@ -32,7 +32,7 @@ import java.util.List;
 @Category(SampleTest.class)
 public class Listing_03_26_MoviePosters extends GenericTest {
 
-    public static final String DEST = "./target/test/resources/Listing_03_26_MoviePosters.pdf";
+    public static final String DEST = "./target/test/resources/Listing_03_26_MoviePosters/Listing_03_26_MoviePosters.pdf";
 
     public static final String RESOURCE = "src/test/resources/img/posters/%s.jpg";
 

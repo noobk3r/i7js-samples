@@ -15,7 +15,7 @@ import java.io.IOException;
 @Category(SampleTest.class)
 public class Listing_06_04_ImportingPages1 extends GenericTest {
 
-    static public final String DEST = "./target/test/resources/Listing_06_04_ImportingPages1.pdf";
+    static public final String DEST = "./target/test/resources/Listing_06_04_ImportingPages1/Listing_06_04_ImportingPages1.pdf";
     static public final String SOURCE = "./src/test/resources/source.pdf";
 
     public static void main(String args[]) throws IOException {

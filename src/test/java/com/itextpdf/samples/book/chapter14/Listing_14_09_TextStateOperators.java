@@ -20,7 +20,7 @@ import java.io.FileOutputStream;
 @Category(SampleTest.class)
 public class Listing_14_09_TextStateOperators extends GenericTest {
 
-    static public final String DEST = "./target/test/resources/Listing_14_09_TextStateOperators.pdf";
+    static public final String DEST = "./target/test/resources/Listing_14_09_TextStateOperators/Listing_14_09_TextStateOperators.pdf";
 
     public static void main(String[] args) throws Exception {
         new Listing_14_09_TextStateOperators().manipulatePdf(DEST);

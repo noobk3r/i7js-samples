@@ -16,7 +16,7 @@ import java.io.FileOutputStream;
 @Category(SampleTest.class)
 public class Listing_03_03_MovieTimeTable extends GenericTest {
 
-    public static final String DEST = "./target/test/resources/Listing_03_03_MovieTimeTable.pdf";
+    public static final String DEST = "./target/test/resources/Listing_03_03_MovieTimeTable/Listing_03_03_MovieTimeTable.pdf";
 
     /** The number of locations on our time table. */
     public static final int LOCATIONS = 9;

@@ -14,7 +14,7 @@ import java.io.FileOutputStream;
 
 @Category(SampleTest.class)
 public class Listing_03_02_GraphicsStateStack extends GenericTest {
-    public static final String DEST = "./target/test/resources/Listing_03_02_GraphicsStateStack.pdf";
+    public static final String DEST = "./target/test/resources/Listing_03_02_GraphicsStateStack/Listing_03_02_GraphicsStateStack.pdf";
 
     public static void main(String[] args) throws Exception {
         new Listing_03_02_GraphicsStateStack().manipulatePdf(DEST);

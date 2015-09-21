@@ -24,7 +24,7 @@ import java.io.IOException;
 @Category(SampleTest.class)
 public class Listing_10_09_ImageTypes extends GenericTest {
 
-    static public final String DEST = "./target/test/resources/Listing_10_09_ImageTypes.pdf";
+    static public final String DEST = "./target/test/resources/Listing_10_09_ImageTypes/Listing_10_09_ImageTypes.pdf";
 
     /** Paths to images. */
     public static final String[] RESOURCES = {

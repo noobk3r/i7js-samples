@@ -20,7 +20,7 @@ import java.io.IOException;
 @Category(SampleTest.class)
 public class Listing_10_04_ShadingPatternColor extends GenericTest {
 
-    static public final String DEST = "./target/test/resources/Listing_10_04_ShadingPatternColor.pdf";
+    static public final String DEST = "./target/test/resources/Listing_10_04_ShadingPatternColor/Listing_10_04_ShadingPatternColor.pdf";
 
     public static void colorRectangle(PdfCanvas canvas, Color color, float x, float y, float width, float height) {
         canvas.saveState().setFillColor(color).rectangle(x, y, width, height).fillStroke().restoreState();

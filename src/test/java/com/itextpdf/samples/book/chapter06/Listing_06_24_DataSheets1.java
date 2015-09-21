@@ -22,7 +22,7 @@ import java.util.List;
 @Category(SampleTest.class)
 public class Listing_06_24_DataSheets1 extends Listing_06_19_FillDataSheet {
 
-    static public final String DEST = "./target/test/resources/Listing_06_24_DataSheets1.pdf";
+    static public final String DEST = "./target/test/resources/Listing_06_24_DataSheets1/Listing_06_24_DataSheets1.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_06_24_DataSheets1().manipulatePdf(DEST);

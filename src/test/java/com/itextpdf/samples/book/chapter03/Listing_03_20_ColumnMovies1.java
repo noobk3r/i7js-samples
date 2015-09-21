@@ -34,7 +34,7 @@ import java.util.List;
 @Category(SampleTest.class)
 public class Listing_03_20_ColumnMovies1 extends GenericTest {
 
-    public static final String DEST = "./target/test/resources/Listing_03_20_ColumnMovies1.pdf";
+    public static final String DEST = "./target/test/resources/Listing_03_20_ColumnMovies1/Listing_03_20_ColumnMovies1.pdf";
 
     public static final String RESOURCE = "src/test/resources/img/posters/%s.jpg";
 

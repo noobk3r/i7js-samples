@@ -17,7 +17,7 @@ import java.io.FileOutputStream;
 @Category(SampleTest.class)
 public class Listing_01_07_HelloWorldMirroredMargins extends GenericTest {
 
-    static public final String DEST = "./target/test/resources/Listing_01_07_HelloWorldMirroredMargins.pdf";
+    static public final String DEST = "./target/test/resources/Listing_01_07_HelloWorldMirroredMargins/Listing_01_07_HelloWorldMirroredMargins.pdf";
 
     public static void main(String[] args) throws Exception {
         new Listing_01_07_HelloWorldMirroredMargins().manipulatePdf(DEST);

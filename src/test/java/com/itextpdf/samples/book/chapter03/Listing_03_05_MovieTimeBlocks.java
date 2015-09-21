@@ -26,7 +26,7 @@ import java.util.List;
 @Category(SampleTest.class)
 public class Listing_03_05_MovieTimeBlocks extends Listing_03_03_MovieTimeTable {
 
-    public static final String DEST = "./target/test/resources/Listing_03_05_MovieTimeBlocks.pdf";
+    public static final String DEST = "./target/test/resources/Listing_03_05_MovieTimeBlocks/Listing_03_05_MovieTimeBlocks.pdf";
 
     /** The "offset time" for our calendar sheets. */
     public static final long TIME930 = Time.valueOf("09:30:00").getTime();

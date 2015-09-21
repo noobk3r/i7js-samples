@@ -24,7 +24,7 @@ import java.util.List;
 @Category(SampleTest.class)
 public class Listing_03_19_MovieColumns4 extends Listing_03_16_MovieColumns1 {
 
-    public static final String DEST = "./target/test/resources/Listing_03_19_MovieColumns4.pdf";
+    public static final String DEST = "./target/test/resources/Listing_03_19_MovieColumns4/Listing_03_19_MovieColumns4.pdf";
 
     public static final Rectangle[] COLUMNS = {
             new Rectangle(36, 666, 260, 136), new Rectangle(110, 580, 190, 90),
