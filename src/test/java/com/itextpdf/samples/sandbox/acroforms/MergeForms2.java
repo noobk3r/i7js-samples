@@ -20,11 +20,10 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
-// TODO problems with src-file to open. Temporary change src
 @Ignore
 @Category(SampleTest.class)
 public class MergeForms2 extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/acroforms/subscribe.pdf";
+    public static final String SRC = "./src/test/resources/sandbox/acroforms/state.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/merge_forms2.pdf";
 
     public static void main(String[] args) throws Exception {
@@ -43,7 +42,7 @@ public class MergeForms2 extends GenericTest {
         for (int i = 0; i < 3; ) {
             PdfDocument readerDoc = new PdfDocument(new PdfReader(
                     new RandomAccessSourceFactory().createSource(renameFields(SRC, ++i)),
-                    null, null, null, null, null), new PdfWriter(new FileOutputStream(DEST)));
+                    null, null, null, null, null));
             merger.addPages(readerDoc, 1, readerDoc.getNumOfPages());
             readerDoc.close();
         }

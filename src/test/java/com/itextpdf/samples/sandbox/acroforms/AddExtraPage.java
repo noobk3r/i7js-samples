@@ -10,7 +10,6 @@ import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.font.PdfType1Font;
-import com.itextpdf.core.pdf.PdfArray;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -26,11 +25,10 @@ import org.junit.experimental.categories.Category;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-// TODO problems with src-file to open. Temporary change src
 @Ignore
 @Category(SampleTest.class)
 public class AddExtraPage extends GenericTest {
-    public static String SRC = "./src/test/resources/sandbox/acroforms/subscribe.pdf";
+    public static String SRC = "./src/test/resources/sandbox/acroforms/stationery.pdf";
     public static String DEST = "./target/test/resources/sandbox/acroforms/add_extra_page.pdf";
 
     public static void main(String[] args) throws Exception {
@@ -47,10 +45,12 @@ public class AddExtraPage extends GenericTest {
 
         Paragraph p = new Paragraph();
         p.add(new Text("Hello "));
-        // TODO Implement usage of Font.BOLD
-        p.add(new Text("World").setFont(new PdfType1Font(pdfDoc,
-                (Type1Font) FontFactory.createFont(FontConstants.HELVETICA, PdfEncodings.WINANSI))).setFontSize(12));
-        PdfArray rectArray = form.getField("body").getWidgets().get(0).getRectangle();
+        p.add(new Text("World")
+                .setFont(new PdfType1Font(pdfDoc,
+                        (Type1Font) FontFactory.createFont(FontConstants.HELVETICA, PdfEncodings.WINANSI)))
+                .setFontSize(12)
+                .setBold());
+        //PdfArray rectArray = form.getField("body").getWidgets().get(0).getRectangle();
         // TODO Implement PdfImportedPage or summat
         /* We do not have ColumnText in itex6 */
         // PdfImportedPage newPage = null;

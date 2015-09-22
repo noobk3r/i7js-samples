@@ -21,7 +21,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.Map;
 
-// TODO problems with src-file to open. Temporary change src
 @Ignore
 @Category(SampleTest.class)
 public class FillWithUnderline extends GenericTest {

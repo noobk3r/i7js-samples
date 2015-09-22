@@ -14,18 +14,15 @@ import com.itextpdf.core.pdf.annot.PdfLinkAnnotation;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.samples.GenericTest;
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-// TODO problems with src-file to open. Temporary change src
-@Ignore
 @Category(SampleTest.class)
 public class AddField extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/acroforms/subscribe.pdf";
+    public static final String SRC = "./src/test/resources/sandbox/acroforms/form.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/add_field.pdf";
 
     public static void main(String[] args) throws Exception {
@@ -39,8 +36,7 @@ public class AddField extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(
                 new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
-        form.flatFields();
-        PdfPage page = pdfDoc.getLastPage();
+        PdfPage page = pdfDoc.getFirstPage();
 
         PdfCanvas canvas = new PdfCanvas(page);
         canvas.beginText();
@@ -55,7 +51,6 @@ public class AddField extends GenericTest {
                 .setAction(PdfAction.createURI(pdfDoc, "http://itextpdf.com:8180/book/request"))
                 .setName(new PdfString("post"))
                 .setBorder(new PdfArray(new float[]{0, 0, 1})));
-        page.flush();
         // TODO Implement VISIBLE_BUT_DOES_NOT_PRINT constant usage
         // button.setVisibility(PushbuttonField.VISIBLE_BUT_DOES_NOT_PRINT);
 

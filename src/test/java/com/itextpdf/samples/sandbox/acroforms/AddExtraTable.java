@@ -23,11 +23,10 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.Map;
 
-// TODO problems with src-file to open. Temporary change src
 @Ignore
 @Category(SampleTest.class)
 public class AddExtraTable extends GenericTest {
-    public static String SRC = "./src/test/resources/sandbox/acroforms/subscribe.pdf";
+    public static String SRC = "./src/test/resources/sandbox/acroforms/form.pdf";
     public static String DEST = "./target/test/resources/sandbox/acroforms/add_extra_table.pdf";
 
     public static void main(String[] args) throws Exception {
@@ -42,10 +41,10 @@ public class AddExtraTable extends GenericTest {
         Rectangle pagesize = pdfDoc.getPage(1).getPageSize();
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         Map<String, PdfFormField> fields = form.getFormFields();
-        //fields.get("Name").setValue("Jeniffer");
-        //fields.get("Company").setValue("iText's next customer");
-        //fields.get("Country").setValue("No Man's Land");
-        fields.get("name").setValue("Jeniffer");
+        fields.get("Name").setValue("Jeniffer");
+        fields.get("Company").setValue("iText's next customer");
+        fields.get("Country").setValue("No Man's Land");
+        form.flatFields();
 
         Table table = new Table(new float[]{1, 15});
         table.setWidth(0);
@@ -64,6 +63,7 @@ public class AddExtraTable extends GenericTest {
         //column.setSimpleColumn(rectPage1);
         //column.addElement(table);
         //table.setWidth(559-36);
+        // TODO Problems with margins
         doc.add(table);
 
         // int pagecount = 1;
@@ -72,8 +72,6 @@ public class AddExtraTable extends GenericTest {
         // while (ColumnText.hasMoreText(status)) {
         //    status = triggerNewPage(stamper, pagesize, column, rectPage2, ++pagecount);
         // }
-
-        form.flatFields();
         pdfDoc.close();
     }
 

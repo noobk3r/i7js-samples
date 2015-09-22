@@ -10,7 +10,6 @@ import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.samples.GenericTest;
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
@@ -18,11 +17,9 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.Map;
 
-// TODO problems with src-file to open. Temporary change src
-@Ignore
 @Category(SampleTest.class)
 public class ChangeFieldPosition extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/acroforms/hello_button.pdf";
+    public static final String SRC = "./src/test/resources/sandbox/acroforms/state.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/change_field_position.pdf";
 
     public static void main(String[] args) throws Exception {
@@ -37,7 +34,7 @@ public class ChangeFieldPosition extends GenericTest {
                 new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         Map<String, PdfFormField> fields = form.getFormFields();
-        PdfFormField fieldName = fields.get("Test");
+        PdfFormField fieldName = fields.get("timezone2");
         PdfWidgetAnnotation annotationName = fieldName.getWidgets().get(0);
         PdfArray annotationRect = annotationName.getRectangle();
         annotationRect.set(2, new PdfNumber(annotationRect.getAsFloat(2) - 10f));

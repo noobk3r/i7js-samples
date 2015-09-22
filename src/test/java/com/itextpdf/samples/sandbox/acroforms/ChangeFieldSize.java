@@ -10,15 +10,12 @@ import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.samples.GenericTest;
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-// TODO problems with src-file to open. Temporary change src
-@Ignore
 @Category(SampleTest.class)
 public class ChangeFieldSize extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/acroforms/form.pdf";

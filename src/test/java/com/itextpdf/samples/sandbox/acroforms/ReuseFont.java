@@ -9,19 +9,14 @@ import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.*;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
-import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.samples.GenericTest;
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Map;
 
-// TODO problems with src-file to open. Temporary change src
-@Ignore
 @Category(SampleTest.class)
 public class ReuseFont extends GenericTest {
 
@@ -39,9 +34,8 @@ public class ReuseFont extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(
                 new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
-        Map<String, PdfFormField> fields = form.getFormFields();
         PdfFont font = findFontInForm(pdfDoc, new PdfName("Calibri"));
-        PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
+        PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());
         canvas.beginText();
         canvas.setFontAndSize(font, 13);
         canvas.moveText(36, 806);

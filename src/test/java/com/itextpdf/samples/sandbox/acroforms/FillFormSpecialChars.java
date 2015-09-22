@@ -45,9 +45,8 @@ public class FillFormSpecialChars extends GenericTest {
         PdfFont font = PdfFont.createFont(pdfDoc, FONT, PdfEncodings.IDENTITY_H);
         form.getFormFields().get("test").setFont(font);
         form.getFormFields().get("test").setValue(VALUE);
-        // TODO THERE IS NO SUCH FIELD in itext6 but in itext5
-        // form.getFormFields().get("test2").setFont(font);
-        // form.getFormFields().get("test2").setValue(VALUE);
+        form.getFormFields().get("test2").setFont(font);
+        form.getFormFields().get("test2").setValue(VALUE);
         pdfDoc.close();
     }
 }
