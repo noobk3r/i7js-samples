@@ -21,7 +21,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-// TODO itext5 see more fields than itext6 in this document
 @Ignore
 @Category(SampleTest.class)
 public class FillFormSpecialChars extends GenericTest {
@@ -44,6 +43,7 @@ public class FillFormSpecialChars extends GenericTest {
         form.setGenerateAppearance(true);
         PdfFont font = PdfFont.createFont(pdfDoc, FONT, PdfEncodings.IDENTITY_H);
         form.getFormFields().get("test").setFont(font);
+        // TODO DEVSIX-294
         form.getFormFields().get("test").setValue(VALUE);
         form.getFormFields().get("test2").setFont(font);
         form.getFormFields().get("test2").setValue(VALUE);
