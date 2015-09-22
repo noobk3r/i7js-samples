@@ -17,7 +17,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-//TODO Need first to fix font subsetting problems DEVSIX-275
+
 @Category(SampleTest.class)
 public class CellMethod extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/cell_method.pdf";
@@ -56,6 +56,7 @@ public class CellMethod extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
+        setCompareRenders(true);
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
