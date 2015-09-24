@@ -35,7 +35,7 @@ public class Listing_05_21_MovieCountries2 extends GenericTest {
 
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(writer);
-        pdfDoc.addEventHandler(PdfDocumentEvent.EndPage, new Watermarks());
+        pdfDoc.addEventHandler(PdfDocumentEvent.END_PAGE, new Watermarks());
         Document doc = new Document(pdfDoc);
 
         //Add element, create new page, add element
