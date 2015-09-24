@@ -22,8 +22,8 @@ import java.io.IOException;
 @Category(SampleTest.class)
 public class Listing_08_15_Subscribe extends GenericTest {
 
-    static public final String DEST = "./target/test/resources/Listing_08_15_Subscribe.pdf";
-    public static final String SRC = "./target/test/resources/subscribe.pdf";
+    static public final String DEST = "./target/test/resources/Listing_08_15_Subscribe/Listing_08_15_Subscribe.pdf";
+    public static final String SRC = "./target/test/resources/Listing_08_15_Subscribe/subscribe.pdf";
 
     private String name = "Bruno Lowagie";
     private String login = "blowagie";
@@ -73,19 +73,19 @@ public class Listing_08_15_Subscribe extends GenericTest {
         cell = new Cell(1, 2);
         PdfTextFormField field = PdfFormField.createText(pdfDoc, new Rectangle(0, 0), "", "name");
         personal.addKid(field);
-        cell.setNextRenderer(createCellRendered(field, 1, cell));
+        cell.setNextRenderer(createCellRenderer(field, 1, cell));
         table.addCell(cell);
         table.addCell(new Cell().add(new Paragraph("Login:")));
         cell = new Cell();
         field = PdfFormField.createText(pdfDoc, new Rectangle(0, 0), "", "loginname");
         personal.addKid(field);
-        cell.setNextRenderer(createCellRendered(field, 1, cell));
+        cell.setNextRenderer(createCellRenderer(field, 1, cell));
         table.addCell(cell);
         cell = new Cell();
         field = PdfFormField.createText(pdfDoc, new Rectangle(0, 0), "", "password");
         field.setPassword(true);
         personal.addKid(field);
-        cell.setNextRenderer(createCellRendered(field, 1, cell));
+        cell.setNextRenderer(createCellRenderer(field, 1, cell));
         table.addCell(cell);
         table.addCell(new Cell().add(new Paragraph("Your motivation:")));
         cell = new Cell(1, 2);
@@ -93,7 +93,7 @@ public class Listing_08_15_Subscribe extends GenericTest {
         field = PdfFormField.createText(pdfDoc, new Rectangle(0, 0), "", "reason");
         field.setMultiline(true);
         personal.addKid(field);
-        cell.setNextRenderer(createCellRendered(field, 1, cell));;
+        cell.setNextRenderer(createCellRenderer(field, 1, cell));;
         table.addCell(cell);
 
         doc.add(table);
@@ -103,8 +103,8 @@ public class Listing_08_15_Subscribe extends GenericTest {
         doc.close();
     }
 
-    private CellRenderer createCellRendered(PdfFormField field, float padding, Cell cell) {
-        CellRenderer rend = new CellRenderer(cell) {
+    private CellRenderer createCellRenderer(PdfFormField field, float padding, Cell cell) {
+        return new CellRenderer(cell) {
             PdfFormField field;
             float padding;
 
@@ -126,7 +126,5 @@ public class Listing_08_15_Subscribe extends GenericTest {
                 super.draw(doc, canvas);
             }
         }.setParameters(field, padding);
-
-        return rend;
     }
 }
