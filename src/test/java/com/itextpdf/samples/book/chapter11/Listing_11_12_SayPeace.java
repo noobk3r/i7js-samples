@@ -7,6 +7,7 @@ import com.itextpdf.canvas.color.DeviceGray;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.border.Border;
@@ -15,6 +16,7 @@ import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.element.Text;
 import com.itextpdf.samples.GenericTest;
+import org.junit.experimental.categories.Category;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -26,9 +28,12 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+@Category(SampleTest.class)
+// TODO find arabic font and use it
 public class Listing_11_12_SayPeace extends GenericTest {
 
     public static final String DEST = "./target/test/resources/Listing_11_12_SayPeace/Listing_11_12_SayPeace.pdf";
+    private static final String FONT = "src/test/resources/font/FreeSans.ttf";
     private static final String RESOURCE = "src/test/resources/xml/say_peace.xml";
 
     public static void main(String[] args) throws Exception {
@@ -70,7 +75,7 @@ public class Listing_11_12_SayPeace extends GenericTest {
         public CustomHandler(Document document) {
             this.document = document;
             try {
-                this.f = PdfFont.createFont(document.getPdfDocument(), "c:/windows/fonts/arialuni.ttf", PdfEncodings.IDENTITY_H, true);
+                this.f = PdfFont.createFont(document.getPdfDocument(), FONT, PdfEncodings.IDENTITY_H, true);
             } catch (IOException e) {
                 e.printStackTrace();
             }
