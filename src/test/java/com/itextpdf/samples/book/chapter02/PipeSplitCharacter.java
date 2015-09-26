@@ -1,6 +1,6 @@
 package com.itextpdf.samples.book.chapter02;
 
-import com.itextpdf.model.hyphenation.ISplitCharacters;
+import com.itextpdf.model.splitting.ISplitCharacters;
 
 public class PipeSplitCharacter implements ISplitCharacters {
 
