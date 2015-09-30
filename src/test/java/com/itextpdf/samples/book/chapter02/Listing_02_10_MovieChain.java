@@ -9,6 +9,7 @@ import com.itextpdf.model.Property;
 import com.itextpdf.model.element.AreaBreak;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Text;
+import com.itextpdf.model.hyphenation.HyphenationConfig;
 import com.itextpdf.samples.GenericTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
@@ -81,9 +82,25 @@ public class Listing_02_10_MovieChain extends GenericTest {
         paragraph.setHorizontalAlignment(Property.HorizontalAlignment.JUSTIFIED);
         doc.add(paragraph);
 
+        // go to a new page
         doc.add(new AreaBreak());
 
-        // TODO port the rest when hyphenation is implemented.
+        chunk2.setHyphenation(new HyphenationConfig("en", "US", 2, 2));
+        // wrap the second chunk in a second paragraph and add it
+        paragraph = new Paragraph("D:\u00a0");
+        paragraph.add(chunk2);
+        paragraph.setHorizontalAlignment(Property.HorizontalAlignment.JUSTIFIED);
+        doc.add(paragraph);
+
+        // go to a new page
+        doc.add(new AreaBreak());
+
+        // wrap the second chunk in a third paragraph and add it
+        paragraph = new Paragraph("E:\u00a0");
+        paragraph.add(chunk2);
+        paragraph.setHorizontalAlignment(Property.HorizontalAlignment.JUSTIFIED);
+        paragraph.setSpacingRatio(1);
+        doc.add(paragraph);
 
         //Close document
         doc.close();
