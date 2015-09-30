@@ -47,6 +47,10 @@ public class HyphenationExample extends GenericTest {
         phrase.setHyphenation(new HyphenationConfig("de", "DE", 2, 2));
         phrase.add("Leistungsscheinziffer");
         table.addCell(new Cell().add(phrase));
+
+        // soft hyphens
+        table.addCell(new Cell().add(new Paragraph("Le\u00adistun\u00ADgssch\u00ADeinziffe\u00ADr").setHyphenation(new HyphenationConfig(3, 2))));
+
         doc.add(table);
 
         doc.close();

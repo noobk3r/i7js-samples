@@ -55,7 +55,7 @@
             <groupId>com.itextpdf</groupId>
             <artifactId>hyph</artifactId>
             <version>${project.version}</version>
-            <scope>test</scope>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>hsqldb</groupId>
