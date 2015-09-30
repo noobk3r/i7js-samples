@@ -8,9 +8,9 @@ import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.basics.image.Image;
 import com.itextpdf.basics.image.ImageFactory;
 import com.itextpdf.canvas.PdfCanvas;
-import com.itextpdf.canvas.PdfGraphicsState;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.pdf.extgstate.PdfExtGState;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
@@ -21,7 +21,6 @@ import org.junit.experimental.categories.Category;
 import java.io.File;
 import java.io.FileOutputStream;
 
-@Ignore
 @Category(SampleTest.class)
 public class BackgroundTransparent extends GenericTest {
     public static final String IMAGE = "./src/test/resources/sandbox/images/berlin2013.jpg";
@@ -39,18 +38,15 @@ public class BackgroundTransparent extends GenericTest {
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc, PageSize.A4.rotate());
-        PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
+        doc.add(new Paragraph("Berlin!"));
+        PdfCanvas canvas = new PdfCanvas(pdfDoc.getLastPage());
         Image image = ImageFactory.getImage(IMAGE);
         canvas.saveState();
-        PdfGraphicsState state = new PdfGraphicsState();
-        // TODO Implement setFillOpacity(float)
-        // state.setFillOpacity(0.6f);
-        // TODO Implement setGraphicsState
-        // canvas.setGraphicsState(state);
-        // image.setTransparency((new int[]{ 0xF0, 0xFF }));
+        PdfExtGState state = new PdfExtGState();
+        state.setFillOpacity(0.6f);
+        canvas.setExtGState(state);
         canvas.addImage(image, 0, 0, PageSize.A4.rotate().getWidth(), false);
-        // canvas.restoreState();
-        doc.add(new Paragraph("Berlin!"));
+        canvas.restoreState();
         doc.close();
     }
 }

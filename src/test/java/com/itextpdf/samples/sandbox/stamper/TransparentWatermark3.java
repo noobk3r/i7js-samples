@@ -11,12 +11,12 @@ import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.basics.image.Image;
 import com.itextpdf.basics.image.ImageFactory;
 import com.itextpdf.canvas.PdfCanvas;
-import com.itextpdf.canvas.PdfGraphicsState;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.font.PdfType1Font;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.pdf.extgstate.PdfExtGState;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
@@ -58,9 +58,8 @@ public class TransparentWatermark3 extends GenericTest {
         float w = img.getWidth();
         float h = img.getHeight();
         // transparency
-        PdfGraphicsState gs1 = new PdfGraphicsState();
-        // TODO Implement setFillOpacity
-        // gs1.setFillOpacity(0.5f);
+        PdfExtGState gs1 = new PdfExtGState();
+         gs1.setFillOpacity(0.5f);
         // properties
         PdfCanvas over;
         Rectangle pagesize;
@@ -72,8 +71,7 @@ public class TransparentWatermark3 extends GenericTest {
             y = (pagesize.getTop() + pagesize.getBottom()) / 2;
             over = new PdfCanvas(pdfDoc.getPage(i));
             over.saveState();
-            // TODO Implement setGState(PdfGraphicsState)
-            //over.setGState(gs1);
+            over.setExtGState(gs1);
             if (i % 2 == 1)
                 doc.showTextAligned(p, x, y, i, Property.HorizontalAlignment.CENTER, Property.VerticalAlignment.TOP, 0);
             else
