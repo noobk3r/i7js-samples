@@ -11,7 +11,6 @@ import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
-import com.itextpdf.model.element.Image;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import org.junit.experimental.categories.Category;
@@ -38,8 +37,7 @@ public class BackgroundImage extends GenericTest {
         Document doc = new Document(pdfDoc, PageSize.A4.rotate());
 
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
-        Image image = new Image(ImageFactory.getImage(IMAGE));
-        canvas.addXObject(image.getXObject(), 0, 0, PageSize.A4.rotate().getWidth(), false);
+        canvas.addImage(ImageFactory.getImage(IMAGE), PageSize.A4.rotate(), false);
         doc.add(new Paragraph("Berlin!"));
         doc.close();
     }
