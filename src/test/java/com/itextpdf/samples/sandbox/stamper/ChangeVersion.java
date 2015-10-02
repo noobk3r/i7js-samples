@@ -8,11 +8,12 @@ import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.samples.GenericTest;
-import org.junit.Ignore;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+
+import org.junit.Ignore;
 
 @Ignore
 public class ChangeVersion extends GenericTest {

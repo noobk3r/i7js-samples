@@ -15,12 +15,14 @@ import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileOutputStream;
 
+import org.junit.Ignore;
+import org.junit.experimental.categories.Category;
+
+@Ignore
 @Category(SampleTest.class)
 public class BackgroundTransparent extends GenericTest {
     public static final String IMAGE = "./src/test/resources/sandbox/images/berlin2013.jpg";

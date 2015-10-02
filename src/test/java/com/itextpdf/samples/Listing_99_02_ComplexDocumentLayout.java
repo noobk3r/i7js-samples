@@ -10,10 +10,11 @@ import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.layout.LayoutArea;
 import com.itextpdf.model.renderer.DocumentRenderer;
-import org.junit.experimental.categories.Category;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+
+import org.junit.experimental.categories.Category;
 
 /**
  * Example demonstrates how to build complex layouts using layout manager

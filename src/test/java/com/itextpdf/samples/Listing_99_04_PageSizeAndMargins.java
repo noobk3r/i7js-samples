@@ -8,11 +8,11 @@ import com.itextpdf.model.Document;
 import com.itextpdf.model.element.AreaBreak;
 import com.itextpdf.model.element.Paragraph;
 
-import org.junit.experimental.categories.Category;
-
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
+import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_99_04_PageSizeAndMargins extends GenericTest {

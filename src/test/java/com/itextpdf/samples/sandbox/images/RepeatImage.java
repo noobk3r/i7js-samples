@@ -8,18 +8,24 @@
  */
 package com.itextpdf.samples.sandbox.images;
 
-import com.itextpdf.core.pdf.*;
+import com.itextpdf.core.pdf.PdfDictionary;
+import com.itextpdf.core.pdf.PdfDocument;
+import com.itextpdf.core.pdf.PdfName;
+import com.itextpdf.core.pdf.PdfReader;
+import com.itextpdf.core.pdf.PdfStream;
+import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.xobject.PdfImageXObject;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Image;
 import com.itextpdf.samples.GenericTest;
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+
+import org.junit.Ignore;
+import org.junit.experimental.categories.Category;
 
 @Ignore
 @Category(SampleTest.class)

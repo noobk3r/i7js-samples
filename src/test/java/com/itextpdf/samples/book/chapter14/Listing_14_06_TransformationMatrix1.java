@@ -1,18 +1,19 @@
 package com.itextpdf.samples.book.chapter14;
 
-import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.basics.geom.Rectangle;
+import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+
+import org.junit.Ignore;
+import org.junit.experimental.categories.Category;
 
 @Ignore("Implement copy page as XObject (PdfImportedPage analogue). Then port the sample")
 @Category(SampleTest.class)

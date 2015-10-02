@@ -5,8 +5,6 @@ import com.itextpdf.basics.font.FontFactory;
 import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.basics.geom.Rectangle;
-import com.itextpdf.basics.io.ByteArrayOutputStream;
-import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.font.PdfType1Font;
 import com.itextpdf.core.pdf.PdfDocument;
@@ -14,22 +12,23 @@ import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
-import com.itextpdf.forms.PdfPageFormCopier;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Paragraph;
-import com.itextpdf.model.element.Text;
 import com.itextpdf.samples.GenericTest;
-import com.itextpdf.text.pdf.AcroFields;
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
+
+import org.junit.Ignore;
+import org.junit.experimental.categories.Category;
 
 @Ignore
 @Category(SampleTest.class)

@@ -5,15 +5,22 @@
 package com.itextpdf.samples.sandbox.stamper;
 
 import com.itextpdf.canvas.PdfCanvas;
-import com.itextpdf.core.pdf.*;
+import com.itextpdf.core.pdf.PdfArray;
+import com.itextpdf.core.pdf.PdfDictionary;
+import com.itextpdf.core.pdf.PdfDocument;
+import com.itextpdf.core.pdf.PdfName;
+import com.itextpdf.core.pdf.PdfReader;
+import com.itextpdf.core.pdf.PdfResources;
+import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
-import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.Locale;
+
+import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class ClipPdf extends GenericTest {

@@ -17,11 +17,12 @@ import com.itextpdf.model.layout.LayoutResult;
 import com.itextpdf.model.renderer.CellRenderer;
 import com.itextpdf.model.renderer.IRenderer;
 import com.itextpdf.samples.GenericTest;
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileOutputStream;
+
+import org.junit.Ignore;
+import org.junit.experimental.categories.Category;
 
 @Ignore
 @Category(SampleTest.class)

@@ -15,11 +15,11 @@ import com.itextpdf.model.element.Image;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 
-import org.junit.experimental.categories.Category;
-
-import java.awt.*;
+import java.awt.Toolkit;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
+import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_10_09_ImageTypes extends GenericTest {

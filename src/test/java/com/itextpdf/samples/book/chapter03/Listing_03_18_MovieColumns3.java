@@ -3,6 +3,7 @@ package com.itextpdf.samples.book.chapter03;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Paragraph;
+
 import com.lowagie.filmfestival.Movie;
 
 import org.junit.experimental.categories.Category;

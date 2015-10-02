@@ -11,10 +11,10 @@ import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
 import com.itextpdf.samples.GenericTest;
 
-import org.junit.experimental.categories.Category;
-
 import java.io.File;
 import java.io.FileOutputStream;
+
+import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class RoundedCorners extends GenericTest {

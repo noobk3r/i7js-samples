@@ -1,27 +1,28 @@
 package com.itextpdf.samples.book.chapter03;
 
-import com.itextpdf.canvas.PdfCanvas;
-import com.itextpdf.canvas.color.DeviceRgb;
 import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.basics.geom.Rectangle;
+import com.itextpdf.canvas.PdfCanvas;
+import com.itextpdf.canvas.color.DeviceRgb;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfPage;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.html.WebColors;
+
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.Screening;
-
-import org.junit.experimental.categories.Category;
 
 import java.io.FileOutputStream;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.util.List;
+
+import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_03_05_MovieTimeBlocks extends Listing_03_03_MovieTimeTable {

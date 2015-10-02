@@ -9,12 +9,16 @@ import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.PdfPageFormCopier;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.samples.GenericTest;
-import org.junit.experimental.categories.Category;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.StringTokenizer;
+
+import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 // TODO This file is exactly like FillFlattenMerge1 because there is neither PdfCopy nor PdfSmartCopy in itext6

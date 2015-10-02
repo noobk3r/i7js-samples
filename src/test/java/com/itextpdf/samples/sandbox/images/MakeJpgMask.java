@@ -13,13 +13,15 @@ import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.samples.GenericTest;
-import org.junit.experimental.categories.Category;
 
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
+import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class MakeJpgMask extends GenericTest {

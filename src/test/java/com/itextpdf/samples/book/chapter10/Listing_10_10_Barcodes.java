@@ -1,8 +1,18 @@
 package com.itextpdf.samples.book.chapter10;
 
-import com.itextpdf.barcodes.*;
-import com.itextpdf.canvas.color.Color;
+import com.itextpdf.barcodes.Barcode128;
+import com.itextpdf.barcodes.Barcode1D;
+import com.itextpdf.barcodes.Barcode39;
+import com.itextpdf.barcodes.BarcodeCodabar;
+import com.itextpdf.barcodes.BarcodeDataMatrix;
+import com.itextpdf.barcodes.BarcodeEAN;
+import com.itextpdf.barcodes.BarcodeEANSUPP;
+import com.itextpdf.barcodes.BarcodeInter25;
+import com.itextpdf.barcodes.BarcodePDF417;
+import com.itextpdf.barcodes.BarcodePostnet;
+import com.itextpdf.barcodes.BarcodeQRCode;
 import com.itextpdf.basics.geom.PageSize;
+import com.itextpdf.canvas.color.Color;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.xobject.PdfFormXObject;
@@ -12,12 +22,12 @@ import com.itextpdf.model.element.Image;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 
-import org.junit.experimental.categories.Category;
-
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+
+import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_10_10_Barcodes extends GenericTest {

@@ -7,11 +7,11 @@ import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
 
-import org.junit.experimental.categories.Category;
-
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
+import org.junit.experimental.categories.Category;
 
 /**
  * Example demonstrates how to add paragraphs using floating and fixed layouts

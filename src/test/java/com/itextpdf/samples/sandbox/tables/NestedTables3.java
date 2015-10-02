@@ -1,7 +1,7 @@
 package com.itextpdf.samples.sandbox.tables;
 
-import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.basics.geom.PageSize;
+import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
@@ -14,10 +14,10 @@ import com.itextpdf.model.renderer.IRenderer;
 import com.itextpdf.model.renderer.TableRenderer;
 import com.itextpdf.samples.GenericTest;
 
-import org.junit.experimental.categories.Category;
-
 import java.io.File;
 import java.io.FileOutputStream;
+
+import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class NestedTables3 extends GenericTest {

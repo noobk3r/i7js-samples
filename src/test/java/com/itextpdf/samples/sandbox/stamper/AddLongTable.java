@@ -10,12 +10,15 @@ import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.samples.GenericTest;
-import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
+import org.junit.Ignore;
+import org.junit.experimental.categories.Category;
+
+@Ignore
 @Category(SampleTest.class)
 public class AddLongTable extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/stamper/hello.pdf";

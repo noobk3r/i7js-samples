@@ -13,10 +13,11 @@ import com.itextpdf.model.hyphenation.Hyphenation;
 import com.itextpdf.model.hyphenation.HyphenationConfig;
 import com.itextpdf.model.hyphenation.Hyphenator;
 import com.itextpdf.samples.GenericTest;
-import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileOutputStream;
+
+import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class HyphenationExample extends GenericTest {

@@ -1,9 +1,9 @@
 package com.itextpdf.samples.book.chapter03;
 
-import com.itextpdf.basics.image.ImageFactory;
-import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.basics.geom.Rectangle;
+import com.itextpdf.basics.image.ImageFactory;
+import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.xobject.PdfImageXObject;
@@ -13,9 +13,9 @@ import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 
-import org.junit.experimental.categories.Category;
-
 import java.io.FileOutputStream;
+
+import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_03_23_ImageDirect extends GenericTest {

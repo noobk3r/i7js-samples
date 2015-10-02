@@ -9,9 +9,10 @@ import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
-import org.junit.Ignore;
 
 import java.io.FileOutputStream;
+
+import org.junit.Ignore;
 
 @Ignore("ligatures not working. Only RTL")
 public class Listing_11_18_Ligatures2 extends GenericTest {

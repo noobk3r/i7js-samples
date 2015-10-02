@@ -10,8 +10,6 @@ import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.model.Document;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.utils.PdfMerger;
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -19,6 +17,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
+
+import org.junit.Ignore;
+import org.junit.experimental.categories.Category;
 
 @Ignore
 @Category(SampleTest.class)

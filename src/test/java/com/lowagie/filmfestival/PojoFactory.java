@@ -7,6 +7,8 @@
 
 package com.lowagie.filmfestival;
 
+import com.lowagie.database.DatabaseConnection;
+
 import java.io.UnsupportedEncodingException;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -15,8 +17,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.lowagie.database.DatabaseConnection;
 
 /**
  * A factory that makes it easy to query the database using

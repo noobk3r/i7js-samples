@@ -15,16 +15,18 @@ import com.itextpdf.model.Property;
 import com.itextpdf.model.element.AreaBreak;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Text;
+
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.Screening;
-import org.junit.experimental.categories.Category;
 
 import java.io.FileOutputStream;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
+
+import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
