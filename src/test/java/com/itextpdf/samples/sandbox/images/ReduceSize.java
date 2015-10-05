@@ -89,8 +89,6 @@ public class ReduceSize extends GenericTest {
             stream = newStream;
 
         }
-        // TODO Implement removeUnusedObjects()
-        // reader.removeUnusedObjects();
         PdfWriter writer = new PdfWriter(new FileOutputStream(DEST));
         writer.setFullCompression(true);
         pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)), writer);
