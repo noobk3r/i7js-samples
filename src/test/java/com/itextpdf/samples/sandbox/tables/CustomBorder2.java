@@ -13,6 +13,8 @@ import com.itextpdf.model.renderer.CellRenderer;
 import com.itextpdf.model.renderer.TableRenderer;
 import com.itextpdf.samples.GenericTest;
 
+import org.junit.Ignore;
+
 import java.io.File;
 import java.io.FileOutputStream;
 
@@ -107,6 +109,7 @@ class CustomBorder2TableRenderer extends TableRenderer {
     }
 }
 
+@Ignore
 public class CustomBorder2 extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/custom_border2.pdf";
     public static final String TEXT = "This is some long paragraph that will be added over and over " +

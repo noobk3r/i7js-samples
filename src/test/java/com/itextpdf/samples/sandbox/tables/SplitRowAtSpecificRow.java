@@ -44,7 +44,7 @@ public class SplitRowAtSpecificRow extends GenericTest {
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc, new PageSize(612, 242));
+        Document doc = new Document(pdfDoc, new PageSize(612, 237));
         // TODO Implement setSplitLate(boolean)
         // table.setSplitLate(false);
         // TODO Implement setBreakPoints(int)
