@@ -60,9 +60,7 @@ public class ReduceSize extends GenericTest {
             if (!PdfName.DCTDecode.equals(stream.getAsName(PdfName.Filter)))
                 continue;
             PdfImageXObject image = new PdfImageXObject(stream);
-            // TODO Implement getBufferedImage()
-            BufferedImage bi = ImageIO.read(new ByteArrayInputStream(image.getPdfObject().getBytes()));
-            //bi = image.getBufferedImage();
+            BufferedImage bi = image.getBufferedImage();
             if (bi == null)
                 continue;
             int width = (int) (bi.getWidth() * FACTOR);
