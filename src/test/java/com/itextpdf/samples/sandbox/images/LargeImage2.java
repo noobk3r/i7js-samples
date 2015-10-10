@@ -22,7 +22,7 @@ import java.io.FileOutputStream;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class LargeImage2 extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/images/large_image.pdf";
@@ -37,6 +37,7 @@ public class LargeImage2 extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfReader reader = new PdfReader(new FileInputStream(SRC));
+        reader.setCloseStream(false);
         PdfDocument pdfDoc = new PdfDocument(reader);
         Rectangle rect = pdfDoc.getPage(1).getPageSize();
         if (rect.getWidth() < 14400 && rect.getHeight() < 14400) {
