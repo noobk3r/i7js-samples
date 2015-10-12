@@ -6,6 +6,7 @@ package com.itextpdf.samples.sandbox.images;
 
 import com.itextpdf.basics.io.ByteArrayOutputStream;
 import com.itextpdf.core.pdf.PdfDocument;
+import com.itextpdf.core.pdf.PdfIndirectReference;
 import com.itextpdf.core.pdf.PdfName;
 import com.itextpdf.core.pdf.PdfNumber;
 import com.itextpdf.core.pdf.PdfObject;
@@ -30,7 +31,6 @@ import javax.imageio.ImageIO;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class ReduceSize extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/images/single_image.pdf";
@@ -45,13 +45,12 @@ public class ReduceSize extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)));
-        // TODO Can't run pdfDoc.getXref().size() this because of protected access in PdfDocument
-        int n = 1; //pdfDoc.getXref().size();
+        PdfWriter writer = new PdfWriter(new FileOutputStream(DEST)).setFullCompression(true);
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)), writer);
         PdfObject object;
         PdfStream stream;
-        for (int i = 0; i < n; i++) {
-            object = pdfDoc.getPdfObject(i);
+        for (PdfIndirectReference indRef : pdfDoc.listIndirectReferences()) {
+            object = indRef.getRefersTo();
             if (object == null || !object.isStream())
                 continue;
             stream = (PdfStream) object;
@@ -74,23 +73,16 @@ public class ReduceSize extends GenericTest {
             ByteArrayOutputStream imgBytes = new ByteArrayOutputStream();
             ImageIO.write(img, "JPG", imgBytes);
             stream.clear();
-            // TODO Implement setData method
-            PdfStream newStream = new PdfStream(imgBytes.toByteArray(), PdfOutputStream.NO_COMPRESSION);
-            newStream.putAll(stream);
-            newStream.put(PdfName.Type, PdfName.XObject);
-            newStream.put(PdfName.Subtype, PdfName.Image);
-            newStream.put(PdfName.Filter, PdfName.DCTDecode);
-            newStream.put(PdfName.Width, new PdfNumber(width));
-            newStream.put(PdfName.Height, new PdfNumber(height));
-            newStream.put(PdfName.BitsPerComponent, new PdfNumber(8));
-            newStream.put(PdfName.ColorSpace, PdfName.DeviceRGB);
-            stream = newStream;
-
+            stream.setData(imgBytes.toByteArray());
+            stream.put(PdfName.Type, PdfName.XObject);
+            stream.put(PdfName.Subtype, PdfName.Image);
+            stream.put(PdfName.Filter, PdfName.DCTDecode);
+            stream.put(PdfName.Width, new PdfNumber(width));
+            stream.put(PdfName.Height, new PdfNumber(height));
+            stream.put(PdfName.BitsPerComponent, new PdfNumber(8));
+            stream.put(PdfName.ColorSpace, PdfName.DeviceRGB);
         }
-        PdfWriter writer = new PdfWriter(new FileOutputStream(DEST));
-        writer.setFullCompression(true);
-        pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)), writer);
-        pdfDoc.close();
 
+        pdfDoc.close();
     }
 }
