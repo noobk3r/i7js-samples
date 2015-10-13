@@ -1,3 +1,7 @@
+/**
+ * Example written by Bruno Lowagie in answer to:
+ * http://stackoverflow.com/questions/28487918/how-to-make-it-start-from-the-same-point
+ */
 package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.basics.font.FontConstants;
@@ -40,15 +44,15 @@ public class IndentationOptions extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         List list = new List().
-            setListSymbol(LABEL).
-            add(CONTENT);
+                setListSymbol(LABEL).
+                add(CONTENT);
         doc.add(list);
 
         PdfFont font = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA);
         Paragraph p = new Paragraph(LABEL + CONTENT).setFont(font);
         float indentation = font.getWidth(LABEL) * 12 / 1000;
         p.setMarginLeft(indentation).
-            setFirstLineIndent(-indentation);
+                setFirstLineIndent(-indentation);
         doc.add(p);
 
         Table table = new Table(new float[]{indentation + 4, 519 - indentation});

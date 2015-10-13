@@ -18,7 +18,6 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class ListWithImageAsBullet extends GenericTest {
-
     public static final String IMG = "src/test/resources/img/bulb.gif";
     public static final String DEST = "./target/test/resources/sandbox/objects/list_with_image_bullet.pdf";
 
@@ -41,11 +40,12 @@ public class ListWithImageAsBullet extends GenericTest {
         List list = new List().
                 setListSymbol(new com.itextpdf.model.element.Image(xObject)).
                 add("Hello World").
-                add("This is a list item with a lot of text. It will certainly take more than one line. This shows that the list item is indented and that the image is used as bullet.").
+                add("This is a list item with a lot of text. " +
+                        "It will certainly take more than one line." +
+                        " This shows that the list item is indented and that the image is used as bullet.").
                 add("This is a test");
         doc.add(list);
 
         doc.close();
     }
-
 }

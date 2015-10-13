@@ -1,3 +1,7 @@
+/**
+ * Example written by Bruno Lowagie in answer to:
+ * http://stackoverflow.com/questions/29566115/adding-veritcal-spacing-itextsharp-in-list
+ */
 package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.basics.font.FontConstants;

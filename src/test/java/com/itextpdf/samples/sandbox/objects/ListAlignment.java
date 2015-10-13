@@ -1,3 +1,7 @@
+/**
+ * Example written by Bruno Lowagie in answer to:
+ * http://stackoverflow.com/questions/27844914/align-justified-for-itext-list-item
+ */
 package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.core.pdf.PdfDocument;
@@ -17,7 +21,6 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class ListAlignment extends GenericTest {
-
     public static final String DEST = "./target/test/resources/sandbox/objects/list_alignment.pdf";
 
     public static void main(String[] args) throws Exception {

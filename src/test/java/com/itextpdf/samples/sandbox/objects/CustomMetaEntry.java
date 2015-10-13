@@ -1,6 +1,6 @@
 /**
- * Example written by Bruno Lowagie in answer to:
- * http://stackoverflow.com/questions/30869268/java-itext-alignment
+ * This example is written by Bruno Lowagie in answer to the following question:
+ * http://stackoverflow.com/questions/26726485/itext-add-delete-retrieve-information-in-custom-property
  */
 package com.itextpdf.samples.sandbox.objects;
 
@@ -8,7 +8,6 @@ import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
-import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 
@@ -16,16 +15,18 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
+@Ignore
 @Category(SampleTest.class)
-public class SpaceCharRatioExample extends GenericTest {
-    public static final String DEST = "./target/test/resources/sandbox/objects/space_char_ratio.pdf";
+public class CustomMetaEntry extends GenericTest {
+    public static final String DEST = "./target/test/resources/sandbox/objects/custom_meta_entry.pdf";
 
     public static void main(String[] args) throws IOException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
-        new SpaceCharRatioExample().manipulatePdf(DEST);
+        new CustomMetaEntry().manipulatePdf(DEST);
     }
 
     public void manipulatePdf(String dest) throws IOException {
@@ -33,17 +34,10 @@ public class SpaceCharRatioExample extends GenericTest {
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
-
-        Paragraph p = new Paragraph().
-                setSpacingRatio(1).
-                setHorizontalAlignment(Property.HorizontalAlignment.JUSTIFIED).
-                setMarginLeft(20).
-                setMarginRight(20).
-                add("HelloWorld HelloWorld HelloWorld HelloWorld HelloWorld" +
-                        "HelloWorld HelloWorldHelloWorldHelloWorldHelloWorld" +
-                        "HelloWorld HelloWorld HelloWorld HelloWorldHelloWorldHelloWorld");
+        pdfDoc.getInfo().setTitle("Some example");
+        pdfDoc.getInfo().setMoreInfo("Test", "test");
+        Paragraph p = new Paragraph("Hello World");
         doc.add(p);
-
         doc.close();
     }
 
