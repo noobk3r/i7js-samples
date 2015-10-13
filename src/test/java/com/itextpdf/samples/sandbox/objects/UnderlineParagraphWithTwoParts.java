@@ -37,8 +37,8 @@ public class UnderlineParagraphWithTwoParts extends GenericTest {
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
-        pdfDoc.addNewPage();
 
+        pdfDoc.addNewPage();
         PdfFont font = PdfFont.createFont(pdfDoc, FontConstants.COURIER, "WinAnsi", false);
         float charWidth = font.getWidth(" ");
         int charactersPerLine = 101;

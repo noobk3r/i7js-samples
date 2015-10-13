@@ -37,6 +37,7 @@ public class ListInColumn extends GenericTest {
         PdfDocument pdfResultDoc = new PdfDocument(new PdfWriter(DEST));
         pdfDoc.copyPages(1, 2, pdfResultDoc);
         Document doc = new Document(pdfResultDoc);
+
 //        //reader.selectPages("1-2");
 //        Document doc = new Document(pdfDoc);
         List list = new List(Property.ListNumberingType.DECIMAL);
@@ -51,6 +52,7 @@ public class ListInColumn extends GenericTest {
                 .setMarginBottom(400)
                 .setMarginTop(pdfDoc.getPage(1).getPageSize().getHeight() - 806));
         // Rectangle rect = new Rectangle(250, 400, 500 - 250, 806 - 400);
+
         doc.close();
     }
 }

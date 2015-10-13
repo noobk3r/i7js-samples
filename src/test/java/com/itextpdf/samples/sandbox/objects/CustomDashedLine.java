@@ -62,6 +62,7 @@ public class CustomDashedLine extends GenericTest {
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
         Document doc = new Document(pdfDoc);
+
         doc.add(new Paragraph("Before dashed line"));
         // CustomDashedLineSeparator separator = new CustomDashedLineSeparator();
         // separator.setDash(10);
@@ -70,6 +71,7 @@ public class CustomDashedLine extends GenericTest {
         // Paragraph linebreak = new Paragraph(separator);
         // doc.add(linebreak);
         doc.add(new Paragraph("After dashed line"));
+
         doc.close();
     }
 }

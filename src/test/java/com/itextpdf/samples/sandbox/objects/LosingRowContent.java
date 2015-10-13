@@ -33,6 +33,7 @@ public class LosingRowContent extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         pdfDoc.addNewPage();
         Document doc = new Document(pdfDoc);
+
         Table table;
         Cell cell = new Cell();
         for (int i = 1; i <= 30; i++)
@@ -47,6 +48,7 @@ public class LosingRowContent extends GenericTest {
         table.addCell(cell);
         table.addCell(cell);
         addTable(pdfDoc, table);
+
         doc.close();
     }
 

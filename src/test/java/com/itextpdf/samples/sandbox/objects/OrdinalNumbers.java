@@ -33,6 +33,7 @@ public class OrdinalNumbers extends GenericTest {
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
+
         PdfFont font = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA);
         Text st = new Text("st").setFont(font).setFontSize(6);
         st.setTextRise(7);
@@ -59,6 +60,7 @@ public class OrdinalNumbers extends GenericTest {
         fourth.add(rd);
         fourth.add(" of July");
         doc.add(fourth);
+
         doc.close();
     }
 }

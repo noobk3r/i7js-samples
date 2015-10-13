@@ -35,6 +35,7 @@ public class LeftRight extends GenericTest {
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
+
         // TODO There is no VerticalPositionMark
         Paragraph glue = null; // new Paragraph(new VerticalPositionMark());
         Paragraph p = new Paragraph("Text to the left");
@@ -46,6 +47,7 @@ public class LeftRight extends GenericTest {
         table.addCell(getCell("Text in the middle", Property.HorizontalAlignment.CENTER));
         table.addCell(getCell("Text to the right", Property.HorizontalAlignment.RIGHT));
         doc.add(table);
+
         doc.close();
     }
 

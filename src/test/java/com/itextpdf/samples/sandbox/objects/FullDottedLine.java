@@ -37,6 +37,7 @@ public class FullDottedLine extends GenericTest {
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
+
         doc.add(new Paragraph("Before dotted line"));
         // TODO There is no separators, so we can draw DottedLine, but we don't know chunk's positions before rendering
         //DottedLineSeparator separator = new DottedLineSeparator();
@@ -45,6 +46,7 @@ public class FullDottedLine extends GenericTest {
         //linebreak = new Chunk(separator);
         //document.add(linebreak);
         doc.add(new Paragraph("After dotted line"));
+
         doc.close();
     }
 }

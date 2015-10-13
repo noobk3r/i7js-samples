@@ -37,6 +37,7 @@ public class ChunkBackground extends GenericTest {
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
         Document doc = new Document(pdfDoc);
+
         PdfFont f = PdfFont.createFont(pdfDoc, FontConstants.TIMES_BOLD, "WinAnsi");
         Text c = new Text("White text on red background")
                 .setFont(f)
@@ -45,6 +46,7 @@ public class ChunkBackground extends GenericTest {
                 .setBackgroundColor(Color.RED);
         Paragraph p = new Paragraph(c);
         doc.add(p);
+
         doc.close();
     }
 }

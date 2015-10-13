@@ -35,11 +35,13 @@ public class ColumnTextAscender extends GenericTest {
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
         Document doc = new Document(pdfDoc);
+
         pdfDoc.addNewPage();
         Rectangle rect = new Rectangle(50, 750, 250, 800);
         addColumn(pdfDoc, rect, false);
         rect = new Rectangle(300, 750, 500, 800);
         addColumn(pdfDoc, rect, true);
+
         doc.close();
     }
 

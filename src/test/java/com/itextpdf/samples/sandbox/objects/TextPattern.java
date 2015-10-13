@@ -34,6 +34,7 @@ public class TextPattern extends GenericTest {
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
+
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         PdfFont font = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA);
         String filltext = "this is the fill text! ";
@@ -54,6 +55,7 @@ public class TextPattern extends GenericTest {
         canvas.rectangle(0, 0, 595, 842);
         // canvas.setPatternFill(pattern);
         canvas.fill();
+
         doc.close();
     }
 }

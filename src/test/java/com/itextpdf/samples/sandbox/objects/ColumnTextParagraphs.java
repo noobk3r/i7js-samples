@@ -39,6 +39,7 @@ public class ColumnTextParagraphs extends GenericTest {
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
         Document doc = new Document(pdfDoc);
+
         pdfDoc.addNewPage();
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());
 // TODO Due to absence of ColumnText we cannot perform this sample because of not knowing paragraphs' positions before rendering
@@ -63,6 +64,7 @@ public class ColumnTextParagraphs extends GenericTest {
 //                ct.setSimpleColumn(COLUMNS[side_of_the_page]);
 //            }
 //        }
+
         doc.close();
     }
 }

@@ -33,11 +33,13 @@ public class StandardDeviation extends GenericTest {
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
+
         doc.add(new Paragraph("The standard deviation symbol doesn't exist in Helvetica."));
         PdfFont symbol = PdfFont.createStandardFont(pdfDoc, FontConstants.SYMBOL);
         Paragraph p = new Paragraph("So we use the Symbol font: ");
         p.add(new Text("s").setFont(symbol));
         doc.add(p);
+
         doc.close();
     }
 }

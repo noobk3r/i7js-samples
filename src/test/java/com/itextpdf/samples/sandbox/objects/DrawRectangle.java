@@ -33,11 +33,13 @@ public class DrawRectangle extends GenericTest {
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
+
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         Rectangle rect = new Rectangle(36, 36, 559 - 36, 806 - 36);
         canvas.setLineWidth(2);
         canvas.rectangle(rect);
         canvas.stroke();
+
         doc.close();
     }
 }

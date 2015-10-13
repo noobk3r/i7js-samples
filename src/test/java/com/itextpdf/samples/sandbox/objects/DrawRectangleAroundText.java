@@ -40,6 +40,7 @@ public class DrawRectangleAroundText extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)),
                 new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
+
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());
         Paragraph p = new Paragraph("This is a long paragraph that doesn't"
                 + "fit the width we defined for the simple column of the"
@@ -56,6 +57,7 @@ public class DrawRectangleAroundText extends GenericTest {
         float endPos = 500;
         canvas.rectangle(300, endPos, 130, 780 - endPos);
         canvas.stroke();
+
         doc.close();
     }
 }

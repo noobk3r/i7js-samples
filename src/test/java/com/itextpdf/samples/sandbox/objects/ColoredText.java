@@ -35,6 +35,7 @@ public class ColoredText extends GenericTest {
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
         Document doc = new Document(pdfDoc);
+
         // TODO Implement setNormal() on PdfFont objects
         Text redText = new Text("This text is red. ")
                 .setFontColor(Color.RED)
@@ -60,6 +61,7 @@ public class ColoredText extends GenericTest {
                 Property.HorizontalAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
         doc.showTextAligned(p2.setWidth(144 - 36).setHeight(760 - 600), 36, 460, 1,
                 Property.HorizontalAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
+
         doc.close();
     }
 }

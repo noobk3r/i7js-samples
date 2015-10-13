@@ -31,6 +31,7 @@ public class CenterColumnVertically extends GenericTest {
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
         Document doc = new Document(pdfDoc);
+
         float llx = 50;
         float lly = 650;
         float urx = 400;
@@ -44,6 +45,7 @@ public class CenterColumnVertically extends GenericTest {
         // TODO Since we don't know paragraphs' positions before rendering, we can't center text (feels the absence of SimpleColumn)
         // rect = new Rectangle(llx, lly, urx-llx, ury - (lly / 2));
         drawColumnText(pdfDoc, rect, p);
+
         doc.close();
     }
 

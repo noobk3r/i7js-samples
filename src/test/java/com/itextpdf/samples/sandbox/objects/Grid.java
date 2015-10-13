@@ -28,6 +28,7 @@ public class Grid extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         PageSize pageSize = new PageSize(612, 792);
         Document doc = new Document(pdfDoc, pageSize);
+
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         for (float x = 0; x < pageSize.getWidth(); ) {
             for (float y = 0; y < pageSize.getHeight(); ) {
@@ -37,6 +38,7 @@ public class Grid extends GenericTest {
             x += 72f;
         }
         canvas.fill();
+
         doc.close();
     }
 }

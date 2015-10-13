@@ -35,6 +35,7 @@ public class CenterVertically extends GenericTest {
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
         Document doc = new Document(pdfDoc);
+
         Table table;
         Cell cell = new Cell();
         for (int i = 1; i <= 5; i++)
@@ -57,6 +58,7 @@ public class CenterVertically extends GenericTest {
         table.addCell(cell);
         table.addCell(cell);
         addTable(pdfDoc, table);
+
         doc.close();
     }
 

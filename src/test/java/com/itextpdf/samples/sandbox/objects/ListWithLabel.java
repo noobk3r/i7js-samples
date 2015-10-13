@@ -33,6 +33,7 @@ public class ListWithLabel extends GenericTest {
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
+
         Table table = new Table(new float[]{1, 10});
         table.setWidth(200);
         table.setHorizontalAlignment(Property.HorizontalAlignment.LEFT);
@@ -50,6 +51,7 @@ public class ListWithLabel extends GenericTest {
         cell.add(list);
         table.addCell(cell);
         doc.add(table);
+
         doc.close();
     }
 }

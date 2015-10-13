@@ -37,6 +37,7 @@ public class RectangleInCell extends GenericTest {
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
+
         doc.add(new Paragraph("Option 1:"));
         Table table = new Table(3);
         table.addCell(new Cell().add(new Paragraph("A rectangle:)")));
@@ -71,6 +72,7 @@ public class RectangleInCell extends GenericTest {
         cb.moveTo(228, 810);
         cb.lineTo(338, 810);
         cb.stroke();
+
         doc.close();
     }
 }

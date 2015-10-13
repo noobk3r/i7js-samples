@@ -39,6 +39,7 @@ public class ChapterAndTitle extends GenericTest {
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
         Document doc = new Document(pdfDoc);
+
         PdfFont chapterFont = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA_BOLD);
         PdfFont paragraphFont = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA);
         // Font chapterFont = FontFactory.getFont(FontFactory.HELVETICA, 16, Font.BOLDITALIC);
@@ -49,6 +50,7 @@ public class ChapterAndTitle extends GenericTest {
         // chapter.setNumberDepth(0);
         // chapter.add(new Paragraph("This is the paragraph", paragraphFont));
         // doc.add(chapter);
+
         doc.close();
     }
 }

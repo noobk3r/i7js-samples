@@ -34,12 +34,14 @@ public class ColoredLetters extends GenericTest {
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
         Document doc = new Document(pdfDoc);
+
         Paragraph p = new Paragraph();
         String s = "all text is written in red, except the letters b and g; they are written in blue and green.";
         for (int i = 0; i < s.length(); i++) {
             p.add(returnCorrectColor(pdfDoc, s.charAt(i)));
         }
         doc.add(p);
+        
         doc.close();
     }
 
