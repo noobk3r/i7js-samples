@@ -49,7 +49,7 @@ public class ReduceSize extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)), writer);
         PdfObject object;
         PdfStream stream;
-        for (PdfIndirectReference indRef : pdfDoc.listIndirectReferences()) {
+        for (PdfIndirectReference indRef : pdfDoc.getIndirectReferences()) {
             object = indRef.getRefersTo();
             if (object == null || !object.isStream())
                 continue;
