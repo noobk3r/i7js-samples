@@ -26,7 +26,7 @@ import java.io.FileOutputStream;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class FlateCompressJPEG1Pass extends GenericTest {
     public static final String IMAGE = "./src/test/resources/sandbox/images/berlin2013.jpg";
@@ -46,7 +46,6 @@ public class FlateCompressJPEG1Pass extends GenericTest {
         Document doc = new Document(pdfDoc, PageSize.A4.rotate());
 
         Image image = new Image(ImageFactory.getImage(IMAGE));
-        // TODO setCompressionLevel do not show any result
         image.getXObject().getPdfObject().setCompressionLevel(PdfOutputStream.BEST_COMPRESSION);
         image.scaleToFit(PageSize.A4.rotate().getWidth(), PageSize.A4.rotate().getHeight());
         image.setFixedPosition(0, 0);
