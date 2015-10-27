@@ -28,11 +28,13 @@ import java.io.FileOutputStream;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class StampHeader1 extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/stamper/Right.pdf";
     public static final String DEST = "./target/test/resources/sandbox/stamper/stamp_header1.pdf";
+
+
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -51,12 +53,11 @@ public class StampHeader1 extends GenericTest {
         for (int i = 1; i <= pdfDoc.getNumOfPages(); i++) {
             float x = pdfDoc.getPage(i).getPageSize().getWidth() / 2;
             float y = pdfDoc.getPage(i).getPageSize().getTop() - 20;
-            new PdfCanvas(pdfDoc.getPage(i).newContentStreamBefore(), new PdfResources(), pdfDoc).saveState().release();
-            // TODO Implement showing text OVER everything in a document
+
             doc.showTextAligned(header.setFontColor(Color.RED), x, y, i,
                     Property.HorizontalAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
         }
         doc.close();
-//        pdfDoc.close();
+        //pdfDoc.close();
     }
 }
