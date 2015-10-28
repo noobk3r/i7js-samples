@@ -13,11 +13,10 @@ import com.itextpdf.model.renderer.CellRenderer;
 import com.itextpdf.model.renderer.TableRenderer;
 import com.itextpdf.samples.GenericTest;
 
-import org.junit.Ignore;
-
 import java.io.File;
 import java.io.FileOutputStream;
 
+import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
@@ -31,7 +30,6 @@ class CustomBorder2TableRenderer extends TableRenderer {
 
     @Override
     public void drawBorder(PdfDocument document, PdfCanvas canvas) {
-
         // We strongly believe that everything is fine as we believe in itext5 analog example
         CellRenderer[] firstRowRenderers = rows.get(0);
         // yLines
@@ -66,46 +64,19 @@ class CustomBorder2TableRenderer extends TableRenderer {
     }
 
     @Override
-    protected CustomBorder2TableRenderer createOverflowRenderer(Table.RowRange rowRange) {
-        CustomBorder2TableRenderer overflowRenderer = new CustomBorder2TableRenderer((Table) modelElement, rowRange);
-        overflowRenderer.parent = parent;
-        overflowRenderer.modelElement = modelElement;
-        overflowRenderer.addAllProperties(getOwnProperties());
-        overflowRenderer.isOriginalNonSplitRenderer = false;
-        return overflowRenderer;
+    protected CustomBorder2TableRenderer makeOverflowRenderer(Table.RowRange rowRange) {
+        return new CustomBorder2TableRenderer((Table) modelElement, rowRange);
     }
 
     @Override
-    protected CustomBorder2TableRenderer createSplitRenderer(Table.RowRange rowRange) {
-        CustomBorder2TableRenderer splitRenderer = new CustomBorder2TableRenderer((Table) modelElement, rowRange);
-        splitRenderer.parent = parent;
-        splitRenderer.modelElement = modelElement;
-        // TODO childRenderers will be populated twice during the relayout.
-        // We should probably clean them before #layout().
-        splitRenderer.childRenderers = childRenderers;
-        splitRenderer.addAllProperties(getOwnProperties());
-        splitRenderer.headerRenderer = headerRenderer;
-        splitRenderer.footerRenderer = footerRenderer;
-        return splitRenderer;
+    protected CustomBorder2TableRenderer makeSplitRenderer(Table.RowRange rowRange) {
+        return new CustomBorder2TableRenderer((Table) modelElement, rowRange);
     }
 
     @Override
     protected TableRenderer[] split(int row) {
         isBottomToBeDrawn = false;
-        CustomBorder2TableRenderer splitRenderer = createSplitRenderer(
-                new Table.RowRange(rowRange.getStartRow(), rowRange.getStartRow() + row));
-        splitRenderer.rows = rows.subList(0, row);
-        CustomBorder2TableRenderer overflowRenderer = createOverflowRenderer(
-                new Table.RowRange(rowRange.getStartRow() + row, rowRange.getFinishRow()));
-        overflowRenderer.rows = rows.subList(row, rows.size());
-        splitRenderer.occupiedArea = occupiedArea;
-        return new TableRenderer[]{splitRenderer, overflowRenderer};
-    }
-
-    @Override
-    public void draw(PdfDocument document, PdfCanvas canvas) {
-        super.draw(document, canvas);
-
+        return super.split(row);
     }
 }
 

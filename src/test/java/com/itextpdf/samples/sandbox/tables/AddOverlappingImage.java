@@ -48,29 +48,13 @@ public class AddOverlappingImage extends GenericTest {
         }
 
         @Override
-        protected TableRenderer createSplitRenderer(Table.RowRange rowRange) {
-            OverlappingImageTableRenderer splitRenderer =
-                    new OverlappingImageTableRenderer((Table) modelElement, rowRange, image);
-            splitRenderer.parent = parent;
-            splitRenderer.modelElement = modelElement;
-            // TODO childRenderers will be populated twice during the relayout.
-            // We should probably clean them before #layout().
-            splitRenderer.childRenderers = childRenderers;
-            splitRenderer.addAllProperties(getOwnProperties());
-            splitRenderer.headerRenderer = headerRenderer;
-            splitRenderer.footerRenderer = footerRenderer;
-            return splitRenderer;
+        protected TableRenderer makeSplitRenderer(Table.RowRange rowRange) {
+            return new OverlappingImageTableRenderer((Table) modelElement, rowRange, image);
         }
 
         @Override
-        protected TableRenderer createOverflowRenderer(Table.RowRange rowRange) {
-            OverlappingImageTableRenderer overflowRenderer =
-                    new OverlappingImageTableRenderer((Table) modelElement, rowRange, image);
-            overflowRenderer.parent = parent;
-            overflowRenderer.modelElement = modelElement;
-            overflowRenderer.addAllProperties(getOwnProperties());
-            overflowRenderer.isOriginalNonSplitRenderer = false;
-            return overflowRenderer;
+        protected TableRenderer makeOverflowRenderer(Table.RowRange rowRange) {
+            return new OverlappingImageTableRenderer((Table) modelElement, rowRange, image);
         }
     }
 

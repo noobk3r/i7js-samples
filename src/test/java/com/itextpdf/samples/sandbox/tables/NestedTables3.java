@@ -41,32 +41,17 @@ public class NestedTables3 extends GenericTest {
         }
 
         @Override
-        protected InnerTableRenderer createOverflowRenderer(Table.RowRange rowRange) {
-            InnerTableRenderer overflowRenderer = new InnerTableRenderer((Table) modelElement, rowRange);
-            overflowRenderer.parent = parent;
-            overflowRenderer.modelElement = modelElement;
-            overflowRenderer.addAllProperties(getOwnProperties());
-            overflowRenderer.isOriginalNonSplitRenderer = false;
-            return overflowRenderer;
+        protected InnerTableRenderer makeOverflowRenderer(Table.RowRange rowRange) {
+            return new InnerTableRenderer((Table) modelElement, rowRange);
         }
 
         @Override
-        protected InnerTableRenderer createSplitRenderer(Table.RowRange rowRange) {
-            InnerTableRenderer splitRenderer = new InnerTableRenderer((Table) modelElement, rowRange);
-            splitRenderer.parent = parent;
-            splitRenderer.modelElement = modelElement;
-            // TODO childRenderers will be populated twice during the relayout.
-            // We should probably clean them before #layout().
-            splitRenderer.childRenderers = childRenderers;
-            splitRenderer.addAllProperties(getOwnProperties());
-            splitRenderer.headerRenderer = headerRenderer;
-            splitRenderer.footerRenderer = footerRenderer;
-            return splitRenderer;
+        protected InnerTableRenderer makeSplitRenderer(Table.RowRange rowRange) {
+            return new InnerTableRenderer((Table) modelElement, rowRange);
         }
 
         @Override
         protected TableRenderer[] split(int row) {
-
             InnerTableRenderer splitRenderer = createSplitRenderer(
                     new Table.RowRange(rowRange.getStartRow(), rowRange.getStartRow() + row));
             splitRenderer.rows = rows.subList(0, row);

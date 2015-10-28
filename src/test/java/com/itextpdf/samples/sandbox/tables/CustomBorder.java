@@ -67,27 +67,13 @@ class CustomBorderTableRenderer extends TableRenderer {
     }
 
     @Override
-    protected CustomBorderTableRenderer createOverflowRenderer(Table.RowRange rowRange) {
-        CustomBorderTableRenderer overflowRenderer = new CustomBorderTableRenderer((Table) modelElement, rowRange);
-        overflowRenderer.parent = parent;
-        overflowRenderer.modelElement = modelElement;
-        overflowRenderer.addAllProperties(getOwnProperties());
-        overflowRenderer.isOriginalNonSplitRenderer = false;
-        return overflowRenderer;
+    protected CustomBorderTableRenderer makeOverflowRenderer(Table.RowRange rowRange) {
+        return new CustomBorderTableRenderer((Table) modelElement, rowRange);
     }
 
     @Override
-    protected CustomBorderTableRenderer createSplitRenderer(Table.RowRange rowRange) {
-        CustomBorderTableRenderer splitRenderer = new CustomBorderTableRenderer((Table) modelElement, rowRange);
-        splitRenderer.parent = parent;
-        splitRenderer.modelElement = modelElement;
-        // TODO childRenderers will be populated twice during the relayout.
-        // We should probably clean them before #layout().
-        splitRenderer.childRenderers = childRenderers;
-        splitRenderer.addAllProperties(getOwnProperties());
-        splitRenderer.headerRenderer = headerRenderer;
-        splitRenderer.footerRenderer = footerRenderer;
-        return splitRenderer;
+    protected CustomBorderTableRenderer makeSplitRenderer(Table.RowRange rowRange) {
+        return new CustomBorderTableRenderer((Table) modelElement, rowRange);
     }
 
     @Override

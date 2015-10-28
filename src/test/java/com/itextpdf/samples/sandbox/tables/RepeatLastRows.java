@@ -32,27 +32,13 @@ public class RepeatLastRows extends GenericTest {
         }
 
         @Override
-        protected RepeatTableRenderer createOverflowRenderer(Table.RowRange rowRange) {
-            RepeatTableRenderer overflowRenderer = new RepeatTableRenderer((Table) modelElement, rowRange);
-            overflowRenderer.parent = parent;
-            overflowRenderer.modelElement = modelElement;
-            overflowRenderer.addAllProperties(getOwnProperties());
-            overflowRenderer.isOriginalNonSplitRenderer = false;
-            return overflowRenderer;
+        protected RepeatTableRenderer makeOverflowRenderer(Table.RowRange rowRange) {
+            return new RepeatTableRenderer((Table) modelElement, rowRange);
         }
 
         @Override
-        protected RepeatTableRenderer createSplitRenderer(Table.RowRange rowRange) {
-            RepeatTableRenderer splitRenderer = new RepeatTableRenderer((Table) modelElement, rowRange);
-            splitRenderer.parent = parent;
-            splitRenderer.modelElement = modelElement;
-            // TODO childRenderers will be populated twice during the relayout.
-            // We should probably clean them before #layout().
-            splitRenderer.childRenderers = childRenderers;
-            splitRenderer.addAllProperties(getOwnProperties());
-            splitRenderer.headerRenderer = headerRenderer;
-            splitRenderer.footerRenderer = footerRenderer;
-            return splitRenderer;
+        protected RepeatTableRenderer makeSplitRenderer(Table.RowRange rowRange) {
+            return new RepeatTableRenderer((Table) modelElement, rowRange);
         }
 
         @Override
