@@ -22,10 +22,8 @@ import com.itextpdf.samples.GenericTest;
 import java.io.File;
 import java.io.FileOutputStream;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class ClipCenterCellContent extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/clip_center_cell_content.pdf";
@@ -58,7 +56,7 @@ public class ClipCenterCellContent extends GenericTest {
                     -2f * offset, offset));
 
             PdfFormXObject xObject = new PdfFormXObject(new Rectangle(getOccupiedArea().getBBox().getWidth(), getOccupiedArea().getBBox().getHeight()));
-            Canvas layoutCanvas = new Canvas(new PdfCanvas(xObject, document), document, new Rectangle(0, offset, getOccupiedArea().getBBox().getWidth(), offset + spaceneeded));
+            Canvas layoutCanvas = new Canvas(new PdfCanvas(xObject, document), document, new Rectangle(0, offset, getOccupiedArea().getBBox().getWidth(), spaceneeded));
             layoutCanvas.add(content);
 
             canvas.addXObject(xObject, occupiedArea.getBBox().getLeft(), occupiedArea.getBBox().getBottom());

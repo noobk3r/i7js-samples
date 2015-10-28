@@ -1,6 +1,6 @@
 package com.itextpdf.samples.sandbox.tables;
 
-import com.itextpdf.canvas.PdfCanvas;
+import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
@@ -9,6 +9,8 @@ import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
+import com.itextpdf.model.layout.LayoutContext;
+import com.itextpdf.model.layout.LayoutResult;
 import com.itextpdf.model.renderer.CellRenderer;
 import com.itextpdf.model.renderer.IRenderer;
 import com.itextpdf.samples.GenericTest;
@@ -17,10 +19,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class TruncateTextInCell extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/truncate_text_in_cell.pdf";
@@ -63,35 +63,34 @@ public class TruncateTextInCell extends GenericTest {
         public FitCellRenderer(Cell modelElement, String content) throws IOException {
             super(modelElement);
             this.content = content;
-//            this.modelElement = modelElement;
-//            setProperty(Property.ROWSPAN, modelElement.getRowspan());
-//            setProperty(Property.COLSPAN, modelElement.getColspan());
         }
 
         @Override
-        public void draw(PdfDocument document, PdfCanvas canvas) {
-            super.draw(document, canvas);
-            Paragraph p = new Paragraph(content);
-            p.setFontSize(12);
-            IRenderer pr = p.createRendererSubTree();
-            pr.setParent(this);
-            // TODO Implement analog of ColumnText to find real width value
-            // the next line doesn't woke correctly eben though with heigth it's efficient
-            // LayoutResult textArea = pr.layout(new LayoutContext(new LayoutArea(0,
-            // new Rectangle(0, 0, 10000000, getOccupiedAreaBBox().getHeight()))));
-            // TODO Implement PdfTemplate usage
-//                PdfTemplate tmp = canvas.createTemplate(position.getWidth(), position.getHeight());
-//                ct = new ColumnText(tmp);
-//                ct.setSimpleColumn(0, offset, position.getWidth(), offset + spaceneeded);
-//                ct.addElement(content);
-//                ct.go();
-//                canvas.addTemplate(tmp, position.getLeft(), position.getBottom());
-            canvas.beginText();
-            canvas.moveText(getOccupiedAreaBBox().getX() + 3, getOccupiedAreaBBox().getY() + 3);
-            canvas.setFontAndSize(this.getPropertyAsFont(Property.FONT), this.getPropertyAsFloat(Property.FONT_SIZE));
-            canvas.showText("TODO!!!");
-            canvas.endText();
-            canvas.stroke();
+        public LayoutResult layout(LayoutContext layoutContext) {
+            PdfFont bf = getPropertyAsFont(Property.FONT);
+            float availableWidth = layoutContext.getArea().getBBox().getWidth();
+            int contentLength = content.length();
+            int leftChar = 0;
+            int rightChar = contentLength - 1;
+            availableWidth -= bf.getWidthPoint("...", 12);
+            while (leftChar < contentLength && rightChar != leftChar) {
+                availableWidth -= bf.getWidthPoint(content.charAt(leftChar), 12);
+                if (availableWidth > 0)
+                    leftChar++;
+                else
+                    break;
+                availableWidth -= bf.getWidthPoint(content.charAt(rightChar), 12);
+                if (availableWidth > 0)
+                    rightChar--;
+                else
+                    break;
+            }
+            String newContent = content.substring(0, leftChar) + "..." + content.substring(rightChar);
+            Paragraph p = new Paragraph(newContent);
+
+            IRenderer pr = p.createRendererSubTree().setParent(this);
+            this.childRenderers.add(pr);
+            return super.layout(layoutContext);
         }
     }
 }

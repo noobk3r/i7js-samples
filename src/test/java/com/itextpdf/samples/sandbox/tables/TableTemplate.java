@@ -1,9 +1,12 @@
 package com.itextpdf.samples.sandbox.tables;
 
+import com.itextpdf.basics.geom.Rectangle;
+import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.pdf.xobject.PdfFormXObject;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
-import com.itextpdf.model.Document;
+import com.itextpdf.model.Canvas;
 import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
@@ -12,10 +15,8 @@ import com.itextpdf.samples.GenericTest;
 import java.io.File;
 import java.io.FileOutputStream;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class TableTemplate extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/table_template.pdf";
@@ -31,7 +32,6 @@ public class TableTemplate extends GenericTest {
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc);
 
         Table table = new Table(15);
         table.setWidth(1500);
@@ -39,28 +39,24 @@ public class TableTemplate extends GenericTest {
         for (int r = 'A'; r <= 'Z'; r++) {
             for (int c = 1; c <= 15; c++) {
                 cell = new Cell();
-                cell.setHeight(50);
+                cell.setHeight(49);
                 cell.add(new Paragraph(String.valueOf((char) r) + String.valueOf(c)));
                 table.addCell(cell);
             }
         }
-        //PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
-        // TODO Implement Templates with tables
-        //PdfTemplate tableTemplate = canvas.createTemplate(1500, 1300);
-        // TODO Implement writeSelectedRows(...) functionality
-        //table.writeSelectedRows(0, -1, 0, 1300, tableTemplate);
-        // TODO Implement PdfTemplate usage ins such situations
-        //PdfTemplate clip;
+
+        PdfFormXObject tableTemplate = new PdfFormXObject(new Rectangle(1500, 1300));
+        Canvas canvas = new Canvas(tableTemplate, pdfDoc);
+        canvas.add(table);
+        PdfFormXObject clip;
         for (int j = 0; j < 1500; j += 500) {
             for (int i = 1300; i > 0; i -= 650) {
-                //clip = canvas.createTemplate(500, 650);
-                //clip.addTemplate(tableTemplate, -j, 650 - i);
-                //canvas.addTemplate(clip, 36, 156);
-                //document.newPage();
+                clip = new PdfFormXObject(new Rectangle(500, 650));
+                new PdfCanvas(clip, pdfDoc).addXObject(tableTemplate, -j, 650 - i);
+                new PdfCanvas(pdfDoc.addNewPage()).addXObject(clip, 36, 156);
             }
         }
-        doc.add(table);
 
-        doc.close();
+        pdfDoc.close();
     }
 }
