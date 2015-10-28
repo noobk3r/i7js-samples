@@ -5,11 +5,10 @@ import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.core.font.PdfFont;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfString;
-import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.pdf.*;
 import com.itextpdf.core.pdf.action.PdfAction;
 import com.itextpdf.core.pdf.annot.PdfTextAnnotation;
+import com.itextpdf.core.pdf.xobject.PdfFormXObject;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Link;
@@ -51,10 +50,12 @@ public class PageLabels extends GenericTest {
         doc.add(new Paragraph("Hello People"));
         pdfDoc.addNewPage();
 
+        PdfFont bf = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA);
+
         // we add the text to the direct content, but not in the right order
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());
         canvas.beginText();
-        canvas.setFontAndSize(PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA), 12);
+        canvas.setFontAndSize(bf, 12);
         canvas.moveText(88.66f, 788);
         canvas.showText("ld");
         canvas.moveText(-22f, 0);
@@ -64,15 +65,13 @@ public class PageLabels extends GenericTest {
         canvas.moveText(-15.33f, 0);
         canvas.showText("He");
         canvas.endText();
-        // we also add text in a form XObject
-        // TODO There is no PdfTemplate
-        // PdfTemplate tmp = canvas.createTemplate(250, 25);
-        // tmp.beginText();
-        // tmp.setFontAndSize(bf, 12);
-        // tmp.moveText(0, 7);
-        // tmp.showText("Hello People");
-        // tmp.endText();
-        // canvas.addTemplate(tmp, 36, 763);
+        PdfFormXObject tmp = new PdfFormXObject(new Rectangle(250, 25));
+        new PdfCanvas(tmp, pdfDoc).beginText().
+                setFontAndSize(bf, 12).
+                moveText(0, 7).
+                showText("Hello People").
+                endText();
+        canvas.addXObject(tmp, 36, 763);
 
         pdfDoc.getFirstPage().setMediaBox(new PageSize(PageSize.A4).rotate());
         pdfDoc.addNewPage();
@@ -89,9 +88,7 @@ public class PageLabels extends GenericTest {
 
         pdfDoc.addNewPage();
         pdfDoc.getPage(4).setCropBox(new Rectangle(0, 0, 0, 0));
-        // TODO There is no PdfName.UserUnit constant
-        //pdfDoc.getPage(4).getPdfObject().put(PdfName.USERUNIT, new PdfNumber(5));
-        // writer.addPageDictEntry(PdfName.USERUNIT, new PdfNumber(5));
+        pdfDoc.getPage(4).getPdfObject().put(PdfName.UserUnit, new PdfNumber(5));
         doc.add(new Paragraph("Hello World"));
 
         pdfDoc.addNewPage();

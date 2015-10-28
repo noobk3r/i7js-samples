@@ -5,9 +5,10 @@ import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.pdf.xobject.PdfFormXObject;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.model.Canvas;
 import com.itextpdf.model.Document;
-import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
@@ -45,31 +46,22 @@ public class ClipCenterCellContent extends GenericTest {
 
         @Override
         public void draw(PdfDocument document, PdfCanvas canvas) {
-            super.draw(document, canvas);
-            content.setFontSize(12);
-            IRenderer pr = content.createRendererSubTree();
-            pr.setParent(this);
+            IRenderer pr = content.createRendererSubTree().setParent(this);
             LayoutResult textArea = pr.layout(new LayoutContext(
-                    new LayoutArea(0, new Rectangle(0, 0, getOccupiedAreaBBox().getWidth(), 10000))));
+                    new LayoutArea(0, new Rectangle(getOccupiedAreaBBox().getWidth(), 1000))));
 
+            float spaceneeded = textArea.getOccupiedArea().getBBox().getHeight();
             System.out.println(String.format("The content requires %s pt whereas the height is %s pt.",
-                    textArea.getOccupiedArea().getBBox().getHeight(), getOccupiedAreaBBox().getHeight()));
+                    spaceneeded, getOccupiedAreaBBox().getHeight()));
             float offset = (getOccupiedAreaBBox().getHeight() - textArea.getOccupiedArea().getBBox().getHeight()) / 2;
             System.out.println(String.format("The difference is %s pt; we'll need an offset of %s pt.",
                     -2f * offset, offset));
-            // TODO Implement PdfTemplate usage in such situation
-//                PdfTemplate tmp = canvas.createTemplate(position.getWidth(), position.getHeight());
-//                ct = new ColumnText(tmp);
-//                ct.setSimpleColumn(0, offset, position.getWidth(), offset + spaceneeded);
-//                ct.addElement(content);
-//                ct.go();
-//                canvas.addTemplate(tmp, position.getLeft(), position.getBottom());
-            canvas.beginText();
-            canvas.moveText(getOccupiedAreaBBox().getX() + 3, getOccupiedAreaBBox().getY() + 3);
-            canvas.setFontAndSize(this.getPropertyAsFont(Property.FONT), this.getPropertyAsFloat(Property.FONT_SIZE));
-            canvas.showText("Implement PdfTemplate!!!");
-            canvas.endText();
-            canvas.stroke();
+
+            PdfFormXObject xObject = new PdfFormXObject(new Rectangle(getOccupiedArea().getBBox().getWidth(), getOccupiedArea().getBBox().getHeight()));
+            Canvas layoutCanvas = new Canvas(new PdfCanvas(xObject, document), document, new Rectangle(0, offset, getOccupiedArea().getBBox().getWidth(), offset + spaceneeded));
+            layoutCanvas.add(content);
+
+            canvas.addXObject(xObject, occupiedArea.getBBox().getLeft(), occupiedArea.getBBox().getBottom());
         }
     }
 
@@ -78,13 +70,13 @@ public class ClipCenterCellContent extends GenericTest {
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc, PageSize.A4.rotate());
+        Document doc = new Document(pdfDoc, PageSize.A4);
 
         Table table = new Table(5);
         Cell cell;
         for (int r = 'A'; r <= 'Z'; r++) {
             for (int c = 1; c <= 5; c++) {
-                cell = new Cell();
+                cell = new Cell().setHeight(30);
                 if (r == 'D' && c == 2) {
                     cell.setNextRenderer(new ClipCenterCellContentCellRenderer(cell,
                             new Paragraph("D2 is a cell with more content than we can fit into the cell.")));

@@ -9,6 +9,7 @@ import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.layout.LayoutArea;
+import com.itextpdf.model.layout.LayoutResult;
 import com.itextpdf.model.renderer.DocumentRenderer;
 
 import java.io.FileOutputStream;
@@ -44,9 +45,9 @@ public class Listing_99_02_ComplexDocumentLayout extends GenericTest {
             int currentPageNumber;
 
             @Override
-            public LayoutArea getNextArea() {
+            public LayoutArea getNextArea(LayoutResult overflowResult) {
                 if (nextAreaNumber % 2 == 0) {
-                    currentPageNumber = super.getNextArea().getPageNumber();
+                    currentPageNumber = super.getNextArea(overflowResult).getPageNumber();
                     nextAreaNumber++;
                     return (currentArea = new LayoutArea(currentPageNumber, new Rectangle(100, 100, 100, 500)));
                 } else {

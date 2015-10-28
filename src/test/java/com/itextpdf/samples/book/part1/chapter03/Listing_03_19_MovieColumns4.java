@@ -11,6 +11,7 @@ import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.layout.LayoutArea;
+import com.itextpdf.model.layout.LayoutResult;
 import com.itextpdf.model.renderer.DocumentRenderer;
 
 import com.lowagie.database.DatabaseConnection;
@@ -61,9 +62,9 @@ public class Listing_03_19_MovieColumns4 extends Listing_03_16_MovieColumns1 {
             int currentPageNumber;
 
             @Override
-            public LayoutArea getNextArea() {
+            public LayoutArea getNextArea(LayoutResult overflowResult) {
                 if (nextAreaNumber % COLUMNS.length == 0) {
-                    currentPageNumber = super.getNextArea().getPageNumber();
+                    currentPageNumber = super.getNextArea(overflowResult).getPageNumber();
                     drawRectangles(new PdfCanvas(document.getPdfDocument().getLastPage()));
                 }
                 return (currentArea = new LayoutArea(currentPageNumber, COLUMNS[nextAreaNumber++ % COLUMNS.length].clone()));

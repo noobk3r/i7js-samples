@@ -4,11 +4,15 @@
  */
 package com.itextpdf.samples.sandbox.images;
 
+import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.basics.image.ImageFactory;
 import com.itextpdf.canvas.PdfCanvas;
+import com.itextpdf.canvas.color.Color;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.pdf.xobject.PdfFormXObject;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.model.Canvas;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Image;
 import com.itextpdf.samples.GenericTest;
@@ -16,10 +20,8 @@ import com.itextpdf.samples.GenericTest;
 import java.io.File;
 import java.io.FileOutputStream;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class WatermarkedImages4 extends GenericTest {
     public static final String IMAGE1 = "./src/test/resources/sandbox/images/bruno.jpg";
@@ -40,37 +42,33 @@ public class WatermarkedImages4 extends GenericTest {
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
-        PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
-        // TODO Implement Document.add on special content (for instance, before-content)
-        // PdfContentByte cb = writer.getDirectContentUnder();
-        doc.add(getWatermarkedImage(canvas, new Image(ImageFactory.getImage(IMAGE1))));
-        doc.add(getWatermarkedImage(canvas, new Image(ImageFactory.getImage(IMAGE2))));
-        doc.add(getWatermarkedImage(canvas, new Image(ImageFactory.getImage(IMAGE3))));
+        doc.add(getWatermarkedImage(pdfDoc, new Image(ImageFactory.getImage(IMAGE1))));
+        doc.add(getWatermarkedImage(pdfDoc, new Image(ImageFactory.getImage(IMAGE2))));
+        doc.add(getWatermarkedImage(pdfDoc, new Image(ImageFactory.getImage(IMAGE3))));
         Image image = new Image(ImageFactory.getImage(IMAGE4));
-        image.scaleToFit(400, 400);
-        doc.add(getWatermarkedImage(canvas, image));
+        image.scaleToFit(400, 700);
+        doc.add(getWatermarkedImage(pdfDoc, image));
         doc.close();
     }
 
-    public Image getWatermarkedImage(PdfCanvas cb, Image img) {
-        float width = img.getImageWidth();
-        float height = img.getImageHeight();
-        // TODO Implement PdfTemplate
-        // PdfTemplate template = cb.createTemplate(width, height);
-//        template.addImage(img, width, 0, 0, height, 0, 0);
-//        template.saveState();
-//        template.setColorStroke(BaseColor.GREEN);
-//        template.setLineWidth(3);
-//        template.moveTo(width * .25f, height * .25f);
-//        template.lineTo(width * .75f, height * .75f);
-//        template.moveTo(width * .25f, height * .75f);
-//        template.lineTo(width * .25f, height * .25f);
-//        template.stroke();
-//        template.setColorStroke(BaseColor.WHITE);
-//        template.ellipse(0, 0, width, height);
-//        template.stroke();
-//        template.restoreState();
-//        return Image.getInstance(template);
-        return null;
+    public Image getWatermarkedImage(PdfDocument pdfDocument, Image img) {
+        float width = img.getImageScaledWidth();
+        float height = img.getImageScaledHeight();
+        PdfFormXObject template = new PdfFormXObject(new Rectangle(width, height));
+        new Canvas(template, pdfDocument).add(img);
+        new PdfCanvas(template, pdfDocument).
+            saveState().
+            setStrokeColor(Color.GREEN).
+            setLineWidth(3).
+            moveTo(width * .25f, height * .25f).
+            lineTo(width * .75f, height * .75f).
+            moveTo(width * .25f, height * .75f).
+            lineTo(width * .25f, height * .25f).
+            stroke().
+                setStrokeColor(Color.WHITE).
+            ellipse(0, 0, width, height).
+            stroke().
+            restoreState();
+        return new Image(template);
     }
 }

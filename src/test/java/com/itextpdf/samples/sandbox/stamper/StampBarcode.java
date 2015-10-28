@@ -51,10 +51,6 @@ public class StampBarcode extends GenericTest {
             String s = String.valueOf(i);
             s = "00000000".substring(s.length()) + s;
             barcode.setCode(s);
-            // TODO Implement PdfTemplate
-//            PdfTemplate template =
-//                    barcode.createTemplateWithBarcode(over, BaseColor.BLACK, BaseColor.BLACK);
-//            over.addTemplate(template, x, y);
             PdfFormXObject barcodeXObject = barcode.createFormXObject(Color.BLACK, Color.BLACK, pdfDoc);
             over.addXObject(barcodeXObject, x, y);
             System.out.println(over.toString());

@@ -31,13 +31,13 @@ public class F02_Unembedded extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
         doc.add(new Paragraph("Odkud jste?"));
-        doc.add(new Paragraph("Uvidíme se za chvilku. Měj se."));
-        doc.add(new Paragraph("Dovolte, abych se představil."));
+        doc.add(new Paragraph("Uvid\u00EDme se za chvilku. M\u011Bj se."));
+        doc.add(new Paragraph("Dovolte, abych se p\u0159edstavil."));
         doc.add(new Paragraph("To je studentka."));
-        doc.add(new Paragraph("Všechno v pořádku?"));
-        doc.add(new Paragraph("On je inženýr. Ona je lékař."));
+        doc.add(new Paragraph("V\u0161echno v po\u0159\u00E1dku?"));
+        doc.add(new Paragraph("On je in\u017Een\u00FDr. Ona je l\u00E9ka\u0159."));
         doc.add(new Paragraph("Toto je okno."));
-        doc.add(new Paragraph("Zopakujte to prosím."));
+        doc.add(new Paragraph("Zopakujte to pros\u00EDm."));
         pdfDoc.close();
     }
 }

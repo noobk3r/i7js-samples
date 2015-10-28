@@ -15,6 +15,7 @@ import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Div;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.layout.LayoutArea;
+import com.itextpdf.model.layout.LayoutResult;
 import com.itextpdf.model.renderer.DocumentRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.samples.book.part1.chapter02.StarSeparator;
@@ -59,9 +60,9 @@ public class Listing_03_20_ColumnMovies2 extends GenericTest {
             int currentPageNumber;
 
             @Override
-            public LayoutArea getNextArea() {
+            public LayoutArea getNextArea(LayoutResult overflowResult) {
                 if (nextAreaNumber % 4 == 0) {
-                    currentPageNumber = super.getNextArea().getPageNumber();
+                    currentPageNumber = super.getNextArea(overflowResult).getPageNumber();
                 }
                 return (currentArea = new LayoutArea(currentPageNumber, COLUMNS[nextAreaNumber++ % 4].clone()));
             }

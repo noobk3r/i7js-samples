@@ -11,6 +11,7 @@ import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Text;
 import com.itextpdf.model.layout.LayoutArea;
+import com.itextpdf.model.layout.LayoutResult;
 import com.itextpdf.model.renderer.DocumentRenderer;
 import com.itextpdf.samples.GenericTest;
 
@@ -59,9 +60,9 @@ public class Listing_03_16_MovieColumns1 extends GenericTest {
             int currentPageNumber;
 
             @Override
-            public LayoutArea getNextArea() {
+            public LayoutArea getNextArea(LayoutResult overflowResult) {
                 if (nextAreaNumber % 2 == 0) {
-                    currentPageNumber = super.getNextArea().getPageNumber();
+                    currentPageNumber = super.getNextArea(overflowResult).getPageNumber();
                     nextAreaNumber++;
                     return (currentArea = new LayoutArea(currentPageNumber, new Rectangle(36, 36, 260, 770)));
                 } else {

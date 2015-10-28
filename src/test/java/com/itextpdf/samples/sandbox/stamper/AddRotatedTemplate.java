@@ -4,21 +4,23 @@
  */
 package com.itextpdf.samples.sandbox.stamper;
 
+import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.pdf.xobject.PdfFormXObject;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.model.Canvas;
+import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class AddRotatedTemplate extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/stamper/hello.pdf";
@@ -34,21 +36,18 @@ public class AddRotatedTemplate extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(
                 new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
+
+        PdfFormXObject formXObject = new PdfFormXObject(new Rectangle(80, 120));
+        new Canvas(formXObject, pdfDoc).add(new Paragraph("Some long text that needs to be distributed over several lines."));
+
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());
-        // TODO Implement PdfTemplate
-        //PdfTemplate xobject = canvas.createTemplate(80, 120);
-        //ColumnText column = new ColumnText(xobject);
-        // TODO Implement analog of SimpleColumn
-        //column.setSimpleColumn(new Rectangle(80, 120));
-//        column.addElement(new Paragraph("Some long text that needs to be distributed over several lines."));
-//        column.go();
-//        canvas.addTemplate(xobject, 36, 600);
-//        double angle = Math.PI / 4;
-//        canvas.addTemplate(xobject,
-//                (float) Math.cos(angle), -(float) Math.sin(angle),
-//                (float) Math.cos(angle), (float) Math.sin(angle),
-//                150, 600);
-//
+        canvas.addXObject(formXObject, 36, 600);
+        double angle = Math.PI / 4;
+        canvas.addXObject(formXObject,
+                (float) Math.cos(angle), -(float) Math.sin(angle),
+                (float) Math.cos(angle), (float) Math.sin(angle),
+                150, 600);
+
         pdfDoc.close();
     }
 }

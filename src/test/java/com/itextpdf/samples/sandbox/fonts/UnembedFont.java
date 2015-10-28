@@ -19,7 +19,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class UnembedFont extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/fonts/unembed_font.pdf";
-    public static final String SRC = "./src/test/resources/sandbox/fonts/withoutSerifFont.pdf";
+    public static final String SRC = "./target/test/resources/sandbox/fonts/withSerifFont.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -30,11 +30,8 @@ public class UnembedFont extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         createPdf(SRC);
-        // we create a reader instance
-        PdfReader reader = new PdfReader(SRC);
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(
                 new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
-        Document doc = new Document(pdfDoc);
 
         // / we loop over all objects
         PdfObject obj;
@@ -46,8 +43,8 @@ public class UnembedFont extends GenericTest {
             // we process all dictionaries
             unembedTTF((PdfDictionary) obj);
         }
-        // removing unused objects will remove unused font file streams
-        //reader.removeUnusedObjects();
+        // The unused objects will be removed automatically
+
         // we persist the altered document
         pdfDoc.close();
     }
@@ -78,8 +75,8 @@ public class UnembedFont extends GenericTest {
         }
         // check if a subset was used (in which case we remove the prefix)
         PdfName baseFont = dict.getAsName(PdfName.BaseFont);
-        if (baseFont.getValue().getBytes()[7] == '+') {
-            baseFont = new PdfName(baseFont.toString().substring(8));
+        if (baseFont.getValue().getBytes()[6] == '+') {
+            baseFont = new PdfName(baseFont.getValue().substring(7));
             dict.put(PdfName.BaseFont, baseFont);
         }
         // we check if there's a font descriptor

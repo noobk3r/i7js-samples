@@ -30,14 +30,14 @@ public class F01_Unembedded extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
-        doc.add(new Paragraph("Vous êtes d'où?"));
-        doc.add(new Paragraph("À tout à l'heure. À bientôt."));
-        doc.add(new Paragraph("Je me présente."));
-        doc.add(new Paragraph("C'est un étudiant."));
-        doc.add(new Paragraph("Ça va?"));
-        doc.add(new Paragraph("Il est ingénieur. Elle est médecin."));
-        doc.add(new Paragraph("C'est une fenêtre."));
-        doc.add(new Paragraph("Répétez, s'il vous plaît."));
+        doc.add(new Paragraph("Vous \u00EAtes d\'o\u00F9?"));
+        doc.add(new Paragraph("\u00C0 tout \u00E0 l\'heure. \u00C0 bient\u00F4t."));
+        doc.add(new Paragraph("Je me pr\u00E9sente."));
+        doc.add(new Paragraph("C\'est un \u00E9tudiant."));
+        doc.add(new Paragraph("\u00C7a va?"));
+        doc.add(new Paragraph("Il est ing\u00E9nieur. Elle est m\u00E9decin."));
+        doc.add(new Paragraph("C\'est une fen\u00EAtre."));
+        doc.add(new Paragraph("R\u00E9p\u00E9tez, s\'il vous pla\u00EEt."));
         pdfDoc.close();
     }
 }
