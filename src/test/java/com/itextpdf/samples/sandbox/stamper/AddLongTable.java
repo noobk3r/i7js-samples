@@ -34,7 +34,8 @@ public class AddLongTable extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(
                 new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
-        Document doc = new Document(pdfDoc, PageSize.A4.clone().setTopMargin(72));
+        Document doc = new Document(pdfDoc, PageSize.A4.clone());
+        doc.setTopMargin(72);
         Table table = new Table(2);
         for (int i = 0; i < 250; ) {
             table.addCell(new Cell().add(new Paragraph("Row " + (++i))));

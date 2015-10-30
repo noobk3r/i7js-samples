@@ -37,7 +37,8 @@ public class Listing_03_23_ImageDirect extends GenericTest {
         //Initialize document and add page
         PdfDocument pdfDoc = new PdfDocument(writer);
         Rectangle postcard = new Rectangle(283, 416);
-        Document doc = new Document(pdfDoc, new PageSize(postcard.getWidth(), postcard.getHeight(), 30, 30, 30, 30));
+        Document doc = new Document(pdfDoc, new PageSize(postcard.getWidth(), postcard.getHeight()));
+        doc.setMargins(30, 30, 30, 30);
 
         Paragraph p = new Paragraph("Foobar Film Festival").setFontSize(22).setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
         doc.add(p);

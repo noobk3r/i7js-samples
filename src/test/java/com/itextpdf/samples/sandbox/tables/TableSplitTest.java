@@ -40,7 +40,8 @@ public class TableSplitTest extends GenericTest {
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc, new PageSize(595, 842).setMargins(55, 15, 35, 15));
+        Document doc = new Document(pdfDoc, new PageSize(595, 842));
+        doc.setMargins(55, 15, 35, 15);
 
         String[] header = new String[]{"Header1", "Header2", "Header3",
                 "Header4", "Header5"};

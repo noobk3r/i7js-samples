@@ -37,8 +37,8 @@ public class HyphenationExample extends GenericTest {
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc, PageSize.A4.clone().setMargins(0, 0, 0, 0));
-
+        Document doc = new Document(pdfDoc, PageSize.A4.clone());
+        doc.setMargins(0, 0, 0, 0);
         Table table = new Table(1);
         table.setWidthPercent(10);
         Text chunk = new Text("Leistungsscheinziffer");

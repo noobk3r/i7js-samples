@@ -32,10 +32,10 @@ public class Listing_01_07_HelloWorldMirroredMargins extends GenericTest {
 
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(writer);
-        PageSize customPageSize = PageSize.A5.clone().setMargins(108, 72, 180, 36);
+        PageSize customPageSize = PageSize.A5.clone();
         // TODO document.setMarginMirroring(true);
         Document doc = new Document(pdfDoc, customPageSize);
-
+        doc.setMargins(108, 72, 180, 36);
         doc.add(new Paragraph(
                 "The left margin of this odd page is 36pt (0.5 inch); " +
                         "the right margin 72pt (1 inch); " +

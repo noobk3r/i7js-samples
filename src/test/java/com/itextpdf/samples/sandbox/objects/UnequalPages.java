@@ -21,9 +21,9 @@ import java.io.IOException;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class UnequalPages extends GenericTest {
+
     public static final String DEST = "./target/test/resources/sandbox/objects/unequal_pages.pdf";
 
     public static void main(String[] args) throws IOException {
@@ -38,12 +38,14 @@ public class UnequalPages extends GenericTest {
 
         Rectangle one = new Rectangle(70, 140);
         Rectangle two = new Rectangle(700, 400);
-        // TODO Bug with setMargins
-        pdfDoc.addNewPage(new PageSize(one).setMargins(2, 2, 2, 2));
+
+        pdfDoc.addNewPage(new PageSize(one));
         Paragraph p = new Paragraph("Hi");
+        doc.setMargins(2, 2, 2, 2);
         doc.add(p);
-        pdfDoc.addNewPage(new PageSize(two).setMargins(20, 20, 20, 20));
+        pdfDoc.addNewPage(new PageSize(two));
         doc.add(new AreaBreak());
+        doc.setMargins(20, 20, 20, 20);
         doc.add(p);
 
         doc.close();

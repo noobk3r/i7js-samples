@@ -46,7 +46,8 @@ public class Listing_02_10_MovieChain extends GenericTest {
 
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc, new PageSize(240, 240, 10, 10, 10, 10));
+        Document doc = new Document(pdfDoc, new PageSize(240, 240));
+        doc.setMargins(10, 10, 10, 10);
         // create a long Stringbuffer with movie titles
         StringBuffer buf1 = new StringBuffer();
         for (Movie movie : kubrick) {
