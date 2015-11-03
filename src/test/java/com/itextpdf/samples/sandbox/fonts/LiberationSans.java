@@ -15,10 +15,8 @@ import com.itextpdf.samples.GenericTest;
 import java.io.File;
 import java.io.FileOutputStream;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class LiberationSans extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/fonts/liberation_sans.pdf";
@@ -35,8 +33,7 @@ public class LiberationSans extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
         PdfFont.register(FONT, "Greek-Regular");
-        // TODO this does n't work correct with CP1253 although CP1253 can be used for Greek letters
-        PdfFont f = PdfFont.createRegisteredFont(pdfDoc, "Greek-Regular", "Identity-H");
+        PdfFont f = PdfFont.createRegisteredFont(pdfDoc, "Greek-Regular", "CP1253", true);
         Paragraph p = new Paragraph("\u039d\u03cd\u03c6\u03b5\u03c2").setFont(f);
         doc.add(p);
         pdfDoc.close();

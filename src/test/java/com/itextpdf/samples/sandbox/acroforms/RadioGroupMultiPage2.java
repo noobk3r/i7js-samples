@@ -23,6 +23,8 @@ import java.io.FileOutputStream;
 
 import org.junit.experimental.categories.Category;
 
+// TODO radio group is not working correctly DEVSIX-326
+
 @Category(SampleTest.class)
 public class RadioGroupMultiPage2 extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/acroforms/radio_group_multi_page2.pdf";
@@ -56,7 +58,6 @@ public class RadioGroupMultiPage2 extends GenericTest {
             table.addCell(cell);
         }
         doc.add(table);
-        // TODO exception
         PdfAcroForm.getAcroForm(pdfDoc, true).addField(radioGroup);
         pdfDoc.close();
     }
