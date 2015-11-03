@@ -52,7 +52,6 @@ public class FillFormFieldOrder extends GenericTest {
         fields.get("sunday_4").setValue("4");
         fields.get("sunday_5").setValue("5");
         fields.get("sunday_6").setValue("6");
-        // TODO Implement partinal flattening
 
         form.partialFormFlattening("sunday_1");
         form.partialFormFlattening("sunday_2");
