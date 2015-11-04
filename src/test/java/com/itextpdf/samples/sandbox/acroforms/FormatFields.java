@@ -33,7 +33,7 @@ public class FormatFields extends GenericTest {
         PdfReader reader = new PdfReader(new FileInputStream(SRC));
         PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(new FileOutputStream(DEST)));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
-        // TODO there is no way to show not value but smth different
+        // TODO there is no way to show not value but smth different DEVSIX-325
         form.getField("Name").setValue("1.0");
         form.getField("Company").setValue("1217000.000000");
         pdfDoc.close();

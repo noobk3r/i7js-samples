@@ -21,11 +21,13 @@ import java.io.FileOutputStream;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class ReuseImage extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/images/single_image.pdf";
     public static final String DEST = "./target/test/resources/sandbox/images/reuse_image.pdf";
+
+
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -36,12 +38,18 @@ public class ReuseImage extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)));
+
+        FileOutputStream fos = new FileOutputStream(dest);
+        PdfWriter writer = new PdfWriter(fos);
+        PdfDocument pdfDoc2 = new PdfDocument(writer);
+
+
         PdfDictionary pageDict = pdfDoc.getPage(1).getPdfObject();
         PdfDictionary pageResources = pageDict.getAsDictionary(PdfName.Resources);
         PdfDictionary pageXObjects = pageResources.getAsDictionary(PdfName.XObject);
         PdfName imgRef = pageXObjects.keySet().iterator().next();
         PdfStream imgStream = pageXObjects.getAsStream(imgRef);
-        PdfImageXObject imgObject = new PdfImageXObject(imgStream);
+        PdfImageXObject imgObject = new PdfImageXObject((PdfStream) imgStream.copyToDocument(pdfDoc2));
         pdfDoc.close();
         Image image = new Image(imgObject);
         image.scaleToFit(842, 595);
@@ -50,12 +58,9 @@ public class ReuseImage extends GenericTest {
                 (595 - image.getImageHeight() * (Float) image.getProperty(Property.VERTICAL_SCALING)) / 2);
         image.setWidth(image.getImageWidth() * (Float) image.getProperty(Property.HORIZONTAL_SCALING));
         image.setHeight(image.getImageHeight() * (Float) image.getProperty(Property.VERTICAL_SCALING));
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        pdfDoc = new PdfDocument(writer);
-        // pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
-        Document doc = new Document(pdfDoc, PageSize.A4.rotate());
-        // TODO Add all streams to document in order to render it well
+
+        Document doc = new Document(pdfDoc2, PageSize.A4.rotate());
+
         doc.add(image);
         doc.close();
 

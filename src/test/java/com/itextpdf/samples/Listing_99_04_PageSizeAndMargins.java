@@ -19,6 +19,7 @@ public class Listing_99_04_PageSizeAndMargins extends GenericTest {
 
     static public final String DEST = "./target/test/resources/Listing_99_03_PageSizeAndMargins/Listing_99_03_PageSizeAndMargins.pdf";
 
+
     public static void main(String args[]) throws IOException {
         new Listing_99_04_PageSizeAndMargins().manipulatePdf(DEST);
     }
@@ -30,7 +31,8 @@ public class Listing_99_04_PageSizeAndMargins extends GenericTest {
 
         //Initialize document with a certain page size.
         PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc, new PageSize(100, 100, 10, 10, 10, 10));
+        Document doc = new Document(pdfDoc, new PageSize(100, 100));
+        doc.setMargins(10, 10, 10, 10);
 
         //Add paragraph to the document
         doc.add(new Paragraph("Hello")).add(new Paragraph("World"));

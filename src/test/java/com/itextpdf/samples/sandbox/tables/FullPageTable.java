@@ -32,7 +32,8 @@ public class FullPageTable extends GenericTest {
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc, new PageSize(595, 842).setMargins(0, 0, 0, 0));
+        Document doc = new Document(pdfDoc, new PageSize(595, 842));
+        doc.setMargins(0, 0, 0, 0);
 
         Table table = new Table(10);
         table.setMarginTop(0f);

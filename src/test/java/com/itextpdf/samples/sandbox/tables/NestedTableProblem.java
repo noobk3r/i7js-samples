@@ -33,7 +33,8 @@ public class NestedTableProblem extends GenericTest {
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc, new PageSize(612, 792).setMargins(30, 21, 35, 21));
+        Document doc = new Document(pdfDoc, new PageSize(612, 792));
+        doc.setMargins(30, 21, 35, 21);
 
         // table 2
         final Table table2 = new Table(1);

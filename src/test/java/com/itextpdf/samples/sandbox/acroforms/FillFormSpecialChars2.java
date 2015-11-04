@@ -43,7 +43,7 @@ public class FillFormSpecialChars2 extends GenericTest {
         form.setGenerateAppearance(true);
         PdfFont font = PdfFont.createFont(pdfDoc, FONT, PdfEncodings.IDENTITY_H);
         form.getFormFields().get("Name").setFont(font);
-        // TODO the value renders incorrectly
+        // TODO the value renders incorrectly  DEVSIX-323
         form.getFormFields().get("Name").setValue("\u04e711111");
         form.flatFields();
         pdfDoc.close();

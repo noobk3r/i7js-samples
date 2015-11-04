@@ -40,6 +40,12 @@ public class LargeImage2 extends GenericTest {
         reader.setCloseStream(false);
         PdfDocument pdfDoc = new PdfDocument(reader);
         Rectangle rect = pdfDoc.getPage(1).getPageSize();
+
+        File tmp = File.createTempFile("large_image", ".pdf", new File("."));
+        tmp.deleteOnExit();
+        // TODO problem with double opening of reader
+        PdfDocument pdfDoc2 = new PdfDocument(reader, new PdfWriter(new FileOutputStream(tmp)));
+
         if (rect.getWidth() < 14400 && rect.getHeight() < 14400) {
             System.out.println("The size of the PDF document is within the accepted limits");
             System.exit(0);
@@ -50,22 +56,19 @@ public class LargeImage2 extends GenericTest {
         PdfDictionary pageXObjects = pageResources.getAsDictionary(PdfName.XObject);
         PdfName imgRef = pageXObjects.keySet().iterator().next();
         PdfStream imgStream = pageXObjects.getAsStream(imgRef);
-        PdfImageXObject imgObject = new PdfImageXObject(imgStream);
+        PdfImageXObject imgObject = new PdfImageXObject((PdfStream) imgStream.copyToDocument(pdfDoc2));
         pdfDoc.close();
 
         Image image = new Image(imgObject);
         image.scaleToFit(14400, 14400);
         image.setFixedPosition(0, 0);
 
-        File tmp = File.createTempFile("large_image", ".pdf", new File("."));
-        tmp.deleteOnExit();
-        // TODO problem with double opening of reader
-        pdfDoc = new PdfDocument(reader, new PdfWriter(new FileOutputStream(tmp)));
-        pdfDoc.addNewPage(1,
+
+        pdfDoc2.addNewPage(1,
                 new PageSize(image.getImageWidth() * (Float) image.getProperty(Property.HORIZONTAL_SCALING),
                         image.getImageHeight() * (Float) image.getProperty(Property.VERTICAL_SCALING)));
-        new PdfCanvas(pdfDoc.getFirstPage()).addXObject(image.getXObject(), 0, 0);
-        pdfDoc.close();
+        new PdfCanvas(pdfDoc2.getFirstPage()).addXObject(image.getXObject(), 0, 0);
+        pdfDoc2.close();
         reader.close();
         // We create a new file that only contains the new first page
         reader = new PdfReader(tmp.getAbsolutePath());

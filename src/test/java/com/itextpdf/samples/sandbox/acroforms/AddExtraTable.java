@@ -4,7 +4,6 @@
  */
 package com.itextpdf.samples.sandbox.acroforms;
 
-import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -15,6 +14,9 @@ import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
+import com.itextpdf.model.layout.LayoutArea;
+import com.itextpdf.model.layout.LayoutResult;
+import com.itextpdf.model.renderer.DocumentRenderer;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.FileInputStream;
@@ -24,7 +26,7 @@ import java.util.Map;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+@Ignore("Acrobat offers to resave the resultant document. GhostScript says xref table is broken. CropBox/TrimBox is not written for the first page. DEVSIX-328")
 @Category(SampleTest.class)
 public class AddExtraTable extends GenericTest {
     public static String SRC = "./src/test/resources/sandbox/acroforms/form.pdf";
@@ -39,7 +41,6 @@ public class AddExtraTable extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
 
-        Rectangle pagesize = pdfDoc.getPage(1).getPageSize();
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         Map<String, PdfFormField> fields = form.getFormFields();
         fields.get("Name").setValue("Jeniffer");
@@ -48,7 +49,7 @@ public class AddExtraTable extends GenericTest {
         form.flatFields();
 
         Table table = new Table(new float[]{1, 15});
-        table.setWidth(0);
+        table.setWidthPercent(80);
         table.addHeaderCell(new Cell().add(new Paragraph("#")));
         table.addHeaderCell(new Cell().add(new Paragraph("description")));
 
@@ -56,33 +57,21 @@ public class AddExtraTable extends GenericTest {
             table.addCell(new Cell().add(new Paragraph(String.valueOf(i))));
             table.addCell(new Cell().add(new Paragraph("test " + i)));
         }
-        // TODO Implement adding in special area like ColumnText could
-        /* There is no ColumnText in itext6 */
-        // Implement it other way
-        // ColumnText column = new ColumnText(stamper.getOverContent(1));
-        //Rectangle rectPage1 = new Rectangle(36, 36, 559, 540);
-        //column.setSimpleColumn(rectPage1);
-        //column.addElement(table);
-        //table.setWidth(559-36);
+
+        doc.setRenderer(new DocumentRenderer(doc) {
+            @Override
+            protected LayoutArea getNextArea(LayoutResult overflowResult) {
+                LayoutArea area = super.getNextArea(overflowResult);
+                if (area.getPageNumber() == 1) {
+                    area.getBBox().decreaseHeight(266);
+                }
+                return area;
+            }
+        });
+
         // TODO Problems with margins
         doc.add(table);
 
-        // int pagecount = 1;
-        // Rectangle rectPage2 = new Rectangle(36, 36, 559, 806);
-        // int status = column.go();
-        // while (ColumnText.hasMoreText(status)) {
-        //    status = triggerNewPage(stamper, pagesize, column, rectPage2, ++pagecount);
-        // }
-        pdfDoc.close();
+        doc.close();
     }
-
-    /* There is no need in such method because of ColumnText's absence in itext6 */
-//    public int triggerNewPage(PdfStamper stamper, Rectangle pagesize,
-// ColumnText column, Rectangle rect, int pagecount) throws DocumentException {
-//        stamper.insertPage(pagecount, pagesize);
-//        PdfContentByte canvas = stamper.getOverContent(pagecount);
-//        column.setCanvas(canvas);
-//        column.setSimpleColumn(rect);
-//        return column.go();
-//    }
 }
