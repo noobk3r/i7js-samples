@@ -1,7 +1,7 @@
 package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.basics.geom.PageSize;
-import com.itextpdf.canvas.color.DeviceRgb;
+import com.itextpdf.core.color.DeviceRgb;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;

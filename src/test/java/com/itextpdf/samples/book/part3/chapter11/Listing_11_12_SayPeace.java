@@ -3,7 +3,7 @@ package com.itextpdf.samples.book.part3.chapter11;
 import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.canvas.PdfCanvasConstants;
-import com.itextpdf.canvas.color.DeviceGray;
+import com.itextpdf.core.color.DeviceGray;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -110,7 +110,7 @@ public class Listing_11_12_SayPeace extends GenericTest {
                 throws SAXException {
             if ("big".equals(qName)) {
                 Text bold = new Text(strip(buf)).setFont(f);
-                bold.setTextRenderingMode(PdfCanvasConstants.TextRenderingMode.TEXT_RENDERING_MODE_FILL_STROKE).
+                bold.setTextRenderingMode(PdfCanvasConstants.TextRenderingMode.FILL_STROKE).
                         setStrokeWidth(0.5f).
                         setStrokeColor(DeviceGray.BLACK);
                 Paragraph p = new Paragraph(bold);

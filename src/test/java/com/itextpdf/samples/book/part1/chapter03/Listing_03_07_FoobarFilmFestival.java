@@ -132,13 +132,13 @@ public class Listing_03_07_FoobarFilmFestival extends GenericTest {
 //        phrase = new Paragraph(c);
 //        doc.showTextAligned(phrase, 400, 500, 1, Property.HorizontalAlignment.LEFT, Property.VerticalAlignment.TOP, 0);
 //        c = new Text(foobar).setFont(times);
-//        c.setTextRenderingMode(Property.TextRenderingMode.TEXT_RENDERING_MODE_STROKE)
+//        c.setTextRenderingMode(Property.TextRenderingMode.STROKE)
 //                .setStrokeWidth(0.1f)
 //                .setStrokeColor(Color.RED);
 //        phrase = new Paragraph(c);
 //        doc.showTextAligned(phrase, 400, 464, 1, Property.HorizontalAlignment.LEFT, Property.VerticalAlignment.TOP, 0);
 //        c = new Text(foobar).setFont(times);
-//        c.setTextRenderingMode(Property.TextRenderingMode.TEXT_RENDERING_MODE_FILL_STROKE).
+//        c.setTextRenderingMode(Property.TextRenderingMode.FILL_STROKE).
 //                setStrokeWidth(1);
 //        phrase = new Paragraph(c);
 //        doc.showTextAligned(phrase, 400, 428, 1, Property.HorizontalAlignment.LEFT, Property.VerticalAlignment.TOP, 0);

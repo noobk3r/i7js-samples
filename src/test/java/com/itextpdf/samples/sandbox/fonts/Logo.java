@@ -5,7 +5,7 @@ package com.itextpdf.samples.sandbox.fonts;
 
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.canvas.PdfCanvasConstants;
-import com.itextpdf.canvas.color.DeviceRgb;
+import com.itextpdf.core.color.DeviceRgb;
 import com.itextpdf.canvas.font.PdfType3Font;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfPage;

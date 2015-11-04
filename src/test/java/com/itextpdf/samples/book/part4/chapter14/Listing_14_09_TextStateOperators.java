@@ -4,8 +4,8 @@ import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.canvas.PdfCanvasConstants;
-import com.itextpdf.canvas.color.Color;
-import com.itextpdf.canvas.color.DeviceGray;
+import com.itextpdf.core.color.Color;
+import com.itextpdf.core.color.DeviceGray;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfTextArray;
@@ -86,28 +86,28 @@ public class Listing_14_09_TextStateOperators extends GenericTest {
         canvas.setFillColor(Color.BLUE).
                 beginText().
                 setTextMatrix(360, 770).
-                setTextRenderingMode(PdfCanvasConstants.TextRenderingMode.TEXT_RENDERING_MODE_FILL).
+                setTextRenderingMode(PdfCanvasConstants.TextRenderingMode.FILL).
                 setFontAndSize(font, 24).
                 showText(text).
                 endText().
 
                 beginText().
                 setTextMatrix(360, 730).
-                setTextRenderingMode(PdfCanvasConstants.TextRenderingMode.TEXT_RENDERING_MODE_STROKE).
+                setTextRenderingMode(PdfCanvasConstants.TextRenderingMode.STROKE).
                 setFontAndSize(font, 24).
                 showText(text).
                 endText().
 
                 beginText().
                 setTextMatrix(360, 690).
-                setTextRenderingMode(PdfCanvasConstants.TextRenderingMode.TEXT_RENDERING_MODE_FILL_STROKE).
+                setTextRenderingMode(PdfCanvasConstants.TextRenderingMode.FILL_STROKE).
                 setFontAndSize(font, 24).
                 showText(text).
                 endText().
 
                 beginText().
                 setTextMatrix(360, 650).
-                setTextRenderingMode(PdfCanvasConstants.TextRenderingMode.TEXT_RENDERING_MODE_INVISIBLE).
+                setTextRenderingMode(PdfCanvasConstants.TextRenderingMode.INVISIBLE).
                 setFontAndSize(font, 24).
                 showText(text).
                 endText();
@@ -123,7 +123,7 @@ public class Listing_14_09_TextStateOperators extends GenericTest {
         canvas.saveState().
                 beginText().
                 setTextMatrix(360, 610).
-                setTextRenderingMode(PdfCanvasConstants.TextRenderingMode.TEXT_RENDERING_MODE_FILL_CLIP).
+                setTextRenderingMode(PdfCanvasConstants.TextRenderingMode.FILL_CLIP).
                 setFontAndSize(font, 24).
                 showText(text).
                 endText().
@@ -133,7 +133,7 @@ public class Listing_14_09_TextStateOperators extends GenericTest {
                 saveState().
                 beginText().
                 setTextMatrix(360, 570).
-                setTextRenderingMode(PdfCanvasConstants.TextRenderingMode.TEXT_RENDERING_MODE_STROKE_CLIP).
+                setTextRenderingMode(PdfCanvasConstants.TextRenderingMode.STROKE_CLIP).
                 setFontAndSize(font, 24).
                 showText(text).
                 endText().
@@ -143,7 +143,7 @@ public class Listing_14_09_TextStateOperators extends GenericTest {
                 saveState().
                 beginText().
                 setTextMatrix(360, 530).
-                setTextRenderingMode(PdfCanvasConstants.TextRenderingMode.TEXT_RENDERING_MODE_FILL_STROKE_CLIP).
+                setTextRenderingMode(PdfCanvasConstants.TextRenderingMode.FILL_STROKE_CLIP).
                 setFontAndSize(font, 24).
                 showText(text).
                 endText().
@@ -153,7 +153,7 @@ public class Listing_14_09_TextStateOperators extends GenericTest {
                 saveState().
                 beginText().
                 setTextMatrix(360, 490).
-                setTextRenderingMode(PdfCanvasConstants.TextRenderingMode.TEXT_RENDERING_MODE_CLIP).
+                setTextRenderingMode(PdfCanvasConstants.TextRenderingMode.CLIP).
                 setFontAndSize(font, 24).
                 showText(text).
                 endText().

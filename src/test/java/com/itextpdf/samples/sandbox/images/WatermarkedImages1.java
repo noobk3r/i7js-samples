@@ -6,7 +6,7 @@ package com.itextpdf.samples.sandbox.images;
 
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.basics.image.ImageFactory;
-import com.itextpdf.canvas.color.DeviceGray;
+import com.itextpdf.core.color.DeviceGray;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.xobject.PdfFormXObject;

@@ -1,8 +1,8 @@
 package com.itextpdf.samples.book.part3.chapter10;
 
 import com.itextpdf.canvas.PdfCanvas;
-import com.itextpdf.canvas.color.Color;
-import com.itextpdf.canvas.color.PatternColor;
+import com.itextpdf.core.color.Color;
+import com.itextpdf.core.color.PatternColor;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.colorspace.PdfDeviceCs;

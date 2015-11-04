@@ -2,7 +2,7 @@ package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.geom.PageSize;
-import com.itextpdf.canvas.color.DeviceGray;
+import com.itextpdf.core.color.DeviceGray;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;

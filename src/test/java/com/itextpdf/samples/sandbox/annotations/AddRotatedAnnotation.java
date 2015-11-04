@@ -5,7 +5,7 @@
 package com.itextpdf.samples.sandbox.annotations;
 
 import com.itextpdf.basics.geom.Rectangle;
-import com.itextpdf.canvas.color.Color;
+import com.itextpdf.core.color.Color;
 import com.itextpdf.core.pdf.*;
 import com.itextpdf.core.pdf.action.PdfAction;
 import com.itextpdf.core.pdf.annot.PdfAnnotation;

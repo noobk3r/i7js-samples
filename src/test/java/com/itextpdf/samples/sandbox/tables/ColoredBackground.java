@@ -4,7 +4,7 @@ import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.FontFactory;
 import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.basics.font.Type1Font;
-import com.itextpdf.canvas.color.Color;
+import com.itextpdf.core.color.Color;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.font.PdfType1Font;
 import com.itextpdf.core.pdf.PdfDocument;
