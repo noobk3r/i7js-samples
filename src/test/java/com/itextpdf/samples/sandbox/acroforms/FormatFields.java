@@ -18,7 +18,6 @@ import java.io.FileOutputStream;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore("ghostscript xref table issue")
 @Category(SampleTest.class)
 public class FormatFields extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/acroforms/form.pdf";

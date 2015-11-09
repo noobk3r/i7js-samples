@@ -26,7 +26,6 @@ import java.util.Map;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore("Acrobat offers to resave the resultant document. GhostScript says xref table is broken. CropBox/TrimBox is not written for the first page. DEVSIX-328")
 @Category(SampleTest.class)
 public class AddExtraTable extends GenericTest {
     public static String SRC = "./src/test/resources/sandbox/acroforms/form.pdf";
