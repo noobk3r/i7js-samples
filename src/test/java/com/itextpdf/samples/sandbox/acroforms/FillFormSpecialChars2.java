@@ -22,12 +22,15 @@ import java.io.FileOutputStream;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class FillFormSpecialChars2 extends GenericTest {
+
     public static final String SRC = "./src/test/resources/sandbox/acroforms/form.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/fill_form_special_chars2.pdf";
     public static final String FONT = "./src/test/resources/sandbox/acroforms/FreeSans.ttf";
+
+
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -42,9 +45,9 @@ public class FillFormSpecialChars2 extends GenericTest {
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         form.setGenerateAppearance(true);
         PdfFont font = PdfFont.createFont(pdfDoc, FONT, PdfEncodings.IDENTITY_H);
-        form.getFormFields().get("Name").setFont(font);
-        // TODO the value renders incorrectly  DEVSIX-323
-        form.getFormFields().get("Name").setValue("\u04e711111");
+
+
+        form.getFormFields().get("Name").setValue("\u04e711111", font, 12);
         form.flatFields();
         pdfDoc.close();
     }
