@@ -17,11 +17,13 @@ import com.itextpdf.model.element.Table;
 import com.itextpdf.model.element.Text;
 import com.itextpdf.samples.GenericTest;
 
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 
 import org.junit.experimental.categories.Category;
 import org.xml.sax.Attributes;
@@ -29,12 +31,13 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+// TODO arabic ligatures
 @Category(SampleTest.class)
-// TODO find arabic font and use it
 public class Listing_11_12_SayPeace extends GenericTest {
 
     public static final String DEST = "./target/test/resources/book/part3/chapter11/Listing_11_12_SayPeace.pdf";
     private static final String FONT = "src/test/resources/font/FreeSans.ttf";
+    private static final String ARABIC_FONT = "src/test/resources/font/arabtype.volt.ttf";
     private static final String RESOURCE = "src/test/resources/xml/say_peace.xml";
 
     public static void main(String[] args) throws Exception {
@@ -72,11 +75,13 @@ public class Listing_11_12_SayPeace extends GenericTest {
         protected Document document;
 
         protected PdfFont f;
+        protected PdfFont arabicF;
 
         public CustomHandler(Document document) {
             this.document = document;
             try {
                 this.f = PdfFont.createFont(document.getPdfDocument(), FONT, PdfEncodings.IDENTITY_H, true);
+                this.arabicF = PdfFont.createFont(document.getPdfDocument(), ARABIC_FONT, PdfEncodings.IDENTITY_H, true);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -94,7 +99,10 @@ public class Listing_11_12_SayPeace extends GenericTest {
                 cell.setBorder(Border.NO_BORDER);
                 if ("RTL".equals(attributes.getValue("direction"))) {
                     cell.setBaseDirection(Property.BaseDirection.RIGHT_TO_LEFT).
-                            setHorizontalAlignment(Property.HorizontalAlignment.RIGHT);
+                            setHorizontalAlignment(Property.HorizontalAlignment.RIGHT).
+                            setFont(f);
+                } else {
+                    cell.setFont(f);
                 }
             }
             else if ("pace".equals(qName)) {
@@ -109,7 +117,13 @@ public class Listing_11_12_SayPeace extends GenericTest {
         public void endElement(String uri, String localName, String qName)
                 throws SAXException {
             if ("big".equals(qName)) {
-                Text bold = new Text(strip(buf)).setFont(f);
+                String txt = strip(buf);
+                Text bold = new Text(txt);
+                if (isArabic(txt)) {
+                    bold.setFontScript(Character.UnicodeScript.ARABIC);
+                    bold.setFont(arabicF);
+                }
+
                 bold.setTextRenderingMode(PdfCanvasConstants.TextRenderingMode.FILL_STROKE).
                         setStrokeWidth(0.5f).
                         setStrokeColor(DeviceGray.BLACK);
@@ -118,7 +132,12 @@ public class Listing_11_12_SayPeace extends GenericTest {
                 buf = new StringBuffer();
             }
             else if ("message".equals(qName)) {
-                Paragraph p = new Paragraph(strip(buf)).setFont(f);
+                String txt = strip(buf);
+                Paragraph p = new Paragraph(strip(buf));
+                if (isArabic(txt)) {
+                    p.setFontScript(Character.UnicodeScript.ARABIC);
+                    p.setFont(arabicF);
+                }
                 cell.add(p);
                 table.addCell(cell);
                 buf = new StringBuffer();
@@ -152,4 +171,11 @@ public class Listing_11_12_SayPeace extends GenericTest {
             return buf.toString();
         }
     }
+
+    private static boolean isArabic(String text) {
+        Pattern pattern = Pattern.compile("\\p{InArabic}");
+        Matcher matcher = pattern.matcher(text);
+        return matcher.find();
+    }
+
 }
