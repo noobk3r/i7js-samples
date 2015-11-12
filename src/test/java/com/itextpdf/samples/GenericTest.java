@@ -23,6 +23,8 @@ public class GenericTest {
     private final static Logger LOGGER = LoggerFactory.getLogger(GenericTest.class.getName());
 
     protected boolean compareRenders = false;
+
+    protected boolean compareXml = false;
     /** An error message */
     private String errorMessage;
     /** A prefix that is part of the error message. */
@@ -118,13 +120,19 @@ public class GenericTest {
         CompareTool compareTool = new CompareTool();
         String outPath = new File(dest).getParent();
         new File(outPath).mkdirs();
-        if (compareRenders) {
-            addError(compareTool.compareVisually(dest, cmp, outPath, differenceImagePrefix));
-            addError(compareTool.compareLinkAnnotations(dest, cmp));
-        } else {
-            addError(compareTool.compareByContent(dest, cmp, outPath, differenceImagePrefix));
+        if(compareXml){
+            if(!compareTool.compareXmls(dest,cmp)){
+                addError("The XML structures are different.");
+            }
+        }else {
+            if (compareRenders) {
+                addError(compareTool.compareVisually(dest, cmp, outPath, differenceImagePrefix));
+                addError(compareTool.compareLinkAnnotations(dest, cmp));
+            } else {
+                addError(compareTool.compareByContent(dest, cmp, outPath, differenceImagePrefix));
+            }
+            addError(compareTool.compareDocumentInfo(dest, cmp));
         }
-        addError(compareTool.compareDocumentInfo(dest, cmp));
 
 
         if (errorMessage != null) Assert.fail(errorMessage);

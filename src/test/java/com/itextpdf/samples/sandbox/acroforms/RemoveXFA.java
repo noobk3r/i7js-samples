@@ -20,9 +20,10 @@ import java.util.Map;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class RemoveXFA extends GenericTest {
+
     public static final String SRC = "./src/test/resources/sandbox/acroforms/reportcardinitial.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/remove_xfa.pdf";
 
@@ -37,8 +38,7 @@ public class RemoveXFA extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(
                 new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
-        // TODO Implement Xfa and its removing
-        // form.removeXfa();
+        form.removeXfaForm();
         Map<String, PdfFormField> fields = form.getFormFields();
         for (String name : fields.keySet()) {
             if (name.indexOf("Total") > 0) {
