@@ -4,20 +4,14 @@
  */
 package com.itextpdf.samples.sandbox.acroforms;
 
-import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.geom.Rectangle;
-import com.itextpdf.canvas.PdfCanvas;
-import com.itextpdf.core.font.PdfFont;
-import com.itextpdf.core.pdf.PdfArray;
 import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfPage;
 import com.itextpdf.core.pdf.PdfReader;
-import com.itextpdf.core.pdf.PdfString;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.pdf.action.PdfAction;
-import com.itextpdf.core.pdf.annot.PdfLinkAnnotation;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
+import com.itextpdf.forms.fields.PdfButtonFormField;
+import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.File;
@@ -41,24 +35,17 @@ public class AddField extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(
                 new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
+
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
-        PdfPage page = pdfDoc.getFirstPage();
+        PdfButtonFormField button = PdfFormField.createPushButton(pdfDoc, new Rectangle(36, 700, 36, 30), "post", "POST");
+        // TODO DEVSIX-335
+//        button.setBackgroundColor(new GrayColor(0.7f));
+//        button.setVisibility(PushbuttonField.VISIBLE_BUT_DOES_NOT_PRINT);
+//        submit.setAction(com.itextpdf.text.pdf.PdfAction.createSubmitForm(
+//                "http://itextpdf.com:8180/book/request", null,
+//                com.itextpdf.text.pdf.PdfAction.SUBMIT_HTML_FORMAT | com.itextpdf.text.pdf.PdfAction.SUBMIT_COORDINATES));
+        form.addField(button);
 
-        PdfCanvas canvas = new PdfCanvas(page);
-        canvas.beginText();
-        canvas.setFontAndSize(PdfFont.createStandardFont(pdfDoc, FontConstants.COURIER_BOLD), 14);
-        canvas.moveText(36, 700 + 10);
-        canvas.showText("POST");
-        canvas.endText();
-        canvas.release();
-
-        // TODO Implement PdfAction.SUBMIT_HTML_FORMAT & PdfAction.SUBMIT_COORDINATES constants
-        page.addAnnotation(new PdfLinkAnnotation(pdfDoc, new Rectangle(36, 700, 36, 30))
-                .setAction(PdfAction.createURI(pdfDoc, "http://itextpdf.com:8180/book/request"))
-                .setName(new PdfString("post"))
-                .setBorder(new PdfArray(new float[]{0, 0, 1})));
-        // TODO Implement VISIBLE_BUT_DOES_NOT_PRINT constant usage
-        // button.setVisibility(PushbuttonField.VISIBLE_BUT_DOES_NOT_PRINT);
 
         pdfDoc.close();
     }
