@@ -72,13 +72,13 @@ public class Listing_14_09_TextStateOperators extends GenericTest {
                 newlineText();
 
         PdfTextArray textArray = new PdfTextArray();
-        textArray.add("A");
+        textArray.add(font.convertToBytes("A"));
         textArray.add(120);
-        textArray.add("W");
+        textArray.add(font.convertToBytes("W"));
         textArray.add(120);
-        textArray.add("A");
+        textArray.add(font.convertToBytes("A"));
         textArray.add(95);
-        textArray.add("Y again");
+        textArray.add(font.convertToBytes("Y again"));
 
         canvas.showText(textArray).
                 endText();
