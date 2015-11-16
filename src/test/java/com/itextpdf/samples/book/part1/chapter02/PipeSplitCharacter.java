@@ -6,7 +6,11 @@ import com.itextpdf.model.splitting.ISplitCharacters;
 public class PipeSplitCharacter implements ISplitCharacters {
 
     @Override
-    public boolean isSplitCharacter(int charCode, GlyphLine text, int charTextPos) {
+    public boolean isSplitCharacter(GlyphLine text, int glyphPos) {
+        if (text.glyphs.get(glyphPos).unicode == null) {
+            return false;
+        }
+        int charCode = text.glyphs.get(glyphPos).unicode;
         return (charCode == '|' || charCode <= ' ' || charCode == '-');
     }
 
