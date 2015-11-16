@@ -31,7 +31,6 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-// TODO arabic ligatures
 @Category(SampleTest.class)
 public class Listing_11_12_SayPeace extends GenericTest {
 
