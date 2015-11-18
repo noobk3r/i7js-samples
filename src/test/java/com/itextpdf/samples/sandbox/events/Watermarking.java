@@ -101,7 +101,7 @@ public class Watermarking extends GenericTest {
                     .setProperty(Property.FONT_SIZE, 60)
                     .setProperty(Property.FONT, font)
                     .showTextAligned(new Paragraph("WATERMARK"), 298, 421, pdfDoc.getPageNum(page),
-                            Property.HorizontalAlignment.CENTER, Property.VerticalAlignment.MIDDLE, 45);
+                            Property.TextAlignment.CENTER, Property.VerticalAlignment.MIDDLE, 45);
         }
     }
 }

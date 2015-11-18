@@ -34,7 +34,6 @@ public class DashedUnderline extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
-        //writer.setPageEvent(new DashedLine());
         doc.add(new Paragraph("This text is not underlined"));
         Text chunk1 = new Text("This text is underlined with a solid line");
         chunk1.setUnderline(1, -3);

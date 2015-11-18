@@ -33,18 +33,15 @@ public class BorderForParagraph extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
-        //writer.setPageEvent(border);
         doc.add(new Paragraph("Hello,"));
         doc.add(new Paragraph("In this doc, we'll add several paragraphs that will trigger page events. " +
                 "As long as the event isn't activated, nothing special happens, " +
                 "but let's make the event active and see what happens:"));
-        //border.setActive(true);
         Paragraph renderedParagraph = new Paragraph("This paragraph now has a border. Isn't that fantastic? " +
                 "By changing the event, we can even provide a background color, " +
                 "change the line width of the border and many other things. Now let's deactivate the event.");
         renderedParagraph.setNextRenderer(new BorderParagraphRenderer(renderedParagraph));
         doc.add(renderedParagraph);
-        //border.setActive(false);
         doc.add(new Paragraph("This paragraph no longer has a border."));
         pdfDoc.close();
     }

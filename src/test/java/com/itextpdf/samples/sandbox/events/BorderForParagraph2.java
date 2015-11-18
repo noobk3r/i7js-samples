@@ -38,23 +38,19 @@ public class BorderForParagraph2 extends GenericTest {
         doc.add(new Paragraph("In this doc, we'll add several paragraphs that will trigger page events. " +
                 "As long as the event isn't activated, nothing special happens, " +
                 "but let's make the event active and see what happens:"));
-        //border.setActive(true);
         Paragraph renderedParagraph = new Paragraph("This paragraph now has a border. " +
                 "Isn't that fantastic? By changing the event, we can even provide a background color, " +
                 "change the line width of the border and many other things. Now let's deactivate the event.");
         renderedParagraph.setNextRenderer(new BorderParagraphRenderer(renderedParagraph));
         doc.add(renderedParagraph);
-        //border.setActive(false);
         doc.add(new Paragraph("This paragraph no longer has a border."));
         doc.add(new Paragraph("Let's repeat:"));
         for (int i = 0; i < 10; i++) {
-            //border.setActive(true);
             renderedParagraph = new Paragraph("This paragraph now has a border. Isn't that fantastic? " +
                     "By changing the event, we can even provide a background color, " +
                     "change the line width of the border and many other things. Now let's deactivate the event.");
             renderedParagraph.setNextRenderer(new BorderParagraphRenderer(renderedParagraph));
             doc.add(renderedParagraph);
-            //border.setActive(false);
             doc.add(new Paragraph("This paragraph no longer has a border."));
         }
         pdfDoc.close();
