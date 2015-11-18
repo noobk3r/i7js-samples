@@ -28,7 +28,7 @@ public class Listing_03_15_MovieCalendar extends Listing_03_11_MovieTextInfo {
         Paragraph p = new Paragraph().add(screening.getMovie().getMovieTitle()).
                 setFixedPosition(rect.getX(), rect.getY(), rect.getWidth()).
                 setHeight(rect.getHeight()).
-                setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
+                setTextAlignment(Property.TextAlignment.CENTER);
         doc.add(p);
     }
 }

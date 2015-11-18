@@ -86,12 +86,12 @@ public class Listing_03_20_ColumnMovies2 extends GenericTest {
 
         Div div = new Div().setKeepTogether(true);
         Paragraph p = new Paragraph(movie.getTitle()).setFont(bold).
-            setHorizontalAlignment(Property.HorizontalAlignment.CENTER).
+            setTextAlignment(Property.TextAlignment.CENTER).
             setMargins(0, 0, 0, 0);
         div.add(p);
         if (movie.getOriginalTitle() != null) {
             p = new Paragraph(movie.getOriginalTitle()).setFont(italic).
-                    setHorizontalAlignment(Property.HorizontalAlignment.RIGHT).
+                    setTextAlignment(Property.TextAlignment.RIGHT).
                     setMargins(0, 0, 0, 0);
             div.add(p);
         }
@@ -100,7 +100,7 @@ public class Listing_03_20_ColumnMovies2 extends GenericTest {
                 addAll(PojoToElementFactory.getYearPhrase(movie, bold, normal)).
                 add(" ").
                 addAll(PojoToElementFactory.getDurationPhrase(movie, bold, normal)).
-                setHorizontalAlignment(Property.HorizontalAlignment.JUSTIFIED_ALL);
+                setTextAlignment(Property.TextAlignment.JUSTIFIED_ALL);
         div.add(p);
         div.add(new StarSeparator());
 

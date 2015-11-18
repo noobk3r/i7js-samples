@@ -49,8 +49,7 @@ public class ColoredBackground extends GenericTest {
             cell = new Cell().add(new Paragraph("hi").setFont(font).setFontSize(12).setFontColor(Color.WHITE));
             cell.setBackgroundColor(Color.BLUE);
             cell.setBorder(Border.NO_BORDER);
-            cell.setVerticalAlignment(Property.VerticalAlignment.MIDDLE);
-            cell.setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
+            cell.setTextAlignment(Property.TextAlignment.CENTER);
             table.addCell(cell);
         }
         doc.add(table);

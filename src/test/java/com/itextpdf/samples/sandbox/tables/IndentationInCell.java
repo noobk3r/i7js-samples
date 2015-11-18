@@ -47,7 +47,7 @@ public class IndentationInCell extends GenericTest {
         cell = new Cell();
         cell.add(new Paragraph("TO:"));
         p = new Paragraph("name");
-        p.setHorizontalAlignment(Property.HorizontalAlignment.RIGHT);
+        p.setTextAlignment(Property.TextAlignment.RIGHT);
         cell.add(p);
         table.addCell(cell);
         doc.add(table);

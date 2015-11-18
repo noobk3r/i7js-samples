@@ -84,7 +84,7 @@ public class SimpleTable12 extends GenericTest {
         if (1 == (border & 1)) {
             cell.setBorderTop(new SolidBorder(1));
         }
-        cell.setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
+        cell.setTextAlignment(Property.TextAlignment.CENTER);
         return cell;
     }
 }

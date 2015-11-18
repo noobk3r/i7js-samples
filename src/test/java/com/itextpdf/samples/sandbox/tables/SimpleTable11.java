@@ -35,11 +35,11 @@ public class SimpleTable11 extends GenericTest {
 
         Table table = new Table(new float[]{1, 2, 1, 1, 1});
         table.setWidth(0);
-        table.addCell(createCell("SKU", 2, 1, Property.HorizontalAlignment.LEFT));
-        table.addCell(createCell("Description", 2, 1, Property.HorizontalAlignment.LEFT));
-        table.addCell(createCell("Unit Price", 2, 1, Property.HorizontalAlignment.LEFT));
-        table.addCell(createCell("Quantity", 2, 1, Property.HorizontalAlignment.LEFT));
-        table.addCell(createCell("Extension", 2, 1, Property.HorizontalAlignment.LEFT));
+        table.addCell(createCell("SKU", 2, 1, Property.TextAlignment.LEFT));
+        table.addCell(createCell("Description", 2, 1, Property.TextAlignment.LEFT));
+        table.addCell(createCell("Unit Price", 2, 1, Property.TextAlignment.LEFT));
+        table.addCell(createCell("Quantity", 2, 1, Property.TextAlignment.LEFT));
+        table.addCell(createCell("Extension", 2, 1, Property.TextAlignment.LEFT));
         String[][] data = {
                 {"ABC123", "The descriptive text may be more than one line and the text should wrap automatically",
                         "$5.00", "10", "$50.00"},
@@ -47,22 +47,22 @@ public class SimpleTable11 extends GenericTest {
                 {"XYZ999", "Some stuff", "$1.00", "2", "$2.00"}
         };
         for (String[] row : data) {
-            table.addCell(createCell(row[0], 1, 1, Property.HorizontalAlignment.LEFT));
-            table.addCell(createCell(row[1], 1, 1, Property.HorizontalAlignment.LEFT));
-            table.addCell(createCell(row[2], 1, 1, Property.HorizontalAlignment.RIGHT));
-            table.addCell(createCell(row[3], 1, 1, Property.HorizontalAlignment.RIGHT));
-            table.addCell(createCell(row[4], 1, 1, Property.HorizontalAlignment.RIGHT));
+            table.addCell(createCell(row[0], 1, 1, Property.TextAlignment.LEFT));
+            table.addCell(createCell(row[1], 1, 1, Property.TextAlignment.LEFT));
+            table.addCell(createCell(row[2], 1, 1, Property.TextAlignment.RIGHT));
+            table.addCell(createCell(row[3], 1, 1, Property.TextAlignment.RIGHT));
+            table.addCell(createCell(row[4], 1, 1, Property.TextAlignment.RIGHT));
         }
-        table.addCell(createCell("Totals", 2, 4, Property.HorizontalAlignment.LEFT));
-        table.addCell(createCell("$1,552.00", 2, 1, Property.HorizontalAlignment.RIGHT));
+        table.addCell(createCell("Totals", 2, 4, Property.TextAlignment.LEFT));
+        table.addCell(createCell("$1,552.00", 2, 1, Property.TextAlignment.RIGHT));
         doc.add(table);
 
         doc.close();
     }
 
-    public Cell createCell(String content, float borderWidth, int colspan, Property.HorizontalAlignment alignment) {
+    public Cell createCell(String content, float borderWidth, int colspan, Property.TextAlignment alignment) {
         Cell cell = new Cell(1, colspan).add(new Paragraph(content));
-        cell.setHorizontalAlignment(alignment);
+        cell.setTextAlignment(alignment);
         cell.setBorder(new SolidBorder(borderWidth));
         return cell;
     }

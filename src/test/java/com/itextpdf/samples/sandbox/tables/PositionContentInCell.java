@@ -61,33 +61,33 @@ public class PositionContentInCell extends GenericTest {
 
             float x = 0;
             float y = 0;
-            Property.HorizontalAlignment alignment;
+            Property.TextAlignment alignment;
             // TODO content has not leading yet, we can't use y = ... - canvas.getGraphicsState().getLeading();
             switch (position) {
                 case TOP_LEFT:
                     x = getOccupiedAreaBBox().getX() + 3;
                     y = getOccupiedAreaBBox().getY() + getOccupiedAreaBBox().getHeight() - 16;
-                    alignment = Property.HorizontalAlignment.LEFT;
+                    alignment = Property.TextAlignment.LEFT;
                     break;
                 case TOP_RIGHT:
                     x = getOccupiedAreaBBox().getX() + getOccupiedAreaBBox().getWidth() - 3;
                     y = getOccupiedAreaBBox().getY() + getOccupiedAreaBBox().getHeight() - 16;
-                    alignment = Property.HorizontalAlignment.RIGHT;
+                    alignment = Property.TextAlignment.RIGHT;
                     break;
                 case BOTTOM_LEFT:
                     x = getOccupiedAreaBBox().getX() + 3;
                     y = getOccupiedAreaBBox().getY() + 3;
-                    alignment = Property.HorizontalAlignment.LEFT;
+                    alignment = Property.TextAlignment.LEFT;
                     break;
                 case BOTTOM_RIGHT:
                     x = getOccupiedAreaBBox().getX() + getOccupiedAreaBBox().getWidth() - 3;
                     y = getOccupiedAreaBBox().getY() + 3;
-                    alignment = Property.HorizontalAlignment.RIGHT;
+                    alignment = Property.TextAlignment.RIGHT;
                     break;
                 default:
                     x = 0;
                     y = 0;
-                    alignment = Property.HorizontalAlignment.CENTER;
+                    alignment = Property.TextAlignment.CENTER;
             }
             new Document(document).showTextAligned(content, x, y, alignment);
         }

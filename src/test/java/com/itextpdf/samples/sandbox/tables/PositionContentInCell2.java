@@ -36,12 +36,12 @@ public class PositionContentInCell2 extends GenericTest {
 
         private Image img;
         private String content;
-        private Property.HorizontalAlignment alignment;
+        private Property.TextAlignment alignment;
         private float wPct;
         private float hPct;
 
         public ImageAndPositionRenderer(Cell modelElement, float wPct, float hPct,
-                                        Image img, String content, Property.HorizontalAlignment alignment) {
+                                        Image img, String content, Property.TextAlignment alignment) {
             super(modelElement);
             this.img = img;
             this.content = content;
@@ -93,21 +93,21 @@ public class PositionContentInCell2 extends GenericTest {
         // 3. Each cell has the same background image
         // 4. Add text in front of the image at specific position
         cell1.setNextRenderer(new ImageAndPositionRenderer(cell1, 0, 1,
-                new Image(ImageFactory.getImage(IMG)), "Top left", Property.HorizontalAlignment.LEFT));
+                new Image(ImageFactory.getImage(IMG)), "Top left", Property.TextAlignment.LEFT));
         cell2.setNextRenderer(new ImageAndPositionRenderer(cell2, 1, 1,
-                new Image(ImageFactory.getImage(IMG)), "Top right", Property.HorizontalAlignment.RIGHT));
+                new Image(ImageFactory.getImage(IMG)), "Top right", Property.TextAlignment.RIGHT));
         cell3.setNextRenderer(new ImageAndPositionRenderer(cell3, 0.5f, 1,
-                new Image(ImageFactory.getImage(IMG)), "Top center", Property.HorizontalAlignment.CENTER));
+                new Image(ImageFactory.getImage(IMG)), "Top center", Property.TextAlignment.CENTER));
         cell4.setNextRenderer(new ImageAndPositionRenderer(cell4, 0.5f, 0,
-                new Image(ImageFactory.getImage(IMG)), "Bottom center", Property.HorizontalAlignment.CENTER));
+                new Image(ImageFactory.getImage(IMG)), "Bottom center", Property.TextAlignment.CENTER));
         cell5.setNextRenderer(new ImageAndPositionRenderer(cell5, 0.5f, 0.5f,
-                new Image(ImageFactory.getImage(IMG)), "Middle center", Property.HorizontalAlignment.CENTER));
+                new Image(ImageFactory.getImage(IMG)), "Middle center", Property.TextAlignment.CENTER));
         cell6.setNextRenderer(new ImageAndPositionRenderer(cell6, 0.5f, 0.5f,
-                new Image(ImageFactory.getImage(IMG)), "Middle center", Property.HorizontalAlignment.CENTER));
+                new Image(ImageFactory.getImage(IMG)), "Middle center", Property.TextAlignment.CENTER));
         cell7.setNextRenderer(new ImageAndPositionRenderer(cell7, 0, 0,
-                new Image(ImageFactory.getImage(IMG)), "Bottom left", Property.HorizontalAlignment.LEFT));
+                new Image(ImageFactory.getImage(IMG)), "Bottom left", Property.TextAlignment.LEFT));
         cell8.setNextRenderer(new ImageAndPositionRenderer(cell8, 1, 0,
-                new Image(ImageFactory.getImage(IMG)), "Bottom right", Property.HorizontalAlignment.RIGHT));
+                new Image(ImageFactory.getImage(IMG)), "Bottom right", Property.TextAlignment.RIGHT));
         // Wrap it all up!
         table.addCell(cell1);
         table.addCell(cell2);

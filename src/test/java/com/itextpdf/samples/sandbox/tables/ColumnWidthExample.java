@@ -48,7 +48,7 @@ public class ColumnWidthExample extends GenericTest {
                 setFontSize(13).
                 setFontColor(DeviceGray.WHITE).
                 setBackgroundColor(DeviceGray.BLACK).
-                setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
+                setTextAlignment(Property.TextAlignment.CENTER);
         table.addHeaderCell(cell);
         for (int i = 0; i < 2; i++) {
             Cell[] headerFooter = new Cell[] {
@@ -65,9 +65,9 @@ public class ColumnWidthExample extends GenericTest {
             }
         }
         for (int counter = 1; counter < 101; counter++) {
-            table.addCell(new Cell().setHorizontalAlignment(Property.HorizontalAlignment.CENTER).add(new Paragraph(String.valueOf(counter))));
-            table.addCell(new Cell().setHorizontalAlignment(Property.HorizontalAlignment.CENTER).add(new Paragraph("key " + counter)));
-            table.addCell(new Cell().setHorizontalAlignment(Property.HorizontalAlignment.CENTER).add(new Paragraph("value " + counter)));
+            table.addCell(new Cell().setTextAlignment(Property.TextAlignment.CENTER).add(new Paragraph(String.valueOf(counter))));
+            table.addCell(new Cell().setTextAlignment(Property.TextAlignment.CENTER).add(new Paragraph("key " + counter)));
+            table.addCell(new Cell().setTextAlignment(Property.TextAlignment.CENTER).add(new Paragraph("value " + counter)));
         }
         doc.add(table);
         doc.close();

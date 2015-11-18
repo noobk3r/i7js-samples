@@ -47,7 +47,7 @@ public class Listing_03_01_FestivalOpening extends GenericTest {
 
         //Initialize paragraph, add it to document, add new page, add paragraph again
         Paragraph p = new Paragraph("Foobar Film Festival").
-                        setHorizontalAlignment(Property.HorizontalAlignment.CENTER).
+                        setTextAlignment(Property.TextAlignment.CENTER).
                 setFont(PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA)).
                 setFontSize(22);
 

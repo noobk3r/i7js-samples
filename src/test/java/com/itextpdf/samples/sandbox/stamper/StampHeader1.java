@@ -52,7 +52,7 @@ public class StampHeader1 extends GenericTest {
             float y = pdfDoc.getPage(i).getPageSize().getTop() - 20;
 
             doc.showTextAligned(header.setFontColor(Color.RED), x, y, i,
-                    Property.HorizontalAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
+                    Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
         }
         doc.close();
         //pdfDoc.close();

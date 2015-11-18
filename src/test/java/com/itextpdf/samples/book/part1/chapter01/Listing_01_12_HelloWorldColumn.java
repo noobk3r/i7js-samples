@@ -30,7 +30,7 @@ public class Listing_01_12_HelloWorldColumn extends GenericTest {
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(writer);
 
-        new Document(pdfDoc).showTextAligned("Hello World", 36, 788, Property.HorizontalAlignment.LEFT);
+        new Document(pdfDoc).showTextAligned("Hello World", 36, 788, Property.TextAlignment.LEFT);
 
         //Close document
         pdfDoc.close();

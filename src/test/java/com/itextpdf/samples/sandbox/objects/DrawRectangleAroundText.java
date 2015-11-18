@@ -47,11 +47,11 @@ public class DrawRectangleAroundText extends GenericTest {
                 + "ColumnText object, so it will be distributed over several"
                 + "lines (and we don't know in advance how many).");
         doc.showTextAligned(p.setWidth(250 - 120).setHeight(780 - 500), 120, 500, 1,
-                Property.HorizontalAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
+                Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
         canvas.rectangle(120, 500, 130, 280);
         canvas.stroke();
         doc.showTextAligned(p.setWidth(430 - 300).setHeight(780 - 500), 300, 500, 1,
-                Property.HorizontalAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
+                Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
         // TODO One cannot find rectangle's size before rendering
         //float endPos = ct.getYLine() - 5;
         float endPos = 500;

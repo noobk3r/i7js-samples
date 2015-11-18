@@ -41,7 +41,7 @@ public class ListAlignment extends GenericTest {
         }
         List list = new List();
         ListItem item = new ListItem(text);
-        item.setHorizontalAlignment(Property.HorizontalAlignment.JUSTIFIED);
+        item.setTextAlignment(Property.TextAlignment.JUSTIFIED);
         list.add(item);
 
         text = "a b c align ";
@@ -49,7 +49,7 @@ public class ListAlignment extends GenericTest {
             text = text + text;
         }
         item = new ListItem(text);
-        item.setHorizontalAlignment(Property.HorizontalAlignment.JUSTIFIED);
+        item.setTextAlignment(Property.TextAlignment.JUSTIFIED);
         list.add(item);
 
         text = "supercalifragilisticexpialidociousss ";
@@ -57,7 +57,7 @@ public class ListAlignment extends GenericTest {
             text = text + text;
         }
         item = new ListItem(text);
-        item.setHorizontalAlignment(Property.HorizontalAlignment.JUSTIFIED);
+        item.setTextAlignment(Property.TextAlignment.JUSTIFIED);
         list.add(item);
         doc.add(list);
 

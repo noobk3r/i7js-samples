@@ -56,7 +56,7 @@ public class RadioGroupMultiPage1 extends GenericTest {
             PdfFormField field = PdfFormField.createRadioButton(pdfDoc, rect, radioGroup, LANGUAGES[page - 1]);
             field.setPage(page);
             doc.showTextAligned(new Paragraph(LANGUAGES[page - 1]).setFont(font).setFontSize(18),
-                    70, 787, page, Property.HorizontalAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
+                    70, 787, page, Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
         }
         PdfAcroForm.getAcroForm(pdfDoc, true).addField(radioGroup);
         pdfDoc.close();

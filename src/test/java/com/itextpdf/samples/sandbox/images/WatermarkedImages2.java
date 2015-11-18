@@ -105,7 +105,7 @@ public class WatermarkedImages2 extends GenericTest {
                     (getOccupiedAreaBBox().getLeft() + getOccupiedAreaBBox().getRight()) / 2,
                     (getOccupiedAreaBBox().getTop() + getOccupiedAreaBBox().getBottom()) / 2,
                     document.getNumOfPages(),
-                    Property.HorizontalAlignment.CENTER,
+                    Property.TextAlignment.CENTER,
                     null,
                     30 * 0.0174532925f);
 //            canvas.showText(content);

@@ -51,11 +51,11 @@ public class TransparentWatermark extends GenericTest {
                 (Type1Font) FontFactory.createFont(FontConstants.HELVETICA, PdfEncodings.WINANSI));
         Paragraph p = new Paragraph("This watermark is added UNDER the existing content")
                 .setFont(font).setFontSize(15);
-        doc.showTextAligned(p, 297, 550, 1, Property.HorizontalAlignment.CENTER, Property.VerticalAlignment.TOP, 0);
+        doc.showTextAligned(p, 297, 550, 1, Property.TextAlignment.CENTER, Property.VerticalAlignment.TOP, 0);
         PdfCanvas over = new PdfCanvas(pdfDoc.getFirstPage().newContentStreamAfter(), new PdfResources(), pdfDoc);
         p = new Paragraph("This watermark is added ON TOP OF the existing content")
                 .setFont(font).setFontSize(15);
-        doc.showTextAligned(p, 297, 500, 1, Property.HorizontalAlignment.CENTER, Property.VerticalAlignment.TOP, 0);
+        doc.showTextAligned(p, 297, 500, 1, Property.TextAlignment.CENTER, Property.VerticalAlignment.TOP, 0);
         p = new Paragraph("This TRANSPARENT watermark is added ON TOP OF the existing content")
                 .setFont(font).setFontSize(15);
         over.saveState();
@@ -63,7 +63,7 @@ public class TransparentWatermark extends GenericTest {
         // TODO Implement setFillOpacity(float)
         // gs1.setFillOpacity(0.5f);
         over.setExtGState(gs1);
-        doc.showTextAligned(p, 297, 450, 1, Property.HorizontalAlignment.CENTER, Property.VerticalAlignment.TOP, 0);
+        doc.showTextAligned(p, 297, 450, 1, Property.TextAlignment.CENTER, Property.VerticalAlignment.TOP, 0);
         over.restoreState();
 
         pdfDoc.close();

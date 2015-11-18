@@ -58,7 +58,7 @@ public class WatermarkedImages1 extends GenericTest {
         new Canvas(template, doc.getPdfDocument()).
                 add(img).
                 setProperty(Property.FONT_COLOR, DeviceGray.WHITE).
-                showTextAligned(watermark, width / 2, height / 2, Property.HorizontalAlignment.CENTER, (float) Math.PI * 30f / 180f);
+                showTextAligned(watermark, width / 2, height / 2, Property.TextAlignment.CENTER, (float) Math.PI * 30f / 180f);
         return new Image(template);
     }
 }

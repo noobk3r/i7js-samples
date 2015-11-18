@@ -88,7 +88,7 @@ public class FillFlattenMerge3 extends GenericTest {
         Rectangle rect = positions.get(name);
         Paragraph p = new Paragraph(value).setFont(font).setFontSize(10);
         doc.showTextAligned(p, rect.getLeft() + 2, rect.getBottom() + 2, doc.getPdfDocument().getNumOfPages(),
-                Property.HorizontalAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
+                Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
     }
 
 //    public class Background extends PdfPageEventHelper {

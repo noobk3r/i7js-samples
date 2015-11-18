@@ -59,7 +59,7 @@ public class StampHeader3 extends GenericTest {
 //                y = reader.getPageSize(i).getRight(20);
 //            }
             // TODO need to get OVER content to write properly
-            doc.showTextAligned(header, x, y, i, Property.HorizontalAlignment.CENTER, null, 0);
+            doc.showTextAligned(header, x, y, i, Property.TextAlignment.CENTER, null, 0);
 
         }
 

@@ -36,7 +36,7 @@ public class SpaceCharRatioExample extends GenericTest {
 
         Paragraph p = new Paragraph().
                 setSpacingRatio(1).
-                setHorizontalAlignment(Property.HorizontalAlignment.JUSTIFIED).
+                setTextAlignment(Property.TextAlignment.JUSTIFIED).
                 setMarginLeft(20).
                 setMarginRight(20).
                 add("HelloWorld HelloWorld HelloWorld HelloWorld HelloWorld" +

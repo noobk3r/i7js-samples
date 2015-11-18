@@ -23,6 +23,6 @@ public class Listing_03_18_MovieColumns3 extends Listing_03_16_MovieColumns1 {
                 setKeepTogether(true).
                 setPaddingLeft(0).
                 setFirstLineIndent(0).
-                setHorizontalAlignment(Property.HorizontalAlignment.LEFT);
+                setTextAlignment(Property.TextAlignment.LEFT);
     }
 }

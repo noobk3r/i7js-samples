@@ -74,7 +74,7 @@ public class TransparentWatermark3 extends GenericTest {
             over.saveState();
             over.setExtGState(gs1);
             if (i % 2 == 1)
-                doc.showTextAligned(p, x, y, i, Property.HorizontalAlignment.CENTER, Property.VerticalAlignment.TOP, 0);
+                doc.showTextAligned(p, x, y, i, Property.TextAlignment.CENTER, Property.VerticalAlignment.TOP, 0);
             else
                 over.addImage(img, w, 0, 0, h, x - (w / 2), y - (h / 2), true);
             over.restoreState();

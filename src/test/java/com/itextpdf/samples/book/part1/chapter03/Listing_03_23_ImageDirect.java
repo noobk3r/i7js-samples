@@ -40,7 +40,7 @@ public class Listing_03_23_ImageDirect extends GenericTest {
         Document doc = new Document(pdfDoc, new PageSize(postcard.getWidth(), postcard.getHeight()));
         doc.setMargins(30, 30, 30, 30);
 
-        Paragraph p = new Paragraph("Foobar Film Festival").setFontSize(22).setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
+        Paragraph p = new Paragraph("Foobar Film Festival").setFontSize(22).setTextAlignment(Property.TextAlignment.CENTER);
         doc.add(p);
 
         PdfImageXObject img = new PdfImageXObject(ImageFactory.getImage(RESOURCE));

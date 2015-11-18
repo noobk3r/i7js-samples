@@ -21,12 +21,13 @@ import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Text;
 import com.itextpdf.samples.GenericTest;
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+
+import org.junit.Ignore;
+import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 @Ignore
@@ -60,7 +61,7 @@ public class AddLinkAnnotation3 extends GenericTest {
         canvas.concatMatrix(transformMatrix[0], transformMatrix[1], transformMatrix[2],
                 transformMatrix[3], transformMatrix[4], transformMatrix[5]);
         // TODO showText with canvas in order to use new matrix
-        new Document(pdfDoc).showTextAligned(p, 300, 0, 1, Property.HorizontalAlignment.LEFT,
+        new Document(pdfDoc).showTextAligned(p, 300, 0, 1, Property.TextAlignment.LEFT,
                 Property.VerticalAlignment.MIDDLE, 0);
         canvas.restoreState();
         pdfDoc.close();

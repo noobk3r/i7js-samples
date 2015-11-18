@@ -50,7 +50,7 @@ public class StampHeader2 extends GenericTest {
             float x = pdfDoc.getPage(i).getPageSize().getWidth() / 2;
             float y = pdfDoc.getPage(i).getPageSize().getTop() - 20;
             // TODO Implement showTextAligned to show text over content
-            doc.showTextAligned(header, x, y, i, Property.HorizontalAlignment.CENTER, null, 0);
+            doc.showTextAligned(header, x, y, i, Property.TextAlignment.CENTER, null, 0);
         }
         pdfDoc.close();
     }

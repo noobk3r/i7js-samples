@@ -12,7 +12,7 @@ public class StarSeparator extends Div {
         Paragraph[] content = {new Paragraph("*"), new Paragraph("*  *")};
         for (Paragraph p : content) {
             p.setFontSize(10).
-                    setHorizontalAlignment(Property.HorizontalAlignment.CENTER).
+                    setTextAlignment(Property.TextAlignment.CENTER).
                     setMargins(0, 0, 0, 0);
             add(p);
         }

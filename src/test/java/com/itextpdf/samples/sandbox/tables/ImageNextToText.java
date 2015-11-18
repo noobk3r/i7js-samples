@@ -54,9 +54,10 @@ public class ImageNextToText extends GenericTest {
     public static Cell createTextCell(String text) {
         Cell cell = new Cell();
         Paragraph p = new Paragraph(text);
-        p.setHorizontalAlignment(Property.HorizontalAlignment.RIGHT);
+        p.setTextAlignment(Property.TextAlignment.RIGHT);
+        // TODO bottom alignment does not work
+        p.setVerticalAlignment(Property.VerticalAlignment.BOTTOM);
         cell.add(p);
-        cell.setVerticalAlignment(Property.VerticalAlignment.BOTTOM);
         cell.setBorder(null);
         return cell;
     }

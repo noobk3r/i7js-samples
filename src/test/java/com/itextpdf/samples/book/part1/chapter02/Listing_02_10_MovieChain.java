@@ -60,7 +60,7 @@ public class Listing_02_10_MovieChain extends GenericTest {
         // wrap the chunk in a paragraph and add it to the document
         Paragraph paragraph = new Paragraph("A:\u00a0");
         paragraph.add(chunk1);
-        paragraph.setHorizontalAlignment(Property.HorizontalAlignment.JUSTIFIED);
+        paragraph.setTextAlignment(Property.TextAlignment.JUSTIFIED);
         doc.add(paragraph);
 
         // define the pipe character as split character
@@ -68,7 +68,7 @@ public class Listing_02_10_MovieChain extends GenericTest {
         // wrap the chunk in a second paragraph and add it
         paragraph = new Paragraph("B:\u00a0");
         paragraph.add(chunk1);
-        paragraph.setHorizontalAlignment(Property.HorizontalAlignment.JUSTIFIED);
+        paragraph.setTextAlignment(Property.TextAlignment.JUSTIFIED);
         doc.add(paragraph);
 
         // create a new StringBuffer with movie titles
@@ -82,7 +82,7 @@ public class Listing_02_10_MovieChain extends GenericTest {
         // wrap the chunk in a paragraph and add it to the document
         paragraph = new Paragraph("C:\u00a0");
         paragraph.add(chunk2);
-        paragraph.setHorizontalAlignment(Property.HorizontalAlignment.JUSTIFIED);
+        paragraph.setTextAlignment(Property.TextAlignment.JUSTIFIED);
         doc.add(paragraph);
 
         // go to a new page
@@ -92,7 +92,7 @@ public class Listing_02_10_MovieChain extends GenericTest {
         // wrap the second chunk in a second paragraph and add it
         paragraph = new Paragraph("D:\u00a0");
         paragraph.add(chunk2);
-        paragraph.setHorizontalAlignment(Property.HorizontalAlignment.JUSTIFIED);
+        paragraph.setTextAlignment(Property.TextAlignment.JUSTIFIED);
         doc.add(paragraph);
 
         // go to a new page
@@ -101,7 +101,7 @@ public class Listing_02_10_MovieChain extends GenericTest {
         // wrap the second chunk in a third paragraph and add it
         paragraph = new Paragraph("E:\u00a0");
         paragraph.add(chunk2);
-        paragraph.setHorizontalAlignment(Property.HorizontalAlignment.JUSTIFIED);
+        paragraph.setTextAlignment(Property.TextAlignment.JUSTIFIED);
         paragraph.setSpacingRatio(1);
         doc.add(paragraph);
 

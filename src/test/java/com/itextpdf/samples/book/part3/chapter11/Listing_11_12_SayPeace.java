@@ -98,7 +98,7 @@ public class Listing_11_12_SayPeace extends GenericTest {
                 cell.setBorder(Border.NO_BORDER);
                 if ("RTL".equals(attributes.getValue("direction"))) {
                     cell.setBaseDirection(Property.BaseDirection.RIGHT_TO_LEFT).
-                            setHorizontalAlignment(Property.HorizontalAlignment.RIGHT).
+                            setTextAlignment(Property.TextAlignment.RIGHT).
                             setFont(f);
                 } else {
                     cell.setFont(f);

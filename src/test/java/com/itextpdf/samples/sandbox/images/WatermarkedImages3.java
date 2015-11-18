@@ -48,7 +48,7 @@ public class WatermarkedImages3 extends GenericTest {
         }
         table.addCell(new Cell().add(getWatermarkedImage(doc, new Image(ImageFactory.getImage(IMAGE1)), "Bruno").setAutoScale(true)));
         doc.add(table);
-        doc.showTextAligned("Bruno knows best", 260, 400, Property.HorizontalAlignment.CENTER, 45f * (float)Math.PI / 180f);
+        doc.showTextAligned("Bruno knows best", 260, 400, Property.TextAlignment.CENTER, 45f * (float)Math.PI / 180f);
         doc.close();
     }
 
@@ -59,7 +59,7 @@ public class WatermarkedImages3 extends GenericTest {
         new Canvas(template, doc.getPdfDocument()).
                 add(img).
                 setProperty(Property.FONT_COLOR, DeviceGray.WHITE).
-                showTextAligned(watermark, width / 2, height / 2, Property.HorizontalAlignment.CENTER, (float) Math.PI * 30f / 180f);
+                showTextAligned(watermark, width / 2, height / 2, Property.TextAlignment.CENTER, (float) Math.PI * 30f / 180f);
         return new Image(template);
     }
 }

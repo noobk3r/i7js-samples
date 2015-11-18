@@ -50,7 +50,7 @@ public class AddLinkAnnotation2 extends GenericTest {
         Paragraph p = new Paragraph("Download ").add(link.setFont(bold)).add(" and discover more than 200 questions and answers.");
 
         new Document(pdfDoc).showTextAligned(p.setWidth(500), 36, 700, 1,
-                Property.HorizontalAlignment.LEFT, Property.VerticalAlignment.MIDDLE, 0);
+                Property.TextAlignment.LEFT, Property.VerticalAlignment.MIDDLE, 0);
         pdfDoc.close();
     }
 }
