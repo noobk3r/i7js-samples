@@ -15,8 +15,8 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_01_11_HelloWorldDirect extends GenericTest {
-
-    static public final String DEST = "./target/test/resources/book/part1/chapter01/Listing_01_11_HelloWorldDirect.pdf";
+    public static final String DEST =
+            "./target/test/resources/book/part1/chapter01/Listing_01_11_HelloWorldDirect.pdf";
 
     public static void main(String args[]) throws IOException {
         new Listing_01_11_HelloWorldDirect().manipulatePdf(DEST);
@@ -32,10 +32,15 @@ public class Listing_01_11_HelloWorldDirect extends GenericTest {
 
         //Initialize canvas, add page and write text to it
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
-        canvas.saveState().beginText().moveText(36, 600).
-                setFontAndSize(PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA), 12).showText("Hello World").
-                endText().restoreState();
-        canvas.release();
+        canvas
+                .saveState()
+                .beginText()
+                .moveText(36, 600)
+                .setFontAndSize(PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA), 12)
+                .showText("Hello World")
+                .endText()
+                .restoreState()
+                .release();
 
         //close document
         pdfDoc.close();

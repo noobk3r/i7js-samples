@@ -15,8 +15,8 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_01_12_HelloWorldColumn extends GenericTest {
-
-    static public final String DEST = "./target/test/resources/book/part1/chapter01/Listing_01_12_HelloWorldColumn.pdf";
+    public static final String DEST =
+            "./target/test/resources/book/part1/chapter01/Listing_01_12_HelloWorldColumn.pdf";
 
     public static void main(String args[]) throws IOException {
         new Listing_01_12_HelloWorldColumn().manipulatePdf(DEST);
