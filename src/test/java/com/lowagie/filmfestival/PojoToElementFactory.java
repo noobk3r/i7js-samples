@@ -38,4 +38,40 @@ public class PojoToElementFactory {
         return list;
     }
 
+    public static List<Text> getMovieTitlePhrase(Movie movie, PdfFont normal) {
+        List<Text> list = new ArrayList<>();
+        list.add(new Text(String.valueOf(movie.getTitle())).setFont(normal));
+        return list;
+    }
+
+    public static List<Text> getOriginalTitlePhrase(Movie movie, PdfFont italic, PdfFont normal) {
+        List<Text> list = new ArrayList<>();
+        if (movie.getOriginalTitle() == null) {
+            list.add(new Text("").setFont(normal));
+        } else {
+            list.add(new Text(movie.getOriginalTitle()).setFont(italic));
+        }
+        return list;
+    }
+
+    public static List<Text> getDirectorPhrase(Director director, PdfFont bold, PdfFont normal) {
+        List<Text> list = new ArrayList<>();
+        list.add(new Text(director.getName()).setFont(bold));
+        list.add(new Text(", ").setFont(bold));
+        list.add(new Text(director.getGivenName()).setFont(normal));
+        return list;
+    }
+
+    /**
+     * Creates a Phrase containing the name of a Country.
+     * @param country a Country object
+     * @return a Phrase object
+     */
+    public static List<Text> getCountryPhrase(Country country, PdfFont normal) {
+        List<Text> list = new ArrayList<>();
+        list.add(new Text(country.getCountry()).setFont(normal));
+        return list;
+    }
+
+
 }
