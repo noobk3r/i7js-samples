@@ -71,7 +71,7 @@ public class Listing_02_08_MovieParagraphs2 extends GenericTest {
                 for (Text text : PojoToElementFactory.getOriginalTitlePhrase(movie, italic, normal)) {
                     originalTitle.add(text);
                 }
-                originalTitle.setHorizontalAlignment(Property.HorizontalAlignment.RIGHT);
+                originalTitle.setTextAlignment(Property.TextAlignment.RIGHT);
                 doc.add(originalTitle);
             }
             // Info about the director
@@ -96,7 +96,7 @@ public class Listing_02_08_MovieParagraphs2 extends GenericTest {
                 for (Text text : PojoToElementFactory.getCountryPhrase(pojo, normal)) {
                     country.add(text);
                 }
-                country.setHorizontalAlignment(Property.HorizontalAlignment.RIGHT);
+                country.setTextAlignment(Property.TextAlignment.RIGHT);
                 country.setMarginRight(indent);
                 doc.add(country);
                 indent += 20;
@@ -106,7 +106,7 @@ public class Listing_02_08_MovieParagraphs2 extends GenericTest {
             for (Text text : createYearAndDuration(movie)) {
                 info.add(text);
             }
-            info.setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
+            info.setTextAlignment(Property.TextAlignment.CENTER);
             info.setMarginTop(36);
             doc.add(info);
         }

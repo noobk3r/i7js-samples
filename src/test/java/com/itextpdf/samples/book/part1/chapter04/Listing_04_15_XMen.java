@@ -19,6 +19,7 @@ import java.sql.SQLException;
 
 import org.junit.experimental.categories.Category;
 
+// TODO vertical alignment does not work
 @Category(SampleTest.class)
 public class Listing_04_15_XMen extends GenericTest {
     static public final String DEST =

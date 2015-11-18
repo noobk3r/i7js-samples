@@ -58,7 +58,7 @@ public class Listing_02_07_MovieParagraphs1 extends GenericTest {
             Paragraph p = createMovieInformation(movie);
             doc.add(p.setMarginLeft(18)
                     .setMarginTop(18)
-                    .setHorizontalAlignment(Property.HorizontalAlignment.JUSTIFIED)
+                    .setTextAlignment(Property.TextAlignment.JUSTIFIED)
                     .setFirstLineIndent(-18));
         }
         doc.close();

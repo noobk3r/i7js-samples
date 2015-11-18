@@ -131,13 +131,13 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
                 .setFontColor(new DeviceCmyk(cmykGray[0], cmykGray[1], cmykGray[2], cmykGray[3]))
                 .setFontSize(8);
         doc.showTextAligned(p, 5, 5, calendar.get(Calendar.MONTH) + 1,
-                Property.HorizontalAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
+                Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
         p = new Paragraph("Calendar generated using iText - example for the book iText in Action 2nd Edition")
                 .setFont(small)
                 .setFontColor(new DeviceCmyk(cmykGray[0], cmykGray[1], cmykGray[2], cmykGray[3]))
                 .setFontSize(8);
         doc.showTextAligned(p, 893, 5, calendar.get(Calendar.MONTH) + 1,
-                Property.HorizontalAlignment.RIGHT, Property.VerticalAlignment.BOTTOM, 0);
+                Property.TextAlignment.RIGHT, Property.VerticalAlignment.BOTTOM, 0);
     }
 
     /**

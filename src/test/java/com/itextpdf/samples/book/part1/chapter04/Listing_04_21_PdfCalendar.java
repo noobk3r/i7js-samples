@@ -157,13 +157,13 @@ public class Listing_04_21_PdfCalendar extends GenericTest {
                 .setFontColor(new DeviceCmyk(0x00, 0x00, 0x00, 0x80))
                 .setFontSize(8);
         doc.showTextAligned(p, 5, 5, calendar.get(Calendar.MONTH) + 1,
-                Property.HorizontalAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
+                Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
         p = new Paragraph("Calendar generated using iText - example for the book iText in Action 2nd Edition")
                 .setFont(small)
                 .setFontColor(new DeviceCmyk(0x00, 0x00, 0x00, 0x80))
                 .setFontSize(8);
         doc.showTextAligned(p, 893, 5, calendar.get(Calendar.MONTH) + 1,
-                Property.HorizontalAlignment.RIGHT, Property.VerticalAlignment.BOTTOM, 0);
+                Property.TextAlignment.RIGHT, Property.VerticalAlignment.BOTTOM, 0);
     }
 
     /**
@@ -179,7 +179,7 @@ public class Listing_04_21_PdfCalendar extends GenericTest {
         // TODO No setUseDescender(boolean)
         // cell.setUseDescender(true);
         Paragraph p = new Paragraph(String.format(locale, "%1$tB %1$tY", calendar)).setFont(bold).setFontSize(14);
-        p.setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
+        p.setTextAlignment(Property.TextAlignment.CENTER);
         cell.add(p);
         return cell;
     }

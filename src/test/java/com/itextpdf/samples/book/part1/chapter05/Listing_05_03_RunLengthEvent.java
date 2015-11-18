@@ -89,7 +89,7 @@ public class Listing_05_03_RunLengthEvent extends GenericTest {
                 .add(new Paragraph(day.toString()))
                 .setPadding(3)
                 .setBackgroundColor(Color.RED)
-                .setHorizontalAlignment(Property.HorizontalAlignment.CENTER));
+                .setTextAlignment(Property.TextAlignment.CENTER));
         // table.getDefaultCell().setHorizontalAlignment(Element.ALIGN_LEFT);
         // table.getDefaultCell().setColspan(1);
         // table.getDefaultCell().setBackgroundColor(BaseColor.YELLOW);

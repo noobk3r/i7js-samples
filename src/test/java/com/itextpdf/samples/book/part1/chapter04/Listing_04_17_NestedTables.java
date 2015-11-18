@@ -60,7 +60,7 @@ public class Listing_04_17_NestedTables extends GenericTest {
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
+        Document doc = new Document(pdfDoc, new PageSize(PageSize.A4));
 
         bold = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA_BOLD); // 12
 
@@ -83,7 +83,7 @@ public class Listing_04_17_NestedTables extends GenericTest {
         // add the cell with the date
         Cell cell = new Cell().add(new Paragraph(day.toString()).setFontColor(Color.WHITE));
         cell.setBackgroundColor(Color.BLACK);
-        cell.setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
+        cell.setTextAlignment(Property.TextAlignment.CENTER);
         table.addCell(cell);
         // add the movies as nested tables
         List<Screening> screenings = PojoFactory.getScreenings(connection, day);
@@ -148,7 +148,7 @@ public class Listing_04_17_NestedTables extends GenericTest {
         // cell.setUseDescender(true);
         String s = String.format("%s \u2013 %2$tH:%2$tM",
                 screening.getLocation(), screening.getTime().getTime());
-        cell.add(new Paragraph(s));
+        cell.add(new Paragraph(s).setTextAlignment(Property.TextAlignment.CENTER));
         table.addCell(cell);
         // cell 2: English and original title 
         Movie movie = screening.getMovie();
@@ -171,7 +171,7 @@ public class Listing_04_17_NestedTables extends GenericTest {
         // cell.setUseAscender(true);
         // cell.setUseDescender(true);
         p = new Paragraph(String.format("%d'", movie.getDuration()));
-        p.setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
+        p.setTextAlignment(Property.TextAlignment.CENTER);
         cell.add(p);
         table.addCell(cell);
         return table;

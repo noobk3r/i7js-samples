@@ -121,7 +121,7 @@ public class Listing_05_21_MovieCountries2 extends Listing_05_20_MovieCountries1
                     .setProperty(Property.FONT_SIZE, 52)
                     .setProperty(Property.FONT, font)
                     .showTextAligned(new Paragraph("FOOBAR FILM FESTIVAL"), 297.5f, 421,
-                            docEvent.getDocument().getNumOfPages(), Property.HorizontalAlignment.CENTER,
+                            docEvent.getDocument().getNumOfPages(), Property.TextAlignment.CENTER,
                             Property.VerticalAlignment.MIDDLE, 45);
         }
     }

@@ -76,7 +76,7 @@ public class Listing_04_19_HeaderFooter2 extends GenericTest {
         // Add the first header row
         Cell cell = new Cell(1, 7).add(new Paragraph(day.toString()).setFontColor(Color.WHITE));
         cell.setBackgroundColor(Color.BLACK);
-        cell.setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
+        cell.setTextAlignment(Property.TextAlignment.CENTER);
         table.addHeaderCell(cell);
 
         // set headers and footers

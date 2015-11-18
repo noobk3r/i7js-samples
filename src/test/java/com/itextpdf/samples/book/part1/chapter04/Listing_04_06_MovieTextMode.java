@@ -59,7 +59,7 @@ public class Listing_04_06_MovieTextMode extends GenericTest {
             table.setWidth(0);
             Cell cell;
             cell = new Cell(1, 2).add(new Paragraph(movie.getTitle()).setFont(bold));
-            cell.setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
+            cell.setTextAlignment(Property.TextAlignment.CENTER);
             table.addCell(cell);
             if (movie.getOriginalTitle() != null) {
                 Paragraph p = new Paragraph();
@@ -67,7 +67,7 @@ public class Listing_04_06_MovieTextMode extends GenericTest {
                     p.add(text);
                 }
                 cell = new Cell(1, 2).add(p);
-                cell.setHorizontalAlignment(Property.HorizontalAlignment.RIGHT);
+                cell.setTextAlignment(Property.TextAlignment.RIGHT);
                 table.addCell(cell);
             }
             List<Director> directors = movie.getDirectors();
@@ -86,22 +86,21 @@ public class Listing_04_06_MovieTextMode extends GenericTest {
             }
             // TODO Implement facility to set default-cell configs
             table.addCell(new Cell().add(new Paragraph("Year:"))
-                    .setHorizontalAlignment(Property.HorizontalAlignment.RIGHT));
+                    .setTextAlignment(Property.TextAlignment.RIGHT));
             table.addCell(new Cell().add(new Paragraph(String.valueOf(movie.getYear())))
-                    .setHorizontalAlignment(Property.HorizontalAlignment.RIGHT));
+                    .setTextAlignment(Property.TextAlignment.RIGHT));
             table.addCell(new Cell().add(new Paragraph("Run length:"))
-                    .setHorizontalAlignment(Property.HorizontalAlignment.RIGHT));
+                    .setTextAlignment(Property.TextAlignment.RIGHT));
             table.addCell(new Cell().add(new Paragraph(String.valueOf(movie.getDuration())))
-                    .setHorizontalAlignment(Property.HorizontalAlignment.RIGHT));
+                    .setTextAlignment(Property.TextAlignment.RIGHT));
             List<Country> countries = movie.getCountries();
             cell = new Cell(countries.size(), 1).add(new Paragraph("Countries:"));
-            cell.setHorizontalAlignment(Property.HorizontalAlignment.RIGHT);
             // TODO setVerticalAlignment(Property) do not work
             cell.setVerticalAlignment(Property.VerticalAlignment.BOTTOM);
             table.addCell(cell);
             for (Country country : countries) {
                 table.addCell(new Cell().add(new Paragraph(country.getCountry()))
-                        .setHorizontalAlignment(Property.HorizontalAlignment.CENTER));
+                        .setTextAlignment(Property.TextAlignment.CENTER));
             }
             doc.add(table);
         }
