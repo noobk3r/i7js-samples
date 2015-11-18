@@ -76,7 +76,7 @@ public class CreateTOCinColumn extends GenericTest {
         doc.close();
     }
 
-    public Table createTable(int start, int end) {
+    protected Table createTable(int start, int end) {
         Table table = new Table(2);
         for (int i = start; i <= end; i++) {
             table.addCell(new Cell().add(new Paragraph(String.valueOf(i))));
@@ -100,12 +100,12 @@ public class CreateTOCinColumn extends GenericTest {
     protected class TOCTextRenderer extends TextRenderer {
         protected PdfOutline root;
 
-        public void setRoot(PdfOutline root) {
-            this.root = root;
-        }
-
         public TOCTextRenderer(Text modelElement) {
             super(modelElement);
+        }
+
+        public void setRoot(PdfOutline root) {
+            this.root = root;
         }
 
         @Override
