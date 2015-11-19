@@ -4,6 +4,7 @@
  */
 package com.itextpdf.samples.sandbox.parse;
 
+import com.itextpdf.basics.PdfException;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfObject;
 import com.itextpdf.core.pdf.PdfReader;
@@ -47,7 +48,11 @@ public class ExtractStreams {
             obj = pdfDoc.getPdfObject(i);
             if (obj != null && obj.isStream()) {
                 byte[] b;
-                b = ((PdfStream) obj).getBytes();
+                try {
+                    b = ((PdfStream) obj).getBytes();
+                } catch (PdfException exc) {
+                    b = ((PdfStream)obj).getBytes(false);
+                }
                 System.out.println(b.length);
                 FileOutputStream fos = new FileOutputStream(String.format(DEST, i));
                 fos.write(b);
