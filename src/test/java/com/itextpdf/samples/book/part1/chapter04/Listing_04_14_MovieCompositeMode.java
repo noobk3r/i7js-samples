@@ -65,7 +65,6 @@ public class Listing_04_14_MovieCompositeMode extends GenericTest {
             // a table with two columns
             Table table = new Table(new float[]{1, 7});
             table.setWidth(0);
-            // TODO setMarginXXX... do not work
             table.setMarginTop(5);
             // a cell with an image
             // TODO No Cell constructor with fit parameter

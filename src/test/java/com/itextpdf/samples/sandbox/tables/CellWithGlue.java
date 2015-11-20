@@ -41,7 +41,6 @@ public class CellWithGlue extends GenericTest {
         table = new Table(2);
         table.setHorizontalAlignment(Property.HorizontalAlignment.LEFT);
         table.setWidthPercent(60);
-        // TODO margins don't work
         table.setMarginBottom(20);
         cell = new Cell().add(new Paragraph("Received Rs (in Words):"));
         cell.setBorder(null);

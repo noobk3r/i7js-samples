@@ -33,7 +33,6 @@ public class Listing_04_02_ColumnWidths extends GenericTest {
         Table table = createTable1();
         doc.add(table);
         table = createTable2();
-        // TODO margins don't work
         table.setMarginTop(5);
         table.setMarginBottom(5);
         doc.add(table);

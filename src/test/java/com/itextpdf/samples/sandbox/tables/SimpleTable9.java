@@ -34,7 +34,6 @@ public class SimpleTable9 extends GenericTest {
         doc.add(new Paragraph("With 3 columns:"));
         Table table = new Table(new float[]{1, 1, 8});
         table.setWidthPercent(100);
-        // TODO margins don't work
         table.setMarginTop(5);
         table.addCell(new Cell().add(new Paragraph("Col a")));
         table.addCell(new Cell().add(new Paragraph("Col b")));
