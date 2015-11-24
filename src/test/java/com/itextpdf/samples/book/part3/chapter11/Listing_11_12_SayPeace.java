@@ -36,7 +36,7 @@ public class Listing_11_12_SayPeace extends GenericTest {
 
     public static final String DEST = "./target/test/resources/book/part3/chapter11/Listing_11_12_SayPeace.pdf";
     private static final String FONT = "src/test/resources/font/FreeSans.ttf";
-    private static final String ARABIC_FONT = "src/test/resources/font/arabtype.volt.ttf";
+    private static final String ARABIC_FONT = "src/test/resources/font/NotoNaskhArabic-Regular.ttf";
     private static final String RESOURCE = "src/test/resources/xml/say_peace.xml";
 
     public static void main(String[] args) throws Exception {
