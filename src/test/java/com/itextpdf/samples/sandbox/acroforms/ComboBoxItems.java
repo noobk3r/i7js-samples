@@ -10,6 +10,7 @@ import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.canvas.PdfCanvas;
+import com.itextpdf.core.color.Color;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.font.PdfType1Font;
 import com.itextpdf.core.pdf.PdfDictionary;
@@ -103,10 +104,8 @@ public class ComboBoxItems extends GenericTest {
             PdfDictionary borderStyleDict = new PdfDictionary();
             borderStyleDict.put(PdfName.S, PdfName.B);
             choice.getWidgets().get(0).setBorderStyle(borderStyleDict);
-            // TODO Implement TextField.VISIBLE_BUT_DOES_NOT_PRINT constant usage
-            //tf.setVisibility(TextField.VISIBLE_BUT_DOES_NOT_PRINT);
-            // TODO Implement setBorderColor
-            //tf.setBorderColor(BaseColor.GRAY);
+            choice.setVisibility(PdfFormField.VISIBLE_BUT_DOES_NOT_PRINT);
+            choice.setBorderColor(Color.GRAY);
             choice.setJustification(PdfFormField.ALIGN_CENTER);
         }
     }

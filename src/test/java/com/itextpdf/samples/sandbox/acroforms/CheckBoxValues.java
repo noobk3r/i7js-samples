@@ -8,6 +8,7 @@ package com.itextpdf.samples.sandbox.acroforms;
 
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
+import com.itextpdf.core.pdf.annot.PdfWidgetAnnotation;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfFormField;
@@ -20,7 +21,6 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 
 public class CheckBoxValues {
@@ -39,13 +39,13 @@ public class CheckBoxValues {
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         Map<String, PdfFormField> fields = form.getFormFields();
         PdfFormField field = fields.get(FIELD);
-        // TODO Implement getAppearanceStates(String)
-//        for (String value : field) {
-//            sb.append(value);
-//            sb.append('\n');
-//        }
-//        return sb.toString();
-        System.out.println(field.getValue());
+        StringBuilder sb = new StringBuilder();
+        String[] states = field.getAppearanceStates();
+        for (String state : states) {
+            sb.append(state);
+            sb.append('\n');
+        }
+        System.out.println(sb);
         pdfDoc.close();
     }
 }
