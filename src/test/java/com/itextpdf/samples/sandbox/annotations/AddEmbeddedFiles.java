@@ -39,9 +39,9 @@ public class AddEmbeddedFiles extends GenericTest {
         for (String s : ATTACHMENTS) {
             PdfFileSpec spec = PdfFileSpec.createEmbeddedFileSpec(pdfDoc,
                     String.format("Some test: %s", s).getBytes(), String.format("%s.txt", s), true);
-            // TODO What if i don't like to show annotation? one cannot pass null as the argument (Rectangle)
-            PdfFileAttachmentAnnotation fileAttach = new PdfFileAttachmentAnnotation(pdfDoc, new Rectangle(0, 0), spec);
-            pdfDoc.getFirstPage().addAnnotation(fileAttach);
+            pdfDoc.addFileAttachment(String.format("Some test: %s", s), spec);
+            //PdfFileAttachmentAnnotation fileAttach = new PdfFileAttachmentAnnotation(pdfDoc, new Rectangle(0, 0), spec);
+            //pdfDoc.getFirstPage().addAnnotation(fileAttach);
         }
         pdfDoc.close();
     }

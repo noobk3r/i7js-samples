@@ -11,6 +11,7 @@ import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfName;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.pdf.annot.PdfAnnotation;
 import com.itextpdf.core.pdf.annot.PdfStampAnnotation;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.element.Image;
@@ -52,8 +53,7 @@ public class AddStamp extends GenericTest {
         // PdfAnnotationAppearance app = new PdfAnnotationAppearance();
         // app.addImage(img);
         // stamp.setAppearance(PdfName.N, app);
-        // TODO There is no PdfAnnotation.FLAGS_PRINT flag
-        // stamp.setFlags(PdfAnnotation.FLAGS_PRINT);
+        stamp.setFlags(PdfAnnotation.Print);
 
         pdfDoc.getFirstPage().addAnnotation(stamp);
         pdfDoc.close();

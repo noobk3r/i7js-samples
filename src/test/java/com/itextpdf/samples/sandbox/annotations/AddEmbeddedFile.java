@@ -6,9 +6,7 @@
 package com.itextpdf.samples.sandbox.annotations;
 
 import com.itextpdf.basics.geom.Rectangle;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfReader;
-import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.pdf.*;
 import com.itextpdf.core.pdf.annot.PdfFileAttachmentAnnotation;
 import com.itextpdf.core.pdf.filespec.PdfFileSpec;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
@@ -35,9 +33,7 @@ public class AddEmbeddedFile extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)),
                 new PdfWriter(new FileOutputStream(DEST)));
         PdfFileSpec spec = PdfFileSpec.createEmbeddedFileSpec(pdfDoc, "Some test".getBytes(), "test.txt", true);
-        // TODO What if i don't like to show annotation? one cannot pass null as the argument (Rectangle)
-        PdfFileAttachmentAnnotation fileAttach = new PdfFileAttachmentAnnotation(pdfDoc, new Rectangle(0, 0), spec);
-        pdfDoc.getFirstPage().addAnnotation(fileAttach);
+        pdfDoc.addFileAttachment("some_test", spec);
         pdfDoc.close();
     }
 }

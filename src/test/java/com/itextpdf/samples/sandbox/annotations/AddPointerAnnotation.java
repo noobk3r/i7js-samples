@@ -9,6 +9,7 @@ import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.basics.image.ImageFactory;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.pdf.*;
+import com.itextpdf.core.pdf.annot.PdfAnnotation;
 import com.itextpdf.core.pdf.annot.PdfLineAnnotation;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
@@ -47,8 +48,7 @@ public class AddPointerAnnotation extends GenericTest {
         lineAnnotation.setContents("Cambridge Innovation Center");
         // TODO Why not to implement setColor (Color). (in this particular case setColor(Color#getColorValues) seems strange)
         lineAnnotation.setColor(Color.RED.getColorValue());
-        // TODO There is no PdfAnnotation.FLAGS_PRINT flag
-        //lineAnnotation.setFlags(PdfAnnotation.FLAGS_PRINT);
+        lineAnnotation.setFlag(PdfAnnotation.Print);
         PdfDictionary borderStyle = new PdfDictionary();
         borderStyle.put(PdfName.S, PdfName.S);
         borderStyle.put(PdfName.W, new PdfNumber(5));

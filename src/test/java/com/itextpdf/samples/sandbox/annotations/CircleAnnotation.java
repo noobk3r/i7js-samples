@@ -7,6 +7,7 @@ package com.itextpdf.samples.sandbox.annotations;
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.pdf.*;
+import com.itextpdf.core.pdf.annot.PdfAnnotation;
 import com.itextpdf.core.pdf.annot.PdfCircleAnnotation;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
@@ -39,8 +40,7 @@ public class CircleAnnotation extends GenericTest {
                 .setTitle(new PdfString("Circle"))
                         // TODO Implement setColor(Color) (in this particular case setColor(Color#getColorValues) seems strange)
                 .setColor(Color.BLUE.getColorValue())
-                        // TODO There is no PdfAnnotation.FLAGS_PRINT flag
-                        //.setFlags(PdfAnnotation.FLAGS_PRINT);
+                .setFlags(PdfAnnotation.Print)
                         // TODO Find way to use DashBorder here
                 .setBorder(new PdfArray(new float[]{0, 0, 2})) // new PdfBorderArray(0, 0, 2, new PdfDashPattern()));
                 .put(PdfName.IC, new PdfArray(new int[]{1, 0, 0}));
