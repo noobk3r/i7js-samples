@@ -26,8 +26,10 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
+@Ignore
 @Category(SampleTest.class)
 public class Listing_07_21_TimetableAnnotations1 extends GenericTest {
     /** The number of locations on our time table. */
