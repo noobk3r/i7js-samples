@@ -1,0 +1,65 @@
+package com.itextpdf.samples.book.part3.chapter10;
+
+import com.itextpdf.basics.geom.PageSize;
+import com.itextpdf.basics.image.ImageFactory;
+import com.itextpdf.core.pdf.PdfDocument;
+import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.model.Document;
+import com.itextpdf.model.element.Image;
+import com.itextpdf.samples.GenericTest;
+
+import java.io.IOException;
+
+import org.junit.experimental.categories.Category;
+
+@Category(SampleTest.class)
+public class Listing_10_16_TransparentImage extends GenericTest {
+    public static final String DEST = "./target/test/resources/book/part3/chapter10/Listing_10_16_TransparentImage.pdf";
+    /**
+     * One of the resources.
+     */
+    public static final String RESOURCE1
+            = "./src/test/resources/book/part3/chapter10/bruno.jpg";
+    /**
+     * One of the resources.
+     */
+    public static final String RESOURCE2
+            = "./src/test/resources/book/part3/chapter10/info.png";
+    /**
+     * One of the resources.
+     */
+    public static final String RESOURCE3
+            = "./src/test/resources/book/part3/chapter10/1t3xt.gif";
+    /**
+     * One of the resources.
+     */
+    public static final String RESOURCE4
+            = "./src/test/resources/book/part3/chapter10/logo.gif";
+
+    public static void main(String args[]) throws IOException {
+        new Listing_10_16_TransparentImage().manipulatePdf(DEST);
+    }
+
+    public void manipulatePdf(String dest) throws IOException {
+        Image img1 = new Image(ImageFactory.getImage(RESOURCE1));
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
+        Document doc = new Document(pdfDoc, new PageSize(img1.getImageScaledWidth(), img1.getImageScaledHeight()));
+        img1.setFixedPosition(0, 0);
+        doc.add(img1);
+        Image img2 = new Image(ImageFactory.getImage(RESOURCE2));
+        img2.setFixedPosition(0, 260);
+        doc.add(img2);
+        com.itextpdf.basics.image.Image img3basics = ImageFactory.getImage(RESOURCE3);
+        img3basics.setTransparency(new int[]{0x00, 0x10});
+        Image img3 = new Image(img3basics);
+        img3.setFixedPosition(0, 0);
+        doc.add(img3);
+        com.itextpdf.basics.image.Image img4basics = ImageFactory.getImage(RESOURCE4);
+        img4basics.setTransparency(new int[]{0xF0, 0xFF});
+        Image img4 = new Image(img4basics);
+        img4.setFixedPosition(50, 50);
+        doc.add(img4);
+        doc.close();
+    }
+}
