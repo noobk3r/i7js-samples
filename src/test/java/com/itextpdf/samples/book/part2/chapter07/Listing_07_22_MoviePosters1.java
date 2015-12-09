@@ -4,6 +4,7 @@ import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.basics.image.ImageFactory;
 import com.itextpdf.canvas.PdfCanvas;
+import com.itextpdf.core.pdf.PdfArray;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.action.PdfAction;
@@ -70,12 +71,13 @@ public class Listing_07_22_MoviePosters1 extends GenericTest {
             pdfCanvas.addXObject(xObject, 0, i * 84.2f);
         }
         Canvas canvas = new Canvas(pdfCanvas, pdfDoc, pdfDoc.getLastPage().getPageSize());
+        PdfArray border = new PdfArray(new float[]{0, 0, 0});
         for (Movie movie : PojoFactory.getMovies(connection)) {
             img = new Image(ImageFactory.getImage(String.format(RESOURCE, movie.getImdb())));
             img.scaleToFit(1000, 60);
             img.setFixedPosition(x + (45 - img.getImageScaledWidth()) / 2, y);
             linkAnnotation = new PdfLinkAnnotation(pdfDoc, new Rectangle(x + (45 - img.getImageScaledWidth()) / 2, y,
-                    img.getImageScaledWidth(), img.getImageScaledHeight()));
+                    img.getImageScaledWidth(), img.getImageScaledHeight())).setBorder(border);
             linkAnnotation.setAction(PdfAction.createURI(pdfDoc, String.format(IMDB, movie.getImdb())));
             pdfDoc.getLastPage().addAnnotation(linkAnnotation);
             canvas.add(img);

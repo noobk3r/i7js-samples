@@ -37,20 +37,17 @@ public class AddRotatedAnnotation extends GenericTest {
 
         PdfAction action = PdfAction.createURI(pdfDoc, "http://pages.itextpdf.com/ebook-stackoverflow-questions.html");
         Rectangle linkLocation1 = new Rectangle(30, 770, 120 - 30, 800 - 770);
-        // TODO there is no default border in PdfLinkAnnotation. In comparison, there is in itext5
         PdfLinkAnnotation link1 = new PdfLinkAnnotation(pdfDoc, linkLocation1)
                 .setHighlightMode(PdfAnnotation.HIGHLIGHT_INVERT)
                 .setAction(action)
-                .setColor(Color.RED.getColorValue())
-                .setBorder(new PdfArray(new float[]{0, 0, 1}));
+                .setColor(Color.RED.getColorValue());
         pdfDoc.getFirstPage().addAnnotation(link1);
 
         Rectangle linkLocation2 = new Rectangle(30, 670, 60 - 30, 760 - 670);
         PdfLinkAnnotation link2 = new PdfLinkAnnotation(pdfDoc, linkLocation2)
                 .setHighlightMode(PdfAnnotation.HIGHLIGHT_INVERT)
                 .setAction(action)
-                .setColor(Color.GREEN.getColorValue())
-                .setBorder(new PdfArray(new float[]{0, 0, 1}));
+                .setColor(Color.GREEN.getColorValue());
         pdfDoc.getFirstPage().addAnnotation(link2);
 
         Rectangle linkLocation3 = new Rectangle(150, 770, 240 - 150, 800 - 770);

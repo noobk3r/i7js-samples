@@ -47,7 +47,7 @@ public class AddImageLink extends GenericTest {
         float h = img.getHeight();
         new PdfCanvas(pdfDoc.getPage(1).newContentStreamAfter(), pdfDoc.getPage(1).getResources(), pdfDoc)
                 .addImage(img, x, y, false);
-        Rectangle linkLocation = new Rectangle(x, y, x + w, y + h);
+        Rectangle linkLocation = new Rectangle(x, y, w, h);
 
         PdfArray array = new PdfArray();
         array.add(doc.getPdfDocument().getPage(pdfDoc.getNumOfPages()).getPdfObject());
@@ -55,7 +55,7 @@ public class AddImageLink extends GenericTest {
         PdfDestination destination = PdfDestination.makeDestination(array);
         PdfAnnotation annotation = new PdfLinkAnnotation(pdfDoc, linkLocation)
                 .setHighlightMode(PdfAnnotation.HIGHLIGHT_INVERT)
-                .setAction(PdfAction.createGoTo(pdfDoc, destination));
+                .setAction(PdfAction.createGoTo(pdfDoc, destination)).setBorder(new PdfArray(new float[]{0, 0, 0}));
         pdfDoc.getPage(1).addAnnotation(annotation);
 
         pdfDoc.close();

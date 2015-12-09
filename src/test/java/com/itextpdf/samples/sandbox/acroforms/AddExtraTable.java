@@ -23,7 +23,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.Map;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
@@ -68,7 +67,6 @@ public class AddExtraTable extends GenericTest {
             }
         });
 
-        // TODO Problems with margins
         doc.add(table);
 
         doc.close();

@@ -5,15 +5,9 @@
  */
 package com.itextpdf.samples.sandbox.acroforms;
 
-import com.itextpdf.basics.geom.Rectangle;
-import com.itextpdf.core.pdf.PdfArray;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfNumber;
-import com.itextpdf.core.pdf.PdfReader;
-import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.pdf.*;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
-import com.itextpdf.forms.fields.PdfButtonFormField;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.samples.GenericTest;
 
@@ -39,23 +33,12 @@ public class ChangeButton extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(
                 new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
-        // TODO Implement handy copy constructor
-        // PushbuttonField button = form.getNewPushbuttonFromField("Test");
-        PdfButtonFormField oldField = (PdfButtonFormField) form.getField("Test");
-        PdfArray rect = oldField.getWidgets().get(0).getRectangle();
-        PdfButtonFormField button = PdfFormField.createPushButton(
-                pdfDoc,
-                new Rectangle(rect.getAsFloat(0), rect.getAsFloat(1), rect.getAsFloat(2) - rect.getAsFloat(0),
-                        rect.getAsFloat(3) - rect.getAsFloat(1)),
-                "Test",
-                "Test");
+
+        PdfFormField button = form.copyField("Test");
+        PdfArray rect = button.getWidgets().get(0).getRectangle();
         rect.set(2, new PdfNumber(rect.getAsFloat(2) + 172));
-        button.getWidgets().get(0).setRectangle(rect);
         button.setValue("Print Amended");
-        // TODO Implement replacing mechanism
-        // form.replacePushbuttonField("Test", button.getField());
-        form.removeField("Test");
-        form.addField(button);
+        form.replaceField("Test", button);
         pdfDoc.close();
     }
 }

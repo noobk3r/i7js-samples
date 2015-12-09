@@ -125,7 +125,7 @@ public class Listing_07_01_NamedActions extends GenericTest {
             }
 
             PdfLinkAnnotation linkAnnotation = ((Link) modelElement).getLinkAnnotation();
-            linkAnnotation.setRectangle(new PdfArray(occupiedArea.getBBox()));
+            linkAnnotation.setRectangle(new PdfArray(occupiedArea.getBBox())).setBorder(new PdfArray(new float[]{0, 0 , 0}));
 
             if (position == LayoutPosition.RELATIVE) {
                 applyAbsolutePositioningTranslation(true);

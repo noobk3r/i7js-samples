@@ -46,8 +46,7 @@ public class AddPointerAnnotation extends GenericTest {
         le.add(new PdfName("None"));
         lineAnnotation.setTitle(new PdfString("You are here:"));
         lineAnnotation.setContents("Cambridge Innovation Center");
-        // TODO Why not to implement setColor (Color). (in this particular case setColor(Color#getColorValues) seems strange)
-        lineAnnotation.setColor(Color.RED.getColorValue());
+        lineAnnotation.setColor(Color.RED);
         lineAnnotation.setFlag(PdfAnnotation.Print);
         PdfDictionary borderStyle = new PdfDictionary();
         borderStyle.put(PdfName.S, PdfName.S);

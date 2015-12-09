@@ -38,8 +38,7 @@ public class CircleAnnotation extends GenericTest {
         PdfCircleAnnotation annotation = new PdfCircleAnnotation(pdfDoc, rect)
                 .setContents("Circle")
                 .setTitle(new PdfString("Circle"))
-                        // TODO Implement setColor(Color) (in this particular case setColor(Color#getColorValues) seems strange)
-                .setColor(Color.BLUE.getColorValue())
+                .setColor(Color.BLUE)
                 .setFlags(PdfAnnotation.Print)
                         // TODO Find way to use DashBorder here
                 .setBorder(new PdfArray(new float[]{0, 0, 2})) // new PdfBorderArray(0, 0, 2, new PdfDashPattern()));
