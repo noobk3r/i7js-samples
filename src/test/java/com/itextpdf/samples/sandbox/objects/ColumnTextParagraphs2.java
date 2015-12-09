@@ -5,10 +5,15 @@
 package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.basics.geom.Rectangle;
+import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
+import com.itextpdf.model.element.Paragraph;
+import com.itextpdf.model.layout.LayoutArea;
+import com.itextpdf.model.layout.LayoutResult;
+import com.itextpdf.model.renderer.DocumentRenderer;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.File;
@@ -37,69 +42,34 @@ public class ColumnTextParagraphs2 extends GenericTest {
         new ColumnTextParagraphs2().manipulatePdf(DEST);
     }
 
+    // TODO Smth like ColumnText simulation is needed here. See stackoverflow link provided above to find what is this sample exactly about
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
-        Document doc = new Document(pdfDoc);
+        final Document doc = new Document(pdfDoc);
 
-// TODO Due to absence of ColumnText we cannot perform this sample because of not knowing paragraphs' positions before rendering
-//        PdfContentByte canvas = writer.getDirectContent();
-//        ColumnText ct = new ColumnText(canvas);
-//        addContent(ct);
-//        float height = getNecessaryHeight(ct);
-//        addContent(ct);
-//        Rectangle left;
-//        float top = COLUMNS[0].getTop();
-//        float middle = (COLUMNS[0].getLeft() + COLUMNS[1].getRight()) / 2;
-//        float columnheight;
-//        int status = ColumnText.START_COLUMN;
-//        while (ColumnText.hasMoreText(status)) {
-//            if (checkHeight(height)) {
-//                columnheight = COLUMNS[0].getHeight();
-//                left = COLUMNS[0];
-//            }
-//            else {
-//                columnheight = (height / 2) + ERROR_MARGIN;
-//                left = new Rectangle(
-//                        COLUMNS[0].getLeft(),
-//                        COLUMNS[0].getTop() - columnheight,
-//                        COLUMNS[0].getRight(),
-//                        COLUMNS[0].getTop()
-//                );
-//            }
-//            // left half
-//            ct.setSimpleColumn(left);
-//            ct.go();
-//            height -= COLUMNS[0].getTop() - ct.getYLine();
-//            // separator
-//            canvas.moveTo(middle, top - columnheight);
-//            canvas.lineTo(middle, top);
-//            canvas.stroke();
-//            // right half
-//            ct.setSimpleColumn(COLUMNS[1]);
-//            status = ct.go();
-//            height -= COLUMNS[1].getTop() - ct.getYLine();
-//            // new page
-//            document.newPage();
-//        }
+        doc.setRenderer(new DocumentRenderer(doc) {
+            int nextAreaNumber = 0;
+            int currentPageNumber;
 
+            @Override
+            public LayoutArea getNextArea(LayoutResult overflowResult) {
+                if (nextAreaNumber % 2 == 0) {
+                    currentPageNumber = super.getNextArea(overflowResult).getPageNumber();
+                } else {
+                    new PdfCanvas(document.getPdfDocument(), document.getPdfDocument().getNumOfPages())
+                            .moveTo(297.5f, 36)
+                            .lineTo(297.5f, 806)
+                            .stroke();
+                }
+                return (currentArea = new LayoutArea(currentPageNumber, COLUMNS[nextAreaNumber++ % 2].clone()));
+            }
+        });
+
+        pdfDoc.addNewPage();
+        int paragraphs = 0;
+        while (paragraphs < 30) {
+            doc.add(new Paragraph(String.format("Paragraph %s: %s", ++paragraphs, TEXT)));
+        }
         doc.close();
     }
-
-
-//    public void addContent(ColumnText ct) {
-//        for (int i = 0; i < 35; i++) {
-//            ct.addElement(new Paragraph(String.format("Paragraph %s: %s", i, TEXT)));
-//        }
-//    }
-
-//    public float getNecessaryHeight(ColumnText ct) throws DocumentException {
-//        ct.setSimpleColumn(new Rectangle(0, 0, COLUMN_WIDTH, -500000));
-//        ct.go(true);
-//        return -ct.getYLine();
-//    }
-
-//    public boolean checkHeight(float height) {
-//        height -= COLUMNS[0].getHeight() + COLUMNS[1].getHeight() + ERROR_MARGIN;
-//        return height > 0;
-//    }
 }

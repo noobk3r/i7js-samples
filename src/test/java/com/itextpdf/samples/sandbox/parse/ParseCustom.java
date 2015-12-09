@@ -42,7 +42,7 @@ public class ParseCustom {
         pdfDoc.close();
     }
 
-    // TODO There is no RenderFilter
+    // TODO There is no predefined extraction strategies
 //    class FontRenderFilter extends RenderFilter {
 //        public boolean allowText(TextRenderInfo renderInfo) {
 //            String font = renderInfo.getFont().getPostscriptFontName();

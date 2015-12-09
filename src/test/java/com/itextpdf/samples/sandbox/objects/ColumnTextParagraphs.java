@@ -10,16 +10,18 @@ import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
+import com.itextpdf.model.element.Paragraph;
+import com.itextpdf.model.layout.LayoutArea;
+import com.itextpdf.model.layout.LayoutResult;
+import com.itextpdf.model.renderer.DocumentRenderer;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class ColumnTextParagraphs extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/objects/column_text_paragraphs.pdf";
@@ -38,33 +40,31 @@ public class ColumnTextParagraphs extends GenericTest {
 
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
-        Document doc = new Document(pdfDoc);
+        final Document doc = new Document(pdfDoc);
+
+        doc.setRenderer(new DocumentRenderer(doc) {
+            int nextAreaNumber = 0;
+            int currentPageNumber;
+
+            @Override
+            public LayoutArea getNextArea(LayoutResult overflowResult) {
+                if (nextAreaNumber % 2 == 0) {
+                    currentPageNumber = super.getNextArea(overflowResult).getPageNumber();
+                } else {
+                    new PdfCanvas(document.getPdfDocument(), document.getPdfDocument().getNumOfPages())
+                            .moveTo(297.5f, 36)
+                            .lineTo(297.5f, 806)
+                            .stroke();
+                }
+                return (currentArea = new LayoutArea(currentPageNumber, COLUMNS[nextAreaNumber++ % 2].clone()));
+            }
+        });
 
         pdfDoc.addNewPage();
-        PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());
-// TODO Due to absence of ColumnText we cannot perform this sample because of not knowing paragraphs' positions before rendering
-//        int side_of_the_page = 0;
-//        int paragraphs = 0;
-//        while (paragraphs < 30) {
-//            doc.add(new Paragraph(String.format("Paragraph %s: %s", ++paragraphs, TEXT))
-//                    .setWidth(COLUMNS[side_of_the_page].getWidth())
-//                    .setHeight(COLUMNS[side_of_the_page].getHeight())
-//                    .setMarginLeft(COLUMNS[side_of_the_page].getLeft()));
-//            while (ColumnText.hasMoreText(ct.go())) {
-//                if (side_of_the_page == 0) {
-//                    side_of_the_page = 1;
-//                    canvas.moveTo(297.5f, 36);
-//                    canvas.lineTo(297.5f, 806);
-//                    canvas.stroke();
-//                }
-//                else {
-//                    side_of_the_page = 0;
-//                    document.newPage();
-//                }
-//                ct.setSimpleColumn(COLUMNS[side_of_the_page]);
-//            }
-//        }
-
+        int paragraphs = 0;
+        while (paragraphs < 30) {
+            doc.add(new Paragraph(String.format("Paragraph %s: %s", ++paragraphs, TEXT)));
+        }
         doc.close();
     }
 }

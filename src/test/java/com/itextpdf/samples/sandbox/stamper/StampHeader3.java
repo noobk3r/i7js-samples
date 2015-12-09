@@ -45,24 +45,21 @@ public class StampHeader3 extends GenericTest {
 
         Paragraph header = new Paragraph("Copy").setFont(new PdfType1Font(pdfDoc,
                 (Type1Font) FontFactory.createFont(FontConstants.HELVETICA, PdfEncodings.WINANSI))).setFontSize(14);
-        float x = 0, y = 0;
+        float x, y;
         for (int i = 1; i <= pdfDoc.getNumOfPages(); i++) {
-            // TODO There is no way of fiding whether page is rotated or no except analysing page sizes
-            // System.out.println(reader.getPageRotation(i));
-//            if (reader.getPageRotation(i) % 180 == 0) {
-//                x = reader.getPageSize(i).getWidth() / 2;
-//                y = reader.getPageSize(i).getTop(20);
-//            }
-//            else {
-//                System.out.println("rotated");
-//                x = reader.getPageSize(i).getHeight() / 2;
-//                y = reader.getPageSize(i).getRight(20);
-//            }
+            System.out.println(pdfDoc.getPage(i).getRotation());
+            if (pdfDoc.getPage(i).getRotation() % 180 == 0) {
+                x = pdfDoc.getPage(i).getPageSize().getWidth() / 2;
+                y = pdfDoc.getPage(i).getPageSize().getTop() - 20;
+            }
+            else {
+                System.out.println("rotated");
+                x = pdfDoc.getPage(i).getPageSize().getHeight() / 2;
+                y = pdfDoc.getPage(i).getPageSize().getRight() - 20;
+            }
             // TODO need to get OVER content to write properly
             doc.showTextAligned(header, x, y, i, Property.TextAlignment.CENTER, null, 0);
-
         }
-
 
         pdfDoc.close();
     }

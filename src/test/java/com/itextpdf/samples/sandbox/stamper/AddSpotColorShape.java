@@ -38,6 +38,7 @@ public class AddSpotColorShape extends GenericTest {
         canvas.arc(75, 75, 767, 520, 0, 360);
         canvas.eoClip();
         canvas.newPath();
+        // TODO No PdfSpotColor
         // PdfSpotColor psc = new PdfSpotColor("mySpotColor", new CMYKColor(0.8f, 0.3f, 0.3f, 0.1f));
         // canvas.setFillColor((new SpotColor(psc, 0.4f));
         canvas.setFillColor(new DeviceCmyk(0.8f, 0.3f, 0.3f, 0.1f));

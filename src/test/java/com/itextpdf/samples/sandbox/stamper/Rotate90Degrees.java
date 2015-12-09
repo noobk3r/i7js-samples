@@ -5,6 +5,7 @@
 package com.itextpdf.samples.sandbox.stamper;
 
 import com.itextpdf.core.pdf.PdfDocument;
+import com.itextpdf.core.pdf.PdfName;
 import com.itextpdf.core.pdf.PdfNumber;
 import com.itextpdf.core.pdf.PdfPage;
 import com.itextpdf.core.pdf.PdfReader;
@@ -16,10 +17,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Rotate90Degrees extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/stamper/pages.pdf";
@@ -41,15 +40,13 @@ public class Rotate90Degrees extends GenericTest {
         PdfNumber rotate;
         for (int p = 1; p <= n; p++) {
             page = pdfDoc.getPage(p);
-            // TODO Implement PdfName.ROTATE and its usage
-            // TODO or PageSize getPageSize() or summat
-//            rotate = page.getPageSize().
-//            if (rotate == null) {
-//                page.put(PdfName.ROTATE, new PdfNumber(90));
-//            }
-//            else {
-//                page.put(PdfName.ROTATE, new PdfNumber((rotate.intValue() + 90) % 360));
-//            }
+            rotate = page.getPdfObject().getAsNumber(PdfName.Rotate);
+            if (rotate == null) {
+                page.put(PdfName.Rotate, new PdfNumber(90));
+            }
+            else {
+                page.put(PdfName.Rotate, new PdfNumber((rotate.getIntValue() + 90) % 360));
+            }
         }
         pdfDoc.close();
     }

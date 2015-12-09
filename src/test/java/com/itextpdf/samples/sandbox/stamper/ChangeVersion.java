@@ -6,6 +6,7 @@ package com.itextpdf.samples.sandbox.stamper;
 
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
+import com.itextpdf.core.pdf.PdfVersion;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.samples.GenericTest;
 
@@ -13,9 +14,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-import org.junit.Ignore;
-
-@Ignore
 public class ChangeVersion extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/stamper/OCR.pdf";
     public static final String DEST = "./target/test/resources/sandbox/stamper/change_version.pdf";
@@ -28,10 +26,8 @@ public class ChangeVersion extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        // TODO can't make pdf with specification of pdf-version
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(
-                new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
-        //pdfDoc.setVersion(PdfVersion.PDF_1_5);
+                new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)), PdfVersion.PDF_1_5);
         pdfDoc.close();
     }
 }

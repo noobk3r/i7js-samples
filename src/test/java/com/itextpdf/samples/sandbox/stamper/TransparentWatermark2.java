@@ -15,6 +15,7 @@ import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.font.PdfType1Font;
 import com.itextpdf.core.pdf.PdfDocument;
+import com.itextpdf.core.pdf.PdfPage;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.extgstate.PdfExtGState;
@@ -44,6 +45,16 @@ public class TransparentWatermark2 extends GenericTest {
         new TransparentWatermark2().manipulatePdf(DEST);
     }
 
+    public static Rectangle getPageSizeWithRotation(PdfPage page) {
+        PageSize rect = new PageSize(page.getPageSize());
+        int rotation = page.getRotation();
+        while (rotation > 0) {
+            rect = rect.rotate();
+            rotation -= 90;
+        }
+        return rect;
+    }
+
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(
@@ -61,27 +72,27 @@ public class TransparentWatermark2 extends GenericTest {
         float h = img.getHeight();
         // transparency
         PdfExtGState gs1 = new PdfExtGState();
-         gs1.setFillOpacity(0.5f);
+        gs1.setFillOpacity(0.5f);
         // properties
         PdfCanvas over;
         Rectangle pagesize;
         float x, y;
         // loop over every page
         for (int i = 1; i <= n; i++) {
-            // TODO there is no way of finding whether page is rotated or not except sizes analysis
-            pagesize = new PageSize(pdfDoc.getPage(i).getPageSize()).rotate();
+            // TODO No "from box" getPageSize with rotation
+            pagesize = getPageSizeWithRotation(pdfDoc.getPage(i));
             x = (pagesize.getLeft() + pagesize.getRight()) / 2;
             y = (pagesize.getTop() + pagesize.getBottom()) / 2;
             over = new PdfCanvas(pdfDoc.getPage(i));
             over.saveState();
             over.setExtGState(gs1);
-            if (i % 2 == 1)
+            if (i % 2 == 1) {
                 doc.showTextAligned(p, x, y, i, Property.TextAlignment.CENTER, Property.VerticalAlignment.TOP, 0);
-            else
+            } else {
                 over.addImage(img, w, 0, 0, h, x - (w / 2), y - (h / 2), false);
+            }
             over.restoreState();
         }
-
         pdfDoc.close();
     }
 }

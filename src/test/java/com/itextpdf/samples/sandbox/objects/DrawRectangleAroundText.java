@@ -4,6 +4,7 @@
  */
 package com.itextpdf.samples.sandbox.objects;
 
+import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
@@ -12,6 +13,7 @@ import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Paragraph;
+import com.itextpdf.model.renderer.ParagraphRenderer;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.File;
@@ -19,10 +21,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class DrawRectangleAroundText extends GenericTest {
     public static final String DOG = "src/test/resources/img/dog.bmp";
@@ -46,18 +46,31 @@ public class DrawRectangleAroundText extends GenericTest {
                 + "fit the width we defined for the simple column of the"
                 + "ColumnText object, so it will be distributed over several"
                 + "lines (and we don't know in advance how many).");
-        doc.showTextAligned(p.setWidth(250 - 120).setHeight(780 - 500), 120, 500, 1,
-                Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
+        p.setWidth(250-120);
+        doc.showTextAligned(p, 120, 780, 1,
+                Property.TextAlignment.LEFT, Property.VerticalAlignment.TOP, 0);
         canvas.rectangle(120, 500, 130, 280);
         canvas.stroke();
-        doc.showTextAligned(p.setWidth(430 - 300).setHeight(780 - 500), 300, 500, 1,
-                Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
-        // TODO One cannot find rectangle's size before rendering
-        //float endPos = ct.getYLine() - 5;
-        float endPos = 500;
-        canvas.rectangle(300, endPos, 130, 780 - endPos);
-        canvas.stroke();
-
+        p.setNextRenderer(new BorderParagraphRenderer(p));
+        doc.showTextAligned(p, 300, 780, 1,
+                Property.TextAlignment.LEFT, Property.VerticalAlignment.TOP, 0);
         doc.close();
+    }
+
+    protected class BorderParagraphRenderer extends ParagraphRenderer {
+        public BorderParagraphRenderer(Paragraph modelElement) {
+            super(modelElement);
+        }
+
+        @Override
+        public void draw(PdfDocument document, PdfCanvas canvas) {
+            super.draw(document, canvas);
+            Rectangle rect = getOccupiedAreaBBox();
+            canvas
+                    .saveState()
+                    .rectangle(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight())
+                    .stroke()
+                    .restoreState();
+        }
     }
 }
