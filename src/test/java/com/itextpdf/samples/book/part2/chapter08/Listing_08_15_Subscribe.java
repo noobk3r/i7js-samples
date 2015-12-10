@@ -22,8 +22,10 @@ import com.itextpdf.samples.GenericTest;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
+@Ignore("Document fonts")
 @Category(SampleTest.class)
 public class Listing_08_15_Subscribe extends GenericTest {
 

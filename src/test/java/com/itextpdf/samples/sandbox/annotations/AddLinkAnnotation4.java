@@ -6,7 +6,6 @@ package com.itextpdf.samples.sandbox.annotations;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.FontFactory;
-import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.basics.geom.AffineTransform;
 import com.itextpdf.canvas.PdfCanvas;
@@ -49,7 +48,7 @@ public class AddLinkAnnotation4 extends GenericTest {
         // stamper.getWriter().setPageEvent(new AddAnnotation(stamper, transform));
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());
         PdfFont bold = new PdfType1Font(pdfDoc,
-                (Type1Font) FontFactory.createFont(FontConstants.HELVETICA_BOLD, PdfEncodings.WINANSI));
+                (Type1Font) FontFactory.createFont(FontConstants.HELVETICA_BOLD));
         Text chunk = new Text("The Best iText Questions on StackOverflow").setFont(bold).setFontSize(12);
         // TODO Implement setGenericTag
         //chunk.setGenericTag("http://pages.itextpdf.com/ebook-stackoverflow-questions.html");

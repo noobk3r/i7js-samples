@@ -23,9 +23,10 @@ import com.itextpdf.samples.GenericTest;
 
 import java.io.IOException;
 
+import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Category(SampleTest.class)
+@Category(SampleTest.class)  @Ignore("Document fonts")
 public class Listing_08_12_ChoiceFields extends GenericTest {
     public static final String DEST
             = "./target/test/resources/book/part2/chapter08/Listing_08_12_ChoiceFields.pdf";

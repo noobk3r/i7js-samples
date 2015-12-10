@@ -18,8 +18,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
+@Ignore("Document fonts")
 @Category(SampleTest.class)
 public class ReadOnlyField2 extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/acroforms/read_only_field2.pdf";

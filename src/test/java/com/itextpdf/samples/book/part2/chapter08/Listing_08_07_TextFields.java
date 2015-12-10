@@ -19,9 +19,10 @@ import com.itextpdf.samples.GenericTest;
 import java.io.IOException;
 import java.util.Map;
 
+import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Category(SampleTest.class)
+@Category(SampleTest.class) @Ignore("Document fonts")
 public class Listing_08_07_TextFields extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part2/chapter08/Listing_08_07_TextFields.pdf";
     public static final String FILLED = "./target/test/resources/book/part2/chapter08/Listing_08_07_TextFields_filled.pdf";

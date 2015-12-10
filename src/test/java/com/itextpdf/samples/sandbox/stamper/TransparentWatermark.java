@@ -5,7 +5,6 @@ package com.itextpdf.samples.sandbox.stamper;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.FontFactory;
-import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.core.font.PdfFont;
@@ -47,8 +46,7 @@ public class TransparentWatermark extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         PdfCanvas under = new PdfCanvas(pdfDoc.getFirstPage().newContentStreamBefore(), new PdfResources(), pdfDoc);
-        PdfFont font = new PdfType1Font(pdfDoc,
-                (Type1Font) FontFactory.createFont(FontConstants.HELVETICA, PdfEncodings.WINANSI));
+        PdfFont font = new PdfType1Font(pdfDoc, (Type1Font) FontFactory.createFont(FontConstants.HELVETICA));
         Paragraph p = new Paragraph("This watermark is added UNDER the existing content")
                 .setFont(font).setFontSize(15);
         doc.showTextAligned(p, 297, 550, 1, Property.TextAlignment.CENTER, Property.VerticalAlignment.TOP, 0);

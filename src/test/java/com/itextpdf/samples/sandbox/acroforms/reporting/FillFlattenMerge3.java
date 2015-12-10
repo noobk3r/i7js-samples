@@ -2,7 +2,6 @@ package com.itextpdf.samples.sandbox.acroforms.reporting;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.FontFactory;
-import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.font.PdfFont;
@@ -53,12 +52,11 @@ public class FillFlattenMerge3 extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)),
                 new PdfWriter(new FileOutputStream(DEST)));
-        PdfFont font = new PdfType1Font(pdfDoc,
-                (Type1Font) FontFactory.createFont(FontConstants.HELVETICA, PdfEncodings.WINANSI));
+        PdfFont font = new PdfType1Font(pdfDoc, (Type1Font) FontFactory.createFont(FontConstants.HELVETICA));
 
 
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
-        positions = new HashMap<String, Rectangle>();
+        positions = new HashMap<>();
         Rectangle rectangle;
         Map<String, PdfFormField> fields = form.getFormFields();
         for (String name : fields.keySet()) {

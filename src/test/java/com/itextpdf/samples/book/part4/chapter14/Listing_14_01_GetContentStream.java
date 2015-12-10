@@ -14,9 +14,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.SQLException;
 
+import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Category(SampleTest.class)
+@Category(SampleTest.class) @Ignore
 public class Listing_14_01_GetContentStream extends GenericTest {
     /** The content stream of a first PDF. */
     public static final String RESULT1

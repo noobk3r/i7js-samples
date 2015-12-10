@@ -42,7 +42,7 @@ public class AddLinkAnnotation3 extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         PdfFont bold = new PdfType1Font(pdfDoc,
-                (Type1Font) FontFactory.createFont(FontConstants.HELVETICA_BOLD, PdfEncodings.WINANSI));
+                (Type1Font) FontFactory.createFont(FontConstants.HELVETICA_BOLD));
         Link link = new Link("The Best iText Questions on StackOverflow",
                 PdfAction.createURI(pdfDoc, "http://pages.itextpdf.com/ebook-stackoverflow-questions.html"));
         link.setFont(bold).setFontSize(12);

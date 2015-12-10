@@ -80,9 +80,9 @@ public class Listing_03_20_ColumnMovies2 extends GenericTest {
     }
 
     public void addContent(Document doc, Movie movie) throws IOException {
-        PdfFont bold = new PdfType1Font(doc.getPdfDocument(), (Type1Font) FontFactory.createFont(FontConstants.HELVETICA_BOLD, ""));
-        PdfFont italic = new PdfType1Font(doc.getPdfDocument(), (Type1Font) FontFactory.createFont(FontConstants.HELVETICA_OBLIQUE, ""));
-        PdfFont normal = new PdfType1Font(doc.getPdfDocument(), (Type1Font) FontFactory.createFont(FontConstants.HELVETICA, ""));
+        PdfFont bold = new PdfType1Font(doc.getPdfDocument(), (Type1Font) FontFactory.createFont(FontConstants.HELVETICA_BOLD));
+        PdfFont italic = new PdfType1Font(doc.getPdfDocument(), (Type1Font) FontFactory.createFont(FontConstants.HELVETICA_OBLIQUE));
+        PdfFont normal = new PdfType1Font(doc.getPdfDocument(), (Type1Font) FontFactory.createFont(FontConstants.HELVETICA));
 
         Div div = new Div().setKeepTogether(true);
         Paragraph p = new Paragraph(movie.getTitle()).setFont(bold).

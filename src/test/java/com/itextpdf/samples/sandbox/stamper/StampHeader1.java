@@ -45,7 +45,7 @@ public class StampHeader1 extends GenericTest {
                 new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
         Paragraph header = new Paragraph("Copy").setFont(new PdfType1Font(pdfDoc,
-                (Type1Font) FontFactory.createFont(FontConstants.HELVETICA, PdfEncodings.WINANSI))).setFontSize(14);
+                (Type1Font) FontFactory.createFont(FontConstants.HELVETICA))).setFontSize(14);
         header.setFontColor(Color.RED);
         for (int i = 1; i <= pdfDoc.getNumOfPages(); i++) {
             float x = pdfDoc.getPage(i).getPageSize().getWidth() / 2;

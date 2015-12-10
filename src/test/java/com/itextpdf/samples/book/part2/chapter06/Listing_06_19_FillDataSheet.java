@@ -21,8 +21,10 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
+@Ignore("Document fonts")
 @Category(SampleTest.class)
 public class Listing_06_19_FillDataSheet extends GenericTest{
     /** The original PDF file. */

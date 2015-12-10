@@ -16,9 +16,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Category(SampleTest.class)
+@Category(SampleTest.class) @Ignore
 public class Listing_06_09_NUpTool extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part2/chapter06/Listing_06_09_NUpTool.pdf";
     public static final String RESULT = "./target/test/resources/book/part2/chapter06/Listing_06_09_NUpTool%dup.pdf";

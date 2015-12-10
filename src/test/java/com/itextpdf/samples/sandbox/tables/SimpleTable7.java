@@ -2,7 +2,6 @@ package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.FontFactory;
-import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.font.PdfFont;
@@ -40,19 +39,19 @@ public class SimpleTable7 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        PdfFont titleFont = new PdfType1Font(pdfDoc, (Type1Font) FontFactory.createFont(FontConstants.COURIER_BOLD, PdfEncodings.WINANSI));
+        PdfFont titleFont = new PdfType1Font(pdfDoc, (Type1Font) FontFactory.createFont(FontConstants.COURIER_BOLD));
         Paragraph docTitle = new Paragraph("UCSC Direct - Direct Payment Form");
         docTitle.setFont(titleFont);
         docTitle.setFontSize(11);
         docTitle.setFontColor(Color.BLACK);
         doc.add(docTitle);
 
-        PdfFont subtitleFont = new PdfType1Font(pdfDoc, (Type1Font) FontFactory.createFont(FontConstants.TIMES_ROMAN, PdfEncodings.WINANSI));
+        PdfFont subtitleFont = new PdfType1Font(pdfDoc, (Type1Font) FontFactory.createFont(FontConstants.TIMES_ROMAN));
         Paragraph subTitle = new Paragraph("(not to be used for reimbursement of services)");
         subTitle.setFont(subtitleFont);
         doc.add(subTitle);
 
-        PdfFont importantNoticeFont = new PdfType1Font(pdfDoc, (Type1Font) FontFactory.createFont(FontConstants.COURIER, PdfEncodings.WINANSI));
+        PdfFont importantNoticeFont = new PdfType1Font(pdfDoc, (Type1Font) FontFactory.createFont(FontConstants.COURIER));
         Paragraph importantNotice = new Paragraph("Important: Form must be filled out in Adobe Reader or Acrobat Professional 8.1 or above. To save completed forms, Acrobat Professional is required. For technical and accessibility assistance, contact the Campus Controller's Office.");
         importantNotice.setFont(importantNoticeFont);
         importantNotice.setFontSize(9);

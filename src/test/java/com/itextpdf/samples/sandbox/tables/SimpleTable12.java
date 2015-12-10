@@ -43,7 +43,7 @@ public class SimpleTable12 extends GenericTest {
         Document doc = new Document(pdfDoc, PageSize.A4.rotate());
 
         font = new PdfType1Font(pdfDoc,
-                (Type1Font) FontFactory.createFont(FontConstants.HELVETICA, PdfEncodings.WINANSI));
+                (Type1Font) FontFactory.createFont(FontConstants.HELVETICA));
         Table table = new Table(8);
         table.addCell(createCell("Examination", 1, 2, 15));
         table.addCell(createCell("Board", 1, 2, 15));

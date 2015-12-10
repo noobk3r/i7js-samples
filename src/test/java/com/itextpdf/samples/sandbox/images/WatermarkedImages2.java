@@ -92,8 +92,7 @@ public class WatermarkedImages2 extends GenericTest {
 //                    (getOccupiedAreaBBox().getTop()+getOccupiedAreaBBox().getBottom()) / 2);
             PdfFont font = null;
             try {
-                font = new PdfType1Font(document,
-                        (Type1Font) FontFactory.createFont(FontConstants.HELVETICA, PdfEncodings.WINANSI));
+                font = new PdfType1Font(document, (Type1Font) FontFactory.createFont(FontConstants.HELVETICA));
             } catch (IOException e) {
                 // we do not expect this to happen :)
             }

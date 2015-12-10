@@ -47,8 +47,7 @@ public class AddExtraPage extends GenericTest {
         Paragraph p = new Paragraph();
         p.add(new Text("Hello "));
         p.add(new Text("World")
-                .setFont(new PdfType1Font(pdfDoc,
-                        (Type1Font) FontFactory.createFont(FontConstants.HELVETICA, PdfEncodings.WINANSI)))
+                .setFont(new PdfType1Font(pdfDoc, (Type1Font) FontFactory.createFont(FontConstants.HELVETICA)))
                 .setFontSize(12)
                 .setBold());
         //PdfArray rectArray = form.getField("body").getWidgets().get(0).getRectangle();

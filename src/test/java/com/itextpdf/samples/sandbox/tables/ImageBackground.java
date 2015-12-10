@@ -2,7 +2,6 @@ package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.FontFactory;
-import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.basics.image.ImageFactory;
 import com.itextpdf.canvas.PdfCanvas;
@@ -62,7 +61,7 @@ public class ImageBackground extends GenericTest {
         Table table = new Table(1);
         table.setWidth(400);
         Cell cell = new Cell();
-        PdfFont font = new PdfType1Font(pdfDoc, (Type1Font) FontFactory.createFont(FontConstants.HELVETICA, PdfEncodings.WINANSI));
+        PdfFont font = new PdfType1Font(pdfDoc, (Type1Font) FontFactory.createFont(FontConstants.HELVETICA));
         Paragraph p = new Paragraph("A cell with an image as background color.")
                 .setFont(font).setFontColor(DeviceGray.WHITE).setFontSize(12);
         cell.add(p);
