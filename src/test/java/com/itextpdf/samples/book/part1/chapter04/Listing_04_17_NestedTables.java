@@ -41,7 +41,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_04_17_NestedTables extends GenericTest {
-    static public final String DEST =
+    public static final String DEST =
             "./target/test/resources/book/part1/chapter04/Listing_04_17_NestedTables.pdf";
     public static final String RESOURCE = "./src/test/resources/book/part1/chapter02/posters/%s.jpg";
     public HashMap<String, com.itextpdf.basics.image.Image> images =

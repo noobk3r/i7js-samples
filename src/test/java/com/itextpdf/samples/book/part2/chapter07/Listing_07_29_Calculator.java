@@ -55,8 +55,7 @@ public class Listing_07_29_Calculator extends GenericTest {
     Rectangle clearEntry, clear, result, move;
 
     public static void main(String args[]) throws IOException, SQLException {
-        Listing_07_29_Calculator application = new Listing_07_29_Calculator();
-        application.manipulatePdf(DEST);
+        new Listing_07_29_Calculator().manipulatePdf(DEST);
     }
 
     protected static String readFileToString(String path) throws IOException {

@@ -17,7 +17,7 @@ import org.junit.experimental.categories.Category;
 @Ignore
 @Category(SampleTest.class)
 public class Listing_01_08_HelloWorldMirroredMarginsTop extends GenericTest {
-    static public final String DEST =
+    public static final String DEST =
             "./target/test/resources/book/part1/chapter01/Listing_01_08_HelloWorldMirroredMarginsTop.pdf";
 
     public static void main(String[] args) throws Exception {

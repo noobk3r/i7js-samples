@@ -26,10 +26,8 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_10_03_TilingPatternColor extends GenericTest {
-
-    static public final String DEST = "./target/test/resources/book/part3/chapter10/Listing_10_03_TilingPatternColor.pdf";
-    static private final String IMG_SRC = "./src/test/resources/img/info.png";
-
+    public static final String DEST = "./target/test/resources/book/part3/chapter10/Listing_10_03_TilingPatternColor.pdf";
+    private static final String IMG_SRC = "./src/test/resources/img/info.png";
 
     public static void colorRectangle(PdfCanvas canvas, Color color, float x, float y, float width, float height) {
         canvas.saveState().setFillColor(color).rectangle(x, y, width, height).fillStroke().restoreState();
@@ -88,6 +86,5 @@ public class Listing_10_03_TilingPatternColor extends GenericTest {
 
         //Close document
         pdfDoc.close();
-
     }
 }

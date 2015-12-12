@@ -8,7 +8,6 @@ import com.itextpdf.core.pdf.action.PdfAction;
 import com.itextpdf.core.pdf.navigation.PdfExplicitDestination;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
-import com.itextpdf.samples.book.part1.chapter03.Listing_03_29_MovieTemplates;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.PojoFactory;
@@ -27,6 +26,8 @@ public class Listing_07_16_BookmarkedTimeTable extends GenericTest {
     public static final String RESOURCE
             = "./src/test/resources/book/part2/chapter07/print_page.js";
 
+    public static final String MOVIE_TEMPLATES = "./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
+
     protected String[] arguments;
 
     public static void main(String args[]) throws IOException, SQLException {
@@ -36,9 +37,9 @@ public class Listing_07_16_BookmarkedTimeTable extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {
-        Listing_03_29_MovieTemplates.main(arguments);
+        // Listing_03_29_MovieTemplates.main(arguments);
         // Create a reader
-        PdfReader reader = new PdfReader(Listing_03_29_MovieTemplates.DEST);
+        PdfReader reader = new PdfReader(MOVIE_TEMPLATES);
         // Create a stamper
         PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(dest));
         // Create a database connection

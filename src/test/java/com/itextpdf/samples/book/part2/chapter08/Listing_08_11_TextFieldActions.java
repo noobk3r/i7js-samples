@@ -18,8 +18,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_08_11_TextFieldActions extends GenericTest {
-
-    static public final String DEST = "./target/test/resources/book/part2/chapter08/Listing_08_11_TextFieldActions.pdf";
+    public static final String DEST = "./target/test/resources/book/part2/chapter08/Listing_08_11_TextFieldActions.pdf";
 
     public static void main(String[] args) throws Exception {
         new Listing_08_11_TextFieldActions().manipulatePdf(DEST);

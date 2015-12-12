@@ -10,7 +10,6 @@ import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Link;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
-import com.itextpdf.samples.book.part1.chapter04.Listing_04_17_NestedTables;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 
@@ -31,6 +30,8 @@ public class Listing_07_09_FindDirectors extends GenericTest {
     public static final String RESOURCE
             = "./src/test/resources/book/part2/chapter07/find_director.js";
 
+    public static final String NESTED_TABLES = "./src/test/resources/book/part1/chapter04/cmp_Listing_04_17_NestedTables.pdf";
+
     protected String[] arguments;
 
     public static void main(String args[]) throws IOException, SQLException {
@@ -46,7 +47,7 @@ public class Listing_07_09_FindDirectors extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {
-        new Listing_04_17_NestedTables().main(arguments);
+        // new Listing_04_17_NestedTables().main(arguments);
         manipulatePdf2(DEST);
     }
 
@@ -71,7 +72,7 @@ public class Listing_07_09_FindDirectors extends GenericTest {
         // Create pdfDocuments
         PdfDocument[] pdfDocumentses = {
                 new PdfDocument(new PdfReader(new ByteArrayInputStream(baos.toByteArray()))),
-                new PdfDocument(new PdfReader(Listing_04_17_NestedTables.DEST))};
+                new PdfDocument(new PdfReader(NESTED_TABLES))};
 
         pdfDoc = new PdfDocument(new PdfWriter(DEST));
         pdfDoc.getCatalog()
@@ -80,7 +81,6 @@ public class Listing_07_09_FindDirectors extends GenericTest {
         for (int i = 0; i < pdfDocumentses.length; i++) {
             n = pdfDocumentses[i].getNumOfPages();
             pdfDocumentses[i].copyPages(1, n, pdfDoc);
-              // TODO Getting imported pages causes Links disappearance
 //            for (int j = 1; j <= n; j++) {
 //                PdfFormXObject page = pdfDocumentses[i].getPage(j).copyAsFormXObject(pdfDoc);
 //                new PdfCanvas(pdfDoc.addNewPage()).addXObject(page, 0, 0);

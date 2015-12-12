@@ -16,7 +16,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_01_02_HelloWorldNarrow extends GenericTest {
-    static public final String DEST =
+    public static final String DEST =
             "./target/test/resources/book/part1/chapter01/Listing_01_02_HelloWorldNarrow.pdf";
 
     public static void main(String args[]) throws IOException {

@@ -4,8 +4,6 @@ import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
-import com.itextpdf.samples.book.part1.chapter01.Listing_01_01_HelloWorld;
-import com.itextpdf.samples.book.part1.chapter05.Listing_05_15_Hero1;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -14,8 +12,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.SQLException;
 
+import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
+@Ignore
 @Category(SampleTest.class)
 public class Listing_14_01_GetContentStream extends GenericTest {
     /** The content stream of a first PDF. */
@@ -29,16 +29,19 @@ public class Listing_14_01_GetContentStream extends GenericTest {
     public static final String CMP_RESULT2
             = "./src/test/resources/book/part4/chapter14/cmp_Listing_14_01_GetContentStream2.txt";
 
+    public static final String HELLO_WORLD = "./src/test/resources/book/part1/chapter01/cmp_Listing_01_01_HelloWorld.pdf";
+    public static final String HERO = "./src/test/resources/book/part1/chapter05/cmp_Listing_05_15_Hero1.pdf";
+
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_14_01_GetContentStream().manipulatePdf(RESULT1);
     }
 
     @Override
     protected void manipulatePdf(String dest) throws IOException, SQLException {
-        new Listing_01_01_HelloWorld().manipulatePdf(Listing_01_01_HelloWorld.DEST);
-        new Listing_05_15_Hero1().manipulatePdf(Listing_05_15_Hero1.DEST);
-        readContent(Listing_01_01_HelloWorld.DEST, RESULT1);
-        readContent(Listing_05_15_Hero1.DEST, RESULT2);
+        // new Listing_01_01_HelloWorld().manipulatePdf(Listing_01_01_HelloWorld.DEST);
+        // new Listing_05_15_Hero1().manipulatePdf(Listing_05_15_Hero1.DEST);
+        readContent(HELLO_WORLD, RESULT1);
+        readContent(HERO, RESULT2);
     }
 
 
@@ -79,7 +82,7 @@ public class Listing_14_01_GetContentStream extends GenericTest {
             addError("The lengths of files are different.");
         }
 
-        // For the first content stream
+        // For the second content stream
         destReader = new BufferedReader(new InputStreamReader(new FileInputStream(RESULT2)));
         cmpReader = new BufferedReader(new InputStreamReader(new FileInputStream(CMP_RESULT2)));
         row = 1;
@@ -107,6 +110,6 @@ public class Listing_14_01_GetContentStream extends GenericTest {
     @Override
     protected String getCmpPdf() {
         // dummy
-        return CMP_RESULT2;
+        return CMP_RESULT1;
     }
 }

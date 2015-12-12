@@ -23,8 +23,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_10_09_ImageTypes extends GenericTest {
-
-    static public final String DEST = "./target/test/resources/book/part3/chapter10/Listing_10_09_ImageTypes.pdf";
+    public static final String DEST = "./target/test/resources/book/part3/chapter10/Listing_10_09_ImageTypes.pdf";
 
     /** Paths to images. */
     public static final String[] RESOURCES = {

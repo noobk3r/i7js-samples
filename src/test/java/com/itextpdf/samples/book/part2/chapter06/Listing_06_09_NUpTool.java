@@ -24,6 +24,7 @@ public class Listing_06_09_NUpTool extends GenericTest {
     public static final String RESULT = "./target/test/resources/book/part2/chapter06/Listing_06_09_NUpTool%dup.pdf";
     public static final String RESOURCE = "./src/test/resources/book/part2/chapter06/loa.jpg";
 
+    public static final String STATIONERY = "./src/test/resources/book/part2/chapter06/cmp_Listing_06_08_Stationery.pdf";
     protected String[] arguments;
 
     public static void main(String args[]) throws IOException, SQLException {
@@ -33,11 +34,11 @@ public class Listing_06_09_NUpTool extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {
-        Listing_06_08_Stationery.main(arguments);
-        new Listing_06_09_NUpTool().multiplePdf(Listing_06_08_Stationery.DEST, RESULT, 1);
-        new Listing_06_09_NUpTool().multiplePdf(Listing_06_08_Stationery.DEST, RESULT, 2);
-        new Listing_06_09_NUpTool().multiplePdf(Listing_06_08_Stationery.DEST, RESULT, 3);
-        new Listing_06_09_NUpTool().multiplePdf(Listing_06_08_Stationery.DEST, RESULT, 4);
+        // Listing_06_08_Stationery.main(arguments);
+        new Listing_06_09_NUpTool().multiplePdf(STATIONERY, RESULT, 1);
+        new Listing_06_09_NUpTool().multiplePdf(STATIONERY, RESULT, 2);
+        new Listing_06_09_NUpTool().multiplePdf(STATIONERY, RESULT, 3);
+        new Listing_06_09_NUpTool().multiplePdf(STATIONERY, RESULT, 4);
         // Create file to compare via CompareTool
         concatenateResults(DEST, new String[]{String.format(RESULT, 2), String.format(RESULT, 4),
                 String.format(RESULT, 8), String.format(RESULT, 16)});

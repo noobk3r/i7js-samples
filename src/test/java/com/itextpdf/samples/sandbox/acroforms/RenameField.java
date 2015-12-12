@@ -45,7 +45,6 @@ public class RenameField {
     public static void beforeClass() throws Exception {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
-        new RenameField().manipulatePdf();
     }
 
     @Test

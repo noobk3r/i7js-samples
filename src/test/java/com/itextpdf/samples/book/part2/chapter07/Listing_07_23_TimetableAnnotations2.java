@@ -9,7 +9,6 @@ import com.itextpdf.core.pdf.action.PdfAction;
 import com.itextpdf.core.pdf.annot.PdfAnnotation;
 import com.itextpdf.core.pdf.annot.PdfLinkAnnotation;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
-import com.itextpdf.samples.book.part1.chapter03.Listing_03_29_MovieTemplates;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.PojoFactory;
@@ -27,6 +26,9 @@ import org.junit.experimental.categories.Category;
 public class Listing_07_23_TimetableAnnotations2 extends Listing_07_21_TimetableAnnotations1 {
     public static final String DEST
             = "./target/test/resources/book/part2/chapter07/Listing_07_23_TimetableAnnotations2.pdf";
+
+    public static final String MOVIE_TEMPLATES = "./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
+
     /**
      * Path to IMDB.
      */
@@ -38,12 +40,12 @@ public class Listing_07_23_TimetableAnnotations2 extends Listing_07_21_Timetable
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {
-        Listing_03_29_MovieTemplates.main(arguments);
+        // Listing_03_29_MovieTemplates.main(arguments);
         // Create a database connection
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
         locations = PojoFactory.getLocations(connection);
         // Create a reader
-        PdfReader reader = new PdfReader(Listing_03_29_MovieTemplates.DEST);
+        PdfReader reader = new PdfReader(MOVIE_TEMPLATES);
         // Create a stamper
         PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(dest));
         // Add annotations for every screening

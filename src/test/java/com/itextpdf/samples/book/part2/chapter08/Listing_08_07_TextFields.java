@@ -2,7 +2,9 @@ package com.itextpdf.samples.book.part2.chapter08;
 
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.core.color.Color;
+import com.itextpdf.core.pdf.PdfDictionary;
 import com.itextpdf.core.pdf.PdfDocument;
+import com.itextpdf.core.pdf.PdfName;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
@@ -22,7 +24,8 @@ import java.util.Map;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Category(SampleTest.class) @Ignore("Document fonts")
+@Ignore("Document fonts")
+@Category(SampleTest.class)
 public class Listing_08_07_TextFields extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part2/chapter08/Listing_08_07_TextFields.pdf";
     public static final String FILLED = "./target/test/resources/book/part2/chapter08/Listing_08_07_TextFields_filled.pdf";
@@ -91,8 +94,7 @@ public class Listing_08_07_TextFields extends GenericTest {
         // TODO MO FLAGS_PRINT constant
         // form.setFieldProperty("text_3", "setflags", PdfAnnotation.FLAGS_PRINT, null);
         form.getField("text_3").setValue("12345678", "********");
-        // TODO No setTextSize
-        // ((PdfTextFormField) form.getField("text_4")).setMaxLen(12);
+        ((PdfTextFormField) form.getField("text_4")).setMaxLen(12);
         form.getField("text_4").regenerateField();
         pdfDoc.close();
     }
@@ -114,12 +116,11 @@ public class Listing_08_07_TextFields extends GenericTest {
                     "Enter your name here...", String.format("text_%s", tf));
             // TODO DEVSIX-233
             //text.setBackgroundColor(new DeviceGray(0.75f));
-            // PdfDictionary borderStyleDict = new PdfDictionary();
+            PdfDictionary borderStyleDict = new PdfDictionary();
             switch(tf) {
                 case 1:
-                    // TODO Border styles ?
-                    // borderStyleDict.put(PdfName.S, PdfName.B);
-                    // text.getWidgets().get(0).setBorderStyle(borderStyleDict);
+                    borderStyleDict.put(PdfName.S, PdfName.B);
+                    text.getWidgets().get(0).setBorderStyle(borderStyleDict);
                     // TODO DEVSIX-233
                     // text.setFontSize(10);
                     // text.setValue("Enter your name here...");
@@ -128,23 +129,23 @@ public class Listing_08_07_TextFields extends GenericTest {
                     // text.setAlignment(Element.ALIGN_CENTER);
                     break;
                 case 2:
-                    // borderStyleDict.put(PdfName.S, PdfName.S);
-                    //text.getWidgets().get(0).setBorderStyle(borderStyleDict);
+                    borderStyleDict.put(PdfName.S, PdfName.S);
+                    text.getWidgets().get(0).setBorderStyle(borderStyleDict);
                     text.setMaxLen(8);
                     text.setComb(true);
                     text.setBorderWidth(2);
                     break;
                 case 3:
-                    // borderStyleDict.put(PdfName.S, PdfName.I);
-                    //text.getWidgets().get(0).setBorderStyle(borderStyleDict);
+                    borderStyleDict.put(PdfName.S, PdfName.I);
+                    text.getWidgets().get(0).setBorderStyle(borderStyleDict);
                     text.setPassword(true);
                     // TODO DEVSIX-233
                     // text.setValue("Choose a password");
                     text.setVisibility(PdfFormField.VISIBLE_BUT_DOES_NOT_PRINT);
                     break;
                 case 4:
-                    // borderStyleDict.put(PdfName.S, PdfName.I);
-                    // text.getWidgets().get(0).setBorderStyle(borderStyleDict);
+                    borderStyleDict.put(PdfName.S, PdfName.D);
+                    text.getWidgets().get(0).setBorderStyle(borderStyleDict);
                     // TODO DEVSIX-233
                     // text.setBorderColor(Color.RED);
                     // text.setFontSize(8);

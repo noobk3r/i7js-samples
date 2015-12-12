@@ -7,17 +7,20 @@ import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfButtonFormField;
 import com.itextpdf.samples.GenericTest;
-import com.itextpdf.samples.book.part2.chapter07.Listing_07_27_Advertisement;
 
 import java.io.IOException;
 
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
+// !!!!! Before unignore revise Listing_07_27_Advertisement  and put its result as this example source
 @Ignore
 @Category(SampleTest.class)
 public class Listing_08_06_ReplaceIcon extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part2/chapter08/Listing_08_06_ReplaceIcon.pdf";
+
+    public static final String ADVERTISEMENT = "./src/test/resources/book/part2/chapter07/cmp_Listing_07_27_Advertisement.pdf";
+
     /** Image that will be used as an icon. */
     public static final String RESOURCE = "./src/test/resources/book/part2/chapter08/iia2.jpg";
     /**
@@ -47,7 +50,7 @@ public class Listing_08_06_ReplaceIcon extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        Listing_07_27_Advertisement.main(arguments);
-        manipulatePdf2(Listing_07_27_Advertisement.DEST, DEST);
+        // Listing_07_27_Advertisement.main(arguments);
+        manipulatePdf2(ADVERTISEMENT, DEST);
     }
 }

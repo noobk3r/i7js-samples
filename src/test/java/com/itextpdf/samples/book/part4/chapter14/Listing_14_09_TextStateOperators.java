@@ -20,8 +20,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_14_09_TextStateOperators extends GenericTest {
-
-    static public final String DEST = "./target/test/resources/book/part4/chapter14/Listing_14_09_TextStateOperators.pdf";
+    public static final String DEST = "./target/test/resources/book/part4/chapter14/Listing_14_09_TextStateOperators.pdf";
 
     public static void main(String[] args) throws Exception {
         new Listing_14_09_TextStateOperators().manipulatePdf(DEST);

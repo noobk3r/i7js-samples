@@ -6,7 +6,6 @@ import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.action.PdfAction;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
-import com.itextpdf.samples.book.part1.chapter01.Listing_01_01_HelloWorld;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -21,6 +20,8 @@ public class Listing_07_07_AddVersionChecker extends GenericTest {
             = "./target/test/resources/book/part2/chapter07/Listing_07_07_AddVersionChecker.pdf";
     public static final String RESOURCE
             = "./src/test/resources/book/part2/chapter07/viewer_version.js";
+
+    public static final String HELLO_WORLD = "./src/test/resources/book/part1/chapter01/cmp_Listing_01_01_HelloWorld.pdf";
 
     protected String[] arguments;
 
@@ -40,9 +41,9 @@ public class Listing_07_07_AddVersionChecker extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {
-        Listing_01_01_HelloWorld.main(arguments);
+        // Listing_01_01_HelloWorld.main(arguments);
         // Create a reader
-        PdfReader reader = new PdfReader(Listing_01_01_HelloWorld.DEST);
+        PdfReader reader = new PdfReader(HELLO_WORLD);
         // Create a stamper
         PdfDocument pdfDoc
                 = new PdfDocument(reader, new PdfWriter(DEST));

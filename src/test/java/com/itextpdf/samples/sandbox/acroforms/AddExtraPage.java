@@ -6,22 +6,22 @@ package com.itextpdf.samples.sandbox.acroforms;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.FontFactory;
-import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.basics.font.Type1Font;
-import com.itextpdf.basics.geom.Rectangle;
+import com.itextpdf.canvas.PdfCanvas;
+import com.itextpdf.core.events.Event;
+import com.itextpdf.core.events.IEventHandler;
+import com.itextpdf.core.events.PdfDocumentEvent;
 import com.itextpdf.core.font.PdfType1Font;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.pdf.xobject.PdfFormXObject;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Text;
 import com.itextpdf.samples.GenericTest;
-
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
@@ -37,12 +37,14 @@ public class AddExtraPage extends GenericTest {
     }
 
     protected void manipulatePdf(String dest) throws Exception {
-        PdfReader reader = new PdfReader(new FileInputStream(SRC));
-        PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(new FileOutputStream(DEST)));
+        PdfReader reader = new PdfReader(SRC);
+        PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
 
-        Rectangle pageSize = pdfDoc.getDefaultPageSize();
-        PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
+        PdfDocument srcDoc = new PdfDocument(new PdfReader(SRC));
+        pdfDoc.addEventHandler(PdfDocumentEvent.START_PAGE,
+                new PageEventHandler(srcDoc.getFirstPage().copyAsFormXObject(pdfDoc)));
+        srcDoc.close();
 
         Paragraph p = new Paragraph();
         p.add(new Text("Hello "));
@@ -50,43 +52,37 @@ public class AddExtraPage extends GenericTest {
                 .setFont(new PdfType1Font(pdfDoc, (Type1Font) FontFactory.createFont(FontConstants.HELVETICA)))
                 .setFontSize(12)
                 .setBold());
-        //PdfArray rectArray = form.getField("body").getWidgets().get(0).getRectangle();
-        // TODO Implement PdfImportedPage or summat
-        /* We do not have ColumnText in itex6 */
-        // PdfImportedPage newPage = null;
-        // ColumnText column = new ColumnText(stamper.getOverContent(1));
-        //column.setSimpleColumn(rect);
-        //int pagecount = 1;
-        // int status;
+        // TODO Returns empty form, but the form has felds!
+        PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
+        // PdfArray rectArray = form.getField("body").getWidgets().get(0).getRectangle();
+
         for (int i = 1; i < 101; i++) {
             doc.add(new Paragraph("Hello " + i));
             doc.add(p);
-            // status = column.go();
-            // if (ColumnText.hasMoreText(status)) {
-            //    newPage = loadPage(newPage, reader, stamper);
-            //    triggerNewPage(stamper, pagesize, newPage, column, rect, ++pagecount);
-            //}
         }
 
         form.flatFields();
         pdfDoc.close();
+
     }
 
-    // TODO Implement PdfImportedPage or summat
-    //public PdfImportedPage loadPage(PdfImportedPage page, PdfReader reader, PdfStamper stamper) {
-    //    if (page == null) {
-    //        return stamper.getImportedPage(reader, 1);
-    //    }
-    //    return page;
-    //}
-    /* There is no need ins such method: we do not have ColumnText in itex6 */
-    //public void triggerNewPage(PdfStamper stamper, Rectangle pagesize,
-    // PdfImportedPage page, ColumnText column, Rectangle rect, int pagecount) throws DocumentException {
-    //    stamper.insertPage(pagecount, pagesize);
-    //    PdfContentByte canvas = stamper.getOverContent(pagecount);
-    //    canvas.addTemplate(page, 0, 0);
-    //    column.setCanvas(canvas);
-    //    column.setSimpleColumn(rect);
-    //    column.go();
-    //}
+
+    public static class PageEventHandler implements IEventHandler {
+        protected PdfFormXObject xObject;
+
+        public PageEventHandler(PdfFormXObject xObject) {
+            this.xObject = xObject;
+        }
+
+        @Override
+        public void handleEvent(Event event) {
+            PdfDocumentEvent docEvent = (PdfDocumentEvent) event;
+            PdfDocument pdfDoc = docEvent.getDocument();
+            if (1 != pdfDoc.getPageNum(docEvent.getPage())) {
+
+                PdfCanvas canvas = new PdfCanvas(docEvent.getPage());
+                canvas.addXObject(xObject, 0, 0);
+            }
+        }
+    }
 }

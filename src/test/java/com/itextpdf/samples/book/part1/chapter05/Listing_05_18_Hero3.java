@@ -32,7 +32,7 @@ public class Listing_05_18_Hero3 extends Listing_05_15_Hero1 {
         Rectangle art = new Rectangle(50, 50, 495, 742);
         pdfDoc.addNewPage().setArtBox(art);
 
-        PdfFormXObject template = new PdfFormXObject(pdfDoc.getFirstPage().getPageSize());
+        PdfFormXObject template = new PdfFormXObject(pdfDoc.getDefaultPageSize());
         PdfCanvas canvas = new PdfCanvas(template, pdfDoc);
         createTemplate(canvas, 1);
         canvas.stroke();

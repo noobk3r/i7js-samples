@@ -6,10 +6,6 @@ import com.itextpdf.core.pdf.PdfPage;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
-import com.itextpdf.samples.book.part1.chapter01.Listing_01_05_HelloWorldLandscape1;
-import com.itextpdf.samples.book.part1.chapter01.Listing_01_06_HelloWorldLandscape2;
-import com.itextpdf.samples.book.part1.chapter03.Listing_03_29_MovieTemplates;
-import com.itextpdf.samples.book.part1.chapter05.Listing_05_15_Hero1;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -28,6 +24,12 @@ public class Listing_06_01_PageInformation extends GenericTest {
     public static final String CMP_RESULT
             = "./src/test/resources/book/part2/chapter06/cmp_Listing_06_01_PageInformation.txt";
 
+    public static final String HELLO_WORLD_LANDSCAPE1 = "./src/test/resources/book/part1/chapter01/cmp_Listing_01_05_HelloWorldLandscape1.pdf";
+    public static final String HELLO_WORLD_LANDSCAPE2 = "./src/test/resources/book/part1/chapter01/cmp_Listing_01_06_HelloWorldLandscape2.pdf";
+    public static final String MOVIE_TEMPLATES = "./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
+    public static final String HERO1 = "./src/test/resources/book/part1/chapter05/cmp_Listing_05_15_Hero1.pdf";
+
+
     protected String[] arguments;
 
     public static void main(String args[]) throws IOException, SQLException {
@@ -39,16 +41,16 @@ public class Listing_06_01_PageInformation extends GenericTest {
     @Override
     public void manipulatePdf(String dest) throws IOException, SQLException {
         // Use old examples to create PDFs
-        Listing_01_05_HelloWorldLandscape1.main(arguments);
-        Listing_01_06_HelloWorldLandscape2.main(arguments);
-        Listing_03_29_MovieTemplates.main(arguments);
-        Listing_05_15_Hero1.main(arguments);
+        // Listing_01_05_HelloWorldLandscape1.main(arguments);
+        // Listing_01_06_HelloWorldLandscape2.main(arguments);
+        // Listing_03_29_MovieTemplates.main(arguments);
+        // Listing_05_15_Hero1.main(arguments);
         // Inspecting PDFs
         PrintWriter writer = new PrintWriter(new FileOutputStream(RESULT));
-        inspect(writer, Listing_01_05_HelloWorldLandscape1.DEST);
-        inspect(writer, Listing_01_06_HelloWorldLandscape2.DEST);
-        inspect(writer, Listing_03_29_MovieTemplates.DEST);
-        inspect(writer, Listing_05_15_Hero1.DEST);
+        inspect(writer, HELLO_WORLD_LANDSCAPE1);
+        inspect(writer, HELLO_WORLD_LANDSCAPE2);
+        inspect(writer, MOVIE_TEMPLATES);
+        inspect(writer, HERO1);
         writer.close();
     }
 

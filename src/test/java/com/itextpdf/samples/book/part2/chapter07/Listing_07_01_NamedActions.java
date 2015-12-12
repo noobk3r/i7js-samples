@@ -24,7 +24,6 @@ import com.itextpdf.model.element.Table;
 import com.itextpdf.model.layout.LayoutPosition;
 import com.itextpdf.model.renderer.TextRenderer;
 import com.itextpdf.samples.GenericTest;
-import com.itextpdf.samples.book.part1.chapter03.Listing_03_29_MovieTemplates;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -35,13 +34,15 @@ import org.junit.experimental.categories.Category;
 public class Listing_07_01_NamedActions extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part2/chapter07/Listing_07_01_NamedActions.pdf";
 
+    public static final String MOVIE_TEMPLATES = "./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
+
     public static void main(String args[]) throws IOException, SQLException {
-        new Listing_03_29_MovieTemplates().manipulatePdf(Listing_03_29_MovieTemplates.DEST);
+        // new Listing_03_29_MovieTemplates().manipulatePdf(Listing_03_29_MovieTemplates.DEST);
         new Listing_07_01_NamedActions().manipulatePdf(DEST);
     }
 
     public void manipulatePdf(String dest) throws IOException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(Listing_03_29_MovieTemplates.DEST),
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(MOVIE_TEMPLATES),
                 new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
 

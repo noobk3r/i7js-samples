@@ -44,6 +44,8 @@ public class Listing_07_28_MoviePosters2 extends GenericTest {
 
     protected String[] arguments;
 
+    public static final String MOVIE_POSTERS1 = "./src/test/resources/book/part2/chapter07/cmp_Listing_07_22_MoviePosters1.pdf";
+
     public static void main(String args[]) throws IOException, SQLException {
         Listing_07_28_MoviePosters2 application = new Listing_07_28_MoviePosters2();
         application.arguments = args;
@@ -51,10 +53,10 @@ public class Listing_07_28_MoviePosters2 extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {
-        Listing_07_22_MoviePosters1.main(arguments);
+        // Listing_07_22_MoviePosters1.main(arguments);
         // Create a database connection
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(Listing_07_22_MoviePosters1.DEST), new PdfWriter(DEST));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(MOVIE_POSTERS1), new PdfWriter(DEST));
         // Loop over all the movies to add a popup annotation
         List<Movie> movies = PojoFactory.getMovies(connection);
         Image img;

@@ -6,7 +6,6 @@ import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfPageFormCopier;
 import com.itextpdf.samples.GenericTest;
-import com.itextpdf.samples.book.part1.chapter03.Listing_03_29_MovieTemplates;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -20,14 +19,16 @@ public class Listing_06_23_Burst extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part2/chapter06/Listing_06_23_Burst.pdf";
     public static final String FORMATTEDDEST = "./target/test/resources/book/part2/chapter06/Listing_06_23_Burst%d.pdf";
 
+    public static final String MOVIE_TEMPLATES = "./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
+
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_06_23_Burst().manipulatePdf(FORMATTEDDEST);
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {
-        new Listing_03_29_MovieTemplates().manipulatePdf(Listing_03_29_MovieTemplates.DEST);
+        // new Listing_03_29_MovieTemplates().manipulatePdf(Listing_03_29_MovieTemplates.DEST);
 
-        FileInputStream fis = new FileInputStream(Listing_03_29_MovieTemplates.DEST);
+        FileInputStream fis = new FileInputStream(MOVIE_TEMPLATES);
         PdfReader reader = new PdfReader(fis);
         PdfDocument srcDoc = new PdfDocument(reader);
 

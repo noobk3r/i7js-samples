@@ -10,7 +10,6 @@ import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.forms.fields.PdfButtonFormField;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.samples.GenericTest;
-import com.itextpdf.samples.book.part1.chapter04.Listing_04_17_NestedTables;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -29,6 +28,8 @@ public class Listing_07_27_Advertisement extends GenericTest {
     public static final String IMAGE = "./src/test/resources/book/part2/chapter07/close.png";
     /** The resulting PDF file. */
 
+    public static final String NESTED_TABLES = "./src/test/resources/book/part1/chapter04/cmp_Listing_04_17_NestedTables.pdf";
+
     protected String[] arguments;
 
     public static void main(String args[]) throws IOException, SQLException {
@@ -38,9 +39,9 @@ public class Listing_07_27_Advertisement extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {
-        Listing_04_17_NestedTables.main(arguments);
+        // Listing_04_17_NestedTables.main(arguments);
         // Create a reader for the original document
-        PdfReader reader = new PdfReader(Listing_04_17_NestedTables.DEST);
+        PdfReader reader = new PdfReader(NESTED_TABLES);
         // Create a reader for the advertisement resource
         PdfReader ad = new PdfReader(RESOURCE);
         // Create a stamper

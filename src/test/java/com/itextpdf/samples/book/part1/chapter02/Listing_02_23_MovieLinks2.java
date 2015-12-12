@@ -37,7 +37,8 @@ public class Listing_02_23_MovieLinks2 extends GenericTest {
 
     public static void main(String args[]) throws IOException, SQLException {
         // TODO Revise MovieLinks1 first
-        new Listing_02_22_MovieLinks1().manipulatePdf(Listing_02_22_MovieLinks1.DEST);
+        // Do not forget to make source file from MovieLinks1 cmp. Not simply uncomment the next line
+        // new Listing_02_22_MovieLinks1().manipulatePdf(Listing_02_22_MovieLinks1.DEST);
         new Listing_02_23_MovieLinks2().manipulatePdf(DEST);
     }
 

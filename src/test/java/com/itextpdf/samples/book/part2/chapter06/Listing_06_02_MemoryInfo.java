@@ -4,7 +4,6 @@ import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
-import com.itextpdf.samples.book.part1.chapter03.Listing_03_29_MovieTemplates;
 import com.itextpdf.text.pdf.RandomAccessFileOrArray;
 
 import java.io.FileOutputStream;
@@ -23,6 +22,8 @@ public class Listing_06_02_MemoryInfo extends GenericTest {
     public static final String CMP_RESULT
             = "./src/test/resources/book/part2/chapter06/cmp_Listing_06_02_MemoryInfo.txt";
 
+    public static final String MOVIE_TEMPLATES = "./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
+
     protected String[] arguments;
 
     public static void main(String args[]) throws IOException, SQLException, NoSuchFieldException, IllegalAccessException {
@@ -32,14 +33,14 @@ public class Listing_06_02_MemoryInfo extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException, NoSuchFieldException, IllegalAccessException {
-        Listing_03_29_MovieTemplates.main(arguments);
+        // Listing_03_29_MovieTemplates.main(arguments);
         // Create a writer for a report file
         PrintWriter writer = new PrintWriter(new FileOutputStream(RESULT));
         garbageCollect();
         // Do a full read
-        fullRead(writer, Listing_03_29_MovieTemplates.DEST);
+        fullRead(writer, MOVIE_TEMPLATES);
         // Do a partial read
-        partialRead(writer, Listing_03_29_MovieTemplates.DEST);
+        partialRead(writer, MOVIE_TEMPLATES);
         // Close the text file writer
         writer.close();
     }

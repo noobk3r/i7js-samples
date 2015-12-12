@@ -35,7 +35,7 @@ public class Listing_07_19_MovieAnnotations2 extends GenericTest {
     protected String[] arguments;
 
     public static void main(String args[]) throws IOException, SQLException {
-        new Listing_07_18_MovieAnnotations1().manipulatePdf(DEST);
+        new Listing_07_19_MovieAnnotations2().manipulatePdf(DEST);
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {

@@ -21,7 +21,7 @@ import org.junit.experimental.categories.Category;
  * Creates a PDF with the biggest possible page size.
  */
 public class Listing_01_03_HelloWorldMaximum extends GenericTest {
-    static public final String DEST =
+    public static final String DEST =
             "./target/test/resources/book/part1/chapter01/Listing_01_03_HelloWorldMaximum.pdf";
 
     /**

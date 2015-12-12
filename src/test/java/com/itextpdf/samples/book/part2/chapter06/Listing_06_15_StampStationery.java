@@ -38,6 +38,8 @@ public class Listing_06_15_StampStationery extends GenericTest {
     public static final String ORIGINAL =
             "./target/test/resources/book/part2/chapter06/Listing_06_15_StampStationery_original.pdf";
 
+    public static final String STATIONERY_WATERMARK = "./src/test/resources/book/part2/chapter06/cmp_Listing_06_08_Stationery_watermark.pdf";
+
     protected PdfFont bold;
     protected PdfFont italic;
     protected PdfFont normal;
@@ -47,10 +49,10 @@ public class Listing_06_15_StampStationery extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {
-        new Listing_06_08_Stationery().createStationery(Listing_06_08_Stationery.SOURCE);
+        // new Listing_06_08_Stationery().createStationery(Listing_06_08_Stationery.SOURCE);
         Listing_06_15_StampStationery stationary = new Listing_06_15_StampStationery();
         stationary.createPdf(ORIGINAL);
-        stationary.manipulatePdf2(ORIGINAL, Listing_06_08_Stationery.SOURCE, DEST);
+        stationary.manipulatePdf2(ORIGINAL, STATIONERY_WATERMARK, DEST);
     }
 
     public void manipulatePdf2(String src, String stationery, String dest) throws IOException {

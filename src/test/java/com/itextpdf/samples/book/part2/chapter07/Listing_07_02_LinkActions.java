@@ -41,6 +41,7 @@ public class Listing_07_02_LinkActions extends GenericTest {
 
     public void manipulatePdf(String dest) throws IOException, SQLException {
         // TODO First revise this example
+        // Do not forget to make source file from MovieLinks1 cmp. Not simply uncomment the next line
         //new Listing_02_22_MovieLinks1().manipulatePdf(DEST1);
         manipulatePdf2(DEST);
         //createXml(DEST, DEST3);

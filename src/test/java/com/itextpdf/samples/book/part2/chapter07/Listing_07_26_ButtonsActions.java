@@ -11,7 +11,6 @@ import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.forms.fields.PdfButtonFormField;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.samples.GenericTest;
-import com.itextpdf.samples.book.part1.chapter03.Listing_03_29_MovieTemplates;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -22,6 +21,8 @@ import org.junit.experimental.categories.Category;
 public class Listing_07_26_ButtonsActions extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part2/chapter07/Listing_07_26_ButtonsActions.pdf";
 
+    public static final String MOVIE_TEMPLATES = "./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
+
     protected String[] arguments;
 
     public static void main(String args[]) throws IOException, SQLException {
@@ -31,9 +32,9 @@ public class Listing_07_26_ButtonsActions extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {
-        Listing_03_29_MovieTemplates.main(arguments);
+        // Listing_03_29_MovieTemplates.main(arguments);
         // Create a reader
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(Listing_03_29_MovieTemplates.DEST), new PdfWriter(DEST));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(MOVIE_TEMPLATES), new PdfWriter(DEST));
         PdfButtonFormField saveAs =
                 PdfFormField.createPushButton(pdfDoc, new Rectangle(636, 10, 716 - 636, 30 - 10), "Save", "Save");
         saveAs.setBorderColor(Color.BLACK);

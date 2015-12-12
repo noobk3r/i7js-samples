@@ -15,7 +15,6 @@ import com.itextpdf.model.element.Image;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
 import com.itextpdf.samples.GenericTest;
-import com.itextpdf.samples.book.part1.chapter03.Listing_03_29_MovieTemplates;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -30,13 +29,14 @@ public class Listing_06_05_ImportingPages2 extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part2/chapter06/Listing_06_05_ImportingPages2.pdf";
     public static final String SOURCE = "./src/test/resources/source.pdf";
 
+    public static final String MOVIE_TEMPLATES = "./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_06_05_ImportingPages2().manipulatePdf(DEST);
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {
-        // Run this program first to have a source file
-        new Listing_03_29_MovieTemplates().manipulatePdf(Listing_03_29_MovieTemplates.DEST);
+        // // Run this program first to have a source file
+        // new Listing_03_29_MovieTemplates().manipulatePdf(Listing_03_29_MovieTemplates.DEST);
 
         //Initialize destination document
         FileOutputStream fos = new FileOutputStream(dest);
@@ -46,7 +46,7 @@ public class Listing_06_05_ImportingPages2 extends GenericTest {
 
         Table table = new Table(2);
 
-        PdfReader reader = new PdfReader(Listing_03_29_MovieTemplates.DEST);
+        PdfReader reader = new PdfReader(MOVIE_TEMPLATES);
         PdfDocument srcDoc = new PdfDocument(reader);
 
         for (int i = 1; i <= srcDoc.getNumOfPages(); i++) {

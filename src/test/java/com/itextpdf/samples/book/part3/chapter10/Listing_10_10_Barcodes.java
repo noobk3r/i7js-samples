@@ -31,8 +31,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_10_10_Barcodes extends GenericTest {
-
-    static public final String DEST = "./target/test/resources/book/part3/chapter10/Listing_10_10_Barcodes.pdf";
+    public static final String DEST = "./target/test/resources/book/part3/chapter10/Listing_10_10_Barcodes.pdf";
 
     public static void main(String args[]) throws IOException {
         new Listing_10_10_Barcodes().manipulatePdf(DEST);

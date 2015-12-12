@@ -11,7 +11,6 @@ import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Link;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
-import com.itextpdf.samples.book.part1.chapter03.Listing_03_29_MovieTemplates;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -24,6 +23,8 @@ import org.junit.experimental.categories.Category;
 public class Listing_07_13_EventAndActions extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part2/chapter07/Listing_07_13_EventAndActions.pdf";
     public static final String RESOURCE = "./src/test/resources/book/part2/chapter07/print_page.js";
+
+    public static final String MOVIE_TEMPLATES = "./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
 
     protected String[] arguments;
 
@@ -42,9 +43,9 @@ public class Listing_07_13_EventAndActions extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {
-        Listing_03_29_MovieTemplates.main(arguments);
+        // Listing_03_29_MovieTemplates.main(arguments);
         // Create a reader
-        PdfReader reader = new PdfReader(Listing_03_29_MovieTemplates.DEST);
+        PdfReader reader = new PdfReader(MOVIE_TEMPLATES);
         // Create a writer
         PdfWriter writer = new PdfWriter(DEST);
         // Create a pdf document

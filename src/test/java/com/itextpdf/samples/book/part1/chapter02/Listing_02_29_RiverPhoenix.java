@@ -27,7 +27,7 @@ public class Listing_02_29_RiverPhoenix extends GenericTest {
     protected PdfFont bold;
 
     public static void main(String args[]) throws IOException, SQLException {
-        new Listing_02_28_MoviePosters3().manipulatePdf(DEST);
+        new Listing_02_29_RiverPhoenix().manipulatePdf(DEST);
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {

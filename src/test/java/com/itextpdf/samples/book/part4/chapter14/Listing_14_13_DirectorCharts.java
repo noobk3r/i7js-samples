@@ -29,7 +29,6 @@ import org.junit.experimental.categories.Category;
 @Ignore
 @Category(SampleTest.class)
 public class Listing_14_13_DirectorCharts extends GenericTest {
-
     public static final String DEST
             = "./target/test/resources/book/part4/chapter14/Listing_14_13_DirectorCharts.pdf";
     /** A query that needs to be visualized in a chart. */

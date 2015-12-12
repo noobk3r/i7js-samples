@@ -8,8 +8,6 @@ import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
-import com.itextpdf.samples.book.part1.chapter01.Listing_01_05_HelloWorldLandscape1;
-import com.itextpdf.samples.book.part1.chapter01.Listing_01_06_HelloWorldLandscape2;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -27,6 +25,9 @@ public class Listing_06_12_StampText extends GenericTest {
     public static final String DEST2 = "./target/test/resources/book/part2/chapter06/Listing_06_12_StampText_2.pdf";
     public static final String DEST3 = "./target/test/resources/book/part2/chapter06/Listing_06_12_StampText_3.pdf";
 
+    public static final String HELLO_WORLD_LANDSCAPE1 = "./src/test/resources/book/part1/chapter01/cmp_Listing_01_05_HelloWorldLandscape1.pdf";
+    public static final String HELLO_WORLD_LANDSCAPE2 = "./src/test/resources/book/part1/chapter01/cmp_Listing_01_06_HelloWorldLandscape2.pdf";
+
     public String[] arguments;
 
     public static void main(String args[]) throws IOException {
@@ -36,11 +37,11 @@ public class Listing_06_12_StampText extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException {
-        Listing_01_05_HelloWorldLandscape1.main(arguments);
-        Listing_01_06_HelloWorldLandscape2.main(arguments);
-        stampPdf(Listing_01_05_HelloWorldLandscape1.DEST, DEST1);
-        stampIgnoreRotation(Listing_01_05_HelloWorldLandscape1.DEST, DEST2);
-        stampPdf(Listing_01_06_HelloWorldLandscape2.DEST, DEST3);
+        // Listing_01_05_HelloWorldLandscape1.main(arguments);
+        // Listing_01_06_HelloWorldLandscape2.main(arguments);
+        stampPdf(HELLO_WORLD_LANDSCAPE1, DEST1);
+        stampIgnoreRotation(HELLO_WORLD_LANDSCAPE1, DEST2);
+        stampPdf(HELLO_WORLD_LANDSCAPE2, DEST3);
         // Create file to compare via CompareTool
         concatenateResults(DEST, new String[]{DEST1, DEST2, DEST3});
     }

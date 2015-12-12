@@ -19,8 +19,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_10_04_ShadingPatternColor extends GenericTest {
-
-    static public final String DEST = "./target/test/resources/book/part3/chapter10/Listing_10_04_ShadingPatternColor.pdf";
+    public static final String DEST = "./target/test/resources/book/part3/chapter10/Listing_10_04_ShadingPatternColor.pdf";
 
     public static void colorRectangle(PdfCanvas canvas, Color color, float x, float y, float width, float height) {
         canvas.saveState().setFillColor(color).rectangle(x, y, width, height).fillStroke().restoreState();
@@ -56,6 +55,4 @@ public class Listing_10_04_ShadingPatternColor extends GenericTest {
         //Close document
         pdfDoc.close();
     }
-
-
 }
