@@ -48,7 +48,6 @@ public class Listing_02_02_CountryChunks extends GenericTest {
         // loop over the results
         while (rs.next()) {
             // write a country to the text file
-            // TODO Cannot add Text directly to document
             Paragraph p = new Paragraph().setFixedLeading(16);
             p.add(new Text(rs.getString("country")));
             p.add(new Text(" "));

@@ -67,7 +67,6 @@ public class Listing_02_05_DirectorPhrases2 extends GenericTest {
         doc.close();
     }
 
-    // TODO There is no Phrase
     public Paragraph createDirectorPhrase(ResultSet rs, PdfFont timesbd, PdfFont times)
             throws SQLException, IOException {
         Paragraph director = new Paragraph();
