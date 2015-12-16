@@ -5,6 +5,7 @@
 package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.basics.font.FontConstants;
+import com.itextpdf.basics.font.FontEncoding;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -39,7 +40,7 @@ public class Bullets extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
         Document doc = new Document(pdfDoc);
 
-        PdfFont zapfdingbats = PdfFont.createStandardFont(pdfDoc, FontConstants.ZAPFDINGBATS);
+        PdfFont zapfdingbats = PdfFont.createStandardFont(pdfDoc, FontConstants.ZAPFDINGBATS, FontEncoding.FontSpecific);
         Text bullet = new Text(String.valueOf((char) 108)).setFont(zapfdingbats);
         PdfFont font = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA);
         Paragraph p = new Paragraph("Items can be split if they don't fit at the end: ").setFont(font);

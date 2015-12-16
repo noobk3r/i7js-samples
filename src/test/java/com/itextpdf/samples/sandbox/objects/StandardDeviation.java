@@ -5,6 +5,7 @@
 package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.basics.font.FontConstants;
+import com.itextpdf.basics.font.FontEncoding;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -35,7 +36,7 @@ public class StandardDeviation extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         doc.add(new Paragraph("The standard deviation symbol doesn't exist in Helvetica."));
-        PdfFont symbol = PdfFont.createStandardFont(pdfDoc, FontConstants.SYMBOL);
+        PdfFont symbol = PdfFont.createStandardFont(pdfDoc, FontConstants.SYMBOL, FontEncoding.FontSpecific);
         Paragraph p = new Paragraph("So we use the Symbol font: ");
         p.add(new Text("s").setFont(symbol));
         doc.add(p);
