@@ -72,7 +72,7 @@ public class Listing_06_06_Layers extends GenericTest {
         PdfDocument resultDoc = new PdfDocument(writer);
         Document doc = new Document(resultDoc, new PageSize(PageSize.A5).rotate());
 
-        PdfFont font = PdfFont.createFont(resultDoc, FontConstants.ZAPFDINGBATS, FontEncoding.FontSpecific, true);
+        PdfFont font = PdfFont.createFont(resultDoc, FontConstants.ZAPFDINGBATS, true);
         PdfCanvas canvas = new PdfCanvas(resultDoc.addNewPage());
         for (int i = 1; i <= srcDoc.getNumOfPages(); i++) {
             PdfFormXObject layer = srcDoc.getPage(i).copyAsFormXObject(resultDoc);

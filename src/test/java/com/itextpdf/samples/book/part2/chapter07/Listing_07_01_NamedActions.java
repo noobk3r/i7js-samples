@@ -48,7 +48,7 @@ public class Listing_07_01_NamedActions extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         //Initialize writer
-        PdfFont symbol = PdfFont.createStandardFont(pdfDoc, FontConstants.SYMBOL, FontEncoding.FontSpecific); // 20
+        PdfFont symbol = PdfFont.createStandardFont(pdfDoc, FontConstants.SYMBOL); // 20
 
         Table table = new Table(4);
         table.setWidth(120);
