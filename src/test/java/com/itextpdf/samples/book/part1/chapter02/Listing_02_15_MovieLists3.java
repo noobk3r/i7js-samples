@@ -59,8 +59,7 @@ public class Listing_02_15_MovieLists3 extends GenericTest {
                     PojoFactory.getMovies(connection, rs.getString("country_id"))) {
                 ListItem movieitem = new ListItem(movie.getMovieTitle());
                 // Create a list for the directors
-                // TODO No ZapfDingbatsNumberList
-                List directorlist = new List(Property.ListNumberingType.DECIMAL);
+                List directorlist = new List(Property.ListNumberingType.ZAPF_DINGBATS_1);
                 // Loop over the directors
                 for (Director director : movie.getDirectors()) {
                     directorlist.add(String.format("%s, %s",

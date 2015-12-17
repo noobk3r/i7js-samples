@@ -69,8 +69,8 @@ public class Listing_02_16_MovieLists4 extends GenericTest {
             for (Movie movie : PojoFactory.getMovies(connection, rs.getString("country_id"))) {
                 ListItem movieitem = new ListItem(movie.getMovieTitle());
                 // Create a list for the directors
-                // TODO No ZapfDingbatsList
-                List directorlist = new List(); // ZapfDingbatsList(42);
+                Text listSymbol = new Text(String.valueOf((char)42) + " ").setFont(PdfFont.createStandardFont(pdfDoc, FontConstants.ZAPFDINGBATS));
+                List directorlist = new List().setListSymbol(listSymbol);
                 for (Director director : movie.getDirectors()) {
                     directorlist.add(String.format("%s, %s",
                             director.getName(), director.getGivenName()));
