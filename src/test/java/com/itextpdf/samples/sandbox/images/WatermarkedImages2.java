@@ -1,3 +1,4 @@
+
 /**
  * This code sample was written by Bruno Lowagie in answer to this question:
  * http://stackoverflow.com/questions/26814958/pdf-vertical-postion-method-gives-the-next-page-position-instead-of-current-page
@@ -6,7 +7,6 @@ package com.itextpdf.samples.sandbox.images;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.FontFactory;
-import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.basics.image.ImageFactory;
 import com.itextpdf.canvas.PdfCanvas;
@@ -32,7 +32,7 @@ import java.io.IOException;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+@Ignore("DEVSIX-366")
 @Category(SampleTest.class)
 public class WatermarkedImages2 extends GenericTest {
     public static final String IMAGE1 = "./src/test/resources/sandbox/images/bruno.jpg";
@@ -40,8 +40,8 @@ public class WatermarkedImages2 extends GenericTest {
     public static final String IMAGE3 = "./src/test/resources/sandbox/images/fox.bmp";
     public static final String IMAGE4 = "./src/test/resources/sandbox/images/bruno_ingeborg.jpg";
     public static final String DEST = "./target/test/resources/sandbox/images/watermarked_images2.pdf";
+    protected static PdfFont font = null;
 
-    //public static final Font FONT = new Font(FontFamily.HELVETICA, 12, Font.NORMAL, GrayColor.GRAYWHITE);
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
@@ -54,62 +54,64 @@ public class WatermarkedImages2 extends GenericTest {
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
+        font =  new PdfType1Font(pdfDoc, (Type1Font)FontFactory.createFont(FontConstants.HELVETICA));
 
         Table table = new Table(1);
         Cell cell;
-        // TODO we don't know what rectangle to fit because cell will have sizes only after adding to a document
-        cell = new Cell().add(new Image(ImageFactory.getImage(IMAGE1)).setAutoScale(true));
-        cell.setNextRenderer(new WatermarkedCellRenderer(cell, "Bruno"));
-        table.addCell(cell);
-        cell = new Cell().add(new Image(ImageFactory.getImage(IMAGE2)).setAutoScale(true));
-        cell.setNextRenderer(new WatermarkedCellRenderer(cell, "Dog"));
-        table.addCell(cell);
-        cell = new Cell().add(new Image(ImageFactory.getImage(IMAGE3)).setAutoScale(true));
-        cell.setNextRenderer(new WatermarkedCellRenderer(cell, "Fox"));
-        table.addCell(cell);
-        cell = new Cell().add(new Image(ImageFactory.getImage(IMAGE4)).setAutoScale(true));
-        cell.setNextRenderer(new WatermarkedCellRenderer(cell, "Bruno and Ingeborg"));
-        table.addCell(cell);
-        doc.add(table);
 
+        com.itextpdf.basics.image.Image image1 = ImageFactory.getImage(IMAGE1);
+        cell = new Cell().add(new Image(image1).setAutoScaleWidth(true));
+        cell.setNextRenderer(new WatermarkedCellRenderer(cell, "Bruno", 1));
+        table.addCell(cell);
+
+        com.itextpdf.basics.image.Image image2 = ImageFactory.getImage(IMAGE2);
+        cell = new Cell().add(new Image(image2).setAutoScaleWidth(true));
+        cell.setNextRenderer(new WatermarkedCellRenderer(cell, "Dog", 1));
+        table.addCell(cell);
+
+
+        com.itextpdf.basics.image.Image image3 = ImageFactory.getImage(IMAGE3);
+        cell = new Cell().add(new Image(image3).setAutoScaleWidth(true));
+        cell.setNextRenderer(new WatermarkedCellRenderer(cell, "Fox", 2));
+        table.addCell(cell);
+
+        com.itextpdf.basics.image.Image image4 = ImageFactory.getImage(IMAGE4);
+        cell = new Cell().add(new Image(image4).scaleToFit(400, 700));
+        cell.setNextRenderer(new WatermarkedCellRenderer(cell, "Bruno and Ingeborg", 3));
+        table.addCell(cell);
+
+        doc.add(table);
         doc.close();
     }
 
 
     private class WatermarkedCellRenderer extends CellRenderer {
         private String content;
-
-        public WatermarkedCellRenderer(Cell modelElement, String content) throws IOException {
+        private int pageNum;
+        public WatermarkedCellRenderer(Cell modelElement, String content,int pageNum) throws IOException {
             super(modelElement);
             this.content = content;
+            this.pageNum = pageNum;
         }
+
+
 
         @Override
         public void draw(PdfDocument document, PdfCanvas canvas) {
             super.draw(document, canvas);
-//            canvas.beginText();
-//            canvas.moveText((getOccupiedAreaBBox().getLeft()+getOccupiedAreaBBox().getRight()) / 2,
-//                    (getOccupiedAreaBBox().getTop()+getOccupiedAreaBBox().getBottom()) / 2);
-            PdfFont font = null;
-            try {
-                font = new PdfType1Font(document, (Type1Font) FontFactory.createFont(FontConstants.HELVETICA));
-            } catch (IOException e) {
-                // we do not expect this to happen :)
-            }
-            // TODO Implement usage of fontstyles such as Font.NORMAL
-//            canvas.setStrokeColor(Color.GRAY);
-            // TODO Implement showTextAligned to show text over content
             new Document(document).showTextAligned(
                     new Paragraph(content).setFont(font).setFontSize(12).setFontColor(Color.LIGHT_GRAY),
                     (getOccupiedAreaBBox().getLeft() + getOccupiedAreaBBox().getRight()) / 2,
                     (getOccupiedAreaBBox().getTop() + getOccupiedAreaBBox().getBottom()) / 2,
-                    document.getNumOfPages(),
+                    pageNum,
                     Property.TextAlignment.CENTER,
-                    null,
-                    30 * 0.0174532925f);
-//            canvas.showText(content);
-//            canvas.endText();
-//            canvas.stroke();
+                    Property.VerticalAlignment.MIDDLE,
+                    0.5f);
+
         }
+
     }
+
+
+
 }

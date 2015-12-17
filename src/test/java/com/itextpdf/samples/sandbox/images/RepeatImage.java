@@ -27,7 +27,7 @@ import java.io.FileOutputStream;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class RepeatImage extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/images/chinese.pdf";
@@ -42,26 +42,24 @@ public class RepeatImage extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)));
+        PdfDocument pdfDoc2 = new PdfDocument(new PdfWriter(dest));
+
         PdfDictionary pageDict = pdfDoc.getPage(1).getPdfObject();
         PdfDictionary pageResources = pageDict.getAsDictionary(PdfName.Resources);
         PdfDictionary pageXObjects = pageResources.getAsDictionary(PdfName.XObject);
         PdfName imgRef = pageXObjects.keySet().iterator().next();
-        PdfStream imgStream = pageXObjects.getAsStream(imgRef);
-//        PdfImageXObject imgObject = new PdfImageXObject((PdfStream) imgStream.getIndirectReference().getRefersTo());
-        PdfImageXObject imgObject = new PdfImageXObject(imgStream);
-        pdfDoc.close();
+        PdfStream imgStream = pageXObjects.getAsStream(imgRef);//
+        PdfImageXObject imgObject = new PdfImageXObject((PdfStream) imgStream.copyToDocument(pdfDoc2));
+
         Image image = new Image(imgObject);
-        image.setFixedPosition(0, 0);
+        image.setAutoScale(true);
         image.scaleToFit(pdfDoc.getPage(1).getPageSize().getWidth(), pdfDoc.getPage(1).getPageSize().getHeight());
         pdfDoc.close();
 
-        // TODO Add all streams to document in order to render it well
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc);
+        Document doc = new Document(pdfDoc2);
         doc.add(image);
         doc.close();
+
 
     }
 }

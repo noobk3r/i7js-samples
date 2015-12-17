@@ -23,7 +23,7 @@ import java.io.FileOutputStream;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class FlateCompressJPEG2Passes extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/images/image.pdf";
@@ -37,14 +37,15 @@ public class FlateCompressJPEG2Passes extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)));
+        PdfReader reader = new PdfReader(new FileInputStream(SRC));
+        PdfDocument pdfDoc = new PdfDocument(reader);
         PdfDictionary pageDict = pdfDoc.getPage(1).getPdfObject();
         PdfDictionary pageResources = pageDict.getAsDictionary(PdfName.Resources);
         PdfDictionary pageXObjects = pageResources.getAsDictionary(PdfName.XObject);
         PdfName imgName = pageXObjects.keySet().iterator().next();
         PdfStream imgStream = pageXObjects.getAsStream(imgName);
-        // TODO Implement setData
-        // imgStream.setData(PdfReader.getStreamBytesRaw(imgStream), true);
+        imgStream.setData(reader.readStreamBytesRaw(imgStream));
+        imgStream.setCompressionLevel(-1);
         PdfArray array = new PdfArray();
         array.add(PdfName.FlateDecode);
         array.add(PdfName.DCTDecode);

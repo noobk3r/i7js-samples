@@ -22,7 +22,7 @@ import java.io.FileOutputStream;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class BackgroundTransparent extends GenericTest {
     public static final String IMAGE = "./src/test/resources/sandbox/images/berlin2013.jpg";
