@@ -6,6 +6,7 @@ import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
+import com.itextpdf.model.border.Border;
 import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Image;
 import com.itextpdf.model.element.Paragraph;
@@ -58,7 +59,7 @@ public class ImageNextToText extends GenericTest {
         // TODO bottom alignment does not work
         p.setVerticalAlignment(Property.VerticalAlignment.BOTTOM);
         cell.add(p);
-        cell.setBorder(null);
+        cell.setBorder(Border.NO_BORDER);
         return cell;
     }
 }
