@@ -158,43 +158,18 @@ class AlternatingBackgroundTableRenderer extends TableRenderer {
         super(modelElement, rowRange);
     }
 
+    public AlternatingBackgroundTableRenderer(Table modelElement) {
+        super(modelElement);
+    }
+
     @Override
     protected TableRenderer[] split(int row, boolean hasContent) {
         return super.split(row, hasContent);
     }
 
     @Override
-    protected <T extends TableRenderer> T makeSplitRenderer(Table.RowRange rowRange) {
-        return (T) new AlternatingBackgroundTableRenderer((Table) modelElement, rowRange);
-    }
-
-    @Override
-    protected <T extends TableRenderer> T createSplitRenderer(Table.RowRange rowRange) {
-        AlternatingBackgroundTableRenderer splitRenderer = makeSplitRenderer(rowRange);
-        splitRenderer.parent = parent;
-        splitRenderer.modelElement = modelElement;
-        // TODO childRenderers will be populated twice during the relayout.
-        // We should probably clean them before #layout().
-        splitRenderer.childRenderers = childRenderers;
-        splitRenderer.addAllProperties(getOwnProperties());
-        splitRenderer.headerRenderer = headerRenderer;
-        splitRenderer.footerRenderer = footerRenderer;
-        return (T) splitRenderer;
-    }
-
-    @Override
-    protected <T extends TableRenderer> T createOverflowRenderer(Table.RowRange rowRange) {
-        AlternatingBackgroundTableRenderer overflowRenderer = makeOverflowRenderer(rowRange);
-        overflowRenderer.parent = parent;
-        overflowRenderer.modelElement = modelElement;
-        overflowRenderer.addAllProperties(getOwnProperties());
-        overflowRenderer.isOriginalNonSplitRenderer = false;
-        return (T) overflowRenderer;
-    }
-
-    @Override
-    protected <T extends TableRenderer> T makeOverflowRenderer(Table.RowRange rowRange) {
-        return (T) new AlternatingBackgroundTableRenderer((Table) modelElement, rowRange);
+    public AlternatingBackgroundTableRenderer getNextRenderer() {
+        return new AlternatingBackgroundTableRenderer((Table) modelElement);
     }
 
     @Override

@@ -37,6 +37,11 @@ public class AddOverlappingImage extends GenericTest {
             this.image = img;
         }
 
+        public OverlappingImageTableRenderer(Table modelElement, Image img) {
+            super(modelElement);
+            this.image = img;
+        }
+
         @Override
         public void drawChildren(PdfDocument document, PdfCanvas canvas) {
             super.drawChildren(document, canvas);
@@ -48,13 +53,8 @@ public class AddOverlappingImage extends GenericTest {
         }
 
         @Override
-        protected TableRenderer makeSplitRenderer(Table.RowRange rowRange) {
-            return new OverlappingImageTableRenderer((Table) modelElement, rowRange, image);
-        }
-
-        @Override
-        protected TableRenderer makeOverflowRenderer(Table.RowRange rowRange) {
-            return new OverlappingImageTableRenderer((Table) modelElement, rowRange, image);
+        public OverlappingImageTableRenderer getNextRenderer() {
+            return new OverlappingImageTableRenderer((Table) modelElement, image);
         }
     }
 

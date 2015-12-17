@@ -35,19 +35,13 @@ public class NestedTables3 extends GenericTest {
             super(modelElement, rowRange);
         }
 
+        protected InnerTableRenderer(Table modelElement) {
+            super(modelElement);
+        }
+
         @Override
         public void addChild(IRenderer renderer) {
             super.addChild(renderer);
-        }
-
-        @Override
-        protected InnerTableRenderer makeOverflowRenderer(Table.RowRange rowRange) {
-            return new InnerTableRenderer((Table) modelElement, rowRange);
-        }
-
-        @Override
-        protected InnerTableRenderer makeSplitRenderer(Table.RowRange rowRange) {
-            return new InnerTableRenderer((Table) modelElement, rowRange);
         }
 
         @Override
@@ -76,6 +70,11 @@ public class NestedTables3 extends GenericTest {
                 canvas.endText();
                 canvas.stroke();
             }
+        }
+
+        @Override
+        public InnerTableRenderer getNextRenderer() {
+            return new InnerTableRenderer((Table) modelElement);
         }
     }
 

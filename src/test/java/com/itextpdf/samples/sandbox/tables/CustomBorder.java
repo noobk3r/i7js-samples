@@ -27,6 +27,10 @@ class CustomBorderTableRenderer extends TableRenderer {
         super(modelElement, rowRange);
     }
 
+    protected CustomBorderTableRenderer(Table modelElement) {
+        super(modelElement);
+    }
+
     @Override
     public void drawBorder(PdfDocument document, PdfCanvas canvas) {
 
@@ -67,13 +71,8 @@ class CustomBorderTableRenderer extends TableRenderer {
     }
 
     @Override
-    protected CustomBorderTableRenderer makeOverflowRenderer(Table.RowRange rowRange) {
-        return new CustomBorderTableRenderer((Table) modelElement, rowRange);
-    }
-
-    @Override
-    protected CustomBorderTableRenderer makeSplitRenderer(Table.RowRange rowRange) {
-        return new CustomBorderTableRenderer((Table) modelElement, rowRange);
+    public CustomBorderTableRenderer getNextRenderer() {
+        return new CustomBorderTableRenderer((Table) modelElement);
     }
 
     @Override

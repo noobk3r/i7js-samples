@@ -210,6 +210,10 @@ public class Listing_05_06_PressPreviews extends GenericTest {
             super(modelElement, rowRange);
         }
 
+        protected PressPreviewTableRenderer(Table modelElement) {
+            super(modelElement);
+        }
+
         @Override
         public void drawBorder(PdfDocument document, PdfCanvas canvas) {
             Rectangle rect = getOccupiedAreaBBox();
@@ -217,13 +221,8 @@ public class Listing_05_06_PressPreviews extends GenericTest {
         }
 
         @Override
-        protected PressPreviewTableRenderer makeOverflowRenderer(Table.RowRange rowRange) {
-            return new PressPreviewTableRenderer((Table) modelElement, rowRange);
-        }
-
-        @Override
-        protected PressPreviewTableRenderer makeSplitRenderer(Table.RowRange rowRange) {
-            return new PressPreviewTableRenderer((Table) modelElement, rowRange);
+        public PressPreviewTableRenderer getNextRenderer() {
+            return new PressPreviewTableRenderer((Table) modelElement);
         }
     }
 }

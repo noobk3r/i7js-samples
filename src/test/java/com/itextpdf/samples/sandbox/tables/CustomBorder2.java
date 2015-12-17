@@ -24,6 +24,10 @@ class CustomBorder2TableRenderer extends TableRenderer {
     static boolean isBottomToBeDrawn = false;
     static boolean isTopToBeDrawn = true;
 
+    public CustomBorder2TableRenderer(Table modelElement) {
+        super(modelElement);
+    }
+
     public CustomBorder2TableRenderer(Table modelElement, Table.RowRange rowRange) {
         super(modelElement, rowRange);
     }
@@ -64,13 +68,8 @@ class CustomBorder2TableRenderer extends TableRenderer {
     }
 
     @Override
-    protected CustomBorder2TableRenderer makeOverflowRenderer(Table.RowRange rowRange) {
-        return new CustomBorder2TableRenderer((Table) modelElement, rowRange);
-    }
-
-    @Override
-    protected CustomBorder2TableRenderer makeSplitRenderer(Table.RowRange rowRange) {
-        return new CustomBorder2TableRenderer((Table) modelElement, rowRange);
+    public CustomBorder2TableRenderer getNextRenderer() {
+        return new CustomBorder2TableRenderer((Table) modelElement);
     }
 
     @Override

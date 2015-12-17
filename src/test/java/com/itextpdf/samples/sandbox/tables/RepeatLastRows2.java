@@ -31,14 +31,13 @@ public class RepeatLastRows2 extends GenericTest {
             super(modelElement, rowRange);
         }
 
-        @Override
-        protected RepeatTableRenderer makeOverflowRenderer(Table.RowRange rowRange) {
-            return new RepeatTableRenderer((Table) modelElement, rowRange);
+        protected RepeatTableRenderer(Table modelElement) {
+            super(modelElement);
         }
 
         @Override
-        protected RepeatTableRenderer makeSplitRenderer(Table.RowRange rowRange) {
-            return new RepeatTableRenderer((Table) modelElement, rowRange);
+        public RepeatTableRenderer getNextRenderer() {
+            return new RepeatTableRenderer((Table) modelElement);
         }
 
         @Override

@@ -211,12 +211,8 @@ public class Listing_05_03_RunLengthEvent extends GenericTest {
         }
 
         @Override
-        protected CellRenderer createOverflowRenderer(int layoutResult) {
-            FilmCellRenderer overflowRenderer = new FilmCellRenderer(getModelElement(), duration, isPressPreview);
-            overflowRenderer.parent = parent;
-            overflowRenderer.modelElement = modelElement;
-            overflowRenderer.addAllProperties(getOwnProperties());
-            return overflowRenderer;
+        public CellRenderer getNextRenderer() {
+            return new FilmCellRenderer(getModelElement(), duration, isPressPreview);
         }
     }
 }

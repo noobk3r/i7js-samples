@@ -73,12 +73,7 @@ public class Listing_99_03_ComplexElementLayout extends GenericTest {
         }
 
         @Override
-        protected ParagraphRenderer createSplitRenderer() {
-            return new TwoColumnParagraphRenderer((Paragraph) modelElement);
-        }
-
-        @Override
-        protected ParagraphRenderer createOverflowRenderer() {
+        public ParagraphRenderer getNextRenderer() {
             return new TwoColumnParagraphRenderer((Paragraph) modelElement);
         }
     }
