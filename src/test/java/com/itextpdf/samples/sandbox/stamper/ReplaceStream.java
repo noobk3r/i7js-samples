@@ -24,10 +24,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class ReplaceStream extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/stamper/hello.pdf";
@@ -49,11 +47,8 @@ public class ReplaceStream extends GenericTest {
         PdfObject object = dict.get(PdfName.Contents);
         if (object instanceof PdfStream) {
             PdfStream stream = (PdfStream) object;
-            byte[] data = stream.getBytes(); // page.getStreamBytes(stream);
-            pdfDoc.getReader().readStreamBytes(stream, true);
-
-            // TODO Implement setData
-            // stream.setData(new String(data).replace("Hello World", "HELLO WORLD").getBytes());
+            byte[] data = stream.getBytes();
+            stream.setData(new String(data).replace("Hello World", "HELLO WORLD").getBytes("UTF-8"));
         }
         pdfDoc.close();
     }
