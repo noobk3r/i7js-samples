@@ -62,7 +62,6 @@ public class Listing_04_21_PdfCalendar extends GenericTest {
     public static Properties content = new Properties();
 
     protected PdfFont normal;
-    protected PdfFont small;
     protected PdfFont bold;
 
     public static void main(String args[]) throws IOException, SQLException {
@@ -81,13 +80,8 @@ public class Listing_04_21_PdfCalendar extends GenericTest {
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
 
         // fonts
-        // TODO Issue with windows fonts
-        // "c://windows/fonts/arial.ttf"
-        normal = PdfFont.createFont(pdfDoc, "./src/test/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, true);
-        // "c://windows/fonts/arial.ttf"
-        small = PdfFont.createFont(pdfDoc, "./src/test/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, true);
-        // "c://windows/fonts/arialbd.ttf"
-        bold = PdfFont.createFont(pdfDoc, "./src/test/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, true);
+        normal = PdfFont.createFont(pdfDoc, /*"c://windows/fonts/arial.ttf"*/"./src/test/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, true);
+        bold = PdfFont.createFont(pdfDoc, /*"c://windows/fonts/arialbd.ttf"*/"./src/test/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, true);
 
         // collections
         specialDays.load(new FileInputStream(String.format(SPECIAL, YEAR)));
@@ -153,13 +147,13 @@ public class Listing_04_21_PdfCalendar extends GenericTest {
         // add metadata
         Paragraph p = new Paragraph(String.format("%s - \u00a9 Katharine Osborne",
                 content.getProperty(String.format("%tm.jpg", calendar))))
-                .setFont(small)
+                .setFont(normal)
                 .setFontColor(new DeviceCmyk(0x00, 0x00, 0x00, 0x80))
                 .setFontSize(8);
         doc.showTextAligned(p, 5, 5, calendar.get(Calendar.MONTH) + 1,
                 Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
         p = new Paragraph("Calendar generated using iText - example for the book iText in Action 2nd Edition")
-                .setFont(small)
+                .setFont(normal)
                 .setFontColor(new DeviceCmyk(0x00, 0x00, 0x00, 0x80))
                 .setFontSize(8);
         doc.showTextAligned(p, 893, 5, calendar.get(Calendar.MONTH) + 1,
@@ -203,7 +197,7 @@ public class Listing_04_21_PdfCalendar extends GenericTest {
             cell.setBackgroundColor(Color.WHITE);
         }
         // set the content in the language of the locale
-        Text text = new Text(String.format(locale, "%1$ta", calendar)).setFont(small).setFontSize(8);
+        Text text = new Text(String.format(locale, "%1$ta", calendar)).setFont(normal).setFontSize(8);
         text.setTextRise(8);
         // a paragraph with the day
         Paragraph p = new Paragraph(text);

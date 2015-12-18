@@ -40,25 +40,23 @@ public class SimpleTable7 extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         PdfFont titleFont = new PdfType1Font(pdfDoc, (Type1Font) FontFactory.createFont(FontConstants.COURIER_BOLD));
-        Paragraph docTitle = new Paragraph("UCSC Direct - Direct Payment Form");
-        docTitle.setFont(titleFont);
-        docTitle.setFontSize(11);
-        docTitle.setFontColor(Color.BLACK);
+        Paragraph docTitle = new Paragraph("UCSC Direct - Direct Payment Form").setMarginRight(1);
+        docTitle.setFont(titleFont).setFontSize(11);
         doc.add(docTitle);
 
         PdfFont subtitleFont = new PdfType1Font(pdfDoc, (Type1Font) FontFactory.createFont(FontConstants.TIMES_ROMAN));
         Paragraph subTitle = new Paragraph("(not to be used for reimbursement of services)");
-        subTitle.setFont(subtitleFont);
+        subTitle.setFont(subtitleFont).setFontSize(9);
         doc.add(subTitle);
 
         PdfFont importantNoticeFont = new PdfType1Font(pdfDoc, (Type1Font) FontFactory.createFont(FontConstants.COURIER));
         Paragraph importantNotice = new Paragraph("Important: Form must be filled out in Adobe Reader or Acrobat Professional 8.1 or above. To save completed forms, Acrobat Professional is required. For technical and accessibility assistance, contact the Campus Controller's Office.");
-        importantNotice.setFont(importantNoticeFont);
-        importantNotice.setFontSize(9);
+        importantNotice.setFont(importantNoticeFont).setFontSize(9);
         importantNotice.setFontColor(Color.RED);
         doc.add(importantNotice);
 
-        Table table = new Table(10);
+        Table table = new Table(10).
+                setWidth(Property.UnitValue.createPercentValue(80));
         Cell cell = new Cell(1, 3).add(docTitle);
         cell.setBorder(Border.NO_BORDER);
         cell.setHorizontalAlignment(Property.HorizontalAlignment.LEFT);
@@ -69,20 +67,19 @@ public class SimpleTable7 extends GenericTest {
         table.addCell(cellCaveat);
 
         Cell cellImportantNote = new Cell(1, 5).add(importantNotice);
-        cellImportantNote.setBorder(null);
+        cellImportantNote.setBorder(Border.NO_BORDER);
         table.addCell(cellImportantNote);
 
-        doc.add(table);
-        doc.add(new Paragraph("This is the same table, created differently").setFont(subtitleFont));
+        doc.add(table.setHorizontalAlignment(Property.HorizontalAlignment.CENTER));
+        doc.add(new Paragraph("This is the same table, created differently").
+                setFont(subtitleFont).setFontSize(9).setMarginBottom(10));
 
-        table = new Table(new float[]{3, 2, 5});
-        table.setWidth(0);
-        // TODO Implement setColSpan in already existed cell
-        // cell.setColspan(1);
-        table.addCell(new Cell().add(docTitle).setBorder(null));
-        table.addCell(new Cell().add(subTitle).setBorder(null));
-        table.addCell(new Cell().add(importantNotice).setBorder(null));
-        doc.add(table);
+        table = new Table(new float[]{3, 2, 5}).
+                setWidth(Property.UnitValue.createPercentValue(80));
+        table.addCell(new Cell().add(docTitle).setBorder(Border.NO_BORDER));
+        table.addCell(new Cell().add(subTitle).setBorder(Border.NO_BORDER));
+        table.addCell(new Cell().add(importantNotice).setBorder(Border.NO_BORDER));
+        doc.add(table.setHorizontalAlignment(Property.HorizontalAlignment.CENTER));
 
         doc.close();
     }

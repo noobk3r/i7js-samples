@@ -66,7 +66,7 @@ public class Listing_02_14_MovieLists2 extends GenericTest {
             List movielist = new List(Property.ListNumberingType.ENGLISH_LOWER);
             // TODO No setAlignindent(boolean)
             //movielist.setAlignindent(false);
-            for(Movie movie : PojoFactory.getMovies(connection, rs.getString("country_id"))) {
+            for (Movie movie : PojoFactory.getMovies(connection, rs.getString("country_id"))) {
                 ListItem movieitem = new ListItem(movie.getMovieTitle());
                 List directorlist = new List(Property.ListNumberingType.DECIMAL);
                 directorlist.setPreSymbolText("Director ");

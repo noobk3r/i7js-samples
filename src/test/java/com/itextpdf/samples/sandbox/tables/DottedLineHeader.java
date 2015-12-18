@@ -6,6 +6,8 @@ import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
+import com.itextpdf.model.Style;
+import com.itextpdf.model.border.Border;
 import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
@@ -38,15 +40,11 @@ public class DottedLineHeader extends GenericTest {
             super.drawChildren(document, canvas);
             canvas.setLineDash(3f, 3f);
             Rectangle headersArea = headerRenderer.getOccupiedArea().getBBox();
-            canvas.moveTo(headersArea.getLeft(),
-                    headersArea.getTop());
-            canvas.lineTo(headersArea.getRight(),
-                    headersArea.getTop());
+            canvas.moveTo(headersArea.getLeft(), headersArea.getTop());
+            canvas.lineTo(headersArea.getRight(), headersArea.getTop());
 
-            canvas.moveTo(headersArea.getLeft(),
-                    headersArea.getBottom());
-            canvas.lineTo(headersArea.getRight(),
-                    headersArea.getBottom());
+            canvas.moveTo(headersArea.getLeft(), headersArea.getBottom());
+            canvas.lineTo(headersArea.getRight(), headersArea.getBottom());
             canvas.stroke();
         }
     }
@@ -81,42 +79,34 @@ public class DottedLineHeader extends GenericTest {
 
         Table table = new Table(3);
         table.setNextRenderer(new DottedHeaderTableRenderer(table, new Table.RowRange(0, 1)));
-        // TODO Implement setting-for-all-cells-specific-border method
-        //table.getDefaultCell().setBorder(PdfPCell.NO_BORDER);
-        table.addHeaderCell(new Cell().add(new Paragraph("A1")).setBorder(null));
-        table.addHeaderCell(new Cell().add(new Paragraph("A2")).setBorder(null));
-        table.addHeaderCell(new Cell().add(new Paragraph("A3")).setBorder(null));
-        table.addCell(new Cell().add(new Paragraph("B1")).setBorder(null));
-        table.addCell(new Cell().add(new Paragraph("B2")).setBorder(null));
-        table.addCell(new Cell().add(new Paragraph("B3")).setBorder(null));
-        table.addCell(new Cell().add(new Paragraph("C1")).setBorder(null));
-        table.addCell(new Cell().add(new Paragraph("C2")).setBorder(null));
-        table.addCell(new Cell().add(new Paragraph("C3")).setBorder(null));
+        Style noBorder = new Style().setBorder(Border.NO_BORDER);
+        table.addHeaderCell(new Cell().add(new Paragraph("A1")).addStyle(noBorder));
+        table.addHeaderCell(new Cell().add(new Paragraph("A2")).addStyle(noBorder));
+        table.addHeaderCell(new Cell().add(new Paragraph("A3")).addStyle(noBorder));
+        table.addCell(new Cell().add(new Paragraph("B1")).addStyle(noBorder));
+        table.addCell(new Cell().add(new Paragraph("B2")).addStyle(noBorder));
+        table.addCell(new Cell().add(new Paragraph("B3")).addStyle(noBorder));
+        table.addCell(new Cell().add(new Paragraph("C1")).addStyle(noBorder));
+        table.addCell(new Cell().add(new Paragraph("C2")).addStyle(noBorder));
+        table.addCell(new Cell().add(new Paragraph("C3")).addStyle(noBorder));
         doc.add(table);
         doc.add(new Paragraph("Cell event"));
         table = new Table(3);
-        // TODO Implement setting-for-all-cells-specific-border method
-        //table.getDefaultCell().setBorder(PdfPCell.NO_BORDER);
-        // TODO Implement default renderer for all cells in a table
-        //table.getDefaultCell().setCellEvent(new DottedCell());
-        Cell cell = null;
-        cell = new Cell().add(new Paragraph("A1")).setBorder(null);
+        Cell cell = new Cell().add(new Paragraph("A1")).addStyle(noBorder);
         cell.setNextRenderer(new DottedHeaderCellRenderer(cell));
         table.addCell(cell);
-        cell = new Cell().add(new Paragraph("A2")).setBorder(null);
+        cell = new Cell().add(new Paragraph("A2")).addStyle(noBorder);
         cell.setNextRenderer(new DottedHeaderCellRenderer(cell));
         table.addCell(cell);
-        cell = new Cell().add(new Paragraph("A3")).setBorder(null);
+        cell = new Cell().add(new Paragraph("A3")).addStyle(noBorder);
         cell.setNextRenderer(new DottedHeaderCellRenderer(cell));
         table.addCell(cell);
-        // TODO Implement default renderer for all cells in a table
-        // table.getDefaultCell().setCellEvent(null);
-        table.addCell(new Cell().add(new Paragraph("B1")).setBorder(null));
-        table.addCell(new Cell().add(new Paragraph("B2")).setBorder(null));
-        table.addCell(new Cell().add(new Paragraph("B3")).setBorder(null));
-        table.addCell(new Cell().add(new Paragraph("C1")).setBorder(null));
-        table.addCell(new Cell().add(new Paragraph("C2")).setBorder(null));
-        table.addCell(new Cell().add(new Paragraph("C3")).setBorder(null));
+        table.addCell(new Cell().add(new Paragraph("B1")).addStyle(noBorder));
+        table.addCell(new Cell().add(new Paragraph("B2")).addStyle(noBorder));
+        table.addCell(new Cell().add(new Paragraph("B3")).addStyle(noBorder));
+        table.addCell(new Cell().add(new Paragraph("C1")).addStyle(noBorder));
+        table.addCell(new Cell().add(new Paragraph("C2")).addStyle(noBorder));
+        table.addCell(new Cell().add(new Paragraph("C3")).addStyle(noBorder));
         doc.add(table);
 
         doc.close();

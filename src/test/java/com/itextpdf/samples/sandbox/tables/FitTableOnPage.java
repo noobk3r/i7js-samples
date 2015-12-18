@@ -1,11 +1,17 @@
 package com.itextpdf.samples.sandbox.tables;
 
+import com.itextpdf.basics.geom.PageSize;
+import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
+import com.itextpdf.model.layout.LayoutArea;
+import com.itextpdf.model.layout.LayoutContext;
+import com.itextpdf.model.layout.LayoutResult;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.File;
@@ -38,13 +44,12 @@ public class FitTableOnPage extends GenericTest {
             }
             table.addCell(cell);
         }
+        LayoutResult tableLayoutResult = table.createRendererSubTree().layout(new LayoutContext(new LayoutArea(1, new Rectangle(600, 10000))));
 
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
+        PdfWriter writer = new PdfWriter(new FileOutputStream(dest));
         PdfDocument pdfDoc = new PdfDocument(writer);
-        // TODO getHeight() returns NullPointerException. Need smth like preFormat()
-        //Document doc = new Document(pdfDoc, new PageSize(612, table.getHeight() + 72));
-        //doc.add(table);
-        //doc.close();
+        Document doc = new Document(pdfDoc, new PageSize(612, tableLayoutResult.getOccupiedArea().getBBox().getHeight() + 72));
+        doc.add(table);
+        doc.close();
     }
 }

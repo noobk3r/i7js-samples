@@ -19,7 +19,6 @@ import com.itextpdf.samples.GenericTest;
 import java.io.File;
 import java.io.FileOutputStream;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 
@@ -40,8 +39,7 @@ public class BackgroundTransparent extends GenericTest {
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc, PageSize.A4.rotate());
-        doc.add(new Paragraph("Berlin!"));
-        PdfCanvas canvas = new PdfCanvas(pdfDoc.getLastPage());
+        PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         Image image = ImageFactory.getImage(IMAGE);
         canvas.saveState();
         PdfExtGState state = new PdfExtGState();
@@ -49,6 +47,7 @@ public class BackgroundTransparent extends GenericTest {
         canvas.setExtGState(state);
         canvas.addImage(image, 0, 0, PageSize.A4.rotate().getWidth(), false);
         canvas.restoreState();
+        doc.add(new Paragraph("Berlin!"));
         doc.close();
     }
 }

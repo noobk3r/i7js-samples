@@ -64,7 +64,6 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
         // fonts
         bold = PdfFont.createFont(pdfDoc, "c://windows/fonts/arialbd.ttf", PdfEncodings.WINANSI, true);
         normal = PdfFont.createFont(pdfDoc, "c://windows/fonts/arial.ttf", PdfEncodings.WINANSI, true);
-        small = PdfFont.createFont(pdfDoc, "c://windows/fonts/arial.ttf", PdfEncodings.WINANSI, true);
 
         // collections
         specialDays.load(new FileInputStream(String.format(SPECIAL, YEAR)));
@@ -127,13 +126,13 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
         // add metadata
         Paragraph p = new Paragraph(String.format("%s - \u00a9 Katharine Osborne",
                 content.getProperty(String.format("%tm.jpg", calendar))))
-                .setFont(small)
-                .setFontColor(new DeviceCmyk(cmykGray[0], cmykGray[1], cmykGray[2], cmykGray[3]))
+                .setFont(normal)
+                .setFontColor(new DeviceCmyk(0x00, 0x00, 0x00, 0x80))
                 .setFontSize(8);
         doc.showTextAligned(p, 5, 5, calendar.get(Calendar.MONTH) + 1,
                 Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
         p = new Paragraph("Calendar generated using iText - example for the book iText in Action 2nd Edition")
-                .setFont(small)
+                .setFont(normal)
                 .setFontColor(new DeviceCmyk(cmykGray[0], cmykGray[1], cmykGray[2], cmykGray[3]))
                 .setFontSize(8);
         doc.showTextAligned(p, 893, 5, calendar.get(Calendar.MONTH) + 1,
@@ -176,7 +175,7 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
             cell.setNextRenderer(new RoundedCellRenderer(cell, cmykWhite, true));
         }
         // set the content in the language of the locale
-        Text text = new Text(String.format(locale, "%1$ta", calendar)).setFont(small).setFontSize(8);
+        Text text = new Text(String.format(locale, "%1$ta", calendar)).setFont(normal).setFontSize(8);
         text.setTextRise(8);
         // a paragraph with the day
         Paragraph p = new Paragraph(text);

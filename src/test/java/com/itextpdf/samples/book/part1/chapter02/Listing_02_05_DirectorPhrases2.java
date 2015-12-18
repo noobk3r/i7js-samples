@@ -23,7 +23,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class Listing_02_05_DirectorPhrases2 extends GenericTest {
     public static final String DEST =
-            "./target/test/resources/book/part1/chapter02/Listing_02_04_DirectorPhrases2.pdf";
+            "./target/test/resources/book/part1/chapter02/Listing_02_05_DirectorPhrases2.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_02_05_DirectorPhrases2().manipulatePdf(DEST);
@@ -38,16 +38,13 @@ public class Listing_02_05_DirectorPhrases2 extends GenericTest {
 
         PdfFont timesbd = null;
         PdfFont times = null;
-        // TODO Issue with windows fonts
         try {
             // create a font that will be embedded
-            // c:/windows/fonts/timesbd.ttf
             timesbd = PdfFont.createFont(pdfDoc,
-                    "./src/test/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, true);
+                    /*"c:/windows/fonts/timesbd.ttf"*/"./src/test/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, true);
             // create a font that will be embedded
-            // c:/windows/fonts/timesbd.ttf
             times = PdfFont.createFont(pdfDoc,
-                    "./src/test/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, true);
+                    /*"c:/windows/fonts/times.ttf"*/"./src/test/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, true);
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(1);
