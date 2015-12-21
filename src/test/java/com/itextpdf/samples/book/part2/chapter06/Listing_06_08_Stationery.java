@@ -16,6 +16,7 @@ import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Canvas;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
+import com.itextpdf.model.Style;
 import com.itextpdf.model.element.AreaBreak;
 import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Paragraph;
@@ -114,11 +115,11 @@ public class Listing_06_08_Stationery extends GenericTest {
 
         bold = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA_BOLD);
 
-        Table table = new Table(2);
-        // TODO No facility to set default cell properties
+        Table table = new Table(1).setWidthPercent(80).setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
+        Style style = new Style().setTextAlignment(Property.TextAlignment.CENTER);
         table.addCell(new Cell()
-                .add(new Paragraph("FOOBAR FILM FESTIVAL").setFont(bold))
-                .setHorizontalAlignment(Property.HorizontalAlignment.CENTER));
+                .addStyle(style)
+                .add(new Paragraph("FOOBAR FILM FESTIVAL").setFont(bold)));
         doc.add(table);
         PdfFont font = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA_BOLD);
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getLastPage().newContentStreamBefore(),
@@ -128,7 +129,7 @@ public class Listing_06_08_Stationery extends GenericTest {
                 .setProperty(Property.FONT_SIZE, 52)
                 .setProperty(Property.FONT, font)
                 .showTextAligned(new Paragraph("FOOBAR FILM FESTIVAL"), 297.5f, 421, pdfDoc.getNumOfPages(),
-                        Property.TextAlignment.CENTER, Property.VerticalAlignment.MIDDLE, 45);
+                        Property.TextAlignment.CENTER, Property.VerticalAlignment.MIDDLE, (float)Math.PI / 4);
         doc.close();
     }
 

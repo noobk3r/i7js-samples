@@ -120,8 +120,7 @@ public class Listing_04_21_PdfCalendar extends GenericTest {
                 position = (position % 7) + 1;
                 table.addCell(new Cell().add(new Paragraph("")).setBackgroundColor(Color.WHITE));
             }
-            // TODO cannot add a table on proper position via Document.add
-            doc.add(table.setFixedPosition(169, 180, 504));
+            doc.add(table.setFixedPosition(169, 18, 504));
             if (11 != month) {
                 doc.add(new AreaBreak());
             }
@@ -148,15 +147,15 @@ public class Listing_04_21_PdfCalendar extends GenericTest {
         Paragraph p = new Paragraph(String.format("%s - \u00a9 Katharine Osborne",
                 content.getProperty(String.format("%tm.jpg", calendar))))
                 .setFont(normal)
-                .setFontColor(new DeviceCmyk(0x00, 0x00, 0x00, 0x80))
+                .setFontColor(new DeviceCmyk(0, 0, 0, 50))
                 .setFontSize(8);
         doc.showTextAligned(p, 5, 5, calendar.get(Calendar.MONTH) + 1,
                 Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
         p = new Paragraph("Calendar generated using iText - example for the book iText in Action 2nd Edition")
                 .setFont(normal)
-                .setFontColor(new DeviceCmyk(0x00, 0x00, 0x00, 0x80))
+                .setFontColor(new DeviceCmyk(0, 0, 0, 50))
                 .setFontSize(8);
-        doc.showTextAligned(p, 893, 5, calendar.get(Calendar.MONTH) + 1,
+        doc.showTextAligned(p, 839, 5, calendar.get(Calendar.MONTH) + 1,
                 Property.TextAlignment.RIGHT, Property.VerticalAlignment.BOTTOM, 0);
     }
 
