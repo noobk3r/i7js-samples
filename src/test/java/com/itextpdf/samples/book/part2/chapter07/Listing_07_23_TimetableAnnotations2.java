@@ -21,7 +21,7 @@ import java.sql.SQLException;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class Listing_07_23_TimetableAnnotations2 extends Listing_07_21_TimetableAnnotations1 {
     public static final String DEST
