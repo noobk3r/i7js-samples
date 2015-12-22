@@ -23,7 +23,6 @@ import java.sql.SQLException;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_06_05_ImportingPages2 extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part2/chapter06/Listing_06_05_ImportingPages2.pdf";
