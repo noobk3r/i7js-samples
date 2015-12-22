@@ -24,11 +24,12 @@ import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.TimeZone;
 
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class Listing_07_21_TimetableAnnotations1 extends GenericTest {
     /** The number of locations on our time table. */
@@ -51,6 +52,10 @@ public class Listing_07_21_TimetableAnnotations1 extends GenericTest {
     public static final float HEIGHT = 504;
     /** The height of a bar showing the movies at one specific location. */
     public static final float HEIGHT_LOCATION = HEIGHT / LOCATIONS;
+
+    static {
+        TimeZone.setDefault(TimeZone.getTimeZone("Europe/Brussels"));
+    }
 
     public static final String DEST
             = "./target/test/resources/book/part2/chapter07/Listing_07_21_TimetableAnnotations1.pdf";
@@ -119,7 +124,6 @@ public class Listing_07_21_TimetableAnnotations1 extends GenericTest {
      * @param    screening    a screening POJO, contains a movie
      * @return    a Rectangle
      */
-    // TODO In different Java versions screening.getTime().getTime() is different; So positioning is not correct
     protected Rectangle getPosition(Screening screening) {
         float llx, lly, urx, ury;
         long minutesAfter930 = (screening.getTime().getTime() - TIME930) / 60000l;
