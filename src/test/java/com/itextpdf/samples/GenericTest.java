@@ -25,9 +25,9 @@ public class GenericTest {
 
     protected boolean compareXml = false;
     /** An error message */
-    private String errorMessage;
+    protected String errorMessage;
     /** A prefix that is part of the error message. */
-    private String differenceImagePrefix = "difference";
+    protected String differenceImagePrefix = "difference";
 
     /**
      * Gets triggered before the test is performed.
