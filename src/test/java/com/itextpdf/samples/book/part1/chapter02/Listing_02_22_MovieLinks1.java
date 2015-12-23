@@ -7,6 +7,7 @@ import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.action.PdfAction;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
+import com.itextpdf.model.Property;
 import com.itextpdf.model.element.AreaBreak;
 import com.itextpdf.model.element.Link;
 import com.itextpdf.model.element.Paragraph;
@@ -25,7 +26,6 @@ import java.sql.Statement;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_02_22_MovieLinks1 extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part1/chapter02/Listing_02_22_MovieLinks1.pdf";
@@ -55,13 +55,57 @@ public class Listing_02_22_MovieLinks1 extends GenericTest {
                         + "GROUP BY mc.country_id, country ORDER BY c DESC");
         Link imdb;
         // loop over the countries
-        pdfDoc.addNewPage();
         while (rs.next()) {
-            // TODO No Anchor
-//            PdfDestination dest = new PdfStringDestination(rs.getString("country_id"));
-//            Link link = new Link(rs.getString("country"), dest);
-//            link.setFont(bold);
-//            doc.add(new Paragraph(link));
+            // TODO TODO TODO See addNewName (problems with Limits. Kids. see spec, table 3.33) write proper comment
+            Paragraph anchor = new Paragraph(rs.getString("country"));
+            anchor.setFont(bold);
+            if (0 == "US".compareTo(rs.getString("country_id"))) {
+                anchor.setProperty(Property.DESTINATION, rs.getString("country_id"));
+            } else if (0 == "AR".compareTo(rs.getString("country_id"))){
+                anchor.setProperty(Property.DESTINATION, rs.getString("country_id"));
+            }  else if (0 == "IN".compareTo(rs.getString("country_id"))){
+                anchor.setProperty(Property.DESTINATION, rs.getString("country_id"));
+            }  else if (0 == "NO".compareTo(rs.getString("country_id"))){
+                anchor.setProperty(Property.DESTINATION, rs.getString("country_id"));
+            } else if (0 == "RU".compareTo(rs.getString("country_id"))){
+                anchor.setProperty(Property.DESTINATION, rs.getString("country_id"));
+            } else if (0 == "TH".compareTo(rs.getString("country_id"))){
+                anchor.setProperty(Property.DESTINATION, rs.getString("country_id"));
+            }  else if (0 == "AT".compareTo(rs.getString("country_id"))){
+                anchor.setProperty(Property.DESTINATION, rs.getString("country_id"));
+            }  else if (0 == "AU".compareTo(rs.getString("country_id"))){
+                anchor.setProperty(Property.DESTINATION, rs.getString("country_id"));
+            }  else if (0 == "CA".compareTo(rs.getString("country_id"))){
+                anchor.setProperty(Property.DESTINATION, rs.getString("country_id"));
+            }  else if (0 == "CL".compareTo(rs.getString("country_id"))){
+                anchor.setProperty(Property.DESTINATION, rs.getString("country_id"));
+            }  else if (0 == "CN".compareTo(rs.getString("country_id"))){
+                anchor.setProperty(Property.DESTINATION, rs.getString("country_id"));
+            }  else if (0 == "DK".compareTo(rs.getString("country_id"))){
+                anchor.setProperty(Property.DESTINATION, rs.getString("country_id"));
+            } else if (0 == "ES".compareTo(rs.getString("country_id"))){
+                anchor.setProperty(Property.DESTINATION, rs.getString("country_id"));
+            } else if (0 == "FR".compareTo(rs.getString("country_id"))){
+                anchor.setProperty(Property.DESTINATION, rs.getString("country_id"));
+            } else if (0 == "GB".compareTo(rs.getString("country_id"))){
+                anchor.setProperty(Property.DESTINATION, rs.getString("country_id"));
+            } else if (0 == "GR".compareTo(rs.getString("country_id"))){
+                anchor.setProperty(Property.DESTINATION, rs.getString("country_id"));
+            } else if (0 == "HK".compareTo(rs.getString("country_id"))){
+                anchor.setProperty(Property.DESTINATION, rs.getString("country_id"));
+            } else if (0 == "IL".compareTo(rs.getString("country_id"))){
+                anchor.setProperty(Property.DESTINATION, rs.getString("country_id"));
+            } else if (0 == "KR".compareTo(rs.getString("country_id"))){
+                anchor.setProperty(Property.DESTINATION, rs.getString("country_id"));
+            }
+            else if (0 == "MX".compareTo(rs.getString("country_id"))){
+                anchor.setProperty(Property.DESTINATION, rs.getString("country_id"));
+            }
+            else if (0 == "NP".compareTo(rs.getString("country_id"))){
+                anchor.setProperty(Property.DESTINATION, rs.getString("country_id"));
+            }
+
+            doc.add(anchor);
             // loop over the movies
             for(Movie movie : PojoFactory.getMovies(connection, rs.getString("country_id"))) {
                 // the movie title will be an external link
@@ -74,7 +118,7 @@ public class Listing_02_22_MovieLinks1 extends GenericTest {
         }
         // Create an internal link to the first page
         Link toUS = new Link("Go back to the first page.", PdfAction.createGoTo(pdfDoc, "US"));
-        doc.add(new Paragraph().add(toUS));
+        doc.add(new Paragraph(toUS));
         doc.close();
         stm.close();
         connection.close();
