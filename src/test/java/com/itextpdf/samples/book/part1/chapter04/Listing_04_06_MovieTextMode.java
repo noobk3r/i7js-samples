@@ -29,7 +29,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_04_06_MovieTextMode extends GenericTest {
-    static public final String DEST =
+    public static final String DEST =
             "./target/test/resources/book/part1/chapter04/Listing_04_06_MovieTextMode.pdf";
 
     protected PdfFont normal;
@@ -56,7 +56,7 @@ public class Listing_04_06_MovieTextMode extends GenericTest {
         List<Movie> movies = PojoFactory.getMovies(connection);
         for (Movie movie : movies) {
             Table table = new Table(new float[]{1, 4});
-            table.setWidth(0);
+            table.setWidthPercent(100);
             Cell cell;
             cell = new Cell(1, 2).add(new Paragraph(movie.getTitle()).setFont(bold));
             cell.setTextAlignment(Property.TextAlignment.CENTER);
@@ -71,7 +71,7 @@ public class Listing_04_06_MovieTextMode extends GenericTest {
                 table.addCell(cell);
             }
             List<Director> directors = movie.getDirectors();
-            cell = new Cell(directors.size(), 1).add(new Paragraph("Directors:"));
+            cell = new Cell(directors.size(), 1).add("Directors:");
             cell.setVerticalAlignment(Property.VerticalAlignment.MIDDLE);
             table.addCell(cell);
             int count = 0;
@@ -85,21 +85,20 @@ public class Listing_04_06_MovieTextMode extends GenericTest {
                 table.addCell(cell);
             }
             // TODO Implement facility to set default-cell configs
-            table.addCell(new Cell().add(new Paragraph("Year:"))
+            table.addCell(new Cell().add("Year:")
                     .setTextAlignment(Property.TextAlignment.RIGHT));
-            table.addCell(new Cell().add(new Paragraph(String.valueOf(movie.getYear())))
+            table.addCell(new Cell().add(String.valueOf(movie.getYear()))
                     .setTextAlignment(Property.TextAlignment.RIGHT));
-            table.addCell(new Cell().add(new Paragraph("Run length:"))
+            table.addCell(new Cell().add("Run length:")
                     .setTextAlignment(Property.TextAlignment.RIGHT));
-            table.addCell(new Cell().add(new Paragraph(String.valueOf(movie.getDuration())))
+            table.addCell(new Cell().add(String.valueOf(movie.getDuration()))
                     .setTextAlignment(Property.TextAlignment.RIGHT));
             List<Country> countries = movie.getCountries();
-            cell = new Cell(countries.size(), 1).add(new Paragraph("Countries:"));
-            // TODO setVerticalAlignment(Property) do not work
+            cell = new Cell(countries.size(), 1).add("Countries:");
             cell.setVerticalAlignment(Property.VerticalAlignment.BOTTOM);
             table.addCell(cell);
             for (Country country : countries) {
-                table.addCell(new Cell().add(new Paragraph(country.getCountry()))
+                table.addCell(new Cell().add(country.getCountry())
                         .setTextAlignment(Property.TextAlignment.CENTER));
             }
             doc.add(table);

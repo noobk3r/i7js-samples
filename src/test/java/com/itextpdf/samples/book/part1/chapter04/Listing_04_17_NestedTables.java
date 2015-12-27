@@ -1,7 +1,6 @@
 package com.itextpdf.samples.book.part1.chapter04;
 
 import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.basics.image.ImageFactory;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.color.DeviceRgb;
@@ -44,8 +43,8 @@ public class Listing_04_17_NestedTables extends GenericTest {
     public static final String DEST =
             "./target/test/resources/book/part1/chapter04/Listing_04_17_NestedTables.pdf";
     public static final String RESOURCE = "./src/test/resources/book/part1/chapter02/posters/%s.jpg";
-    public HashMap<String, com.itextpdf.basics.image.Image> images =
-            new HashMap<String, com.itextpdf.basics.image.Image>();
+
+    public HashMap<String, com.itextpdf.basics.image.Image> images = new HashMap<String, com.itextpdf.basics.image.Image>();
 
     protected PdfFont bold;
 
@@ -60,7 +59,7 @@ public class Listing_04_17_NestedTables extends GenericTest {
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc, new PageSize(PageSize.A4));
+        Document doc = new Document(pdfDoc);
 
         bold = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA_BOLD); // 12
 
@@ -96,7 +95,7 @@ public class Listing_04_17_NestedTables extends GenericTest {
     private Table getTable(Screening screening) throws MalformedURLException {
         // Create a table with 4 columns
         Table table = new Table(new float[]{1, 5, 10, 10});
-        table.setWidth(0);
+        table.setWidthPercent(100);
         // Get the movie
         Movie movie = screening.getMovie();
         // A cell with the title as a nested table spanning the complete row
@@ -139,7 +138,7 @@ public class Listing_04_17_NestedTables extends GenericTest {
 
     private Table fullTitle(Screening screening) {
         Table table = new Table(new float[]{3, 15, 2});
-        table.setWidth(0);
+        table.setWidthPercent(100);
         // cell 1: location and time
         Cell cell = new Cell();
         cell.setBorder(Border.NO_BORDER);

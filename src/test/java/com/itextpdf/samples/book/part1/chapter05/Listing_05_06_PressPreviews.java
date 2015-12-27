@@ -9,7 +9,6 @@ import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.border.Border;
 import com.itextpdf.model.element.Cell;
-import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
 import com.itextpdf.model.renderer.TableRenderer;
@@ -32,7 +31,7 @@ import org.junit.experimental.categories.Category;
 @Ignore
 @Category(SampleTest.class)
 public class Listing_05_06_PressPreviews extends GenericTest {
-    static public final String DEST =
+    public static final String DEST =
             "./target/test/resources/book/part1/chapter05/Listing_05_06_PressPreviews.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
@@ -58,7 +57,7 @@ public class Listing_05_06_PressPreviews extends GenericTest {
 
     public Table getTable(DatabaseConnection connection) throws UnsupportedEncodingException, SQLException {
         Table table = new Table(new float[]{1, 2, 2, 5, 1});
-        // TODO setWidth(0) do not render well with headers/footers
+        // TODO setWidth(0) (analog of setWidthPercent(100)) do not render well with headers/footers
         table.setWidthPercent(100);
         // TODO No facility to set default-cell properties
         // table.getDefaultCell().setPadding(5);
@@ -68,63 +67,63 @@ public class Listing_05_06_PressPreviews extends GenericTest {
         table.setNextRenderer(new PressPreviewTableRenderer(table, new Table.RowRange(0, 30)));
         table.setBorder(null);
         Cell cell;
-        // TODO Setting cell renderer on headers/footers do not lasts more them one page
+        // TODO Setting cell renderer on headers/footers do not lasts more then one page
         cell = new Cell()
-                .add(new Paragraph("Location"))
+                .add("Location")
                 .setPadding(5)
                 .setBorder(Border.NO_BORDER);
         cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
         table.addHeaderCell(cell);
         cell = new Cell()
-                .add(new Paragraph("Date/Time"))
+                .add("Date/Time")
                 .setPadding(5)
                 .setBorder(Border.NO_BORDER);
         cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
         table.addHeaderCell(cell);
         cell = new Cell()
-                .add(new Paragraph("Run Length"))
+                .add("Run Length")
                 .setPadding(5)
                 .setBorder(Border.NO_BORDER);
         cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
         table.addHeaderCell(cell);
         cell = new Cell()
-                .add(new Paragraph("Title"))
+                .add("Title")
                 .setPadding(5)
                 .setBorder(Border.NO_BORDER);
         cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
         table.addHeaderCell(cell);
         cell = new Cell()
-                .add(new Paragraph("Year")
-                ).setPadding(5)
+                .add("Year")
+                .setPadding(5)
                 .setBorder(Border.NO_BORDER);
         cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
         table.addHeaderCell(cell);
         cell = new Cell()
-                .add(new Paragraph("Location"))
+                .add("Location")
                 .setPadding(5)
                 .setBorder(Border.NO_BORDER);
         cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
         table.addFooterCell(cell);
         cell = new Cell()
-                .add(new Paragraph("Date/Time"))
+                .add("Date/Time")
                 .setPadding(5)
                 .setBorder(Border.NO_BORDER);
         cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
         table.addFooterCell(cell);
         cell = new Cell()
-                .add(new Paragraph("Run Length"))
+                .add("Run Length")
                 .setPadding(5)
                 .setBorder(Border.NO_BORDER);
         cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
         table.addFooterCell(cell);
         cell = new Cell()
-                .add(new Paragraph("Title"))
+                .add("Title")
                 .setPadding(5)
                 .setBorder(Border.NO_BORDER);
         cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
         table.addFooterCell(cell);
         cell = new Cell()
-                .add(new Paragraph("Year"))
+                .add("Year")
                 .setPadding(5)
                 .setBorder(Border.NO_BORDER);
         cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
@@ -135,32 +134,31 @@ public class Listing_05_06_PressPreviews extends GenericTest {
         for (Screening screening : screenings) {
             movie = screening.getMovie();
             cell = new Cell()
-                    .add(new Paragraph(screening.getLocation()))
+                    .add(screening.getLocation())
                     .setPadding(5)
                     .setBorder(Border.NO_BORDER);
             cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
             table.addCell(cell);
             cell = new Cell()
-                    .add(new Paragraph(String.format("%s   %2$tH:%2$tM",
-                            screening.getDate().toString(), screening.getTime())))
+                    .add(String.format("%s   %2$tH:%2$tM", screening.getDate().toString(), screening.getTime()))
                     .setPadding(5)
                     .setBorder(Border.NO_BORDER);
             cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
             table.addCell(cell);
             cell = new Cell()
-                    .add(new Paragraph(String.format("%d '", movie.getDuration())))
+                    .add(String.format("%d '", movie.getDuration()))
                     .setPadding(5)
                     .setBorder(Border.NO_BORDER);
             cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
             table.addCell(cell);
             cell = new Cell()
-                    .add(new Paragraph(movie.getMovieTitle()))
+                    .add(movie.getMovieTitle())
                     .setPadding(5)
                     .setBorder(Border.NO_BORDER);
             cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
             table.addCell(cell);
             cell = new Cell()
-                    .add(new Paragraph(String.valueOf(movie.getYear())))
+                    .add(String.valueOf(movie.getYear()))
                     .setPadding(5)
                     .setBorder(Border.NO_BORDER);
             cell.setNextRenderer(new PressPreviewsCellRenderer(cell));

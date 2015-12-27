@@ -31,7 +31,7 @@ public class Listing_05_14_NewPage extends GenericTest {
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
         doc.add(new Paragraph("This page will NOT be followed by a blank page!"));
         doc.add(new AreaBreak());
-        // TODO The system of new paging is a bit different from itext5
+        // TODO The system of new paging is a bit different from itext5, so this example has a bit different sense
         // we don't add anything to this page: newPage() will be ignored
         pdfDoc.addNewPage();
         doc.add(new Paragraph("This page will be followed by a blank page!"));

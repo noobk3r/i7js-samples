@@ -17,7 +17,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_05_17_Hero2 extends Listing_05_15_Hero1 {
-    static public final String DEST =
+    public static final String DEST =
             "./target/test/resources/book/part1/chapter05/Listing_05_17_Hero2.pdf";
     public static final String RESOURCE = "./src/test/resources/book/part1/chapter05/hero.txt";
 

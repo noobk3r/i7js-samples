@@ -11,6 +11,7 @@ import com.itextpdf.core.pdf.action.PdfAction;
 import com.itextpdf.core.pdf.navigation.PdfDestination;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
+import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Link;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Text;
@@ -31,14 +32,14 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class Listing_02_23_MovieLinks2 extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part1/chapter02/Listing_02_23_MovieLinks2.pdf";
+    public static final String MOVIE_LINKS1 = "./src/test/resources/book/part1/chapter02/cmp_Listing_02_22_MovieLinks1.pdf";
+    public static final String MOVIE_LINKS1_TODO = "Listing_02_22_MovieLinks1.pdf";
+
 
     protected PdfFont bold;
     protected PdfFont italic;
 
     public static void main(String args[]) throws IOException, SQLException {
-        // TODO Revise MovieLinks1 first
-        // Do not forget to make source file from MovieLinks1 cmp. Not simply uncomment the next line
-        // new Listing_02_22_MovieLinks1().manipulatePdf(Listing_02_22_MovieLinks1.DEST);
         new Listing_02_23_MovieLinks2().manipulatePdf(DEST);
     }
 
@@ -54,6 +55,7 @@ public class Listing_02_23_MovieLinks2 extends GenericTest {
 
         Paragraph p = new Paragraph();
         Text top = new Text("Country List").setFont(bold);
+        top.setProperty(Property.DESTINATION, "top");
         // TODO setLocalDestination
         // top.setLocalDestination("top");
         p.add(top);
@@ -61,7 +63,6 @@ public class Listing_02_23_MovieLinks2 extends GenericTest {
         // create an external link
         Link imdb = new Link("Internet Movie Database", PdfAction.createURI(pdfDoc, "http://www.imdb.com/"));
         imdb.setFont(italic);
-        // imdb.setAnchor(new URL("http://www.imdb.com/"));
         p = new Paragraph("Click on a country, and you'll get a list of movies, "
                 + "containing links to the ");
         p.add(imdb);
@@ -69,7 +70,7 @@ public class Listing_02_23_MovieLinks2 extends GenericTest {
         doc.add(p);
         // Create a remote goto
         p = new Paragraph("This list can be found in a ");
-        Link page1 = new Link("separate document", PdfAction.createGoToR(pdfDoc, "movie_links_1.pdf", 1));
+        Link page1 = new Link("separate document", PdfAction.createGoToR(pdfDoc, MOVIE_LINKS1_TODO, 1)); // TODO
         p.add(page1);
         p.add(".");
         doc.add(p);
@@ -89,7 +90,7 @@ public class Listing_02_23_MovieLinks2 extends GenericTest {
             Paragraph country = new Paragraph(rs.getString("country"));
             country.add(": ");
             Link link = new Link(String.format("%d movies", rs.getInt("c")),
-                    PdfAction.createGoToR(pdfDoc, "movie_links_1.pdf", rs.getString("country_id")));
+                    PdfAction.createGoToR(pdfDoc, MOVIE_LINKS1_TODO, rs.getString("country_id"))); // TODO
             country.add(link);
             doc.add(country);
         }

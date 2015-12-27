@@ -32,9 +32,6 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_04_21_PdfCalendar extends GenericTest {
-    /**
-     * The resulting PDF file.
-     */
     public static final String DEST = "./target/test/resources/book/part1/chapter04/Listing_04_21_PdfCalendar.pdf";
     /**
      * The year for which we want to create a calendar
@@ -44,14 +41,6 @@ public class Listing_04_21_PdfCalendar extends GenericTest {
      * The language code for the calendar
      */
     public static final String LANGUAGE = "en";
-
-    /**
-     * Paths to the resources.
-     */
-    public static final String RESOURCE = "./src/test/resources/book/part1/chapter04/calendar/%tm.jpg";
-    public static final String SPECIAL = "./src/test/resources/book/part1/chapter04/calendar/%d.txt";
-    public static final String CONTENT = "./src/test/resources/book/part1/chapter04/calendar/content.txt";
-
     /**
      * Collection with special days
      */
@@ -59,6 +48,11 @@ public class Listing_04_21_PdfCalendar extends GenericTest {
     /**
      * Collection with the description of the images
      */
+
+    public static final String RESOURCE = "./src/test/resources/book/part1/chapter04/calendar/%tm.jpg";
+    public static final String SPECIAL = "./src/test/resources/book/part1/chapter04/calendar/%d.txt";
+    public static final String CONTENT = "./src/test/resources/book/part1/chapter04/calendar/content.txt";
+
     public static Properties content = new Properties();
 
     protected PdfFont normal;

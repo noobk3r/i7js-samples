@@ -6,7 +6,6 @@ import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Cell;
-import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.samples.GenericTest;
 
@@ -18,7 +17,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_04_02_ColumnWidths extends GenericTest {
-    static public final String DEST = "./target/test/resources/book/part1/chapter04/Listing_04_02_ColumnWidths.pdf";
+    public static final String DEST = "./target/test/resources/book/part1/chapter04/Listing_04_02_ColumnWidths.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_04_02_ColumnWidths().manipulatePdf(DEST);
@@ -52,14 +51,14 @@ public class Listing_04_02_ColumnWidths extends GenericTest {
         Table table = new Table(new float[]{2, 1, 1});
         table.setWidthPercent(288 / 5.23f);
         Cell cell;
-        cell = new Cell(1, 3).add(new Paragraph("Table 1"));
+        cell = new Cell(1, 3).add("Table 1");
         table.addCell(cell);
-        cell = new Cell(2, 1).add(new Paragraph("Cell with rowspan 2"));
+        cell = new Cell(2, 1).add("Cell with rowspan 2");
         table.addCell(cell);
-        table.addCell(new Cell().add(new Paragraph("row 1; cell 1")));
-        table.addCell(new Cell().add(new Paragraph("row 1; cell 2")));
-        table.addCell(new Cell().add(new Paragraph("row 2; cell 1")));
-        table.addCell(new Cell().add(new Paragraph("row 2; cell 2")));
+        table.addCell(new Cell().add("row 1; cell 1"));
+        table.addCell(new Cell().add("row 1; cell 2"));
+        table.addCell(new Cell().add("row 2; cell 1"));
+        table.addCell(new Cell().add("row 2; cell 2"));
         return table;
     }
 
@@ -69,14 +68,14 @@ public class Listing_04_02_ColumnWidths extends GenericTest {
         // TODO No setLockedWidth(boolean)
         // table.setLockedWidth(true);
         Cell cell;
-        cell = new Cell(1, 3).add(new Paragraph("Table 2"));
+        cell = new Cell(1, 3).add("Table 2");
         table.addCell(cell);
-        cell = new Cell(2, 1).add(new Paragraph("Cell with rowspan 2"));
+        cell = new Cell(2, 1).add("Cell with rowspan 2");
         table.addCell(cell);
-        table.addCell(new Cell().add(new Paragraph("row 1; cell 1")));
-        table.addCell(new Cell().add(new Paragraph("row 1; cell 2")));
-        table.addCell(new Cell().add(new Paragraph("row 2; cell 1")));
-        table.addCell(new Cell().add(new Paragraph("row 2; cell 2")));
+        table.addCell(new Cell().add("row 1; cell 1"));
+        table.addCell(new Cell().add("row 1; cell 2"));
+        table.addCell(new Cell().add("row 2; cell 1"));
+        table.addCell(new Cell().add("row 2; cell 2"));
         return table;
     }
 
@@ -84,47 +83,45 @@ public class Listing_04_02_ColumnWidths extends GenericTest {
         Table table = new Table(new float[]{2, 1, 1});
         table.setWidthPercent(55.067f);
         Cell cell;
-        cell = new Cell(1, 3).add(new Paragraph("Table 3"));
+        cell = new Cell(1, 3).add("Table 3");
         table.addCell(cell);
-        cell = new Cell(2, 1).add(new Paragraph("Cell with rowspan 2"));
+        cell = new Cell(2, 1).add("Cell with rowspan 2");
         table.addCell(cell);
-        table.addCell(new Cell().add(new Paragraph("row 1; cell 1")));
-        table.addCell(new Cell().add(new Paragraph("row 1; cell 2")));
-        table.addCell(new Cell().add(new Paragraph("row 2; cell 1")));
-        table.addCell(new Cell().add(new Paragraph("row 2; cell 2")));
+        table.addCell(new Cell().add("row 1; cell 1"));
+        table.addCell(new Cell().add("row 1; cell 2"));
+        table.addCell(new Cell().add("row 2; cell 1"));
+        table.addCell(new Cell().add("row 2; cell 2"));
         return table;
     }
 
     public static Table createTable4() {
         Table table = new Table(new float[]{144, 72, 72});
         Rectangle rect = new Rectangle(523, 770);
-        // TODO No setWidthPercentage(float[], Rectangle)
-        table.setWidthPercent((144 + 72 + 72) / 523f * 100);
+        // The next line is needed in itext5, although it will cause no difference in itext6
+        // table.setWidthPercent((144 + 72 + 72) / 523f * 100);
         Cell cell;
-        cell = new Cell(1, 3).add(new Paragraph("Table 4"));
+        cell = new Cell(1, 3).add("Table 4");
         table.addCell(cell);
-        cell = new Cell(2, 1).add(new Paragraph("Cell with rowspan 2"));
+        cell = new Cell(2, 1).add("Cell with rowspan 2");
         table.addCell(cell);
-        table.addCell(new Cell().add(new Paragraph("row 1; cell 1")));
-        table.addCell(new Cell().add(new Paragraph("row 1; cell 2")));
-        table.addCell(new Cell().add(new Paragraph("row 2; cell 1")));
-        table.addCell(new Cell().add(new Paragraph("row 2; cell 2")));
+        table.addCell("row 1; cell 1");
+        table.addCell("row 1; cell 2");
+        table.addCell("row 2; cell 1");
+        table.addCell("row 2; cell 2");
         return table;
     }
 
     public static Table createTable5() {
         Table table = new Table(new float[]{144, 72, 72});
-        // TODO No setLockedWidth
-        // table.setLockedWidth(true);
         Cell cell;
-        cell = new Cell(1, 3).add(new Paragraph("Table 5"));
+        cell = new Cell(1, 3).add("Table 5");
         table.addCell(cell);
-        cell = new Cell(2, 1).add(new Paragraph("Cell with rowspan 2"));
+        cell = new Cell(2, 1).add("Cell with rowspan 2");
         table.addCell(cell);
-        table.addCell(new Cell().add(new Paragraph("row 1; cell 1")));
-        table.addCell(new Cell().add(new Paragraph("row 1; cell 2")));
-        table.addCell(new Cell().add(new Paragraph("row 2; cell 1")));
-        table.addCell(new Cell().add(new Paragraph("row 2; cell 2")));
+        table.addCell("row 1; cell 1");
+        table.addCell("row 1; cell 2");
+        table.addCell("row 2; cell 1");
+        table.addCell("row 2; cell 2");
         return table;
     }
 }

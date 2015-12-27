@@ -32,19 +32,16 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
     public static final String DEST = "./target/test/resources/book/part1/chapter05/Listing_05_07_PdfCalendar.pdf";
 
-    int[] cmykGreen = new int[]{0xFF, 0x00, 0xFF, 0x00};
-    // TODO Cmyk colors do not render correct
-    int[] cmykGray = new int[]{0x00, 0x00, 0x00, 0x80};
-    int[] cmykWhite = new int[]{0x00, 0x00, 0x00, 0x00};
-    int[] cmykYellow = new int[]{0x00, 0x00, 0xFF, 0x0F};
+    float[] cmykGreen = new float[]{1, 0, 1, 0};
+    float[] cmykGray = new float[]{0, 0, 0, 50/255};
+    float[] cmykWhite = new float[]{0, 0, 0, 0};
+    float[] cmykYellow = new float[]{0, 0, 1, 15/255};
 
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_05_07_PdfCalendar().manipulatePdf(DEST);
@@ -62,8 +59,8 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
 
         // fonts
-        bold = PdfFont.createFont(pdfDoc, "c://windows/fonts/arialbd.ttf", PdfEncodings.WINANSI, true);
-        normal = PdfFont.createFont(pdfDoc, "c://windows/fonts/arial.ttf", PdfEncodings.WINANSI, true);
+        bold = PdfFont.createFont(pdfDoc, /*"c://windows/fonts/arialbd.ttf"*/"./src/test/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, true);
+        normal = PdfFont.createFont(pdfDoc, /*"c://windows/fonts/arial.ttf"*/"./src/test/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, true);
 
         // collections
         specialDays.load(new FileInputStream(String.format(SPECIAL, YEAR)));
@@ -89,7 +86,7 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
             // add empty cells
             while (position != calendar.get(Calendar.DAY_OF_WEEK)) {
                 position = (position % 7) + 1;
-                Cell cell = new Cell().add(new Paragraph(""));
+                Cell cell = new Cell().add("");
                 cell.setNextRenderer(new RoundedCellRenderer(cell, cmykWhite, false));
                 table.addCell(cell);
             }
@@ -102,12 +99,11 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
             // add empty cells
             while (position != 2) {
                 position = (position % 7) + 1;
-                Cell cell = new Cell().add(new Paragraph(""));
+                Cell cell = new Cell().add("");
                 cell.setNextRenderer(new RoundedCellRenderer(cell, cmykWhite, false));
                 table.addCell(cell);
             }
-            // TODO cannot add a table on proper position via Document.add
-            doc.add(table.setFixedPosition(169, 180, 504));
+            doc.add(table.setFixedPosition(169, 18, 504));
             if (11 != month) {
                 doc.add(new AreaBreak());
             }
@@ -127,7 +123,7 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
         Paragraph p = new Paragraph(String.format("%s - \u00a9 Katharine Osborne",
                 content.getProperty(String.format("%tm.jpg", calendar))))
                 .setFont(normal)
-                .setFontColor(new DeviceCmyk(0x00, 0x00, 0x00, 0x80))
+                .setFontColor(new DeviceCmyk(cmykGray[0], cmykGray[1], cmykGray[2], cmykGray[3]))
                 .setFontSize(8);
         doc.showTextAligned(p, 5, 5, calendar.get(Calendar.MONTH) + 1,
                 Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
@@ -148,7 +144,7 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
      */
     public Cell getMonthCell(Calendar calendar, Locale locale) {
         Cell cell = new Cell(1, 7);
-        cell.setNextRenderer(new RoundedCellRenderer(cell, new int[]{0x00, 0x00, 0xFF, 0x0F}, false));
+        cell.setNextRenderer(new RoundedCellRenderer(cell, cmykYellow, false));
         // TODO No setUseDescender(boolean)
         // cell.setUseDescender(true);
         Paragraph p = new Paragraph(String.format(locale, "%1$tB %1$tY", calendar)).setFont(bold).setFontSize(14);
@@ -242,10 +238,10 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
 
 
     protected class RoundedCellRenderer extends CellRenderer {
-        protected int[] cmykColor;
+        protected float[] cmykColor;
         protected boolean isColoredBackground;
 
-        public RoundedCellRenderer(Cell modelElement, int[] cmykColor, boolean isColoredBackground) {
+        public RoundedCellRenderer(Cell modelElement, float[] cmykColor, boolean isColoredBackground) {
             super(modelElement);
             this.cmykColor = cmykColor;
             this.isColoredBackground = isColoredBackground;
@@ -260,7 +256,7 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
                     .setStrokeColorCmyk(cmykColor[0], cmykColor[1], cmykColor[2], cmykColor[3])
                     .setLineWidth(1.5f);
             if (isColoredBackground) {
-                canvas.setFillColor(new DeviceCmyk(0x00, 0x00, 0x00, 0x00)).fillStroke();
+                canvas.setFillColor(new DeviceCmyk(0, 0, 0, 0)).fillStroke();
             } else {
                 canvas.stroke();
             }

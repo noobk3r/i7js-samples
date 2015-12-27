@@ -1,7 +1,6 @@
 package com.itextpdf.samples.book.part1.chapter04;
 
 import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.basics.image.ImageFactory;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
@@ -26,13 +25,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_04_14_MovieCompositeMode extends GenericTest {
-    static public final String DEST =
+    public static final String DEST =
             "./target/test/resources/book/part1/chapter04/Listing_04_14_MovieCompositeRole.pdf";
     public static final String RESOURCE = "./src/test/resources/book/part1/chapter02/posters/%s.jpg";
 
@@ -51,7 +48,7 @@ public class Listing_04_14_MovieCompositeMode extends GenericTest {
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
+        Document doc = new Document(pdfDoc);
 
         normal = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA); // 12
         bold = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA_BOLD); // 12
@@ -64,25 +61,23 @@ public class Listing_04_14_MovieCompositeMode extends GenericTest {
         for (Movie movie : movies) {
             // a table with two columns
             Table table = new Table(new float[]{1, 7});
-            table.setWidth(0);
+            table.setWidthPercent(100);
             table.setMarginTop(5);
             // a cell with an image
-            // TODO No Cell constructor with fit parameter
-            // TODO Look at the result to find the difference
             cell = new Cell().add(new Image(ImageFactory.getImage(String.format(RESOURCE, movie.getImdb()))).setAutoScale(true));
             cell.setBorder(Border.NO_BORDER);
             table.addCell(cell);
             cell = new Cell();
             // a cell with paragraphs and lists
             Paragraph p = new Paragraph(movie.getTitle()).setFont(bold);
-            p.setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
+            p.setTextAlignment(Property.TextAlignment.CENTER);
             p.setMarginTop(5);
             p.setMarginBottom(5);
             cell.add(p);
             cell.setBorder(Border.NO_BORDER);
             if (movie.getOriginalTitle() != null) {
                 p = new Paragraph(movie.getOriginalTitle()).setFont(italic);
-                p.setHorizontalAlignment(Property.HorizontalAlignment.RIGHT);
+                p.setTextAlignment(Property.TextAlignment.RIGHT);
                 cell.add(p);
             }
             list = PojoToElementFactory.getDirectorList(movie);

@@ -20,7 +20,7 @@ import org.junit.experimental.categories.Category;
 @Ignore
 @Category(SampleTest.class)
 public class Listing_04_11_CellHeights extends GenericTest {
-    static public final String DEST = "./target/test/resources/book/part1/chapter04/Listing_04_11_CellHeights.pdf";
+    public static final String DEST = "./target/test/resources/book/part1/chapter04/Listing_04_11_CellHeights.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_04_11_CellHeights().manipulatePdf(DEST);
@@ -38,29 +38,29 @@ public class Listing_04_11_CellHeights extends GenericTest {
                 "Dr. iText or: How I Learned to Stop Worrying and Love PDF.");
         Cell cell = new Cell().add(p);
         // the prhase is wrapped
-        table.addCell(new Cell().add(new Paragraph("wrap")));
+        table.addCell("wrap");
         // TODO No setNoWrap(boolean)
         // cell.setNoWrap(false);
         table.addCell(cell);
         // the phrase isn't wrapped
-        table.addCell(new Cell().add(new Paragraph("no wrap")));
+        table.addCell("no wrap");
         // cell.setNoWrap(true);
-        table.addCell(cell);
+        table.addCell(cell.clone(true));
         // a long phrase with newlines
         p = new Paragraph(
                 "Dr. iText or:\nHow I Learned to Stop Worrying\nand Love PDF.");
         cell = new Cell().add(p);
         // the phrase fits the fixed height
-        table.addCell(new Cell().add(new Paragraph("fixed height (more than sufficient)")));
-        // TODO No setFixedHeight
-        // cell.setHeight(72f);
+        table.addCell("fixed height (more than sufficient)");
+        // TODO itext6 constricts the height if necessary so this part of the example has no sense anymore
+        cell.setHeight(72f);
         table.addCell(cell);
         // the phrase doesn't fit the fixed height
-        table.addCell(new Cell().add(new Paragraph("fixed height (not sufficient)")));
+        table.addCell("fixed height (not sufficient)");
         cell.setHeight(36f);
-        table.addCell(cell);
+        table.addCell(cell.clone(true));
         // The minimum height is exceeded
-        table.addCell(new Cell().add(new Paragraph("minimum height")));
+        table.addCell("minimum height");
         cell = new Cell().add(new Paragraph("Dr. iText"));
         // TODO No setMinimumHeight(float)
         cell.setHeight(36f);
@@ -68,8 +68,8 @@ public class Listing_04_11_CellHeights extends GenericTest {
         // The last row is extended
         // TODO No setExtendedLastRow
         // table.setExtendLastRow(true);
-        table.addCell(new Cell().add(new Paragraph("extend last row")));
-        table.addCell(cell);
+        table.addCell("extend last row");
+        table.addCell(cell.clone(true));
         doc.add(table);
         doc.close();
     }

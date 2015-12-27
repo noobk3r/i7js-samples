@@ -11,7 +11,6 @@ import com.itextpdf.model.Property;
 import com.itextpdf.model.border.Border;
 import com.itextpdf.model.border.SolidBorder;
 import com.itextpdf.model.element.Cell;
-import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.samples.GenericTest;
 
@@ -25,7 +24,7 @@ import org.junit.experimental.categories.Category;
 @Ignore
 @Category(SampleTest.class)
 public class Listing_04_12_RotationAndColors extends GenericTest {
-    static public final String DEST =
+    public static final String DEST =
             "./target/test/resources/book/part1/chapter04/Listing_04_12_RotationAndColors.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
@@ -42,64 +41,62 @@ public class Listing_04_12_RotationAndColors extends GenericTest {
         table.setWidthPercent(100);
         Cell cell;
         // row 1, cell 1
-        cell = new Cell().add(new Paragraph("COLOR"));
+        cell = new Cell().add("COLOR");
         cell.setRotationAngle(Math.toRadians(90));
         cell.setVerticalAlignment(Property.VerticalAlignment.TOP);
         table.addCell(cell);
         // row 1, cell 2
-        cell = new Cell().add(new Paragraph("red / no borders"));
+        cell = new Cell().add("red / no borders");
         cell.setBorder(Border.NO_BORDER);
         cell.setBackgroundColor(Color.RED);
         table.addCell(cell);
         // row 1, cell 3
-        cell = new Cell().add(new Paragraph("green / black bottom border"));
+        cell = new Cell().add("green / black bottom border");
         cell.setBorderBottom(new SolidBorder(Color.BLACK, 10f));
         cell.setBackgroundColor(Color.GREEN);
         table.addCell(cell);
         // row 1, cell 4
-        cell = new Cell().add(new Paragraph(
-                "cyan / blue top border + padding"));
+        cell = new Cell().add("cyan / blue top border + padding");
         cell.setBorderTop(new SolidBorder(Color.BLUE, 5f));
         // TODO No setUseBorderPadding
         // cell.setUseBorderPadding(true);
         cell.setBackgroundColor(Color.CYAN);
         table.addCell(cell);
         // row 2, cell 1
-        cell = new Cell().add(new Paragraph("GRAY"));
+        cell = new Cell().add("GRAY");
         cell.setRotationAngle(Math.toRadians(90));
         cell.setVerticalAlignment(Property.VerticalAlignment.MIDDLE);
         table.addCell(cell);
         // row 2, cell 2
-        cell = new Cell().add(new Paragraph("0.6"));
+        cell = new Cell().add("0.6");
         cell.setBorder(Border.NO_BORDER);
         cell.setBackgroundColor(new DeviceGray(0.6f));
         table.addCell(cell);
         // row 2, cell 3
-        cell = new Cell().add(new Paragraph("0.75"));
+        cell = new Cell().add("0.75");
         cell.setBorder(Border.NO_BORDER);
         // cell.setGrayFill(0.75f);
         cell.setBackgroundColor(new DeviceGray(0.75f));
         table.addCell(cell);
         // row 2, cell 4
-        cell = new Cell().add(new Paragraph("0.9"));
+        cell = new Cell().add("0.9");
         cell.setBorder(Border.NO_BORDER);
         cell.setBackgroundColor(new DeviceGray(0.9f));
         table.addCell(cell);
         // row 3, cell 1
-        cell = new Cell().add(new Paragraph("BORDERS"));
+        cell = new Cell().add("BORDERS");
         cell.setRotationAngle(Math.toRadians(90));
         cell.setVerticalAlignment(Property.VerticalAlignment.BOTTOM);
         table.addCell(cell);
         // row 3, cell 2
-        cell = new Cell().add(new Paragraph("different borders"));
-        // TODO Look at the result to find the difference with itext5
+        cell = new Cell().add("different borders");
         cell.setBorderLeft(new SolidBorder(Color.RED, 16f));
         cell.setBorderBottom(new SolidBorder(Color.ORANGE, 12f));
         cell.setBorderRight(new SolidBorder(Color.YELLOW, 8f));
         cell.setBorderTop(new SolidBorder(Color.GREEN, 4f));
         table.addCell(cell);
         // row 3, cell 3
-        cell = new Cell().add(new Paragraph("with correct padding"));
+        cell = new Cell().add("with correct padding");
         // TODO No setUseBorderPadding(boolean)
         // cell.setUseBorderPadding(true);
         cell.setBorderLeft(new SolidBorder(Color.RED, 16f));
@@ -108,7 +105,7 @@ public class Listing_04_12_RotationAndColors extends GenericTest {
         cell.setBorderTop(new SolidBorder(Color.GREEN, 4f));
         table.addCell(cell);
         // row 3, cell 4
-        cell = new Cell().add(new Paragraph("red border"));
+        cell = new Cell().add("red border");
         cell.setBorder(new SolidBorder(Color.RED, 8f));
         table.addCell(cell);
         doc.add(table);

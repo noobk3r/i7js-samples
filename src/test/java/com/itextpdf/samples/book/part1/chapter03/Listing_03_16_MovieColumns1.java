@@ -111,7 +111,7 @@ public class Listing_03_16_MovieColumns1 extends GenericTest {
         p.add(new Text(" Duration: ").setFont(boldItalic));
         p.add(new Text(String.valueOf(movie.getDuration())));
         p.add(new Text(" minutes"));
-        // TODO
+        // TODO No LineSeparator
         //p.add(new LineSeparator(0.3f, 100, null, Element.ALIGN_CENTER, -2));
         return p;
     }

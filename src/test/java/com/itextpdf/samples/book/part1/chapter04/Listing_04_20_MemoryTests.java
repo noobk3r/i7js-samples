@@ -37,20 +37,10 @@ public class Listing_04_20_MemoryTests extends GenericTest {
     public static final String DEST =
             "./target/test/resources/book/part1/chapter04/Listing_04_20_MemoryTests.pdf";
     public static final String RESOURCE = "./src/test/resources/book/part1/chapter02/posters/%s.jpg";
-
-    /**
-     * The resulting report.
-     */
     public static final String RESULT0
             = "./target/test/resources/book/part1/chapter04/Listing_04_20_MemoryTests_test_results.txt";
-    /**
-     * A resulting PDF file.
-     */
     public static final String RESULT1
             = "./target/test/resources/book/part1/chapter04/Listing_04_20_MemoryTests_table_without_memory_management.pdf";
-    /**
-     * A resulting PDF file.
-     */
     public static final String RESULT2
             = "./target/test/resources/book/part1/chapter04/Listing_04_20_MemoryTests_table_with_memory_management.pdf";
 

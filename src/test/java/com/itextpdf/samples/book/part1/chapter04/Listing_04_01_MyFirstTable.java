@@ -17,7 +17,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_04_01_MyFirstTable extends GenericTest {
-    static public final String DEST = "./target/test/resources/book/part1/chapter04/Listing_04_01_MyFirstTable.pdf";
+    public static final String DEST = "./target/test/resources/book/part1/chapter04/Listing_04_01_MyFirstTable.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_04_01_MyFirstTable().manipulatePdf(DEST);
@@ -44,10 +44,10 @@ public class Listing_04_01_MyFirstTable extends GenericTest {
         cell = new Cell(2, 1).add(new Paragraph("Cell with rowspan 2"));
         table.addCell(cell);
         // we add the four remaining cells with addCell()
-        table.addCell(new Cell().add(new Paragraph("row 1; cell 1")));
-        table.addCell(new Cell().add(new Paragraph("row 1; cell 2")));
-        table.addCell(new Cell().add(new Paragraph("row 2; cell 1")));
-        table.addCell(new Cell().add(new Paragraph("row 2; cell 2")));
+        table.addCell("row 1; cell 1");
+        table.addCell("row 1; cell 2");
+        table.addCell("row 2; cell 1");
+        table.addCell("row 2; cell 2");
         return table;
     }
 

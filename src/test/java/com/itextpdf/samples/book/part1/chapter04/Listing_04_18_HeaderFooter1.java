@@ -64,7 +64,7 @@ public class Listing_04_18_HeaderFooter1 extends GenericTest {
     public Table getTable(DatabaseConnection connection, Date day) throws UnsupportedEncodingException, SQLException {
         // Create a table with 7 columns
         Table table = new Table(new float[]{2, 1, 2, 5, 1, 3, 2});
-        // TODO Ignore setWidth(0) doesn't work correct with headers and footers
+        // TODO setWidth(0) (setWidthPercent(100) analog) doesn't work correct with headers and footers
         table.setWidthPercent(100);
         // TODO Implement a facility to set default-cell properties
         // TODO No setUseAscender(boolean) and setUseDescender(boolean)
@@ -77,32 +77,32 @@ public class Listing_04_18_HeaderFooter1 extends GenericTest {
         table.addHeaderCell(cell);
 
         // set headers and footers
-        table.addHeaderCell(new Cell().add(new Paragraph("Location")).setBackgroundColor(Color.LIGHT_GRAY));
-        table.addHeaderCell(new Cell().add(new Paragraph("Time")).setBackgroundColor(Color.LIGHT_GRAY));
-        table.addHeaderCell(new Cell().add(new Paragraph("Run Length")).setBackgroundColor(Color.LIGHT_GRAY));
-        table.addHeaderCell(new Cell().add(new Paragraph("Title")).setBackgroundColor(Color.LIGHT_GRAY));
-        table.addHeaderCell(new Cell().add(new Paragraph("Year")).setBackgroundColor(Color.LIGHT_GRAY));
-        table.addHeaderCell(new Cell().add(new Paragraph("Directors")).setBackgroundColor(Color.LIGHT_GRAY));
-        table.addHeaderCell(new Cell().add(new Paragraph("Countries")).setBackgroundColor(Color.LIGHT_GRAY));
+        table.addHeaderCell(new Cell().add("Location").setBackgroundColor(Color.LIGHT_GRAY));
+        table.addHeaderCell(new Cell().add("Time").setBackgroundColor(Color.LIGHT_GRAY));
+        table.addHeaderCell(new Cell().add("Run Length").setBackgroundColor(Color.LIGHT_GRAY));
+        table.addHeaderCell(new Cell().add("Title").setBackgroundColor(Color.LIGHT_GRAY));
+        table.addHeaderCell(new Cell().add("Year").setBackgroundColor(Color.LIGHT_GRAY));
+        table.addHeaderCell(new Cell().add("Directors").setBackgroundColor(Color.LIGHT_GRAY));
+        table.addHeaderCell(new Cell().add("Countries").setBackgroundColor(Color.LIGHT_GRAY));
 
-        table.addFooterCell(new Cell().add(new Paragraph("Location")).setBackgroundColor(Color.LIGHT_GRAY));
-        table.addFooterCell(new Cell().add(new Paragraph("Time")).setBackgroundColor(Color.LIGHT_GRAY));
-        table.addFooterCell(new Cell().add(new Paragraph("Run Length")).setBackgroundColor(Color.LIGHT_GRAY));
-        table.addFooterCell(new Cell().add(new Paragraph("Title")).setBackgroundColor(Color.LIGHT_GRAY));
-        table.addFooterCell(new Cell().add(new Paragraph("Year")).setBackgroundColor(Color.LIGHT_GRAY));
-        table.addFooterCell(new Cell().add(new Paragraph("Directors")).setBackgroundColor(Color.LIGHT_GRAY));
-        table.addFooterCell(new Cell().add(new Paragraph("Countries")).setBackgroundColor(Color.LIGHT_GRAY));
+        table.addFooterCell(new Cell().add("Location").setBackgroundColor(Color.LIGHT_GRAY));
+        table.addFooterCell(new Cell().add("Time").setBackgroundColor(Color.LIGHT_GRAY));
+        table.addFooterCell(new Cell().add("Run Length").setBackgroundColor(Color.LIGHT_GRAY));
+        table.addFooterCell(new Cell().add("Title").setBackgroundColor(Color.LIGHT_GRAY));
+        table.addFooterCell(new Cell().add("Year").setBackgroundColor(Color.LIGHT_GRAY));
+        table.addFooterCell(new Cell().add("Directors").setBackgroundColor(Color.LIGHT_GRAY));
+        table.addFooterCell(new Cell().add("Countries").setBackgroundColor(Color.LIGHT_GRAY));
 
         // Now let's loop over the screenings
         List<Screening> screenings = PojoFactory.getScreenings(connection, day);
         Movie movie;
         for (Screening screening : screenings) {
             movie = screening.getMovie();
-            table.addCell(new Cell().add(new Paragraph(screening.getLocation())));
-            table.addCell(new Cell().add(new Paragraph(String.format("%1$tH:%1$tM", screening.getTime()))));
-            table.addCell(new Cell().add(new Paragraph(String.format("%d '", movie.getDuration()))));
-            table.addCell(new Cell().add(new Paragraph(movie.getMovieTitle())));
-            table.addCell(new Cell().add(new Paragraph(String.valueOf(movie.getYear()))));
+            table.addCell(screening.getLocation());
+            table.addCell(String.format("%1$tH:%1$tM", screening.getTime()));
+            table.addCell(String.format("%d '", movie.getDuration()));
+            table.addCell(movie.getMovieTitle());
+            table.addCell(String.valueOf(movie.getYear()));
             cell = new Cell();
             // TODO No setUseAscender(boolean) and setUseDescender(boolean)
             // cell.setUseAscender(true);

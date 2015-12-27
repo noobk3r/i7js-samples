@@ -9,7 +9,6 @@ import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Image;
-import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.samples.GenericTest;
 
@@ -19,10 +18,9 @@ import java.sql.SQLException;
 
 import org.junit.experimental.categories.Category;
 
-// TODO vertical alignment does not work
 @Category(SampleTest.class)
 public class Listing_04_15_XMen extends GenericTest {
-    static public final String DEST =
+    public static final String DEST =
             "./target/test/resources/book/part1/chapter04/Listing_04_15_XMen.pdf";
     public static final String RESOURCE = "./src/test/resources/book/part1/chapter02/posters/%s.jpg";
 
@@ -46,7 +44,8 @@ public class Listing_04_15_XMen extends GenericTest {
         Table table = new Table(6);
         // first movie
         // TODO Implement the facility to set default-cell properties
-        table.addCell(new Cell().add(new Paragraph("X-Men"))
+        table.addCell(new Cell()
+                .add("X-Men")
                 .setHorizontalAlignment(Property.HorizontalAlignment.CENTER)
                 .setVerticalAlignment(Property.VerticalAlignment.TOP));
         // we wrap he image in a PdfPCell
@@ -57,7 +56,7 @@ public class Listing_04_15_XMen extends GenericTest {
         table.addCell(cell);
         // second movie
         table.addCell(new Cell()
-                .add(new Paragraph("X2"))
+                .add("X2")
                 .setHorizontalAlignment(Property.HorizontalAlignment.CENTER)
                 .setVerticalAlignment(Property.VerticalAlignment.MIDDLE));
         // we wrap the image in a PdfPCell and let iText scale it
@@ -69,7 +68,7 @@ public class Listing_04_15_XMen extends GenericTest {
         // third movie
         // table.getDefaultCell().setVerticalAlignment(Element.ALIGN_BOTTOM);
         table.addCell(new Cell()
-                .add(new Paragraph("X-Men: The Last Stand"))
+                .add("X-Men: The Last Stand")
                 .setHorizontalAlignment(Property.HorizontalAlignment.CENTER)
                 .setVerticalAlignment(Property.VerticalAlignment.BOTTOM));
         // we add the image with addCell()
@@ -78,7 +77,8 @@ public class Listing_04_15_XMen extends GenericTest {
                 .setHorizontalAlignment(Property.HorizontalAlignment.CENTER)
                 .setVerticalAlignment(Property.VerticalAlignment.BOTTOM));
         // fourth movie
-        table.addCell(new Cell().add(new Paragraph("Superman Returns")));
+        table.addCell(new Cell()
+                .add("Superman Returns"));
         cell = new Cell();
         // we add it with addElement(); it can only take 50% of the width.
         img[3].setWidthPercent(50);

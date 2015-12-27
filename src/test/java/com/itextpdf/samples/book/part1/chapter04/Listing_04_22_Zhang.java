@@ -32,7 +32,7 @@ import org.junit.experimental.categories.Category;
 @Ignore
 @Category(SampleTest.class)
 public class Listing_04_22_Zhang extends GenericTest {
-    static public final String DEST =
+    public static final String DEST =
             "./target/test/resources/book/part1/chapter04/Listing_04_22_Zhang.pdf";
     public static final String RESOURCE = "./src/test/resources/book/part1/chapter02/posters/%s.jpg";
 
@@ -54,10 +54,10 @@ public class Listing_04_22_Zhang extends GenericTest {
         Table table = new Table(new float[]{1, 5, 5, 1});
         table.setWidth(600);
         for (Movie movie : movies) {
-            table.addCell(new Cell().add(new Paragraph(String.valueOf(movie.getYear()))));
-            table.addCell(new Cell().add(new Paragraph(movie.getMovieTitle())));
-            table.addCell(new Cell().add(new Paragraph(movie.getOriginalTitle())));
-            table.addCell(new Cell().add(new Paragraph(String.valueOf(movie.getDuration()))));
+            table.addCell(String.valueOf(movie.getYear()));
+            table.addCell(movie.getMovieTitle());
+            table.addCell(movie.getOriginalTitle());
+            table.addCell(String.valueOf(movie.getDuration()));
         }
         // set the total width of the table
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());
@@ -75,8 +75,8 @@ public class Listing_04_22_Zhang extends GenericTest {
     public Table getTable(DatabaseConnection connection, Date day) throws UnsupportedEncodingException, SQLException {
         // Create a table with 7 columns
         Table table = new Table(new float[]{2, 1, 2, 5, 1, 3, 2});
-        // TODO Ignore setWidth(0) doesn't work correct with headers and footers
-        table.setWidth(0);
+        // TODO setWidth(0) (analog of setWidthPercent(100)) doesn't work correct with headers and footers
+        table.setWidthPercent(100);
         // TODO No faciliry to set default-cell properties
         // TODO No setUseAscender(boolean) and setUseDescender(boolean)
         // table.getDefaultCell().setUseAscender(true);
@@ -88,32 +88,32 @@ public class Listing_04_22_Zhang extends GenericTest {
         table.addHeaderCell(cell);
 
         // set headers and footers
-        table.addHeaderCell(new Cell().add(new Paragraph("Location")).setBackgroundColor(Color.LIGHT_GRAY));
-        table.addHeaderCell(new Cell().add(new Paragraph("Time")).setBackgroundColor(Color.LIGHT_GRAY));
-        table.addHeaderCell(new Cell().add(new Paragraph("Run Length")).setBackgroundColor(Color.LIGHT_GRAY));
-        table.addHeaderCell(new Cell().add(new Paragraph("Title")).setBackgroundColor(Color.LIGHT_GRAY));
-        table.addHeaderCell(new Cell().add(new Paragraph("Year")).setBackgroundColor(Color.LIGHT_GRAY));
-        table.addHeaderCell(new Cell().add(new Paragraph("Directors")).setBackgroundColor(Color.LIGHT_GRAY));
-        table.addHeaderCell(new Cell().add(new Paragraph("Countries")).setBackgroundColor(Color.LIGHT_GRAY));
+        table.addHeaderCell(new Cell().add("Location").setBackgroundColor(Color.LIGHT_GRAY));
+        table.addHeaderCell(new Cell().add("Time").setBackgroundColor(Color.LIGHT_GRAY));
+        table.addHeaderCell(new Cell().add("Run Length").setBackgroundColor(Color.LIGHT_GRAY));
+        table.addHeaderCell(new Cell().add("Title").setBackgroundColor(Color.LIGHT_GRAY));
+        table.addHeaderCell(new Cell().add("Year").setBackgroundColor(Color.LIGHT_GRAY));
+        table.addHeaderCell(new Cell().add("Directors").setBackgroundColor(Color.LIGHT_GRAY));
+        table.addHeaderCell(new Cell().add("Countries").setBackgroundColor(Color.LIGHT_GRAY));
 
-        table.addFooterCell(new Cell().add(new Paragraph("Location")).setBackgroundColor(Color.LIGHT_GRAY));
-        table.addFooterCell(new Cell().add(new Paragraph("Time")).setBackgroundColor(Color.LIGHT_GRAY));
-        table.addFooterCell(new Cell().add(new Paragraph("Run Length")).setBackgroundColor(Color.LIGHT_GRAY));
-        table.addFooterCell(new Cell().add(new Paragraph("Title")).setBackgroundColor(Color.LIGHT_GRAY));
-        table.addFooterCell(new Cell().add(new Paragraph("Year")).setBackgroundColor(Color.LIGHT_GRAY));
-        table.addFooterCell(new Cell().add(new Paragraph("Directors")).setBackgroundColor(Color.LIGHT_GRAY));
-        table.addFooterCell(new Cell().add(new Paragraph("Countries")).setBackgroundColor(Color.LIGHT_GRAY));
+        table.addFooterCell(new Cell().add("Location").setBackgroundColor(Color.LIGHT_GRAY));
+        table.addFooterCell(new Cell().add("Time").setBackgroundColor(Color.LIGHT_GRAY));
+        table.addFooterCell(new Cell().add("Run Length").setBackgroundColor(Color.LIGHT_GRAY));
+        table.addFooterCell(new Cell().add("Title").setBackgroundColor(Color.LIGHT_GRAY));
+        table.addFooterCell(new Cell().add("Year").setBackgroundColor(Color.LIGHT_GRAY));
+        table.addFooterCell(new Cell().add("Directors").setBackgroundColor(Color.LIGHT_GRAY));
+        table.addFooterCell(new Cell().add("Countries").setBackgroundColor(Color.LIGHT_GRAY));
 
         // Now let's loop over the screenings
         List<Screening> screenings = PojoFactory.getScreenings(connection, day);
         Movie movie;
         for (Screening screening : screenings) {
             movie = screening.getMovie();
-            table.addCell(new Cell().add(new Paragraph(screening.getLocation())));
-            table.addCell(new Cell().add(new Paragraph(String.format("%1$tH:%1$tM", screening.getTime()))));
-            table.addCell(new Cell().add(new Paragraph(String.format("%d '", movie.getDuration()))));
-            table.addCell(new Cell().add(new Paragraph(movie.getMovieTitle())));
-            table.addCell(new Cell().add(new Paragraph(String.valueOf(movie.getYear()))));
+            table.addCell(screening.getLocation());
+            table.addCell(String.format("%1$tH:%1$tM", screening.getTime()));
+            table.addCell(String.format("%d '", movie.getDuration()));
+            table.addCell(movie.getMovieTitle());
+            table.addCell(String.valueOf(movie.getYear()));
             cell = new Cell();
             // TODO No setUseAscender(boolean) and setUseDescender(boolean)
             // cell.setUseAscender(true);

@@ -49,7 +49,6 @@ public class Listing_02_03_DirectorPhrases1 extends GenericTest {
         doc.close();
     }
 
-    // TODO There is no Phrase
     public Paragraph createDirectorPhrase(ResultSet rs, PdfDocument pdfDoc)
             throws SQLException, IOException {
         PdfFont boldUnderlined = PdfFont.createStandardFont(pdfDoc, FontConstants.TIMES_BOLD);

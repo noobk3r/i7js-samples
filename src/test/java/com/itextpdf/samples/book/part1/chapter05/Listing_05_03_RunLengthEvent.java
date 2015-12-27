@@ -1,7 +1,6 @@
 package com.itextpdf.samples.book.part1.chapter05;
 
 import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.canvas.PdfCanvas;
@@ -15,7 +14,6 @@ import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.AreaBreak;
 import com.itextpdf.model.element.Cell;
-import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
 import com.itextpdf.samples.GenericTest;
@@ -39,11 +37,6 @@ public class Listing_05_03_RunLengthEvent extends GenericTest {
     public static final String DEST =
             "./target/test/resources/book/part1/chapter05/Listing_05_03_RunLengthEvent.pdf";
 
-    protected PdfFont bold;
-    protected PdfFont boldItalic;
-    protected PdfFont italic;
-    protected PdfFont normal;
-
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_05_03_RunLengthEvent().manipulatePdf(DEST);
     }
@@ -56,11 +49,6 @@ public class Listing_05_03_RunLengthEvent extends GenericTest {
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
-
-        bold = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA_BOLD, PdfEncodings.WINANSI);
-        boldItalic = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA_BOLD, PdfEncodings.WINANSI);
-        italic = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA, PdfEncodings.WINANSI);
-        normal = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA, PdfEncodings.WINANSI);
 
         List<Date> days = PojoFactory.getDays(connection);
         int d = 1;
@@ -86,7 +74,7 @@ public class Listing_05_03_RunLengthEvent extends GenericTest {
         // table.getDefaultCell().setBackgroundColor(BaseColor.RED);
         // table.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
         table.addHeaderCell(new Cell(1, 5)
-                .add(new Paragraph(day.toString()))
+                .add(day.toString())
                 .setPadding(3)
                 .setBackgroundColor(Color.RED)
                 .setTextAlignment(Property.TextAlignment.CENTER));
@@ -94,71 +82,71 @@ public class Listing_05_03_RunLengthEvent extends GenericTest {
         // table.getDefaultCell().setColspan(1);
         // table.getDefaultCell().setBackgroundColor(BaseColor.YELLOW);
         table.addHeaderCell(new Cell()
-                .add(new Paragraph("Location"))
+                .add("Location")
                 .setPadding(3)
                 .setBackgroundColor(Color.YELLOW)
-                .setHorizontalAlignment(Property.HorizontalAlignment.LEFT));
+                .setTextAlignment(Property.TextAlignment.LEFT));
         table.addHeaderCell(new Cell()
-                .add(new Paragraph("Time"))
+                .add("Time")
                 .setPadding(3)
                 .setBackgroundColor(Color.YELLOW)
-                .setHorizontalAlignment(Property.HorizontalAlignment.LEFT));
+                .setTextAlignment(Property.TextAlignment.LEFT));
         table.addHeaderCell(new Cell()
-                .add(new Paragraph("Run Length"))
+                .add("Run Length")
                 .setPadding(3)
                 .setBackgroundColor(Color.YELLOW)
-                .setHorizontalAlignment(Property.HorizontalAlignment.LEFT));
+                .setTextAlignment(Property.TextAlignment.LEFT));
         table.addHeaderCell(new Cell()
-                .add(new Paragraph("Title"))
+                .add("Title")
                 .setPadding(3)
                 .setBackgroundColor(Color.YELLOW)
-                .setHorizontalAlignment(Property.HorizontalAlignment.LEFT));
+                .setTextAlignment(Property.TextAlignment.LEFT));
         table.addHeaderCell(new Cell()
-                .add(new Paragraph("Year"))
+                .add("Year")
                 .setPadding(3)
                 .setBackgroundColor(Color.YELLOW)
-                .setHorizontalAlignment(Property.HorizontalAlignment.LEFT));
+                .setTextAlignment(Property.TextAlignment.LEFT));
         table.addFooterCell(new Cell()
-                .add(new Paragraph("Location"))
+                .add("Location")
                 .setPadding(3)
                 .setBackgroundColor(Color.YELLOW)
-                .setHorizontalAlignment(Property.HorizontalAlignment.LEFT));
+                .setTextAlignment(Property.TextAlignment.LEFT));
         table.addFooterCell(new Cell()
-                .add(new Paragraph("Time"))
+                .add("Time")
                 .setPadding(3)
                 .setBackgroundColor(Color.YELLOW)
-                .setHorizontalAlignment(Property.HorizontalAlignment.LEFT));
+                .setTextAlignment(Property.TextAlignment.LEFT));
         table.addFooterCell(new Cell()
-                .add(new Paragraph("Run Length"))
+                .add("Run Length")
                 .setPadding(3)
                 .setBackgroundColor(Color.YELLOW)
-                .setHorizontalAlignment(Property.HorizontalAlignment.LEFT));
+                .setTextAlignment(Property.TextAlignment.LEFT));
         table.addFooterCell(new Cell()
-                .add(new Paragraph("Title"))
+                .add("Title")
                 .setPadding(3)
                 .setBackgroundColor(Color.YELLOW)
-                .setHorizontalAlignment(Property.HorizontalAlignment.LEFT));
+                .setTextAlignment(Property.TextAlignment.LEFT));
         table.addFooterCell(new Cell()
-                .add(new Paragraph("Year"))
+                .add("Year")
                 .setPadding(3)
                 .setBackgroundColor(Color.YELLOW)
-                .setHorizontalAlignment(Property.HorizontalAlignment.LEFT));
+                .setTextAlignment(Property.TextAlignment.LEFT));
         List<Screening> screenings = PojoFactory.getScreenings(connection, day);
         Movie movie;
         Cell runLength;
         for (Screening screening : screenings) {
             movie = screening.getMovie();
-            table.addCell(new Cell().add(new Paragraph(screening.getLocation())));
-            table.addCell(new Cell().add(new Paragraph(String.format("%1$tH:%1$tM", screening.getTime()))));
+            table.addCell(screening.getLocation());
+            table.addCell(String.format("%1$tH:%1$tM", screening.getTime()));
             runLength = new Cell();
             runLength.setNextRenderer(new FilmCellRenderer(runLength, movie.getDuration(), false));
-            runLength.add(new Paragraph(String.format("%d '", movie.getDuration())));
+            runLength.add(String.format("%d '", movie.getDuration()));
             if (screening.isPress()) {
                 runLength.setNextRenderer(new FilmCellRenderer(runLength, movie.getDuration(), true));
             }
             table.addCell(runLength);
-            table.addCell(new Cell().add(new Paragraph(movie.getMovieTitle())));
-            table.addCell(new Cell().add(new Paragraph(String.valueOf(movie.getYear()))));
+            table.addCell(movie.getMovieTitle());
+            table.addCell(String.valueOf(movie.getYear()));
         }
         return table;
     }

@@ -19,7 +19,7 @@ import org.junit.experimental.categories.Category;
 @Ignore
 @Category(SampleTest.class)
 public class Listing_04_10_TableHeight extends GenericTest {
-    static public final String DEST = "./target/test/resources/book/part1/chapter04/Listing_04_10_TableHeight.pdf";
+    public static final String DEST = "./target/test/resources/book/part1/chapter04/Listing_04_10_TableHeight.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_04_10_TableHeight().manipulatePdf(DEST);
@@ -31,7 +31,7 @@ public class Listing_04_10_TableHeight extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        // TODO The height of table and rows is not set until adding to document
+        // TODO The example has no sense because in itext6 the height of table and rows is not set until rendering
         Table table = createFirstTable();
         doc.add(new Paragraph(
                 String.format("Table height before doc.add(): %f",
@@ -48,16 +48,14 @@ public class Listing_04_10_TableHeight extends GenericTest {
                         table.getCell(0, 0).getHeight())));
         table = createFirstTable();
         doc.add(new Paragraph(
-                String.format("Table height before setTotalWidth(): %f",
+                String.format("Table height before setWidth(): %f",
                         table.getHeight())));
         doc.add(
                 new Paragraph(String.format("Height of the first row: %f",
                         table.getCell(0, 0).getHeight())));
         table.setWidth(50);
-        // TODO No setLockedWidth(boolean)
-        // table.setLockedWidth(true);
         doc.add(
-                new Paragraph(String.format("Table height after setTotalWidth(): %f",
+                new Paragraph(String.format("Table height after setWidth(): %f",
                         table.getHeight())));
         doc.add(new Paragraph(String.format("Height of the first row: %f",
                 table.getCell(0, 0).getHeight())));
@@ -72,16 +70,16 @@ public class Listing_04_10_TableHeight extends GenericTest {
         // the cell object
         Cell cell;
         // we add a cell with colspan 3
-        cell = new Cell(1, 3).add(new Paragraph("Cell with colspan 3"));
+        cell = new Cell(1, 3).add("Cell with colspan 3");
         table.addCell(cell);
         // now we add a cell with rowspan 2
-        cell = new Cell(2, 1).add(new Paragraph("Cell with rowspan 2"));
+        cell = new Cell(2, 1).add("Cell with rowspan 2");
         table.addCell(cell);
         // we add the four remaining cells with addCell()
-        table.addCell(new Cell().add(new Paragraph("row 1; cell 1")));
-        table.addCell(new Cell().add(new Paragraph("row 1; cell 2")));
-        table.addCell(new Cell().add(new Paragraph("row 2; cell 1")));
-        table.addCell(new Cell().add(new Paragraph("row 2; cell 2")));
+        table.addCell("row 1; cell 1");
+        table.addCell("row 1; cell 2");
+        table.addCell("row 2; cell 1");
+        table.addCell("row 2; cell 2");
         return table;
     }
 }
