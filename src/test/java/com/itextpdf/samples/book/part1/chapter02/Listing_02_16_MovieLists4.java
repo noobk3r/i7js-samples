@@ -56,8 +56,7 @@ public class Listing_02_16_MovieLists4 extends GenericTest {
                         + "GROUP BY mc.country_id, country ORDER BY c DESC");
         // Create a list for the countries
         List list = new List(Property.ListNumberingType.DECIMAL);
-        // TODO setFirst(int)
-        // list.setFirst(9);
+        list.setListStart(9);
         // Loop over the countries
         while (rs.next()) {
             // Create a list item for a country
