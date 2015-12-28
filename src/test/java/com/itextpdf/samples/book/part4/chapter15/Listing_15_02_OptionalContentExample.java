@@ -4,6 +4,7 @@ import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
+import com.itextpdf.core.pdf.PdfVersion;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.layer.PdfLayer;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
@@ -18,8 +19,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_15_02_OptionalContentExample extends GenericTest {
-
-    static public final String DEST = "./target/test/resources/book/part4/chapter15/Listing_15_02_OptionalContentExample.pdf";
+    public static final String DEST = "./target/test/resources/book/part4/chapter15/Listing_15_02_OptionalContentExample.pdf";
 
     public static void main(String args[]) throws IOException {
         new Listing_15_02_OptionalContentExample().manipulatePdf(DEST);
@@ -31,7 +31,7 @@ public class Listing_15_02_OptionalContentExample extends GenericTest {
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize document
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(writer, PdfVersion.PDF_1_5);
 
         // Working with layers and writing to canvas.
         PdfLayer nested = new PdfLayer("Nested layers", pdfDoc);
@@ -83,7 +83,5 @@ public class Listing_15_02_OptionalContentExample extends GenericTest {
 
         //Close document
         pdfDoc.close();
-
     }
-
 }
