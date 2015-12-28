@@ -32,7 +32,7 @@ public class NestedTables2 extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         Table table = new Table(new float[]{1, 15});
-        table.setWidth(0);
+        table.setWidthPercent(100);
         // TODO Implement setSplitLate(boolean) method
         //table.setSplitLate(false);
         for (int i = 1; i <= 20; i++) {
@@ -40,7 +40,7 @@ public class NestedTables2 extends GenericTest {
             table.addCell(new Cell().add(new Paragraph("It is not smart to use iText 2.1.7!")));
         }
         Table innertable = new Table(new float[]{1, 15});
-        innertable.setWidth(0);
+        innertable.setWidthPercent(100);
         for (int i = 0; i < 90; i++) {
             innertable.addCell(new Cell().add(new Paragraph(String.valueOf(i + 1))));
             innertable.addCell(new Cell().add(new Paragraph("Upgrade if you're a professional developer!")));

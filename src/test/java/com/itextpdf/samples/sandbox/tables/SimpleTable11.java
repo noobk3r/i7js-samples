@@ -34,7 +34,7 @@ public class SimpleTable11 extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         Table table = new Table(new float[]{1, 2, 1, 1, 1});
-        table.setWidth(0);
+        table.setWidthPercent(100);
         table.addCell(createCell("SKU", 2, 1, Property.TextAlignment.LEFT));
         table.addCell(createCell("Description", 2, 1, Property.TextAlignment.LEFT));
         table.addCell(createCell("Unit Price", 2, 1, Property.TextAlignment.LEFT));

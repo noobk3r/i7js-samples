@@ -64,7 +64,6 @@ public class Listing_04_18_HeaderFooter1 extends GenericTest {
     public Table getTable(DatabaseConnection connection, Date day) throws UnsupportedEncodingException, SQLException {
         // Create a table with 7 columns
         Table table = new Table(new float[]{2, 1, 2, 5, 1, 3, 2});
-        // TODO setWidth(0) (setWidthPercent(100) analog) doesn't work correct with headers and footers
         table.setWidthPercent(100);
         // TODO Implement a facility to set default-cell properties
         // TODO No setUseAscender(boolean) and setUseDescender(boolean)

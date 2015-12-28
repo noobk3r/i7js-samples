@@ -35,7 +35,7 @@ public class IconDescriptionTable extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         Table table = new Table(new float[]{1, 9});
-        table.setWidth(0);
+        table.setWidthPercent(100);
         Image img = new Image(ImageFactory.getImage(IMG));
         table.addCell(new Cell().add(img.setAutoScale(true)));
         table.addCell(new Cell().add(new Paragraph("A light bulb icon")));

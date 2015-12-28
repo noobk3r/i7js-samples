@@ -32,7 +32,7 @@ public class SimpleRowColspan extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         Table table = new Table(new float[]{1, 2, 2, 2, 1});
-        table.setWidth(0);
+        table.setWidthPercent(100);
         Cell cell;
         cell = new Cell(2, 1).add(new Paragraph("S/N"));
         table.addCell(cell);

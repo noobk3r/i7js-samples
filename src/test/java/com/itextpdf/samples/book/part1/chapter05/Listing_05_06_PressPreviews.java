@@ -57,7 +57,6 @@ public class Listing_05_06_PressPreviews extends GenericTest {
 
     public Table getTable(DatabaseConnection connection) throws UnsupportedEncodingException, SQLException {
         Table table = new Table(new float[]{1, 2, 2, 5, 1});
-        // TODO setWidth(0) (analog of setWidthPercent(100)) do not render well with headers/footers
         table.setWidthPercent(100);
         // TODO No facility to set default-cell properties
         // table.getDefaultCell().setPadding(5);
