@@ -7,10 +7,10 @@ public class PipeSplitCharacter implements ISplitCharacters {
 
     @Override
     public boolean isSplitCharacter(GlyphLine text, int glyphPos) {
-        if (text.glyphs.get(glyphPos).unicode == null) {
+        if (text.glyphs.get(glyphPos).getUnicode() == null) {
             return false;
         }
-        int charCode = text.glyphs.get(glyphPos).unicode;
+        int charCode = text.glyphs.get(glyphPos).getUnicode();
         return (charCode == '|' || charCode <= ' ' || charCode == '-');
     }
 
