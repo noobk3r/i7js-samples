@@ -32,7 +32,7 @@ public class AddEmbeddedFile extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)),
                 new PdfWriter(new FileOutputStream(DEST)));
-        PdfFileSpec spec = PdfFileSpec.createEmbeddedFileSpec(pdfDoc, "Some test".getBytes(), "test.txt", true);
+        PdfFileSpec spec = PdfFileSpec.createEmbeddedFileSpec(pdfDoc, "Some test".getBytes(), null, "test.txt", null, null, null, true);
         pdfDoc.addFileAttachment("some_test", spec);
         pdfDoc.close();
     }

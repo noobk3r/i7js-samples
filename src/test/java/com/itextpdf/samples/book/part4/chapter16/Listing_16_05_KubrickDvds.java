@@ -140,7 +140,7 @@ public class Listing_16_05_KubrickDvds extends GenericTest {
             super.draw(document, canvas);
             PdfFileSpec fs = null;
             try {
-                fs = PdfFileSpec.createEmbeddedFileSpec(document, filePath, fileDisplay, false);
+                fs = PdfFileSpec.createEmbeddedFileSpec(document, filePath, null, fileDisplay, null, null, false);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }

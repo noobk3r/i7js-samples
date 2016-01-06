@@ -66,8 +66,8 @@ public class Listing_16_08_KubrickBox extends GenericTest {
         for (Movie movie : box) {
             if (movie.getYear() > 1960) {
                 pdfDoc.addFileAttachment(movie.getTitle(),
-                        PdfFileSpec.createEmbeddedFileSpec(pdfDoc, createMoviePage(movie),
-                                String.format("kubrick_%s.pdf", movie.getImdb()), false));
+                        PdfFileSpec.createEmbeddedFileSpec(pdfDoc, createMoviePage(movie), null,
+                                String.format("kubrick_%s.pdf", movie.getImdb()), null, null, null, false));
                 item = new ListItem(movie.getMovieTitle());
                 // TODO Implement 'from box' way to work with TargetDictionaries
                 target = new PdfTargetDictionary(PdfName.C);

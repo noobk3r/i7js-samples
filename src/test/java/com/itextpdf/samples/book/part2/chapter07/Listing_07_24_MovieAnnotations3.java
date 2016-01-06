@@ -80,7 +80,7 @@ public class Listing_07_24_MovieAnnotations3 extends GenericTest {
             super.draw(document, canvas);
             PdfFileSpec fs = null;
             try {
-                fs = PdfFileSpec.createEmbeddedFileSpec(document, filePath, fileDisplay, false);
+                fs = PdfFileSpec.createEmbeddedFileSpec(document, filePath, null, fileDisplay, null, null, false);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }

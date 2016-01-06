@@ -38,7 +38,7 @@ public class AddEmbeddedFiles extends GenericTest {
                 new PdfWriter(new FileOutputStream(DEST)));
         for (String s : ATTACHMENTS) {
             PdfFileSpec spec = PdfFileSpec.createEmbeddedFileSpec(pdfDoc,
-                    String.format("Some test: %s", s).getBytes(), String.format("%s.txt", s), true);
+                    String.format("Some test: %s", s).getBytes(), null, String.format("%s.txt", s), null, null, null, true);
             pdfDoc.addFileAttachment(String.format("Some test: %s", s), spec);
             //PdfFileAttachmentAnnotation fileAttach = new PdfFileAttachmentAnnotation(pdfDoc, new Rectangle(0, 0), spec);
             //pdfDoc.getFirstPage().addAnnotation(fileAttach);
