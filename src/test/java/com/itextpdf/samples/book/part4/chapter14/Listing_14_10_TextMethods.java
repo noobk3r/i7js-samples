@@ -12,10 +12,8 @@ import com.itextpdf.samples.GenericTest;
 
 import java.io.IOException;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_14_10_TextMethods extends GenericTest {
     public static final String DEST
@@ -47,7 +45,6 @@ public class Listing_14_10_TextMethods extends GenericTest {
         canvas.setTextMatrix(50, 800);
         canvas.showText(text);
         Canvas canvasModel = new Canvas(canvas, pdfDoc, pdfDoc.getDefaultPageSize());
-        // TODO Bug in RootElement showTextAligned (divX is too small)
         canvasModel.showTextAligned(text + " Center", 150, 760, Property.TextAlignment.CENTER);
         canvasModel.showTextAligned(text + " Right", 150, 700, Property.TextAlignment.RIGHT);
         canvasModel.showTextAligned(text + " Left", 150, 640, Property.TextAlignment.LEFT);
@@ -56,7 +53,7 @@ public class Listing_14_10_TextMethods extends GenericTest {
         canvas.setTextMatrix(0, 1, -1, 0, 300, 600);
         canvas.showText("Position 300,600, rotated 90 degrees.");
         for (int i = 0; i < 360; i += 30) {
-            canvasModel.showTextAligned(text, 400, 700, Property.TextAlignment.LEFT, i);
+            canvasModel.showTextAligned(text, 400, 700, Property.TextAlignment.LEFT, (float) (i * Math.PI / 180));
         }
         canvas.endText();
 
