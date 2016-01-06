@@ -20,9 +20,11 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
+@Ignore("Document Fonts")
 public class ReuseFont extends GenericTest {
 
     public static final String SRC = "./src/test/resources/sandbox/acroforms/form.pdf";
