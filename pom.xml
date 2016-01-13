@@ -60,7 +60,7 @@
         <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
-            <version>2.3.3</version>
+            <version>${hsqldb.version}</version>
             <type>jar</type>
             <scope>runtime</scope>
         </dependency>
@@ -87,9 +87,9 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>jfree</groupId>
+            <groupId>org.jfree</groupId>
             <artifactId>jfreechart</artifactId>
-            <version>1.0.13</version>
+            <version>${jfreechart.version}</version>
         </dependency>
     </dependencies>
 
