@@ -15,7 +15,7 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.StringTokenizer;
 
 import org.junit.experimental.categories.Category;
@@ -40,7 +40,7 @@ public class FillFlattenMerge1 extends GenericTest {
         ByteArrayOutputStream baos;
         PdfReader reader;
         PdfDocument pdfInnerDoc;
-        LinkedHashMap<String, PdfFormField> fields;
+        Map<String, PdfFormField> fields;
         PdfAcroForm form;
         StringTokenizer tokenizer;
         BufferedReader br = new BufferedReader(new FileReader(DATA));
