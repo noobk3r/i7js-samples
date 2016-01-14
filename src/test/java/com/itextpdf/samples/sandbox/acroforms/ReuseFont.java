@@ -61,8 +61,7 @@ public class ReuseFont extends GenericTest {
         if (font == null) return null;
         for (PdfName key : font.keySet()) {
             if (key.equals(fontName)) {
-                return new PdfFont(pdfDoc,
-                        font.getAsDictionary(key));
+                return PdfFont.createFont(font.getAsDictionary(key));
             }
         }
         return null;
