@@ -19,7 +19,6 @@ import java.io.IOException;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_10_14_PagedImages extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part3/chapter10/Listing_10_14_PagedImages.pdf";
@@ -109,7 +108,7 @@ public class Listing_10_14_PagedImages extends GenericTest {
         int n = 10;
         Image img;
         for (int i = 1; i <= n; i++) {
-            img = new Image(ImageFactory.getGifImage(new File(path).toURI().toURL(), i));
+            img = new Image(ImageFactory.getGifFrame(new File(path).toURI().toURL(), i));
             document.add(img);
         }
     }
