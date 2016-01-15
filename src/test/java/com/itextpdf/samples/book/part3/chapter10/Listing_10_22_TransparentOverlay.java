@@ -12,6 +12,7 @@ import com.itextpdf.core.pdf.PdfName;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.extgstate.PdfExtGState;
 import com.itextpdf.core.pdf.xobject.PdfFormXObject;
+import com.itextpdf.core.pdf.xobject.PdfTransparencyGroup;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.samples.GenericTest;
@@ -21,7 +22,6 @@ import java.io.IOException;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_10_22_TransparentOverlay extends GenericTest {
     public static final String DEST
@@ -49,12 +49,11 @@ public class Listing_10_22_TransparentOverlay extends GenericTest {
 
         PdfFormXObject xObject2 = new PdfFormXObject(new Rectangle(850, 600));
         PdfCanvas xObject2Canvas = new PdfCanvas(xObject2, pdfDoc);
-        // TODO No PdfTransparencyGroup
-        // PdfTransparencyGroup transGroup = new PdfTransparencyGroup();
-        // transGroup.put( PdfName.CS, PdfName.DEVICEGRAY);
-        // transGroup.setIsolated(true);
-        // transGroup.setKnockout(false);
-        // t2.setGroup(transGroup);
+        PdfTransparencyGroup transGroup = new PdfTransparencyGroup();
+        transGroup.put( PdfName.CS, PdfName.DeviceGray);
+        transGroup.setIsolated(true);
+        transGroup.setKnockout(false);
+        xObject2.setGroup(transGroup);
 
         // Add transparent ellipses to the template
         int gradationStep = 30;

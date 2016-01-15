@@ -104,7 +104,6 @@ public class Listing_10_14_PagedImages extends GenericTest {
      * @throws IOException
      */
     public static void addGif(Document document, String path) throws IOException {
-        // TODO Cannot get the number of frames
         int n = 10;
         Image img;
         for (int i = 1; i <= n; i++) {

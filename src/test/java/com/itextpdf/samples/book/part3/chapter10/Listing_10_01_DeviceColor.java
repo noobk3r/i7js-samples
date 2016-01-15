@@ -61,7 +61,6 @@ public class Listing_10_01_DeviceColor extends GenericTest {
         canvas.setFillColorRgb(0x00, 0x80, 0x80);
         canvas.rectangle(36, 608, 36, 36);
         canvas.fillStroke();
-        // TODO No setRGBColorFillF
         canvas.setFillColorRgb(0.5f, 0.25f, 0.60f);
         canvas.rectangle(90, 608, 36, 36);
         canvas.fillStroke();
@@ -71,7 +70,6 @@ public class Listing_10_01_DeviceColor extends GenericTest {
         canvas.setFillColorCmyk(0xFF, 0xFF, 0x00, 0x80);
         canvas.rectangle(198, 608, 36, 36);
         canvas.fillStroke();
-        // TODO No setCMYKColorFillF
         canvas.setFillColorCmyk(0f, 1f, 1f, 0.5f);
         canvas.rectangle(252, 608, 36, 36);
         canvas.fillStroke();

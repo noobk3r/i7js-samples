@@ -11,6 +11,7 @@ import com.itextpdf.core.pdf.colorspace.PdfPattern;
 import com.itextpdf.core.pdf.colorspace.PdfShading;
 import com.itextpdf.core.pdf.extgstate.PdfExtGState;
 import com.itextpdf.core.pdf.xobject.PdfFormXObject;
+import com.itextpdf.core.pdf.xobject.PdfTransparencyGroup;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
 
@@ -20,7 +21,6 @@ import java.io.IOException;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_10_07_Transparency2 extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part3/chapter10/Listing_10_07_Transparency2.pdf";
@@ -41,43 +41,42 @@ public class Listing_10_07_Transparency2 extends GenericTest {
             pictureBackdrop(200 + 2 * gap, 500 - 200 - gap, canvas, pdfDoc);
             PdfFormXObject tp;
             PdfCanvas xObjectCanvas;
-            // TODO No PdfTransparencyGroup
-            // PdfTransparencyGroup group;
+            PdfTransparencyGroup group;
 
             tp = new PdfFormXObject(new Rectangle(200, 200));
             xObjectCanvas = new PdfCanvas(tp, pdfDoc);
             pictureCircles(0, 0, xObjectCanvas);
-            // group = new PdfTransparencyGroup();
-            // group.setIsolated(true);
-            // group.setKnockout(true);
-            // tp.setGroup(group);
+            group = new PdfTransparencyGroup();
+            group.setIsolated(true);
+            group.setKnockout(true);
+            tp.setGroup(group);
             canvas.addXObject(tp, gap, 500);
 
             tp = new PdfFormXObject(new Rectangle(200, 200));
             xObjectCanvas = new PdfCanvas(tp, pdfDoc);
             pictureCircles(0, 0, xObjectCanvas);
-            // group = new PdfTransparencyGroup();
-            // group.setIsolated(true);
-            // group.setKnockout(false);
-            // tp.setGroup(group);
+            group = new PdfTransparencyGroup();
+            group.setIsolated(true);
+            group.setKnockout(false);
+            tp.setGroup(group);
             canvas.addXObject(tp, 200 + 2 * gap, 500);
 
             tp = new PdfFormXObject(new Rectangle(200, 200));
             xObjectCanvas = new PdfCanvas(tp, pdfDoc);
             pictureCircles(0, 0, xObjectCanvas);
-            // group = new PdfTransparencyGroup();
-            // group.setIsolated(false);
-            // group.setKnockout(true);
-            // tp.setGroup(group);
+            group = new PdfTransparencyGroup();
+            group.setIsolated(false);
+            group.setKnockout(true);
+            tp.setGroup(group);
             canvas.addXObject(tp, gap, 500 - 200 - gap);
 
             tp = new PdfFormXObject(new Rectangle(200, 200));
             xObjectCanvas = new PdfCanvas(tp, pdfDoc);
             pictureCircles(0, 0, xObjectCanvas);
-            // group = new PdfTransparencyGroup();
-            // group.setIsolated(false);
-            // group.setKnockout(false);
-            // tp.setGroup(group);
+            group = new PdfTransparencyGroup();
+            group.setIsolated(false);
+            group.setKnockout(false);
+            tp.setGroup(group);
             canvas.addXObject(tp, 200 + 2 * gap, 500 - 200 - gap);
 
             pdfDoc.close();

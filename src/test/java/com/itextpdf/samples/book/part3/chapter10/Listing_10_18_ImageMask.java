@@ -43,7 +43,6 @@ public class Listing_10_18_ImageMask extends GenericTest {
         Image mask = ImageFactory.getImage(8, 8, 1, 1, circledata, null);
         mask.makeMask();
         mask.setInverted(true);
-        // TODO Acrobat opens the result file with problems (Foxit sees no errors)
         createPdf(RESULT1, mask);
         byte gradient[] = new byte[256];
         for (int i = 0; i < 256; i++)

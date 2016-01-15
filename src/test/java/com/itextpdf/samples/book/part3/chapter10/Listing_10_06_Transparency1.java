@@ -8,6 +8,7 @@ import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.extgstate.PdfExtGState;
 import com.itextpdf.core.pdf.xobject.PdfFormXObject;
+import com.itextpdf.core.pdf.xobject.PdfTransparencyGroup;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.model.Canvas;
 import com.itextpdf.model.Property;
@@ -17,10 +18,8 @@ import com.itextpdf.samples.GenericTest;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_10_06_Transparency1 extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part3/chapter10/Listing_10_06_Transparency1.pdf";
@@ -52,9 +51,8 @@ public class Listing_10_06_Transparency1 extends GenericTest {
             canvas.saveState();
             PdfFormXObject tp = new PdfFormXObject(new Rectangle(200, 200));
             PdfCanvas xObjectCanvas = new PdfCanvas(tp, pdfDoc);
-            // TODO No PdfTransparencyGroup
-            // PdfTransparencyGroup group = new PdfTransparencyGroup();
-            // tp.setGroup(group);
+            PdfTransparencyGroup transparencyGroup = new PdfTransparencyGroup();
+            tp.setGroup(transparencyGroup);
             pictureCircles(0, 0, xObjectCanvas);
             canvas.setExtGState(gs1);
             canvas.addXObject(tp, gap, 500 - 200 - gap);
@@ -63,7 +61,7 @@ public class Listing_10_06_Transparency1 extends GenericTest {
             canvas.saveState();
             tp = new PdfFormXObject(new Rectangle(200, 200));
             xObjectCanvas = new PdfCanvas(tp, pdfDoc);
-            // tp.setGroup(group);
+            tp.setGroup(transparencyGroup);
             PdfExtGState gs2 = new PdfExtGState();
             gs2.setFillOpacity(0.5f);
             gs2.setBlendMode(PdfExtGState.BM_HARD_LIGHT);

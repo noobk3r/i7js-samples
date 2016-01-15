@@ -26,7 +26,7 @@ public class Listing_10_02_SeparationColor extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
 
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
-        // TODO NO PdfSpotColor
+        // TODO NO PdfSpotColor(DEVSIX-412)
 //        PdfSpotColor psc_g = new PdfSpotColor(
 //                "iTextSpotColorGray", new GrayColor(0.9f));
 //        PdfSpotColor psc_rgb = new PdfSpotColor(

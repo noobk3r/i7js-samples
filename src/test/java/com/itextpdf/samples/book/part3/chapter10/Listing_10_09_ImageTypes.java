@@ -71,7 +71,6 @@ public class Listing_10_09_ImageTypes extends GenericTest {
             doc.add(img);
         }
 
-        //@TODO uncomment this when Itext is capable to add AWT images to document.
         java.awt.Image awtImage = Toolkit.getDefaultToolkit().createImage(RESOURCE);
         img = new Image(new PdfImageXObject(ImageFactory.getImage(awtImage, null)));
         doc.add(new Paragraph(String.format("%s is an image of type %s", "java.awt.Image", img.getClass().getName())));
