@@ -42,8 +42,8 @@ public class UnitedStates extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc, PageSize.A4.rotate());
 
-        PdfFont font = new PdfType1Font(pdfDoc, (Type1Font) FontFactory.createFont(FontConstants.HELVETICA));
-        PdfFont bold = new PdfType1Font(pdfDoc, (Type1Font) FontFactory.createFont(FontConstants.HELVETICA_BOLD));
+        PdfFont font = new PdfType1Font((Type1Font) FontFactory.createFont(FontConstants.HELVETICA));
+        PdfFont bold = new PdfType1Font((Type1Font) FontFactory.createFont(FontConstants.HELVETICA_BOLD));
         Table table = new Table(new float[]{4, 1, 3, 4, 3, 3, 3, 3, 1});
         table.setWidthPercent(100);
         BufferedReader br = new BufferedReader(new FileReader(DATA));

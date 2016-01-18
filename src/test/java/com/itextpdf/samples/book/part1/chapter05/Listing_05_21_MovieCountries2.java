@@ -60,9 +60,9 @@ public class Listing_05_21_MovieCountries2 extends Listing_05_20_MovieCountries1
         PdfCanvas canvas = new PdfCanvas(template, pdfDoc);
 
 
-        bold = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA_BOLD);
-        italic = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA_OBLIQUE);
-        normal = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA);
+        bold = PdfFont.createStandardFont(FontConstants.HELVETICA_BOLD);
+        italic = PdfFont.createStandardFont(FontConstants.HELVETICA_OBLIQUE);
+        normal = PdfFont.createStandardFont(FontConstants.HELVETICA);
 
         Statement stm = connection.createStatement();
         ResultSet rs = stm.executeQuery(
@@ -74,7 +74,7 @@ public class Listing_05_21_MovieCountries2 extends Listing_05_20_MovieCountries1
                 doc.add(new AreaBreak());
             }
             Set<Movie> movies =
-                    new TreeSet<Movie>(new MovieComparator(MovieComparator.BY_YEAR));
+                    new TreeSet<>(new MovieComparator(MovieComparator.BY_YEAR));
             movies.addAll(PojoFactory.getMovies(connection, rs.getString("id")));
             for (Movie movie : movies) {
                 doc.add(new Paragraph(movie.getMovieTitle()).setFont(bold));
@@ -89,7 +89,7 @@ public class Listing_05_21_MovieCountries2 extends Listing_05_20_MovieCountries1
 
         canvas.beginText();
         try {
-            canvas.setFontAndSize(PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA), 12);
+            canvas.setFontAndSize(PdfFont.createStandardFont(FontConstants.HELVETICA), 12);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -110,7 +110,7 @@ public class Listing_05_21_MovieCountries2 extends Listing_05_20_MovieCountries1
             PdfPage page = docEvent.getPage();
             PdfFont font = null;
             try {
-                font = PdfFont.createStandardFont(docEvent.getDocument(), FontConstants.HELVETICA_BOLD);
+                font = PdfFont.createStandardFont(FontConstants.HELVETICA_BOLD);
             } catch (IOException e) {
                 e.printStackTrace();
             }

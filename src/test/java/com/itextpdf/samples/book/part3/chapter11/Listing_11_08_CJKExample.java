@@ -47,7 +47,7 @@ public class Listing_11_08_CJKExample extends GenericTest {
         Document doc = new Document(pdfDoc);
         PdfFont font;
         for (int i = 0; i < 3; i++) {
-            font = PdfFont.createFont(pdfDoc, MOVIES[i][0], MOVIES[i][1], false);
+            font = PdfFont.createFont(MOVIES[i][0], MOVIES[i][1], false);
             // TODO No getPostscriptionFontName()
             doc.add(new Paragraph(font.getFontProgram().getFontNames().getFontName()).setFont(font));
             for (int j = 2; j < 5; j++)

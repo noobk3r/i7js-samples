@@ -43,7 +43,7 @@ public class Listing_11_01_FontTypes extends GenericTest {
         Document doc = new Document(pdfDoc);
         PdfFont font;
         for (int i = 0; i < FONTS.length; i++) {
-            font = PdfFont.createFont(pdfDoc, FONTS[i][0], FONTS[i][1], true);
+            font = PdfFont.createFont(FONTS[i][0], FONTS[i][1], true);
             doc.add(new Paragraph(
                     String.format("Font file: %s with encoding %s", FONTS[i][0], FONTS[i][1])));
             doc.add(new Paragraph(

@@ -50,8 +50,8 @@ public class Listing_02_23_MovieLinks2 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        bold = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA_BOLD);
-        italic = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA_OBLIQUE);
+        bold = PdfFont.createStandardFont(FontConstants.HELVETICA_BOLD);
+        italic = PdfFont.createStandardFont(FontConstants.HELVETICA_OBLIQUE);
 
         Paragraph p = new Paragraph();
         Text top = new Text("Country List").setFont(bold);

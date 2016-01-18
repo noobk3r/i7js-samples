@@ -37,7 +37,7 @@ public class CenteredTextInCell extends GenericTest {
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
-        PdfFont font = new PdfType1Font(pdfDoc, (Type1Font) FontFactory.createFont(FontConstants.HELVETICA_BOLD));
+        PdfFont font = new PdfType1Font((Type1Font) FontFactory.createFont(FontConstants.HELVETICA_BOLD));
         Paragraph para = new Paragraph("Test").setFont(font).setFontSize(12);
         para.setFixedLeading(0);
         para.setMultipliedLeading(1);

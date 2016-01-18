@@ -40,9 +40,9 @@ public class Bullets extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
         Document doc = new Document(pdfDoc);
 
-        PdfFont zapfdingbats = PdfFont.createStandardFont(pdfDoc, FontConstants.ZAPFDINGBATS);
+        PdfFont zapfdingbats = PdfFont.createStandardFont(FontConstants.ZAPFDINGBATS);
         Text bullet = new Text(String.valueOf((char) 108)).setFont(zapfdingbats);
-        PdfFont font = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA);
+        PdfFont font = PdfFont.createStandardFont(FontConstants.HELVETICA);
         Paragraph p = new Paragraph("Items can be split if they don't fit at the end: ").setFont(font);
         for (String item : ITEMS) {
             p.add(bullet);
@@ -57,7 +57,7 @@ public class Bullets extends GenericTest {
         }
         doc.add(p);
         doc.add(new Paragraph("\n"));
-        PdfFont f = PdfFont.createFont(pdfDoc, "./src/test/resources/sandbox/objects/FreeSans.ttf", "Identity-H", true);
+        PdfFont f = PdfFont.createFont("./src/test/resources/sandbox/objects/FreeSans.ttf", "Identity-H", true);
         p = new Paragraph("Items can't be split if they don't fit at the end: ").setFont(f).setFontSize(12);
         for (String item : ITEMS) {
             p.add(new Text("\u2022\u00a0" + item.replace(' ', '\u00a0') + " ").setFontSize(12));

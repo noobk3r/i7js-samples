@@ -86,8 +86,7 @@ public class Listing_08_09_TextFieldFonts extends GenericTest {
                 new Rectangle(36, 806, 559 - 36, 780 - 806), TEXT, "description");
         text.setMultiline(true);
         if (font) {
-            PdfFont unicode = PdfFont.createFont(pdfDoc,
-                    "c:/windows/fonts/arialuni.ttf", PdfEncodings.IDENTITY_H, true);
+            PdfFont unicode = PdfFont.createFont("c:/windows/fonts/arialuni.ttf", PdfEncodings.IDENTITY_H, true);
             // TODO NO setExtensionFont & setSubstitutionFont
             text.setFont(unicode);
             ArrayList<PdfFont> list = new ArrayList<PdfFont>();
@@ -108,7 +107,7 @@ public class Listing_08_09_TextFieldFonts extends GenericTest {
     public void manipulatePdfFont1(String src, String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
-        PdfFont unicode = PdfFont.createFont(pdfDoc, "HYSMyeongJoStd-Medium", "UniKS-UCS2-H", false);
+        PdfFont unicode = PdfFont.createFont("HYSMyeongJoStd-Medium", "UniKS-UCS2-H", false);
         form.getField("description").setFont(unicode);
         form.getField("description").setValue(BINJIP);
         pdfDoc.close();
@@ -125,7 +124,7 @@ public class Listing_08_09_TextFieldFonts extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         // TODO Get rid of next 2 lines
-        PdfFont unicode = PdfFont.createFont(pdfDoc, "c:/windows/fonts/arialuni.ttf", PdfEncodings.IDENTITY_H, true);
+        PdfFont unicode = PdfFont.createFont("c:/windows/fonts/arialuni.ttf", PdfEncodings.IDENTITY_H, true);
         form.getField("description").setFont(unicode);
 
         form.getField("description").setValue(BINJIP);
@@ -142,7 +141,7 @@ public class Listing_08_09_TextFieldFonts extends GenericTest {
     public void manipulatePdfFont2(String src, String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
-        PdfFont unicode = PdfFont.createFont(pdfDoc, "c:/windows/fonts/arialuni.ttf", PdfEncodings.IDENTITY_H, true);
+        PdfFont unicode = PdfFont.createFont("c:/windows/fonts/arialuni.ttf", PdfEncodings.IDENTITY_H, true);
         // TODO No addSubstitutionFont
         // form.addSubstitutionFont(unicode);
         form.getField("description").setFont(unicode);

@@ -40,8 +40,8 @@ public class ChapterAndTitle extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
         Document doc = new Document(pdfDoc);
 
-        PdfFont chapterFont = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA_BOLD);
-        PdfFont paragraphFont = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA);
+        PdfFont chapterFont = PdfFont.createStandardFont(FontConstants.HELVETICA_BOLD);
+        PdfFont paragraphFont = PdfFont.createStandardFont(FontConstants.HELVETICA);
         // Font chapterFont = FontFactory.getFont(FontFactory.HELVETICA, 16, Font.BOLDITALIC);
         // Font paragraphFont = FontFactory.getFont(FontFactory.HELVETICA, 12, Font.NORMAL);
         Paragraph chunk = new Paragraph("This is the title").setFont(chapterFont);

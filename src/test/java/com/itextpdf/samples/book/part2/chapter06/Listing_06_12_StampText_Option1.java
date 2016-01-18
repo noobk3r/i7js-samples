@@ -39,7 +39,7 @@ public class Listing_06_12_StampText_Option1 extends GenericTest {
 
         //Initialize canvas and write to it
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());
-        canvas.saveState().beginText().setFontAndSize(PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA), 12).
+        canvas.saveState().beginText().setFontAndSize(PdfFont.createStandardFont(FontConstants.HELVETICA), 12).
                 moveText(36, 540).showText("Hello people!").endText().restoreState();
         canvas.release();
 

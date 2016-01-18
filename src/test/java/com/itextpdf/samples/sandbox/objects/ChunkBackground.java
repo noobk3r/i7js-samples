@@ -38,7 +38,7 @@ public class ChunkBackground extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
         Document doc = new Document(pdfDoc);
 
-        PdfFont f = PdfFont.createFont(pdfDoc, FontConstants.TIMES_BOLD, "WinAnsi");
+        PdfFont f = PdfFont.createFont(FontConstants.TIMES_BOLD, "WinAnsi");
         Text c = new Text("White text on red background")
                 .setFont(f)
                 .setFontSize(25.0f)

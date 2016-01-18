@@ -59,7 +59,7 @@ public class TextFooter extends GenericTest {
             Rectangle pageSize = docEvent.getPage().getPageSize();
             canvas.beginText();
             try {
-                canvas.setFontAndSize(PdfFont.createStandardFont(docEvent.getDocument(), FontConstants.HELVETICA_OBLIQUE), 5);
+                canvas.setFontAndSize(PdfFont.createStandardFont(FontConstants.HELVETICA_OBLIQUE), 5);
             } catch (IOException e) {
                 e.printStackTrace();
             }

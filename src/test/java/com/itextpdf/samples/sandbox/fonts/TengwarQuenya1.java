@@ -32,7 +32,7 @@ public class TengwarQuenya1 extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
-        PdfFont font = PdfFont.createFont(pdfDoc, FONT, "WINANSI", true);
+        PdfFont font = PdfFont.createFont(FONT, "WINANSI", true);
         Paragraph p = new Paragraph("\"A Hello World PDF document.").setFont(font).setFontSize(12);
         doc.add(p);
         doc.close();

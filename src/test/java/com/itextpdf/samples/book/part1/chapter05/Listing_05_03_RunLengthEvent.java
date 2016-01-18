@@ -186,7 +186,7 @@ public class Listing_05_03_RunLengthEvent extends GenericTest {
             if (isPressPreview) {
                 canvas.beginText();
                 try {
-                    canvas.setFontAndSize(PdfFont.createStandardFont(document, FontConstants.HELVETICA), 12);
+                    canvas.setFontAndSize(PdfFont.createStandardFont(FontConstants.HELVETICA), 12);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

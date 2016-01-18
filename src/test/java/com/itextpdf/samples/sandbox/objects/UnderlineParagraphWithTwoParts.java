@@ -39,7 +39,7 @@ public class UnderlineParagraphWithTwoParts extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         pdfDoc.addNewPage();
-        PdfFont font = PdfFont.createFont(pdfDoc, FontConstants.COURIER, "WinAnsi", false);
+        PdfFont font = PdfFont.createFont(FontConstants.COURIER, "WinAnsi", false);
         float charWidth = font.getWidth(" ");
         int charactersPerLine = 101;
         float pageWidth = pdfDoc.getPage(1).getPageSize().getWidth();

@@ -19,7 +19,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 
@@ -44,7 +43,7 @@ public class FillFormSpecialChars2 extends GenericTest {
                 new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         form.setGenerateAppearance(true);
-        PdfFont font = PdfFont.createFont(pdfDoc, FONT, PdfEncodings.IDENTITY_H);
+        PdfFont font = PdfFont.createFont(FONT, PdfEncodings.IDENTITY_H);
 
 
         form.getFormFields().get("Name").setValue("\u04e711111", font, 12);

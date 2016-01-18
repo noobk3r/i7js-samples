@@ -34,7 +34,7 @@ public class SmallCapsExample extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
-        PdfFont font = PdfFont.createFont(pdfDoc, FONT, "Identity-H", true);
+        PdfFont font = PdfFont.createFont(FONT, "Identity-H", true);
         Paragraph p = new Paragraph("This is some text displayed using a Small Caps font.")
                 .setFont(font)
                 .setFontSize(12);

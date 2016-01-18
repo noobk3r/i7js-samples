@@ -47,21 +47,21 @@ public class Listing_11_06_FontFileAndSizes extends GenericTest {
         PdfFont font;
         PdfDocument pdfDoc;
         pdfDoc = new PdfDocument(new PdfWriter(RESULT[0]));
-        font = PdfFont.createFont(pdfDoc, FONT, PdfEncodings.WINANSI, false);
+        font = PdfFont.createFont(FONT, PdfEncodings.WINANSI, false);
         writeAndClosePdf(pdfDoc, font, TEXT);
         pdfDoc = new PdfDocument(new PdfWriter(RESULT[1]));
-        font = PdfFont.createFont(pdfDoc, FONT, PdfEncodings.WINANSI, true);
+        font = PdfFont.createFont(FONT, PdfEncodings.WINANSI, true);
         writeAndClosePdf(pdfDoc, font, TEXT);
         pdfDoc = new PdfDocument(new PdfWriter(RESULT[2]));
-        font = PdfFont.createFont(pdfDoc, FONT, PdfEncodings.WINANSI, true);
+        font = PdfFont.createFont(FONT, PdfEncodings.WINANSI, true);
         writeAndClosePdf(pdfDoc, font, OOOO);
         pdfDoc = new PdfDocument(new PdfWriter(RESULT[3]));
-        font = PdfFont.createFont(pdfDoc, FONT, PdfEncodings.WINANSI, true);
+        font = PdfFont.createFont(FONT, PdfEncodings.WINANSI, true);
         // TODO No setCompressionLevel on PdfFont
         // font.setCompressionLevel(9);
         writeAndClosePdf(pdfDoc, font, TEXT);
         pdfDoc = new PdfDocument(new PdfWriter(RESULT[4]));
-        font = PdfFont.createFont(pdfDoc, FONT, PdfEncodings.WINANSI, true);
+        font = PdfFont.createFont(FONT, PdfEncodings.WINANSI, true);
         font.setSubset(false);
         writeAndClosePdf(pdfDoc, font, TEXT);
     }

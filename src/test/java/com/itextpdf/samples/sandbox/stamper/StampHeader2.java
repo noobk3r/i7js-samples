@@ -44,8 +44,8 @@ public class StampHeader2 extends GenericTest {
         Document doc = new Document(pdfDoc);
         // TODO Implement setRotateContent(boolean)
         // stamper.setRotateContents(false);
-        Paragraph header = new Paragraph("Copy").setFont(new PdfType1Font(pdfDoc,
-                (Type1Font) FontFactory.createFont(FontConstants.HELVETICA))).setFontSize(14);
+        Paragraph header = new Paragraph("Copy").setFont(
+                new PdfType1Font((Type1Font) FontFactory.createFont(FontConstants.HELVETICA))).setFontSize(14);
         for (int i = 1; i <= pdfDoc.getNumOfPages(); i++) {
             float x = pdfDoc.getPage(i).getPageSize().getWidth() / 2;
             float y = pdfDoc.getPage(i).getPageSize().getTop() - 20;

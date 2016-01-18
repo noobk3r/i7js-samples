@@ -30,7 +30,7 @@ public class Listing_11_02_TTCExample extends GenericTest {
         PdfFont font;
         TrueTypeCollection coll = new TrueTypeCollection(FONT, PdfEncodings.IDENTITY_H);
         for (int i = 0; i < coll.getTTCSize(); i++) {
-            font = PdfFont.createFont(pdfDoc, coll.getFontByTccIndex(i), PdfEncodings.IDENTITY_H, true);
+            font = PdfFont.createFont(coll.getFontByTccIndex(i), PdfEncodings.IDENTITY_H, true);
             doc.add(new Paragraph("font " + i + ": " + coll.getFontByTccIndex(i).getFontNames().getFontName())
                     .setFont(font).setFontSize(12));
             doc.add(new Paragraph("Rash\u00f4mon")

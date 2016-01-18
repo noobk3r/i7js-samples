@@ -47,12 +47,12 @@ public class CellMethod extends GenericTest {
 
     public static PdfFont getFontForThisLanguage(String language, PdfDocument pdfDoc) throws IOException {
         if ("czech".equals(language)) {
-            return PdfFont.createFont(pdfDoc, FONT, "Cp1250", true);
+            return PdfFont.createFont(FONT, "Cp1250", true);
         }
         if ("greek".equals(language)) {
-            return PdfFont.createFont(pdfDoc, FONT, "Cp1253", true);
+            return PdfFont.createFont(FONT, "Cp1253", true);
         }
-        return PdfFont.createFont(pdfDoc, FONT, null, true);
+        return PdfFont.createFont(FONT, null, true);
     }
 
     @Override

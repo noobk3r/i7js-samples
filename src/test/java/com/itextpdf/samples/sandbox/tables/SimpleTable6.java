@@ -39,8 +39,7 @@ public class SimpleTable6 extends GenericTest {
 
         Table table = new Table(2);
         table.addCell(new Cell().add(new Paragraph("0123456789")));
-        PdfFont font = new PdfType1Font(pdfDoc,
-                (Type1Font) FontFactory.createFont(FontConstants.HELVETICA));
+        PdfFont font = new PdfType1Font((Type1Font) FontFactory.createFont(FontConstants.HELVETICA));
         table.addCell(new Cell().add(new Paragraph("0123456789").setFont(font).setFontSize(12).setLineThrough()));
         Text text1 = new Text("0123456789");
         text1.setUnderline(1.5f, -1);

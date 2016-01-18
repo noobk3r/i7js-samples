@@ -40,7 +40,7 @@ public class Listing_15_02_OptionalContentExample extends GenericTest {
         nested.addChild(nested_1);
         nested.addChild(nested_2);
         nested_2.setLocked(true);
-        PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage()).setFontAndSize(PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA), 18);
+        PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage()).setFontAndSize(PdfFont.createStandardFont(FontConstants.HELVETICA), 18);
         canvas.beginLayer(nested).beginText().moveText(50, 750).showText("nested layers").endText().endLayer();
         canvas.beginLayer(nested_1).beginText().moveText(100, 780).showText("nested layer 1").endText().endLayer();
         canvas.beginLayer(nested_2).beginText().moveText(100, 720).showText("nested layer 2").endText().endLayer();

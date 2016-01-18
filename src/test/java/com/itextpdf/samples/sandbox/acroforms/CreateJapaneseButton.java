@@ -37,7 +37,7 @@ public class CreateJapaneseButton extends GenericTest {
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
-        PdfFont font = PdfFont.createFont(pdfDoc, FONT, PdfEncodings.IDENTITY_H);
+        PdfFont font = PdfFont.createFont(FONT, PdfEncodings.IDENTITY_H);
         PdfButtonFormField pushButton = PdfFormField.createPushButton(
                 pdfDoc,
                 new Rectangle(36, 780, 144 - 36, 806 - 780),

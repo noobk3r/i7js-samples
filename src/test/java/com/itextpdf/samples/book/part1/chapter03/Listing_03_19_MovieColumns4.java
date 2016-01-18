@@ -50,10 +50,10 @@ public class Listing_03_19_MovieColumns4 extends Listing_03_16_MovieColumns1 {
         final PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        normal = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA);
-        bold = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA_BOLD);
-        italic = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA_OBLIQUE);
-        boldItalic = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA_BOLDOBLIQUE);
+        normal = PdfFont.createStandardFont(FontConstants.HELVETICA);
+        bold = PdfFont.createStandardFont(FontConstants.HELVETICA_BOLD);
+        italic = PdfFont.createStandardFont(FontConstants.HELVETICA_OBLIQUE);
+        boldItalic = PdfFont.createStandardFont(FontConstants.HELVETICA_BOLDOBLIQUE);
 
         doc.setProperty(Property.FONT, normal);
 

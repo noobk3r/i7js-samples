@@ -26,7 +26,7 @@ public class Listing_11_05_UnicodeExample extends Listing_11_04_EncodingExample 
         Document doc = new Document(pdfDoc);
         PdfFont font;
         for (int i = 0; i < 4; i++) {
-            font = PdfFont.createFont(pdfDoc, FONT, PdfEncodings.IDENTITY_H, true);
+            font = PdfFont.createFont(FONT, PdfEncodings.IDENTITY_H, true);
             // TODO No getPostscriptFontName()
             // TODO No getEncoding()
             doc.add(new Paragraph("Font: " + font.getFontProgram().getFontNames().getFontName()

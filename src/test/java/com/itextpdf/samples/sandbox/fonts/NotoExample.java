@@ -41,7 +41,7 @@ public class NotoExample extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
-        PdfFont font = PdfFont.createFont(pdfDoc, FONT, "Identity-H", true);
+        PdfFont font = PdfFont.createFont(FONT, "Identity-H", true);
         Paragraph p = new Paragraph(TEXT).setFont(font);
         doc.add(p);
         doc.add(new Paragraph(CHINESE).setFont(font));

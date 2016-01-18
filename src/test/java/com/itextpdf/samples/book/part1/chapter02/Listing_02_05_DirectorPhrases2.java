@@ -40,10 +40,10 @@ public class Listing_02_05_DirectorPhrases2 extends GenericTest {
         PdfFont times = null;
         try {
             // create a font that will be embedded
-            timesbd = PdfFont.createFont(pdfDoc,
+            timesbd = PdfFont.createFont(
                     /*"c:/windows/fonts/timesbd.ttf"*/"./src/test/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, true);
             // create a font that will be embedded
-            times = PdfFont.createFont(pdfDoc,
+            times = PdfFont.createFont(
                     /*"c:/windows/fonts/times.ttf"*/"./src/test/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, true);
         } catch (IOException e) {
             e.printStackTrace();

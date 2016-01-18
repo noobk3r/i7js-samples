@@ -41,15 +41,15 @@ public class ColoredText extends GenericTest {
         Text redText = new Text("This text is red. ")
                 .setFontColor(Color.RED)
                 .setFontSize(12)
-                .setFont(PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA));
+                .setFont(PdfFont.createStandardFont(FontConstants.HELVETICA));
         Text blueText = new Text("This text is blue and bold. ")
                 .setFontColor(Color.BLUE)
                 .setFontSize(12)
-                .setFont(PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA_BOLD));
+                .setFont(PdfFont.createStandardFont(FontConstants.HELVETICA_BOLD));
         Text greenText = new Text("This text is green and italic. ")
                 .setFontColor(Color.GREEN)
                 .setFontSize(12)
-                .setFont(PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA_OBLIQUE));
+                .setFont(PdfFont.createStandardFont(FontConstants.HELVETICA_OBLIQUE));
 
         Paragraph p1 = new Paragraph(redText).setMargin(0);
         doc.add(p1);

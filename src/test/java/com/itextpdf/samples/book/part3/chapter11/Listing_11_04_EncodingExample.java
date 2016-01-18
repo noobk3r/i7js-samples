@@ -54,7 +54,7 @@ public class Listing_11_04_EncodingExample extends GenericTest {
         Document doc = new Document(pdfDoc);
         PdfFont font;
         for (int i = 0; i < 4; i++) {
-            font = PdfFont.createFont(pdfDoc, FONT, MOVIES[i][0], true);
+            font = PdfFont.createFont(FONT, MOVIES[i][0], true);
             // TODO No getPostscriptFontName()
             // TODO No getEncoding()
             doc.add(new Paragraph("Font: " + font.getFontProgram().getFontNames().getFontName()

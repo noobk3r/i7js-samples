@@ -44,7 +44,7 @@ public class Listing_11_03_EncodingNames extends GenericTest {
      * Writes the available encodings of a font to the document.
      */
     public void showEncodings(Document doc, String fontConstant) throws IOException {
-        PdfFont font = PdfFont.createFont(doc.getPdfDocument(), fontConstant, PdfEncodings.WINANSI, true);
+        PdfFont font = PdfFont.createFont(fontConstant, PdfEncodings.WINANSI, true);
 
         // TODO No getPostscriptFontName
         doc.add(new Paragraph("PostScript name: " + font.getFontProgram().getFontNames().getFontName()));

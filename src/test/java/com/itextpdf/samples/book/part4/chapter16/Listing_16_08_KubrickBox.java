@@ -93,7 +93,7 @@ public class Listing_16_08_KubrickBox extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(baos));
         Document doc = new Document(pdfDoc);
         Paragraph p = new Paragraph(movie.getMovieTitle())
-                .setFont(PdfFont.createFont(pdfDoc, FontConstants.HELVETICA, PdfEncodings.WINANSI, false))
+                .setFont(PdfFont.createFont(FontConstants.HELVETICA, PdfEncodings.WINANSI, false))
                 .setFontSize(16);
         doc.add(p);
         doc.add(new Paragraph("\n"));

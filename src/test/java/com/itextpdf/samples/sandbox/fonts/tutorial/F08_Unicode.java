@@ -31,7 +31,7 @@ public class F08_Unicode extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
-        PdfFont font = PdfFont.createFont(pdfDoc, FONT, "Identity-H", false);
+        PdfFont font = PdfFont.createFont(FONT, "Identity-H", false);
         doc.add(new Paragraph("Vous \u00eates d'o\u00f9?").setFont(font));
         doc.add(new Paragraph("\u00c0 tout \u00e0 l'heure. \u00c0 bient\u00f4t.").setFont(font));
         doc.add(new Paragraph("Je me pr\u00e9sente.").setFont(font));

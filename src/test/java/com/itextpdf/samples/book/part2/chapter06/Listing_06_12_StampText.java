@@ -59,7 +59,7 @@ public class Listing_06_12_StampText extends GenericTest {
         canvas
                 .saveState()
                 .beginText()
-                .setFontAndSize(PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA), 12)
+                .setFontAndSize(PdfFont.createStandardFont(FontConstants.HELVETICA), 12)
                 .moveText(36, 540)
                 .showText("Hello people!")
                 .endText()
@@ -84,7 +84,7 @@ public class Listing_06_12_StampText extends GenericTest {
         canvas
                 .saveState()
                 .beginText()
-                .setFontAndSize(PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA), 12)
+                .setFontAndSize(PdfFont.createStandardFont(FontConstants.HELVETICA), 12)
                 .moveText(36, 540)
                 .showText("Hello people!")
                 .endText()

@@ -45,7 +45,7 @@ public class Listing_99_03_ComplexElementLayout extends GenericTest {
         Paragraph twoColumnParagraph = new Paragraph();
         twoColumnParagraph.setNextRenderer(new TwoColumnParagraphRenderer(twoColumnParagraph));
         twoColumnParagraph.add(text.toString());
-        doc.add(twoColumnParagraph.setFont(PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA)));
+        doc.add(twoColumnParagraph.setFont(PdfFont.createStandardFont(FontConstants.HELVETICA)));
 
         doc.add(new Paragraph("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"));
 
@@ -61,7 +61,7 @@ public class Listing_99_03_ComplexElementLayout extends GenericTest {
 
         @Override
         public List<Rectangle> initElementAreas(LayoutArea area) {
-            List<Rectangle> areas = new ArrayList<Rectangle>();
+            List<Rectangle> areas = new ArrayList<>();
             Rectangle firstArea = area.getBBox().clone();
             Rectangle secondArea = area.getBBox().clone();
             firstArea.setWidth(firstArea.getWidth() / 2 - 5);

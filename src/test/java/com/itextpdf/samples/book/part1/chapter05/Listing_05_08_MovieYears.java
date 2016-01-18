@@ -56,15 +56,15 @@ public class Listing_05_08_MovieYears extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
 
-        PdfFont bold = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA_BOLD, PdfEncodings.WINANSI);
-        PdfFont italic = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA_OBLIQUE, PdfEncodings.WINANSI);
+        PdfFont bold = PdfFont.createStandardFont(FontConstants.HELVETICA_BOLD, PdfEncodings.WINANSI);
+        PdfFont italic = PdfFont.createStandardFont(FontConstants.HELVETICA_OBLIQUE, PdfEncodings.WINANSI);
 
         Paragraph p;
         Text text;
-        Map<String, Integer> years = new TreeMap<String, Integer>();
+        Map<String, Integer> years = new TreeMap<>();
 
         Set<Movie> movies =
-                new TreeSet<Movie>(new MovieComparator(MovieComparator.BY_YEAR));
+                new TreeSet<>(new MovieComparator(MovieComparator.BY_YEAR));
         movies.addAll(PojoFactory.getMovies(connection));
         for (Movie movie : movies) {
             p = new Paragraph().setFixedLeading(22);

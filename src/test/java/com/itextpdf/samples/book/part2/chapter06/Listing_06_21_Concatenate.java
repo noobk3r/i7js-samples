@@ -58,7 +58,7 @@ public class Listing_06_21_Concatenate extends GenericTest {
             canvas
                     .saveState()
                     .beginText()
-                    .setFontAndSize(PdfFont.createStandardFont(resultDoc, FontConstants.HELVETICA), 12)
+                    .setFontAndSize(PdfFont.createStandardFont(FontConstants.HELVETICA), 12)
                     .moveText(36, 540)
                     .showText("Hello World!")
                     .endText()
@@ -76,7 +76,7 @@ public class Listing_06_21_Concatenate extends GenericTest {
             canvas
                     .saveState()
                     .beginText()
-                    .setFontAndSize(PdfFont.createStandardFont(resultDoc, FontConstants.HELVETICA), 12)
+                    .setFontAndSize(PdfFont.createStandardFont(FontConstants.HELVETICA), 12)
                     .moveText(36, 540)
                     .showText("Hello World!")
                     .endText()

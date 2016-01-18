@@ -49,17 +49,17 @@ public class ColoredLetters extends GenericTest {
         if (letter == 'b') {
             return new Text("b")
                     .setFontColor(Color.BLUE)
-                    .setFont(PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA_BOLD))
+                    .setFont(PdfFont.createStandardFont(FontConstants.HELVETICA_BOLD))
                     .setFontSize(12);
         } else if (letter == 'g') {
             return new Text("g")
                     .setFontColor(Color.GREEN)
-                    .setFont(PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA))
+                    .setFont(PdfFont.createStandardFont(FontConstants.HELVETICA))
                     .setFontSize(12)
                     .setItalic();
         }
         return new Text(String.valueOf(letter))
                 .setFontColor(Color.RED)
-                .setFont(PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA));
+                .setFont(PdfFont.createStandardFont(FontConstants.HELVETICA));
     }
 }

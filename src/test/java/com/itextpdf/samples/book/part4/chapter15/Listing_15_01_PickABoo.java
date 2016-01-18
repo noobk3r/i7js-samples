@@ -35,7 +35,7 @@ public class Listing_15_01_PickABoo extends GenericTest {
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         PdfLayer layer = new PdfLayer("Do you see me?", pdfDoc);
         layer.setOn(true);
-        canvas.beginText().setFontAndSize(PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA), 18).
+        canvas.beginText().setFontAndSize(PdfFont.createStandardFont(FontConstants.HELVETICA), 18).
                 moveText(50, 760).showText("Do you see me?").
                 beginLayer(layer).moveText(0, -30).showText("Peek-A-Boo!!!").endLayer().
                 endText();

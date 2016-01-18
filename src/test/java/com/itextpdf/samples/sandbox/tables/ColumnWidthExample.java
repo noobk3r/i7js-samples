@@ -42,7 +42,7 @@ public class ColumnWidthExample extends GenericTest {
         // TODO
         //table.getDefaultCell().setUseAscender(true);
         //table.getDefaultCell().setUseDescender(true);
-        PdfFont f = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA);
+        PdfFont f = PdfFont.createStandardFont(FontConstants.HELVETICA);
         Cell cell = new Cell(1, 3).add(new Paragraph("This is a header")).
                 setFont(f).
                 setFontSize(13).

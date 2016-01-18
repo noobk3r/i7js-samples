@@ -57,7 +57,7 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4.getHeight(), PageSize.A4.getWidth()));
         doc.setMargins(0, 0, 0, 0);
 
-        PdfFont font = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA);
+        PdfFont font = PdfFont.createStandardFont(FontConstants.HELVETICA);
         doc.setProperty(Property.FONT, font);
 
         Text press = new Text("P").

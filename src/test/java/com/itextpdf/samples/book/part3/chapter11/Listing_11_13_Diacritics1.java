@@ -47,7 +47,7 @@ public class Listing_11_13_Diacritics1 extends GenericTest {
                 "Movie title: Tears of the Black Tiger (Thailand)"));
         doc.add(new Paragraph("directed by Wisit Sasanatieng"));
         for (int i = 0; i < 2; i++) {
-            font = PdfFont.createFont(pdfDoc, FONTS[i], PdfEncodings.IDENTITY_H, true);
+            font = PdfFont.createFont(FONTS[i], PdfEncodings.IDENTITY_H, true);
             // TODO No getPostscriptFontName()
             doc.add(new Paragraph("Font: " + font.getFontProgram().getFontNames().getFontName()));
             doc.add(new Paragraph(MOVIE).setFont(font).setFontSize(20));

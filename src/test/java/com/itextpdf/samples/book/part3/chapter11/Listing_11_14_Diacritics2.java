@@ -32,11 +32,11 @@ public class Listing_11_14_Diacritics2 extends GenericTest {
         Document doc = new Document(pdfDoc);
         doc.add(new Paragraph("Movie title: In Bed With Santa (Sweden)"));
         doc.add(new Paragraph("directed by Kjell Sundvall"));
-        PdfFont f = PdfFont.createFont(pdfDoc, FONTS[0], PdfEncodings.CP1252, true);
+        PdfFont f = PdfFont.createFont(FONTS[0], PdfEncodings.CP1252, true);
         // TODO No setCharacterAdvance
         // f.setCharAdvance('\u00a8', -100);
         doc.add(new Paragraph(MOVIE).setFont(f));
-        f = PdfFont.createFont(pdfDoc, FONTS[1], PdfEncodings.CP1252, true);
+        f = PdfFont.createFont(FONTS[1], PdfEncodings.CP1252, true);
         // f.setCharAdvance('\u00a8', 0);
         doc.add(new Paragraph(MOVIE).setFont(f));
         doc.close();

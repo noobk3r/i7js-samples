@@ -42,8 +42,8 @@ public class Listing_02_13_MovieLists1 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        boldItalic = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA_BOLDOBLIQUE);
-        normal = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA);
+        boldItalic = PdfFont.createStandardFont(FontConstants.HELVETICA_BOLDOBLIQUE);
+        normal = PdfFont.createStandardFont(FontConstants.HELVETICA);
 
         // Make the connection to the database
         DatabaseConnection connection = new HsqldbConnection("filmfestival");

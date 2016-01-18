@@ -62,8 +62,7 @@ public class TransparentWatermark2 extends GenericTest {
         Document doc = new Document(pdfDoc);
         int n = pdfDoc.getNumOfPages();
 
-        PdfFont font = new PdfType1Font(pdfDoc,
-                (Type1Font) FontFactory.createFont(FontConstants.HELVETICA));
+        PdfFont font = new PdfType1Font((Type1Font) FontFactory.createFont(FontConstants.HELVETICA));
         Paragraph p = new Paragraph("My watermark (text)").setFont(font).setFontSize(30);
         // image watermark
         Image img = ImageFactory.getImage(IMG);

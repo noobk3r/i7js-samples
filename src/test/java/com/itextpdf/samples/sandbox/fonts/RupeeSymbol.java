@@ -37,10 +37,10 @@ public class RupeeSymbol extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
-        PdfFont font1 = PdfFont.createFont(pdfDoc, FONT1, "Identity-H", true);
-        PdfFont font2 = PdfFont.createFont(pdfDoc, FONT2, "Identity-H", true);
-        PdfFont font3 = PdfFont.createFont(pdfDoc, FONT3, "Identity-H", true);
-        PdfFont font4 = PdfFont.createFont(pdfDoc, FONT3, "WINANSI", true);
+        PdfFont font1 = PdfFont.createFont(FONT1, "Identity-H", true);
+        PdfFont font2 = PdfFont.createFont(FONT2, "Identity-H", true);
+        PdfFont font3 = PdfFont.createFont(FONT3, "Identity-H", true);
+        PdfFont font4 = PdfFont.createFont(FONT3, "WINANSI", true);
 
         doc.add(new Paragraph(RUPEE).setFont(font1).setFontSize(12));
         doc.add(new Paragraph(RUPEE).setFont(font2).setFontSize(12));

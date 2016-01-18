@@ -42,7 +42,7 @@ public class Listing_02_29_RiverPhoenix extends GenericTest {
         // writer.setStrictImageSequence(true);
         // writer.setInitialLeading(18);
 
-        bold = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA_BOLD);
+        bold = PdfFont.createStandardFont(FontConstants.HELVETICA_BOLD);
 
         // step 4
         doc.add(new Paragraph("Movies featuring River Phoenix").setFont(bold).setFixedLeading(18));

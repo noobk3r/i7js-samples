@@ -6,7 +6,6 @@ package com.itextpdf.samples.sandbox.acroforms;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.FontFactory;
-import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.canvas.PdfCanvas;
@@ -83,8 +82,7 @@ public class ComboBoxItems extends GenericTest {
         public void draw(PdfDocument document, PdfCanvas canvas) {
             PdfFont font = null;
             try {
-                font = new PdfType1Font(document,
-                        (Type1Font) FontFactory.createFont(FontConstants.HELVETICA));
+                font = new PdfType1Font((Type1Font) FontFactory.createFont(FontConstants.HELVETICA));
 
             } catch (IOException e) {
                 // should do smth but in this example we'll leave catching

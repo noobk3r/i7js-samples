@@ -38,7 +38,7 @@ public class Listing_11_11_RightToLeftExample extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document document = new Document(pdfDoc, PageSize.A4);
 
-        PdfFont font = PdfFont.createFont(pdfDoc, FONT, PdfEncodings.IDENTITY_H, true);
+        PdfFont font = PdfFont.createFont(FONT, PdfEncodings.IDENTITY_H, true);
         document.add(new Paragraph("Movie title: Nina's Tragedies"));
         document.add(new Paragraph("directed by Savi Gabizon"));
         document.add(new Paragraph(MOVIE).setFont(font).setFontSize(14).setBaseDirection(Property.BaseDirection.RIGHT_TO_LEFT));

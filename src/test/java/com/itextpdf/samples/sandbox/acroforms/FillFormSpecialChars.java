@@ -45,7 +45,7 @@ public class FillFormSpecialChars extends GenericTest {
                 new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         form.setGenerateAppearance(true);
-        PdfFont font = PdfFont.createFont(pdfDoc, FONT, PdfEncodings.IDENTITY_H);
+        PdfFont font = PdfFont.createFont(FONT, PdfEncodings.IDENTITY_H);
         form.getFormFields().get("test").setValue(VALUE, font, 12);
         form.getFormFields().get("test2").setValue(VALUE, font, 12);
         pdfDoc.close();

@@ -45,7 +45,7 @@ public class Listing_11_18_Ligatures2 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document document = new Document(pdfDoc);
 
-        PdfFont bf = PdfFont.createFont(pdfDoc, FONT, PdfEncodings.IDENTITY_H, true);
+        PdfFont bf = PdfFont.createFont(FONT, PdfEncodings.IDENTITY_H, true);
         document.add(new Paragraph("Movie title: Lawrence of Arabia (UK)"));
         document.add(new Paragraph("directed by David Lean"));
         document.add(new Paragraph("Wrong: " + MOVIE).setFont(bf).setFontSize(20));

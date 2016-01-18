@@ -34,7 +34,7 @@ public class OrdinalNumbers extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
 
-        PdfFont font = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA);
+        PdfFont font = PdfFont.createStandardFont(FontConstants.HELVETICA);
         Text st = new Text("st").setFont(font).setFontSize(6);
         st.setTextRise(7);
         Text nd = new Text("nd").setFont(font);

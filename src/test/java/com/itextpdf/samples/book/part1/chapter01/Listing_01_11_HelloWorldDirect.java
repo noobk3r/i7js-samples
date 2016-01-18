@@ -36,7 +36,7 @@ public class Listing_01_11_HelloWorldDirect extends GenericTest {
                 .saveState()
                 .beginText()
                 .moveText(36, 600)
-                .setFontAndSize(PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA), 12)
+                .setFontAndSize(PdfFont.createStandardFont(FontConstants.HELVETICA), 12)
                 .showText("Hello World")
                 .endText()
                 .restoreState()

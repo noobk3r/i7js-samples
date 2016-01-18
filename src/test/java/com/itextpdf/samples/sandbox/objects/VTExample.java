@@ -34,7 +34,7 @@ public class VTExample extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
 
-        PdfFont font = PdfFont.createFont(pdfDoc, FONT, "IDENTITY-V", false);
+        PdfFont font = PdfFont.createFont(FONT, "IDENTITY-V", false);
         // TODO There is no VerticalText
         // VerticalText vt = new VerticalText(writer.getDirectContent());
         // vt.setVerticalLayout(559, 806, 770, 29, 18);

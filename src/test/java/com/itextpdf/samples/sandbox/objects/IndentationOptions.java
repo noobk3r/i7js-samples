@@ -48,7 +48,7 @@ public class IndentationOptions extends GenericTest {
                 add(CONTENT);
         doc.add(list);
 
-        PdfFont font = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA);
+        PdfFont font = PdfFont.createStandardFont(FontConstants.HELVETICA);
         Paragraph p = new Paragraph(LABEL + CONTENT).setFont(font);
         float indentation = font.getWidth(LABEL) * 12 / 1000;
         p.setMarginLeft(indentation).

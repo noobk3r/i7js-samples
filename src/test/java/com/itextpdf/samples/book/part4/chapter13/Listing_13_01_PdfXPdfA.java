@@ -66,7 +66,7 @@ public class Listing_13_01_PdfXPdfA extends GenericTest {
         pdfADocument.setXmpMetadata();
         pdfADocument.addNewPage();
 
-        PdfFont font = PdfFont.createFont(pdfADocument, FONT, PdfEncodings.CP1252, true);
+        PdfFont font = PdfFont.createFont(FONT, PdfEncodings.CP1252, true);
         Document doc = new Document(pdfADocument).add(new Paragraph("Hello World").setFont(font));
         doc.close();
     }

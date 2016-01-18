@@ -37,10 +37,10 @@ public class ColumnTextPhrase extends GenericTest {
                 new PdfWriter(new FileOutputStream(dest)));
         Document doc = new Document(pdfDoc);
 
-        PdfFont f = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA);
+        PdfFont f = PdfFont.createStandardFont(FontConstants.HELVETICA);
         Paragraph pz = new Paragraph("Hello World!").setFont(f).setFixedLeading(20);
         doc.add(pz.setWidth(200 - 120).setHeight(600 - 200).setMarginLeft(120));
-        f = PdfFont.createFont(pdfDoc, FontConstants.HELVETICA_BOLD, "Cp1252", true);
+        f = PdfFont.createFont(FontConstants.HELVETICA_BOLD, "Cp1252", true);
         pz = new Paragraph("Hello World!").setFont(f).setFontSize(13);
         doc.add(pz.setWidth(200 - 120).setHeight(700 - 48).setMarginLeft(120));
 

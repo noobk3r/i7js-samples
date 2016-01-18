@@ -56,8 +56,8 @@ public class Listing_06_07_Superimposing extends GenericTest {
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument resultDoc = new PdfDocument(writer);
         Document doc = new Document(resultDoc, postCard);
-
-        PdfFont font = PdfFont.createFont(resultDoc, FontConstants.ZAPFDINGBATS, PdfEncodings.WINANSI, true);
+        //TODO why this font not use?
+        PdfFont font = PdfFont.createFont(FontConstants.ZAPFDINGBATS, PdfEncodings.WINANSI, true);
         PdfCanvas canvas = new PdfCanvas(resultDoc.addNewPage());
         for (int i = 1; i <= srcDoc.getNumOfPages(); i++) {
             PdfFormXObject layer = srcDoc.getPage(i).copyAsFormXObject(resultDoc);
@@ -95,7 +95,7 @@ public class Listing_06_07_Superimposing extends GenericTest {
 
         // Page 3: the words "Foobar Film Festival"
         Paragraph p = new Paragraph("Foobar Film Festival")
-                .setFont(PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA))
+                .setFont(PdfFont.createStandardFont(FontConstants.HELVETICA))
                 .setFontSize(22)
                 .setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
         doc.add(p);
@@ -112,7 +112,7 @@ public class Listing_06_07_Superimposing extends GenericTest {
         over.setLineWidth(1.5f);
         over.setStrokeColor(new DeviceRgb(0xFF, 0x00, 0x00));
         over.setFillColor(new DeviceRgb(0xFF, 0xFF, 0xFF));
-        over.setFontAndSize(PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA), 36);
+        over.setFontAndSize(PdfFont.createStandardFont(FontConstants.HELVETICA), 36);
         over.setTextMatrix(cosinus, sinus, -sinus, cosinus, 50, 324);
         over.showText("SOLD OUT");
         over.setTextMatrix(0, 0);

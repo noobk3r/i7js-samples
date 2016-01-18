@@ -79,8 +79,8 @@ public class Listing_11_12_SayPeace extends GenericTest {
         public CustomHandler(Document document) {
             this.document = document;
             try {
-                this.f = PdfFont.createFont(document.getPdfDocument(), FONT, PdfEncodings.IDENTITY_H, true);
-                this.arabicF = PdfFont.createFont(document.getPdfDocument(), ARABIC_FONT, PdfEncodings.IDENTITY_H, true);
+                this.f = PdfFont.createFont(FONT, PdfEncodings.IDENTITY_H, true);
+                this.arabicF = PdfFont.createFont(ARABIC_FONT, PdfEncodings.IDENTITY_H, true);
             } catch (IOException e) {
                 e.printStackTrace();
             }

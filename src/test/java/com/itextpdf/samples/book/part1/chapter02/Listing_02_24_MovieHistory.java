@@ -44,15 +44,15 @@ public class Listing_02_24_MovieHistory extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         PdfFont[] fonts = new PdfFont[4];
-        fonts[0] = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA); // 24
-        fonts[1] = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA); // 18
-        fonts[2] = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA); // 14
-        fonts[3] = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA_BOLD); // 12
+        fonts[0] = PdfFont.createStandardFont(FontConstants.HELVETICA); // 24
+        fonts[1] = PdfFont.createStandardFont(FontConstants.HELVETICA); // 18
+        fonts[2] = PdfFont.createStandardFont(FontConstants.HELVETICA); // 14
+        fonts[3] = PdfFont.createStandardFont(FontConstants.HELVETICA_BOLD); // 12
 
         // Make the connection to the database
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
         Set<Movie> movies =
-                new TreeSet<Movie>(new MovieComparator(MovieComparator.BY_YEAR));
+                new TreeSet<>(new MovieComparator(MovieComparator.BY_YEAR));
         movies.addAll(PojoFactory.getMovies(connection));
         int epoch = -1;
         int currentYear = 0;

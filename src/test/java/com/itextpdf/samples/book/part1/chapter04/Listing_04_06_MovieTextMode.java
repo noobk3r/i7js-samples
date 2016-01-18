@@ -48,9 +48,9 @@ public class Listing_04_06_MovieTextMode extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        normal = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA); // 12
-        bold = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA_BOLD); // 12
-        italic = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA_OBLIQUE); // 12
+        normal = PdfFont.createStandardFont(FontConstants.HELVETICA); // 12
+        bold = PdfFont.createStandardFont(FontConstants.HELVETICA_BOLD); // 12
+        italic = PdfFont.createStandardFont(FontConstants.HELVETICA_OBLIQUE); // 12
 
         doc.add(new Paragraph("Movies:"));
         List<Movie> movies = PojoFactory.getMovies(connection);

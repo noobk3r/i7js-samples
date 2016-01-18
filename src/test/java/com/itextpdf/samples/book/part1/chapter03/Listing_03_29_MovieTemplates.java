@@ -47,7 +47,7 @@ public class Listing_03_29_MovieTemplates extends Listing_03_15_MovieCalendar {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
 
-        PdfFont font = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA);
+        PdfFont font = PdfFont.createStandardFont(FontConstants.HELVETICA);
         doc.setProperty(Property.FONT, font);
 
         Text press = new Text("P").

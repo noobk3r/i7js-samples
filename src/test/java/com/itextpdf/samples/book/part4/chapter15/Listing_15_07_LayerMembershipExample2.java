@@ -34,7 +34,7 @@ public class Listing_15_07_LayerMembershipExample2 extends GenericTest {
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(writer);
 
-        PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage()).setFontAndSize(PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA), 18);
+        PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage()).setFontAndSize(PdfFont.createStandardFont(FontConstants.HELVETICA), 18);
 
         PdfLayer dog = new PdfLayer("layer 1", pdfDoc);
         PdfLayer tiger = new PdfLayer("layer 2", pdfDoc);
