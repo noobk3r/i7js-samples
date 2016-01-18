@@ -40,7 +40,7 @@ public class CreateRadioInTable extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        PdfButtonFormField group = PdfFormField.createRadioGroup(pdfDoc, "Language", "English");
+        PdfButtonFormField group = PdfFormField.createRadioGroup(pdfDoc, "English", "Language");
         Table table = new Table(2);
         Cell cell;
         cell = new Cell().add(new Paragraph("English"));

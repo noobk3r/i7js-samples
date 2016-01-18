@@ -39,7 +39,7 @@ public class RadioGroupMultiPage2 extends GenericTest {
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
-        PdfButtonFormField radioGroup = PdfFormField.createRadioGroup(pdfDoc, "answer", "answer 1");
+        PdfButtonFormField radioGroup = PdfFormField.createRadioGroup(pdfDoc, "answer 1", "answer");
         Table table = new Table(2);
         Cell cell;
         for (int i = 0; i < 25; i++) {

@@ -75,7 +75,7 @@ public class Listing_08_01_Buttons extends GenericTest {
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         PdfFont font = PdfFont.createStandardFont(pdfDoc, FontConstants.HELVETICA);
         Rectangle rect;
-        PdfButtonFormField radioGroup = PdfFormField.createRadioGroup(pdfDoc, "language", "");
+        PdfButtonFormField radioGroup = PdfFormField.createRadioGroup(pdfDoc, "", "language");
         PdfFormField radio;
         for (int i = 0; i < LANGUAGES.length; i++) {
             rect = new Rectangle(40, 806 - i * 40, 60 - 40, 806 - 788);
