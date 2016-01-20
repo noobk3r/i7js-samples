@@ -33,7 +33,7 @@ public class Listing_13_09_RotatePages extends GenericTest {
 
     public void changePdf(String src, String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
-        int n = pdfDoc.getNumOfPages();
+        int n = pdfDoc.getNumberOfPages();
         PdfDictionary pageDict;
         int rot;
         for (int i = 1; i <= n; i++) {

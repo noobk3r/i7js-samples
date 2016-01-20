@@ -61,7 +61,7 @@ public class Listing_06_15_StampStationery extends GenericTest {
         PdfDocument stationeryDoc = new PdfDocument(stationeryReader);
 
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
-        int n = pdfDoc.getNumOfPages();
+        int n = pdfDoc.getNumberOfPages();
 
         PdfPage page;
         PdfFormXObject watermark = stationeryDoc.getFirstPage().copyAsFormXObject(pdfDoc);

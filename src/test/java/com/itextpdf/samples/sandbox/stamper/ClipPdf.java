@@ -37,7 +37,7 @@ public class ClipPdf extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(
                 new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
-        int n = pdfDoc.getNumOfPages();
+        int n = pdfDoc.getNumberOfPages();
         PdfDictionary page;
         PdfArray media;
         for (int p = 1; p <= n; p++) {

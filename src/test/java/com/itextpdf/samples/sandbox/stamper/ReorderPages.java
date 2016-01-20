@@ -42,7 +42,7 @@ public class ReorderPages extends GenericTest {
         }
         doc.close();
         int startToc = 13;
-        int n = pdfDoc.getNumOfPages();
+        int n = pdfDoc.getNumberOfPages();
         // TODO Implement selectPages or its analog
         //pdfDoc.selectPages(String.format("1,%s-%s, 2-%s, %s", startToc, n-1, startToc - 1, n));
         pdfDoc.close();

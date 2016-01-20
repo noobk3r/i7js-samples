@@ -32,7 +32,7 @@ public class Listing_06_23_Burst extends GenericTest {
         PdfReader reader = new PdfReader(fis);
         PdfDocument srcDoc = new PdfDocument(reader);
 
-        for (int i = 1; i <= srcDoc.getNumOfPages(); i++) {
+        for (int i = 1; i <= srcDoc.getNumberOfPages(); i++) {
             FileOutputStream fos = new FileOutputStream(String.format(FORMATTEDDEST, i));
             PdfWriter writer = new PdfWriter(fos);
             PdfDocument pdfDoc = new PdfDocument(writer);
@@ -42,7 +42,7 @@ public class Listing_06_23_Burst extends GenericTest {
         }
 
         // Make file to compare via CompareTool
-        String[] names = new String[srcDoc.getNumOfPages()];
+        String[] names = new String[srcDoc.getNumberOfPages()];
         for (int i = 0; i < names.length; i++) {
             names[i] = String.format(FORMATTEDDEST, i+1);
         }
@@ -57,7 +57,7 @@ public class Listing_06_23_Burst extends GenericTest {
         PdfDocument tempDoc;
         for (String name : names) {
             tempDoc = new PdfDocument(new PdfReader(name));
-            tempDoc.copyPages(1, tempDoc.getNumOfPages(), pdfDoc);
+            tempDoc.copyPages(1, tempDoc.getNumberOfPages(), pdfDoc);
             tempDoc.close();
         }
         pdfDoc.close();

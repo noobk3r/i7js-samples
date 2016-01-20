@@ -56,7 +56,7 @@ public class Listing_06_02_MemoryInfo extends GenericTest {
             throws IOException {
         long before = getMemoryUse();
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(filename));
-        pdfDoc.getNumOfPages();
+        pdfDoc.getNumberOfPages();
         writer.println(String.format("Memory used by full read: %d",
                 getMemoryUse() - before));
         writer.flush();

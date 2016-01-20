@@ -129,7 +129,7 @@ public class Listing_06_14_TwoPasses extends GenericTest {
         pdfDoc = new PdfDocument(reader, new PdfWriter(new FileOutputStream(DEST)));
 
         // Loop over the pages and add a header to each page
-        int n = pdfDoc.getNumOfPages();
+        int n = pdfDoc.getNumberOfPages();
         for (int i = 1; i <= n; i++) {
             new Canvas(new PdfCanvas(pdfDoc.getPage(i)), pdfDoc,
                     new Rectangle(34, 803, 100, 30)).add(getHeaderTable(i, n));

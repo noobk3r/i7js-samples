@@ -44,7 +44,7 @@ public class MergeForms extends GenericTest {
         PdfMerger merger = new PdfMerger(pdfDoc);
         for (PdfReader reader : readers) {
             PdfDocument readerDoc = new PdfDocument(reader);
-            merger.addPages(readerDoc, 1, readerDoc.getNumOfPages());
+            merger.addPages(readerDoc, 1, readerDoc.getNumberOfPages());
             readerDoc.close();
         }
         merger.merge();

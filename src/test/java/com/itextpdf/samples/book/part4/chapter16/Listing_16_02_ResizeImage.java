@@ -37,7 +37,7 @@ public class Listing_16_02_ResizeImage extends GenericTest {
         PdfName value = new PdfName("123456789");
         // Read the file
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SPECIAL_ID));
-        int n = pdfDoc.getNumOfPdfObjects();
+        int n = pdfDoc.getNumberOfPdfObjects();
         PdfObject object;
         PdfStream stream;
         // Look for image and manipulate image stream

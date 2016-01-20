@@ -79,7 +79,7 @@ public class Listing_07_09_FindDirectors extends GenericTest {
                 .setOpenAction(PdfAction.createJavaScript(pdfDoc, readFileToString(RESOURCE)));
         int n;
         for (int i = 0; i < pdfDocumentses.length; i++) {
-            n = pdfDocumentses[i].getNumOfPages();
+            n = pdfDocumentses[i].getNumberOfPages();
             pdfDocumentses[i].copyPages(1, n, pdfDoc);
 //            for (int j = 1; j <= n; j++) {
 //                PdfFormXObject page = pdfDocumentses[i].getPage(j).copyAsFormXObject(pdfDoc);

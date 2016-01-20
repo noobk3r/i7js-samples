@@ -35,7 +35,7 @@ public class AddCover extends GenericTest {
         PdfDocument cover = new PdfDocument(new PdfReader(COVER));
         PdfDocument resource = new PdfDocument(new PdfReader(RESOURCE));
         merger.addPages(cover, 1, 1);
-        merger.addPages(resource, 1, resource.getNumOfPages());
+        merger.addPages(resource, 1, resource.getNumberOfPages());
         merger.merge();
 
         cover.close();

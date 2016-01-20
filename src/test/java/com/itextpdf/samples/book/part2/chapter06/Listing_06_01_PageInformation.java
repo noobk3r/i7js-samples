@@ -60,7 +60,7 @@ public class Listing_06_01_PageInformation extends GenericTest {
         PdfDocument pdfDoc= new PdfDocument(reader);
         writer.println(filename);
         writer.print("Number of pages: ");
-        writer.println(pdfDoc.getNumOfPages());
+        writer.println(pdfDoc.getNumberOfPages());
         Rectangle mediabox = pdfDoc.getDefaultPageSize();
         writer.print("Size of page 1: [");
         writer.print(mediabox.getLeft());

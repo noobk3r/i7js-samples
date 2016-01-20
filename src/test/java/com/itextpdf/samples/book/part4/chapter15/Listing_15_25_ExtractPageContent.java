@@ -59,7 +59,7 @@ public class Listing_15_25_ExtractPageContent {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(new ByteArrayOutputStream()));
         SimpleTextStrategyListener listener = new SimpleTextStrategyListener();
         PdfContentStreamProcessor parser = new PdfContentStreamProcessor(listener);
-        for (int i = 1; i <= pdfDoc.getNumOfPages(); i++) {
+        for (int i = 1; i <= pdfDoc.getNumberOfPages(); i++) {
             parser.processPageContent(pdfDoc.getPage(i));
             out.println(listener.getResultantText());
         }

@@ -72,7 +72,7 @@ public class Listing_06_19_FillDataSheet extends GenericTest{
             pdfDoc.close();
 
             pdfDoc = new PdfDocument(new PdfReader(new ByteArrayInputStream(baos.toByteArray())));
-            pdfDoc.copyPages(1, pdfDoc.getNumOfPages(), pdfDocResult);
+            pdfDoc.copyPages(1, pdfDoc.getNumberOfPages(), pdfDocResult);
         }
         // Close the database connection
         connection.close();

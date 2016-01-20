@@ -74,7 +74,7 @@ public class Listing_07_01_NamedActions extends GenericTest {
 
         // Add the table to each page
         PdfCanvas canvas;
-        for (int i = 1; i <= pdfDoc.getNumOfPages(); i++) {
+        for (int i = 1; i <= pdfDoc.getNumberOfPages(); i++) {
             table.setFixedPosition(i, 696, 0, 120);
             doc.add(table);
         }

@@ -102,7 +102,7 @@ public class Listing_05_20_MovieCountries1 extends GenericTest {
             e.printStackTrace();
         }
         canvas.moveText(550, 803);
-        canvas.showText(Integer.toString(pdfDoc.getNumOfPages()));
+        canvas.showText(Integer.toString(pdfDoc.getNumberOfPages()));
         canvas.endText();
         canvas.stroke();
 
@@ -119,7 +119,7 @@ public class Listing_05_20_MovieCountries1 extends GenericTest {
         public void handleEvent(Event event) {
             PdfDocumentEvent docEvent = (PdfDocumentEvent) event;
             PdfPage page = docEvent.getPage();
-            int pageNum = docEvent.getDocument().getPageNum(page);
+            int pageNum = docEvent.getDocument().getPageNumber(page);
             PdfCanvas canvas = new PdfCanvas(page);
             canvas.beginText();
             try {

@@ -57,7 +57,7 @@ public class Listing_07_26_ButtonsActions extends GenericTest {
         PdfAnnotation mailButton = mail.getWidgets().get(0);
         mailButton.setAction(PdfAction.createJavaScript(pdfDoc, "app.execMenuItem('AcroSendMail:SendMail')"));
         // Add the annotations to every page of the document
-        for (int page = 1; page <= pdfDoc.getNumOfPages(); page++) {
+        for (int page = 1; page <= pdfDoc.getNumberOfPages(); page++) {
             pdfDoc.getPage(page).addAnnotation(saveAsButton);
             pdfDoc.getPage(page).addAnnotation(mailButton);
         }

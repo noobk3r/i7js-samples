@@ -50,7 +50,7 @@ public class Listing_07_13_EventAndActions extends GenericTest {
         PdfWriter writer = new PdfWriter(DEST);
         // Create a pdf document
         PdfDocument pdfDoc = new PdfDocument(reader, writer);
-        int n = pdfDoc.getNumOfPages();
+        int n = pdfDoc.getNumberOfPages();
         // Add some javascript
         pdfDoc.getCatalog().setOpenAction(PdfAction.createJavaScript(pdfDoc, readFileToString(RESOURCE)));
         // Create a Chunk with a chained action

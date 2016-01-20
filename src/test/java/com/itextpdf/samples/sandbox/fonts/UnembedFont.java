@@ -35,7 +35,7 @@ public class UnembedFont extends GenericTest {
 
         // / we loop over all objects
         PdfObject obj;
-        for (int i = 1; i < pdfDoc.getNumOfPdfObjects(); i++) {
+        for (int i = 1; i < pdfDoc.getNumberOfPdfObjects(); i++) {
             obj = pdfDoc.getPdfObject(i);
             // we skip all objects that aren't a dictionary
             if (obj == null || !obj.isDictionary())

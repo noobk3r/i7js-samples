@@ -35,7 +35,7 @@ public class ShrinkPdf2 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(
                 new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
 
-        int n = pdfDoc.getNumOfPages();
+        int n = pdfDoc.getNumberOfPages();
         float percentage = 0.8f;
         for (int p = 1; p <= n; p++) {
             float offsetX = (pdfDoc.getPage(p).getPageSize().getWidth() * (1 - percentage)) / 2;

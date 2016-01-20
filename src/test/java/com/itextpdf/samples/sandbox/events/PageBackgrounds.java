@@ -80,7 +80,7 @@ public class PageBackgrounds extends GenericTest {
             PdfDocumentEvent docEvent = (PdfDocumentEvent) event;
             PdfPage page = docEvent.getPage();
 
-            int pagenumber = docEvent.getDocument().getNumOfPages();
+            int pagenumber = docEvent.getDocument().getNumberOfPages();
             if (pagenumber % 2 == 1 && pagenumber != 1)
                 return;
             PdfCanvas canvas = new PdfCanvas(page);

@@ -55,7 +55,7 @@ public class Listing_06_25_DataSheets2 extends Listing_06_24_DataSheets1 {
             pdfDoc.close();
             pdfDoc = new PdfDocument(new PdfReader(new ByteArrayInputStream(baos.toByteArray())));
             // TODO No PdfSmartCopy, no sense in the example
-            pdfDoc.copyPages(1, pdfDoc.getNumOfPages(), pdfDocResult);
+            pdfDoc.copyPages(1, pdfDoc.getNumberOfPages(), pdfDocResult);
         }
 
         // Close the database connection

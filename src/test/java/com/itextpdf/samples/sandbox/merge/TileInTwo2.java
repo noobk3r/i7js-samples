@@ -61,7 +61,7 @@ public class TileInTwo2 extends GenericTest {
         pdfDoc.setDefaultPageSize(new PageSize(mediaBox));
 
         PdfCanvas canvas;
-        int n = srcDoc.getNumOfPages();
+        int n = srcDoc.getNumberOfPages();
         int i = 1;
         while (true) {
             PdfFormXObject page = srcDoc.getPage(i).copyAsFormXObject(pdfDoc);

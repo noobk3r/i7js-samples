@@ -129,7 +129,7 @@ public class Listing_06_08_Stationery extends GenericTest {
                 .setProperty(Property.FONT_COLOR, new DeviceGray(0.75f))
                 .setProperty(Property.FONT_SIZE, 52)
                 .setProperty(Property.FONT, font)
-                .showTextAligned(new Paragraph("FOOBAR FILM FESTIVAL"), 297.5f, 421, pdfDoc.getNumOfPages(),
+                .showTextAligned(new Paragraph("FOOBAR FILM FESTIVAL"), 297.5f, 421, pdfDoc.getNumberOfPages(),
                         Property.TextAlignment.CENTER, Property.VerticalAlignment.MIDDLE, (float)Math.PI / 4);
         doc.close();
     }
@@ -139,7 +139,7 @@ public class Listing_06_08_Stationery extends GenericTest {
         @Override
         public void handleEvent(Event event) {
             PdfDocument pdfDoc = ((PdfDocumentEvent) event).getDocument();
-            int pageNum = pdfDoc.getPageNum(((PdfDocumentEvent) event).getPage());
+            int pageNum = pdfDoc.getPageNumber(((PdfDocumentEvent) event).getPage());
 
             PdfReader reader = null;
             try {

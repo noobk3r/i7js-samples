@@ -38,7 +38,7 @@ public class ShrinkPdf extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(
                 new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
 
-        int n = pdfDoc.getNumOfPages();
+        int n = pdfDoc.getNumberOfPages();
         PdfDictionary page;
         PdfArray crop;
         PdfArray media;

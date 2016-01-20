@@ -59,7 +59,7 @@ public class Listing_13_14_FixBrokenForm extends GenericTest {
 
         PdfDictionary page;
         PdfArray annots;
-        for (int i = 1; i <= pdfDoc.getNumOfPages(); i++) {
+        for (int i = 1; i <= pdfDoc.getNumberOfPages(); i++) {
             page = pdfDoc.getPage(i).getPdfObject();
             annots = page.getAsArray(PdfName.Annots);
             for (int j = 0; j < annots.size(); j++) {

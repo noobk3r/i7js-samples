@@ -44,7 +44,7 @@ public class ScaleDown extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         float scale = 0.5f;
         ScaleDownEventHandler eventHandler = new ScaleDownEventHandler(scale);
-        int n = srcDoc.getNumOfPages();
+        int n = srcDoc.getNumberOfPages();
         pdfDoc.addEventHandler(PdfDocumentEvent.START_PAGE, eventHandler);
 
         for (int p = 1; p <= n; p++) {

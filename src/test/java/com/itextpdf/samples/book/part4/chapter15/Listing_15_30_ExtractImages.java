@@ -30,7 +30,7 @@ public class Listing_15_30_ExtractImages {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(IMAGE_TYPES), new PdfWriter(new ByteArrayOutputStream()));
         EventListener listener = new Listing_15_31_MyImageRenderListener(DEST);
         PdfContentStreamProcessor parser = new PdfContentStreamProcessor(listener);
-        for (int i = 1; i <= pdfDoc.getNumOfPages(); i++) {
+        for (int i = 1; i <= pdfDoc.getNumberOfPages(); i++) {
             parser.processPageContent(pdfDoc.getPage(i));
         }
         pdfDoc.close();

@@ -93,7 +93,7 @@ public class MergeAndAddFont extends GenericTest {
         PdfMerger merger = new PdfMerger(pdfDoc);
         for (int i = 0; i < files.length; i++) {
             PdfDocument addedDoc = new PdfDocument(new PdfReader(new FileInputStream(files[i])));
-            merger.addPages(addedDoc, 1, addedDoc.getNumOfPages());
+            merger.addPages(addedDoc, 1, addedDoc.getNumberOfPages());
             addedDoc.close();
         }
         merger.merge();
@@ -118,7 +118,7 @@ public class MergeAndAddFont extends GenericTest {
                 .getFontProgram()
                 .getFontNames()
                 .getFontName());
-        int n = pdfDoc.getNumOfPdfObjects();
+        int n = pdfDoc.getNumberOfPdfObjects();
         for (int i = 0; i < n; i++) {
             object = pdfDoc.getPdfObject(i);
             if (object == null || !object.isDictionary())

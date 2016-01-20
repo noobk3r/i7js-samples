@@ -47,7 +47,7 @@ public class TransparentWatermark3 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(
                 new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
-        int n = pdfDoc.getNumOfPages();
+        int n = pdfDoc.getNumberOfPages();
 
         PdfFont font = new PdfType1Font((Type1Font) FontFactory.createFont(FontConstants.HELVETICA));
         Paragraph p = new Paragraph("My watermark (text)").setFont(font).setFontSize(30);

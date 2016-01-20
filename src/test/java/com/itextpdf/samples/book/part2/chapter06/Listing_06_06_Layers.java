@@ -1,8 +1,6 @@
 package com.itextpdf.samples.book.part2.chapter06;
 
 import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.basics.font.FontEncoding;
-import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.basics.image.ImageFactory;
 import com.itextpdf.canvas.PdfCanvas;
@@ -74,7 +72,7 @@ public class Listing_06_06_Layers extends GenericTest {
 
         PdfFont font = PdfFont.createFont(FontConstants.ZAPFDINGBATS, true);
         PdfCanvas canvas = new PdfCanvas(resultDoc.addNewPage());
-        for (int i = 1; i <= srcDoc.getNumOfPages(); i++) {
+        for (int i = 1; i <= srcDoc.getNumberOfPages(); i++) {
             PdfFormXObject layer = srcDoc.getPage(i).copyAsFormXObject(resultDoc);
             canvas.addXObject(layer, 1f, 0, 0.4f, 0.4f, 72, 50 * i);
             canvas.beginText();

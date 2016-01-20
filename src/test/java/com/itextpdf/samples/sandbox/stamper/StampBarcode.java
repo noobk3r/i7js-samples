@@ -39,7 +39,7 @@ public class StampBarcode extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(
                 new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
 
-        int n = pdfDoc.getNumOfPages();
+        int n = pdfDoc.getNumberOfPages();
         Rectangle pagesize;
         for (int i = 1; i <= n; i++) {
             PdfCanvas over = new PdfCanvas(pdfDoc.getPage(i));

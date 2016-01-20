@@ -44,7 +44,7 @@ public class ExtractStreams {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)));
         PdfObject obj;
         List<Integer> streamLengths = new ArrayList<>();
-        for (int i = 1; i <= pdfDoc.getNumOfPdfObjects(); i++) {
+        for (int i = 1; i <= pdfDoc.getNumberOfPdfObjects(); i++) {
             obj = pdfDoc.getPdfObject(i);
             if (obj != null && obj.isStream()) {
                 byte[] b;

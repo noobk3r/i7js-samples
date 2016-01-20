@@ -36,7 +36,7 @@ public class Listing_13_10_RemoveLaunchActions extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
         PdfObject object;
         PdfDictionary action;
-        for (int i = 1; i < pdfDoc.getNumOfPdfObjects(); i++) {
+        for (int i = 1; i < pdfDoc.getNumberOfPdfObjects(); i++) {
             object = pdfDoc.getPdfObject(i);
             if (object instanceof PdfDictionary) {
                 action = ((PdfDictionary) object).getAsDictionary(PdfName.A);

@@ -67,7 +67,7 @@ public class Listing_16_05_KubrickDvds extends GenericTest {
         PdfDictionary annot;
         PdfDictionary fs;
         PdfDictionary refs;
-        for (int i = 1; i <= pdfDoc.getNumOfPages(); i++) {
+        for (int i = 1; i <= pdfDoc.getNumberOfPages(); i++) {
             array = pdfDoc.getPage(i).getPdfObject().getAsArray(PdfName.Annots);
             if (array == null) continue;
             for (int j = 0; j < array.size(); j++) {

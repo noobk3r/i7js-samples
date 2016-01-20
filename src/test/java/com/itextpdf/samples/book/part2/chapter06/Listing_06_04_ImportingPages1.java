@@ -43,7 +43,7 @@ public class Listing_06_04_ImportingPages1 extends GenericTest {
         PdfReader reader = new PdfReader(MOVIE_TEMPLATES);
         PdfDocument srcDoc = new PdfDocument(reader);
 
-        for (int i = 1; i <= srcDoc.getNumOfPages(); i++) {
+        for (int i = 1; i <= srcDoc.getNumberOfPages(); i++) {
             PdfFormXObject header = srcDoc.getPage(i).copyAsFormXObject(resultDoc);
             Cell cell = new Cell().add(new Image(header).setAutoScale(true));
             table.addCell(cell);

@@ -20,7 +20,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
@@ -48,7 +47,7 @@ public class Listing_06_05_ImportingPages2 extends GenericTest {
         PdfReader reader = new PdfReader(MOVIE_TEMPLATES);
         PdfDocument srcDoc = new PdfDocument(reader);
 
-        for (int i = 1; i <= srcDoc.getNumOfPages(); i++) {
+        for (int i = 1; i <= srcDoc.getNumberOfPages(); i++) {
             PdfPage curPage = srcDoc.getPage(i);
             PdfFormXObject header = curPage.copyAsFormXObject(resultDoc);
             Cell cell = new Cell()

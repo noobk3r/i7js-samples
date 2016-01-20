@@ -47,7 +47,7 @@ public class Listing_16_03_ListUsedFonts extends GenericTest {
         Set<String> set = new TreeSet<>();
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src));
         PdfDictionary resources;
-        for (int k = 1; k <= pdfDoc.getNumOfPages(); ++k) {
+        for (int k = 1; k <= pdfDoc.getNumberOfPages(); ++k) {
             resources = pdfDoc.getPage(k).getPdfObject().getAsDictionary(PdfName.Resources);
             processResource(set, resources);
         }

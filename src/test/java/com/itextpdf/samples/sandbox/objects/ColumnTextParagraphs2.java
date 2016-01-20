@@ -56,7 +56,7 @@ public class ColumnTextParagraphs2 extends GenericTest {
                 if (nextAreaNumber % 2 == 0) {
                     currentPageNumber = super.getNextArea(overflowResult).getPageNumber();
                 } else {
-                    new PdfCanvas(document.getPdfDocument(), document.getPdfDocument().getNumOfPages())
+                    new PdfCanvas(document.getPdfDocument(), document.getPdfDocument().getNumberOfPages())
                             .moveTo(297.5f, 36)
                             .lineTo(297.5f, 806)
                             .stroke();

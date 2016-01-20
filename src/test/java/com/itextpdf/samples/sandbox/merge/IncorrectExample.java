@@ -39,7 +39,7 @@ public class IncorrectExample extends GenericTest {
         Rectangle pageSize;
         PdfCanvas canvas;
         PdfFormXObject page;
-        for (int i = 1; i <= srcDoc.getNumOfPages(); i++) {
+        for (int i = 1; i <= srcDoc.getNumberOfPages(); i++) {
             pageSize = getPageSize(srcDoc, i);
             pdfDoc.setDefaultPageSize(new PageSize(pageSize));
             canvas = new PdfCanvas(pdfDoc.addNewPage());

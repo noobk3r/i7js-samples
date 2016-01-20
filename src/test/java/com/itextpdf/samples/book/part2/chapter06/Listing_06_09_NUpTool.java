@@ -69,7 +69,7 @@ public class Listing_06_09_NUpTool extends GenericTest {
 
         Rectangle currentSize;
         float offsetX, offsetY, factor;
-        int total = srcDoc.getNumOfPages();
+        int total = srcDoc.getNumberOfPages();
         for (int i = 1; i <= total; i++) {
             currentSize = srcDoc.getPage(i).getPageSize();
             factor = Math.min(
@@ -97,7 +97,7 @@ public class Listing_06_09_NUpTool extends GenericTest {
         PdfDocument tempDoc;
         for (String name : names) {
             tempDoc = new PdfDocument(new PdfReader(name));
-            tempDoc.copyPages(1, tempDoc.getNumOfPages(), pdfDoc);
+            tempDoc.copyPages(1, tempDoc.getNumberOfPages(), pdfDoc);
             tempDoc.close();
         }
         pdfDoc.close();

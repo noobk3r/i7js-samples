@@ -32,7 +32,7 @@ public class StampPageXofY extends GenericTest {
                 new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
 
-        int n = pdfDoc.getNumOfPages();
+        int n = pdfDoc.getNumberOfPages();
         for (int i = 1; i <= n; i++) {
             doc.showTextAligned(new Paragraph(String.format("page %s of %s", i, n)),
                     559, 806, i, Property.TextAlignment.RIGHT, Property.VerticalAlignment.TOP, 0);

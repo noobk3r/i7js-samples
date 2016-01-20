@@ -71,7 +71,7 @@ public class Listing_13_11_PageLabelExample extends GenericTest {
         int[] start = new int[3];
         pdfDoc.addNewPage();
         for (int i = 0; i < 3; i++) {
-            start[i] = pdfDoc.getPageNum(pdfDoc.getLastPage());
+            start[i] = pdfDoc.getPageNumber(pdfDoc.getLastPage());
             addParagraphs(doc, connection, SQL[i], FIELD[i]);
             doc.add(new AreaBreak());
         }

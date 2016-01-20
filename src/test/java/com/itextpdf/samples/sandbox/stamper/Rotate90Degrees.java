@@ -35,7 +35,7 @@ public class Rotate90Degrees extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(
                 new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
 
-        int n = pdfDoc.getNumOfPages();
+        int n = pdfDoc.getNumberOfPages();
         PdfPage page;
         PdfNumber rotate;
         for (int p = 1; p <= n; p++) {

@@ -78,7 +78,7 @@ public class AddExtraPage extends GenericTest {
         public void handleEvent(Event event) {
             PdfDocumentEvent docEvent = (PdfDocumentEvent) event;
             PdfDocument pdfDoc = docEvent.getDocument();
-            if (1 != pdfDoc.getPageNum(docEvent.getPage())) {
+            if (1 != pdfDoc.getPageNumber(docEvent.getPage())) {
 
                 PdfCanvas canvas = new PdfCanvas(docEvent.getPage());
                 canvas.addXObject(xObject, 0, 0);

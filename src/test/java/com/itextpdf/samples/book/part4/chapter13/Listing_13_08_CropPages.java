@@ -33,7 +33,7 @@ public class Listing_13_08_CropPages extends GenericTest {
 
     public void changePdf(String src, String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
-        int n = pdfDoc.getNumOfPages();
+        int n = pdfDoc.getNumberOfPages();
         PdfDictionary pageDict;
         PdfArray rect = new PdfArray(new int[]{55, 76, 560, 816});
         for (int i = 1; i <= n; i++) {
