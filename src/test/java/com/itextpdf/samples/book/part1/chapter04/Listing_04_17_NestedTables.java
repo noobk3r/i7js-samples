@@ -20,6 +20,7 @@ import com.itextpdf.model.element.Text;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.html.WebColors;
+
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
@@ -35,6 +36,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.experimental.categories.Category;
 
@@ -44,7 +46,7 @@ public class Listing_04_17_NestedTables extends GenericTest {
             "./target/test/resources/book/part1/chapter04/Listing_04_17_NestedTables.pdf";
     public static final String RESOURCE = "./src/test/resources/book/part1/chapter02/posters/%s.jpg";
 
-    public HashMap<String, com.itextpdf.basics.image.Image> images = new HashMap<String, com.itextpdf.basics.image.Image>();
+    public Map<String, com.itextpdf.basics.image.Image> images = new HashMap<>();
 
     protected PdfFont bold;
 

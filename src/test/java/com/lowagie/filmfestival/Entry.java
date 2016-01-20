@@ -23,7 +23,7 @@ public class Entry {
     /** The category. */
     protected Category category;
     /** The screenings. */
-    protected List<Screening> screenings = new ArrayList<Screening>();
+    protected List<Screening> screenings = new ArrayList<>();
     
     /**
      * Adds a screening to this entry.

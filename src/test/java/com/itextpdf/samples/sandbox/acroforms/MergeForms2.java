@@ -56,7 +56,7 @@ public class MergeForms2 extends GenericTest {
         PdfWriter writer = new PdfWriter(baos);
         PdfDocument document = new PdfDocument(new PdfReader(new FileInputStream(src)), writer);
         PdfAcroForm form = PdfAcroForm.getAcroForm(document, true);
-        Set<String> keys = new HashSet<String>(form.getFormFields().keySet());
+        Set<String> keys = new HashSet<>(form.getFormFields().keySet());
         for (String key : keys) {
             form.getField(key).setFieldName(String.format("%s_%d", key, i));
         }

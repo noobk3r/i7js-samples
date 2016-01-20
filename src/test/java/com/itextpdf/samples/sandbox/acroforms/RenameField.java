@@ -60,7 +60,7 @@ public class RenameField {
 
         pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(DEST)));
         Map<String, PdfFormField> fields = PdfAcroForm.getAcroForm(pdfDoc, true).getFormFields();
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         for (String name : fields.keySet()) {
             System.out.println(name);
             result.add(name);

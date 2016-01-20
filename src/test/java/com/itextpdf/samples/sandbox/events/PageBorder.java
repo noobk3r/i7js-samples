@@ -36,7 +36,7 @@ public class PageBorder extends GenericTest {
     }
 
     public static List<Integer> getFactors(int n) {
-        List<Integer> factors = new ArrayList<Integer>();
+        List<Integer> factors = new ArrayList<>();
         for (int i = 2; i <= n; i++) {
             while (n % i == 0) {
                 factors.add(i);

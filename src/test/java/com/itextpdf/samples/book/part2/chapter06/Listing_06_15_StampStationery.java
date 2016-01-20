@@ -14,6 +14,7 @@ import com.itextpdf.model.Document;
 import com.itextpdf.model.element.AreaBreak;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
@@ -99,7 +100,7 @@ public class Listing_06_15_StampStationery extends GenericTest {
         while (rs.next()) {
             doc.add(new Paragraph(rs.getString("country")).setFont(bold));
             doc.add(new Paragraph("\n"));
-            Set<Movie> movies = new TreeSet<Movie>(new MovieComparator(MovieComparator.BY_YEAR));
+            Set<Movie> movies = new TreeSet<>(new MovieComparator(MovieComparator.BY_YEAR));
             movies.addAll(PojoFactory.getMovies(connection, rs.getString("id")));
             for (Movie movie : movies) {
                 doc.add(new Paragraph(movie.getMovieTitle()).setFont(bold));

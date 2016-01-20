@@ -6,7 +6,6 @@ package com.itextpdf.samples.sandbox.stamper;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.FontFactory;
-import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.core.font.PdfType1Font;
@@ -119,7 +118,7 @@ public class AddOCG extends GenericTest {
         radiogroup.addChild(radio1);
         radiogroup.addChild(radio2);
         radiogroup.addChild(radio3);
-        ArrayList<PdfLayer> options = new ArrayList<PdfLayer>();
+        List<PdfLayer> options = new ArrayList<>();
         options.add(radio1);
         options.add(radio2);
         options.add(radio3);

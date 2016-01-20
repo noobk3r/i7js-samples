@@ -44,7 +44,7 @@ public class Listing_16_03_ListUsedFonts extends GenericTest {
      * @throws IOException
      */
     public Set<String> listFonts(String src) throws IOException {
-        Set<String> set = new TreeSet<String>();
+        Set<String> set = new TreeSet<>();
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src));
         PdfDictionary resources;
         for (int k = 1; k <= pdfDoc.getNumOfPages(); ++k) {

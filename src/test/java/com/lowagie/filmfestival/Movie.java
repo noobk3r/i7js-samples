@@ -27,9 +27,9 @@ public class Movie implements Comparable<Movie> {
     /** The duration of the movie in minutes. */
     protected int duration;
     /** The list of directors. */
-    protected List<Director> directors = new ArrayList<Director>();
+    protected List<Director> directors = new ArrayList<>();
     /** The list of countries. */
-    protected List<Country> countries= new ArrayList<Country>();
+    protected List<Country> countries= new ArrayList<>();
     /** The filmfestival entry info. */
     protected Entry entry = null;
     

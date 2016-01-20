@@ -22,6 +22,7 @@ import com.itextpdf.model.element.ListItem;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.samples.GenericTest;
+
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
@@ -59,7 +60,7 @@ public class Listing_16_08_KubrickBox extends GenericTest {
         Link link;
         ListItem item;
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
-        Set<Movie> box = new TreeSet<Movie>();
+        Set<Movie> box = new TreeSet<>();
         box.addAll(PojoFactory.getMovies(connection, 1));
         box.addAll(PojoFactory.getMovies(connection, 4));
         connection.close();

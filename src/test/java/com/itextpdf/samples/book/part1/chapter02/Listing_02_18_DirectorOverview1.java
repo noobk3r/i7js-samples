@@ -9,6 +9,7 @@ import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Text;
 import com.itextpdf.samples.GenericTest;
+
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.*;
@@ -18,6 +19,7 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Set;
 import java.util.TreeSet;
 
 import org.junit.Ignore;
@@ -79,7 +81,7 @@ public class Listing_02_18_DirectorOverview1 extends GenericTest {
                 doc.add(p);
 
             // Get the movies of the directory, ordered by year
-            TreeSet<Movie> movies = new TreeSet<Movie>(
+            Set<Movie> movies = new TreeSet<>(
                     new MovieComparator(MovieComparator.BY_YEAR));
             movies.addAll(PojoFactory.getMovies(connection, rs.getInt("id")));
             // loop over the movies

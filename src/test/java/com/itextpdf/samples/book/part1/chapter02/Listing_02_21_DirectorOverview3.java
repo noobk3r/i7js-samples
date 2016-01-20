@@ -9,6 +9,7 @@ import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Text;
 import com.itextpdf.samples.GenericTest;
+
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.*;
@@ -18,6 +19,7 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Set;
 import java.util.TreeSet;
 
 import org.junit.Ignore;
@@ -83,8 +85,8 @@ public class Listing_02_21_DirectorOverview3 extends GenericTest {
             // adds the paragraph to the document
             doc.add(p);
             // gets all the movies of the current director
-            TreeSet<Movie> movies
-                    = new TreeSet<Movie>(new MovieComparator(MovieComparator.BY_YEAR));
+            Set<Movie> movies
+                    = new TreeSet<>(new MovieComparator(MovieComparator.BY_YEAR));
             movies.addAll(PojoFactory.getMovies(connection, rs.getInt("id")));
             // loop over the movies
             for (Movie movie : movies) {

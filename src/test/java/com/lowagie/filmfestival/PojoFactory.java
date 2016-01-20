@@ -175,7 +175,7 @@ public class PojoFactory {
     public static List<Screening> getScreenings(
         DatabaseConnection connection, Date day)
         throws SQLException, UnsupportedEncodingException {
-        List<Screening> list = new ArrayList<Screening>();
+        List<Screening> list = new ArrayList<>();
         PreparedStatement stm =
             connection.createPreparedStatement(SCREENINGS);
         stm.setDate(1, day);
@@ -218,7 +218,7 @@ public class PojoFactory {
     public static List<Screening> getScreenings(
         DatabaseConnection connection, int film_id)
         throws SQLException, UnsupportedEncodingException {
-        List<Screening> list = new ArrayList<Screening>();
+        List<Screening> list = new ArrayList<>();
         PreparedStatement stm =
             connection.createPreparedStatement(MOVIESCREENINGS);
         stm.setInt(1, film_id);
@@ -242,7 +242,7 @@ public class PojoFactory {
      */
     public static List<Screening> getPressPreviews(DatabaseConnection connection)
         throws SQLException, UnsupportedEncodingException {
-        List<Screening> list = new ArrayList<Screening>();
+        List<Screening> list = new ArrayList<>();
         Statement stm = connection.createStatement();
         ResultSet rs = stm.executeQuery(PRESS);
         Screening screening;
@@ -279,7 +279,7 @@ public class PojoFactory {
      */
     public static List<Movie> getMovies(DatabaseConnection connection)
         throws SQLException, UnsupportedEncodingException {
-        List<Movie> list = new ArrayList<Movie>();
+        List<Movie> list = new ArrayList<>();
         Statement stm = connection.createStatement();
         ResultSet rs = stm.executeQuery(MOVIES);
         Movie movie;
@@ -316,7 +316,7 @@ public class PojoFactory {
     public static List<Director> getDirectors(
         DatabaseConnection connection, int movie_id)
         throws SQLException, UnsupportedEncodingException {
-        List<Director> list = new ArrayList<Director>();
+        List<Director> list = new ArrayList<>();
         PreparedStatement directors =
             connection.createPreparedStatement(DIRECTORS);
         directors.setInt(1, movie_id);
@@ -338,7 +338,7 @@ public class PojoFactory {
     public static List<Country> getCountries(
         DatabaseConnection connection, int movie_id)
         throws SQLException, UnsupportedEncodingException {
-        List<Country> list = new ArrayList<Country>();
+        List<Country> list = new ArrayList<>();
         PreparedStatement countries =
             connection.createPreparedStatement(COUNTRIES);
         countries.setInt(1, movie_id);
@@ -360,7 +360,7 @@ public class PojoFactory {
     public static List<Movie> getMovies(
         DatabaseConnection connection, int director_id)
         throws SQLException, UnsupportedEncodingException {
-        List<Movie> list = new ArrayList<Movie>();
+        List<Movie> list = new ArrayList<>();
         PreparedStatement movies =
             connection.createPreparedStatement(MOVIEDIRECTORS);
         movies.setInt(1, director_id);
@@ -387,7 +387,7 @@ public class PojoFactory {
     public static List<Movie> getMovies(
        DatabaseConnection connection, String country_id)
         throws SQLException, UnsupportedEncodingException {
-        List<Movie> list = new ArrayList<Movie>();
+        List<Movie> list = new ArrayList<>();
         PreparedStatement movies =
             connection.createPreparedStatement(MOVIECOUNTRIES);
         movies.setString(1, country_id);
@@ -409,7 +409,7 @@ public class PojoFactory {
      */
     public static List<Date> getDays(DatabaseConnection connection)
         throws SQLException {
-        List<Date> list = new ArrayList<Date>();
+        List<Date> list = new ArrayList<>();
         Statement stm = connection.createStatement();
         ResultSet rs = stm.executeQuery(DAYS);
         while (rs.next()) {
@@ -426,7 +426,7 @@ public class PojoFactory {
      */
     public static List<String> getLocations(DatabaseConnection connection)
         throws SQLException {
-        List<String> list = new ArrayList<String>();
+        List<String> list = new ArrayList<>();
         Statement stm = connection.createStatement();
         ResultSet rs =
             stm.executeQuery(LOCATIONS);

@@ -18,6 +18,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.experimental.categories.Category;
 
@@ -37,9 +38,9 @@ public class ChangeInfoDictionary extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(
                 new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
         PdfDocumentInfo info = pdfDoc.getInfo();
-        HashMap<String, String> newInfo = new HashMap<String, String>();
+        Map<String, String> newInfo = new HashMap<>();
         newInfo.put("Special Character: \u00e4", "\u00e4");
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         buf.append((char) 0xc3);
         buf.append((char) 0xa4);
         newInfo.put(buf.toString(), "\u00e4");

@@ -12,6 +12,7 @@ import com.itextpdf.model.element.ListItem;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Text;
 import com.itextpdf.samples.GenericTest;
+
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.*;
@@ -21,6 +22,7 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Set;
 import java.util.TreeSet;
 
 import org.junit.Ignore;
@@ -76,7 +78,7 @@ public class Listing_02_20_DirectorOverview2 extends GenericTest {
             list.setMarginLeft(36);
             list.setMarginRight(36);
             // Gets the movies of the current director
-            TreeSet<Movie> movies = new TreeSet<Movie>(new MovieComparator(MovieComparator.BY_YEAR));
+            Set<Movie> movies = new TreeSet<>(new MovieComparator(MovieComparator.BY_YEAR));
             movies.addAll(PojoFactory.getMovies(connection, rs.getInt("id")));
             ListItem movieitem;
             // loops over the movies

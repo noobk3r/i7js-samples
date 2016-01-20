@@ -19,6 +19,7 @@ import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Text;
 import com.itextpdf.model.renderer.ListItemRenderer;
 import com.itextpdf.samples.GenericTest;
+
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
@@ -100,7 +101,7 @@ public class Listing_16_05_KubrickDvds extends GenericTest {
         Document doc = new Document(pdfDoc);
         doc.add(new Paragraph("This is a list of Kubrick movies available in DVD stores."));
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
-        Set<Movie> movies = new TreeSet<Movie>();
+        Set<Movie> movies = new TreeSet<>();
         movies.addAll(PojoFactory.getMovies(connection, 1));
         movies.addAll(PojoFactory.getMovies(connection, 4));
         ListItem item;

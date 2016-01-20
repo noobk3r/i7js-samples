@@ -47,11 +47,11 @@ public class ArrayToTable extends GenericTest {
     }
 
     public List<List<String>> getData() {
-        List<List<String>> data = new ArrayList<List<String>>();
+        List<List<String>> data = new ArrayList<>();
         String[] tableTitleList = {" Title", " (Re)set", " Obs", " Mean", " Std.Dev", " Min", " Max", "Unit"};
         data.add(Arrays.asList(tableTitleList));
         for (int i = 0; i < 10; ) {
-            List<String> dataLine = new ArrayList<String>();
+            List<String> dataLine = new ArrayList<>();
             i++;
             for (int j = 0; j < tableTitleList.length; j++) {
                 dataLine.add(tableTitleList[j] + " " + i);

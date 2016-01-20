@@ -19,7 +19,7 @@ import com.lowagie.filmfestival.PojoToElementFactory;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
 
 import org.junit.experimental.categories.Category;
@@ -98,7 +98,7 @@ public class Listing_07_14_CreateOutlineTree extends GenericTest {
     public void createXml(String src, String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src));
 
-        HashMap<Object, PdfObject> map = pdfDoc.getCatalog().getNamedDestinations();
+        Map<Object, PdfObject> map = pdfDoc.getCatalog().getNamedDestinations();
         // TODO No exportToXML
         // SimpleNamedDestination.exportToXML(map, new FileOutputStream(dest),
         //        "ISO8859-1", true);

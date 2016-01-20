@@ -10,6 +10,7 @@ package com.itextpdf.samples.sandbox.annotations;
 import com.itextpdf.core.pdf.*;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
@@ -33,7 +34,7 @@ public class RenameDestinations extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)),
                 new PdfWriter(new FileOutputStream(DEST)));
-        Map<String, PdfString> renamed = new HashMap<String, PdfString>();
+        Map<String, PdfString> renamed = new HashMap<>();
         PdfDictionary catalog = pdfDoc.getCatalog().getPdfObject();
         PdfDictionary names = catalog.getAsDictionary(PdfName.Names);
         PdfDictionary dests = names.getAsDictionary(PdfName.Dests);

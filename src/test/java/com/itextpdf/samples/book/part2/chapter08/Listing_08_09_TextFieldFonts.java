@@ -14,6 +14,7 @@ import com.itextpdf.samples.GenericTest;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
@@ -89,7 +90,7 @@ public class Listing_08_09_TextFieldFonts extends GenericTest {
             PdfFont unicode = PdfFont.createFont("c:/windows/fonts/arialuni.ttf", PdfEncodings.IDENTITY_H, true);
             // TODO NO setExtensionFont & setSubstitutionFont
             text.setFont(unicode);
-            ArrayList<PdfFont> list = new ArrayList<PdfFont>();
+            List<PdfFont> list = new ArrayList<>();
             list.add(unicode);
             // text.setSubstitutionFonts(list);
         }
