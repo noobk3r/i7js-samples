@@ -1,7 +1,8 @@
 package com.itextpdf.samples.book.part3.chapter11;
 
+import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.samples.GenericTest;
-import com.itextpdf.text.pdf.BaseFont;
+
 
 import org.junit.Ignore;
 
@@ -11,10 +12,10 @@ public class Listing_11_21_Peace extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part3/chapter11/Listing_11_21_Peace.pdf";
     /** Paths to and encodings of fonts we're going to use in this example */
     public static String[][] FONTS = {
-            {"c:/windows/fonts/arialuni.ttf", BaseFont.IDENTITY_H},
-            {"resources/fonts/abserif4_5.ttf", BaseFont.IDENTITY_H},
-            {"resources/fonts/damase.ttf", BaseFont.IDENTITY_H},
-            {"resources/fonts/fsex2p00_public.ttf", BaseFont.IDENTITY_H}
+            {"c:/windows/fonts/arialuni.ttf", PdfEncodings.IDENTITY_H},
+            {"resources/fonts/abserif4_5.ttf", PdfEncodings.IDENTITY_H},
+            {"resources/fonts/damase.ttf", PdfEncodings.IDENTITY_H},
+            {"resources/fonts/fsex2p00_public.ttf", PdfEncodings.IDENTITY_H}
     };
     private static final String RESOURCE = "src/test/resources/xml/peace.xml";
 

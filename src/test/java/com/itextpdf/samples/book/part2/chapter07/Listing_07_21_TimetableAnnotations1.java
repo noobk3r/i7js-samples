@@ -1,6 +1,8 @@
 package com.itextpdf.samples.book.part2.chapter07;
 
 import com.itextpdf.basics.geom.Rectangle;
+import com.itextpdf.core.color.DeviceRgb;
+import com.itextpdf.core.color.WebColors;
 import com.itextpdf.core.pdf.PdfArray;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfName;
@@ -12,8 +14,7 @@ import com.itextpdf.core.pdf.annot.PdfAnnotation;
 import com.itextpdf.core.pdf.annot.PdfTextAnnotation;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.html.WebColors;
+
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
@@ -28,6 +29,7 @@ import java.util.TimeZone;
 
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
+import org.w3c.dom.css.RGBColor;
 
 
 @Category(SampleTest.class)
@@ -100,14 +102,9 @@ public class Listing_07_21_TimetableAnnotations1 extends GenericTest {
                 // for the right image
                 annotation.setName(new PdfString("Help"));
                 annotation.put(PdfName.Name, new PdfString("Help"));
-                // TODO Get rid of itext5 code
-                BaseColor baseColor = WebColors.getRGBColor(
+                DeviceRgb baseColor = WebColors.getRGBColor(
                         "#" + movie.getEntry().getCategory().getColor());
-                PdfArray array = new PdfArray();
-                array.add(new PdfNumber((double) (baseColor.getRed() & 255) / 255.0D));
-                array.add(new PdfNumber((double) (baseColor.getGreen() & 255) / 255.0D));
-                array.add(new PdfNumber((double) (baseColor.getBlue() & 255) / 255.0D));
-                annotation.setColor(array);
+                annotation.setColor(baseColor);
                 pdfDoc.getPage(page).addAnnotation(annotation);
             }
             page++;

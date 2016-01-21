@@ -9,12 +9,12 @@ import com.itextpdf.core.pdf.PdfStream;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.filespec.PdfFileSpec;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.core.xmp.impl.Utils;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.List;
 import com.itextpdf.model.element.ListItem;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
-import com.itextpdf.text.xml.XMLUtil;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
@@ -68,8 +68,7 @@ public class Listing_16_06_KubrickDocumentary extends GenericTest {
         ListItem item;
         for (Movie movie : movies) {
             out.println("<movie>");
-            // TODO Get rid of itext5
-            out.println(String.format("<title>%s</title>", XMLUtil.escapeXML(movie.getMovieTitle(), true)));
+            out.println(String.format("<title>%s</title>", Utils.escapeXML(movie.getMovieTitle(), true,true)));
             out.println(String.format("<year>%s</year>", movie.getYear()));
             out.println(String.format("<duration>%s</duration>", movie.getDuration()));
             out.println("</movie>");

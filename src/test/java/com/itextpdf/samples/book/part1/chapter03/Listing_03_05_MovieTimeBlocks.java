@@ -4,12 +4,11 @@ import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.core.color.DeviceRgb;
+import com.itextpdf.core.color.WebColors;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfPage;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.html.WebColors;
 
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
@@ -89,11 +88,11 @@ public class Listing_03_05_MovieTimeBlocks extends Listing_03_03_MovieTimeTable 
     protected void drawBlock(Screening screening, PdfCanvas under, PdfCanvas over) {
         under.saveState();
 
-        // TODO get rid of iText5 code
-        BaseColor color = WebColors.getRGBColor(
+
+        DeviceRgb color = WebColors.getRGBColor(
                 "#" + screening.getMovie().getEntry().getCategory().getColor());
 
-        under.setFillColor(new DeviceRgb(color.getRed(), color.getGreen(), color.getBlue()));
+        under.setFillColor(color);
         Rectangle rect = getPosition(screening);
         under.rectangle(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
         under.fill();

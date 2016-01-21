@@ -1,25 +1,28 @@
 package com.itextpdf.samples;
 
+import ch.qos.logback.classic.Logger;
 import com.itextpdf.core.testutils.CompareTool;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
-import com.itextpdf.text.log.Logger;
-import com.itextpdf.text.log.LoggerFactory;
+
 
 import javax.management.OperationsException;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+import org.slf4j.LoggerFactory;
+
 
 @Category(SampleTest.class)
 public class GenericTest {
 
     /** The logger class */
-    private final static Logger LOGGER = LoggerFactory.getLogger(GenericTest.class.getName());
+    private final static Logger LOGGER = (Logger) LoggerFactory.getLogger(GenericTest.class.getName());
 
     protected boolean compareRenders = false;
 

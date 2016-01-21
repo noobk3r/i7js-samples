@@ -8,6 +8,7 @@ import com.itextpdf.basics.io.ByteArrayOutputStream;
 import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.core.color.DeviceGray;
 import com.itextpdf.core.color.DeviceRgb;
+import com.itextpdf.core.color.WebColors;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfArray;
 import com.itextpdf.core.pdf.PdfDocument;
@@ -26,8 +27,6 @@ import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Text;
 import com.itextpdf.samples.GenericTest;
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.html.WebColors;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Director;
@@ -133,14 +132,13 @@ public class Listing_08_16_MovieAds extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(baos));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         // change the background color of the poster and add a new icon
-        // TODO Get rid of itext5 code
-        BaseColor color = WebColors.getRGBColor("#" + movie.getEntry().getCategory().getColor());
+        DeviceRgb color = WebColors.getRGBColor("#" + movie.getEntry().getCategory().getColor());
         PdfButtonFormField bt = (PdfButtonFormField) form.getField(POSTER);
         // TODO No setImage & setLayout & setProportionalIcon in PdfFormField
         // bt.setLayout(PushbuttonField.LAYOUT_ICON_ONLY);
         // bt.setProportionalIcon(true);
         // bt.setImage(Image.getInstance(String.format(IMAGE, movie.getImdb())));
-        bt.setBackgroundColor(new DeviceRgb(color.getRed(), color.getGreen(), color.getBlue()));
+        bt.setBackgroundColor(color);
         form.removeField(POSTER);
         form.addField(bt);
         // write the text using the appropriate font size
@@ -155,7 +153,7 @@ public class Listing_08_16_MovieAds extends GenericTest {
         }
         addParagraph(pdfDoc, createMovieParagraph(pdfDoc, movie, size), canvas, rect);
         // fill out the year and change the background color
-        form.getField(YEAR).setBackgroundColor(new DeviceRgb(color.getRed(), color.getGreen(), color.getBlue()));
+        form.getField(YEAR).setBackgroundColor(color);
         form.getField(YEAR).setValue(String.valueOf(movie.getYear()));
         // flatten the form and close the stamper
         pdfDoc.close();

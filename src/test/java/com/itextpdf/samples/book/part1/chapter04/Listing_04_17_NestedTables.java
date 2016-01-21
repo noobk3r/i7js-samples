@@ -4,6 +4,7 @@ import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.image.ImageFactory;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.color.DeviceRgb;
+import com.itextpdf.core.color.WebColors;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -18,8 +19,7 @@ import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.element.Text;
 import com.itextpdf.samples.GenericTest;
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.html.WebColors;
+
 
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
@@ -105,10 +105,10 @@ public class Listing_04_17_NestedTables extends GenericTest {
         // nesting is done with addElement() in this example
         cell.add(fullTitle(screening));
         cell.setBorder(Border.NO_BORDER);
-        // TODO Get rid of itext5 code
-        BaseColor color = WebColors.getRGBColor(
+
+        DeviceRgb color = WebColors.getRGBColor(
                 "#" + screening.getMovie().getEntry().getCategory().getColor());
-        cell.setBackgroundColor(new DeviceRgb(color.getRed(), color.getGreen(), color.getBlue()));
+        cell.setBackgroundColor(color);
         table.addCell(cell);
         // empty cell
         cell = new Cell();

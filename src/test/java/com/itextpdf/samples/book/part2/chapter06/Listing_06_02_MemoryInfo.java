@@ -1,10 +1,11 @@
 package com.itextpdf.samples.book.part2.chapter06;
 
+import com.itextpdf.basics.io.RandomAccessFileOrArray;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
-import com.itextpdf.text.pdf.RandomAccessFileOrArray;
+
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -72,10 +73,10 @@ public class Listing_06_02_MemoryInfo extends GenericTest {
      */
     public static void partialRead(PrintWriter writer, String fileName) throws IOException {
         long before = getMemoryUse();
-        // TODO Get rid of itext5 code
-        com.itextpdf.text.pdf.PdfReader reader = new com.itextpdf.text.pdf.PdfReader(
-                new RandomAccessFileOrArray(fileName), null);
-        reader.getNumberOfPages();
+        PdfReader reader = new PdfReader(fileName,null);
+
+        PdfDocument pdfDocument = new PdfDocument(reader);
+        pdfDocument.getNumberOfPages();
         writer.println(String.format("Memory used by partial read: %d",
                 getMemoryUse() - before));
         writer.flush();

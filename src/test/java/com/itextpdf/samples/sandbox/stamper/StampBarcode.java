@@ -15,7 +15,7 @@ import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.xobject.PdfFormXObject;
 import com.itextpdf.core.testutils.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
-import com.itextpdf.text.pdf.Barcode;
+
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -47,7 +47,7 @@ public class StampBarcode extends GenericTest {
             float x = pagesize.getLeft() + 10;
             float y = pagesize.getTop() - 50;
             BarcodeEAN barcode = new BarcodeEAN(pdfDoc);
-            barcode.setCodeType(Barcode.EAN8);
+            barcode.setCodeType(BarcodeEAN.EAN8);
             String s = String.valueOf(i);
             s = "00000000".substring(s.length()) + s;
             barcode.setCode(s);
