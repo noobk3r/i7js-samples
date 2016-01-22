@@ -25,6 +25,7 @@ import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
+import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.File;
@@ -79,7 +80,7 @@ public class ComboBoxItems extends GenericTest {
         }
 
         @Override
-        public void draw(PdfDocument document, PdfCanvas canvas) {
+        public void draw(DrawContext drawContext) {
             PdfFont font = null;
             try {
                 font = new PdfType1Font((Type1Font) FontFactory.createFont(FontConstants.HELVETICA));
@@ -93,9 +94,9 @@ public class ComboBoxItems extends GenericTest {
                 optionsArray[i][0] = exports[i];
                 optionsArray[i][1] = options[i];
             }
-            PdfChoiceFormField choice = PdfFormField.createComboBox(document, getOccupiedAreaBBox(),
+            PdfChoiceFormField choice = PdfFormField.createComboBox(drawContext.getDocument(), getOccupiedAreaBBox(),
                     optionsArray, name, name);
-            PdfAcroForm form = PdfAcroForm.getAcroForm(document, true);
+            PdfAcroForm form = PdfAcroForm.getAcroForm(drawContext.getDocument(), true);
             choice.setFont(font);
             form.addField(choice);
             // TODO Implement BorderStyles constant

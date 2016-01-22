@@ -21,6 +21,7 @@ import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.element.Text;
 import com.itextpdf.model.renderer.CellRenderer;
+import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.model.renderer.TableRenderer;
 import com.itextpdf.samples.book.part1.chapter04.Listing_04_21_PdfCalendar;
 
@@ -216,10 +217,10 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
         }
 
         @Override
-        public void drawBackground(PdfDocument document, PdfCanvas canvas) {
+        public void drawBackground(DrawContext drawContext) {
 //            super.drawBackground(document, canvas);
             Rectangle rect = getOccupiedAreaBBox();
-            canvas
+            drawContext.getCanvas()
                     .saveState()
                     .roundRectangle(rect.getX() - 3, rect.getBottom() - 3, rect.getWidth() + 6, rect.getHeight() + 6, 10)
                     // TODO Cmyk colors do not render correct
@@ -248,8 +249,9 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
         }
 
         @Override
-        public void drawBackground(PdfDocument document, PdfCanvas canvas) {
+        public void drawBackground(DrawContext drawContext) {
             Rectangle rect = getOccupiedAreaBBox();
+            PdfCanvas canvas = drawContext.getCanvas();
             canvas
                     .saveState()
                     .roundRectangle(rect.getLeft() + 2.5f, rect.getBottom() + 2.5f, rect.getWidth() - 5, rect.getHeight() - 5, 10)
@@ -265,7 +267,7 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
         }
 
         @Override
-        public void drawBorder(PdfDocument document, PdfCanvas canvas) {
+        public void drawBorder(DrawContext drawContext) {
             //super.drawBorder(document, canvas);
         }
     }

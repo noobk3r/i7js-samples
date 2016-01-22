@@ -11,6 +11,7 @@ import com.itextpdf.model.border.Border;
 import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
+import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.model.renderer.TableRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.lowagie.database.DatabaseConnection;
@@ -173,10 +174,10 @@ public class Listing_05_06_PressPreviews extends GenericTest {
         }
 
         @Override
-        public void draw(PdfDocument document, PdfCanvas canvas) {
-            super.draw(document, canvas);
+        public void draw(DrawContext drawContext) {
+            super.draw(drawContext);
             Rectangle rect = getOccupiedAreaBBox();
-            canvas
+            drawContext.getCanvas()
                     .rectangle(rect.getLeft() + 2, rect.getBottom() + 2, rect.getWidth() - 4, rect.getHeight() - 4)
                     .stroke();
         }
@@ -212,9 +213,9 @@ public class Listing_05_06_PressPreviews extends GenericTest {
         }
 
         @Override
-        public void drawBorder(PdfDocument document, PdfCanvas canvas) {
+        public void drawBorder(DrawContext drawContext) {
             Rectangle rect = getOccupiedAreaBBox();
-            canvas.rectangle(rect.getLeft(), rect.getBottom(), rect.getWidth(), rect.getHeight()).stroke();
+            drawContext.getCanvas().rectangle(rect.getLeft(), rect.getBottom(), rect.getWidth(), rect.getHeight()).stroke();
         }
 
         @Override

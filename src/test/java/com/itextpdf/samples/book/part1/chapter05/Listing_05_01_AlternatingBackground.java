@@ -13,6 +13,7 @@ import com.itextpdf.model.element.AreaBreak;
 import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
+import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.model.renderer.TableRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.lowagie.database.DatabaseConnection;
@@ -159,7 +160,7 @@ class AlternatingBackgroundTableRenderer extends TableRenderer {
     }
 
     @Override
-    public void draw(PdfDocument document, PdfCanvas canvas) {
+    public void draw(DrawContext drawContext) {
         for (int i = 0; i < rows.size() && null != rows.get(i) && null != rows.get(i)[0]; i++) {
             CellRenderer[] renderers = rows.get(i);
             Rectangle rect = new Rectangle(renderers[0].getOccupiedArea().getBBox().getLeft(),
@@ -167,6 +168,7 @@ class AlternatingBackgroundTableRenderer extends TableRenderer {
                     renderers[renderers.length - 1].getOccupiedArea().getBBox().getRight() -
                             renderers[0].getOccupiedArea().getBBox().getLeft(),
                     renderers[0].getOccupiedArea().getBBox().getHeight());
+            PdfCanvas canvas = drawContext.getCanvas();
             canvas.saveState();
             if (isOdd) {
                 canvas.setFillColor(Color.WHITE);
@@ -180,7 +182,7 @@ class AlternatingBackgroundTableRenderer extends TableRenderer {
             canvas.stroke();
             canvas.restoreState();
         }
-        super.draw(document, canvas);
+        super.draw(drawContext);
     }
 }
 

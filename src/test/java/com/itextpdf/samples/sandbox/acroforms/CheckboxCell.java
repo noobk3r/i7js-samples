@@ -18,6 +18,7 @@ import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
+import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.File;
@@ -65,12 +66,12 @@ public class CheckboxCell extends GenericTest {
         }
 
         @Override
-        public void draw(PdfDocument document, PdfCanvas canvas) {
+        public void draw(DrawContext drawContext) {
             float x = (getOccupiedAreaBBox().getLeft() + getOccupiedAreaBBox().getRight()) / 2;
             float y = (getOccupiedAreaBBox().getTop() + getOccupiedAreaBBox().getBottom()) / 2;
             Rectangle rect = new Rectangle(x - 10, y - 10, 20, 20);
-            PdfButtonFormField checkBox = PdfFormField.createCheckBox(document, rect, "Yes", name);
-            PdfAcroForm.getAcroForm(document, true).addField(checkBox);
+            PdfButtonFormField checkBox = PdfFormField.createCheckBox(drawContext.getDocument(), rect, "Yes", name);
+            PdfAcroForm.getAcroForm(drawContext.getDocument(), true).addField(checkBox);
         }
     }
 }

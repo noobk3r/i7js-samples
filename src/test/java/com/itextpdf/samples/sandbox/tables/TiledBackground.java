@@ -14,6 +14,7 @@ import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
+import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.File;
@@ -46,10 +47,11 @@ public class TiledBackground extends GenericTest {
         }
 
         @Override
-        public void draw(PdfDocument document, PdfCanvas canvas) {
+        public void draw(DrawContext drawContext) {
             PdfPattern.Tiling img_pattern = new PdfPattern.Tiling(img.getWidth(), img.getHeight(), img.getWidth(),
-                    img.getHeight()).makeIndirect(document);
-            new PdfPatternCanvas(img_pattern, document).addImage(img, 0, 0, false);
+                    img.getHeight()).makeIndirect(drawContext.getDocument());
+            new PdfPatternCanvas(img_pattern, drawContext.getDocument()).addImage(img, 0, 0, false);
+            PdfCanvas canvas = drawContext.getCanvas();
             colorRectangle(canvas, new PatternColor(img_pattern), getOccupiedAreaBBox().getX(),
                     getOccupiedAreaBBox().getY(), getOccupiedAreaBBox().getWidth(), getOccupiedAreaBBox().getHeight());
             canvas.setFillColor(new PatternColor(img_pattern));

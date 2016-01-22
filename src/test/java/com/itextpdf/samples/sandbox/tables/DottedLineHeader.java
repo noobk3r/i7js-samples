@@ -12,6 +12,7 @@ import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
+import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.model.renderer.TableRenderer;
 import com.itextpdf.samples.GenericTest;
 
@@ -36,8 +37,9 @@ public class DottedLineHeader extends GenericTest {
         }
 
         @Override
-        public void drawChildren(PdfDocument document, PdfCanvas canvas) {
-            super.drawChildren(document, canvas);
+        public void drawChildren(DrawContext drawContext) {
+            super.drawChildren(drawContext);
+            PdfCanvas canvas = drawContext.getCanvas();
             canvas.setLineDash(3f, 3f);
             Rectangle headersArea = headerRenderer.getOccupiedArea().getBBox();
             canvas.moveTo(headersArea.getLeft(), headersArea.getTop());
@@ -55,8 +57,9 @@ public class DottedLineHeader extends GenericTest {
         }
 
         @Override
-        public void draw(PdfDocument document, PdfCanvas canvas) {
-            super.draw(document, canvas);
+        public void draw(DrawContext drawContext) {
+            super.draw(drawContext);
+            PdfCanvas canvas = drawContext.getCanvas();
             canvas.setLineDash(3f, 3f);
             canvas.moveTo(this.getOccupiedArea().getBBox().getLeft(), this.getOccupiedArea().getBBox().getBottom());
             canvas.lineTo(this.getOccupiedArea().getBBox().getRight(),

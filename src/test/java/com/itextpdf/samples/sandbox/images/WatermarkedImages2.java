@@ -18,6 +18,7 @@ import com.itextpdf.model.element.Image;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
+import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.File;
@@ -86,9 +87,9 @@ public class WatermarkedImages2 extends GenericTest {
         }
 
         @Override
-        public void draw(PdfDocument document, PdfCanvas canvas) {
-            super.draw(document, canvas);
-            new Document(document).showTextAligned(new Paragraph(content).setFontColor(DeviceRgb.WHITE),
+        public void draw(DrawContext drawContext) {
+            super.draw(drawContext);
+            new Document(drawContext.getDocument()).showTextAligned(new Paragraph(content).setFontColor(DeviceRgb.WHITE),
                 (getOccupiedAreaBBox().getLeft() + getOccupiedAreaBBox().getRight()) / 2,
                 (getOccupiedAreaBBox().getTop() + getOccupiedAreaBBox().getBottom()) / 2,
                 occupiedArea.getPageNumber(),

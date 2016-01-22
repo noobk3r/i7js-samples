@@ -12,6 +12,7 @@ import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Paragraph;
+import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.model.renderer.ParagraphRenderer;
 import com.itextpdf.samples.GenericTest;
 
@@ -63,17 +64,17 @@ public class BorderForParagraph2 extends GenericTest {
         }
 
         @Override
-        public void draw(PdfDocument doc, PdfCanvas canvas) {
-            super.draw(doc, canvas);
+        public void draw(DrawContext drawContext) {
+            super.draw(drawContext);
         }
 
         @Override
-        public void drawBorder(PdfDocument document, PdfCanvas canvas) {
-            super.drawBorder(document, canvas);
+        public void drawBorder(DrawContext drawContext) {
+            super.drawBorder(drawContext);
             Rectangle rect = getOccupiedAreaBBox();
-            canvas.rectangle(rect.getLeft(), rect.getBottom(),
+            drawContext.getCanvas().rectangle(rect.getLeft(), rect.getBottom(),
                     rect.getWidth(), rect.getHeight());
-            canvas.stroke();
+            drawContext.getCanvas().stroke();
         }
 
         @Override

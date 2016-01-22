@@ -17,6 +17,7 @@ import com.itextpdf.model.element.Image;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
+import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.File;
@@ -44,10 +45,10 @@ public class ImageBackground extends GenericTest {
         }
 
         @Override
-        public void draw(PdfDocument document, PdfCanvas canvas) {
+        public void draw(DrawContext drawContext) {
             img.scaleToFit(getOccupiedAreaBBox().getWidth(), getOccupiedAreaBBox().getHeight());
-            canvas.addXObject(img.getXObject(), getOccupiedAreaBBox());
-            super.draw(document, canvas);
+            drawContext.getCanvas().addXObject(img.getXObject(), getOccupiedAreaBBox());
+            super.draw(drawContext);
         }
     }
 

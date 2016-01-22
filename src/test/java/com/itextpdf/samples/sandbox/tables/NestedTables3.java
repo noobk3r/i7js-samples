@@ -10,6 +10,7 @@ import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
+import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.model.renderer.IRenderer;
 import com.itextpdf.model.renderer.TableRenderer;
 import com.itextpdf.samples.GenericTest;
@@ -58,9 +59,10 @@ public class NestedTables3 extends GenericTest {
         }
 
         @Override
-        public void drawChildren(PdfDocument document, PdfCanvas canvas) {
-            super.drawChildren(document, canvas);
+        public void drawChildren(DrawContext drawContext) {
+            super.drawChildren(drawContext);
             for (IRenderer renderer : childRenderers) {
+                PdfCanvas canvas = drawContext.getCanvas();
                 canvas.beginText();
                 canvas.moveText(renderer.getOccupiedArea().getBBox().getLeft(),
                         renderer.getOccupiedArea().getBBox().getTop() - this.getPropertyAsFloat(Property.FONT_SIZE));

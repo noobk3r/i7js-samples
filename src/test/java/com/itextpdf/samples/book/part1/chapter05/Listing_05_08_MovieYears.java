@@ -18,6 +18,7 @@ import com.itextpdf.model.element.AreaBreak;
 import com.itextpdf.model.element.Link;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Text;
+import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.model.renderer.LinkRenderer;
 import com.itextpdf.model.renderer.ParagraphRenderer;
 import com.itextpdf.model.renderer.TextRenderer;
@@ -105,8 +106,9 @@ public class Listing_05_08_MovieYears extends GenericTest {
         }
 
         @Override
-        public void draw(PdfDocument document, PdfCanvas canvas) {
+        public void draw(DrawContext drawContext) {
             Rectangle rect = getOccupiedAreaBBox();
+            PdfCanvas canvas = drawContext.getCanvas();
             canvas.rectangle(rect.getLeft() - 1, rect.getBottom() - 5f,
                     rect.getWidth(), rect.getHeight() + 8);
             canvas.rectangle(rect.getLeft(), rect.getBottom() - 2,
@@ -118,7 +120,7 @@ public class Listing_05_08_MovieYears extends GenericTest {
                 canvas.rectangle(f, y2, 4f, 1.5f);
             }
             canvas.eoFill();
-            super.draw(document, canvas);
+            super.draw(drawContext);
         }
     }
 
@@ -130,15 +132,16 @@ public class Listing_05_08_MovieYears extends GenericTest {
         }
 
         @Override
-        public void draw(PdfDocument document, PdfCanvas canvas) {
+        public void draw(DrawContext drawContext) {
             Rectangle rect = getOccupiedAreaBBox();
+            PdfCanvas canvas = drawContext.getCanvas();
             canvas.saveState();
             canvas.setFillColor(new DeviceRgb(0x00, 0x00, 0xFF));
             canvas.ellipse(rect.getLeft() - 3f, rect.getBottom() - 5f,
                     rect.getRight() + 3f, rect.getTop() + 3f);
             canvas.fill();
             canvas.restoreState();
-            super.draw(document, canvas);
+            super.draw(drawContext);
         }
     }
 
@@ -149,10 +152,11 @@ public class Listing_05_08_MovieYears extends GenericTest {
         }
 
         @Override
-        public void draw(PdfDocument document, PdfCanvas canvas) {
-            super.draw(document, canvas);
+        public void draw(DrawContext drawContext) {
+            super.draw(drawContext);
             Rectangle rect = getOccupiedAreaBBox();
             // bottom
+            PdfCanvas canvas = drawContext.getCanvas();
             canvas.moveTo(rect.getLeft(), rect.getTop() + 2);
             canvas.lineTo(rect.getRight(), rect.getTop() + 2);
             // top

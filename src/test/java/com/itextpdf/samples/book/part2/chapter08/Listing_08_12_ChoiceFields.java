@@ -19,6 +19,7 @@ import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
+import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.IOException;
@@ -157,12 +158,13 @@ public class Listing_08_12_ChoiceFields extends GenericTest {
         }
 
         @Override
-        public void draw(PdfDocument document, PdfCanvas canvas) {
-            super.draw(document, canvas);
+        public void draw(DrawContext drawContext) {
+            super.draw(drawContext);
             PdfChoiceFormField text = null;
             String[][] langAndExpArray;
             String[] langArray;
 
+            PdfDocument document = drawContext.getDocument();
             switch (cf) {
                 case 1:
                     langAndExpArray = new String[LANGUAGES.length][];

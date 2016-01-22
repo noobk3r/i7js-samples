@@ -16,6 +16,7 @@ import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
+import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.File;
@@ -72,7 +73,8 @@ public class RadioGroupMultiPage2 extends GenericTest {
         }
 
         @Override
-        public void draw(PdfDocument document, PdfCanvas canvas) {
+        public void draw(DrawContext drawContext) {
+            PdfDocument document = drawContext.getDocument();
             PdfFormField field = PdfFormField.createRadioButton(document, getOccupiedAreaBBox(), radioGroup, value);
             PdfAcroForm.getAcroForm(document, true).addFieldAppearanceToPage(field, document.getLastPage());
         }

@@ -10,6 +10,7 @@ import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
+import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.model.renderer.TableRenderer;
 import com.itextpdf.samples.GenericTest;
 
@@ -33,10 +34,11 @@ class CustomBorder2TableRenderer extends TableRenderer {
     }
 
     @Override
-    public void drawBorder(PdfDocument document, PdfCanvas canvas) {
+    public void drawBorder(DrawContext drawContext) {
         // We strongly believe that everything is fine as we believe in itext5 analog example
         CellRenderer[] firstRowRenderers = rows.get(0);
         // yLines
+        PdfCanvas canvas = drawContext.getCanvas();
         canvas.moveTo(firstRowRenderers[0].getOccupiedArea().getBBox().getLeft(),
                 getOccupiedArea().getBBox().getBottom());
         canvas.lineTo(firstRowRenderers[0].getOccupiedArea().getBBox().getLeft(),

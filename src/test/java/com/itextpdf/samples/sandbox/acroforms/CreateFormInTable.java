@@ -16,6 +16,7 @@ import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
+import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.File;
@@ -67,10 +68,10 @@ public class CreateFormInTable extends GenericTest {
         }
 
         @Override
-        public void draw(PdfDocument document, PdfCanvas canvas) {
-            super.draw(document, canvas);
-            PdfTextFormField field = PdfFormField.createText(document, getOccupiedAreaBBox(), "", fieldName);
-            PdfAcroForm form = PdfAcroForm.getAcroForm(document, true);
+        public void draw(DrawContext drawContext) {
+            super.draw(drawContext);
+            PdfTextFormField field = PdfFormField.createText(drawContext.getDocument(), getOccupiedAreaBBox(), "", fieldName);
+            PdfAcroForm form = PdfAcroForm.getAcroForm(drawContext.getDocument(), true);
             form.addField(field);
         }
     }

@@ -12,6 +12,7 @@ import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Text;
+import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.model.renderer.TextRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.lowagie.database.DatabaseConnection;
@@ -76,22 +77,22 @@ public class Listing_07_24_MovieAnnotations3 extends GenericTest {
         }
 
         @Override
-        public void draw(PdfDocument document, PdfCanvas canvas) {
-            super.draw(document, canvas);
+        public void draw(DrawContext drawContext) {
+            super.draw(drawContext);
             PdfFileSpec fs = null;
             try {
-                fs = PdfFileSpec.createEmbeddedFileSpec(document, filePath, null, fileDisplay, null, null, false);
+                fs = PdfFileSpec.createEmbeddedFileSpec(drawContext.getDocument(), filePath, null, fileDisplay, null, null, false);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
             Rectangle rect = new Rectangle(getOccupiedAreaBBox().getLeft() + getOccupiedAreaBBox().getWidth() / 4,
                     getOccupiedAreaBBox().getBottom(), 10, 10);
             PdfFileAttachmentAnnotation annotation =
-                    new PdfFileAttachmentAnnotation(document, rect, fs);
+                    new PdfFileAttachmentAnnotation(drawContext.getDocument(), rect, fs);
             annotation.setIconName(PdfName.Paperclip);
             annotation.setContents(fileTitle);
             annotation.put(PdfName.Name, new PdfString("Paperclip"));
-            document.getLastPage().addAnnotation(annotation);
+            drawContext.getDocument().getLastPage().addAnnotation(annotation);
         }
     }
 }

@@ -16,6 +16,7 @@ import com.itextpdf.model.element.AreaBreak;
 import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
+import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
@@ -163,7 +164,8 @@ public class Listing_05_03_RunLengthEvent extends GenericTest {
         }
 
         @Override
-        public void drawBackground(PdfDocument document, PdfCanvas canvas) {
+        public void drawBackground(DrawContext drawContext) {
+            PdfCanvas canvas = drawContext.getCanvas();
             canvas.saveState();
             if (duration < 90) {
                 canvas.setFillColor(new DeviceRgb(0x7C, 0xFC, 0x00));
@@ -177,13 +179,14 @@ public class Listing_05_03_RunLengthEvent extends GenericTest {
                     rect.getWidth() * duration / 240, rect.getHeight());
             canvas.fill();
             canvas.restoreState();
-            super.drawBackground(document, canvas);
+            super.drawBackground(drawContext);
         }
 
         @Override
-        public void draw(PdfDocument document, PdfCanvas canvas) {
-            super.draw(document, canvas);
+        public void draw(DrawContext drawContext) {
+            super.draw(drawContext);
             if (isPressPreview) {
+                PdfCanvas canvas = drawContext.getCanvas();
                 canvas.beginText();
                 try {
                     canvas.setFontAndSize(PdfFont.createStandardFont(FontConstants.HELVETICA), 12);

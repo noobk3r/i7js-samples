@@ -16,6 +16,7 @@ import com.itextpdf.model.layout.LayoutArea;
 import com.itextpdf.model.layout.LayoutContext;
 import com.itextpdf.model.layout.LayoutResult;
 import com.itextpdf.model.renderer.CellRenderer;
+import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.model.renderer.IRenderer;
 import com.itextpdf.samples.GenericTest;
 
@@ -43,7 +44,7 @@ public class ClipCenterCellContent extends GenericTest {
         }
 
         @Override
-        public void draw(PdfDocument document, PdfCanvas canvas) {
+        public void draw(DrawContext drawContext) {
             IRenderer pr = content.createRendererSubTree().setParent(this);
             LayoutResult textArea = pr.layout(new LayoutContext(
                     new LayoutArea(0, new Rectangle(getOccupiedAreaBBox().getWidth(), 1000))));
@@ -56,10 +57,11 @@ public class ClipCenterCellContent extends GenericTest {
                     -2f * offset, offset));
 
             PdfFormXObject xObject = new PdfFormXObject(new Rectangle(getOccupiedArea().getBBox().getWidth(), getOccupiedArea().getBBox().getHeight()));
-            Canvas layoutCanvas = new Canvas(new PdfCanvas(xObject, document), document, new Rectangle(0, offset, getOccupiedArea().getBBox().getWidth(), spaceneeded));
+            Canvas layoutCanvas = new Canvas(new PdfCanvas(xObject, drawContext.getDocument()), drawContext.getDocument(),
+                    new Rectangle(0, offset, getOccupiedArea().getBBox().getWidth(), spaceneeded));
             layoutCanvas.add(content);
 
-            canvas.addXObject(xObject, occupiedArea.getBBox().getLeft(), occupiedArea.getBBox().getBottom());
+            drawContext.getCanvas().addXObject(xObject, occupiedArea.getBBox().getLeft(), occupiedArea.getBBox().getBottom());
         }
     }
 

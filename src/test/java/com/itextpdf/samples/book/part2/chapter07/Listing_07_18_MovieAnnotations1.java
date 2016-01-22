@@ -9,6 +9,7 @@ import com.itextpdf.core.pdf.annot.PdfTextAnnotation;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
+import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.model.renderer.ParagraphRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.lowagie.database.DatabaseConnection;
@@ -67,14 +68,14 @@ public class Listing_07_18_MovieAnnotations1 extends GenericTest {
         }
 
         @Override
-        public void draw(PdfDocument document, PdfCanvas canvas) {
-            super.draw(document, canvas);
+        public void draw(DrawContext drawContext) {
+            super.draw(drawContext);
             Rectangle rect = new Rectangle(getOccupiedAreaBBox().getLeft() + getOccupiedAreaBBox().getWidth() / 4,
                     getOccupiedAreaBBox().getBottom(), 10, 10);
-            PdfTextAnnotation textAnnot = new PdfTextAnnotation(document, rect)
+            PdfTextAnnotation textAnnot = new PdfTextAnnotation(drawContext.getDocument(), rect)
                     .setText(new PdfString(text))
                     .setContents(new PdfString(contents));
-            document.getLastPage().addAnnotation(textAnnot);
+            drawContext.getDocument().getLastPage().addAnnotation(textAnnot);
         }
     }
 }

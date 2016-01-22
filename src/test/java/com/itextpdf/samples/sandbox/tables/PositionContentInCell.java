@@ -11,6 +11,7 @@ import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Image;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
+import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.File;
@@ -45,11 +46,11 @@ public class PositionContentInCell extends GenericTest {
         }
 
         @Override
-        public void draw(PdfDocument document, PdfCanvas canvas) {
-            super.draw(document, canvas);
+        public void draw(DrawContext drawContext) {
+            super.draw(drawContext);
             img.scaleToFit(getOccupiedAreaBBox().getWidth(), getOccupiedAreaBBox().getHeight());
 
-            canvas.addXObject(img.getXObject(),
+            drawContext.getCanvas().addXObject(img.getXObject(),
                     getOccupiedAreaBBox().getX() +
                             (getOccupiedAreaBBox().getWidth()
                                     - img.getImageWidth() * (float) img.getProperty(Property.HORIZONTAL_SCALING)) / 2,
@@ -57,7 +58,7 @@ public class PositionContentInCell extends GenericTest {
                             (getOccupiedAreaBBox().getHeight()
                                     - img.getImageHeight() * (float) img.getProperty(Property.VERTICAL_SCALING)) / 2,
                     img.getImageWidth() * (float) img.getProperty(Property.HORIZONTAL_SCALING));
-            canvas.stroke();
+            drawContext.getCanvas().stroke();
 
             float x = 0;
             float y = 0;
@@ -89,7 +90,7 @@ public class PositionContentInCell extends GenericTest {
                     y = 0;
                     alignment = Property.TextAlignment.CENTER;
             }
-            new Document(document).showTextAligned(content, x, y, alignment);
+            new Document(drawContext.getDocument()).showTextAligned(content, x, y, alignment);
         }
     }
 

@@ -10,6 +10,7 @@ import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.renderer.CellRenderer;
+import com.itextpdf.model.renderer.DrawContext;
 
 import org.junit.experimental.categories.Category;
 
@@ -25,7 +26,7 @@ public class Listing_08_14_ChildFieldEvent extends CellRenderer {
     }
 
     @Override
-    public void draw(PdfDocument doc, PdfCanvas canvas) {
+    public void draw(DrawContext drawContext) {
         PdfWidgetAnnotation widget = field.getWidgets().get(0);
         Rectangle rect = widget.getRectangle().toRectangle();
         Rectangle bBox = getOccupiedAreaBBox();
@@ -33,7 +34,7 @@ public class Listing_08_14_ChildFieldEvent extends CellRenderer {
                 bBox.getRight() - padding, bBox.getTop() - padding);
         widget.setRectangle(new PdfArray(rect));
         widget.setHighlightMode(PdfAnnotation.HIGHLIGHT_INVERT);
-        super.draw(doc, canvas);
+        super.draw(drawContext);
     }
 }
 

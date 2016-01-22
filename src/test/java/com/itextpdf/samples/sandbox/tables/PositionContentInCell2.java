@@ -11,6 +11,7 @@ import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Image;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
+import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.File;
@@ -51,16 +52,16 @@ public class PositionContentInCell2 extends GenericTest {
         }
 
         @Override
-        public void draw(PdfDocument document, PdfCanvas canvas) {
-            super.draw(document, canvas);
+        public void draw(DrawContext drawContext) {
+            super.draw(drawContext);
 
-            canvas.addXObject(img.getXObject(), getOccupiedAreaBBox());
-            canvas.stroke();
+            drawContext.getCanvas().addXObject(img.getXObject(), getOccupiedAreaBBox());
+            drawContext.getCanvas().stroke();
 
             float x = getOccupiedAreaBBox().getX() + wPct * getOccupiedAreaBBox().getWidth();
             // TODO content has not leading yet, we can't use : y = ... - canvas.getGraphicsState().getLeading();
             float y = getOccupiedAreaBBox().getY() + hPct * (getOccupiedAreaBBox().getHeight() - 16);
-            new Document(document).showTextAligned(content, x, y, alignment);
+            new Document(drawContext.getDocument()).showTextAligned(content, x, y, alignment);
 
         }
     }

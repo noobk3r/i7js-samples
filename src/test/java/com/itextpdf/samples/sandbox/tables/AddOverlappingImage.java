@@ -10,6 +10,7 @@ import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
+import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.model.renderer.TableRenderer;
 import com.itextpdf.samples.GenericTest;
 
@@ -43,13 +44,13 @@ public class AddOverlappingImage extends GenericTest {
         }
 
         @Override
-        public void drawChildren(PdfDocument document, PdfCanvas canvas) {
-            super.drawChildren(document, canvas);
+        public void drawChildren(DrawContext drawContext) {
+            super.drawChildren(drawContext);
             float x = Math.max(this.getOccupiedAreaBBox().getX() +
                     this.getOccupiedAreaBBox().getWidth() / 3 - image.getWidth(), 0);
             float y = Math.max(this.getOccupiedAreaBBox().getY() +
                     this.getOccupiedAreaBBox().getHeight() / 3 - image.getHeight(), 0);
-            canvas.addImage(image, x, y, false);
+            drawContext.getCanvas().addImage(image, x, y, false);
         }
 
         @Override

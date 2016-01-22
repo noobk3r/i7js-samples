@@ -16,6 +16,7 @@ import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
+import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.IOException;
@@ -110,9 +111,9 @@ public class Listing_08_07_TextFields extends GenericTest {
         }
 
         @Override
-        public void draw(PdfDocument document, PdfCanvas canvas) {
-            super.draw(document, canvas);
-            PdfTextFormField text = PdfFormField.createText(document, getOccupiedAreaBBox(),
+        public void draw(DrawContext drawContext) {
+            super.draw(drawContext);
+            PdfTextFormField text = PdfFormField.createText(drawContext.getDocument(), getOccupiedAreaBBox(),
                     "Enter your name here...", String.format("text_%s", tf));
             // TODO DEVSIX-233
             //text.setBackgroundColor(new DeviceGray(0.75f));
@@ -156,7 +157,7 @@ public class Listing_08_07_TextFields extends GenericTest {
                     text.setRequired(true);
                     break;
             }
-            PdfAcroForm.getAcroForm(document, true).addField(text);
+            PdfAcroForm.getAcroForm(drawContext.getDocument(), true).addField(text);
         }
     }
 }

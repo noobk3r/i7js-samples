@@ -26,6 +26,7 @@ import com.itextpdf.model.element.Text;
 import com.itextpdf.model.layout.LayoutArea;
 import com.itextpdf.model.layout.LayoutResult;
 import com.itextpdf.model.renderer.DocumentRenderer;
+import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.model.renderer.TextRenderer;
 import com.itextpdf.samples.GenericTest;
 
@@ -109,11 +110,11 @@ public class CreateTOCinColumn extends GenericTest {
         }
 
         @Override
-        public void draw(PdfDocument document, PdfCanvas canvas) {
-            super.draw(document, canvas);
+        public void draw(DrawContext drawContext) {
+            super.draw(drawContext);
             Rectangle rect = getOccupiedAreaBBox();
             PdfArray array = new PdfArray();
-            array.add(document.getLastPage().getPdfObject());
+            array.add(drawContext.getDocument().getLastPage().getPdfObject());
             array.add(PdfName.XYZ);
             array.add(new PdfNumber(rect.getLeft()));
             array.add(new PdfNumber(rect.getTop()));

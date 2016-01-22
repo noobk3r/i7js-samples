@@ -17,6 +17,7 @@ import com.itextpdf.model.element.List;
 import com.itextpdf.model.element.ListItem;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Text;
+import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.model.renderer.ListItemRenderer;
 import com.itextpdf.samples.GenericTest;
 
@@ -137,22 +138,22 @@ public class Listing_16_05_KubrickDvds extends GenericTest {
         }
 
         @Override
-        public void draw(PdfDocument document, PdfCanvas canvas) {
-            super.draw(document, canvas);
+        public void draw(DrawContext drawContext) {
+            super.draw(drawContext);
             PdfFileSpec fs = null;
             try {
-                fs = PdfFileSpec.createEmbeddedFileSpec(document, filePath, null, fileDisplay, null, null, false);
+                fs = PdfFileSpec.createEmbeddedFileSpec(drawContext.getDocument(), filePath, null, fileDisplay, null, null, false);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
             Rectangle rect = new Rectangle(getOccupiedAreaBBox().getRight(),
                     getOccupiedAreaBBox().getBottom(), 10, 10);
             PdfFileAttachmentAnnotation annotation =
-                    new PdfFileAttachmentAnnotation(document, rect, fs);
+                    new PdfFileAttachmentAnnotation(drawContext.getDocument(), rect, fs);
             annotation.setIconName(PdfName.Paperclip);
             annotation.setContents(fileTitle);
             annotation.put(PdfName.Name, new PdfString("Paperclip"));
-            document.getLastPage().addAnnotation(annotation);
+            drawContext.getDocument().getLastPage().addAnnotation(annotation);
         }
     }
 }

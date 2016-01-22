@@ -9,6 +9,7 @@ import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
+import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.File;
@@ -33,13 +34,14 @@ public class RoundedCorners extends GenericTest {
         }
 
         @Override
-        public void draw(PdfDocument document, PdfCanvas canvas) {
+        public void draw(DrawContext drawContext) {
             float llx = getOccupiedAreaBBox().getX() + 2;
             float lly = getOccupiedAreaBBox().getY() + 2;
             float urx = getOccupiedAreaBBox().getX() + getOccupiedAreaBBox().getWidth() - 2;
             float ury = getOccupiedAreaBBox().getY() + getOccupiedAreaBBox().getHeight() - 2;
             float r = 4;
             float b = 0.4477f;
+            PdfCanvas canvas = drawContext.getCanvas();
             canvas.moveTo(llx, lly);
             canvas.lineTo(urx, lly);
             canvas.lineTo(urx, ury - r);
@@ -48,7 +50,7 @@ public class RoundedCorners extends GenericTest {
             canvas.curveTo(llx + r * b, ury, llx, ury - r * b, llx, ury - r);
             canvas.lineTo(llx, lly);
             canvas.stroke();
-            super.draw(document, canvas);
+            super.draw(drawContext);
         }
     }
 

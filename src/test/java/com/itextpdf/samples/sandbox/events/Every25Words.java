@@ -12,6 +12,7 @@ import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Text;
+import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.model.renderer.TextRenderer;
 import com.itextpdf.samples.GenericTest;
 
@@ -72,17 +73,18 @@ public class Every25Words extends GenericTest {
         }
 
         @Override
-        public void draw(PdfDocument document, PdfCanvas canvas) {
-            super.draw(document, canvas);
+        public void draw(DrawContext drawContext) {
+            super.draw(drawContext);
             if (0 == count % 25) {
                 Rectangle rect = getOccupiedAreaBBox();
                 int pageNumber = getOccupiedArea().getPageNumber();
+                PdfCanvas canvas = drawContext.getCanvas();
                 canvas.saveState();
                 canvas.setLineDash(5, 5);
-                canvas.moveTo(document.getPage(pageNumber).getPageSize().getLeft(), rect.getBottom());
+                canvas.moveTo(drawContext.getDocument().getPage(pageNumber).getPageSize().getLeft(), rect.getBottom());
                 canvas.lineTo(rect.getRight(), rect.getBottom());
                 canvas.lineTo(rect.getRight(), rect.getTop());
-                canvas.lineTo(document.getDefaultPageSize().getRight(), rect.getTop());
+                canvas.lineTo(drawContext.getDocument().getDefaultPageSize().getRight(), rect.getTop());
                 canvas.stroke();
                 canvas.restoreState();
             }

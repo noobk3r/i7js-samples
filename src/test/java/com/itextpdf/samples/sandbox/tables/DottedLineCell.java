@@ -10,6 +10,7 @@ import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
+import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.model.renderer.TableRenderer;
 import com.itextpdf.samples.GenericTest;
 
@@ -34,8 +35,9 @@ public class DottedLineCell extends GenericTest {
         }
 
         @Override
-        public void drawChildren(PdfDocument document, PdfCanvas canvas) {
-            super.drawChildren(document, canvas);
+        public void drawChildren(DrawContext drawContext) {
+            super.drawChildren(drawContext);
+            PdfCanvas canvas = drawContext.getCanvas();
             canvas.setLineDash(3f, 3f);
             // first horizontal line
             CellRenderer[] cellRenderers = rows.get(0);
@@ -72,11 +74,11 @@ public class DottedLineCell extends GenericTest {
         }
 
         @Override
-        public void draw(PdfDocument document, PdfCanvas canvas) {
-            super.draw(document, canvas);
-            canvas.setLineDash(3f, 3f);
-            canvas.rectangle(this.getOccupiedArea().getBBox());
-            canvas.stroke();
+        public void draw(DrawContext drawContext) {
+            super.draw(drawContext);
+            drawContext.getCanvas().setLineDash(3f, 3f);
+            drawContext.getCanvas().rectangle(this.getOccupiedArea().getBBox());
+            drawContext.getCanvas().stroke();
         }
     }
 

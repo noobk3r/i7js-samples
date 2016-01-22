@@ -14,6 +14,7 @@ import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Image;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
+import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.FileOutputStream;
@@ -73,8 +74,8 @@ public class Listing_06_05_ImportingPages2 extends GenericTest {
         }
 
         @Override
-        public void draw(PdfDocument document, PdfCanvas canvas) {
-            super.draw(document, canvas);
+        public void draw(DrawContext drawContext) {
+            super.draw(drawContext);
             Rectangle rect = getOccupiedAreaBBox();
             System.out.println(rect.getX());
             System.out.println(rect.getY());

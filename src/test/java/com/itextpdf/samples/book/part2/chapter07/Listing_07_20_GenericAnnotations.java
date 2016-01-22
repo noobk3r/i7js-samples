@@ -13,6 +13,7 @@ import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Text;
+import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.model.renderer.TextRenderer;
 import com.itextpdf.samples.GenericTest;
 
@@ -66,11 +67,11 @@ public class Listing_07_20_GenericAnnotations extends GenericTest {
         }
 
         @Override
-        public void draw(PdfDocument document, PdfCanvas canvas) {
-            super.draw(document, canvas);
+        public void draw(DrawContext drawContext) {
+            super.draw(drawContext);
 
             Rectangle rect = getOccupiedAreaBBox();
-            PdfAnnotation annotation = new PdfTextAnnotation(document,
+            PdfAnnotation annotation = new PdfTextAnnotation(drawContext.getDocument(),
                     new Rectangle(
                             rect.getRight() + 10, rect.getBottom(),
                             rect.getWidth() + 20, rect.getHeight()));
@@ -80,7 +81,7 @@ public class Listing_07_20_GenericAnnotations extends GenericTest {
             annotation.put(PdfName.Contents,
                     new PdfString(String.format("Icon: %s", text)));
             annotation.put(PdfName.Name, new PdfName(text));
-            document.getLastPage().addAnnotation(annotation);
+            drawContext.getDocument().getLastPage().addAnnotation(annotation);
         }
     }
 }
