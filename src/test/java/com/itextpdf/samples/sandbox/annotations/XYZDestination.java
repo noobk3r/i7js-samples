@@ -7,13 +7,12 @@ package com.itextpdf.samples.sandbox.annotations;
 import com.itextpdf.core.pdf.*;
 import com.itextpdf.core.pdf.navigation.PdfDestination;
 import com.itextpdf.core.pdf.navigation.PdfExplicitDestination;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.AreaBreak;
 import com.itextpdf.model.element.Link;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;

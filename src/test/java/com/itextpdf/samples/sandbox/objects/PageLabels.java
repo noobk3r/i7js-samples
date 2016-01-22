@@ -9,7 +9,7 @@ import com.itextpdf.core.pdf.*;
 import com.itextpdf.core.pdf.action.PdfAction;
 import com.itextpdf.core.pdf.annot.PdfTextAnnotation;
 import com.itextpdf.core.pdf.xobject.PdfFormXObject;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Link;
 import com.itextpdf.model.element.Paragraph;

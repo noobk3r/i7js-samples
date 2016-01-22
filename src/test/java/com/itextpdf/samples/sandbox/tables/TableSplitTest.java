@@ -2,14 +2,13 @@ package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.FontFactory;
-import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.font.PdfType1Font;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.border.SolidBorder;

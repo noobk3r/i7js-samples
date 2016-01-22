@@ -3,7 +3,7 @@ package com.itextpdf.samples.book.part4.chapter15;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.testutils.TaggedPdfReaderTool;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
 
 import javax.xml.parsers.ParserConfigurationException;

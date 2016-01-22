@@ -8,8 +8,7 @@ package com.itextpdf.samples.sandbox.acroforms;
 
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
-import com.itextpdf.core.pdf.annot.PdfWidgetAnnotation;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfFormField;
 
@@ -17,7 +16,6 @@ import java.io.FileInputStream;
 import java.util.Map;
 
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 

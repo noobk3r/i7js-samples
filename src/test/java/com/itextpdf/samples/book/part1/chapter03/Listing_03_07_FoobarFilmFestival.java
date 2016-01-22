@@ -1,6 +1,6 @@
 package com.itextpdf.samples.book.part1.chapter03;
 
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
 
 import org.junit.Ignore;

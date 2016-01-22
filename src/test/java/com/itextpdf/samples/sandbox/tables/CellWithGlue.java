@@ -2,7 +2,7 @@ package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.border.SolidBorder;

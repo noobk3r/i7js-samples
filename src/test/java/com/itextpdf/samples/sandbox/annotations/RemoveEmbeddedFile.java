@@ -6,7 +6,7 @@
 package com.itextpdf.samples.sandbox.annotations;
 
 import com.itextpdf.core.pdf.*;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
 import org.junit.experimental.categories.Category;
 

@@ -1,6 +1,6 @@
 package com.itextpdf.samples.book.part1.chapter02;
 
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;

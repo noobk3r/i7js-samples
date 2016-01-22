@@ -14,7 +14,7 @@ import com.itextpdf.core.pdf.annot.PdfAnnotation;
 import com.itextpdf.core.pdf.annot.PdfLineAnnotation;
 import com.itextpdf.core.pdf.annot.PdfSquareAnnotation;
 import com.itextpdf.core.pdf.annot.PdfStampAnnotation;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
@@ -25,7 +25,6 @@ import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 

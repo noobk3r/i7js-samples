@@ -10,7 +10,7 @@ import com.itextpdf.core.pdf.PdfOutputStream;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfStream;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;

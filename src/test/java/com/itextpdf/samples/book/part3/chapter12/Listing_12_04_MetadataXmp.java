@@ -5,7 +5,7 @@ import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfDocumentInfo;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.core.xmp.PdfConst;
 import com.itextpdf.core.xmp.XMPConst;
 import com.itextpdf.core.xmp.XMPException;

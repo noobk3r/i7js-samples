@@ -5,7 +5,7 @@
 package com.itextpdf.samples.sandbox.interactive;
 
 import com.itextpdf.core.pdf.*;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.File;

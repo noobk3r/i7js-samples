@@ -11,7 +11,7 @@ import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.canvas.draw.DottedLine;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;

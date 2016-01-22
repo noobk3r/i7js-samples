@@ -10,25 +10,22 @@ import com.itextpdf.core.pdf.PdfIndirectReference;
 import com.itextpdf.core.pdf.PdfName;
 import com.itextpdf.core.pdf.PdfNumber;
 import com.itextpdf.core.pdf.PdfObject;
-import com.itextpdf.core.pdf.PdfOutputStream;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfStream;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.xobject.PdfImageXObject;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
 
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
 import javax.imageio.ImageIO;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)

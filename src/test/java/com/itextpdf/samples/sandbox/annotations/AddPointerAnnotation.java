@@ -11,7 +11,7 @@ import com.itextpdf.core.color.Color;
 import com.itextpdf.core.pdf.*;
 import com.itextpdf.core.pdf.annot.PdfAnnotation;
 import com.itextpdf.core.pdf.annot.PdfLineAnnotation;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Image;
 import com.itextpdf.samples.GenericTest;

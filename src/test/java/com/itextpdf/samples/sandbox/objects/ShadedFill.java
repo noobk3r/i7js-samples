@@ -11,7 +11,7 @@ import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.colorspace.PdfDeviceCs;
 import com.itextpdf.core.pdf.colorspace.PdfPattern;
 import com.itextpdf.core.pdf.colorspace.PdfShading;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.samples.GenericTest;
 

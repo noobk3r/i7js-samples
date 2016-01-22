@@ -11,7 +11,7 @@ import com.itextpdf.core.pdf.action.PdfAction;
 import com.itextpdf.core.pdf.annot.PdfAnnotation;
 import com.itextpdf.core.pdf.annot.PdfLinkAnnotation;
 import com.itextpdf.core.pdf.annot.PdfStampAnnotation;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
 import org.junit.experimental.categories.Category;
 

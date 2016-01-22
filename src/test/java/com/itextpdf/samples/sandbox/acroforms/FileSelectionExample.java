@@ -9,7 +9,7 @@ import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfName;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.action.PdfAction;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.forms.fields.PdfTextFormField;

@@ -5,11 +5,9 @@
  */
 package com.itextpdf.samples.sandbox.annotations;
 
-import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.pdf.*;
-import com.itextpdf.core.pdf.annot.PdfFileAttachmentAnnotation;
 import com.itextpdf.core.pdf.filespec.PdfFileSpec;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
 import org.junit.experimental.categories.Category;
 

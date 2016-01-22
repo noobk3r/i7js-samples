@@ -7,7 +7,7 @@ import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfVersion;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.layer.PdfLayer;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.FileOutputStream;

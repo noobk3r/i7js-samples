@@ -10,7 +10,7 @@ import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.action.PdfAction;
 import com.itextpdf.core.pdf.annot.PdfLinkAnnotation;
 import com.itextpdf.core.pdf.xobject.PdfFormXObject;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Canvas;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Image;

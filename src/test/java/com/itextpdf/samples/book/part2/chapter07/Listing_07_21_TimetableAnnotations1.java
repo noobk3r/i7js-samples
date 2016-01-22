@@ -3,16 +3,14 @@ package com.itextpdf.samples.book.part2.chapter07;
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.color.DeviceRgb;
 import com.itextpdf.core.color.WebColors;
-import com.itextpdf.core.pdf.PdfArray;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfName;
-import com.itextpdf.core.pdf.PdfNumber;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfString;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.annot.PdfAnnotation;
 import com.itextpdf.core.pdf.annot.PdfTextAnnotation;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
 
 import com.lowagie.database.DatabaseConnection;
@@ -27,9 +25,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.TimeZone;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
-import org.w3c.dom.css.RGBColor;
 
 
 @Category(SampleTest.class)

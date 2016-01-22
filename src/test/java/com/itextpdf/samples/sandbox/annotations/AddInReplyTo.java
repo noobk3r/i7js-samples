@@ -8,7 +8,7 @@ import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.pdf.*;
 import com.itextpdf.core.pdf.annot.PdfAnnotation;
 import com.itextpdf.core.pdf.annot.PdfTextAnnotation;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.samples.GenericTest;
 import org.junit.experimental.categories.Category;

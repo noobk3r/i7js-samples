@@ -2,7 +2,7 @@ package com.itextpdf.samples;
 
 import ch.qos.logback.classic.Logger;
 import com.itextpdf.core.testutils.CompareTool;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 
 import javax.management.OperationsException;

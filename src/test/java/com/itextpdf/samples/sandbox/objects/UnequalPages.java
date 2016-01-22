@@ -8,7 +8,7 @@ import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.AreaBreak;
 import com.itextpdf.model.element.Paragraph;
@@ -18,7 +18,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)

@@ -8,7 +8,7 @@ import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.font.PdfType1Font;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;

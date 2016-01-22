@@ -12,7 +12,7 @@ import com.itextpdf.core.pdf.action.PdfAction;
 import com.itextpdf.core.pdf.action.PdfTargetDictionary;
 import com.itextpdf.core.pdf.filespec.PdfFileSpec;
 import com.itextpdf.core.pdf.navigation.PdfExplicitDestination;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Image;

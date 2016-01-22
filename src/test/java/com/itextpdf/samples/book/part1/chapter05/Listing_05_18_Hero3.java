@@ -5,7 +5,7 @@ import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.xobject.PdfFormXObject;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 
 import java.io.FileOutputStream;

@@ -1,7 +1,7 @@
 package com.itextpdf.samples.book.part1.chapter03;
 
 import com.itextpdf.basics.geom.Rectangle;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Paragraph;

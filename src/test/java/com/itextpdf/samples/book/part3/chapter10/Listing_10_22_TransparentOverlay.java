@@ -13,13 +13,12 @@ import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.extgstate.PdfExtGState;
 import com.itextpdf.core.pdf.xobject.PdfFormXObject;
 import com.itextpdf.core.pdf.xobject.PdfTransparencyGroup;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.IOException;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)

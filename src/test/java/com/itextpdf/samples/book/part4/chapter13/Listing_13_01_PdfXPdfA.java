@@ -5,7 +5,7 @@ import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfAConformanceLevel;
 import com.itextpdf.core.pdf.PdfOutputIntent;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.core.xmp.XMPException;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;

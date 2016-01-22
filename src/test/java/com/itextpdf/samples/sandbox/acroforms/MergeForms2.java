@@ -5,7 +5,7 @@ import com.itextpdf.basics.io.RandomAccessSourceFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.model.Document;
 import com.itextpdf.samples.GenericTest;

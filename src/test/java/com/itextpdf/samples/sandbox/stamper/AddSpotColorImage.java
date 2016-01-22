@@ -11,7 +11,7 @@ import com.itextpdf.core.pdf.PdfNumber;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfStream;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.element.Image;
 import com.itextpdf.samples.GenericTest;
 

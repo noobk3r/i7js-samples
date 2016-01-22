@@ -6,7 +6,7 @@ import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfString;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.annot.PdfTextAnnotation;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.renderer.ParagraphRenderer;

@@ -6,7 +6,7 @@ import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.action.PdfAction;
 import com.itextpdf.core.pdf.annot.PdfAnnotation;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.fields.PdfButtonFormField;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.samples.GenericTest;

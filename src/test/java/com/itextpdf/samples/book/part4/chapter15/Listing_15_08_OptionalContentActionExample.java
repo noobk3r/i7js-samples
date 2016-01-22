@@ -11,7 +11,7 @@ import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.action.PdfAction;
 import com.itextpdf.core.pdf.action.PdfActionOcgState;
 import com.itextpdf.core.pdf.layer.PdfLayer;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Link;
 import com.itextpdf.model.element.Paragraph;

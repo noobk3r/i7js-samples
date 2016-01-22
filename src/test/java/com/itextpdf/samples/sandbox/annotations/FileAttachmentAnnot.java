@@ -10,7 +10,7 @@ import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.annot.PdfFileAttachmentAnnotation;
 import com.itextpdf.core.pdf.filespec.PdfFileSpec;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.element.Image;
 import com.itextpdf.samples.GenericTest;
 import org.junit.Ignore;

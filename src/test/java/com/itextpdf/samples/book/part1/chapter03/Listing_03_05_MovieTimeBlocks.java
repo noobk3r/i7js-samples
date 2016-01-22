@@ -8,7 +8,7 @@ import com.itextpdf.core.color.WebColors;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfPage;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;

@@ -9,7 +9,7 @@ import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfObject;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfStream;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileInputStream;

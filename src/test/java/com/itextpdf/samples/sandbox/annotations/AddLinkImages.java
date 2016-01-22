@@ -8,21 +8,18 @@ import com.itextpdf.basics.image.ImageFactory;
 import com.itextpdf.canvas.image.WmfImage;
 import com.itextpdf.canvas.image.WmfImageHelper;
 import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.action.PdfAction;
 import com.itextpdf.core.pdf.xobject.PdfFormXObject;
-import com.itextpdf.core.testutils.annotations.type.SampleTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Image;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.net.MalformedURLException;
 
