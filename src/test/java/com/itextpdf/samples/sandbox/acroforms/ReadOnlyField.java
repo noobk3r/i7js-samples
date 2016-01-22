@@ -47,7 +47,7 @@ public class ReadOnlyField extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
         Rectangle rect = new Rectangle(36, 770, 144 - 36, 806 - 770);
-        PdfTextFormField tf = PdfFormField.createText(pdfDoc, rect, PdfFont.getDefaultFont(pdfDoc), 20, "text", "text");
+        PdfTextFormField tf = PdfFormField.createText(pdfDoc, rect, PdfFont.getDefaultFont(), 20, "text", "text");
         tf.setMultiline(true);
         PdfAcroForm.getAcroForm(pdfDoc, true).addField(tf);
         doc.close();
