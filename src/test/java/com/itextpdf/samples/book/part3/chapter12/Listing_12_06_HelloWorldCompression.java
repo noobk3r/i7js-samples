@@ -7,7 +7,7 @@ import com.itextpdf.core.pdf.PdfOutputStream;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfVersion;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.testutils.CompareTool;
+import com.itextpdf.core.utils.CompareTool;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.core.xmp.XMPException;
 import com.itextpdf.model.Document;

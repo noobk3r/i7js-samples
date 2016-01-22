@@ -1,7 +1,7 @@
 package com.itextpdf.samples;
 
 import ch.qos.logback.classic.Logger;
-import com.itextpdf.core.testutils.CompareTool;
+import com.itextpdf.core.utils.CompareTool;
 import com.itextpdf.test.annotations.type.SampleTest;
 
 

@@ -2,7 +2,7 @@ package com.itextpdf.samples.book.part4.chapter15;
 
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
-import com.itextpdf.core.testutils.TaggedPdfReaderTool;
+import com.itextpdf.core.utils.TaggedPdfReaderTool;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
 
