@@ -1,6 +1,5 @@
 package com.itextpdf.samples.sandbox.tables;
 
-import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;

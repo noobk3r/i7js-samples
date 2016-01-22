@@ -1,7 +1,7 @@
 package com.itextpdf.samples.book.part3.chapter11;
 
-import com.itextpdf.canvas.PdfCanvas;
-import com.itextpdf.canvas.font.PdfType3Font;
+import com.itextpdf.core.pdf.canvas.PdfCanvas;
+import com.itextpdf.core.font.PdfType3Font;
 import com.itextpdf.core.color.DeviceGray;
 import com.itextpdf.core.color.DeviceRgb;
 import com.itextpdf.core.pdf.PdfDocument;

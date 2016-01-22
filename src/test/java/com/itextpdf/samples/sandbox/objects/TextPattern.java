@@ -5,8 +5,8 @@
 package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.canvas.PdfCanvas;
-import com.itextpdf.canvas.PdfPatternCanvas;
+import com.itextpdf.core.pdf.canvas.PdfCanvas;
+import com.itextpdf.core.pdf.canvas.PdfPatternCanvas;
 import com.itextpdf.core.color.PatternColor;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;

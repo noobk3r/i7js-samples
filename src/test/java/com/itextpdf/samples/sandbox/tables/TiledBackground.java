@@ -2,8 +2,8 @@ package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.basics.image.Image;
 import com.itextpdf.basics.image.ImageFactory;
-import com.itextpdf.canvas.PdfCanvas;
-import com.itextpdf.canvas.PdfPatternCanvas;
+import com.itextpdf.core.pdf.canvas.PdfCanvas;
+import com.itextpdf.core.pdf.canvas.PdfPatternCanvas;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.color.PatternColor;
 import com.itextpdf.core.pdf.PdfDocument;

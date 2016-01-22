@@ -1,6 +1,5 @@
 package com.itextpdf.samples.book.part2.chapter08;
 
-import com.itextpdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.PdfArray;
 import com.itextpdf.core.pdf.PdfDictionary;
 import com.itextpdf.core.pdf.PdfDocument;

@@ -2,7 +2,7 @@ package com.itextpdf.samples.book.part1.chapter05;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.geom.Rectangle;
-import com.itextpdf.canvas.PdfCanvas;
+import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.color.DeviceGray;
 import com.itextpdf.core.events.Event;
 import com.itextpdf.core.events.IEventHandler;

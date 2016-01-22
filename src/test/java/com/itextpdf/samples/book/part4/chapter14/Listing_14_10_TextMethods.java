@@ -1,7 +1,7 @@
 package com.itextpdf.samples.book.part4.chapter14;
 
 import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.canvas.PdfCanvas;
+import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
