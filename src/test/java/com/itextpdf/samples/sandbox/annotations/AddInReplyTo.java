@@ -43,7 +43,7 @@ public class AddInReplyTo extends GenericTest {
                 stickyRect.getAsFloat(0), stickyRect.getAsFloat(1),
                 stickyRect.getAsFloat(2), stickyRect.getAsFloat(3)
         );
-        PdfTextAnnotation replySticky = new PdfTextAnnotation(pdfDoc, stickyRectangle)
+        PdfTextAnnotation replySticky = new PdfTextAnnotation(stickyRectangle)
                 .setIconName(new PdfName("Comment"))
                 .setInReplyTo(annots.get(0))
                 .setText(new PdfString("Reply"))

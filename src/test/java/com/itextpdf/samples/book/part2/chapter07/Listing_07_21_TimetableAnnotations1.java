@@ -92,7 +92,7 @@ public class Listing_07_21_TimetableAnnotations1 extends GenericTest {
             for (Screening screening : PojoFactory.getScreenings(connection, day)) {
                 movie = screening.getMovie();
                 rect = getPosition(screening);
-                annotation = new PdfTextAnnotation(pdfDoc, rect);
+                annotation = new PdfTextAnnotation(rect);
                 annotation.setTitle(new PdfString(movie.getMovieTitle()));
                 annotation.setContents(String.format(INFO, movie.getYear(), movie.getDuration()));
                 // for the right image

@@ -87,7 +87,7 @@ public class Listing_07_24_MovieAnnotations3 extends GenericTest {
             Rectangle rect = new Rectangle(getOccupiedAreaBBox().getLeft() + getOccupiedAreaBBox().getWidth() / 4,
                     getOccupiedAreaBBox().getBottom(), 10, 10);
             PdfFileAttachmentAnnotation annotation =
-                    new PdfFileAttachmentAnnotation(drawContext.getDocument(), rect, fs);
+                    new PdfFileAttachmentAnnotation(rect, fs);
             annotation.setIconName(PdfName.Paperclip);
             annotation.setContents(fileTitle);
             annotation.put(PdfName.Name, new PdfString("Paperclip"));

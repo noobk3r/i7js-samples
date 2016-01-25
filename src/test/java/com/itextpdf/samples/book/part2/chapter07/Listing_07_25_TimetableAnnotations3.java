@@ -62,7 +62,7 @@ public class Listing_07_25_TimetableAnnotations3 extends Listing_07_21_Timetable
                 movie = screening.getMovie();
                 // Annotation for press previews
                 if (screening.isPress()) {
-                    annotation = new PdfStampAnnotation(pdfDoc, rect)
+                    annotation = new PdfStampAnnotation(rect)
                             .setStampName(new PdfName("NotForPublicRelease"))
                             .setContents("Press only")
                             .setColor(Color.BLACK.getColorValue())
@@ -77,7 +77,7 @@ public class Listing_07_25_TimetableAnnotations3 extends Listing_07_21_Timetable
                     PdfDictionary borderStyleDict = new PdfDictionary();
                     borderStyleDict.put(PdfName.W, new PdfNumber(5));
                     borderStyleDict.put(PdfName.S, PdfName.B);
-                    annotation = new PdfLineAnnotation(pdfDoc, rect, line).
+                    annotation = new PdfLineAnnotation(rect, line).
                             setContents("SOLD OUT")
                             .setTitle(new PdfString(movie.getMovieTitle()))
                             .setColor(Color.GREEN.getColorValue())
@@ -91,7 +91,7 @@ public class Listing_07_25_TimetableAnnotations3 extends Listing_07_21_Timetable
                     borderArray.add(new PdfNumber(0));
                     borderArray.add(new PdfNumber(2));
                     // TODO No PdfDashPattern
-                    annotation = new PdfSquareAnnotation(pdfDoc, rect)
+                    annotation = new PdfSquareAnnotation(rect)
                             .setContents("Tickets available")
                             .setTitle(new PdfString(movie.getMovieTitle()))
                             .setColor(Color.BLUE.getColorValue())

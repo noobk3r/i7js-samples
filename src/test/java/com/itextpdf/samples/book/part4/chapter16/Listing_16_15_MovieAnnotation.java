@@ -23,7 +23,7 @@ public class Listing_16_15_MovieAnnotation extends GenericTest {
 
     public void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
-        PdfAnnotation screenAnnotation = new PdfScreenAnnotation(pdfDoc, new Rectangle(200, 700, 200, 100));
+        PdfAnnotation screenAnnotation = new PdfScreenAnnotation(new Rectangle(200, 700, 200, 100));
         PdfFileSpec spec = PdfFileSpec.createEmbeddedFileSpec(pdfDoc, RESOURCE, "Fox and Dog", "Fox and Dog", null, null, false);
         PdfAction action = PdfAction.createRendition(pdfDoc, "foxdog.mpg", spec, "video/mpeg", screenAnnotation);
         screenAnnotation.setAction(action);

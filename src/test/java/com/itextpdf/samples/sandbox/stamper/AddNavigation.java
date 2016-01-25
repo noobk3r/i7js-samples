@@ -46,7 +46,7 @@ public class AddNavigation extends GenericTest {
         array.add(PdfName.Fit);
         PdfDestination d1 = PdfDestination.makeDestination(array);
         Rectangle rect = new Rectangle(0, 806, 595, 842 - 806);
-        PdfAnnotation a10 = new PdfLinkAnnotation(pdfDoc, rect)
+        PdfAnnotation a10 = new PdfLinkAnnotation(rect)
                 .setHighlightMode(PdfAnnotation.HIGHLIGHT_INVERT)
                 .setPage(pdfDoc.getPage(10))
                 .setAction(PdfAction.createGoTo(d1))
@@ -57,7 +57,7 @@ public class AddNavigation extends GenericTest {
         array.add(doc.getPdfDocument().getPage(1).getPdfObject());
         array.add(PdfName.Fit);
         PdfDestination d2 = PdfDestination.makeDestination(array);
-        PdfAnnotation a1 = new PdfLinkAnnotation(pdfDoc, rect)
+        PdfAnnotation a1 = new PdfLinkAnnotation(rect)
                 .setHighlightMode(PdfAnnotation.HIGHLIGHT_PUSH)
                 .setPage(pdfDoc.getPage(1))
                 .setAction(PdfAction.createGoTo(d2))

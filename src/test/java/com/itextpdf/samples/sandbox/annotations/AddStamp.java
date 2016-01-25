@@ -45,7 +45,7 @@ public class AddStamp extends GenericTest {
         float w = img.getImageScaledWidth();
         float h = img.getImageScaledHeight();
         Rectangle location = new Rectangle(36, 770 - h, w, h);
-        PdfStampAnnotation stamp = new PdfStampAnnotation(pdfDoc, location)
+        PdfStampAnnotation stamp = new PdfStampAnnotation(location)
                 .setStampName(new PdfName("ITEXT"));
         img.setFixedPosition(0, 0);
         PdfCanvas cb = new PdfCanvas(pdfDoc.getFirstPage());

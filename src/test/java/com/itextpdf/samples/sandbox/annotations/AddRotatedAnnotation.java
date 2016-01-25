@@ -37,34 +37,34 @@ public class AddRotatedAnnotation extends GenericTest {
 
         PdfAction action = PdfAction.createURI("http://pages.itextpdf.com/ebook-stackoverflow-questions.html");
         Rectangle linkLocation1 = new Rectangle(30, 770, 120 - 30, 800 - 770);
-        PdfLinkAnnotation link1 = new PdfLinkAnnotation(pdfDoc, linkLocation1)
+        PdfLinkAnnotation link1 = new PdfLinkAnnotation(linkLocation1)
                 .setHighlightMode(PdfAnnotation.HIGHLIGHT_INVERT)
                 .setAction(action)
                 .setColor(Color.RED.getColorValue());
         pdfDoc.getFirstPage().addAnnotation(link1);
 
         Rectangle linkLocation2 = new Rectangle(30, 670, 60 - 30, 760 - 670);
-        PdfLinkAnnotation link2 = new PdfLinkAnnotation(pdfDoc, linkLocation2)
+        PdfLinkAnnotation link2 = new PdfLinkAnnotation(linkLocation2)
                 .setHighlightMode(PdfAnnotation.HIGHLIGHT_INVERT)
                 .setAction(action)
                 .setColor(Color.GREEN.getColorValue());
         pdfDoc.getFirstPage().addAnnotation(link2);
 
         Rectangle linkLocation3 = new Rectangle(150, 770, 240 - 150, 800 - 770);
-        PdfStampAnnotation stamp1 = new PdfStampAnnotation(pdfDoc, linkLocation3)
+        PdfStampAnnotation stamp1 = new PdfStampAnnotation(linkLocation3)
                 .setStampName(new PdfName("Confidential"))
                 .setContents("Landscape");
         pdfDoc.getFirstPage().addAnnotation(stamp1);
 
         Rectangle linkLocation4 = new Rectangle(150, 670, 240 - 150, 760 - 670);
-        PdfStampAnnotation stamp2 = new PdfStampAnnotation(pdfDoc, linkLocation4)
+        PdfStampAnnotation stamp2 = new PdfStampAnnotation(linkLocation4)
                 .setStampName(new PdfName("Confidential"))
                 .setContents("Portrait")
                 .put(PdfName.Rotate, new PdfNumber(90));
         pdfDoc.getFirstPage().addAnnotation(stamp2);
 
         Rectangle linkLocation5 = new Rectangle(250, 670, 340 - 250, 760 - 670);
-        PdfStampAnnotation stamp3 = new PdfStampAnnotation(pdfDoc, linkLocation5)
+        PdfStampAnnotation stamp3 = new PdfStampAnnotation(linkLocation5)
                 .setStampName(new PdfName("Confidential"))
                 .setContents("Portrait")
                 .put(PdfName.Rotate, new PdfNumber(45));

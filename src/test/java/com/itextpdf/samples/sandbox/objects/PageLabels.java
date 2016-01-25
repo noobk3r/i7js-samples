@@ -97,7 +97,7 @@ public class PageLabels extends GenericTest {
         Paragraph p = new Paragraph("Hello ");
         p.add(link);
         doc.add(p);
-        PdfTextAnnotation a = new PdfTextAnnotation(pdfDoc,
+        PdfTextAnnotation a = new PdfTextAnnotation(
                 new Rectangle(10, 10, 30, 30))
                 .setTitle(new PdfString("Example"))
                 .setContents("This is a post-it annotation");

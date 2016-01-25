@@ -53,7 +53,7 @@ public class AddImageLink extends GenericTest {
         array.add(doc.getPdfDocument().getPage(pdfDoc.getNumberOfPages()).getPdfObject());
         array.add(PdfName.Fit);
         PdfDestination destination = PdfDestination.makeDestination(array);
-        PdfAnnotation annotation = new PdfLinkAnnotation(pdfDoc, linkLocation)
+        PdfAnnotation annotation = new PdfLinkAnnotation(linkLocation)
                 .setHighlightMode(PdfAnnotation.HIGHLIGHT_INVERT)
                 .setAction(PdfAction.createGoTo(destination)).setBorder(new PdfArray(new float[]{0, 0, 0}));
         pdfDoc.getPage(1).addAnnotation(annotation);

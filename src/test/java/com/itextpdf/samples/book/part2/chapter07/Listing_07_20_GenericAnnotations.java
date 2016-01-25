@@ -70,7 +70,7 @@ public class Listing_07_20_GenericAnnotations extends GenericTest {
             super.draw(drawContext);
 
             Rectangle rect = getOccupiedAreaBBox();
-            PdfAnnotation annotation = new PdfTextAnnotation(drawContext.getDocument(),
+            PdfAnnotation annotation = new PdfTextAnnotation(
                     new Rectangle(
                             rect.getRight() + 10, rect.getBottom(),
                             rect.getWidth() + 20, rect.getHeight()));

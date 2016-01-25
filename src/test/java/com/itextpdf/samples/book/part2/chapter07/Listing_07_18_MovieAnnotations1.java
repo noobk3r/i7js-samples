@@ -71,7 +71,7 @@ public class Listing_07_18_MovieAnnotations1 extends GenericTest {
             super.draw(drawContext);
             Rectangle rect = new Rectangle(getOccupiedAreaBBox().getLeft() + getOccupiedAreaBBox().getWidth() / 4,
                     getOccupiedAreaBBox().getBottom(), 10, 10);
-            PdfTextAnnotation textAnnot = new PdfTextAnnotation(drawContext.getDocument(), rect)
+            PdfTextAnnotation textAnnot = new PdfTextAnnotation(rect)
                     .setText(new PdfString(text))
                     .setContents(new PdfString(contents));
             drawContext.getDocument().getLastPage().addAnnotation(textAnnot);

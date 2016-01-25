@@ -35,7 +35,7 @@ public class AddLinkAnnotation extends GenericTest {
         array.add(pdfDoc.getPage(3).getPdfObject());
         array.add(PdfName.Fit);
         PdfDestination destination = PdfDestination.makeDestination(array);
-        PdfAnnotation annotation = new PdfLinkAnnotation(pdfDoc, linkLocation)
+        PdfAnnotation annotation = new PdfLinkAnnotation(linkLocation)
                 .setHighlightMode(PdfAnnotation.HIGHLIGHT_INVERT)
                 .setAction(PdfAction.createGoTo(destination))
                 .setBorder(new PdfArray(borders))

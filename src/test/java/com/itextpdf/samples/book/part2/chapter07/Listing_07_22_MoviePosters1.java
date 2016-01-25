@@ -76,7 +76,7 @@ public class Listing_07_22_MoviePosters1 extends GenericTest {
             img = new Image(ImageFactory.getImage(String.format(RESOURCE, movie.getImdb())));
             img.scaleToFit(1000, 60);
             img.setFixedPosition(x + (45 - img.getImageScaledWidth()) / 2, y);
-            linkAnnotation = new PdfLinkAnnotation(pdfDoc, new Rectangle(x + (45 - img.getImageScaledWidth()) / 2, y,
+            linkAnnotation = new PdfLinkAnnotation(new Rectangle(x + (45 - img.getImageScaledWidth()) / 2, y,
                     img.getImageScaledWidth(), img.getImageScaledHeight())).setBorder(border);
             linkAnnotation.setAction(PdfAction.createURI(String.format(IMDB, movie.getImdb())));
             pdfDoc.getLastPage().addAnnotation(linkAnnotation);

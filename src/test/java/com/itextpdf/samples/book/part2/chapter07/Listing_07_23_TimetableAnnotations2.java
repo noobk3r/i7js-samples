@@ -54,7 +54,7 @@ public class Listing_07_23_TimetableAnnotations2 extends Listing_07_21_Timetable
         for (Date day : PojoFactory.getDays(connection)) {
             for (Screening screening : PojoFactory.getScreenings(connection, day)) {
                 rect = getPosition(screening);
-                annotation = new PdfLinkAnnotation(pdfDoc, rect);
+                annotation = new PdfLinkAnnotation(rect);
                 annotation.setHighlightMode(PdfAnnotation.HIGHLIGHT_INVERT);
                 annotation.setAction(PdfAction.createURI(String.format(IMDB, screening.getMovie().getImdb())));
                 // TODO Why do one not use Border class in setBorder?

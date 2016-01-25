@@ -99,7 +99,7 @@ public class Listing_07_28_MoviePosters2 extends GenericTest {
                          String title, String contents, String imdb)
             throws IOException{
         // Create the text annotation
-        PdfAnnotation text = new PdfTextAnnotation(pdfDoc, rect)
+        PdfAnnotation text = new PdfTextAnnotation(rect)
                 .setIconName(new PdfName("Comment"))
                 .setTitle(new PdfString(title))
                 .setContents(contents)
@@ -107,7 +107,7 @@ public class Listing_07_28_MoviePosters2 extends GenericTest {
                 .setName(new PdfString(String.format("IMDB%s", imdb)));
         text.setFlags(PdfAnnotation.ReadOnly | PdfAnnotation.NoView);
         // Create the popup annotation
-        PdfAnnotation popup = new PdfPopupAnnotation(pdfDoc,
+        PdfAnnotation popup = new PdfPopupAnnotation(
                 new Rectangle(rect.getLeft() + 10, rect.getBottom() + 10, 190, 90));
         // Add the text annotation to the popup
         popup.put(PdfName.Parent, text.getPdfObject().getIndirectReference());

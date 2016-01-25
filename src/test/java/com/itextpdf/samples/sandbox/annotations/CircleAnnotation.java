@@ -35,7 +35,7 @@ public class CircleAnnotation extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)),
                 new PdfWriter(new FileOutputStream(DEST)));
         Rectangle rect = new Rectangle(150, 770, 200 - 150, 820 - 770);
-        PdfCircleAnnotation annotation = new PdfCircleAnnotation(pdfDoc, rect)
+        PdfCircleAnnotation annotation = new PdfCircleAnnotation(rect)
                 .setContents("Circle")
                 .setTitle(new PdfString("Circle"))
                 .setColor(Color.BLUE)

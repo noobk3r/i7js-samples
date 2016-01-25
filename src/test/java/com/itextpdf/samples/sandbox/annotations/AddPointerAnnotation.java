@@ -40,7 +40,7 @@ public class AddPointerAnnotation extends GenericTest {
         document.add(img);
         Rectangle rect = new Rectangle(220, 350, 475 - 220, 595 - 350);
         // "Cambridge Innovation Center" == contents;
-        PdfLineAnnotation lineAnnotation = new PdfLineAnnotation(pdfDoc, rect, new float[]{225, 355, 470, 590});
+        PdfLineAnnotation lineAnnotation = new PdfLineAnnotation(rect, new float[]{225, 355, 470, 590});
         PdfArray le = new PdfArray();
         le.add(new PdfName("OpenArrow"));
         le.add(new PdfName("None"));

@@ -37,7 +37,7 @@ public class FileAttachmentAnnot extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Rectangle rect = new Rectangle(36, 700, 136, 800);
         PdfFileSpec fs = PdfFileSpec.createEmbeddedFileSpec(pdfDoc, PATH, null, "test.docx", null, null, false);
-        PdfFileAttachmentAnnotation attachment = new PdfFileAttachmentAnnotation(pdfDoc, rect, fs)
+        PdfFileAttachmentAnnotation attachment = new PdfFileAttachmentAnnotation(rect, fs)
                 .setContents("Click me");
         // TODO There is no PdfCanvas#createAppearance()
         //PdfAnnotationAppearance app = writer.getDirectContent().createAppearance(100, 100);

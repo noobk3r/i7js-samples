@@ -148,7 +148,7 @@ public class Listing_16_05_KubrickDvds extends GenericTest {
             Rectangle rect = new Rectangle(getOccupiedAreaBBox().getRight(),
                     getOccupiedAreaBBox().getBottom(), 10, 10);
             PdfFileAttachmentAnnotation annotation =
-                    new PdfFileAttachmentAnnotation(drawContext.getDocument(), rect, fs);
+                    new PdfFileAttachmentAnnotation(rect, fs);
             annotation.setIconName(PdfName.Paperclip);
             annotation.setContents(fileTitle);
             annotation.put(PdfName.Name, new PdfString("Paperclip"));
