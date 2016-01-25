@@ -2,10 +2,11 @@ package com.itextpdf.samples.book.part4.chapter14;
 
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -35,6 +36,7 @@ public class Listing_14_01_GetContentStream extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws IOException, SQLException {
+        new File(dest).getParentFile().mkdirs();
         readContent(HELLO_WORLD, RESULT1);
         readContent(HERO, RESULT2);
     }
