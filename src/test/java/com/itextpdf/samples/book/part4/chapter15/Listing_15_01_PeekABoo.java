@@ -1,14 +1,14 @@
 package com.itextpdf.samples.book.part4.chapter15;
 
 import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfVersion;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.layer.PdfLayer;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -17,8 +17,10 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_15_01_PeekABoo extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part4/chapter15/Listing_15_01_PickABoo.pdf";
-    public static String RESULT2 = "./target/test/resources/book/part4/chapter15/Listing_15_01_PickABoo2.pdf";
+    public static final String DEST
+            = "./target/test/resources/book/part4/chapter15/Listing_15_01_PickABoo.pdf";
+    public static String RESULT2
+            = "./target/test/resources/book/part4/chapter15/Listing_15_01_PickABoo2.pdf";
 
     public static void main(String args[]) throws IOException {
         new Listing_15_01_PeekABoo().manipulatePdf(DEST);

@@ -9,12 +9,8 @@ import java.io.PrintWriter;
 import java.util.Set;
 
 public class Listing_15_24_MyTextRenderListener implements EventListener {
-    /** The print writer to which the information will be written. */
     protected PrintWriter out;
 
-    /**
-     * Creates a RenderListener that will look for text.
-     */
     public Listing_15_24_MyTextRenderListener(PrintWriter out) {
         this.out = out;
     }

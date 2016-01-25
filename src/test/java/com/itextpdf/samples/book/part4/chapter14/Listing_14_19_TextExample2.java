@@ -12,10 +12,8 @@ import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 
 public class Listing_14_19_TextExample2 extends JPanel {
-    /** A String that needs to be displayed in a PDF document */
+    /** Strings that need to be displayed in a PDF document */
     private static AttributedString akira;
-
-    /** A String that needs to be displayed in a PDF document */
     public static final String AKIRA =
             "Akira Kurosawa (\u9ed2\u6fa4 \u660e or \u9ed2\u6ca2 \u660e, " +
                     "Kurosawa Akira, 23 March 1910 - 6 September 1998) was a " +
@@ -24,19 +22,13 @@ public class Listing_14_19_TextExample2 extends JPanel {
                     "He is widely regarded as one of the most important and " +
                     "influential filmmakers in film history.";
 
+    private static final long serialVersionUID = -3639324875232824761L;
 
-    /**
-     * Creates a TextExample that will be used to demonstrate how text in AWT can be translated to PDF.
-     */
     public Listing_14_19_TextExample2() {
         akira = new AttributedString(AKIRA);
         akira.addAttribute(TextAttribute.FONT, new Font("Arial Unicode MS", Font.PLAIN, 12));
     }
 
-    /**
-     * Draws the String to a Graphics object.
-     * @see javax.swing.JComponent#paint(java.awt.Graphics)
-     */
     public void paint(Graphics g) {
         LineBreakMeasurer lineMeasurer = null;
         int paragraphStart = 0;
@@ -65,10 +57,6 @@ public class Listing_14_19_TextExample2 extends JPanel {
         }
     }
 
-    /**
-     * Creates a JFrame and draws a String to it.
-     * @param args no arguments needed
-     */
     public static void main(String[] args) {
         Listing_14_19_TextExample2 Kurosawa = new Listing_14_19_TextExample2();
         JFrame f = new JFrame("Kurosawa");
@@ -82,7 +70,4 @@ public class Listing_14_19_TextExample2 extends JPanel {
         f.setSize(new Dimension(300, 150));
         f.setVisible(true);
     }
-
-    /** A serial version UID. */
-    private static final long serialVersionUID = -3639324875232824761L;
 }

@@ -8,32 +8,20 @@ import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
 
 public class Listing_14_11_PearExample extends JPanel {
+    private static final long serialVersionUID = 1251626928914650961L;
 
-    /** Ellipse in Double precision */
-    Ellipse2D.Double circle;
-    /** Ellipse in Double precision */
-    Ellipse2D.Double oval;
-    /** Ellipse in Double precision */
-    Ellipse2D.Double leaf;
-    /** Ellipse in Double precision */
-    Ellipse2D.Double stem;
+    protected Ellipse2D.Double circle;
+    protected Ellipse2D.Double oval;
+    protected Ellipse2D.Double leaf;
+    protected Ellipse2D.Double stem;
 
-    /** A geometric area */
-    Area circ;
-    /** A geometric area */
-    Area ov;
-    /** A geometric area */
-    Area leaf1;
-    /** A geometric area */
-    Area leaf2;
-    /** A geometric area */
-    Area st1;
-    /** A geometric area */
-    Area st2;
+    protected Area circ;
+    protected Area ov;
+    protected Area leaf1;
+    protected Area leaf2;
+    protected Area st1;
+    protected Area st2;
 
-    /**
-     * Initializes all the values needed to draw a Pear on a JPanel.
-     */
     public Listing_14_11_PearExample() {
         circle = new Ellipse2D.Double();
         oval = new Ellipse2D.Double();
@@ -47,10 +35,6 @@ public class Listing_14_11_PearExample extends JPanel {
         st2 = new Area(stem);
     }
 
-    /**
-     * Paints a pear.
-     * @see javax.swing.JComponent#paint(java.awt.Graphics)
-     */
     public void paint(Graphics g) {
         Graphics2D g2 = (Graphics2D)g;
         double ew = 75;
@@ -96,10 +80,6 @@ public class Listing_14_11_PearExample extends JPanel {
         g2.fill(circ);
     }
 
-    /**
-     * Opens a JFrame showing a Pear.
-     * @param args no arguments needed
-     */
     public static void main(String[] args) {
         Listing_14_11_PearExample pear = new Listing_14_11_PearExample();
         JFrame f = new JFrame("Pear");
@@ -113,8 +93,5 @@ public class Listing_14_11_PearExample extends JPanel {
         f.setSize(new Dimension(160, 200));
         f.setVisible(true);
     }
-
-    /** A serial version UID. */
-    private static final long serialVersionUID = 1251626928914650961L;
 }
 

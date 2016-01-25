@@ -2,20 +2,19 @@ package com.itextpdf.samples.book.part4.chapter15;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.geom.Rectangle;
-import com.itextpdf.basics.io.ByteArrayOutputStream;
 import com.itextpdf.basics.io.PdfTokenizer;
 import com.itextpdf.basics.io.RandomAccessFileOrArray;
 import com.itextpdf.basics.io.RandomAccessSourceFactory;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.parser.EventListener;
 import com.itextpdf.core.parser.PdfContentStreamProcessor;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.xobject.PdfFormXObject;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.BufferedReader;
@@ -31,7 +30,8 @@ import org.xml.sax.SAXException;
 
 @Category(SampleTest.class)
 public class Listing_15_20_ParsingHelloWorld extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part4/chapter15/Listing_15_20_ParsingHelloWorld.pdf";
+    public static final String DEST =
+            "./target/test/resources/book/part4/chapter15/Listing_15_20_ParsingHelloWorld.pdf";
 
     public static final String[] TEXT = {
             "./target/test/resources/book/part4/chapter15/Listing_15_20_ParsingHelloWorld1.txt",
@@ -43,11 +43,8 @@ public class Listing_15_20_ParsingHelloWorld extends GenericTest {
             "./src/test/resources/book/part4/chapter15/cmp_Listing_15_20_ParsingHelloWorld2.txt",
             "./src/test/resources/book/part4/chapter15/cmp_Listing_15_20_ParsingHelloWorld3.txt"
     };
-//    public static final String TEXT1 = "./target/test/resources/book/part4/chapter15/Listing_15_20_ParsingHelloWorld1.txt";
-//    public static final String TEXT2 = "./target/test/resources/book/part4/chapter15/Listing_15_20_ParsingHelloWorld2.txt";
-//    public static final String TEXT3 = "./target/test/resources/book/part4/chapter15/Listing_15_20_ParsingHelloWorld3.txt";
-    public static final String HELLO_WORLD =  "./src/test/resources/book/part1/chapter01/cmp_Listing_01_01_HelloWorld.pdf";
-
+    public static final String HELLO_WORLD =
+            "./src/test/resources/book/part1/chapter01/cmp_Listing_01_01_HelloWorld.pdf";
 
     public void createPdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
@@ -98,8 +95,7 @@ public class Listing_15_20_ParsingHelloWorld extends GenericTest {
 
     public void extractText(String src, String dest) throws IOException {
         PrintWriter out = new PrintWriter(new FileOutputStream(dest));
-        // TODO What is the need to receive PdfWriter as a parameter?  (Exception on processPageContent without)
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(new ByteArrayOutputStream()));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(src));
         EventListener listener = new Listing_15_24_MyTextRenderListener(out);
         PdfContentStreamProcessor processor = new PdfContentStreamProcessor(listener);
         processor.processPageContent(pdfDoc.getFirstPage());
@@ -120,7 +116,6 @@ public class Listing_15_20_ParsingHelloWorld extends GenericTest {
 
     @Override
     protected void comparePdf(String dest, String cmp) throws Exception {
-        //super.comparePdf(dest, cmp);
         BufferedReader destReader;
         BufferedReader cmpReader;
         String curDestStr;

@@ -12,25 +12,22 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.SQLException;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_14_01_GetContentStream extends GenericTest {
-    /** The content stream of a first PDF. */
     public static final String RESULT1
             = "./target/test/resources/book/part4/chapter14/Listing_14_01_GetContentStream1.txt";
-    /** The content stream of a second PDF. */
     public static final String RESULT2
             = "./target/test/resources/book/part4/chapter14/Listing_14_01_GetContentStream2.txt";
     public static final String CMP_RESULT1
             = "./src/test/resources/book/part4/chapter14/cmp_Listing_14_01_GetContentStream1.txt";
     public static final String CMP_RESULT2
             = "./src/test/resources/book/part4/chapter14/cmp_Listing_14_01_GetContentStream2.txt";
-
-    public static final String HELLO_WORLD = "./src/test/resources/book/part1/chapter01/cmp_Listing_01_01_HelloWorld.pdf";
-    public static final String HERO = "./src/test/resources/book/part1/chapter05/cmp_Listing_05_15_Hero1.pdf";
+    public static final String HELLO_WORLD
+            = "./src/test/resources/book/part1/chapter01/cmp_Listing_01_01_HelloWorld.pdf";
+    public static final String HERO
+            = "./src/test/resources/book/part1/chapter05/cmp_Listing_05_15_Hero1.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_14_01_GetContentStream().manipulatePdf(RESULT1);
@@ -38,15 +35,13 @@ public class Listing_14_01_GetContentStream extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws IOException, SQLException {
-        // new Listing_01_01_HelloWorld().manipulatePdf(Listing_01_01_HelloWorld.DEST);
-        // new Listing_05_15_Hero1().manipulatePdf(Listing_05_15_Hero1.DEST);
         readContent(HELLO_WORLD, RESULT1);
         readContent(HERO, RESULT2);
     }
 
-
     /**
      * Reads the content stream of the first page of a PDF into a text file.
+     *
      * @param src    the path to a PDF file
      * @param result the path to the resulting text file
      * @throws IOException
@@ -62,7 +57,6 @@ public class Listing_14_01_GetContentStream extends GenericTest {
 
     @Override
     protected void comparePdf(String dest, String cmp) throws Exception {
-        //super.comparePdf(dest, cmp);
         // For the first content stream
         BufferedReader destReader = new BufferedReader(new InputStreamReader(new FileInputStream(dest)));
         BufferedReader cmpReader = new BufferedReader(new InputStreamReader(new FileInputStream(cmp)));
@@ -74,7 +68,7 @@ public class Listing_14_01_GetContentStream extends GenericTest {
                 addError("The lengths of files are different.");
             }
             if (!curCmpStr.equals(curDestStr)) {
-                addError("The files are different on the row " + row );
+                addError("The files are different on the row " + row);
             }
             row++;
         }
@@ -91,14 +85,13 @@ public class Listing_14_01_GetContentStream extends GenericTest {
                 addError("The lengths of files are different.");
             }
             if (!curCmpStr.equals(curDestStr)) {
-                addError("The files are different on the row " + row );
+                addError("The files are different on the row " + row);
             }
             row++;
         }
         if ((curCmpStr = cmpReader.readLine()) != null) {
             addError("The lengths of files are different.");
         }
-
     }
 
     @Override

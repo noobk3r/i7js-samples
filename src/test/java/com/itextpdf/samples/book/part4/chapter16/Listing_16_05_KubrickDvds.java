@@ -10,7 +10,6 @@ import com.itextpdf.core.pdf.PdfString;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.annot.PdfFileAttachmentAnnotation;
 import com.itextpdf.core.pdf.filespec.PdfFileSpec;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.List;
 import com.itextpdf.model.element.ListItem;
@@ -19,7 +18,7 @@ import com.itextpdf.model.element.Text;
 import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.model.renderer.ListItemRenderer;
 import com.itextpdf.samples.GenericTest;
-
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
@@ -37,7 +36,8 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_16_05_KubrickDvds extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part4/chapter16/Listing_16_05_KubrickDvds.pdf";
+    public static final String FILENAME = "Listing_16_05_KubrickDvds.pdf";
+    public static final String DEST = "./target/test/resources/book/part4/chapter16/" + FILENAME;
     public static final String RESOURCE
             = "./src/test/resources/book/part4/chapter16/posters/%s.jpg";
     public static final String PATH = "./target/test/resources/book/part4/chapter16/%s";
@@ -101,7 +101,7 @@ public class Listing_16_05_KubrickDvds extends GenericTest {
         Document doc = new Document(pdfDoc);
         doc.add(new Paragraph("This is a list of Kubrick movies available in DVD stores."));
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
-        Set<Movie> movies = new TreeSet<>();
+        Set<Movie> movies = new TreeSet<Movie>();
         movies.addAll(PojoFactory.getMovies(connection, 1));
         movies.addAll(PojoFactory.getMovies(connection, 4));
         ListItem item;

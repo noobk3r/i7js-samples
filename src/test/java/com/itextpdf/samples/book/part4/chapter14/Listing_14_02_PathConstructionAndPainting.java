@@ -1,27 +1,25 @@
 package com.itextpdf.samples.book.part4.chapter14;
 
 import com.itextpdf.basics.geom.Rectangle;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.color.DeviceGray;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.model.Canvas;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
-// TODO Get rid of itext5 extension
 @Category(SampleTest.class)
 public class Listing_14_02_PathConstructionAndPainting extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part4/chapter14/Listing_14_02_PathConstructionAndPainting.pdf";
+    public static final String DEST
+            = "./target/test/resources/book/part4/chapter14/Listing_14_02_PathConstructionAndPainting.pdf";
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_14_02_PathConstructionAndPainting().manipulatePdf(DEST);
     }
@@ -71,6 +69,7 @@ public class Listing_14_02_PathConstructionAndPainting extends GenericTest {
 
     /**
      * Draws a row of squares.
+     *
      * @param canvas the canvas to which the squares have to be drawn
      * @param x      X coordinate to position the row
      * @param y      Y coordinate to position the row
@@ -116,15 +115,16 @@ public class Listing_14_02_PathConstructionAndPainting extends GenericTest {
 
     /**
      * Draws a series of Bezier curves
-     * @param canvas the canvas to which the curves have to be drawn
-     * @param x0 X coordinate of the start point
-     * @param y0 Y coordinate of the start point
-     * @param x1 X coordinate of the first control point
-     * @param y1 Y coordinate of the first control point
-     * @param x2 X coordinate of the second control point
-     * @param y2 Y coordinate of the second control point
-     * @param x3 X coordinate of the end point
-     * @param y3 Y coordinate of the end point
+     *
+     * @param canvas   the canvas to which the curves have to be drawn
+     * @param x0       X coordinate of the start point
+     * @param y0       Y coordinate of the start point
+     * @param x1       X coordinate of the first control point
+     * @param y1       Y coordinate of the first control point
+     * @param x2       X coordinate of the second control point
+     * @param y2       Y coordinate of the second control point
+     * @param x3       X coordinate of the end point
+     * @param y3       Y coordinate of the end point
      * @param distance the distance between the curves
      */
     public void createBezierCurves(PdfCanvas canvas, float x0, float y0,
@@ -157,6 +157,7 @@ public class Listing_14_02_PathConstructionAndPainting extends GenericTest {
 
     /**
      * Draws a row of stars and circles.
+     *
      * @param canvas the canvas to which the shapes have to be drawn
      * @param x      X coordinate to position the row
      * @param y      Y coordinate to position the row
@@ -198,6 +199,7 @@ public class Listing_14_02_PathConstructionAndPainting extends GenericTest {
     /**
      * Creates a path for a five pointed star.
      * This method doesn't fill or stroke the star!
+     *
      * @param canvas the canvas for which the star is constructed
      * @param x      the X coordinate of the center of the star
      * @param y      the Y coordinate of the center of the star
@@ -215,6 +217,7 @@ public class Listing_14_02_PathConstructionAndPainting extends GenericTest {
      * Creates a path for circle using Bezier curvers.
      * The path can be constructed clockwise or counter-clockwise.
      * This method doesn't fill or stroke the circle!
+     *
      * @param canvas    the canvas for which the path is constructed
      * @param x         the X coordinate of the center of the circle
      * @param y         the Y coordinate of the center of the circle

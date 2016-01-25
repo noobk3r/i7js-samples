@@ -25,11 +25,6 @@ public class Listing_14_22_TextExample4 {
     public static final String[] STYLES =  {
             "bold", "regular", "japanese", "regular", "japanese", "regular" };
 
-    /**
-     * Creates a JTextPane with the String we want to display in a PDF document.
-     * @return a JTextPane
-     * @throws javax.swing.text.BadLocationException
-     */
     public static JTextPane createTextPane() throws BadLocationException {
         JTextPane textPane = new JTextPane();
         StyledDocument doc = textPane.getStyledDocument();
@@ -41,10 +36,6 @@ public class Listing_14_22_TextExample4 {
         return textPane;
     }
 
-    /**
-     * Initialization of the styles that are used in the String.
-     * @param doc    a StyledDocument
-     */
     public static void initStyles(StyledDocument doc) {
         Style def =
                 StyleContext.getDefaultStyleContext().getStyle(StyleContext.DEFAULT_STYLE);
@@ -56,11 +47,6 @@ public class Listing_14_22_TextExample4 {
         StyleConstants.setFontFamily(japanese, "MS PGothic");
     }
 
-    /**
-     * Creates a JFrame and draws a String to it.
-     * @param args no arguments needed
-     * @throws BadLocationException
-     */
     public static void main(String[] args) throws BadLocationException {
         JFrame f = new JFrame("Kurosawa");
         f.getContentPane().add( createTextPane(), "Center" );
@@ -73,5 +59,4 @@ public class Listing_14_22_TextExample4 {
         f.setSize(new Dimension(300, 150));
         f.setVisible(true);
     }
-
 }

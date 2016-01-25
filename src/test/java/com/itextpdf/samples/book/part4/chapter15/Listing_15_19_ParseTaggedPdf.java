@@ -3,8 +3,8 @@ package com.itextpdf.samples.book.part4.chapter15;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.utils.TaggedPdfReaderTool;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.FileOutputStream;
@@ -19,9 +19,10 @@ import org.xml.sax.SAXException;
 @Ignore
 @Category(SampleTest.class)
 public class Listing_15_19_ParseTaggedPdf extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part4/chapter15/Listing_15_19_ParseTaggedPdf.pdf";
-    public static final String STRUCTURED_CONTENT = "./src/test/resources/book/part4/chapter15/cmp_Listing_15_16_StructuredContent.pdf";
-
+    public static final String DEST
+            = "./target/test/resources/book/part4/chapter15/Listing_15_19_ParseTaggedPdf.pdf";
+    public static final String STRUCTURED_CONTENT
+            = "./src/test/resources/book/part4/chapter15/cmp_Listing_15_16_StructuredContent.pdf";
 
     public static void main(String args[]) throws IOException, SQLException, ParserConfigurationException, SAXException {
         new Listing_15_19_ParseTaggedPdf().manipulatePdf(DEST);

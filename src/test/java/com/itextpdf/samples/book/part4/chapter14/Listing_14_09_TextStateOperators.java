@@ -2,17 +2,17 @@ package com.itextpdf.samples.book.part4.chapter14;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.geom.Rectangle;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
-import com.itextpdf.core.pdf.canvas.PdfCanvasConstants;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.color.DeviceGray;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfTextArray;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.pdf.canvas.PdfCanvas;
+import com.itextpdf.core.pdf.canvas.PdfCanvasConstants;
 import com.itextpdf.core.pdf.xobject.PdfFormXObject;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.FileOutputStream;
 
@@ -20,7 +20,8 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_14_09_TextStateOperators extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part4/chapter14/Listing_14_09_TextStateOperators.pdf";
+    public static final String DEST
+            = "./target/test/resources/book/part4/chapter14/Listing_14_09_TextStateOperators.pdf";
 
     public static void main(String[] args) throws Exception {
         new Listing_14_09_TextStateOperators().manipulatePdf(DEST);
@@ -41,31 +42,31 @@ public class Listing_14_09_TextStateOperators extends GenericTest {
         String text = "AWAY again";
         canvas.beginText().
                 // line 1
-                setFontAndSize(font, 16).
+                        setFontAndSize(font, 16).
                 moveText(36, 806).
                 moveTextWithLeading(0, -24).
                 showText(text).
                 // line 2
-                setWordSpacing(20).
+                        setWordSpacing(20).
                 newlineShowText(text).
                 // line 3
-                setCharacterSpacing(10).
+                        setCharacterSpacing(10).
                 newlineShowText(text).
                 setWordSpacing(0).
                 setCharacterSpacing(0).
                 // line 4
-                setHorizontalScaling(50).
+                        setHorizontalScaling(50).
                 newlineShowText(text).
                 setHorizontalScaling(100).
                 // line 5
-                newlineShowText(text).
+                        newlineShowText(text).
                 setTextRise(15).
                 setFontAndSize(font, 12).
                 setFillColor(Color.RED).
                 showText("2").
                 setFillColor(DeviceGray.BLACK).
                 // line 6
-                setLeading(56).
+                        setLeading(56).
                 newlineShowText("Changing the leading: " + text).
                 setLeading(24).
                 newlineText();
@@ -158,7 +159,6 @@ public class Listing_14_09_TextStateOperators extends GenericTest {
                 endText().
                 addXObject(xObject, 360, 490).
                 restoreState();
-
 
         //Close document
         pdfDoc.close();
