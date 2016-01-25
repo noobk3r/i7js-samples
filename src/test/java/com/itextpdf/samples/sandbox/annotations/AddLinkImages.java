@@ -5,8 +5,8 @@
 package com.itextpdf.samples.sandbox.annotations;
 
 import com.itextpdf.basics.image.ImageFactory;
-import com.itextpdf.core.pdf.canvas.image.WmfImage;
-import com.itextpdf.core.pdf.canvas.image.WmfImageHelper;
+import com.itextpdf.core.pdf.canvas.wmf.WmfImage;
+import com.itextpdf.core.pdf.canvas.wmf.WmfImageHelper;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.action.PdfAction;
