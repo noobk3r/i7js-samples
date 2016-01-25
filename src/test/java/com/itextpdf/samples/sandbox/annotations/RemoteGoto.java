@@ -55,7 +55,7 @@ public class RemoteGoto extends GenericTest {
     private void createPdf2(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
         Document doc = new Document(pdfDoc);
-        Paragraph chunk = new Paragraph(new Link("Link", PdfAction.createGoToR(pdfDoc, "subdir/xyz.pdf", "dest")));
+        Paragraph chunk = new Paragraph(new Link("Link", PdfAction.createGoToR("subdir/xyz.pdf", "dest")));
         doc.add(chunk);
         pdfDoc.close();
     }

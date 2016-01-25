@@ -93,7 +93,7 @@ public class PageLabels extends GenericTest {
 
         pdfDoc.addNewPage();
         pdfDoc.getPage(5).setArtBox(new Rectangle(36, 36, 559, 806));
-        Link link = new Link("World", PdfAction.createURI(pdfDoc, "http://maps.google.com"));
+        Link link = new Link("World", PdfAction.createURI("http://maps.google.com"));
         Paragraph p = new Paragraph("Hello ");
         p.add(link);
         doc.add(p);

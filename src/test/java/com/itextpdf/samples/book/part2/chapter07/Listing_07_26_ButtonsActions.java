@@ -46,7 +46,7 @@ public class Listing_07_26_ButtonsActions extends GenericTest {
         // saveAs.setLayout(PushbuttonField.LAYOUT_LABEL_ONLY);
         // saveAs.setRotation(90);
         PdfAnnotation saveAsButton = saveAs.getWidgets().get(0);
-        saveAsButton.setAction(PdfAction.createJavaScript(pdfDoc, "app.execMenuItem('SaveAs')"));
+        saveAsButton.setAction(PdfAction.createJavaScript("app.execMenuItem('SaveAs')"));
 
         PdfButtonFormField mail =
                 PdfFormField.createPushButton(pdfDoc, new Rectangle(736, 10, 816 - 736, 30 - 10), "Mail", "Mail");
@@ -55,7 +55,7 @@ public class Listing_07_26_ButtonsActions extends GenericTest {
 //        mail.setLayout(PushbuttonField.LAYOUT_LABEL_ONLY);
 //        mail.setRotation(90);
         PdfAnnotation mailButton = mail.getWidgets().get(0);
-        mailButton.setAction(PdfAction.createJavaScript(pdfDoc, "app.execMenuItem('AcroSendMail:SendMail')"));
+        mailButton.setAction(PdfAction.createJavaScript("app.execMenuItem('AcroSendMail:SendMail')"));
         // Add the annotations to every page of the document
         for (int page = 1; page <= pdfDoc.getNumberOfPages(); page++) {
             pdfDoc.getPage(page).addAnnotation(saveAsButton);

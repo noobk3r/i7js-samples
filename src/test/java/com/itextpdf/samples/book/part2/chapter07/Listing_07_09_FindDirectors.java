@@ -61,7 +61,7 @@ public class Listing_07_09_FindDirectors extends GenericTest {
         ResultSet rs = stm.executeQuery(
                 "SELECT name, given_name FROM film_director ORDER BY name, given_name");
         while (rs.next()) {
-            doc.add(createDirectorParagraph(pdfDoc, rs));
+            doc.add(createDirectorParagraph(rs));
         }
 
         // Close the database connection and statement
@@ -70,26 +70,26 @@ public class Listing_07_09_FindDirectors extends GenericTest {
         doc.close();
 
         // Create pdfDocuments
-        PdfDocument[] pdfDocumentses = {
+        PdfDocument[] pdfDocuments = {
                 new PdfDocument(new PdfReader(new ByteArrayInputStream(baos.toByteArray()))),
                 new PdfDocument(new PdfReader(NESTED_TABLES))};
 
         pdfDoc = new PdfDocument(new PdfWriter(DEST));
         pdfDoc.getCatalog()
-                .setOpenAction(PdfAction.createJavaScript(pdfDoc, readFileToString(RESOURCE)));
+                .setOpenAction(PdfAction.createJavaScript(readFileToString(RESOURCE)));
         int n;
-        for (int i = 0; i < pdfDocumentses.length; i++) {
-            n = pdfDocumentses[i].getNumberOfPages();
-            pdfDocumentses[i].copyPages(1, n, pdfDoc);
+        for (int i = 0; i < pdfDocuments.length; i++) {
+            n = pdfDocuments[i].getNumberOfPages();
+            pdfDocuments[i].copyPages(1, n, pdfDoc);
 //            for (int j = 1; j <= n; j++) {
-//                PdfFormXObject page = pdfDocumentses[i].getPage(j).copyAsFormXObject(pdfDoc);
+//                PdfFormXObject page = pdfDocuments[i].getPage(j).copyAsFormXObject(pdfDoc);
 //                new PdfCanvas(pdfDoc.addNewPage()).addXObject(page, 0, 0);
 //            }
         }
 
         pdfDoc.close();
-        for (int i = 0; i < pdfDocumentses.length; i++) {
-            pdfDocumentses[i].close();
+        for (int i = 0; i < pdfDocuments.length; i++) {
+            pdfDocuments[i].close();
         }
     }
 
@@ -99,10 +99,10 @@ public class Listing_07_09_FindDirectors extends GenericTest {
      *
      * @param rs the ResultSet containing director records.
      */
-    public Paragraph createDirectorParagraph(PdfDocument pdfDoc, ResultSet rs) throws SQLException {
+    public Paragraph createDirectorParagraph(ResultSet rs) throws SQLException {
         String strName = rs.getString("name");
-        PdfAction action = PdfAction.createJavaScript(pdfDoc, String.format("findDirector('%s');", strName));
-        StringBuffer buffer = new StringBuffer();
+        PdfAction action = PdfAction.createJavaScript(String.format("findDirector('%s');", strName));
+        StringBuilder buffer = new StringBuilder();
         buffer.append(strName);
         buffer.append(", ");
         buffer.append(rs.getString("given_name"));

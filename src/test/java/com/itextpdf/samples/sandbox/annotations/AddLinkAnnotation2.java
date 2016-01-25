@@ -44,7 +44,7 @@ public class AddLinkAnnotation2 extends GenericTest {
 
         PdfFont bold = new PdfType1Font((Type1Font) FontFactory.createFont(FontConstants.HELVETICA_BOLD));
 
-        Link link = new Link("The Best iText Questions on StackOverflow", PdfAction.createURI(pdfDoc, "http://pages.itextpdf.com/ebook-stackoverflow-questions.html"));
+        Link link = new Link("The Best iText Questions on StackOverflow", PdfAction.createURI("http://pages.itextpdf.com/ebook-stackoverflow-questions.html"));
         Paragraph p = new Paragraph("Download ").add(link.setFont(bold)).add(" and discover more than 200 questions and answers.");
 
         new Document(pdfDoc).showTextAligned(p.setWidth(500), 36, 700, 1,

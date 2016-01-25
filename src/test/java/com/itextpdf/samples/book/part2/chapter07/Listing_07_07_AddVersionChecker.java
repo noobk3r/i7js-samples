@@ -49,7 +49,7 @@ public class Listing_07_07_AddVersionChecker extends GenericTest {
                 = new PdfDocument(reader, new PdfWriter(DEST));
         // Add some javascript
         pdfDoc.getCatalog()
-                .setOpenAction(PdfAction.createJavaScript(pdfDoc, readFileToString(RESOURCE)));
+                .setOpenAction(PdfAction.createJavaScript(readFileToString(RESOURCE)));
         // Close the pdfDocument
         pdfDoc.close();
     }

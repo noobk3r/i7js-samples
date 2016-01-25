@@ -39,7 +39,7 @@ public class OpenAt100pct extends GenericTest {
         array.add(new PdfNumber(842));
         array.add(new PdfNumber(1f));
         PdfDestination pdfDest = PdfDestination.makeDestination(array);
-        pdfDoc.getCatalog().setOpenAction(PdfAction.createGoTo(pdfDoc, pdfDest));
+        pdfDoc.getCatalog().setOpenAction(PdfAction.createGoTo(pdfDest));
         pdfDoc.close();
     }
 }

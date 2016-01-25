@@ -33,7 +33,7 @@ public class RelativeLink extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
 
-        Paragraph chunk = new Paragraph(new Link("Click me", PdfAction.createURI(pdfDoc, "../../../../." + XML)));
+        Paragraph chunk = new Paragraph(new Link("Click me", PdfAction.createURI("../../../../." + XML)));
         doc.add(chunk);
 
         pdfDoc.close();

@@ -43,7 +43,7 @@ public class AddOpenAction extends GenericTest {
         array.add(new PdfNumber(pdfDoc.getPage(1).getPageSize().getHeight()));
         array.add(new PdfNumber(0.75f));
         PdfDestination pdfDest = PdfDestination.makeDestination(array);
-        PdfAction action = PdfAction.createGoTo(pdfDoc, pdfDest);
+        PdfAction action = PdfAction.createGoTo(pdfDest);
         pdfDoc.getCatalog().setOpenAction(action);
         pdfDoc.close();
     }

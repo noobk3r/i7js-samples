@@ -26,7 +26,7 @@ public class Listing_07_10_LaunchAction extends GenericTest {
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
-        PdfAction action = new PdfAction(pdfDoc).put(PdfName.S, PdfName.Launch);
+        PdfAction action = new PdfAction().put(PdfName.S, PdfName.Launch);
         PdfDictionary pdfDictionary = new PdfDictionary();
         pdfDictionary.put(PdfName.F, new PdfName("c:/windows/notepad.exe"));
         pdfDictionary.put(PdfName.P, new PdfName("test.txt"));

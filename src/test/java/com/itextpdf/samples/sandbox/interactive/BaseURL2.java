@@ -36,7 +36,7 @@ public class BaseURL2 extends GenericTest {
         uri.put(PdfName.Type, PdfName.URI);
         uri.put(new PdfName("Base"), new PdfString("http://itextpdf.com/"));
         pdfDoc.getCatalog().put(PdfName.URI, uri);
-        PdfAction action = PdfAction.createURI(pdfDoc, "index.php", false);
+        PdfAction action = PdfAction.createURI("index.php", false);
         Link link = new Link("Home page", action);
         doc.add(new Paragraph(link));
 

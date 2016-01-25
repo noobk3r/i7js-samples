@@ -55,12 +55,12 @@ public class Listing_07_11_PrintTimeTable extends GenericTest {
         int n = pdfDoc.getNumberOfPages();
         // Add some javascript
         pdfDoc.getCatalog()
-                .setOpenAction(PdfAction.createJavaScript(pdfDoc, readFileToString(RESOURCE)));
+                .setOpenAction(PdfAction.createJavaScript(readFileToString(RESOURCE)));
         // Create a Chunk with a chained action
         PdfCanvas canvas;
-        PdfAction action = PdfAction.createJavaScript(pdfDoc, "app.alert('Think before you print!');");
-        action.next(PdfAction.createJavaScript(pdfDoc, "printCurrentPage(this.pageNum);"));
-        action.next(PdfAction.createURI(pdfDoc, "http://www.panda.org/savepaper/"));
+        PdfAction action = PdfAction.createJavaScript("app.alert('Think before you print!');");
+        action.next(PdfAction.createJavaScript("printCurrentPage(this.pageNum);"));
+        action.next(PdfAction.createURI("http://www.panda.org/savepaper/"));
         Link link = new Link("print this page", action);
         Paragraph paragraph = new Paragraph(link);
         // Add this Chunk to every page

@@ -49,7 +49,7 @@ public class AddNavigation extends GenericTest {
         PdfAnnotation a10 = new PdfLinkAnnotation(pdfDoc, rect)
                 .setHighlightMode(PdfAnnotation.HIGHLIGHT_INVERT)
                 .setPage(pdfDoc.getPage(10))
-                .setAction(PdfAction.createGoTo(pdfDoc, d1))
+                .setAction(PdfAction.createGoTo(d1))
                 .setBorder(new PdfArray(borders))
                 .setColor(new PdfArray(new float[]{0, 1, 0}));
         pdfDoc.getPage(1).addAnnotation(a10);
@@ -60,7 +60,7 @@ public class AddNavigation extends GenericTest {
         PdfAnnotation a1 = new PdfLinkAnnotation(pdfDoc, rect)
                 .setHighlightMode(PdfAnnotation.HIGHLIGHT_PUSH)
                 .setPage(pdfDoc.getPage(1))
-                .setAction(PdfAction.createGoTo(pdfDoc, d2))
+                .setAction(PdfAction.createGoTo(d2))
                 .setBorder(new PdfArray(borders))
                 .setColor(new PdfArray(new float[]{0, 1, 0}));
         pdfDoc.getPage(10).addAnnotation(a1);

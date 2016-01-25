@@ -121,10 +121,10 @@ public class Listing_07_28_MoviePosters2 extends GenericTest {
         PdfButtonFormField field = PdfFormField.createPushButton(pdfDoc, rect, String.format("b%s", imdb), "");
         PdfAnnotation widget = field.getWidgets().get(0);
         // Show the popup onMouseEnter
-        PdfAction enter = PdfAction.createJavaScript(pdfDoc, String.format(JS1, imdb));
+        PdfAction enter = PdfAction.createJavaScript(String.format(JS1, imdb));
         widget.setAdditionalAction(PdfName.E, enter);
         // Hide the popup onMouseExit
-        PdfAction exit = PdfAction.createJavaScript(pdfDoc, String.format(JS2, imdb));
+        PdfAction exit = PdfAction.createJavaScript(String.format(JS2, imdb));
         widget.setAdditionalAction(PdfName.X, exit);
         // Add the button annotation
         pdfDoc.getPage(1).addAnnotation(widget);

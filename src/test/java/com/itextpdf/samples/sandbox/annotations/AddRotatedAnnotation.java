@@ -35,7 +35,7 @@ public class AddRotatedAnnotation extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)),
                 new PdfWriter(new FileOutputStream(DEST)));
 
-        PdfAction action = PdfAction.createURI(pdfDoc, "http://pages.itextpdf.com/ebook-stackoverflow-questions.html");
+        PdfAction action = PdfAction.createURI("http://pages.itextpdf.com/ebook-stackoverflow-questions.html");
         Rectangle linkLocation1 = new Rectangle(30, 770, 120 - 30, 800 - 770);
         PdfLinkAnnotation link1 = new PdfLinkAnnotation(pdfDoc, linkLocation1)
                 .setHighlightMode(PdfAnnotation.HIGHLIGHT_INVERT)

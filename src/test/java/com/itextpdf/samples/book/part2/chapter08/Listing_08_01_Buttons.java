@@ -71,7 +71,7 @@ public class Listing_08_01_Buttons extends GenericTest {
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
-        pdfDoc.getCatalog().setOpenAction(PdfAction.createJavaScript(pdfDoc, readFileToString(RESOURCE)));
+        pdfDoc.getCatalog().setOpenAction(PdfAction.createJavaScript(readFileToString(RESOURCE)));
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         PdfFont font = PdfFont.createStandardFont(FontConstants.HELVETICA);
         Rectangle rect;
@@ -152,7 +152,7 @@ public class Listing_08_01_Buttons extends GenericTest {
         // button.setImage(Image.getInstance(IMAGE));
 
         PdfAnnotation ann = button.getWidgets().get(0);
-        ann.setAction(PdfAction.createJavaScript(pdfDoc, "this.showButtonState()"));
+        ann.setAction(PdfAction.createJavaScript("this.showButtonState()"));
         pdfDoc.getFirstPage().addAnnotation(ann);
 
         doc.close();

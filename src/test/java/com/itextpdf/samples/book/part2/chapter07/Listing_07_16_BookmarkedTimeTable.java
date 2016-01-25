@@ -56,7 +56,7 @@ public class Listing_07_16_BookmarkedTimeTable extends GenericTest {
         for (Date day : days) {
             kid = root.addOutline(day.toString());
             // See pdf-reference Table 8.50; first page should be defined as 0 here
-            kid.addAction(PdfAction.createGoTo(pdfDoc, PdfExplicitDestination.createFit(page-1)));
+            kid.addAction(PdfAction.createGoTo(PdfExplicitDestination.createFit(page-1)));
             page++;
         }
         // Close the stamper

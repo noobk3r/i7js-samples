@@ -70,14 +70,14 @@ public class Listing_07_14_CreateOutlineTree extends GenericTest {
                 title = "\ube48\uc9d1";
             }
             movieBookmark = root.addOutline(title);
-            movieBookmark.addAction(PdfAction.createGoTo(pdfDoc,
+            movieBookmark.addAction(PdfAction.createGoTo(
                     PdfExplicitDestination.createFitH(pdfDoc.getLastPage(),
                             pdfDoc.getLastPage().getPageSize().getTop())));
             // TODO No setStyle and setColor on PdfOutline
             link = movieBookmark.addOutline("link to IMDB");
-            link.addAction(PdfAction.createURI(pdfDoc, (String.format(RESOURCE, movie.getImdb()))));
+            link.addAction(PdfAction.createURI((String.format(RESOURCE, movie.getImdb()))));
             info = movieBookmark.addOutline("instant info");
-            info.addAction(PdfAction.createJavaScript(pdfDoc,
+            info.addAction(PdfAction.createJavaScript(
                     String.format(INFO, movie.getYear(), movie.getDuration())));
             doc.add(new Paragraph(movie.getMovieTitle()));
             doc.add(PojoToElementFactory.getDirectorList(movie));

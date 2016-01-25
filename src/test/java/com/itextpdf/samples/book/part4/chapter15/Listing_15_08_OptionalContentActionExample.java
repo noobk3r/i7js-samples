@@ -73,7 +73,7 @@ public class Listing_15_08_OptionalContentActionExample extends GenericTest {
         dictList = new ArrayList<>();
         dictList.add(a3.getPdfObject());
         stateOn.add(new PdfActionOcgState(PdfName.ON, dictList));
-        PdfAction actionOn = PdfAction.createSetOcgState(pdfDoc, stateOn, true);
+        PdfAction actionOn = PdfAction.createSetOcgState(stateOn, true);
 
         ArrayList<PdfActionOcgState> stateOff = new ArrayList<PdfActionOcgState>();
         dictList = new ArrayList<>();
@@ -85,7 +85,7 @@ public class Listing_15_08_OptionalContentActionExample extends GenericTest {
         dictList = new ArrayList<>();
         dictList.add(a3.getPdfObject());
         stateOff.add(new PdfActionOcgState(PdfName.OFF, dictList));
-        PdfAction actionOff = PdfAction.createSetOcgState(pdfDoc, stateOff, true);
+        PdfAction actionOff = PdfAction.createSetOcgState(stateOff, true);
 
         dictList = new ArrayList<>();
         dictList.add(a1.getPdfObject());
@@ -93,7 +93,7 @@ public class Listing_15_08_OptionalContentActionExample extends GenericTest {
         dictList.add(a3.getPdfObject());
         ArrayList<PdfActionOcgState> stateToggle = new ArrayList<>();
         stateToggle.add(new PdfActionOcgState(new PdfName("Toggle"), dictList));
-        PdfAction actionToggle = PdfAction.createSetOcgState(pdfDoc, stateToggle, true);
+        PdfAction actionToggle = PdfAction.createSetOcgState(stateToggle, true);
 
         // TODO Ambiguity in parameters: compare 'paragraphs' above and below
 //        ArrayList<PdfActionOcgState> stateToggle = new ArrayList<PdfActionOcgState>();

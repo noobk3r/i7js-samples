@@ -35,8 +35,8 @@ public class BaseURL1 extends GenericTest {
 
         pdfDoc.addNewPage();
         pdfDoc.getCatalog()
-                .setOpenAction(PdfAction.createJavaScript(pdfDoc, "this.baseURL = \"http://itextpdf.com/\";"));
-        PdfAction action = PdfAction.createURI(pdfDoc, "index.php", false);
+                .setOpenAction(PdfAction.createJavaScript("this.baseURL = \"http://itextpdf.com/\";"));
+        PdfAction action = PdfAction.createURI("index.php", false);
         Link link = new Link("Home page", action);
         doc.add(new Paragraph(link));
 

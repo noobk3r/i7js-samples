@@ -59,7 +59,7 @@ public class Listing_07_27_Advertisement extends GenericTest {
         PdfAnnotation menubar = button.getWidgets().get(0);
         String js = "var f1 = getField('click'); f1.display = display.hidden;"
                 + "var f2 = getField('advertisement'); f2.display = display.hidden;";
-        menubar.setAction(PdfAction.createJavaScript(pdfDoc, js));
+        menubar.setAction(PdfAction.createJavaScript(js));
         // Add the annotation
         pdfDoc.getPage(1).addAnnotation(menubar);
         // Create the advertisement annotation for the content
@@ -74,7 +74,7 @@ public class Listing_07_27_Advertisement extends GenericTest {
         // button.setTemplate(stamper.getImportedPage(ad, 1));
         // button.setLayout(PushbuttonField.LAYOUT_ICON_TOP_LABEL_BOTTOM);
         PdfAnnotation advertisement = button.getWidgets().get(0);
-        advertisement.setAction(PdfAction.createURI(pdfDoc, "http://www.1t3xt.com/docs/book.php"));
+        advertisement.setAction(PdfAction.createURI("http://www.1t3xt.com/docs/book.php"));
         // Add the annotation
         pdfDoc.getPage(1).addAnnotation(advertisement);
         // Close the pdf document

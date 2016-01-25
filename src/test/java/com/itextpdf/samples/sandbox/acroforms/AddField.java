@@ -43,7 +43,7 @@ public class AddField extends GenericTest {
         button.setBackgroundColor(Color.GRAY);
         //@TODO (DEVSIX-233)
         //button.setValue("POST");
-        button.setAction(PdfAction.createSubmitForm(pdfDoc, "http://itextpdf.com:8180/book/request", null, PdfAction.SUBMIT_HTML_FORMAT | PdfAction.SUBMIT_COORDINATES));
+        button.setAction(PdfAction.createSubmitForm("http://itextpdf.com:8180/book/request", null, PdfAction.SUBMIT_HTML_FORMAT | PdfAction.SUBMIT_COORDINATES));
         button.setVisibility(PdfFormField.VISIBLE_BUT_DOES_NOT_PRINT);
         form.addField(button);
 

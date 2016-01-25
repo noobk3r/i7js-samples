@@ -84,7 +84,7 @@ public class Listing_13_16_AddJavaScriptToForm extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
         // Get the writer from the stamper
         // Add JavaScript
-        pdfDoc.getCatalog().setOpenAction(PdfAction.createJavaScript(pdfDoc, readFileToString(RESOURCE)));
+        pdfDoc.getCatalog().setOpenAction(PdfAction.createJavaScript(readFileToString(RESOURCE)));
         // get the form fields
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         PdfFormField fd = form.getField("married");
@@ -95,7 +95,7 @@ public class Listing_13_16_AddJavaScriptToForm extends GenericTest {
 //        if (yesAction == null) {
 //            yesAction = new PdfDictionary();
 //        }
-        fd.getWidgets().get(0).setAdditionalAction(PdfName.Fo, PdfAction.createJavaScript(pdfDoc, "setReadOnly(false);"));
+        fd.getWidgets().get(0).setAdditionalAction(PdfName.Fo, PdfAction.createJavaScript("setReadOnly(false);"));
         // yesAction.put(new PdfName("Fo"), PdfAction.createJavaScript(pdfDoc, "setReadOnly(false);"));
         // dictYes.put(PdfName.AA, yesAction);
         // Get the PDF dictionary of the NO radio button and add an additional action
@@ -107,10 +107,10 @@ public class Listing_13_16_AddJavaScriptToForm extends GenericTest {
 //                PdfAction.javaScript("setReadOnly(true);", stamper.getWriter()));
 //        dictNo.put(PdfName.AA, noAction);
         // Create a submit button and add it to the stamper
-        fd.getWidgets().get(1).setAdditionalAction(PdfName.Fo, PdfAction.createJavaScript(pdfDoc, "setReadOnly(true);"));
+        fd.getWidgets().get(1).setAdditionalAction(PdfName.Fo, PdfAction.createJavaScript("setReadOnly(true);"));
         PdfButtonFormField button = PdfFormField.createPushButton(pdfDoc, new Rectangle(40, 690, 160, 20), "submit", "validate and submit");
         button.setVisibility(PdfFormField.VISIBLE_BUT_DOES_NOT_PRINT);
-        button.setAction(PdfAction.createJavaScript(pdfDoc, "validate();"));
+        button.setAction(PdfAction.createJavaScript("validate();"));
         form.addField(button);
         // close the stamper
         pdfDoc.close();

@@ -48,25 +48,25 @@ public class Listing_07_01_NamedActions extends GenericTest {
         Style cellStyle = new Style().setBorder(Border.NO_BORDER)
                 .setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
 
-        PdfAction action = PdfAction.createNamed(pdfDoc, PdfName.FirstPage);
+        PdfAction action = PdfAction.createNamed(PdfName.FirstPage);
         Link first = new Link(String.valueOf((char) 220), action);
         table.addCell(new Cell()
                 .add(new Paragraph().add(first))
                 .addStyle(cellStyle));
 
-        action = PdfAction.createNamed(pdfDoc, PdfName.PrevPage);
+        action = PdfAction.createNamed(PdfName.PrevPage);
         Link previous = new Link(String.valueOf((char) 172), action);
         table.addCell(new Cell()
                 .add(new Paragraph().add(previous))
                 .addStyle(cellStyle));
 
-        action = PdfAction.createNamed(pdfDoc, PdfName.NextPage);
+        action = PdfAction.createNamed(PdfName.NextPage);
         Link next = new Link(String.valueOf((char) 174), action);
         table.addCell(new Cell()
                 .add(new Paragraph().add(next))
                 .addStyle(cellStyle));
 
-        action = PdfAction.createNamed(pdfDoc, PdfName.LastPage);
+        action = PdfAction.createNamed(PdfName.LastPage);
         Link last = new Link(String.valueOf((char) 222), action);
         table.addCell(new Cell()
                 .add(new Paragraph().add(last))

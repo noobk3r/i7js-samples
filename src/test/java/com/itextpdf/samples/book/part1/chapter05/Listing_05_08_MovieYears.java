@@ -77,7 +77,7 @@ public class Listing_05_08_MovieYears extends GenericTest {
             p.add(text);
             text = new Text(String.format(" (%d minutes)  ", movie.getDuration())).setFont(italic);
             p.add(text);
-            text = new Link("IMDB", PdfAction.createURI(pdfDoc, "http://www.imdb.com/title/tt" + movie.getImdb()))
+            text = new Link("IMDB", PdfAction.createURI("http://www.imdb.com/title/tt" + movie.getImdb()))
                     .setFont(bold).setFontColor(Color.WHITE);
             text.setNextRenderer(new EllipseTextRenderer((Link) text));
             p.add(text);

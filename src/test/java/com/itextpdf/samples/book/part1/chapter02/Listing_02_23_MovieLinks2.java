@@ -61,7 +61,7 @@ public class Listing_02_23_MovieLinks2 extends GenericTest {
         p.add(top);
         doc.add(p);
         // create an external link
-        Link imdb = new Link("Internet Movie Database", PdfAction.createURI(pdfDoc, "http://www.imdb.com/"));
+        Link imdb = new Link("Internet Movie Database", PdfAction.createURI("http://www.imdb.com/"));
         imdb.setFont(italic);
         p = new Paragraph("Click on a country, and you'll get a list of movies, "
                 + "containing links to the ");
@@ -70,7 +70,7 @@ public class Listing_02_23_MovieLinks2 extends GenericTest {
         doc.add(p);
         // Create a remote goto
         p = new Paragraph("This list can be found in a ");
-        Link page1 = new Link("separate document", PdfAction.createGoToR(pdfDoc, MOVIE_LINKS1_TODO, 1)); // TODO
+        Link page1 = new Link("separate document", PdfAction.createGoToR(MOVIE_LINKS1_TODO, 1)); // TODO
         p.add(page1);
         p.add(".");
         doc.add(p);
@@ -90,7 +90,7 @@ public class Listing_02_23_MovieLinks2 extends GenericTest {
             Paragraph country = new Paragraph(rs.getString("country"));
             country.add(": ");
             Link link = new Link(String.format("%d movies", rs.getInt("c")),
-                    PdfAction.createGoToR(pdfDoc, MOVIE_LINKS1_TODO, rs.getString("country_id"))); // TODO
+                    PdfAction.createGoToR(MOVIE_LINKS1_TODO, rs.getString("country_id"))); // TODO
             country.add(link);
             doc.add(country);
         }
@@ -104,7 +104,7 @@ public class Listing_02_23_MovieLinks2 extends GenericTest {
         array.add(new PdfNumber(100));
         array.add(new PdfNumber(1));
         PdfDestination dest = PdfDestination.makeDestination(array);
-        Link topLink = new Link("top", PdfAction.createGoTo(pdfDoc, dest));
+        Link topLink = new Link("top", PdfAction.createGoTo(dest));
         p.add(topLink);
         p.add(".");
         doc.add(p);

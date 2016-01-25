@@ -48,14 +48,14 @@ public class AddLinkImages extends GenericTest {
         p.add(createImage(FOX, "http://stackoverflow.com/q/29388313/1622493", pdfDoc));
         //@TODO Use Image constructor instead of this ugly construction when PdfDocument is removed from PdfFont constructor(DEVSIX-329)
         p.add(new Image((PdfFormXObject) new WmfImageHelper(new WmfImage(BUTTERFLY)).createPdfForm(pdfDoc)).
-                setProperty(Property.ACTION, PdfAction.createURI(pdfDoc, "http://stackoverflow.com/questions/tagged/itext*")));
+                setProperty(Property.ACTION, PdfAction.createURI("http://stackoverflow.com/questions/tagged/itext*")));
         doc.add(p);
         pdfDoc.close();
     }
 
     public Image createImage(String src, String url, PdfDocument pdfDoc) throws MalformedURLException {
         Image img = new Image(ImageFactory.getImage(src));
-        img.setProperty(Property.ACTION, PdfAction.createURI(pdfDoc, url));
+        img.setProperty(Property.ACTION, PdfAction.createURI(url));
         return img;
     }
 }

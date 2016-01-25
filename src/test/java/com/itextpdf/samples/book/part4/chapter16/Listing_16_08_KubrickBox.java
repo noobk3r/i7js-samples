@@ -74,7 +74,7 @@ public class Listing_16_08_KubrickBox extends GenericTest {
                 target = new PdfTargetDictionary(PdfName.C);
                 target.put(PdfName.N, new PdfString(movie.getTitle()));
                 link = new Link(" (see info)",
-                        PdfAction.createGoToE(pdfDoc, PdfExplicitDestination.createFit(1), false, target));
+                        PdfAction.createGoToE(PdfExplicitDestination.createFit(1), false, target));
                 item.add(new Paragraph(link));
                 list.add(item);
             }
@@ -108,7 +108,7 @@ public class Listing_16_08_KubrickBox extends GenericTest {
         doc.add(table);
         PdfTargetDictionary target = new PdfTargetDictionary(PdfName.P);
         Link link = new Link("Go to original document",
-                PdfAction.createGoToE(pdfDoc, PdfExplicitDestination.createFit(1), false, target));
+                PdfAction.createGoToE(PdfExplicitDestination.createFit(1), false, target));
         doc.add(new Paragraph(link));
         doc.close();
         return baos.toByteArray();

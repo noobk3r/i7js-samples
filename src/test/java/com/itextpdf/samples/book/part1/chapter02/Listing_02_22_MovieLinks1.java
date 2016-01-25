@@ -67,14 +67,14 @@ public class Listing_02_22_MovieLinks1 extends GenericTest {
             for(Movie movie : PojoFactory.getMovies(connection, rs.getString("country_id"))) {
                 // the movie title will be an external link
                 imdb = new Link(movie.getMovieTitle(),
-                        PdfAction.createURI(pdfDoc, String.format("http://www.imdb.com/title/tt%s/", movie.getImdb())));
+                        PdfAction.createURI(String.format("http://www.imdb.com/title/tt%s/", movie.getImdb())));
                 doc.add(new Paragraph().add(imdb));
                 doc.add(new Paragraph("\n"));
             }
             doc.add(new AreaBreak());
         }
         // Create an internal link to the first page
-        Link toUS = new Link("Go back to the first page.", PdfAction.createGoTo(pdfDoc, "US"));
+        Link toUS = new Link("Go back to the first page.", PdfAction.createGoTo("US"));
         doc.add(new Paragraph(toUS));
         doc.close();
         stm.close();

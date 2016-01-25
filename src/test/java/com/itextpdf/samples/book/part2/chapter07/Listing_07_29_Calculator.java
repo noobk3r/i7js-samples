@@ -105,7 +105,7 @@ public class Listing_07_29_Calculator extends GenericTest {
     public void createPdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc, new PageSize(360, 360));
-        pdfDoc.getCatalog().setOpenAction(PdfAction.createJavaScript(pdfDoc, readFileToString(RESOURCE)));
+        pdfDoc.getCatalog().setOpenAction(PdfAction.createJavaScript(readFileToString(RESOURCE)));
         PdfFont font = PdfFont.createStandardFont(FontConstants.HELVETICA);
         // step 4
         // add the keys for the digits
@@ -161,11 +161,11 @@ public class Listing_07_29_Calculator extends GenericTest {
         pushButton.getWidgets().get(0).setNormalAppearance(createAppearance(pdfDoc, btn, Color.GRAY, w, h, font));
         pushButton.getWidgets().get(0).setRolloverAppearance(createAppearance(pdfDoc, btn, Color.RED, w, h, font));
         pushButton.getWidgets().get(0).setDownAppearance(createAppearance(pdfDoc, btn, Color.BLUE, w, h, font));
-        pushButton.getWidgets().get(0).setAdditionalAction(PdfName.U, PdfAction.createJavaScript(pdfDoc, script));
+        pushButton.getWidgets().get(0).setAdditionalAction(PdfName.U, PdfAction.createJavaScript(script));
         pushButton.getWidgets().get(0).setAdditionalAction(PdfName.E,
-                PdfAction.createJavaScript(pdfDoc, "this.showMove('" + btn + "');"));
+                PdfAction.createJavaScript("this.showMove('" + btn + "');"));
         pushButton.getWidgets().get(0).setAdditionalAction(new PdfName("X"),
-                PdfAction.createJavaScript(pdfDoc, "this.showMove(' ');"));
+                PdfAction.createJavaScript("this.showMove(' ');"));
         PdfAcroForm.getAcroForm(pdfDoc, true).addField(pushButton);
     }
 

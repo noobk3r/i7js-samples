@@ -99,7 +99,7 @@ public class Listing_13_17_ReplaceURL extends GenericTest {
         PdfButtonFormField button1 = PdfFormField.createPushButton(pdfDoc, new Rectangle(90, 660, 50, 30), "post", "POST");
         button1.setBackgroundColor(new DeviceGray(0.7f));
         button1.setVisibility(PdfFormField.VISIBLE_BUT_DOES_NOT_PRINT);
-        button1.setAction(PdfAction.createSubmitForm(pdfDoc, "/book/request", null,
+        button1.setAction(PdfAction.createSubmitForm("/book/request", null,
                 PdfAction.SUBMIT_HTML_FORMAT | PdfAction.SUBMIT_COORDINATES));
         form.addField(button1);
 
