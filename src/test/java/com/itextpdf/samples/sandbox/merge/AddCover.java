@@ -9,7 +9,7 @@ import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
-import com.itextpdf.utils.PdfMerger;
+import com.itextpdf.core.utils.PdfMerger;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;

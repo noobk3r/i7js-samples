@@ -6,7 +6,7 @@ import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.samples.GenericTest;
-import com.itextpdf.utils.PdfMerger;
+import com.itextpdf.core.utils.PdfMerger;
 
 import java.io.File;
 import java.io.FileInputStream;

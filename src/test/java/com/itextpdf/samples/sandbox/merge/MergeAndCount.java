@@ -7,7 +7,7 @@ import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.utils.PdfSplitter;
+import com.itextpdf.core.utils.PdfSplitter;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
