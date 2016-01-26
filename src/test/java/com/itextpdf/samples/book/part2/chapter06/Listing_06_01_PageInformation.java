@@ -15,8 +15,10 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
+import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
+@Ignore
 @Category(SampleTest.class)
 public class Listing_06_01_PageInformation extends GenericTest {
     public static final String RESULT

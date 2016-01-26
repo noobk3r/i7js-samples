@@ -1,32 +1,36 @@
-./target/test/resources/book/part1/chapter01/Listing_01_05_HelloWorldLandscape1.pdf
+./src/test/resources/book/part1/chapter01/cmp_Listing_01_05_HelloWorldLandscape1.pdf
 Number of pages: 1
 Size of page 1: [0.0,0.0,595.0,842.0]
 Rotation of page 1: 0
-Page size with rotation of page 1: com.itextpdf.basics.geom.Rectangle@781d929f
+Page size with rotation of page 1: com.itextpdf.basics.geom.Rectangle@3f4ddd67
 Is rebuilt? false
-Is encrypted? 
+Is encrypted? false
 
-./target/test/resources/book/part1/chapter01/Listing_01_06_HelloWorldLandscape2.pdf
+
+./src/test/resources/book/part1/chapter01/cmp_Listing_01_06_HelloWorldLandscape2.pdf
 Number of pages: 1
 Size of page 1: [0.0,0.0,595.0,842.0]
 Rotation of page 1: 0
-Page size with rotation of page 1: com.itextpdf.basics.geom.Rectangle@7747a1db
+Page size with rotation of page 1: com.itextpdf.basics.geom.Rectangle@735a5cd5
 Is rebuilt? false
-Is encrypted? 
+Is encrypted? false
 
-./target/test/resources/book/part1/chapter03/Listing_03_29_MovieTemplates.pdf
+
+./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf
 Number of pages: 8
 Size of page 1: [0.0,0.0,595.0,842.0]
 Rotation of page 1: 0
-Page size with rotation of page 1: com.itextpdf.basics.geom.Rectangle@7fd36e0a
+Page size with rotation of page 1: com.itextpdf.basics.geom.Rectangle@3184df1d
 Is rebuilt? false
-Is encrypted? 
+Is encrypted? false
 
-./target/test/resources/book/part1/chapter05/Listing_05_15_Hero1.pdf
+
+./src/test/resources/book/part1/chapter05/cmp_Listing_05_15_Hero1.pdf
 Number of pages: 1
 Size of page 1: [0.0,0.0,595.0,842.0]
 Rotation of page 1: 0
-Page size with rotation of page 1: com.itextpdf.basics.geom.Rectangle@11dd9416
+Page size with rotation of page 1: com.itextpdf.basics.geom.Rectangle@a540251
 Is rebuilt? false
-Is encrypted? 
+Is encrypted? false
+
 
