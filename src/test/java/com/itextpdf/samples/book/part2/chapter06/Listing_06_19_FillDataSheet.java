@@ -27,21 +27,12 @@ import org.junit.experimental.categories.Category;
 @Ignore("Document fonts")
 @Category(SampleTest.class)
 public class Listing_06_19_FillDataSheet extends GenericTest{
-    /** The original PDF file. */
     public static final String DATASHEET
             = "./src/test/resources/pdfs/datasheet.pdf";
-    /** The resulting PDF file. */
     public static final String DEST
             = "./target/test/resources/book/part2/chapter06/Listing_06_19_FillDataSheet.pdf";
 
-    /**
-     * Main method.
-     * @param args no arguments needed
-     * @throws IOException
-     * @throws SQLException
-     */
-    public static void main(String[] args)
-            throws SQLException, IOException {
+    public static void main(String[] args) throws SQLException, IOException {
         new Listing_06_19_FillDataSheet().manipulatePdf(DEST);
     }
 

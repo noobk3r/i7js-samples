@@ -1,32 +1,27 @@
 package com.itextpdf.samples.book.part2.chapter06;
 
-import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
-import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfPage;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_06_21_Concatenate extends GenericTest {
     public static final String DEST
             = "./target/test/resources/book/part2/chapter06/Listing_06_21_Concatenate.pdf";
-    // TODO Revise MovieLinks & MovieHistory and change source files
-    public static final String SOURCE1
-            = "./src/test/resources/source.pdf";
-    private static final String SOURCE2
-            = "./src/test/resources/source2.pdf";
+    public static final String MOVIE_LINKS1 =
+            "./src/test/resources/book/part1/chapter02/cmp_Listing_02_22_MovieLinks1.pdf";
+    // TODO Change with MovieHistory1 destination after revising the latter
+    public static final String MOVIE_POSTERS3 =
+            "./src/test/resources/book/part1/chapter02/cmp_Listing_02_28_MoviePosters3.pdf";
 
     public static void main(String args[]) throws IOException {
         new Listing_06_21_Concatenate().manipulatePdf(DEST);
@@ -34,13 +29,13 @@ public class Listing_06_21_Concatenate extends GenericTest {
 
     public void manipulatePdf(String dest) throws IOException {
         //Initialize source document 1
-        FileInputStream fis1 = new FileInputStream(SOURCE1);
+        FileInputStream fis1 = new FileInputStream(MOVIE_LINKS1);
         PdfReader reader1 = new PdfReader(fis1);
         PdfDocument sourceDoc1 = new PdfDocument(reader1);
         int n1 = sourceDoc1.getNumberOfPages();
 
         //Initialize source document 1
-        FileInputStream fis2 = new FileInputStream(SOURCE2);
+        FileInputStream fis2 = new FileInputStream(MOVIE_POSTERS3);
         PdfReader reader2 = new PdfReader(fis2);
         PdfDocument sourceDoc2 = new PdfDocument(reader2);
         int n2 = sourceDoc2.getNumberOfPages();
@@ -50,40 +45,14 @@ public class Listing_06_21_Concatenate extends GenericTest {
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument resultDoc = new PdfDocument(writer);
 
-        //Copy and stamp pages from source 1 to destination
         for (int i = 1; i <= n1; i++) {
             PdfPage page = sourceDoc1.getPage(i).copy(resultDoc);
-            page = resultDoc.addPage(page);
-            PdfCanvas canvas = new PdfCanvas(page);
-            canvas
-                    .saveState()
-                    .beginText()
-                    .setFontAndSize(PdfFont.createStandardFont(FontConstants.HELVETICA), 12)
-                    .moveText(36, 540)
-                    .showText("Hello World!")
-                    .endText()
-                    .restoreState()
-                    .release();
-            //Flush the page immediately to reduce memory consumption
-            page.flush();
+            resultDoc.addPage(page);
         }
 
-        //Copy and stamp pages from source 2 to destination
         for (int i = 1; i <= n2; i++) {
             PdfPage page = sourceDoc2.getPage(i).copy(resultDoc);
             resultDoc.addPage(page);
-            PdfCanvas canvas = new PdfCanvas(page);
-            canvas
-                    .saveState()
-                    .beginText()
-                    .setFontAndSize(PdfFont.createStandardFont(FontConstants.HELVETICA), 12)
-                    .moveText(36, 540)
-                    .showText("Hello World!")
-                    .endText()
-                    .restoreState()
-                    .release();
-            //Flush the page immediately to reduce memory consumption
-            page.flush();
         }
 
         //Close documents

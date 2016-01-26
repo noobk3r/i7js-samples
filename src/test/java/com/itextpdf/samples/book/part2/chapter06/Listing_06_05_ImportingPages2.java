@@ -24,18 +24,18 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_06_05_ImportingPages2 extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part2/chapter06/Listing_06_05_ImportingPages2.pdf";
-    public static final String SOURCE = "./src/test/resources/source.pdf";
+    public static final String DEST
+            = "./target/test/resources/book/part2/chapter06/Listing_06_05_ImportingPages2.pdf";
+    public static final String SOURCE
+            = "./src/test/resources/source.pdf";
+    public static final String MOVIE_TEMPLATES
+            = "./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
 
-    public static final String MOVIE_TEMPLATES = "./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_06_05_ImportingPages2().manipulatePdf(DEST);
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {
-        // // Run this program first to have a source file
-        // new Listing_03_29_MovieTemplates().manipulatePdf(Listing_03_29_MovieTemplates.DEST);
-
         //Initialize destination document
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
@@ -51,11 +51,8 @@ public class Listing_06_05_ImportingPages2 extends GenericTest {
             PdfPage curPage = srcDoc.getPage(i);
             PdfFormXObject header = curPage.copyAsFormXObject(resultDoc);
             Cell cell = new Cell()
-                    // TODO Interesting bug with cell renderer (infinity x)
                     .add(new Image(header).setAutoScaleWidth(true))
-                    .setBorder(new SolidBorder(1))
-                     // TODO Since the default rotation of pages in MovieTemplates is 0 in itext6 we have changed the sample a bit
-                    .setRotationAngle(Math.toRadians(-90));
+                    .setBorder(new SolidBorder(1));
             cell.setNextRenderer(new MyCellRenderer(cell));
             table.addCell(cell);
         }

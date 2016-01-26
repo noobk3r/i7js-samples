@@ -20,21 +20,22 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_06_09_NUpTool extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part2/chapter06/Listing_06_09_NUpTool.pdf";
-    public static final String RESULT = "./target/test/resources/book/part2/chapter06/Listing_06_09_NUpTool%dup.pdf";
-    public static final String RESOURCE = "./src/test/resources/book/part2/chapter06/loa.jpg";
+    public static final String DEST
+            = "./target/test/resources/book/part2/chapter06/Listing_06_09_NUpTool.pdf";
+    public static final String RESULT
+            = "./target/test/resources/book/part2/chapter06/Listing_06_09_NUpTool%dup.pdf";
+    public static final String RESOURCE
+            = "./src/test/resources/book/part2/chapter06/loa.jpg";
+    public static final String STATIONERY
+            = "./src/test/resources/book/part2/chapter06/cmp_Listing_06_08_Stationery.pdf";
 
-    public static final String STATIONERY = "./src/test/resources/book/part2/chapter06/cmp_Listing_06_08_Stationery.pdf";
     protected String[] arguments;
 
     public static void main(String args[]) throws IOException, SQLException {
-        Listing_06_09_NUpTool nupTool = new Listing_06_09_NUpTool();
-        nupTool.arguments = args;
-        nupTool.manipulatePdf(DEST);
+        new Listing_06_09_NUpTool().manipulatePdf(DEST);
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {
-        // Listing_06_08_Stationery.main(arguments);
         new Listing_06_09_NUpTool().multiplePdf(STATIONERY, RESULT, 1);
         new Listing_06_09_NUpTool().multiplePdf(STATIONERY, RESULT, 2);
         new Listing_06_09_NUpTool().multiplePdf(STATIONERY, RESULT, 3);

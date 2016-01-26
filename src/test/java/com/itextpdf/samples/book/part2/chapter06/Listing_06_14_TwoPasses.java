@@ -9,6 +9,7 @@ import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.model.Style;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Canvas;
 import com.itextpdf.model.Document;
@@ -41,7 +42,8 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_06_14_TwoPasses extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part2/chapter06/Listing_06_14_TwoPasses.pdf";
+    public static final String DEST
+            = "./target/test/resources/book/part2/chapter06/Listing_06_14_TwoPasses.pdf";
 
     protected PdfFont bold;
     protected PdfFont italic;
@@ -61,21 +63,16 @@ public class Listing_06_14_TwoPasses extends GenericTest {
     public static Table getHeaderTable(int x, int y) {
         Table table = new Table(2);
         table.setWidth(527);
-        // TODO No setLockedWidth(boolean)
-        // table.setLockedWidth(true);
-        // TODO Add facility to set default cell properties
+        Style style = new Style()
+                .setBorder(Border.NO_BORDER)
+                .setHeight(20)
+                .setTextAlignment(Property.TextAlignment.RIGHT)
+                .setBorderBottom(new SolidBorder(1));
         table.setBorder(Border.NO_BORDER);
         table.addCell(new Cell()
-                .add(new Paragraph("FOOBAR FILMFESTIVAL"))
-                .setHeight(20)
-                .setBorder(Border.NO_BORDER)
-                .setBorderBottom(new SolidBorder(1)));
+                .add("FOOBAR FILMFESTIVAL").addStyle(style));
         table.addCell(new Cell()
-                .setTextAlignment(Property.TextAlignment.RIGHT)
-                .add(new Paragraph(String.format("Page %d of %d", x, y)))
-                .setHeight(20)
-                .setBorder(Border.NO_BORDER)
-                .setBorderBottom(new SolidBorder(1)));
+                .add(String.format("Page %d of %d", x, y)).addStyle(style));
         return table;
     }
 

@@ -38,8 +38,8 @@ public class Listing_06_15_StampStationery extends GenericTest {
             "./target/test/resources/book/part2/chapter06/Listing_06_15_StampStationery.pdf";
     public static final String ORIGINAL =
             "./target/test/resources/book/part2/chapter06/Listing_06_15_StampStationery_original.pdf";
-
-    public static final String STATIONERY_WATERMARK = "./src/test/resources/book/part2/chapter06/cmp_Listing_06_08_Stationery_watermark.pdf";
+    public static final String STATIONERY_WATERMARK =
+            "./src/test/resources/book/part2/chapter06/cmp_Listing_06_08_Stationery_watermark.pdf";
 
     protected PdfFont bold;
     protected PdfFont italic;

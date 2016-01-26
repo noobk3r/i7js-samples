@@ -19,26 +19,26 @@ import org.junit.experimental.categories.Category;
 @Ignore
 @Category(SampleTest.class)
 public class Listing_06_12_StampText extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part2/chapter06/Listing_06_12_StampText.pdf";
-
-    public static final String DEST1 = "./target/test/resources/book/part2/chapter06/Listing_06_12_StampText_1.pdf";
-    public static final String DEST2 = "./target/test/resources/book/part2/chapter06/Listing_06_12_StampText_2.pdf";
-    public static final String DEST3 = "./target/test/resources/book/part2/chapter06/Listing_06_12_StampText_3.pdf";
-
-    public static final String HELLO_WORLD_LANDSCAPE1 = "./src/test/resources/book/part1/chapter01/cmp_Listing_01_05_HelloWorldLandscape1.pdf";
-    public static final String HELLO_WORLD_LANDSCAPE2 = "./src/test/resources/book/part1/chapter01/cmp_Listing_01_06_HelloWorldLandscape2.pdf";
+    public static final String DEST
+            = "./target/test/resources/book/part2/chapter06/Listing_06_12_StampText.pdf";
+    public static final String DEST1
+            = "./target/test/resources/book/part2/chapter06/Listing_06_12_StampText_1.pdf";
+    public static final String DEST2
+            = "./target/test/resources/book/part2/chapter06/Listing_06_12_StampText_2.pdf";
+    public static final String DEST3
+            = "./target/test/resources/book/part2/chapter06/Listing_06_12_StampText_3.pdf";
+    public static final String HELLO_WORLD_LANDSCAPE1
+            = "./src/test/resources/book/part1/chapter01/cmp_Listing_01_05_HelloWorldLandscape1.pdf";
+    public static final String HELLO_WORLD_LANDSCAPE2
+            = "./src/test/resources/book/part1/chapter01/cmp_Listing_01_06_HelloWorldLandscape2.pdf";
 
     public String[] arguments;
 
     public static void main(String args[]) throws IOException {
-        Listing_06_12_StampText stampText = new Listing_06_12_StampText();
-        stampText.arguments = args;
-        stampText.manipulatePdf(DEST);
+        new Listing_06_12_StampText().manipulatePdf(DEST);
     }
 
     public void manipulatePdf(String dest) throws IOException {
-        // Listing_01_05_HelloWorldLandscape1.main(arguments);
-        // Listing_01_06_HelloWorldLandscape2.main(arguments);
         stampPdf(HELLO_WORLD_LANDSCAPE1, DEST1);
         stampIgnoreRotation(HELLO_WORLD_LANDSCAPE1, DEST2);
         stampPdf(HELLO_WORLD_LANDSCAPE2, DEST3);

@@ -21,8 +21,7 @@ public class Listing_06_26_ConcatenateForms1 extends GenericTest {
     public static final String DEST =
             "./target/test/resources/book/part2/chapter06/Listing_06_26_ConcatenateForms1.pdf";
 
-    public static void main(String[] args)
-            throws SQLException, IOException {
+    public static void main(String[] args) throws SQLException, IOException {
         new Listing_06_26_ConcatenateForms1().manipulatePdf(DEST);
     }
 

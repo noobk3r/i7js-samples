@@ -4,8 +4,8 @@ import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfPage;
 import com.itextpdf.core.pdf.PdfReader;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -24,27 +24,22 @@ public class Listing_06_01_PageInformation extends GenericTest {
     public static final String CMP_RESULT
             = "./src/test/resources/book/part2/chapter06/cmp_Listing_06_01_PageInformation.txt";
 
-    public static final String HELLO_WORLD_LANDSCAPE1 = "./src/test/resources/book/part1/chapter01/cmp_Listing_01_05_HelloWorldLandscape1.pdf";
-    public static final String HELLO_WORLD_LANDSCAPE2 = "./src/test/resources/book/part1/chapter01/cmp_Listing_01_06_HelloWorldLandscape2.pdf";
-    public static final String MOVIE_TEMPLATES = "./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
-    public static final String HERO1 = "./src/test/resources/book/part1/chapter05/cmp_Listing_05_15_Hero1.pdf";
-
-
-    protected String[] arguments;
+    public static final String HELLO_WORLD_LANDSCAPE1
+            = "./src/test/resources/book/part1/chapter01/cmp_Listing_01_05_HelloWorldLandscape1.pdf";
+    public static final String HELLO_WORLD_LANDSCAPE2
+            = "./src/test/resources/book/part1/chapter01/cmp_Listing_01_06_HelloWorldLandscape2.pdf";
+    public static final String MOVIE_TEMPLATES
+            = "./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
+    public static final String HERO1
+            = "./src/test/resources/book/part1/chapter05/cmp_Listing_05_15_Hero1.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
-        Listing_06_01_PageInformation app = new Listing_06_01_PageInformation();
-        app.arguments = args;
-        app.manipulatePdf(RESULT);
+        new Listing_06_01_PageInformation().manipulatePdf(RESULT);
     }
 
     @Override
     public void manipulatePdf(String dest) throws IOException, SQLException {
         // Use old examples to create PDFs
-        // Listing_01_05_HelloWorldLandscape1.main(arguments);
-        // Listing_01_06_HelloWorldLandscape2.main(arguments);
-        // Listing_03_29_MovieTemplates.main(arguments);
-        // Listing_05_15_Hero1.main(arguments);
         // Inspecting PDFs
         PrintWriter writer = new PrintWriter(new FileOutputStream(RESULT));
         inspect(writer, HELLO_WORLD_LANDSCAPE1);
@@ -57,7 +52,7 @@ public class Listing_06_01_PageInformation extends GenericTest {
     public static void inspect(PrintWriter writer, String filename)
             throws IOException {
         PdfReader reader = new PdfReader(filename);
-        PdfDocument pdfDoc= new PdfDocument(reader);
+        PdfDocument pdfDoc = new PdfDocument(reader);
         writer.println(filename);
         writer.print("Number of pages: ");
         writer.println(pdfDoc.getNumberOfPages());
@@ -79,8 +74,7 @@ public class Listing_06_01_PageInformation extends GenericTest {
         writer.print("Is rebuilt? ");
         writer.println(reader.hasRebuiltXref());
         writer.print("Is encrypted? ");
-        // TODO No isEncrypted()
-        // writer.println(reader.isEncrypted());
+        writer.println(reader.isEncrypted());
         writer.println();
         writer.println();
         writer.flush();
@@ -89,6 +83,7 @@ public class Listing_06_01_PageInformation extends GenericTest {
 
     /**
      * Gets the rotated page from a page dictionary.
+     *
      * @param page the page
      * @return the rotated page rectangle
      */
@@ -115,7 +110,7 @@ public class Listing_06_01_PageInformation extends GenericTest {
                 addError("The lengths of files are different.");
             }
             if (!curCmpStr.equals(curDestStr)) {
-                addError("The files are different on the row " + row );
+                addError("The files are different on the row " + row);
             }
             row++;
         }

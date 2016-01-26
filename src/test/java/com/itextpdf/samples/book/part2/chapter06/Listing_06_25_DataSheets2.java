@@ -24,7 +24,8 @@ import org.junit.experimental.categories.Category;
 @Ignore
 @Category(SampleTest.class)
 public class Listing_06_25_DataSheets2 extends Listing_06_24_DataSheets1 {
-    public static final String DEST = "./target/test/resources/book/part2/chapter06/Listing_06_25_DataSheets2.pdf";
+    public static final String DEST =
+            "./target/test/resources/book/part2/chapter06/Listing_06_25_DataSheets2.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_06_25_DataSheets2().manipulatePdf(DEST);

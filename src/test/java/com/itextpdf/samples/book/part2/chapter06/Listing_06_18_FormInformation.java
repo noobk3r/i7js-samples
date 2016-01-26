@@ -3,9 +3,9 @@ package com.itextpdf.samples.book.part2.chapter06;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfName;
 import com.itextpdf.core.pdf.PdfReader;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -15,10 +15,8 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.Set;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_06_18_FormInformation extends GenericTest {
     public static final String DATASHEET

@@ -20,8 +20,10 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_06_10_TilingHero extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part2/chapter06/Listing_06_10_TilingHero.pdf";
-    public static final String SOURCE = "./src/test/resources/book/part2/chapter06/hero.pdf";
+    public static final String DEST
+            = "./target/test/resources/book/part2/chapter06/Listing_06_10_TilingHero.pdf";
+    public static final String SOURCE
+            = "./src/test/resources/book/part2/chapter06/hero.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_06_09_NUpTool().manipulatePdf(DEST);
@@ -45,7 +47,7 @@ public class Listing_06_10_TilingHero extends GenericTest {
     public void manipulatePdf(String dest) throws IOException, SQLException {
         PdfReader reader = new PdfReader(SOURCE);
         PdfDocument srcDoc = new PdfDocument(reader);
-        // TODO get Page size with rotation
+        // TODO No getPageSize with rotation
         Rectangle pageSize = getPageSizeWithRotation(srcDoc.getFirstPage());
 
         PdfWriter writer = new PdfWriter(DEST);

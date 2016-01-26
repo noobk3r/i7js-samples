@@ -29,9 +29,12 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_06_06_Layers extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part2/chapter06/Listing_06_06_Layers.pdf";
-    public static final String SOURCE = "./target/test/resources/book/part2/chapter06/Listing_06_06_Layers_orig.pdf";
-    public static final String RESOURCE = "./src/test/resources/book/part2/chapter06/loa.jpg";
+    public static final String DEST
+            = "./target/test/resources/book/part2/chapter06/Listing_06_06_Layers.pdf";
+    public static final String SOURCE
+            = "./target/test/resources/book/part2/chapter06/Listing_06_06_Layers_orig.pdf";
+    public static final String RESOURCE
+            = "./src/test/resources/book/part2/chapter06/loa.jpg";
 
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_06_06_Layers().manipulatePdf(DEST);

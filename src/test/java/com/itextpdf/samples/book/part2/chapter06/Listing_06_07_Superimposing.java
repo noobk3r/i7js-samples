@@ -1,25 +1,24 @@
 package com.itextpdf.samples.book.part2.chapter06;
 
 import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.basics.image.ImageFactory;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
-import com.itextpdf.core.pdf.canvas.PdfCanvasConstants;
 import com.itextpdf.core.color.DeviceRgb;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfPage;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.pdf.canvas.PdfCanvas;
+import com.itextpdf.core.pdf.canvas.PdfCanvasConstants;
 import com.itextpdf.core.pdf.xobject.PdfFormXObject;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.AreaBreak;
 import com.itextpdf.model.element.Image;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -36,7 +35,6 @@ public class Listing_06_07_Superimposing extends GenericTest {
     public static final String RESOURCE
             = "./src/test/resources/book/part2/chapter06/loa.jpg";
 
-    // No POST_CARD constant in itext6
     public static final PageSize postCard = new PageSize(283, 416);
 
     public static void main(String args[]) throws IOException, SQLException {
@@ -56,8 +54,7 @@ public class Listing_06_07_Superimposing extends GenericTest {
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument resultDoc = new PdfDocument(writer);
         Document doc = new Document(resultDoc, postCard);
-        //TODO why this font not use?
-        PdfFont font = PdfFont.createFont(FontConstants.ZAPFDINGBATS, PdfEncodings.WINANSI, true);
+
         PdfCanvas canvas = new PdfCanvas(resultDoc.addNewPage());
         for (int i = 1; i <= srcDoc.getNumberOfPages(); i++) {
             PdfFormXObject layer = srcDoc.getPage(i).copyAsFormXObject(resultDoc);

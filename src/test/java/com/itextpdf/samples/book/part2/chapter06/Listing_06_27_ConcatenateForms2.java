@@ -32,14 +32,6 @@ public class Listing_06_27_ConcatenateForms2 extends GenericTest {
         new Listing_06_27_ConcatenateForms2().manipulatePdf(DEST);
     }
 
-    /**
-     * Renames the fields in an interactive form.
-     *
-     * @param datasheet the path to the original form
-     * @param i         a number that needs to be appended to the field names
-     * @return a byte[] containing an altered PDF file
-     * @throws IOException
-     */
     private static byte[] renameFieldsIn(String datasheet, int i) throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         // Create the stamper

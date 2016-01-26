@@ -2,9 +2,8 @@ package com.itextpdf.samples.book.part2.chapter06;
 
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
-
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -21,19 +20,14 @@ public class Listing_06_02_MemoryInfo extends GenericTest {
             = "./target/test/resources/book/part2/chapter06/Listing_06_02_MemoryInfo.txt";
     public static final String CMP_RESULT
             = "./src/test/resources/book/part2/chapter06/cmp_Listing_06_02_MemoryInfo.txt";
-
-    public static final String MOVIE_TEMPLATES = "./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
-
-    protected String[] arguments;
+    public static final String MOVIE_TEMPLATES
+            = "./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
 
     public static void main(String args[]) throws IOException, SQLException, NoSuchFieldException, IllegalAccessException {
-        Listing_06_02_MemoryInfo app = new Listing_06_02_MemoryInfo();
-        app.arguments = args;
-        app.manipulatePdf(RESULT);
+        new Listing_06_02_MemoryInfo().manipulatePdf(RESULT);
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException, NoSuchFieldException, IllegalAccessException {
-        // Listing_03_29_MovieTemplates.main(arguments);
         // Create a writer for a report file
         PrintWriter writer = new PrintWriter(new FileOutputStream(RESULT));
         garbageCollect();
@@ -119,24 +113,7 @@ public class Listing_06_02_MemoryInfo extends GenericTest {
 
     @Override
     protected void comparePdf(String dest, String cmp) throws Exception {
-//        //super.comparePdf(dest, cmp);
-//        BufferedReader destReader = new BufferedReader(new InputStreamReader(new FileInputStream(dest)));
-//        BufferedReader cmpReader = new BufferedReader(new InputStreamReader(new FileInputStream(cmp)));
-//        String curDestStr;
-//        String curCmpStr;
-//        int row = 1;
-//        while ((curDestStr = destReader.readLine()) != null) {
-//            if ((curCmpStr = cmpReader.readLine()) != null) {
-//                addError("The lengths of files are different.");
-//            }
-//            if (!curCmpStr.equals(curDestStr)) {
-//                addError("The files are different on the row " + row);
-//            }
-//            row++;
-//        }
-//        if ((curCmpStr = cmpReader.readLine()) != null) {
-//            addError("The lengths of files are different.");
-//        }
+        // Can't compare
     }
 
     @Override

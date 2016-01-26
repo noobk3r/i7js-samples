@@ -19,19 +19,18 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_06_04_ImportingPages1 extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part2/chapter06/Listing_06_04_ImportingPages1.pdf";
-    public static final String SOURCE = "./src/test/resources/source.pdf";
-
-    public static final String MOVIE_TEMPLATES = "./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
+    public static final String DEST
+            = "./target/test/resources/book/part2/chapter06/Listing_06_04_ImportingPages1.pdf";
+    public static final String SOURCE
+            = "./src/test/resources/source.pdf";
+    public static final String MOVIE_TEMPLATES
+            = "./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_06_04_ImportingPages1().manipulatePdf(DEST);
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {
-        // // Run this program first to have a source file
-        // new Listing_03_29_MovieTemplates().manipulatePdf(Listing_03_29_MovieTemplates.DEST);
-
         //Initialize destination document
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
