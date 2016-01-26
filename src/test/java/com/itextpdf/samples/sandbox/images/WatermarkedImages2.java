@@ -9,7 +9,6 @@ import com.itextpdf.basics.image.ImageFactory;
 import com.itextpdf.core.color.DeviceRgb;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Cell;
@@ -19,14 +18,13 @@ import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
 import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore("DEVSIX-366")
 @Category(SampleTest.class)
 public class WatermarkedImages2 extends GenericTest {
     public static final String IMAGE1 = "./src/test/resources/sandbox/images/bruno.jpg";
