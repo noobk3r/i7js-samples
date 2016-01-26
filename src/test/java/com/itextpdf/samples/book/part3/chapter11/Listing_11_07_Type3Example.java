@@ -30,7 +30,7 @@ public class Listing_11_07_Type3Example extends GenericTest {
         Document doc = new Document(pdfDoc);
         PdfType3Font t3 = new PdfType3Font(pdfDoc, true);
 
-        PdfCanvas d = t3.createGlyph('D', 600, 0, 0, 600, 700);
+        PdfCanvas d = t3.addGlyph('D', 600, 0, 0, 600, 700);
         d.setStrokeColor(new DeviceRgb(0xFF, 0x00, 0x00));
         d.setFillColor(new DeviceGray(0.75f));
         d.setLineWidth(100);
@@ -39,7 +39,7 @@ public class Listing_11_07_Type3Example extends GenericTest {
         d.lineTo(595, 5);
         d.closePathFillStroke();
 
-        PdfCanvas s = t3.createGlyph('S', 600, 0, 0, 600, 700);
+        PdfCanvas s = t3.addGlyph('S', 600, 0, 0, 600, 700);
         d.setStrokeColor(new DeviceRgb(0x00, 0x80, 0x80));
         d.setLineWidth(100);
         d.moveTo(595, 5);

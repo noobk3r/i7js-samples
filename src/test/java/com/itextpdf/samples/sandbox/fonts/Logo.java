@@ -41,7 +41,7 @@ public class Logo extends GenericTest {
         float linewidth = 125;
 
         PdfType3Font t3 = new PdfType3Font(pdfDoc, true);
-        PdfCanvas i = t3.createGlyph('I', 700, 0, 0, 1200, 600);
+        PdfCanvas i = t3.addGlyph('I', 700, 0, 0, 1200, 600);
         i.setLineWidth(10);
         i.setStrokeColor(new DeviceRgb(0xf9, 0x9d, 0x25));
         i.setLineWidth(linewidth);
@@ -50,7 +50,7 @@ public class Logo extends GenericTest {
         i.lineTo(600, 564);
         i.stroke();
 
-        PdfCanvas t = t3.createGlyph('T', 1170, 0, 0, 1200, 600);
+        PdfCanvas t = t3.addGlyph('T', 1170, 0, 0, 1200, 600);
         t.setLineWidth(10);
         t.setStrokeColor(new DeviceRgb(0x08, 0x49, 0x75));
         t.setLineWidth(linewidth);
@@ -61,7 +61,7 @@ public class Logo extends GenericTest {
         t.lineTo(600, 564);
         t.stroke();
 
-        PdfCanvas e = t3.createGlyph('E', 1150, 0, 0, 1200, 600);
+        PdfCanvas e = t3.addGlyph('E', 1150, 0, 0, 1200, 600);
         e.setLineWidth(10);
         e.setStrokeColor(new DeviceRgb(0xf8, 0x9b, 0x22));
         e.setLineWidth(linewidth);
@@ -74,7 +74,7 @@ public class Logo extends GenericTest {
         e.lineTo(1056, 564);
         e.stroke();
 
-        PdfCanvas x = t3.createGlyph('X', 1160, 0, 0, 1200, 600);
+        PdfCanvas x = t3.addGlyph('X', 1160, 0, 0, 1200, 600);
         x.setStrokeColor(new DeviceRgb(0x10, 0x46, 0x75));
         x.setLineWidth(10);
         x.setLineWidth(linewidth);
