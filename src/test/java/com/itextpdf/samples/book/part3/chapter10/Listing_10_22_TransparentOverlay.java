@@ -25,7 +25,6 @@ import org.junit.experimental.categories.Category;
 public class Listing_10_22_TransparentOverlay extends GenericTest {
     public static final String DEST
             = "./target/test/resources/book/part3/chapter10/Listing_10_22_TransparentOverlay.pdf";
-    /** One of the resources. */
     public static final String RESOURCE
             = "./src/test/resources/book/part3/chapter10/bruno_ingeborg.jpg";
 

@@ -53,13 +53,6 @@ public class Listing_16_04_EmbedFontPostFacto extends GenericTest {
         doc.close();
     }
 
-    /**
-     * Manipulates a PDF file src with the file dest as result
-     *
-     * @param src  the original PDF
-     * @param dest the resulting PDF
-     * @throws IOException
-     */
     public void changePdf(String src, String dest) throws IOException {
         // the font file
         RandomAccessFile raf = new RandomAccessFile(FONT, "r");

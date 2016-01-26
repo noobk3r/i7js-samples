@@ -15,13 +15,16 @@ import org.junit.experimental.categories.Category;
 @Ignore
 @Category(SampleTest.class)
 public class Listing_11_09_VerticalTextExample1 extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part3/chapter11/Listing_11_09_VerticalTextExample1.pdf";
-    public static final String MOVIE = "\u4e03\u4eba\u306e\u4f8d";
+    public static final String DEST
+            = "./target/test/resources/book/part3/chapter11/Listing_11_09_VerticalTextExample1.pdf";
+    public static final String MOVIE
+            = "\u4e03\u4eba\u306e\u4f8d";
     public static final String TEXT1
             = "You embarrass me. You're overestimating me. "
             + "Listen, I'm not a man with any special skill, "
             + "but I've had plenty of experience in battles; losing battles, all of them.";
-    public static final String TEXT2 = "In short, that's all I am. Drop such an idea for your own good.";
+    public static final String TEXT2
+            = "In short, that's all I am. Drop such an idea for your own good.";
 
     public static void main(String[] agrs) throws Exception {
         new Listing_11_09_VerticalTextExample1().manipulatePdf(DEST);

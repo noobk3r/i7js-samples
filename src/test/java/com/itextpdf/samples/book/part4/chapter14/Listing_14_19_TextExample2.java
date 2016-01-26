@@ -12,8 +12,6 @@ import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 
 public class Listing_14_19_TextExample2 extends JPanel {
-    /** Strings that need to be displayed in a PDF document */
-    private static AttributedString akira;
     public static final String AKIRA =
             "Akira Kurosawa (\u9ed2\u6fa4 \u660e or \u9ed2\u6ca2 \u660e, " +
                     "Kurosawa Akira, 23 March 1910 - 6 September 1998) was a " +
@@ -22,6 +20,8 @@ public class Listing_14_19_TextExample2 extends JPanel {
                     "He is widely regarded as one of the most important and " +
                     "influential filmmakers in film history.";
 
+    /** Strings that need to be displayed in a PDF document */
+    private static AttributedString akira;
     private static final long serialVersionUID = -3639324875232824761L;
 
     public Listing_14_19_TextExample2() {

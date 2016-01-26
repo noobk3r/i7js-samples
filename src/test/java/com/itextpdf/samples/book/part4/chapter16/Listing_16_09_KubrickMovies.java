@@ -127,11 +127,13 @@ public class Listing_16_09_KubrickMovies extends GenericTest {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(baos));
         Document doc = new Document(pdfDoc);
-        Paragraph p = new Paragraph(movie.getMovieTitle()).setFont(PdfFontFactory.createFont(FontConstants.HELVETICA, PdfEncodings.WINANSI, false)).setFontSize(16);
+        Paragraph p = new Paragraph(movie.getMovieTitle())
+                .setFont(PdfFontFactory.createFont(FontConstants.HELVETICA, PdfEncodings.WINANSI, false)).setFontSize(16);
         doc.add(p);
         doc.add(new Paragraph("\n"));
         Table table = new Table(WIDTHS);
-        table.addCell(new Cell().add(new Image(ImageFactory.getImage(String.format(RESOURCE, movie.getImdb()))).setAutoScale(true)));
+        table.addCell(new Cell().add(new Image(ImageFactory.getImage(String.format(RESOURCE, movie.getImdb())))
+                .setAutoScale(true)));
         Cell cell = new Cell();
         cell.add(new Paragraph("Year: " + movie.getYear()));
         cell.add(new Paragraph("Duration: " + movie.getDuration()));
@@ -140,7 +142,8 @@ public class Listing_16_09_KubrickMovies extends GenericTest {
         // TODO Implement 'from box' TargetDictionary usage
         PdfTargetDictionary target = new PdfTargetDictionary(PdfName.P);
         target.put(PdfName.T, new PdfTargetDictionary(PdfName.P));
-        Link link = new Link("Go to original document", PdfAction.createGoToE(new PdfNamedDestination("movies"), false, target));
+        Link link = new Link("Go to original document",
+                PdfAction.createGoToE(new PdfNamedDestination("movies"), false, target));
         doc.add(new Paragraph(link));
         doc.close();
         return baos.toByteArray();

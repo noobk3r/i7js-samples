@@ -27,7 +27,7 @@ public class Listing_14_12_PearToPdf extends GenericTest {
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         // TODO No PdfGraphics2D
         // Graphics2D g2 = new PdfGraphics2D(canvas, 150, 150);
-        Listing_14_11_PearExample pear = new Listing_14_11_PearExample();
+        // Listing_14_11_PearExample pear = new Listing_14_11_PearExample();
         // pear.paint(g2);
         // g2.dispose();
         pdfDoc.close();

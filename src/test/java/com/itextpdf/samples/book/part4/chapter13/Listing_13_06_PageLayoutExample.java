@@ -3,11 +3,11 @@ package com.itextpdf.samples.book.part4.chapter13;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfVersion;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.book.part1.chapter02.Listing_02_07_MovieParagraphs1;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
@@ -23,8 +23,9 @@ import org.junit.experimental.categories.Category;
 @Ignore
 @Category(SampleTest.class)
 public class Listing_13_06_PageLayoutExample extends Listing_02_07_MovieParagraphs1 {
-    public static final String DEST = "./target/test/resources/book/part4/chapter13/Listing_13_06_PageLayoutExample.pdf";
-   public static final String RESULT1
+    public static final String DEST
+            = "./target/test/resources/book/part4/chapter13/Listing_13_06_PageLayoutExample.pdf";
+    public static final String RESULT1
             = "results/part4/chapter13/page_layout_single.pdf";
     public static final String RESULT2
             = "results/part4/chapter13/page_layout_column.pdf";

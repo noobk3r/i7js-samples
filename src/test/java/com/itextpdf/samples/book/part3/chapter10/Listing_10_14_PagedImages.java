@@ -20,25 +20,14 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_10_14_PagedImages extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part3/chapter10/Listing_10_14_PagedImages.pdf";
-    /**
-     * The resulting PDF file.
-     */
+    public static final String DEST
+            = "./target/test/resources/book/part3/chapter10/Listing_10_14_PagedImages.pdf";
     public static final String RESULT
             = "./target/test/resources/book/part3/chapter10/tiff_jbig2_gif.pdf";
-    /**
-     * One of the resources.
-     */
     public static final String RESOURCE1
             = "./src/test/resources/book/part3/chapter10/marbles.tif";
-    /**
-     * One of the resources.
-     */
     public static final String RESOURCE2
             = "./src/test/resources/book/part3/chapter10/amb.jb2";
-    /**
-     * One of the resources.
-     */
     public static final String RESOURCE3
             = "./src/test/resources/book/part3/chapter10/animated_fox_dog.gif";
 

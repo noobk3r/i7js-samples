@@ -186,7 +186,8 @@ public class Listing_16_11_KubrickCollection extends GenericTest {
         public void drawBorder(DrawContext drawContext) {
             super.drawBorder(drawContext);
             Rectangle rect = getOccupiedAreaBBox();
-            PdfAnnotation annotation = new PdfFileAttachmentAnnotation(new Rectangle(rect.getLeft() - 20, rect.getTop() - 15, 15, 10), fs);
+            PdfAnnotation annotation = new PdfFileAttachmentAnnotation(new Rectangle(rect.getLeft() - 20,
+                    rect.getTop() - 15, 15, 10), fs);
             annotation.setName(new PdfString(description));
             if (isExtendedEvent) {
                 annotation.setAction(action);

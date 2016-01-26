@@ -1,19 +1,19 @@
 package com.itextpdf.samples.book.part3.chapter10;
 
 import com.itextpdf.basics.geom.Rectangle;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.color.DeviceCmyk;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.colorspace.PdfDeviceCs;
 import com.itextpdf.core.pdf.colorspace.PdfPattern;
 import com.itextpdf.core.pdf.colorspace.PdfShading;
 import com.itextpdf.core.pdf.extgstate.PdfExtGState;
 import com.itextpdf.core.pdf.xobject.PdfFormXObject;
 import com.itextpdf.core.pdf.xobject.PdfTransparencyGroup;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -97,11 +97,12 @@ public class Listing_10_07_Transparency2 extends GenericTest {
         PdfShading.Axial axial = new PdfShading.Axial(new PdfDeviceCs.Rgb(), x, y, Color.YELLOW.getColorValue(),
                 x + 200, y, Color.RED.getColorValue(), pdfDoc);
         PdfPattern.Shading axialPattern = new PdfPattern.Shading(axial);
-        canvas.setFillColorShading(axialPattern);
-        canvas.setStrokeColor(Color.BLACK);
-        canvas.setLineWidth(2);
-        canvas.rectangle(x, y, 200, 200);
-        canvas.fillStroke();
+        canvas
+                .setFillColorShading(axialPattern)
+                .setStrokeColor(Color.BLACK)
+                .setLineWidth(2)
+                .rectangle(x, y, 200, 200)
+                .fillStroke();
     }
 
     /**
@@ -116,15 +117,16 @@ public class Listing_10_07_Transparency2 extends GenericTest {
         PdfExtGState gs = new PdfExtGState();
         gs.setBlendMode(PdfExtGState.BM_MULTIPLY);
         gs.setFillOpacity(1f);
-        canvas.setExtGState(gs);
-        canvas.setFillColor(new DeviceCmyk(0f, 0f, 0f, 0.15f));
-        canvas.circle(x + 75, y + 75, 70);
-        canvas.fill();
-        canvas.circle(x + 75, y + 125, 70);
-        canvas.fill();
-        canvas.circle(x + 125, y + 75, 70);
-        canvas.fill();
-        canvas.circle(x + 125, y + 125, 70);
-        canvas.fill();
+        canvas
+                .setExtGState(gs)
+                .setFillColor(new DeviceCmyk(0f, 0f, 0f, 0.15f))
+                .circle(x + 75, y + 75, 70)
+                .fill()
+                .circle(x + 75, y + 125, 70)
+                .fill()
+                .circle(x + 125, y + 75, 70)
+                .fill()
+                .circle(x + 125, y + 125, 70)
+                .fill();
     }
 }

@@ -16,8 +16,10 @@ import org.junit.experimental.categories.Category;
 @Ignore
 @Category(SampleTest.class)
 public class Listing_11_14_Diacritics2 extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part3/chapter11/Listing_11_14_Diacritics2.pdf";
-    public static final String MOVIE = "Tomten \u00a8ar far till alla barnen";
+    public static final String DEST =
+            "./target/test/resources/book/part3/chapter11/Listing_11_14_Diacritics2.pdf";
+    public static final String MOVIE =
+            "Tomten \u00a8ar far till alla barnen";
     public static final String[] FONTS = {
             /*"c:/windows/fonts/arial.ttf"*/"./src/test/resources/font/FreeSans.ttf",
             /*"c:/windows/fonts/cour.ttf"*/"./src/test/resources/font/LiberationMono-Regular.ttf"

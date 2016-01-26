@@ -16,7 +16,8 @@ import org.junit.experimental.categories.Category;
 @Ignore
 @Category(SampleTest.class)
 public class Listing_11_08_CJKExample extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part3/chapter11/Listing_11_08_CJKExample.pdf";
+    public static final String DEST =
+            "./target/test/resources/book/part3/chapter11/Listing_11_08_CJKExample.pdf";
     public static final String[][] MOVIES = {
             {
                     "STSong-Light", "UniGB-UCS2-H",

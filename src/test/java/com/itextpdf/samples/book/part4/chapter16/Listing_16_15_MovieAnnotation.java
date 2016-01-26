@@ -7,8 +7,8 @@ import com.itextpdf.core.pdf.action.PdfAction;
 import com.itextpdf.core.pdf.annot.PdfAnnotation;
 import com.itextpdf.core.pdf.annot.PdfScreenAnnotation;
 import com.itextpdf.core.pdf.filespec.PdfFileSpec;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import org.junit.experimental.categories.Category;
 
@@ -24,7 +24,8 @@ public class Listing_16_15_MovieAnnotation extends GenericTest {
     public void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         PdfAnnotation screenAnnotation = new PdfScreenAnnotation(new Rectangle(200, 700, 200, 100));
-        PdfFileSpec spec = PdfFileSpec.createEmbeddedFileSpec(pdfDoc, RESOURCE, "Fox and Dog", "Fox and Dog", null, null, false);
+        PdfFileSpec spec = PdfFileSpec.createEmbeddedFileSpec(pdfDoc, RESOURCE,
+                "Fox and Dog", "Fox and Dog", null, null, false);
         PdfAction action = PdfAction.createRendition(pdfDoc, "foxdog.mpg", spec, "video/mpeg", screenAnnotation);
         screenAnnotation.setAction(action);
         pdfDoc.addNewPage().addAnnotation(screenAnnotation);

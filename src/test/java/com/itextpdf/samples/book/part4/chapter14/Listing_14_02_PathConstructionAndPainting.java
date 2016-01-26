@@ -20,6 +20,7 @@ import org.junit.experimental.categories.Category;
 public class Listing_14_02_PathConstructionAndPainting extends GenericTest {
     public static final String DEST
             = "./target/test/resources/book/part4/chapter14/Listing_14_02_PathConstructionAndPainting.pdf";
+
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_14_02_PathConstructionAndPainting().manipulatePdf(DEST);
     }
@@ -44,15 +45,16 @@ public class Listing_14_02_PathConstructionAndPainting extends GenericTest {
                 new Paragraph("Methods fill(), eoFill(), newPath(), fillStroke(), and eoFillStroke()"),
                 50, 450, 1, Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
         // draw different shapes using convenience methods
-        canvas.saveState();
-        canvas.setStrokeColor(new DeviceGray(0.2f));
-        canvas.setFillColor(new DeviceGray(0.9f));
-        canvas.arc(50, 270, 150, 330, 45, 270);
-        canvas.ellipse(170, 270, 270, 330);
-        canvas.circle(320, 300, 30);
-        canvas.roundRectangle(370, 270, 80, 60, 20);
-        canvas.fillStroke();
-        canvas.restoreState();
+        canvas
+                .saveState()
+                .setStrokeColor(new DeviceGray(0.2f))
+                .setFillColor(new DeviceGray(0.9f))
+                .arc(50, 270, 150, 330, 45, 270)
+                .ellipse(170, 270, 270, 330)
+                .circle(320, 300, 30)
+                .roundRectangle(370, 270, 80, 60, 20)
+                .fillStroke()
+                .restoreState();
         Rectangle rect = new Rectangle(470, 270, 550, 330);
         // TODO No convenient methods in Rectangle
 //        rect.setBorderWidthBottom(10);
@@ -67,108 +69,76 @@ public class Listing_14_02_PathConstructionAndPainting extends GenericTest {
         pdfDoc.close();
     }
 
-    /**
-     * Draws a row of squares.
-     *
-     * @param canvas the canvas to which the squares have to be drawn
-     * @param x      X coordinate to position the row
-     * @param y      Y coordinate to position the row
-     * @param side   the side of the square
-     * @param gutter the space between the squares
-     */
     public void createSquares(PdfCanvas canvas,
                               float x, float y, float side, float gutter) {
-        canvas.saveState();
-        canvas.setStrokeColor(new DeviceGray(0.2f));
-        canvas.setFillColor(new DeviceGray(0.9f));
-        canvas.moveTo(x, y);
-        canvas.lineTo(x + side, y);
-        canvas.lineTo(x + side, y + side);
-        canvas.lineTo(x, y + side);
-        canvas.stroke();
+        canvas.saveState()
+                .setStrokeColor(new DeviceGray(0.2f))
+                .setFillColor(new DeviceGray(0.9f))
+                .moveTo(x, y)
+                .lineTo(x + side, y)
+                .lineTo(x + side, y + side)
+                .lineTo(x, y + side)
+                .stroke();
         x = x + side + gutter;
-        canvas.moveTo(x, y);
-        canvas.lineTo(x + side, y);
-        canvas.lineTo(x + side, y + side);
-        canvas.lineTo(x, y + side);
-        canvas.closePathStroke();
+        canvas.moveTo(x, y)
+                .lineTo(x + side, y)
+                .lineTo(x + side, y + side)
+                .lineTo(x, y + side)
+                .closePathStroke();
         x = x + side + gutter;
-        canvas.moveTo(x, y);
-        canvas.lineTo(x + side, y);
-        canvas.lineTo(x + side, y + side);
-        canvas.lineTo(x, y + side);
-        canvas.fill();
+        canvas.moveTo(x, y)
+                .lineTo(x + side, y)
+                .lineTo(x + side, y + side)
+                .lineTo(x, y + side)
+                .fill();
         x = x + side + gutter;
-        canvas.moveTo(x, y);
-        canvas.lineTo(x + side, y);
-        canvas.lineTo(x + side, y + side);
-        canvas.lineTo(x, y + side);
-        canvas.fillStroke();
+        canvas.moveTo(x, y)
+                .lineTo(x + side, y)
+                .lineTo(x + side, y + side)
+                .lineTo(x, y + side)
+                .fillStroke();
         x = x + side + gutter;
-        canvas.moveTo(x, y);
-        canvas.lineTo(x + side, y);
-        canvas.lineTo(x + side, y + side);
-        canvas.lineTo(x, y + side);
-        canvas.closePathFillStroke();
-        canvas.restoreState();
+        canvas.moveTo(x, y)
+                .lineTo(x + side, y)
+                .lineTo(x + side, y + side)
+                .lineTo(x, y + side)
+                .closePathFillStroke()
+                .restoreState();
     }
 
-    /**
-     * Draws a series of Bezier curves
-     *
-     * @param canvas   the canvas to which the curves have to be drawn
-     * @param x0       X coordinate of the start point
-     * @param y0       Y coordinate of the start point
-     * @param x1       X coordinate of the first control point
-     * @param y1       Y coordinate of the first control point
-     * @param x2       X coordinate of the second control point
-     * @param y2       Y coordinate of the second control point
-     * @param x3       X coordinate of the end point
-     * @param y3       Y coordinate of the end point
-     * @param distance the distance between the curves
-     */
     public void createBezierCurves(PdfCanvas canvas, float x0, float y0,
                                    float x1, float y1, float x2, float y2, float x3, float y3, float distance) {
-        canvas.moveTo(x0, y0);
-        canvas.lineTo(x1, y1);
-        canvas.moveTo(x2, y2);
-        canvas.lineTo(x3, y3);
-        canvas.moveTo(x0, y0);
-        canvas.curveTo(x1, y1, x2, y2, x3, y3);
+        canvas.moveTo(x0, y0)
+                .lineTo(x1, y1)
+                .moveTo(x2, y2)
+                .lineTo(x3, y3)
+                .moveTo(x0, y0)
+                .curveTo(x1, y1, x2, y2, x3, y3);
         x0 += distance;
         x1 += distance;
         x2 += distance;
         x3 += distance;
-        canvas.moveTo(x2, y2);
-        canvas.lineTo(x3, y3);
-        canvas.moveTo(x0, y0);
-        canvas.curveTo(x2, y2, x3, y3);
+        canvas.moveTo(x2, y2)
+                .lineTo(x3, y3)
+                .moveTo(x0, y0)
+                .curveTo(x2, y2, x3, y3);
         x0 += distance;
         x1 += distance;
         x2 += distance;
         x3 += distance;
-        canvas.moveTo(x0, y0);
-        canvas.lineTo(x1, y1);
-        canvas.moveTo(x0, y0);
-        canvas.curveTo(x1, y1, x3, y3);
-        canvas.stroke();
+        canvas.moveTo(x0, y0)
+                .lineTo(x1, y1)
+                .moveTo(x0, y0)
+                .curveTo(x1, y1, x3, y3)
+                .stroke();
 
     }
 
-    /**
-     * Draws a row of stars and circles.
-     *
-     * @param canvas the canvas to which the shapes have to be drawn
-     * @param x      X coordinate to position the row
-     * @param y      Y coordinate to position the row
-     * @param radius the radius of the circles
-     * @param gutter the space between the shapes
-     */
     public static void createStarsAndCircles(PdfCanvas canvas,
                                              float x, float y, float radius, float gutter) {
-        canvas.saveState();
-        canvas.setStrokeColor(new DeviceGray(0.2f));
-        canvas.setFillColor(new DeviceGray(0.9f));
+        canvas.saveState()
+                .setStrokeColor(new DeviceGray(0.2f))
+                .setFillColor(new DeviceGray(0.9f));
         createStar(canvas, x, y);
         createCircle(canvas, x + radius, y - 70, radius, true);
         createCircle(canvas, x + radius, y - 70, radius / 2, true);
@@ -192,53 +162,34 @@ public class Listing_14_02_PathConstructionAndPainting extends GenericTest {
         createStar(canvas, x, y);
         createCircle(canvas, x + radius, y - 70, radius, true);
         createCircle(canvas, x + radius, y - 70, radius / 2, true);
-        canvas.eoFillStroke();
-        canvas.restoreState();
+        canvas.eoFillStroke()
+                .restoreState();
     }
 
-    /**
-     * Creates a path for a five pointed star.
-     * This method doesn't fill or stroke the star!
-     *
-     * @param canvas the canvas for which the star is constructed
-     * @param x      the X coordinate of the center of the star
-     * @param y      the Y coordinate of the center of the star
-     */
     public static void createStar(PdfCanvas canvas, float x, float y) {
-        canvas.moveTo(x + 10, y);
-        canvas.lineTo(x + 80, y + 60);
-        canvas.lineTo(x, y + 60);
-        canvas.lineTo(x + 70, y);
-        canvas.lineTo(x + 40, y + 90);
-        canvas.closePath();
+        canvas.moveTo(x + 10, y)
+                .lineTo(x + 80, y + 60)
+                .lineTo(x, y + 60)
+                .lineTo(x + 70, y)
+                .lineTo(x + 40, y + 90)
+                .closePath();
     }
 
-    /**
-     * Creates a path for circle using Bezier curvers.
-     * The path can be constructed clockwise or counter-clockwise.
-     * This method doesn't fill or stroke the circle!
-     *
-     * @param canvas    the canvas for which the path is constructed
-     * @param x         the X coordinate of the center of the circle
-     * @param y         the Y coordinate of the center of the circle
-     * @param r         the radius
-     * @param clockwise true if the circle has to be constructed clockwise
-     */
     public static void createCircle(PdfCanvas canvas, float x, float y,
                                     float r, boolean clockwise) {
         float b = 0.5523f;
         if (clockwise) {
-            canvas.moveTo(x + r, y);
-            canvas.curveTo(x + r, y - r * b, x + r * b, y - r, x, y - r);
-            canvas.curveTo(x - r * b, y - r, x - r, y - r * b, x - r, y);
-            canvas.curveTo(x - r, y + r * b, x - r * b, y + r, x, y + r);
-            canvas.curveTo(x + r * b, y + r, x + r, y + r * b, x + r, y);
+            canvas.moveTo(x + r, y)
+                    .curveTo(x + r, y - r * b, x + r * b, y - r, x, y - r)
+                    .curveTo(x - r * b, y - r, x - r, y - r * b, x - r, y)
+                    .curveTo(x - r, y + r * b, x - r * b, y + r, x, y + r)
+                    .curveTo(x + r * b, y + r, x + r, y + r * b, x + r, y);
         } else {
-            canvas.moveTo(x + r, y);
-            canvas.curveTo(x + r, y + r * b, x + r * b, y + r, x, y + r);
-            canvas.curveTo(x - r * b, y + r, x - r, y + r * b, x - r, y);
-            canvas.curveTo(x - r, y - r * b, x - r * b, y - r, x, y - r);
-            canvas.curveTo(x + r * b, y - r, x + r, y - r * b, x + r, y);
+            canvas.moveTo(x + r, y)
+                    .curveTo(x + r, y + r * b, x + r * b, y + r, x, y + r)
+                    .curveTo(x - r * b, y + r, x - r, y + r * b, x - r, y)
+                    .curveTo(x - r, y - r * b, x - r * b, y - r, x, y - r)
+                    .curveTo(x + r * b, y - r, x + r, y - r * b, x + r, y);
         }
     }
 }

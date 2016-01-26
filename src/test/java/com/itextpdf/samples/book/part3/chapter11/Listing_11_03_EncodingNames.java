@@ -19,7 +19,8 @@ import org.junit.experimental.categories.Category;
 @Ignore
 @Category(SampleTest.class)
 public class Listing_11_03_EncodingNames extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part3/chapter11/Listing_11_03_EncodingNames.pdf";
+    public static final String DEST
+            = "./target/test/resources/book/part3/chapter11/Listing_11_03_EncodingNames.pdf";
     public static final String[] FONT = {
             //"c:/windows/fonts/ARBLI__.TTF",
             "./src/test/resources/book/part3/chapter11/Puritan2.otf",
@@ -41,9 +42,6 @@ public class Listing_11_03_EncodingNames extends GenericTest {
         doc.close();
     }
 
-    /**
-     * Writes the available encodings of a font to the document.
-     */
     public void showEncodings(Document doc, String fontConstant) throws IOException {
         PdfFont font = PdfFontFactory.createFont(fontConstant, PdfEncodings.WINANSI, true);
 

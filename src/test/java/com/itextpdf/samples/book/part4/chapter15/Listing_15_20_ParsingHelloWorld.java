@@ -32,7 +32,6 @@ import org.xml.sax.SAXException;
 public class Listing_15_20_ParsingHelloWorld extends GenericTest {
     public static final String DEST =
             "./target/test/resources/book/part4/chapter15/Listing_15_20_ParsingHelloWorld.pdf";
-
     public static final String[] TEXT = {
             "./target/test/resources/book/part4/chapter15/Listing_15_20_ParsingHelloWorld1.txt",
             "./target/test/resources/book/part4/chapter15/Listing_15_20_ParsingHelloWorld2.txt",

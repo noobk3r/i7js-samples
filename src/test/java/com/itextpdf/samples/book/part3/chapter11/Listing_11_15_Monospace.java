@@ -18,8 +18,10 @@ import org.junit.experimental.categories.Category;
 @Ignore
 @Category(SampleTest.class)
 public class Listing_11_15_Monospace extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part3/chapter11/Listing_11_15_Monospace.pdf";
-    public static final String MOVIE = "Aanrijding in Moscou";
+    public static final String DEST
+            = "./target/test/resources/book/part3/chapter11/Listing_11_15_Monospace.pdf";
+    public static final String MOVIE
+            = "Aanrijding in Moscou";
 
     public static void main(String[] agrs) throws Exception {
         new Listing_11_15_Monospace().manipulatePdf(DEST);

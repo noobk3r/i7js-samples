@@ -6,18 +6,20 @@ import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_11_02_TTCExample extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part3/chapter11/Listing_11_02_TTCExample.pdf";
-    // TODO Notice that we'va changed windows MS Gothic to IPA Gothic so the results in comparison with itext5 are different
-    public static final String FONT = "./src/test/resources/book/part3/chapter11/ipam.ttc";
+    public static final String DEST
+            = "./target/test/resources/book/part3/chapter11/Listing_11_02_TTCExample.pdf";
+    // Notice that we'va changed windows MS Gothic to IPA Gothic so the results in comparison with itext5 are different
+    public static final String FONT
+            = "./src/test/resources/book/part3/chapter11/ipam.ttc";
     // public static final String FONT = "c:/windows/fonts/msgothic.ttc";
 
     public static void main(String[] agrs) throws Exception {

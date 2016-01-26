@@ -84,11 +84,6 @@ public class Listing_16_06_KubrickDocumentary extends GenericTest {
         return baos.toByteArray();
     }
 
-    /**
-     * Extracts document level attachments
-     * @param src     a file from which document level attachments will be extracted
-     * @throws IOException
-     */
     public void extractDocLevelAttachments(String src) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src));
         PdfDictionary root = pdfDoc.getCatalog().getPdfObject();

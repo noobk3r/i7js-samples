@@ -12,7 +12,8 @@ import com.itextpdf.samples.GenericTest;
 import java.io.FileOutputStream;
 
 public class Listing_11_17_Ligatures1 extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part3/chapter11/Listing_11_17_Ligatures1.pdf";
+    public static final String DEST
+            = "./target/test/resources/book/part3/chapter11/Listing_11_17_Ligatures1.pdf";
 
     public static void main(String[] args) throws Exception {
         new Listing_11_17_Ligatures1().manipulatePdf(DEST);

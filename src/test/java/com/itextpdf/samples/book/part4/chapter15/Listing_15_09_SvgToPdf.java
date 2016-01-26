@@ -31,11 +31,14 @@ import org.xml.sax.SAXException;
 @Ignore
 @Category(SampleTest.class)
 public class Listing_15_09_SvgToPdf extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part4/chapter15/Listing_15_09_SvgToPdf.pdf";
+    public static final String DEST
+            = "./target/test/resources/book/part4/chapter15/Listing_15_09_SvgToPdf.pdf";
     /** The map (shapes). */
-    public static final String CITY = "./src/test/resources/book/part4/chapter15/foobarcity.svg";
+    public static final String CITY
+            = "./src/test/resources/book/part4/chapter15/foobarcity.svg";
     /** The map (text = street names in English). */
-    public static final String STREETS = "./src/test/resources/book/part4/chapter15/foobarstreets.svg";
+    public static final String STREETS
+            = "./src/test/resources/book/part4/chapter15/foobarstreets.svg";
 
     protected SAXSVGDocumentFactory factory;
     protected BridgeContext ctx;
@@ -53,7 +56,8 @@ public class Listing_15_09_SvgToPdf extends GenericTest {
         builder = new GVTBuilder();
     }
 
-    public static void main(String args[]) throws IOException, SQLException, ParserConfigurationException, SAXException {
+    public static void main(String args[])
+            throws IOException, SQLException, ParserConfigurationException, SAXException {
         new Listing_15_09_SvgToPdf().manipulatePdf(DEST);
     }
 
@@ -67,8 +71,8 @@ public class Listing_15_09_SvgToPdf extends GenericTest {
         // g2d.dispose();
     }
 
-
-    public void manipulatePdf(String dest) throws IOException, SQLException, ParserConfigurationException, SAXException {
+    public void manipulatePdf(String dest)
+            throws IOException, SQLException, ParserConfigurationException, SAXException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc, new PageSize(6000, 6000));
 

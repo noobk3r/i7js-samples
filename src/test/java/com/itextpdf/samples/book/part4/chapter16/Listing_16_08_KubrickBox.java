@@ -12,7 +12,6 @@ import com.itextpdf.core.pdf.action.PdfAction;
 import com.itextpdf.core.pdf.action.PdfTargetDictionary;
 import com.itextpdf.core.pdf.filespec.PdfFileSpec;
 import com.itextpdf.core.pdf.navigation.PdfExplicitDestination;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Image;
@@ -22,7 +21,7 @@ import com.itextpdf.model.element.ListItem;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.samples.GenericTest;
-
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
@@ -30,7 +29,6 @@ import com.lowagie.filmfestival.PojoFactory;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -83,12 +81,6 @@ public class Listing_16_08_KubrickBox extends GenericTest {
         doc.close();
     }
 
-    /**
-     * Creates the PDF.
-     * @return the bytes of a PDF file.
-     * @throws IOException
-     * @throws SQLException
-     */
     public byte[] createMoviePage(Movie movie) throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(baos));

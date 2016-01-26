@@ -1,15 +1,15 @@
 package com.itextpdf.samples.book.part4.chapter14;
 
 import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.core.font.PdfFontFactory;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.model.Canvas;
 import com.itextpdf.model.Property;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.IOException;
 
@@ -28,23 +28,23 @@ public class Listing_14_10_TextMethods extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         // draw helper lines
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
-        canvas.setLineWidth(0f);
-        canvas.moveTo(150, 600);
-        canvas.lineTo(150, 800);
-        canvas.moveTo(50, 760);
-        canvas.lineTo(250, 760);
-        canvas.moveTo(50, 700);
-        canvas.lineTo(250, 700);
-        canvas.moveTo(50, 640);
-        canvas.lineTo(250, 640);
-        canvas.stroke();
+        canvas.setLineWidth(0f)
+                .moveTo(150, 600)
+                .lineTo(150, 800)
+                .moveTo(50, 760)
+                .lineTo(250, 760)
+                .moveTo(50, 700)
+                .lineTo(250, 700)
+                .moveTo(50, 640)
+                .lineTo(250, 640)
+                .stroke();
         // draw text
         String text = "AWAY again ";
         PdfFont font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
-        canvas.beginText();
-        canvas.setFontAndSize(font, 12);
-        canvas.setTextMatrix(50, 800);
-        canvas.showText(text);
+        canvas.beginText()
+                .setFontAndSize(font, 12)
+                .setTextMatrix(50, 800)
+                .showText(text);
         Canvas canvasModel = new Canvas(canvas, pdfDoc, pdfDoc.getDefaultPageSize());
         canvasModel.showTextAligned(text + " Center", 150, 760, Property.TextAlignment.CENTER);
         canvasModel.showTextAligned(text + " Right", 150, 700, Property.TextAlignment.RIGHT);

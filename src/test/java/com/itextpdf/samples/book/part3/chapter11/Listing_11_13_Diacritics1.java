@@ -7,13 +7,13 @@ import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.border.SolidBorder;
 import com.itextpdf.model.element.Image;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.IOException;
 
@@ -21,9 +21,12 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_11_13_Diacritics1 extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part3/chapter11/Listing_11_13_Diacritics1.pdf";
-    public static final String MOVIE = "\u0e1f\u0e49\u0e32\u0e17\u0e30\u0e25\u0e32\u0e22\u0e42\u0e08\u0e23";
-    public static final String POSTER = "./src/test/resources/book/part3/chapter11/posters/0269217.jpg";
+    public static final String DEST =
+            "./target/test/resources/book/part3/chapter11/Listing_11_13_Diacritics1.pdf";
+    public static final String MOVIE =
+            "\u0e1f\u0e49\u0e32\u0e17\u0e30\u0e25\u0e32\u0e22\u0e42\u0e08\u0e23";
+    public static final String POSTER =
+            "./src/test/resources/book/part3/chapter11/posters/0269217.jpg";
     public static final String[] FONTS = {
             /*"c:/windows/fonts/angsa.ttf"*/"./src/test/resources/font/NotoSansThai-Regular.ttf",
             /*"c:/windows/fonts/arialuni.ttf"*/"./src/test/resources/font/NotoSerifThai-Regular.ttf"

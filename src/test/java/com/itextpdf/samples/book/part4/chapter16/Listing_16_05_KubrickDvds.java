@@ -54,12 +54,6 @@ public class Listing_16_05_KubrickDvds extends GenericTest {
         extractAttachments(dest);
     }
 
-    /**
-     * Extracts attachments from an existing PDF.
-     *
-     * @param src the path to the existing PDF
-     * @throws IOException
-     */
     public void extractAttachments(String src) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src));
         PdfReader reader = new PdfReader(src);
@@ -88,13 +82,6 @@ public class Listing_16_05_KubrickDvds extends GenericTest {
         reader.close();
     }
 
-    /**
-     * Creates the PDF.
-     *
-     * @return the bytes of a PDF file.
-     * @throws IOException
-     * @throws SQLException
-     */
     public byte[] createPdf() throws IOException, SQLException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(baos));
@@ -141,7 +128,8 @@ public class Listing_16_05_KubrickDvds extends GenericTest {
             super.draw(drawContext);
             PdfFileSpec fs = null;
             try {
-                fs = PdfFileSpec.createEmbeddedFileSpec(drawContext.getDocument(), filePath, null, fileDisplay, null, null, false);
+                fs = PdfFileSpec.createEmbeddedFileSpec(drawContext.getDocument(),
+                        filePath, null, fileDisplay, null, null, false);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }

@@ -20,16 +20,12 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class Listing_10_13_CompressAwt extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part3/chapter10/Listing_10_13_CompressAwt.pdf";
-    /** The resulting PDF file. */
     public static final String RESULT1
             = "./target/test/resources/book/part3/chapter10/hitchcock100.pdf";
-    /** The resulting PDF file. */
     public static final String RESULT2
             = "./target/test/resources/book/part3/chapter10/hitchcock20.pdf";
-    /** The resulting PDF file. */
     public static final String RESULT3
             = "./target/test/resources/book/part3/chapter10/hitchcock10.pdf";
-    /** One of the resources. */
     public static final String RESOURCE
             = "./src/test/resources/book/part3/chapter10/hitchcock.png";
 

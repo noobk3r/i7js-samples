@@ -1,19 +1,19 @@
 package com.itextpdf.samples.book.part3.chapter10;
 
 import com.itextpdf.basics.geom.Rectangle;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.color.DeviceGray;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.extgstate.PdfExtGState;
 import com.itextpdf.core.pdf.xobject.PdfFormXObject;
 import com.itextpdf.core.pdf.xobject.PdfTransparencyGroup;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Canvas;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -22,7 +22,8 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_10_06_Transparency1 extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part3/chapter10/Listing_10_06_Transparency1.pdf";
+    public static final String DEST
+            = "./target/test/resources/book/part3/chapter10/Listing_10_06_Transparency1.pdf";
 
     public static void main(String args[]) throws IOException {
         new Listing_10_06_Transparency1().manipulatePdf(DEST);
@@ -105,13 +106,13 @@ public class Listing_10_06_Transparency1 extends GenericTest {
      * @throws Exception
      */
     public static void pictureBackdrop(float x, float y, PdfCanvas canvas) {
-        canvas.setStrokeColor(Color.DARK_GRAY);
-        canvas.setFillColor(new DeviceGray(0.8f));
-        canvas.rectangle(x, y, 100, 200);
-        canvas.fill();
-        canvas.setLineWidth(2);
-        canvas.rectangle(x, y, 200, 200);
-        canvas.stroke();
+        canvas.setStrokeColor(Color.DARK_GRAY)
+                .setFillColor(new DeviceGray(0.8f))
+                .rectangle(x, y, 100, 200)
+                .fill()
+                .setLineWidth(2)
+                .rectangle(x, y, 200, 200)
+                .stroke();
     }
 
     /**
@@ -123,14 +124,14 @@ public class Listing_10_06_Transparency1 extends GenericTest {
      * @throws Exception
      */
     public static void pictureCircles(float x, float y, PdfCanvas canvas) {
-        canvas.setFillColor(Color.RED);
-        canvas.circle(x + 70, y + 70, 50);
-        canvas.fill();
-        canvas.setFillColor(Color.YELLOW);
-        canvas.circle(x + 100, y + 130, 50);
-        canvas.fill();
-        canvas.setFillColor(Color.BLUE);
-        canvas.circle(x + 130, y + 70, 50);
-        canvas.fill();
+        canvas.setFillColor(Color.RED)
+                .circle(x + 70, y + 70, 50)
+                .fill()
+                .setFillColor(Color.YELLOW)
+                .circle(x + 100, y + 130, 50)
+                .fill()
+                .setFillColor(Color.BLUE)
+                .circle(x + 130, y + 70, 50)
+                .fill();
     }
 }

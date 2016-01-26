@@ -16,19 +16,10 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class Listing_10_18_ImageMask extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part3/chapter10/Listing_10_18_ImageMask.pdf";
-    /**
-     * The resulting PDF file.
-     */
     public static final String RESULT1
             = "./target/test/resources/book/part3/chapter10/hardmask.pdf";
-    /**
-     * The resulting PDF file.
-     */
     public static final String RESULT2
             = "./target/test/resources/book/part3/chapter10/softmask.pdf";
-    /**
-     * One of the resources.
-     */
     public static final String RESOURCE
             = "./src/test/resources/book/part3/chapter10/bruno.jpg";
 

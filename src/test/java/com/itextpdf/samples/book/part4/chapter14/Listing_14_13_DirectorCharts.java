@@ -72,13 +72,6 @@ public class Listing_14_13_DirectorCharts extends GenericTest {
         pdfDoc.close();
     }
 
-    /**
-     * Gets an example pie chart.
-     *
-     * @return a pie chart
-     * @throws SQLException
-     * @throws IOException
-     */
     public static JFreeChart getPieChart() throws SQLException, IOException {
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
         Statement stm = connection.createStatement();
@@ -96,13 +89,6 @@ public class Listing_14_13_DirectorCharts extends GenericTest {
                 true, true, false);
     }
 
-    /**
-     * Gets an example bar chart.
-     *
-     * @return a bar chart
-     * @throws SQLException
-     * @throws IOException
-     */
     public static JFreeChart getBarChart() throws SQLException, IOException {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         DatabaseConnection connection = new HsqldbConnection("filmfestival");

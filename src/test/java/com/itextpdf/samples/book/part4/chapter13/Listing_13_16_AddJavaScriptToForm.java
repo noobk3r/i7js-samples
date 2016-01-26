@@ -3,19 +3,19 @@ package com.itextpdf.samples.book.part4.chapter13;
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.font.PdfFontFactory;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfName;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.action.PdfAction;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.xmp.XMPException;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfButtonFormField;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.forms.fields.PdfTextFormField;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -33,12 +33,10 @@ public class Listing_13_16_AddJavaScriptToForm extends GenericTest {
     public static final String RESOURCE
             = "./src/test/resources/book/part4/chapter13/extra.js";
 
-    /**
-     * Creates a PDF document.
-     * @param dest the path to the new PDF document
-     * @throws    IOException
-     * @throws    SQLException
-     */
+    public static void main(String args[]) throws IOException, SQLException, XMPException {
+        new Listing_13_16_AddJavaScriptToForm().manipulatePdf(DEST);
+    }
+
     public void createPdf(String dest) throws IOException{
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
@@ -74,45 +72,22 @@ public class Listing_13_16_AddJavaScriptToForm extends GenericTest {
         pdfDoc.close();
     }
 
-    /**
-     * Manipulates a PDF file src with the file dest as result
-     * @param src the original PDF
-     * @param dest the resulting PDF
-     * @throws IOException
-     */
     public void changePdf(String src, String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
-        // Get the writer from the stamper
         // Add JavaScript
         pdfDoc.getCatalog().setOpenAction(PdfAction.createJavaScript(readFileToString(RESOURCE)));
         // get the form fields
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         PdfFormField fd = form.getField("married");
         // Get the PDF dictionary of the YES radio button and add an additional action
-//        PdfDictionary dictYes =
-//                (PdfDictionary)  fd.getPdfObject();
-//        PdfDictionary yesAction = dictYes.getAsDictionary(PdfName.AA);
-//        if (yesAction == null) {
-//            yesAction = new PdfDictionary();
-//        }
         fd.getWidgets().get(0).setAdditionalAction(PdfName.Fo, PdfAction.createJavaScript("setReadOnly(false);"));
-        // yesAction.put(new PdfName("Fo"), PdfAction.createJavaScript(pdfDoc, "setReadOnly(false);"));
-        // dictYes.put(PdfName.AA, yesAction);
         // Get the PDF dictionary of the NO radio button and add an additional action
-//        PdfDictionary dictNo =
-//                (PdfDictionary) PdfReader.getPdfObject(fd.getWidgetRef(1));
-//        PdfDictionary noAction = dictNo.getAsDict(PdfName.AA);
-//        if (noAction == null) noAction = new PdfDictionary();
-//        noAction.put(new PdfName("Fo"),
-//                PdfAction.javaScript("setReadOnly(true);", stamper.getWriter()));
-//        dictNo.put(PdfName.AA, noAction);
-        // Create a submit button and add it to the stamper
         fd.getWidgets().get(1).setAdditionalAction(PdfName.Fo, PdfAction.createJavaScript("setReadOnly(true);"));
         PdfButtonFormField button = PdfFormField.createPushButton(pdfDoc, new Rectangle(40, 690, 160, 20), "submit", "validate and submit");
         button.setVisibility(PdfFormField.VISIBLE_BUT_DOES_NOT_PRINT);
         button.setAction(PdfAction.createJavaScript("validate();"));
         form.addField(button);
-        // close the stamper
+        // close the document
         pdfDoc.close();
     }
 
@@ -122,10 +97,6 @@ public class Listing_13_16_AddJavaScriptToForm extends GenericTest {
         FileInputStream f = new FileInputStream(file);
         f.read(jsBytes);
         return new String(jsBytes);
-    }
-
-    public static void main(String args[]) throws IOException, SQLException, XMPException {
-        new Listing_13_16_AddJavaScriptToForm().manipulatePdf(DEST);
     }
 
     @Override

@@ -26,10 +26,13 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_10_03_TilingPatternColor extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part3/chapter10/Listing_10_03_TilingPatternColor.pdf";
-    private static final String IMG_SRC = "./src/test/resources/img/info.png";
+    public static final String DEST
+            = "./target/test/resources/book/part3/chapter10/Listing_10_03_TilingPatternColor.pdf";
+    public static final String IMG_SRC
+            = "./src/test/resources/img/info.png";
 
-    public static void colorRectangle(PdfCanvas canvas, Color color, float x, float y, float width, float height) {
+    public static void colorRectangle(PdfCanvas canvas, Color color,
+                                      float x, float y, float width, float height) {
         canvas.saveState().setFillColor(color).rectangle(x, y, width, height).fillStroke().restoreState();
     }
 
@@ -49,12 +52,19 @@ public class Listing_10_03_TilingPatternColor extends GenericTest {
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
 
         PdfPattern.Tiling square = new PdfPattern.Tiling(15, 15).makeIndirect(pdfDoc);
-        new PdfPatternCanvas(square, pdfDoc).setFillColor(new DeviceRgb(0xFF, 0xFF, 0x00)).setStrokeColor(new DeviceRgb(0xFF, 0x00, 0x00)).
-                rectangle(5, 5, 5, 5).fillStroke().release();
+        new PdfPatternCanvas(square, pdfDoc).setFillColor(new DeviceRgb(0xFF, 0xFF, 0x00))
+                .setStrokeColor(new DeviceRgb(0xFF, 0x00, 0x00))
+                .rectangle(5, 5, 5, 5)
+                .fillStroke()
+                .release();
 
         PdfPattern.Tiling ellipse = new PdfPattern.Tiling(15, 10, 20, 25).makeIndirect(pdfDoc);
-        new PdfPatternCanvas(ellipse, pdfDoc).setFillColor(new DeviceRgb(0xFF, 0xFF, 0x00)).setStrokeColor(new DeviceRgb(0xFF, 0x00, 0x00)).
-                ellipse(2, 2, 13, 8).fillStroke().release();
+        new PdfPatternCanvas(ellipse, pdfDoc)
+                .setFillColor(new DeviceRgb(0xFF, 0xFF, 0x00))
+                .setStrokeColor(new DeviceRgb(0xFF, 0x00, 0x00))
+                .ellipse(2, 2, 13, 8)
+                .fillStroke()
+                .release();
 
         PdfPattern.Tiling circle = new PdfPattern.Tiling(15, 15, 10, 20, false).makeIndirect(pdfDoc);
         new PdfPatternCanvas(circle, pdfDoc).circle(7.5f, 7.5f, 2.5f).fill().release();
@@ -67,7 +77,8 @@ public class Listing_10_03_TilingPatternColor extends GenericTest {
         img_pattern.setMatrix(new PdfArray(new float[]{-0.5f, 0f, 0f, 0.5f, 0f, 0f}));
         new PdfPatternCanvas(img_pattern, pdfDoc).addImage(img, 0, 0, 20, false);
 
-        PdfSpecialCs.UncoloredTilingPattern uncoloredRGBCS = new PdfSpecialCs.UncoloredTilingPattern(pdfDoc, new PdfDeviceCs.Rgb());
+        PdfSpecialCs.UncoloredTilingPattern uncoloredRGBCS
+                = new PdfSpecialCs.UncoloredTilingPattern(pdfDoc, new PdfDeviceCs.Rgb());
         float[] green = {0, 1, 0};
         float[] red = {1, 0, 0};
         float[] blue = {0, 0, 1};

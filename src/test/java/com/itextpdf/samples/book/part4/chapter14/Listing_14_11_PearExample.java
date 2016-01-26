@@ -8,8 +8,6 @@ import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
 
 public class Listing_14_11_PearExample extends JPanel {
-    private static final long serialVersionUID = 1251626928914650961L;
-
     protected Ellipse2D.Double circle;
     protected Ellipse2D.Double oval;
     protected Ellipse2D.Double leaf;
@@ -21,6 +19,8 @@ public class Listing_14_11_PearExample extends JPanel {
     protected Area leaf2;
     protected Area st1;
     protected Area st2;
+
+    private static final long serialVersionUID = 1251626928914650961L;
 
     public Listing_14_11_PearExample() {
         circle = new Ellipse2D.Double();

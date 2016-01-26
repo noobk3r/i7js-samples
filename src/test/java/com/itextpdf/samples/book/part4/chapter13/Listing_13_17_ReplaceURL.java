@@ -42,13 +42,6 @@ public class Listing_13_17_ReplaceURL extends GenericTest {
             "./src/test/resources/book/part4/chapter13/cmp_Listing_13_17_ReplaceURL_submit2.pdf"
     };
 
-    /**
-     * Creates a PDF document.
-     *
-     * @param dest the path to the new PDF document
-     * @throws IOException
-     * @throws SQLException
-     */
     public void createPdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
@@ -106,13 +99,6 @@ public class Listing_13_17_ReplaceURL extends GenericTest {
         doc.close();
     }
 
-    /**
-     * Manipulates a PDF file src with the file dest as result
-     *
-     * @param src  the original PDF
-     * @param dest the resulting PDF
-     * @throws IOException
-     */
     public void changePdf(String src, String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);

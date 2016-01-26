@@ -18,7 +18,8 @@ import org.junit.experimental.categories.Category;
 @Ignore
 @Category(SampleTest.class)
 public class Listing_11_19_FontFactory extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part3/chapter11/Listing_11_19_FontFactory.pdf";
+    public static final String DEST
+            = "./target/test/resources/book/part3/chapter11/Listing_11_19_FontFactory.pdf";
 
     public static void main(String[] args) throws Exception {
         new Listing_11_19_FontFactory().manipulatePdf(DEST);

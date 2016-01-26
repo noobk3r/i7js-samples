@@ -1,15 +1,15 @@
 package com.itextpdf.samples.book.part3.chapter10;
 
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.color.PatternColor;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.colorspace.PdfDeviceCs;
 import com.itextpdf.core.pdf.colorspace.PdfPattern;
 import com.itextpdf.core.pdf.colorspace.PdfShading;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -19,7 +19,8 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_10_04_ShadingPatternColor extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part3/chapter10/Listing_10_04_ShadingPatternColor.pdf";
+    public static final String DEST
+            = "./target/test/resources/book/part3/chapter10/Listing_10_04_ShadingPatternColor.pdf";
 
     public static void colorRectangle(PdfCanvas canvas, Color color, float x, float y, float width, float height) {
         canvas.saveState().setFillColor(color).rectangle(x, y, width, height).fillStroke().restoreState();
@@ -40,10 +41,12 @@ public class Listing_10_04_ShadingPatternColor extends GenericTest {
         //Write to canvas
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
 
-        com.itextpdf.core.pdf.colorspace.PdfShading axial = new PdfShading.Axial(new PdfDeviceCs.Rgb(), 36, 716, new float[]{1, .784f, 0}, 396, 788, new float[]{0, 0, 1}, new boolean[] {true, true}, pdfDoc);
+        com.itextpdf.core.pdf.colorspace.PdfShading axial
+                = new PdfShading.Axial(new PdfDeviceCs.Rgb(), 36, 716, new float[]{1, .784f, 0}, 396, 788, new float[]{0, 0, 1}, new boolean[] {true, true}, pdfDoc);
         canvas.paintShading(axial);
         canvas = new PdfCanvas(pdfDoc.addNewPage());
-        com.itextpdf.core.pdf.colorspace.PdfShading radial = new PdfShading.Radial(new PdfDeviceCs.Rgb(), 200, 700, 50, new float[] {1, 0.968f, 0.58f}, 300, 700, 100, new float[] {0.968f, 0.541f, 0.42f}, pdfDoc);
+        com.itextpdf.core.pdf.colorspace.PdfShading radial
+                = new PdfShading.Radial(new PdfDeviceCs.Rgb(), 200, 700, 50, new float[] {1, 0.968f, 0.58f}, 300, 700, 100, new float[] {0.968f, 0.541f, 0.42f}, pdfDoc);
         canvas.paintShading(radial);
 
         PdfPattern.Shading shading = new PdfPattern.Shading(axial).makeIndirect(pdfDoc);

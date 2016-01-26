@@ -41,13 +41,6 @@ public class Listing_14_01_GetContentStream extends GenericTest {
         readContent(HERO, RESULT2);
     }
 
-    /**
-     * Reads the content stream of the first page of a PDF into a text file.
-     *
-     * @param src    the path to a PDF file
-     * @param result the path to the resulting text file
-     * @throws IOException
-     */
     public void readContent(String src, String result) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src));
         FileOutputStream out = new FileOutputStream(result);

@@ -15,7 +15,8 @@ import org.junit.experimental.categories.Category;
 @Ignore
 @Category(SampleTest.class)
 public class Listing_11_05_UnicodeExample extends Listing_11_04_EncodingExample {
-    public static final String DEST = "./target/test/resources/book/part3/chapter11/Listing_11_05_UnicodeExample.pdf";
+    public static final String DEST
+            = "./target/test/resources/book/part3/chapter11/Listing_11_05_UnicodeExample.pdf";
 
     public static void main(String[] agrs) throws Exception {
         new Listing_11_05_UnicodeExample().manipulatePdf(DEST);

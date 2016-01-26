@@ -4,10 +4,10 @@ import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
@@ -43,7 +43,6 @@ public class Listing_11_04_EncodingExample extends GenericTest {
                     "\u039d\u03cd\u03c6\u03b5\u03c2"
             }
     };
-
 
     public static void main(String[] agrs) throws Exception {
         new Listing_11_04_EncodingExample().manipulatePdf(DEST);

@@ -77,16 +77,6 @@ public class Listing_10_01_DeviceColor extends GenericTest {
         pdfDoc.close();
     }
 
-    /**
-     * Draws a colored rectangle.
-     *
-     * @param canvas the canvas to draw on
-     * @param color  the Color
-     * @param x      the X coordinate
-     * @param y      the Y coordinate
-     * @param width  the width of the rectangle
-     * @param height the height of the rectangle
-     */
     public void colorRectangle(PdfCanvas canvas, Color color, float x, float y, float width, float height) {
         canvas.saveState();
         canvas.setFillColor(color);

@@ -35,9 +35,12 @@ public class Listing_11_06_FontFileAndSizes extends GenericTest {
             "./src/test/resources/book/part3/chapter11/cmp_Listing_11_06_FontFileAndSizes_font_compressed.pdf",
             "./src/test/resources/book/part3/chapter11/cmp_Listing_11_06_FontFileAndSizes_font_full.pdf"
     };
-    public static final String FONT = /*"c:/windows/fonts/arial.ttf"*/"./src/test/resources/font/FreeSans.ttf";
-    public static String TEXT = "quick brown fox jumps over the lazy dog";
-    public static String OOOO = "ooooo ooooo ooo ooooo oooo ooo oooo ooo";
+    public static final String FONT
+            = /*"c:/windows/fonts/arial.ttf"*/"./src/test/resources/font/FreeSans.ttf";
+    public static String TEXT
+            = "quick brown fox jumps over the lazy dog";
+    public static String OOOO
+            = "ooooo ooooo ooo ooooo oooo ooo oooo ooo";
 
     public static void main(String[] agrs) throws Exception {
         new Listing_11_06_FontFileAndSizes().manipulatePdf(DEST);
@@ -93,7 +96,6 @@ public class Listing_11_06_FontFileAndSizes extends GenericTest {
                 addError(compareTool.compareDocumentInfo(RESULT[i], CMP_RESULT[i]));
             }
         }
-
         if (errorMessage != null) Assert.fail(errorMessage);
     }
 }

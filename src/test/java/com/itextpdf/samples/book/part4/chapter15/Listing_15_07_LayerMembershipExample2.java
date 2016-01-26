@@ -49,11 +49,41 @@ public class Listing_15_07_LayerMembershipExample2 extends GenericTest {
         PdfVisibilityExpression ve2 = new PdfVisibilityExpression(PdfName.Not);
         ve2.addOperand(ve1);
         no_cat.setVisibilityExpression(ve2);
-        canvas.beginLayer(dog).beginText().moveText(50, 725).showText("dog").endText().endLayer();
-        canvas.beginLayer(tiger).beginText().moveText(50, 700).showText("tiger").endText().endLayer();
-        canvas.beginLayer(lion).beginText().moveText(50, 675).showText("lion").endText().endLayer();
-        canvas.beginLayer(cat).beginText().moveText(50, 650).showText("cat").endText().endLayer();
-        canvas.beginLayer(no_cat).beginText().moveText(50, 650).showText("no cat").endText().endLayer();
+        canvas
+                .beginLayer(dog)
+                .beginText()
+                .moveText(50, 725)
+                .showText("dog")
+                .endText()
+                .endLayer();
+        canvas
+                .beginLayer(tiger)
+                .beginText()
+                .moveText(50, 700)
+                .showText("tiger")
+                .endText()
+                .endLayer();
+        canvas
+                .beginLayer(lion)
+                .beginText()
+                .moveText(50, 675)
+                .showText("lion")
+                .endText()
+                .endLayer();
+        canvas
+                .beginLayer(cat)
+                .beginText()
+                .moveText(50, 650)
+                .showText("cat")
+                .endText()
+                .endLayer();
+        canvas
+                .beginLayer(no_cat)
+                .beginText()
+                .moveText(50, 650)
+                .showText("no cat")
+                .endText()
+                .endLayer();
 
         //Close document
         pdfDoc.close();

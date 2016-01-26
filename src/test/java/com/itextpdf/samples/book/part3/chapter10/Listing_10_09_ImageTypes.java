@@ -24,8 +24,6 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class Listing_10_09_ImageTypes extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part3/chapter10/Listing_10_09_ImageTypes.pdf";
-
-    /** Paths to images. */
     public static final String[] RESOURCES = {
             "bruno_ingeborg.jpg",
             "map.jp2",
@@ -37,8 +35,6 @@ public class Listing_10_09_ImageTypes extends GenericTest {
             "marbles.tif",
             "amb.jb2"
     };
-
-    /** Path to an image. */
     public static final String RESOURCE = "src/test/resources/img/hitchcock.png";
 
     public static void main(String args[]) throws IOException {
@@ -57,10 +53,12 @@ public class Listing_10_09_ImageTypes extends GenericTest {
         Image img;
         for (int i = 0; i < RESOURCES.length; i++) {
             if (String.format("src/test/resources/img/%s", RESOURCES[i]).contains(".wmf")) {
-                WmfImageHelper wmf = new WmfImageHelper(new WmfImage(String.format("src/test/resources/img/%s", RESOURCES[i])));
+                WmfImageHelper wmf
+                        = new WmfImageHelper(new WmfImage(String.format("src/test/resources/img/%s", RESOURCES[i])));
                 img = new Image((PdfFormXObject) wmf.createPdfForm(pdfDoc));
             } else {
-                com.itextpdf.basics.image.Image image = ImageFactory.getImage(String.format("src/test/resources/img/%s", RESOURCES[i]));
+                com.itextpdf.basics.image.Image image
+                        = ImageFactory.getImage(String.format("src/test/resources/img/%s", RESOURCES[i]));
                 img = new Image(new PdfImageXObject(image));
             }
 

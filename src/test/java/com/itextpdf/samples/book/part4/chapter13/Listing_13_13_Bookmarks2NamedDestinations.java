@@ -27,30 +27,11 @@ import org.junit.experimental.categories.Category;
 @Ignore
 @Category(SampleTest.class)
 public class Listing_13_13_Bookmarks2NamedDestinations extends GenericTest {
-    /**
-     * The resulting PDF file.
-     */
     public static final String DEST = "./target/test/resources/book/part4/chapter13/Listing_13_13_Bookmarks2NamedDestinations.pdf";
-
     public static final String LAUNCH_ACTIONS = "./src/test/resources/book/part2/chapter07/cmp_Listing_07_10_LaunchAction.pdf";
-
-    public static void main(String args[]) throws IOException, SQLException, XMPException {
-        new Listing_13_13_Bookmarks2NamedDestinations().manipulatePdf(DEST);
-    }
-
     public static final String RESULT1 = "results/part4/chapter13/bookmarks.pdf";
-    /**
-     * The resulting PDF file.
-     */
     public static final String RESULT2 = "results/part4/chapter13/named_destinations.pdf";
-    /**
-     * The resulting PDF file.
-     */
     public static final String RESULT3 = "results/part4/chapter13/named_destinations.xml";
-
-    /**
-     * The different epochs.
-     */
     public static final String[] EPOCH =
             {"Forties", "Fifties", "Sixties", "Seventies", "Eighties",
                     "Nineties", "Twenty-first Century"};
@@ -64,14 +45,10 @@ public class Listing_13_13_Bookmarks2NamedDestinations extends GenericTest {
 //        FONT[3] = new Font(FontFamily.HELVETICA, 12, Font.BOLD);
 //    }
 
-    /**
-     * Creates a PDF document.
-     *
-     * @param dest the path to the new PDF document
-     * @throws IOException
-     * @throws IOException
-     * @throws SQLException
-     */
+    public static void main(String args[]) throws IOException, SQLException, XMPException {
+        new Listing_13_13_Bookmarks2NamedDestinations().manipulatePdf(DEST);
+    }
+
     public void createPdf(String dest) throws IOException, SQLException {
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
@@ -122,13 +99,6 @@ public class Listing_13_13_Bookmarks2NamedDestinations extends GenericTest {
         connection.close();
     }
 
-    /**
-     * Manipulates a PDF file src with the file dest as result
-     *
-     * @param src  the original PDF
-     * @param dest the resulting PDF
-     * @throws IOException
-     */
     public void changePdf(String src, String dest) throws IOException {
         PdfReader reader = new PdfReader(src);
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));

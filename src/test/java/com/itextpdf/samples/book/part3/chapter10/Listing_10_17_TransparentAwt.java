@@ -25,10 +25,10 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_10_17_TransparentAwt extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part3/chapter10/Listing_10_17_TransparentAwt.pdf";
+    public static final String DEST
+            = "./target/test/resources/book/part3/chapter10/Listing_10_17_TransparentAwt.pdf";
     public static final String RESOURCE
             = "./src/test/resources/book/part3/chapter10/hitchcock.gif";
-
 
     public static void main(String args[]) throws IOException {
         new Listing_10_17_TransparentAwt().manipulatePdf(DEST);

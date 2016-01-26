@@ -16,7 +16,8 @@ import org.junit.experimental.categories.Category;
 @Ignore
 @Category(SampleTest.class)
 public class Listing_11_20_FontSelectionExample extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part3/chapter11/Listing_11_20_FontSelectionExample.pdf";
+    public static final String DEST
+            = "./target/test/resources/book/part3/chapter11/Listing_11_20_FontSelectionExample.pdf";
     public static final String TEXT
             = "These are the protagonists in 'Hero', a movie by Zhang Yimou:\n"
             + "\u7121\u540d (Nameless), \u6b98\u528d (Broken Sword), "

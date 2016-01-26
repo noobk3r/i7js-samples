@@ -15,8 +15,10 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_11_16_ExtraCharSpace extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part3/chapter11/Listing_11_16_ExtraCharSpace.pdf";
-    public static final String MOVIE = "Aanrijding in Moscou";
+    public static final String DEST
+            = "./target/test/resources/book/part3/chapter11/Listing_11_16_ExtraCharSpace.pdf";
+    public static final String MOVIE
+            = "Aanrijding in Moscou";
 
     public static void main(String[] agrs) throws Exception {
         new Listing_11_16_ExtraCharSpace().manipulatePdf(DEST);
