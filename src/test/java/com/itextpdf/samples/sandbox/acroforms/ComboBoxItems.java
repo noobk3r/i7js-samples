@@ -82,7 +82,7 @@ public class ComboBoxItems extends GenericTest {
         public void draw(DrawContext drawContext) {
             PdfFont font = null;
             try {
-                font = new PdfType1Font((Type1Font) FontFactory.createFont(FontConstants.HELVETICA));
+                font = PdfFont.createStandardFont(FontConstants.HELVETICA);
 
             } catch (IOException e) {
                 // should do smth but in this example we'll leave catching

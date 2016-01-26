@@ -46,7 +46,7 @@ public class TransparentWatermark extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         PdfCanvas under = new PdfCanvas(pdfDoc.getFirstPage().newContentStreamBefore(), new PdfResources(), pdfDoc);
-        PdfFont font = new PdfType1Font((Type1Font) FontFactory.createFont(FontConstants.HELVETICA));
+        PdfFont font = PdfFont.createFont(FontFactory.createFont(FontConstants.HELVETICA));
         Paragraph p = new Paragraph("This watermark is added UNDER the existing content")
                 .setFont(font).setFontSize(15);
         doc.showTextAligned(p, 297, 550, 1, Property.TextAlignment.CENTER, Property.VerticalAlignment.TOP, 0);
@@ -66,4 +66,5 @@ public class TransparentWatermark extends GenericTest {
 
         pdfDoc.close();
     }
+
 }

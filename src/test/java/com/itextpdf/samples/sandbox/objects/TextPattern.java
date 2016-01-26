@@ -39,7 +39,7 @@ public class TextPattern extends GenericTest {
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         PdfFont font = PdfFont.createStandardFont(FontConstants.HELVETICA);
         String filltext = "this is the fill text! ";
-        float filltextWidth = font.getWidthPoint(filltext, 6);
+        float filltextWidth = font.getWidth(filltext, 6);
 
         PdfPattern.Tiling tilingPattern = new PdfPattern.Tiling(filltextWidth, 60, filltextWidth, 60);
         PdfPatternCanvas patternCanvas = new PdfPatternCanvas(tilingPattern, pdfDoc);

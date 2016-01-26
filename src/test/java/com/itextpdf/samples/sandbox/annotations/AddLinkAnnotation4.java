@@ -47,7 +47,7 @@ public class AddLinkAnnotation4 extends GenericTest {
         AffineTransform transform = AffineTransform.getRotateInstance((float) Math.PI / 2);
         // stamper.getWriter().setPageEvent(new AddAnnotation(stamper, transform));
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());
-        PdfFont bold = new PdfType1Font((Type1Font) FontFactory.createFont(FontConstants.HELVETICA_BOLD));
+        PdfFont bold = PdfFont.createStandardFont(FontConstants.HELVETICA_BOLD);
         Text chunk = new Text("The Best iText Questions on StackOverflow").setFont(bold).setFontSize(12);
         // TODO Implement setGenericTag
         //chunk.setGenericTag("http://pages.itextpdf.com/ebook-stackoverflow-questions.html");

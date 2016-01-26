@@ -3,9 +3,7 @@ package com.itextpdf.samples.book.part3.chapter11;
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.FontFactory;
 import com.itextpdf.basics.font.PdfEncodings;
-import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.core.font.PdfFont;
-import com.itextpdf.core.font.PdfType1Font;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -29,9 +27,9 @@ public class Listing_11_19_FontFactory extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
-        PdfFont font =  new PdfType1Font((Type1Font)  FontFactory.createFont(FontConstants.TIMES_ROMAN));
+        PdfFont font =  PdfFont.createStandardFont(FontConstants.TIMES_ROMAN);
         doc.add(new Paragraph("Times-Roman").setFont(font));
-        PdfFont fontBold = new PdfType1Font((Type1Font)  FontFactory.createFont(FontConstants.TIMES_BOLD));
+        PdfFont fontBold = PdfFont.createStandardFont(FontConstants.TIMES_BOLD);
         doc.add(new Paragraph("Times-Roman, Bold").setFont(fontBold));
         doc.add(new Paragraph("\n"));
 

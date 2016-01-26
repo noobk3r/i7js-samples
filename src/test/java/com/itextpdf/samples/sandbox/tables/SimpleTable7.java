@@ -1,11 +1,8 @@
 package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.basics.font.FontFactory;
-import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.font.PdfFont;
-import com.itextpdf.core.font.PdfType1Font;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -39,17 +36,17 @@ public class SimpleTable7 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        PdfFont titleFont = new PdfType1Font((Type1Font) FontFactory.createFont(FontConstants.COURIER_BOLD));
+        PdfFont titleFont = PdfFont.createStandardFont(FontConstants.COURIER_BOLD);
         Paragraph docTitle = new Paragraph("UCSC Direct - Direct Payment Form").setMarginRight(1);
         docTitle.setFont(titleFont).setFontSize(11);
         doc.add(docTitle);
 
-        PdfFont subtitleFont = new PdfType1Font((Type1Font) FontFactory.createFont(FontConstants.TIMES_ROMAN));
+        PdfFont subtitleFont = PdfFont.createStandardFont(FontConstants.TIMES_ROMAN);
         Paragraph subTitle = new Paragraph("(not to be used for reimbursement of services)");
         subTitle.setFont(subtitleFont).setFontSize(9);
         doc.add(subTitle);
 
-        PdfFont importantNoticeFont = new PdfType1Font((Type1Font) FontFactory.createFont(FontConstants.COURIER));
+        PdfFont importantNoticeFont = PdfFont.createStandardFont(FontConstants.COURIER);
         Paragraph importantNotice = new Paragraph("Important: Form must be filled out in Adobe Reader or Acrobat Professional 8.1 or above. To save completed forms, Acrobat Professional is required. For technical and accessibility assistance, contact the Campus Controller's Office.");
         importantNotice.setFont(importantNoticeFont).setFontSize(9);
         importantNotice.setFontColor(Color.RED);

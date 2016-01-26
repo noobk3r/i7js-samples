@@ -3,6 +3,7 @@
  */
 package com.itextpdf.samples.sandbox.fonts;
 
+import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.canvas.PdfCanvasConstants;
 import com.itextpdf.core.color.DeviceRgb;
@@ -40,7 +41,7 @@ public class Logo extends GenericTest {
 
         float linewidth = 125;
 
-        PdfType3Font t3 = new PdfType3Font(pdfDoc, true);
+        PdfType3Font t3 = PdfFont.createType3Font(pdfDoc, true);
         PdfCanvas i = t3.addGlyph('I', 700, 0, 0, 1200, 600);
         i.setLineWidth(10);
         i.setStrokeColor(new DeviceRgb(0xf9, 0x9d, 0x25));

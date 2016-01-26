@@ -72,14 +72,14 @@ public class TruncateTextInCell extends GenericTest {
             int contentLength = content.length();
             int leftChar = 0;
             int rightChar = contentLength - 1;
-            availableWidth -= bf.getWidthPoint("...", 12);
+            availableWidth -= bf.getWidth("...", 12);
             while (leftChar < contentLength && rightChar != leftChar) {
-                availableWidth -= bf.getWidthPoint(content.charAt(leftChar), 12);
+                availableWidth -= bf.getWidth(content.charAt(leftChar), 12);
                 if (availableWidth > 0)
                     leftChar++;
                 else
                     break;
-                availableWidth -= bf.getWidthPoint(content.charAt(rightChar), 12);
+                availableWidth -= bf.getWidth(content.charAt(rightChar), 12);
                 if (availableWidth > 0)
                     rightChar--;
                 else

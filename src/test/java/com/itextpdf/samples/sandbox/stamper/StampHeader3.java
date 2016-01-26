@@ -43,7 +43,7 @@ public class StampHeader3 extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         Paragraph header = new Paragraph("Copy").setFont(
-                new PdfType1Font((Type1Font) FontFactory.createFont(FontConstants.HELVETICA))).setFontSize(14);
+                PdfType1Font.createFont(FontFactory.createFont(FontConstants.HELVETICA))).setFontSize(14);
         float x, y;
         for (int i = 1; i <= pdfDoc.getNumberOfPages(); i++) {
             System.out.println(pdfDoc.getPage(i).getRotation());
