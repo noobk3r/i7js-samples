@@ -12,8 +12,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
+import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
+@Ignore("Page rotation was applied to content stream in iText5 during wrapping the content. Need to investigate and implement if needed. DEVSIX-431")
 @Category(SampleTest.class)
 public class AddSpotColorShape extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/stamper/image.pdf";
