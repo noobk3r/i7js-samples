@@ -1,11 +1,9 @@
 package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.basics.font.FontFactory;
-import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.font.PdfFont;
-import com.itextpdf.core.font.PdfType1Font;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -41,7 +39,7 @@ public class ColoredBackground extends GenericTest {
 
         Table table;
         Cell cell;
-        PdfFont font = PdfFont.createStandardFont(FontConstants.HELVETICA_BOLD);
+        PdfFont font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD);
         table = new Table(16);
         for (int aw = 0; aw < 16; aw++) {
             cell = new Cell().add(new Paragraph("hi").setFont(font).setFontSize(12).setFontColor(Color.WHITE));

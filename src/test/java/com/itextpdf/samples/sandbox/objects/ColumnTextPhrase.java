@@ -6,6 +6,7 @@ package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -37,10 +38,10 @@ public class ColumnTextPhrase extends GenericTest {
                 new PdfWriter(new FileOutputStream(dest)));
         Document doc = new Document(pdfDoc);
 
-        PdfFont f = PdfFont.createStandardFont(FontConstants.HELVETICA);
+        PdfFont f = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
         Paragraph pz = new Paragraph("Hello World!").setFont(f).setFixedLeading(20);
         doc.add(pz.setWidth(200 - 120).setHeight(600 - 200).setMarginLeft(120));
-        f = PdfFont.createFont(FontConstants.HELVETICA_BOLD, "Cp1252", true);
+        f = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD, "Cp1252", true);
         pz = new Paragraph("Hello World!").setFont(f).setFontSize(13);
         doc.add(pz.setWidth(200 - 120).setHeight(700 - 48).setMarginLeft(120));
 

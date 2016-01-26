@@ -1,8 +1,8 @@
 package com.itextpdf.samples.book.part1.chapter01;
 
 import com.itextpdf.basics.font.FontConstants;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.canvas.PdfCanvas;
-import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -36,7 +36,7 @@ public class Listing_01_11_HelloWorldDirect extends GenericTest {
                 .saveState()
                 .beginText()
                 .moveText(36, 600)
-                .setFontAndSize(PdfFont.createStandardFont(FontConstants.HELVETICA), 12)
+                .setFontAndSize(PdfFontFactory.createStandardFont(FontConstants.HELVETICA), 12)
                 .showText("Hello World")
                 .endText()
                 .restoreState()

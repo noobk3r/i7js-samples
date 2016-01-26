@@ -1,8 +1,8 @@
 package com.itextpdf.samples.book.part2.chapter06;
 
 import com.itextpdf.basics.font.FontConstants;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.canvas.PdfCanvas;
-import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -59,7 +59,7 @@ public class Listing_06_12_StampText extends GenericTest {
         canvas
                 .saveState()
                 .beginText()
-                .setFontAndSize(PdfFont.createStandardFont(FontConstants.HELVETICA), 12)
+                .setFontAndSize(PdfFontFactory.createStandardFont(FontConstants.HELVETICA), 12)
                 .moveText(36, 540)
                 .showText("Hello people!")
                 .endText()
@@ -84,7 +84,7 @@ public class Listing_06_12_StampText extends GenericTest {
         canvas
                 .saveState()
                 .beginText()
-                .setFontAndSize(PdfFont.createStandardFont(FontConstants.HELVETICA), 12)
+                .setFontAndSize(PdfFontFactory.createStandardFont(FontConstants.HELVETICA), 12)
                 .moveText(36, 540)
                 .showText("Hello people!")
                 .endText()

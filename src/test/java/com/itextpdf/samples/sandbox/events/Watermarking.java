@@ -7,6 +7,7 @@
 package com.itextpdf.samples.sandbox.events;
 
 import com.itextpdf.basics.font.FontConstants;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.events.Event;
@@ -63,8 +64,8 @@ public class Watermarking extends GenericTest {
         Document doc = new Document(pdfDoc);
         pdfDoc.addEventHandler(PdfDocumentEvent.END_PAGE, new WatermarkingEventHandler());
 
-        PdfFont font = PdfFont.createStandardFont(FontConstants.HELVETICA);
-        PdfFont bold = PdfFont.createStandardFont(FontConstants.HELVETICA_BOLD);
+        PdfFont font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
+        PdfFont bold = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD);
 
         Table table = new Table(new float[]{4, 1, 3});
         table.setWidthPercent(100);
@@ -91,7 +92,7 @@ public class Watermarking extends GenericTest {
             PdfPage page = docEvent.getPage();
             PdfFont font = null;
             try {
-                font = PdfFont.createStandardFont(FontConstants.HELVETICA_BOLD);
+                font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD);
             } catch (IOException e) {
                 e.printStackTrace();
             }

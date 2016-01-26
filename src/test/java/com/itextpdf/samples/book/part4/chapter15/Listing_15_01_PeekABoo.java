@@ -1,7 +1,7 @@
 package com.itextpdf.samples.book.part4.chapter15;
 
 import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfVersion;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -46,7 +46,7 @@ public class Listing_15_01_PeekABoo extends GenericTest {
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         PdfLayer layer = new PdfLayer("Do you see me?", pdfDoc);
         layer.setOn(on);
-        canvas.beginText().setFontAndSize(PdfFont.createStandardFont(FontConstants.HELVETICA), 18).
+        canvas.beginText().setFontAndSize(PdfFontFactory.createStandardFont(FontConstants.HELVETICA), 18).
                 moveText(50, 760).showText("Do you see me?").
                 beginLayer(layer).moveText(0, -30).showText("Peek-A-Boo!!!").endLayer().
                 endText();

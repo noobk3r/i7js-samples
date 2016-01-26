@@ -6,6 +6,7 @@ package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -38,7 +39,7 @@ public class ListWithLeading extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        PdfFont font = PdfFont.createStandardFont(FontConstants.HELVETICA);
+        PdfFont font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
         List list1 = new List().
                 setSymbolIndent(12).
                 setListSymbol("\u2022").

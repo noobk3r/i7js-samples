@@ -1,11 +1,9 @@
 package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.basics.font.FontFactory;
-import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.core.font.PdfFont;
-import com.itextpdf.core.font.PdfType1Font;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -41,8 +39,8 @@ public class UnitedStates extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc, PageSize.A4.rotate());
 
-        PdfFont font = PdfFont.createStandardFont(FontConstants.HELVETICA);
-        PdfFont bold = PdfFont.createStandardFont(FontConstants.HELVETICA_BOLD);
+        PdfFont font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
+        PdfFont bold = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD);
         Table table = new Table(new float[]{4, 1, 3, 4, 3, 3, 3, 3, 1});
         table.setWidthPercent(100);
         BufferedReader br = new BufferedReader(new FileReader(DATA));

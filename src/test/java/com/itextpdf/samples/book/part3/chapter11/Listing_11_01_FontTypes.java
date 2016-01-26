@@ -3,6 +3,7 @@ package com.itextpdf.samples.book.part3.chapter11;
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -43,7 +44,7 @@ public class Listing_11_01_FontTypes extends GenericTest {
         Document doc = new Document(pdfDoc);
         PdfFont font;
         for (int i = 0; i < FONTS.length; i++) {
-            font = PdfFont.createFont(FONTS[i][0], FONTS[i][1], true);
+            font = PdfFontFactory.createFont(FONTS[i][0], FONTS[i][1], true);
             doc.add(new Paragraph(
                     String.format("Font file: %s with encoding %s", FONTS[i][0], FONTS[i][1])));
             doc.add(new Paragraph(

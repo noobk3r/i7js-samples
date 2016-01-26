@@ -4,6 +4,7 @@
 package com.itextpdf.samples.sandbox.fonts;
 
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.*;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
@@ -54,7 +55,7 @@ public class UnembedFont extends GenericTest {
      */
     public void createPdf(String file) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(file)));
-        PdfFont font = PdfFont.createFont("./src/test/resources/sandbox/fonts/PT_Serif-Web-Regular.ttf", "WINANSI", true);
+        PdfFont font = PdfFontFactory.createFont("./src/test/resources/sandbox/fonts/PT_Serif-Web-Regular.ttf", "WINANSI", true);
         new Document(pdfDoc).add(new Paragraph("This is a test with Times New Roman.").setFont(font));
         pdfDoc.close();
     }

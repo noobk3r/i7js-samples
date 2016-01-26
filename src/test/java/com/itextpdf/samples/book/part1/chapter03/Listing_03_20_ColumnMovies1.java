@@ -5,6 +5,7 @@ import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.basics.image.ImageFactory;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.xobject.PdfImageXObject;
@@ -84,9 +85,9 @@ public class Listing_03_20_ColumnMovies1 extends GenericTest {
     }
 
     public void addContent(Document doc, Movie movie, Image img) throws IOException {
-        PdfFont bold = PdfFont.createStandardFont(FontConstants.HELVETICA_BOLD);
-        PdfFont italic = PdfFont.createStandardFont(FontConstants.HELVETICA_OBLIQUE);
-        PdfFont normal = PdfFont.createStandardFont(FontConstants.HELVETICA);
+        PdfFont bold = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD);
+        PdfFont italic = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_OBLIQUE);
+        PdfFont normal = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
 
         Div div = new Div().
                 setKeepTogether(true).

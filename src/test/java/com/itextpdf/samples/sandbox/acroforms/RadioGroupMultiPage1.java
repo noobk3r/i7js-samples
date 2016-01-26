@@ -7,6 +7,7 @@ package com.itextpdf.samples.sandbox.acroforms;
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -43,7 +44,7 @@ public class RadioGroupMultiPage1 extends GenericTest {
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
-        PdfFont font = PdfFont.createStandardFont(FontConstants.HELVETICA);
+        PdfFont font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
         Rectangle rect = new Rectangle(40, 806, 60 - 40, 788 - 806);
         PdfButtonFormField radioGroup = PdfFormField.createRadioGroup(pdfDoc, "", "Language");
         for (int page = 1; page <= LANGUAGES.length; page++) {

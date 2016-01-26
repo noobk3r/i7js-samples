@@ -5,6 +5,7 @@
 package com.itextpdf.samples.sandbox.fonts;
 
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -32,8 +33,8 @@ public class LiberationSans extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
-        PdfFont.register(FONT, "Greek-Regular");
-        PdfFont f = PdfFont.createRegisteredFont("Greek-Regular", "CP1253", true);
+        PdfFontFactory.register(FONT, "Greek-Regular");
+        PdfFont f = PdfFontFactory.createRegisteredFont("Greek-Regular", "CP1253", true);
         Paragraph p = new Paragraph("\u039d\u03cd\u03c6\u03b5\u03c2").setFont(f);
         doc.add(p);
         pdfDoc.close();

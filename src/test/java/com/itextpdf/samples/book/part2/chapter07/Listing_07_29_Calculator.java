@@ -3,6 +3,7 @@ package com.itextpdf.samples.book.part2.chapter07;
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.basics.geom.Rectangle;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.font.PdfFont;
@@ -106,7 +107,7 @@ public class Listing_07_29_Calculator extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc, new PageSize(360, 360));
         pdfDoc.getCatalog().setOpenAction(PdfAction.createJavaScript(readFileToString(RESOURCE)));
-        PdfFont font = PdfFont.createStandardFont(FontConstants.HELVETICA);
+        PdfFont font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
         // step 4
         // add the keys for the digits
         for (int i = 0; i < 10; i++) {

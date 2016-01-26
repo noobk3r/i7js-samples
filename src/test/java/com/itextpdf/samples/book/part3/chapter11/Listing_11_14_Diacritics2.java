@@ -2,6 +2,7 @@ package com.itextpdf.samples.book.part3.chapter11;
 
 import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -32,11 +33,11 @@ public class Listing_11_14_Diacritics2 extends GenericTest {
         Document doc = new Document(pdfDoc);
         doc.add(new Paragraph("Movie title: In Bed With Santa (Sweden)"));
         doc.add(new Paragraph("directed by Kjell Sundvall"));
-        PdfFont f = PdfFont.createFont(FONTS[0], PdfEncodings.CP1252, true);
+        PdfFont f = PdfFontFactory.createFont(FONTS[0], PdfEncodings.CP1252, true);
         // TODO No setCharacterAdvance
         // f.setCharAdvance('\u00a8', -100);
         doc.add(new Paragraph(MOVIE).setFont(f));
-        f = PdfFont.createFont(FONTS[1], PdfEncodings.CP1252, true);
+        f = PdfFontFactory.createFont(FONTS[1], PdfEncodings.CP1252, true);
         // f.setCharAdvance('\u00a8', 0);
         doc.add(new Paragraph(MOVIE).setFont(f));
         doc.close();

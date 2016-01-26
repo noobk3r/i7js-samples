@@ -3,6 +3,7 @@ package com.itextpdf.samples.book.part1.chapter02;
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.image.ImageFactory;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -42,7 +43,7 @@ public class Listing_02_29_RiverPhoenix extends GenericTest {
         // writer.setStrictImageSequence(true);
         // writer.setInitialLeading(18);
 
-        bold = PdfFont.createStandardFont(FontConstants.HELVETICA_BOLD);
+        bold = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD);
 
         // step 4
         doc.add(new Paragraph("Movies featuring River Phoenix").setFont(bold).setFixedLeading(18));

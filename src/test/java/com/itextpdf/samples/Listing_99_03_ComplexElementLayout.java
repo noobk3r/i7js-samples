@@ -2,7 +2,7 @@ package com.itextpdf.samples;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.geom.Rectangle;
-import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -45,7 +45,7 @@ public class Listing_99_03_ComplexElementLayout extends GenericTest {
         Paragraph twoColumnParagraph = new Paragraph();
         twoColumnParagraph.setNextRenderer(new TwoColumnParagraphRenderer(twoColumnParagraph));
         twoColumnParagraph.add(text.toString());
-        doc.add(twoColumnParagraph.setFont(PdfFont.createStandardFont(FontConstants.HELVETICA)));
+        doc.add(twoColumnParagraph.setFont(PdfFontFactory.createStandardFont(FontConstants.HELVETICA)));
 
         doc.add(new Paragraph("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"));
 

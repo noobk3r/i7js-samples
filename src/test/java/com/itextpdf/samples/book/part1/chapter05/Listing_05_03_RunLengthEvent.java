@@ -3,10 +3,10 @@ package com.itextpdf.samples.book.part1.chapter05;
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.basics.geom.Rectangle;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.color.DeviceRgb;
-import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -189,7 +189,7 @@ public class Listing_05_03_RunLengthEvent extends GenericTest {
                 PdfCanvas canvas = drawContext.getCanvas();
                 canvas.beginText();
                 try {
-                    canvas.setFontAndSize(PdfFont.createStandardFont(FontConstants.HELVETICA), 12);
+                    canvas.setFontAndSize(PdfFontFactory.createStandardFont(FontConstants.HELVETICA), 12);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

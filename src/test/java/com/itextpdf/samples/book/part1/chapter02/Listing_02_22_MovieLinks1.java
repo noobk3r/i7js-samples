@@ -2,6 +2,7 @@ package com.itextpdf.samples.book.part1.chapter02;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.action.PdfAction;
@@ -42,7 +43,7 @@ public class Listing_02_22_MovieLinks1 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        bold = PdfFont.createStandardFont(FontConstants.HELVETICA_BOLD);
+        bold = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD);
 
         // Make the connection to the database
         DatabaseConnection connection = new HsqldbConnection("filmfestival");

@@ -2,6 +2,7 @@ package com.itextpdf.samples.book.part3.chapter11;
 
 import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.model.Document;
@@ -27,7 +28,7 @@ public class Listing_11_17_Ligatures1 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document document = new Document(pdfDoc);
 
-        PdfFont font = PdfFont.createFont(/*"c:/windows/fonts/arial.ttf"*/"./src/test/resources/font/FreeSans.ttf",
+        PdfFont font = PdfFontFactory.createFont(/*"c:/windows/fonts/arial.ttf"*/"./src/test/resources/font/FreeSans.ttf",
                 PdfEncodings.CP1252, true);
         document.add(new Paragraph("Movie title: Love at First Hiccough (Denmark)").setFont(font));
         document.add(new Paragraph("directed by Tomas Villum Jensen").setFont(font));

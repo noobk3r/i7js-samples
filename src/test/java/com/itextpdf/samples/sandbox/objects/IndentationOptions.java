@@ -6,6 +6,7 @@ package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -48,7 +49,7 @@ public class IndentationOptions extends GenericTest {
                 add(CONTENT);
         doc.add(list);
 
-        PdfFont font = PdfFont.createStandardFont(FontConstants.HELVETICA);
+        PdfFont font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
         Paragraph p = new Paragraph(LABEL + CONTENT).setFont(font);
         float indentation = font.getWidth(LABEL, 12);
         p.setMarginLeft(indentation).

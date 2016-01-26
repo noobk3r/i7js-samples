@@ -2,6 +2,7 @@ package com.itextpdf.samples.book.part2.chapter08;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.geom.Rectangle;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.color.DeviceGray;
@@ -73,7 +74,7 @@ public class Listing_08_01_Buttons extends GenericTest {
         Document doc = new Document(pdfDoc);
         pdfDoc.getCatalog().setOpenAction(PdfAction.createJavaScript(readFileToString(RESOURCE)));
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
-        PdfFont font = PdfFont.createStandardFont(FontConstants.HELVETICA);
+        PdfFont font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
         Rectangle rect;
         PdfButtonFormField radioGroup = PdfFormField.createRadioGroup(pdfDoc, "", "language");
         PdfFormField radio;

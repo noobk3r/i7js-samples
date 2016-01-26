@@ -4,6 +4,7 @@
 package com.itextpdf.samples.sandbox.fonts.tutorial;
 
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -31,7 +32,7 @@ public class F07_Unicode extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
-        PdfFont font = PdfFont.createFont(FONT, "Identity-H", true);
+        PdfFont font = PdfFontFactory.createFont(FONT, "Identity-H", true);
         doc.add(new Paragraph("Vous \u00eates d'o\u00f9?").setFont(font));
         doc.add(new Paragraph("\u00c0 tout \u00e0 l'heure. \u00c0 bient\u00f4t.").setFont(font));
         doc.add(new Paragraph("Je me pr\u00e9sente.").setFont(font));

@@ -5,13 +5,12 @@ package com.itextpdf.samples.sandbox.stamper;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.FontFactory;
-import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.basics.image.Image;
 import com.itextpdf.basics.image.ImageFactory;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.font.PdfFont;
-import com.itextpdf.core.font.PdfType1Font;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -49,7 +48,7 @@ public class TransparentWatermark3 extends GenericTest {
         Document doc = new Document(pdfDoc);
         int n = pdfDoc.getNumberOfPages();
 
-        PdfFont font = PdfFont.createFont(FontFactory.createFont(FontConstants.HELVETICA));
+        PdfFont font = PdfFontFactory.createFont(FontFactory.createFont(FontConstants.HELVETICA));
         Paragraph p = new Paragraph("My watermark (text)").setFont(font).setFontSize(30);
         // image watermark
         Image img = ImageFactory.getImage(IMG);

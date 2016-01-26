@@ -2,6 +2,7 @@ package com.itextpdf.samples.book.part2.chapter07;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -54,7 +55,7 @@ public class Listing_07_05_TimetableDestinations extends GenericTest {
             actions.add(PdfAction.createGoTo(PdfExplicitDestination.createFit(i)));
         }
 
-        PdfFont symbol = PdfFont.createStandardFont(FontConstants.SYMBOL);
+        PdfFont symbol = PdfFontFactory.createStandardFont(FontConstants.SYMBOL);
         // Add a navigation table to every page
         for (int i = 1; i <= n; i++) {
             doc.add(createNavigationTable(i, n).setFixedPosition(i, 696, 0, 120).setFont(symbol));

@@ -8,6 +8,7 @@ package com.itextpdf.samples.sandbox.acroforms;
 
 import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -44,7 +45,7 @@ public class FillFormSpecialChars extends GenericTest {
                 new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         form.setGenerateAppearance(true);
-        PdfFont font = PdfFont.createFont(FONT, PdfEncodings.IDENTITY_H);
+        PdfFont font = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H);
         form.getFormFields().get("test").setValue(VALUE, font, 12);
         form.getFormFields().get("test2").setValue(VALUE, font, 12);
         pdfDoc.close();

@@ -5,7 +5,7 @@ import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.basics.io.PdfTokenizer;
 import com.itextpdf.basics.io.RandomAccessFileOrArray;
 import com.itextpdf.basics.io.RandomAccessSourceFactory;
-import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.parser.EventListener;
 import com.itextpdf.core.parser.PdfContentStreamProcessor;
 import com.itextpdf.core.pdf.PdfDocument;
@@ -51,7 +51,7 @@ public class Listing_15_20_ParsingHelloWorld extends GenericTest {
 
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         canvas.beginText();
-        canvas.setFontAndSize(PdfFont.createStandardFont(FontConstants.HELVETICA), 12);
+        canvas.setFontAndSize(PdfFontFactory.createStandardFont(FontConstants.HELVETICA), 12);
         canvas.moveText(88.66f, 367);
         canvas.showText("ld");
         canvas.moveText(-22f, 0);
@@ -65,7 +65,7 @@ public class Listing_15_20_ParsingHelloWorld extends GenericTest {
         PdfFormXObject xObject = new PdfFormXObject(new Rectangle(250, 25));
         PdfCanvas xObjectCanvas = new PdfCanvas(xObject, pdfDoc);
         xObjectCanvas.beginText();
-        xObjectCanvas.setFontAndSize(PdfFont.createStandardFont(FontConstants.HELVETICA), 12);
+        xObjectCanvas.setFontAndSize(PdfFontFactory.createStandardFont(FontConstants.HELVETICA), 12);
         xObjectCanvas.moveText(0, 7);
         xObjectCanvas.showText("Hello People");
         xObjectCanvas.endText();

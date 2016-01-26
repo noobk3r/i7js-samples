@@ -3,6 +3,7 @@ package com.itextpdf.samples.book.part4.chapter15;
 import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.tagging.PdfStructElem;
@@ -31,7 +32,7 @@ public class Listing_15_18_ContentParser extends DefaultHandler {
         canvas = new PdfCanvas(pdfDoc.addNewPage());
         // column.setSimpleColumn(36, 36, 384, 569);
         this.elements = elements;
-        font = PdfFont.createFont(/*"c:/windows/fonts/arial.ttf"*/"./src/test/resources/font/FreeSans.ttf",
+        font = PdfFontFactory.createFont(/*"c:/windows/fonts/arial.ttf"*/"./src/test/resources/font/FreeSans.ttf",
                 PdfEncodings.WINANSI, true);
     }
 

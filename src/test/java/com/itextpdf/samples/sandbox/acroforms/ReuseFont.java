@@ -4,6 +4,7 @@
  */
 package com.itextpdf.samples.sandbox.acroforms;
 
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDictionary;
@@ -61,7 +62,7 @@ public class ReuseFont extends GenericTest {
         if (font == null) return null;
         for (PdfName key : font.keySet()) {
             if (key.equals(fontName)) {
-                return PdfFont.createFont(font.getAsDictionary(key));
+                return PdfFontFactory.createFont(font.getAsDictionary(key));
             }
         }
         return null;

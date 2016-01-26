@@ -2,6 +2,7 @@ package com.itextpdf.samples.book.part4.chapter13;
 
 import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfAConformanceLevel;
 import com.itextpdf.core.pdf.PdfOutputIntent;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -66,7 +67,7 @@ public class Listing_13_01_PdfXPdfA extends GenericTest {
         pdfADocument.setXmpMetadata();
         pdfADocument.addNewPage();
 
-        PdfFont font = PdfFont.createFont(FONT, PdfEncodings.CP1252, true);
+        PdfFont font = PdfFontFactory.createFont(FONT, PdfEncodings.CP1252, true);
         Document doc = new Document(pdfADocument).add(new Paragraph("Hello World").setFont(font));
         doc.close();
     }

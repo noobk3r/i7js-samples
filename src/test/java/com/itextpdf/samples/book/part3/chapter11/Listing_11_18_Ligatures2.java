@@ -2,6 +2,7 @@ package com.itextpdf.samples.book.part3.chapter11;
 
 import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.model.Document;
@@ -46,7 +47,7 @@ public class Listing_11_18_Ligatures2 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document document = new Document(pdfDoc);
 
-        PdfFont bf = PdfFont.createFont(FONT, PdfEncodings.IDENTITY_H, true);
+        PdfFont bf = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H, true);
         document.add(new Paragraph("Movie title: Lawrence of Arabia (UK)"));
         document.add(new Paragraph("directed by David Lean"));
         document.add(new Paragraph("Wrong: " + MOVIE).setFont(bf).setFontSize(20));

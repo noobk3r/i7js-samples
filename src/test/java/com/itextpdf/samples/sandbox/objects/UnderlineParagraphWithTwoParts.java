@@ -6,6 +6,7 @@ package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -39,7 +40,7 @@ public class UnderlineParagraphWithTwoParts extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         pdfDoc.addNewPage();
-        PdfFont font = PdfFont.createFont(FontConstants.COURIER, "WinAnsi", false);
+        PdfFont font = PdfFontFactory.createFont(FontConstants.COURIER, "WinAnsi", false);
         float charWidth = font.getWidth(" ");
         int charactersPerLine = 101;
         float pageWidth = pdfDoc.getPage(1).getPageSize().getWidth();

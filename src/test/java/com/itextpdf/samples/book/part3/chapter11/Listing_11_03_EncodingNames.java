@@ -2,6 +2,7 @@ package com.itextpdf.samples.book.part3.chapter11;
 
 import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -44,7 +45,7 @@ public class Listing_11_03_EncodingNames extends GenericTest {
      * Writes the available encodings of a font to the document.
      */
     public void showEncodings(Document doc, String fontConstant) throws IOException {
-        PdfFont font = PdfFont.createFont(fontConstant, PdfEncodings.WINANSI, true);
+        PdfFont font = PdfFontFactory.createFont(fontConstant, PdfEncodings.WINANSI, true);
 
         // TODO No getPostscriptFontName
         doc.add(new Paragraph("PostScript name: " + font.getFontProgram().getFontNames().getFontName()));

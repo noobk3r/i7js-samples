@@ -4,6 +4,7 @@
 package com.itextpdf.samples.sandbox.fonts.tutorial;
 
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -31,9 +32,9 @@ public class F06_Different_encodings extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
-        PdfFont french = PdfFont.createFont(FONT, "WINANSI", true);
-        PdfFont czech = PdfFont.createFont(FONT, "Cp1250", true);
-        PdfFont russian = PdfFont.createFont(FONT, "Cp1251", true);
+        PdfFont french = PdfFontFactory.createFont(FONT, "WINANSI", true);
+        PdfFont czech = PdfFontFactory.createFont(FONT, "Cp1250", true);
+        PdfFont russian = PdfFontFactory.createFont(FONT, "Cp1251", true);
 
         doc.add(new Paragraph("Vous \u00eates d'o\u00f9?").setFont(french));
         doc.add(new Paragraph("\u00c0 tout \u00e0 l'heure. \u00c0 bient\u00f4t.").setFont(french));

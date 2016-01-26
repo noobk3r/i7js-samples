@@ -5,12 +5,10 @@
 package com.itextpdf.samples.sandbox.acroforms;
 
 import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.basics.font.FontFactory;
-import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.font.PdfFont;
-import com.itextpdf.core.font.PdfType1Font;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDictionary;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfName;
@@ -82,7 +80,7 @@ public class ComboBoxItems extends GenericTest {
         public void draw(DrawContext drawContext) {
             PdfFont font = null;
             try {
-                font = PdfFont.createStandardFont(FontConstants.HELVETICA);
+                font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
 
             } catch (IOException e) {
                 // should do smth but in this example we'll leave catching

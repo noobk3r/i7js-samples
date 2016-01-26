@@ -3,6 +3,7 @@ package com.itextpdf.samples.book.part3.chapter11;
 import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.basics.font.TrueTypeCollection;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -30,7 +31,7 @@ public class Listing_11_02_TTCExample extends GenericTest {
         PdfFont font;
         TrueTypeCollection coll = new TrueTypeCollection(FONT, PdfEncodings.IDENTITY_H);
         for (int i = 0; i < coll.getTTCSize(); i++) {
-            font = PdfFont.createFont(coll.getFontByTccIndex(i), PdfEncodings.IDENTITY_H, true);
+            font = PdfFontFactory.createFont(coll.getFontByTccIndex(i), PdfEncodings.IDENTITY_H, true);
             doc.add(new Paragraph("font " + i + ": " + coll.getFontByTccIndex(i).getFontNames().getFontName())
                     .setFont(font).setFontSize(12));
             doc.add(new Paragraph("Rash\u00f4mon")

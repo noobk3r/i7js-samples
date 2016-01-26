@@ -2,6 +2,7 @@ package com.itextpdf.samples.book.part3.chapter11;
 
 import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.basics.geom.PageSize;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.canvas.PdfCanvasConstants;
 import com.itextpdf.core.color.DeviceGray;
 import com.itextpdf.core.font.PdfFont;
@@ -79,8 +80,8 @@ public class Listing_11_12_SayPeace extends GenericTest {
         public CustomHandler(Document document) {
             this.document = document;
             try {
-                this.f = PdfFont.createFont(FONT, PdfEncodings.IDENTITY_H, true);
-                this.arabicF = PdfFont.createFont(ARABIC_FONT, PdfEncodings.IDENTITY_H, true);
+                this.f = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H, true);
+                this.arabicF = PdfFontFactory.createFont(ARABIC_FONT, PdfEncodings.IDENTITY_H, true);
             } catch (IOException e) {
                 e.printStackTrace();
             }

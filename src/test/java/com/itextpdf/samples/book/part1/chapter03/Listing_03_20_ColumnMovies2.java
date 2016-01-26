@@ -4,6 +4,7 @@ import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -77,9 +78,9 @@ public class Listing_03_20_ColumnMovies2 extends GenericTest {
     }
 
     public void addContent(Document doc, Movie movie) throws IOException {
-        PdfFont bold = PdfFont.createStandardFont(FontConstants.HELVETICA_BOLD);
-        PdfFont italic = PdfFont.createStandardFont(FontConstants.HELVETICA_OBLIQUE);
-        PdfFont normal = PdfFont.createStandardFont(FontConstants.HELVETICA);
+        PdfFont bold = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD);
+        PdfFont italic = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_OBLIQUE);
+        PdfFont normal = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
 
         Div div = new Div().setKeepTogether(true);
         Paragraph p = new Paragraph(movie.getTitle()).setFont(bold).

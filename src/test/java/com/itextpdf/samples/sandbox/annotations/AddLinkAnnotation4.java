@@ -5,12 +5,10 @@
 package com.itextpdf.samples.sandbox.annotations;
 
 import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.basics.font.FontFactory;
-import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.basics.geom.AffineTransform;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.font.PdfFont;
-import com.itextpdf.core.font.PdfType1Font;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -47,7 +45,7 @@ public class AddLinkAnnotation4 extends GenericTest {
         AffineTransform transform = AffineTransform.getRotateInstance((float) Math.PI / 2);
         // stamper.getWriter().setPageEvent(new AddAnnotation(stamper, transform));
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());
-        PdfFont bold = PdfFont.createStandardFont(FontConstants.HELVETICA_BOLD);
+        PdfFont bold = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD);
         Text chunk = new Text("The Best iText Questions on StackOverflow").setFont(bold).setFontSize(12);
         // TODO Implement setGenericTag
         //chunk.setGenericTag("http://pages.itextpdf.com/ebook-stackoverflow-questions.html");

@@ -2,6 +2,7 @@ package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -47,12 +48,12 @@ public class CellMethod extends GenericTest {
 
     public static PdfFont getFontForThisLanguage(String language, PdfDocument pdfDoc) throws IOException {
         if ("czech".equals(language)) {
-            return PdfFont.createFont(FONT, "Cp1250", true);
+            return PdfFontFactory.createFont(FONT, "Cp1250", true);
         }
         if ("greek".equals(language)) {
-            return PdfFont.createFont(FONT, "Cp1253", true);
+            return PdfFontFactory.createFont(FONT, "Cp1253", true);
         }
-        return PdfFont.createFont(FONT, null, true);
+        return PdfFontFactory.createFont(FONT, null, true);
     }
 
     @Override

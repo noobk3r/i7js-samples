@@ -7,6 +7,7 @@
 package com.itextpdf.samples.sandbox.fonts;
 
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -34,7 +35,7 @@ public class SmallCapsExample extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
-        PdfFont font = PdfFont.createFont(FONT, "Identity-H", true);
+        PdfFont font = PdfFontFactory.createFont(FONT, "Identity-H", true);
         Paragraph p = new Paragraph("This is some text displayed using a Small Caps font.")
                 .setFont(font)
                 .setFontSize(12);

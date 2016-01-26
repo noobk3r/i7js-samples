@@ -3,6 +3,7 @@ package com.itextpdf.samples.book.part3.chapter11;
 import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -38,7 +39,7 @@ public class Listing_11_11_RightToLeftExample extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document document = new Document(pdfDoc, PageSize.A4);
 
-        PdfFont font = PdfFont.createFont(FONT, PdfEncodings.IDENTITY_H, true);
+        PdfFont font = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H, true);
         document.add(new Paragraph("Movie title: Nina's Tragedies"));
         document.add(new Paragraph("directed by Savi Gabizon"));
         document.add(new Paragraph(MOVIE).setFont(font).setFontSize(14).setBaseDirection(Property.BaseDirection.RIGHT_TO_LEFT));

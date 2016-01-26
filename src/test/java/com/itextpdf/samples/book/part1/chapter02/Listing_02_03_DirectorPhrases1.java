@@ -2,6 +2,7 @@ package com.itextpdf.samples.book.part1.chapter02;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -51,8 +52,8 @@ public class Listing_02_03_DirectorPhrases1 extends GenericTest {
 
     public Paragraph createDirectorPhrase(ResultSet rs, PdfDocument pdfDoc)
             throws SQLException, IOException {
-        PdfFont boldUnderlined = PdfFont.createStandardFont(FontConstants.TIMES_BOLD);
-        PdfFont normal = PdfFont.createStandardFont(FontConstants.TIMES_ROMAN);
+        PdfFont boldUnderlined = PdfFontFactory.createStandardFont(FontConstants.TIMES_BOLD);
+        PdfFont normal = PdfFontFactory.createStandardFont(FontConstants.TIMES_ROMAN);
         Paragraph director = new Paragraph();
         director.add(new Text(rs.getString("name"))
                 .setFont(boldUnderlined)

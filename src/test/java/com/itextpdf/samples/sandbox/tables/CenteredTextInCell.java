@@ -2,9 +2,8 @@ package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.FontFactory;
-import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.core.font.PdfFont;
-import com.itextpdf.core.font.PdfType1Font;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -36,7 +35,7 @@ public class CenteredTextInCell extends GenericTest {
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
-        PdfFont font = PdfFont.createFont(FontFactory.createFont(FontConstants.HELVETICA_BOLD));
+        PdfFont font = PdfFontFactory.createFont(FontFactory.createFont(FontConstants.HELVETICA_BOLD));
         Paragraph para = new Paragraph("Test").setFont(font).setFontSize(12);
         para.setFixedLeading(0);
         para.setMultipliedLeading(1);

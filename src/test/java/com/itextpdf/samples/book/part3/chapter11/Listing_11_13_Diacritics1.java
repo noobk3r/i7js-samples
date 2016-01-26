@@ -4,6 +4,7 @@ import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.basics.image.ImageFactory;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -47,7 +48,7 @@ public class Listing_11_13_Diacritics1 extends GenericTest {
                 "Movie title: Tears of the Black Tiger (Thailand)"));
         doc.add(new Paragraph("directed by Wisit Sasanatieng"));
         for (int i = 0; i < 2; i++) {
-            font = PdfFont.createFont(FONTS[i], PdfEncodings.IDENTITY_H, true);
+            font = PdfFontFactory.createFont(FONTS[i], PdfEncodings.IDENTITY_H, true);
             // TODO No getPostscriptFontName()
             doc.add(new Paragraph("Font: " + font.getFontProgram().getFontNames().getFontName()));
             doc.add(new Paragraph(MOVIE).setFont(font).setFontSize(20));

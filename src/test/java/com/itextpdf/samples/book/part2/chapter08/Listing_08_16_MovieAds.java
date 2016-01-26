@@ -5,6 +5,7 @@ import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.basics.io.ByteArrayOutputStream;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.color.DeviceGray;
 import com.itextpdf.core.color.DeviceRgb;
@@ -193,9 +194,9 @@ public class Listing_08_16_MovieAds extends GenericTest {
         PdfFont bold = null;
         PdfFont italic = null;
         try {
-            normal = PdfFont.createStandardFont(FontConstants.HELVETICA);
-            bold = PdfFont.createStandardFont(FontConstants.HELVETICA_BOLD);
-            italic = PdfFont.createStandardFont(FontConstants.HELVETICA_OBLIQUE);
+            normal = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
+            bold = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD);
+            italic = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_OBLIQUE);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -3,6 +3,7 @@ package com.itextpdf.samples.sandbox.tables;
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -38,7 +39,7 @@ public class SimpleTable12 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc, PageSize.A4.rotate());
 
-        font = PdfFont.createStandardFont(FontConstants.HELVETICA);
+        font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
         Table table = new Table(8);
         table.addCell(createCell("Examination", 1, 2, 15));
         table.addCell(createCell("Board", 1, 2, 15));

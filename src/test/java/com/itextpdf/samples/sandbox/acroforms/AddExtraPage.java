@@ -6,13 +6,11 @@ package com.itextpdf.samples.sandbox.acroforms;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.FontFactory;
-import com.itextpdf.basics.font.Type1Font;
-import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.events.Event;
 import com.itextpdf.core.events.IEventHandler;
 import com.itextpdf.core.events.PdfDocumentEvent;
-import com.itextpdf.core.font.PdfType1Font;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -50,7 +48,7 @@ public class AddExtraPage extends GenericTest {
         Paragraph p = new Paragraph();
         p.add(new Text("Hello "));
         p.add(new Text("World")
-                .setFont(PdfFont.createFont(FontFactory.createFont(FontConstants.HELVETICA)))
+                .setFont(PdfFontFactory.createFont(FontFactory.createFont(FontConstants.HELVETICA)))
                 .setFontSize(12)
                 .setBold());
         // TODO Returns empty form, but the form has felds!

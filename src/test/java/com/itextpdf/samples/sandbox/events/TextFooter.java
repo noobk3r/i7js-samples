@@ -6,11 +6,11 @@ package com.itextpdf.samples.sandbox.events;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.geom.Rectangle;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.events.Event;
 import com.itextpdf.core.events.IEventHandler;
 import com.itextpdf.core.events.PdfDocumentEvent;
-import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -59,7 +59,7 @@ public class TextFooter extends GenericTest {
             Rectangle pageSize = docEvent.getPage().getPageSize();
             canvas.beginText();
             try {
-                canvas.setFontAndSize(PdfFont.createStandardFont(FontConstants.HELVETICA_OBLIQUE), 5);
+                canvas.setFontAndSize(PdfFontFactory.createStandardFont(FontConstants.HELVETICA_OBLIQUE), 5);
             } catch (IOException e) {
                 e.printStackTrace();
             }

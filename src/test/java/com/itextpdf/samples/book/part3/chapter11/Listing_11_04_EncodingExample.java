@@ -1,6 +1,7 @@
 package com.itextpdf.samples.book.part3.chapter11;
 
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -54,7 +55,7 @@ public class Listing_11_04_EncodingExample extends GenericTest {
         Document doc = new Document(pdfDoc);
         PdfFont font;
         for (int i = 0; i < 4; i++) {
-            font = PdfFont.createFont(FONT, MOVIES[i][0], true);
+            font = PdfFontFactory.createFont(FONT, MOVIES[i][0], true);
             // TODO No getPostscriptFontName()
             // TODO No getEncoding()
             doc.add(new Paragraph("Font: " + font.getFontProgram().getFontNames().getFontName()

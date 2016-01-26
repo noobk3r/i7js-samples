@@ -2,6 +2,7 @@ package com.itextpdf.samples.book.part3.chapter11;
 
 import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -31,7 +32,7 @@ public class Listing_11_09_VerticalTextExample1 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
 
         Document doc = new Document(pdfDoc, new PageSize(420, 600));
-        PdfFont font = PdfFont.createFont("KozMinPro-Regular", "UniJIS-UCS2-V", false);
+        PdfFont font = PdfFontFactory.createFont("KozMinPro-Regular", "UniJIS-UCS2-V", false);
 
 //        TODO No VerticalText
 //        VerticalText vt = new VerticalText(writer.getDirectContent());

@@ -3,7 +3,7 @@ package com.itextpdf.samples.sandbox.acroforms;
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.basics.io.ByteArrayOutputStream;
 import com.itextpdf.basics.io.RandomAccessSourceFactory;
-import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -47,7 +47,7 @@ public class ReadOnlyField extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
         Rectangle rect = new Rectangle(36, 770, 144 - 36, 806 - 770);
-        PdfTextFormField tf = PdfFormField.createText(pdfDoc, rect, PdfFont.createFont(), 20, "text", "text");
+        PdfTextFormField tf = PdfFormField.createText(pdfDoc, rect, PdfFontFactory.createFont(), 20, "text", "text");
         tf.setMultiline(true);
         PdfAcroForm.getAcroForm(pdfDoc, true).addField(tf);
         doc.close();

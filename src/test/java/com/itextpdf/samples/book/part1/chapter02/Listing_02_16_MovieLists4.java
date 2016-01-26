@@ -2,6 +2,7 @@ package com.itextpdf.samples.book.part1.chapter02;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -44,7 +45,7 @@ public class Listing_02_16_MovieLists4 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        bold = PdfFont.createStandardFont(FontConstants.HELVETICA_BOLD);
+        bold = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD);
 
         // Make the connection to the database
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
@@ -68,7 +69,7 @@ public class Listing_02_16_MovieLists4 extends GenericTest {
             for (Movie movie : PojoFactory.getMovies(connection, rs.getString("country_id"))) {
                 ListItem movieitem = new ListItem(movie.getMovieTitle());
                 // Create a list for the directors
-                Text listSymbol = new Text(String.valueOf((char)42) + " ").setFont(PdfFont.createStandardFont(FontConstants.ZAPFDINGBATS));
+                Text listSymbol = new Text(String.valueOf((char)42) + " ").setFont(PdfFontFactory.createStandardFont(FontConstants.ZAPFDINGBATS));
                 List directorlist = new List().setListSymbol(listSymbol);
                 for (Director director : movie.getDirectors()) {
                     directorlist.add(String.format("%s, %s",

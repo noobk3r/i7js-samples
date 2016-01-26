@@ -5,6 +5,7 @@
 package com.itextpdf.samples.sandbox.fonts;
 
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -41,7 +42,7 @@ public class NotoExample extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
-        PdfFont font = PdfFont.createFont(FONT, "Identity-H", true);
+        PdfFont font = PdfFontFactory.createFont(FONT, "Identity-H", true);
         Paragraph p = new Paragraph(TEXT).setFont(font);
         doc.add(p);
         doc.add(new Paragraph(CHINESE).setFont(font));

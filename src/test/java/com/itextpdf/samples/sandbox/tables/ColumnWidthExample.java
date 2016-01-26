@@ -4,6 +4,7 @@ import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.core.color.DeviceGray;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -42,7 +43,7 @@ public class ColumnWidthExample extends GenericTest {
         // TODO
         //table.getDefaultCell().setUseAscender(true);
         //table.getDefaultCell().setUseDescender(true);
-        PdfFont f = PdfFont.createStandardFont(FontConstants.HELVETICA);
+        PdfFont f = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
         Cell cell = new Cell(1, 3).add(new Paragraph("This is a header")).
                 setFont(f).
                 setFontSize(13).

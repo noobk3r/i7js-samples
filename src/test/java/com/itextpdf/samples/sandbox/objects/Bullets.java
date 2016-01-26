@@ -6,6 +6,7 @@ package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -39,9 +40,9 @@ public class Bullets extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
         Document doc = new Document(pdfDoc);
 
-        PdfFont zapfdingbats = PdfFont.createStandardFont(FontConstants.ZAPFDINGBATS);
+        PdfFont zapfdingbats = PdfFontFactory.createStandardFont(FontConstants.ZAPFDINGBATS);
         Text bullet = new Text(String.valueOf((char) 108)).setFont(zapfdingbats);
-        PdfFont font = PdfFont.createStandardFont(FontConstants.HELVETICA);
+        PdfFont font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
         Paragraph p = new Paragraph("Items can be split if they don't fit at the end: ").setFont(font);
         for (String item : ITEMS) {
             p.add(bullet);
@@ -56,7 +57,7 @@ public class Bullets extends GenericTest {
         }
         doc.add(p);
         doc.add(new Paragraph("\n"));
-        PdfFont f = PdfFont.createFont("./src/test/resources/sandbox/objects/FreeSans.ttf", "Identity-H", true);
+        PdfFont f = PdfFontFactory.createFont("./src/test/resources/sandbox/objects/FreeSans.ttf", "Identity-H", true);
         p = new Paragraph("Items can't be split if they don't fit at the end: ").setFont(f).setFontSize(12);
         for (String item : ITEMS) {
             p.add(new Text("\u2022\u00a0" + item.replace(' ', '\u00a0') + " ").setFontSize(12));

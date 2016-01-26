@@ -3,6 +3,7 @@ package com.itextpdf.samples.book.part1.chapter02;
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -37,7 +38,7 @@ public class Listing_02_02_CountryChunks extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        PdfFont font = PdfFont.createStandardFont(FontConstants.HELVETICA_BOLD);
+        PdfFont font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD);
 
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
         // create the statement

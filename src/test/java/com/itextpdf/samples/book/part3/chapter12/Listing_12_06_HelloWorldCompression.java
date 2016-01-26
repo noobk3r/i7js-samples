@@ -2,6 +2,7 @@ package com.itextpdf.samples.book.part3.chapter12;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfOutputStream;
 import com.itextpdf.core.pdf.PdfReader;
@@ -98,10 +99,10 @@ public class Listing_12_06_HelloWorldCompression extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        bold = PdfFont.createStandardFont(FontConstants.HELVETICA_BOLD);
-        boldItalic = PdfFont.createStandardFont(FontConstants.HELVETICA_BOLDOBLIQUE);
-        italic = PdfFont.createStandardFont(FontConstants.HELVETICA_OBLIQUE);
-        normal = PdfFont.createStandardFont(FontConstants.HELVETICA);
+        bold = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD);
+        boldItalic = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLDOBLIQUE);
+        italic = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_OBLIQUE);
+        normal = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
 
         // Create database connection and statement
         DatabaseConnection connection = new HsqldbConnection("filmfestival");

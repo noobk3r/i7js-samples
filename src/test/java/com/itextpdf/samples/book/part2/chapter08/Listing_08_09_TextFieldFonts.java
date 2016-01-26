@@ -3,6 +3,7 @@ package com.itextpdf.samples.book.part2.chapter08;
 import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -87,7 +88,7 @@ public class Listing_08_09_TextFieldFonts extends GenericTest {
                 new Rectangle(36, 806, 559 - 36, 780 - 806), TEXT, "description");
         text.setMultiline(true);
         if (font) {
-            PdfFont unicode = PdfFont.createFont("c:/windows/fonts/arialuni.ttf", PdfEncodings.IDENTITY_H, true);
+            PdfFont unicode = PdfFontFactory.createFont("c:/windows/fonts/arialuni.ttf", PdfEncodings.IDENTITY_H, true);
             // TODO NO setExtensionFont & setSubstitutionFont
             text.setFont(unicode);
             List<PdfFont> list = new ArrayList<>();
@@ -108,7 +109,7 @@ public class Listing_08_09_TextFieldFonts extends GenericTest {
     public void manipulatePdfFont1(String src, String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
-        PdfFont unicode = PdfFont.createFont("HYSMyeongJoStd-Medium", "UniKS-UCS2-H", false);
+        PdfFont unicode = PdfFontFactory.createFont("HYSMyeongJoStd-Medium", "UniKS-UCS2-H", false);
         form.getField("description").setFont(unicode);
         form.getField("description").setValue(BINJIP);
         pdfDoc.close();
@@ -125,7 +126,7 @@ public class Listing_08_09_TextFieldFonts extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         // TODO Get rid of next 2 lines
-        PdfFont unicode = PdfFont.createFont("c:/windows/fonts/arialuni.ttf", PdfEncodings.IDENTITY_H, true);
+        PdfFont unicode = PdfFontFactory.createFont("c:/windows/fonts/arialuni.ttf", PdfEncodings.IDENTITY_H, true);
         form.getField("description").setFont(unicode);
 
         form.getField("description").setValue(BINJIP);
@@ -142,7 +143,7 @@ public class Listing_08_09_TextFieldFonts extends GenericTest {
     public void manipulatePdfFont2(String src, String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
-        PdfFont unicode = PdfFont.createFont("c:/windows/fonts/arialuni.ttf", PdfEncodings.IDENTITY_H, true);
+        PdfFont unicode = PdfFontFactory.createFont("c:/windows/fonts/arialuni.ttf", PdfEncodings.IDENTITY_H, true);
         // TODO No addSubstitutionFont
         // form.addSubstitutionFont(unicode);
         form.getField("description").setFont(unicode);

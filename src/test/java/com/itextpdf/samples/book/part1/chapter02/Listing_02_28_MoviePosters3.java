@@ -4,6 +4,7 @@ import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.image.ImageFactory;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -51,7 +52,7 @@ public class Listing_02_28_MoviePosters3 extends GenericTest {
         // writer.setStrictImageSequence(true);
         // writer.setInitialLeading(18);
 
-        bold = PdfFont.createStandardFont(FontConstants.HELVETICA_BOLD);
+        bold = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD);
 
         List<Movie> movies = PojoFactory.getMovies(connection);
         for (Movie movie : movies) {

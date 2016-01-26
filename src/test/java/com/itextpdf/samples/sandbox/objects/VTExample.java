@@ -5,6 +5,7 @@
 package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -34,7 +35,7 @@ public class VTExample extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
 
-        PdfFont font = PdfFont.createFont(FONT, "IDENTITY-V", false);
+        PdfFont font = PdfFontFactory.createFont(FONT, "IDENTITY-V", false);
         // TODO There is no VerticalText
         // VerticalText vt = new VerticalText(writer.getDirectContent());
         // vt.setVerticalLayout(559, 806, 770, 29, 18);

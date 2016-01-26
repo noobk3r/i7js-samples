@@ -2,8 +2,8 @@ package com.itextpdf.samples.book.part4.chapter13;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.geom.Rectangle;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.canvas.PdfCanvas;
-import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfName;
 import com.itextpdf.core.pdf.PdfReader;
@@ -44,7 +44,7 @@ public class Listing_13_16_AddJavaScriptToForm extends GenericTest {
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
 
         canvas.beginText();
-        canvas.setFontAndSize(PdfFont.createStandardFont(FontConstants.HELVETICA), 12);
+        canvas.setFontAndSize(PdfFontFactory.createStandardFont(FontConstants.HELVETICA), 12);
         canvas.moveText(36, 770);
         canvas.showText("Married?");
         canvas.moveText(22, -20) ;// 58, 750);

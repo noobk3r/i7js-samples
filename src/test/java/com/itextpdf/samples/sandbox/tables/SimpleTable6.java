@@ -2,9 +2,8 @@ package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.FontFactory;
-import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.core.font.PdfFont;
-import com.itextpdf.core.font.PdfType1Font;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -39,7 +38,7 @@ public class SimpleTable6 extends GenericTest {
 
         Table table = new Table(2);
         table.addCell(new Cell().add(new Paragraph("0123456789")));
-        PdfFont font = PdfFont.createFont(FontFactory.createFont(FontConstants.HELVETICA));
+        PdfFont font = PdfFontFactory.createFont(FontFactory.createFont(FontConstants.HELVETICA));
         table.addCell(new Cell().add(new Paragraph("0123456789").setFont(font).setFontSize(12).setLineThrough()));
         Text text1 = new Text("0123456789");
         text1.setUnderline(1.5f, -1);

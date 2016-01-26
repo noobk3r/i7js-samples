@@ -1,6 +1,7 @@
 package com.itextpdf.samples.book.part4.chapter16;
 
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDictionary;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfName;
@@ -47,7 +48,7 @@ public class Listing_16_04_EmbedFontPostFacto extends GenericTest {
     public void createPdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
-        PdfFont font = PdfFont.createFont(FONT, "", false);
+        PdfFont font = PdfFontFactory.createFont(FONT, "", false);
         doc.add(new Paragraph("iText in Action").setFont(font).setFontSize(60));
         doc.close();
     }

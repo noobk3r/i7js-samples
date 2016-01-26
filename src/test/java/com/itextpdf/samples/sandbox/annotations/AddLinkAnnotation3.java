@@ -6,9 +6,8 @@ package com.itextpdf.samples.sandbox.annotations;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.FontFactory;
-import com.itextpdf.basics.font.Type1Font;
 import com.itextpdf.core.font.PdfFont;
-import com.itextpdf.core.font.PdfType1Font;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.action.PdfAction;
@@ -40,7 +39,7 @@ public class AddLinkAnnotation3 extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
-        PdfFont bold = PdfFont.createFont(FontFactory.createFont(FontConstants.HELVETICA_BOLD));
+        PdfFont bold = PdfFontFactory.createFont(FontFactory.createFont(FontConstants.HELVETICA_BOLD));
         Link link = new Link("The Best iText Questions on StackOverflow",
                 PdfAction.createURI("http://pages.itextpdf.com/ebook-stackoverflow-questions.html"));
         link.setFont(bold).setFontSize(12);

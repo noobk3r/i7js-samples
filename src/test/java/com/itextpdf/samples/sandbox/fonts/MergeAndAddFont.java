@@ -1,6 +1,7 @@
 package com.itextpdf.samples.sandbox.fonts;
 
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.*;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
@@ -80,7 +81,7 @@ public class MergeAndAddFont extends GenericTest {
     public void createPdf(String filename, String text, boolean embedded, boolean subset) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(filename)));
         Document doc = new Document(pdfDoc);
-        PdfFont font = PdfFont.createFont(FONT, "WinAnsi", embedded);
+        PdfFont font = PdfFontFactory.createFont(FONT, "WinAnsi", embedded);
         font.setSubset(subset);
         doc.add(new Paragraph(text).setFont(font).setFontSize(12));
         doc.close();
@@ -114,7 +115,7 @@ public class MergeAndAddFont extends GenericTest {
         PdfObject object;
         PdfDictionary font;
         PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(new FileOutputStream(result)));
-        PdfName fontname = new PdfName(PdfFont.createFont(fontfile, "WinAnsi", false)
+        PdfName fontname = new PdfName(PdfFontFactory.createFont(fontfile, "WinAnsi", false)
                 .getFontProgram()
                 .getFontNames()
                 .getFontName());

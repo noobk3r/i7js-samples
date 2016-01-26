@@ -4,6 +4,7 @@ import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfVersion;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -139,7 +140,7 @@ public class Listing_15_10_SvgLayers extends Listing_15_09_SvgToPdf {
         sportsLayer.setOn(false);
         cultureLayer.addChild(sportsLayer);
         // DRAW INFO
-        PdfFont font = PdfFont.createFont("./src/test/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, true);
+        PdfFont font = PdfFontFactory.createFont("./src/test/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, true);
         canvas.saveState();
         canvas.beginText();
         canvas.setFillColorRgb(0x00, 0x00, 0xFF);

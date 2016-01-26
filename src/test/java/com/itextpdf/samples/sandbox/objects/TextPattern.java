@@ -5,6 +5,7 @@
 package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.basics.font.FontConstants;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.canvas.PdfPatternCanvas;
 import com.itextpdf.core.color.PatternColor;
@@ -37,7 +38,7 @@ public class TextPattern extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
-        PdfFont font = PdfFont.createStandardFont(FontConstants.HELVETICA);
+        PdfFont font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
         String filltext = "this is the fill text! ";
         float filltextWidth = font.getWidth(filltext, 6);
 

@@ -5,6 +5,7 @@ import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.color.DeviceGray;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfTextArray;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -36,7 +37,7 @@ public class Listing_14_09_TextStateOperators extends GenericTest {
         //Initialize document and add page
         PdfDocument pdfDoc = new PdfDocument(writer);
 
-        PdfFont font = PdfFont.createStandardFont(FontConstants.HELVETICA);
+        PdfFont font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
 
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         String text = "AWAY again";

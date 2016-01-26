@@ -6,9 +6,9 @@ package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.geom.Rectangle;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.color.Color;
-import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -41,15 +41,15 @@ public class ColoredText extends GenericTest {
         Text redText = new Text("This text is red. ")
                 .setFontColor(Color.RED)
                 .setFontSize(12)
-                .setFont(PdfFont.createStandardFont(FontConstants.HELVETICA));
+                .setFont(PdfFontFactory.createStandardFont(FontConstants.HELVETICA));
         Text blueText = new Text("This text is blue and bold. ")
                 .setFontColor(Color.BLUE)
                 .setFontSize(12)
-                .setFont(PdfFont.createStandardFont(FontConstants.HELVETICA_BOLD));
+                .setFont(PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD));
         Text greenText = new Text("This text is green and italic. ")
                 .setFontColor(Color.GREEN)
                 .setFontSize(12)
-                .setFont(PdfFont.createStandardFont(FontConstants.HELVETICA_OBLIQUE));
+                .setFont(PdfFontFactory.createStandardFont(FontConstants.HELVETICA_OBLIQUE));
 
         Paragraph p1 = new Paragraph(redText).setMargin(0);
         doc.add(p1);

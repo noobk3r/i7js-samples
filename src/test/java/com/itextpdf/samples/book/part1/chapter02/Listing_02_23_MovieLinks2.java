@@ -2,6 +2,7 @@ package com.itextpdf.samples.book.part1.chapter02;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfArray;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfName;
@@ -50,8 +51,8 @@ public class Listing_02_23_MovieLinks2 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        bold = PdfFont.createStandardFont(FontConstants.HELVETICA_BOLD);
-        italic = PdfFont.createStandardFont(FontConstants.HELVETICA_OBLIQUE);
+        bold = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD);
+        italic = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_OBLIQUE);
 
         Paragraph p = new Paragraph();
         Text top = new Text("Country List").setFont(bold);

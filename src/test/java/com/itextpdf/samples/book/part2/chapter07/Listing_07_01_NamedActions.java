@@ -1,6 +1,7 @@
 package com.itextpdf.samples.book.part2.chapter07;
 
 import com.itextpdf.basics.font.FontConstants;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
@@ -40,7 +41,7 @@ public class Listing_07_01_NamedActions extends GenericTest {
                 new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
 
-        PdfFont symbol = PdfFont.createStandardFont(FontConstants.SYMBOL);
+        PdfFont symbol = PdfFontFactory.createStandardFont(FontConstants.SYMBOL);
 
         Table table = new Table(4).
             setFont(symbol).

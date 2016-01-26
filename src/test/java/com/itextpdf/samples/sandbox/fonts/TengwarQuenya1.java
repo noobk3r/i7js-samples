@@ -5,6 +5,7 @@
 package com.itextpdf.samples.sandbox.fonts;
 
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -32,7 +33,7 @@ public class TengwarQuenya1 extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
-        PdfFont font = PdfFont.createFont(FONT, "WINANSI", true);
+        PdfFont font = PdfFontFactory.createFont(FONT, "WINANSI", true);
         Paragraph p = new Paragraph("\"A Hello World PDF document.").setFont(font).setFontSize(12);
         doc.add(p);
         doc.close();

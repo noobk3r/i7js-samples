@@ -3,6 +3,7 @@ package com.itextpdf.samples.book.part1.chapter03;
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -48,10 +49,10 @@ public class Listing_03_16_MovieColumns1 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        normal = PdfFont.createStandardFont(FontConstants.HELVETICA);
-        bold = PdfFont.createStandardFont(FontConstants.HELVETICA_BOLD);
-        italic = PdfFont.createStandardFont(FontConstants.HELVETICA_OBLIQUE);
-        boldItalic = PdfFont.createStandardFont(FontConstants.HELVETICA_BOLDOBLIQUE);
+        normal = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
+        bold = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD);
+        italic = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_OBLIQUE);
+        boldItalic = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLDOBLIQUE);
 
         doc.setProperty(Property.FONT, normal);
 

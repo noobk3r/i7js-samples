@@ -3,9 +3,9 @@ package com.itextpdf.samples.book.part1.chapter03;
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.basics.image.ImageFactory;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.color.DeviceRgb;
-import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.xobject.PdfImageXObject;
@@ -48,7 +48,7 @@ public class Listing_03_01_FestivalOpening extends GenericTest {
         //Initialize paragraph, add it to document, add new page, add paragraph again
         Paragraph p = new Paragraph("Foobar Film Festival").
                         setTextAlignment(Property.TextAlignment.CENTER).
-                setFont(PdfFont.createStandardFont(FontConstants.HELVETICA)).
+                setFont(PdfFontFactory.createStandardFont(FontConstants.HELVETICA)).
                 setFontSize(22);
 
         PdfImageXObject imageXObject = new PdfImageXObject(ImageFactory.getImage(RESOURCE));
@@ -66,7 +66,7 @@ public class Listing_03_01_FestivalOpening extends GenericTest {
         float cosine = (float) Math.cos(Math.PI / 60);
         canvas.saveState().beginText().setTextRenderingMode(2).
                 setLineWidth(1.5f).setFillColor(DeviceRgb.WHITE).setStrokeColor(DeviceRgb.RED).
-                setFontAndSize(PdfFont.createStandardFont(FontConstants.HELVETICA), 36).setTextMatrix(cosine, sine, -sine, cosine, 50, 324).
+                setFontAndSize(PdfFontFactory.createStandardFont(FontConstants.HELVETICA), 36).setTextMatrix(cosine, sine, -sine, cosine, 50, 324).
                 showText("SOLD OUT").endText().restoreState();
 
         //Initialize "under" canvas and write to it

@@ -6,7 +6,7 @@ package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.core.color.Color;
-import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -49,17 +49,17 @@ public class ColoredLetters extends GenericTest {
         if (letter == 'b') {
             return new Text("b")
                     .setFontColor(Color.BLUE)
-                    .setFont(PdfFont.createStandardFont(FontConstants.HELVETICA_BOLD))
+                    .setFont(PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD))
                     .setFontSize(12);
         } else if (letter == 'g') {
             return new Text("g")
                     .setFontColor(Color.GREEN)
-                    .setFont(PdfFont.createStandardFont(FontConstants.HELVETICA))
+                    .setFont(PdfFontFactory.createStandardFont(FontConstants.HELVETICA))
                     .setFontSize(12)
                     .setItalic();
         }
         return new Text(String.valueOf(letter))
                 .setFontColor(Color.RED)
-                .setFont(PdfFont.createStandardFont(FontConstants.HELVETICA));
+                .setFont(PdfFontFactory.createStandardFont(FontConstants.HELVETICA));
     }
 }

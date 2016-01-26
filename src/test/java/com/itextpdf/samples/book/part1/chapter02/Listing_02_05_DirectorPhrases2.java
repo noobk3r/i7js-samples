@@ -2,6 +2,7 @@ package com.itextpdf.samples.book.part1.chapter02;
 
 import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -40,10 +41,10 @@ public class Listing_02_05_DirectorPhrases2 extends GenericTest {
         PdfFont times = null;
         try {
             // create a font that will be embedded
-            timesbd = PdfFont.createFont(
+            timesbd = PdfFontFactory.createFont(
                     /*"c:/windows/fonts/timesbd.ttf"*/"./src/test/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, true);
             // create a font that will be embedded
-            times = PdfFont.createFont(
+            times = PdfFontFactory.createFont(
                     /*"c:/windows/fonts/times.ttf"*/"./src/test/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, true);
         } catch (IOException e) {
             e.printStackTrace();

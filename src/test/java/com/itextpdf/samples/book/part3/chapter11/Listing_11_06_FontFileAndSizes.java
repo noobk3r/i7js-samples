@@ -2,6 +2,7 @@ package com.itextpdf.samples.book.part3.chapter11;
 
 import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.utils.CompareTool;
@@ -47,21 +48,21 @@ public class Listing_11_06_FontFileAndSizes extends GenericTest {
         PdfFont font;
         PdfDocument pdfDoc;
         pdfDoc = new PdfDocument(new PdfWriter(RESULT[0]));
-        font = PdfFont.createFont(FONT, PdfEncodings.WINANSI, false);
+        font = PdfFontFactory.createFont(FONT, PdfEncodings.WINANSI, false);
         writeAndClosePdf(pdfDoc, font, TEXT);
         pdfDoc = new PdfDocument(new PdfWriter(RESULT[1]));
-        font = PdfFont.createFont(FONT, PdfEncodings.WINANSI, true);
+        font = PdfFontFactory.createFont(FONT, PdfEncodings.WINANSI, true);
         writeAndClosePdf(pdfDoc, font, TEXT);
         pdfDoc = new PdfDocument(new PdfWriter(RESULT[2]));
-        font = PdfFont.createFont(FONT, PdfEncodings.WINANSI, true);
+        font = PdfFontFactory.createFont(FONT, PdfEncodings.WINANSI, true);
         writeAndClosePdf(pdfDoc, font, OOOO);
         pdfDoc = new PdfDocument(new PdfWriter(RESULT[3]));
-        font = PdfFont.createFont(FONT, PdfEncodings.WINANSI, true);
+        font = PdfFontFactory.createFont(FONT, PdfEncodings.WINANSI, true);
         // TODO No setCompressionLevel on PdfFont
         // font.setCompressionLevel(9);
         writeAndClosePdf(pdfDoc, font, TEXT);
         pdfDoc = new PdfDocument(new PdfWriter(RESULT[4]));
-        font = PdfFont.createFont(FONT, PdfEncodings.WINANSI, true);
+        font = PdfFontFactory.createFont(FONT, PdfEncodings.WINANSI, true);
         font.setSubset(false);
         writeAndClosePdf(pdfDoc, font, TEXT);
     }

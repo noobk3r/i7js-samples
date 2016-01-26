@@ -5,6 +5,7 @@ import com.itextpdf.basics.font.PdfEncodings;
 import com.itextpdf.basics.image.Image;
 import com.itextpdf.basics.image.ImageFactory;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfName;
 import com.itextpdf.core.pdf.PdfPage;
@@ -36,8 +37,8 @@ public class Listing_15_13_ReadOutLoud extends GenericTest {
 
         PdfPage page = pdfDoc.addNewPage();
         PdfCanvas canvas = new PdfCanvas(page);
-        PdfFont font = PdfFont.createFont(FontConstants.HELVETICA, PdfEncodings.CP1252, false);
-        PdfFont font2 = PdfFont.createFont(/*"c:/windows/fonts/msgothic.ttc,1"*//*"./src/test/resources/font/ipam.ttc,1"*/
+        PdfFont font = PdfFontFactory.createFont(FontConstants.HELVETICA, PdfEncodings.CP1252, false);
+        PdfFont font2 = PdfFontFactory.createFont(/*"c:/windows/fonts/msgothic.ttc,1"*//*"./src/test/resources/font/ipam.ttc,1"*/
                 "./src/test/resources/font/FreeSans.ttf", PdfEncodings.IDENTITY_H, true);
 
         PdfStructTreeRoot root = pdfDoc.getStructTreeRoot();

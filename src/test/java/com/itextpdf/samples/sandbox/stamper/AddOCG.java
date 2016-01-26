@@ -6,7 +6,7 @@ package com.itextpdf.samples.sandbox.stamper;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.FontFactory;
-import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
@@ -55,7 +55,7 @@ public class AddOCG extends GenericTest {
         canvas.beginLayer(nested);
         canvas.beginText();
         canvas.moveText(50, 755);
-        canvas.setFontAndSize(PdfFont.createFont(FontFactory.createFont(FontConstants.HELVETICA)), 12);
+        canvas.setFontAndSize(PdfFontFactory.createFont(FontFactory.createFont(FontConstants.HELVETICA)), 12);
         // TODO Implement showTextAligned(properties) using canvas(in order to use layers) : LEFT here
         canvas.showText("nested layers");
         canvas.endText();
@@ -65,7 +65,7 @@ public class AddOCG extends GenericTest {
         canvas.beginLayer(nested_1);
         canvas.beginText();
         canvas.moveText(100, 800);
-        canvas.setFontAndSize(PdfFont.createFont(FontFactory.createFont(FontConstants.HELVETICA)), 12);
+        canvas.setFontAndSize(PdfFontFactory.createFont(FontFactory.createFont(FontConstants.HELVETICA)), 12);
         // TODO Implement showTextAligned(properties) using canvas(in order to use layers) : LEFT here
         canvas.showText("nested layers 1");
         canvas.endText();
@@ -75,7 +75,7 @@ public class AddOCG extends GenericTest {
         canvas.beginLayer(nested_2);
         canvas.beginText();
         canvas.moveText(100, 750);
-        canvas.setFontAndSize(PdfFont.createFont(FontFactory.createFont(FontConstants.HELVETICA)), 12);
+        canvas.setFontAndSize(PdfFontFactory.createFont(FontFactory.createFont(FontConstants.HELVETICA)), 12);
         // TODO Implement showTextAligned(properties) using canvas(in order to use layers) : LEFT here
         canvas.showText("nested layers 2");
         canvas.endText();
@@ -90,7 +90,7 @@ public class AddOCG extends GenericTest {
         canvas.beginLayer(layer1);
         canvas.beginText();
         canvas.moveText(50, 700);
-        canvas.setFontAndSize(PdfFont.createFont(FontFactory.createFont(FontConstants.HELVETICA)), 12);
+        canvas.setFontAndSize(PdfFontFactory.createFont(FontFactory.createFont(FontConstants.HELVETICA)), 12);
         // TODO Implement showTextAligned(properties) using canvas(in order to use layers) : LEFT here
         canvas.showText("layer 1 in the group");
         canvas.endText();
@@ -100,7 +100,7 @@ public class AddOCG extends GenericTest {
         canvas.beginLayer(layer2);
         canvas.beginText();
         canvas.moveText(50, 675);
-        canvas.setFontAndSize(PdfFont.createFont(FontFactory.createFont(FontConstants.HELVETICA)), 12);
+        canvas.setFontAndSize(PdfFontFactory.createFont(FontFactory.createFont(FontConstants.HELVETICA)), 12);
         // TODO Implement showTextAligned(properties) using canvas(in order to use layers) : LEFT here
         canvas.showText("layer 2 in the group");
         canvas.endText();
@@ -125,7 +125,7 @@ public class AddOCG extends GenericTest {
         canvas.beginLayer(radio1);
         canvas.beginText();
         canvas.moveText(50, 600);
-        canvas.setFontAndSize(PdfFont.createFont(FontFactory.createFont(FontConstants.HELVETICA)), 12);
+        canvas.setFontAndSize(PdfFontFactory.createFont(FontFactory.createFont(FontConstants.HELVETICA)), 12);
         // TODO Implement showTextAligned(properties) using canvas(in order to use layers) : LEFT here
         canvas.showText("option 1");
         canvas.endText();
@@ -133,7 +133,7 @@ public class AddOCG extends GenericTest {
         canvas.beginLayer(radio2);
         canvas.beginText();
         canvas.moveText(50, 575);
-        canvas.setFontAndSize(PdfFont.createFont(FontFactory.createFont(FontConstants.HELVETICA)), 12);
+        canvas.setFontAndSize(PdfFontFactory.createFont(FontFactory.createFont(FontConstants.HELVETICA)), 12);
         // TODO Implement showTextAligned(properties) using canvas(in order to use layers) : LEFT here
         canvas.showText("option 2");
         canvas.endText();
@@ -141,7 +141,7 @@ public class AddOCG extends GenericTest {
         canvas.beginLayer(radio3);
         canvas.beginText();
         canvas.moveText(50, 550);
-        canvas.setFontAndSize(PdfFont.createFont(FontFactory.createFont(FontConstants.HELVETICA)), 12);
+        canvas.setFontAndSize(PdfFontFactory.createFont(FontFactory.createFont(FontConstants.HELVETICA)), 12);
         // TODO Implement showTextAligned(properties) using canvas(in order to use layers) : LEFT here
         canvas.showText("option 3");
         canvas.endText();
@@ -153,7 +153,7 @@ public class AddOCG extends GenericTest {
         canvas.beginLayer(not_printed);
         canvas.beginText();
         canvas.moveText(300, 700);
-        canvas.setFontAndSize(PdfFont.createFont(FontFactory.createFont(FontConstants.HELVETICA)), 12);
+        canvas.setFontAndSize(PdfFontFactory.createFont(FontFactory.createFont(FontConstants.HELVETICA)), 12);
         // TODO Implement showTextAligned(properties) using canvas(in order to use layers) : CENTER here
         // TODO Implement rotation : 90 here
         canvas.showText("PRINT THIS PAGE");
@@ -166,7 +166,7 @@ public class AddOCG extends GenericTest {
         canvas.beginLayer(zoom);
         canvas.beginText();
         canvas.moveText(30, 530);
-        canvas.setFontAndSize(PdfFont.createFont(FontFactory.createFont(FontConstants.HELVETICA)), 12);
+        canvas.setFontAndSize(PdfFontFactory.createFont(FontFactory.createFont(FontConstants.HELVETICA)), 12);
         // TODO Implement showTextAligned(properties) using canvas(in order to use layers) : LEFT here
         // TODO Implement rotation : 90 here
         canvas.showText("Only visible if the zoomfactor is between 75 and 125%");

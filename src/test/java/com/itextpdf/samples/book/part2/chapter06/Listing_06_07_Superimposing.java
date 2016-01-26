@@ -4,7 +4,7 @@ import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.basics.image.ImageFactory;
 import com.itextpdf.core.color.DeviceRgb;
-import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfPage;
 import com.itextpdf.core.pdf.PdfReader;
@@ -92,7 +92,7 @@ public class Listing_06_07_Superimposing extends GenericTest {
 
         // Page 3: the words "Foobar Film Festival"
         Paragraph p = new Paragraph("Foobar Film Festival")
-                .setFont(PdfFont.createStandardFont(FontConstants.HELVETICA))
+                .setFont(PdfFontFactory.createStandardFont(FontConstants.HELVETICA))
                 .setFontSize(22)
                 .setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
         doc.add(p);
@@ -109,7 +109,7 @@ public class Listing_06_07_Superimposing extends GenericTest {
         over.setLineWidth(1.5f);
         over.setStrokeColor(new DeviceRgb(0xFF, 0x00, 0x00));
         over.setFillColor(new DeviceRgb(0xFF, 0xFF, 0xFF));
-        over.setFontAndSize(PdfFont.createStandardFont(FontConstants.HELVETICA), 36);
+        over.setFontAndSize(PdfFontFactory.createStandardFont(FontConstants.HELVETICA), 36);
         over.setTextMatrix(cosinus, sinus, -sinus, cosinus, 50, 324);
         over.showText("SOLD OUT");
         over.setTextMatrix(0, 0);

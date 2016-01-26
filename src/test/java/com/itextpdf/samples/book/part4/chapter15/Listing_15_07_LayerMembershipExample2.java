@@ -1,7 +1,7 @@
 package com.itextpdf.samples.book.part4.chapter15;
 
 import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfName;
 import com.itextpdf.core.pdf.PdfVersion;
@@ -35,7 +35,7 @@ public class Listing_15_07_LayerMembershipExample2 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer, PdfVersion.PDF_1_6);
 
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage())
-                .setFontAndSize(PdfFont.createStandardFont(FontConstants.HELVETICA), 18);
+                .setFontAndSize(PdfFontFactory.createStandardFont(FontConstants.HELVETICA), 18);
 
         PdfLayer dog = new PdfLayer("layer 1", pdfDoc);
         PdfLayer tiger = new PdfLayer("layer 2", pdfDoc);

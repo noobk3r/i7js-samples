@@ -1,6 +1,6 @@
 package com.itextpdf.samples.book.part3.chapter11;
 
-import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.font.PdfType3Font;
 import com.itextpdf.core.color.DeviceGray;
@@ -29,7 +29,7 @@ public class Listing_11_07_Type3Example extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
-        PdfType3Font t3 = PdfFont.createType3Font(pdfDoc, true);
+        PdfType3Font t3 = PdfFontFactory.createType3Font(pdfDoc, true);
 
         PdfCanvas d = t3.addGlyph('D', 600, 0, 0, 600, 700);
         d.setStrokeColor(new DeviceRgb(0xFF, 0x00, 0x00));

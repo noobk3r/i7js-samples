@@ -1,6 +1,7 @@
 package com.itextpdf.samples.book.part3.chapter11;
 
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -47,7 +48,7 @@ public class Listing_11_08_CJKExample extends GenericTest {
         Document doc = new Document(pdfDoc);
         PdfFont font;
         for (int i = 0; i < 3; i++) {
-            font = PdfFont.createFont(MOVIES[i][0], MOVIES[i][1], false);
+            font = PdfFontFactory.createFont(MOVIES[i][0], MOVIES[i][1], false);
             // TODO No getPostscriptionFontName()
             doc.add(new Paragraph(font.getFontProgram().getFontNames().getFontName()).setFont(font));
             for (int j = 2; j < 5; j++)
