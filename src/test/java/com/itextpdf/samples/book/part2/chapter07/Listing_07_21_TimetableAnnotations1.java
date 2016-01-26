@@ -25,53 +25,93 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.TimeZone;
 
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.experimental.categories.Category;
 
 
 @Category(SampleTest.class)
 public class Listing_07_21_TimetableAnnotations1 extends GenericTest {
-    /** The number of locations on our time table. */
+    /**
+     * The number of locations on our time table.
+     */
     public static final int LOCATIONS = 9;
-    /** The number of time slots on our time table. */
+    /**
+     * The number of time slots on our time table.
+     */
     public static final int TIMESLOTS = 32;
-    /** The "offset time" for our calendar sheets. */
+    /**
+     * The "offset time" for our calendar sheets.
+     */
     public static final long TIME930 = 30600000l;
-    /** The offset to the left of our time table. */
+    /**
+     * The offset to the left of our time table.
+     */
     public static final float OFFSET_LEFT = 76;
-    /** The width of our time table. */
+    /**
+     * The width of our time table.
+     */
     public static final float WIDTH = 740;
-    /** The width of a time slot. */
+    /**
+     * The width of a time slot.
+     */
     public static final float WIDTH_TIMESLOT = WIDTH / TIMESLOTS;
-    /** The width of one minute. */
+    /**
+     * The width of one minute.
+     */
     public static final float MINUTE = WIDTH_TIMESLOT / 30f;
-    /** The offset from the bottom of our time table. */
+    /**
+     * The offset from the bottom of our time table.
+     */
     public static final float OFFSET_BOTTOM = 36;
-    /** The height of our time table */
+    /**
+     * The height of our time table
+     */
     public static final float HEIGHT = 504;
-    /** The height of a bar showing the movies at one specific location. */
+    /**
+     * The height of a bar showing the movies at one specific location.
+     */
     public static final float HEIGHT_LOCATION = HEIGHT / LOCATIONS;
 
-    static {
+    /*static {
         TimeZone.setDefault(TimeZone.getTimeZone("Europe/Brussels"));
-    }
+    }*/
 
     public static final String DEST
             = "./target/test/resources/book/part2/chapter07/Listing_07_21_TimetableAnnotations1.pdf";
 
-    /** A pattern for an info string. */
+    /**
+     * A pattern for an info string.
+     */
     public static final String INFO = "Movie produced in %s; run length: %s";
 
-    /** A list containing all the locations. */
+    /**
+     * A list containing all the locations.
+     */
     protected List<String> locations;
 
     protected String[] arguments;
 
     public static final String MOVIE_TEMPLATES = "./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
 
+    static public TimeZone CURRENT_USER_TIME_ZONE;
+
+
+    protected void beforeManipulatePdf() {
+        CURRENT_USER_TIME_ZONE = TimeZone.getDefault();
+        TimeZone.setDefault(TimeZone.getTimeZone("Europe/Brussels"));
+    }
+
+    protected void afterManipulatePdf() {
+        TimeZone.setDefault(CURRENT_USER_TIME_ZONE);
+    }
+
     public static void main(String args[]) throws IOException, SQLException {
         Listing_07_21_TimetableAnnotations1 application = new Listing_07_21_TimetableAnnotations1();
         application.arguments = args;
+        application.beforeManipulatePdf();
         application.manipulatePdf(DEST);
+        application.afterManipulatePdf();
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {
@@ -114,8 +154,9 @@ public class Listing_07_21_TimetableAnnotations1 extends GenericTest {
 
     /**
      * Calculates the position of a rectangle corresponding with a screening.
-     * @param    screening    a screening POJO, contains a movie
-     * @return    a Rectangle
+     *
+     * @param screening a screening POJO, contains a movie
+     * @return a Rectangle
      */
     protected Rectangle getPosition(Screening screening) {
         float llx, lly, urx, ury;
@@ -125,7 +166,7 @@ public class Listing_07_21_TimetableAnnotations1 extends GenericTest {
         lly = OFFSET_BOTTOM + (LOCATIONS - location) * HEIGHT_LOCATION;
         urx = llx + MINUTE * screening.getMovie().getDuration();
         ury = lly + HEIGHT_LOCATION;
-        Rectangle rect = new Rectangle(llx, lly, urx-llx, ury-lly);
+        Rectangle rect = new Rectangle(llx, lly, urx - llx, ury - lly);
         return rect;
     }
 }

@@ -37,8 +37,15 @@ public class GenericTest {
      * When writing tests, you need to override this method to set
      * the klass variable (using the setKlass() method)
      */
-    @Before
+    /*@Before
     public void setup() {
+
+    }*/
+
+    protected void beforeManipulatePdf() {
+    }
+
+    protected void afterManipulatePdf() {
     }
 
     protected void setCompareRenders(boolean compareRenders) {
@@ -60,7 +67,9 @@ public class GenericTest {
         if (dest == null || dest.length() == 0)
             throw new OperationsException("DEST cannot be empty!");
         // Compare the destination PDF with a reference PDF
+        beforeManipulatePdf();
         manipulatePdf(dest);
+        afterManipulatePdf();
         System.out.println(dest + "\n" + getCmpPdf());
         comparePdf(dest, getCmpPdf());
         LOGGER.info("Test complete.");

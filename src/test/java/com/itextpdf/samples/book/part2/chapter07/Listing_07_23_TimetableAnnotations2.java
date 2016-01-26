@@ -35,7 +35,9 @@ public class Listing_07_23_TimetableAnnotations2 extends Listing_07_21_Timetable
 
     public static void main(String args[]) throws IOException, SQLException {
         Listing_07_23_TimetableAnnotations2 application = new Listing_07_23_TimetableAnnotations2();
+        application.afterManipulatePdf();
         application.manipulatePdf(DEST);
+        application.beforeManipulatePdf();
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {
