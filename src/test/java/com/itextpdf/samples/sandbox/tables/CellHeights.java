@@ -46,19 +46,19 @@ public class CellHeights extends GenericTest {
         Paragraph p = new Paragraph("Dr. iText or: How I Learned to Stop Worrying and Love PDF.");
         Cell cell = new Cell().add(p);
         // the prhase is wrapped
-        table.addCell(new Cell().add(new Paragraph("wrap")));
+        table.addCell("wrap");
         // TODO Implement noWrap == true
         //cell.setNoWrap(false);
         table.addCell(cell.clone(true));
         // the phrase isn't wrapped
-        table.addCell(new Cell().add(new Paragraph("no wrap")));
+        table.addCell("no wrap");
         // TODO Implement noWrap == true
         // cell.setNoWrap(true);
         table.addCell(cell.clone(true));
         // a long phrase with newlines
         p = new Paragraph("Dr. iText or:\nHow I Learned to Stop Worrying\nand Love PDF.");
         cell = new Cell().add(p);
-        table.addCell(new Cell().add(new Paragraph("No problems with heights")));
+        table.addCell("No problems with heights");
         // There is no problem in itext6 with Minimum anf Fixed heights.
         // If text's heights is bigger than cell's, cells's heights will grow instantly
         cell.setHeight(36f);
@@ -66,7 +66,7 @@ public class CellHeights extends GenericTest {
         // The last row is extended
         // TODO Implement setExtendLastRow(boolean)
         //table.setExtendLastRow(true);
-        table.addCell(new Cell().add(new Paragraph("extend last row")));
+        table.addCell("extend last row");
         table.addCell(cell.clone(true));
         doc.add(table);
 

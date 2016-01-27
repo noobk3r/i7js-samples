@@ -10,13 +10,11 @@ package com.itextpdf.samples.sandbox.tables;
 import com.itextpdf.basics.image.ImageFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
-import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Image;
-import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -44,8 +42,8 @@ public class IconDescriptionTable extends GenericTest {
         Table table = new Table(new float[]{1, 9});
         table.setWidthPercent(100);
         Image img = new Image(ImageFactory.getImage(IMG));
-        table.addCell(new Cell().add(img.setAutoScale(true)));
-        table.addCell(new Cell().add(new Paragraph("A light bulb icon")));
+        table.addCell(img.setAutoScale(true));
+        table.addCell("A light bulb icon");
         doc.add(table);
 
         doc.close();

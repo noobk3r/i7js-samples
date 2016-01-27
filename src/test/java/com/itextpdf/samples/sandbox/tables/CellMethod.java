@@ -38,11 +38,11 @@ public class CellMethod extends GenericTest {
         new CellMethod().manipulatePdf(DEST);
     }
 
-    public static Cell getNormalCell(String string, String language, float size, PdfDocument pdfDoc) throws IOException {
+    public static Cell getNormalCell(String string, String language, float size) throws IOException {
         if (string != null && "".equals(string)) {
             return new Cell();
         }
-        PdfFont f = getFontForThisLanguage(language, pdfDoc);
+        PdfFont f = getFontForThisLanguage(language);
         Cell cell = new Cell().add(new Paragraph(string).setFont(f));
         cell.setHorizontalAlignment(Property.HorizontalAlignment.LEFT);
         if (size < 0) {
@@ -53,7 +53,7 @@ public class CellMethod extends GenericTest {
         return cell;
     }
 
-    public static PdfFont getFontForThisLanguage(String language, PdfDocument pdfDoc) throws IOException {
+    public static PdfFont getFontForThisLanguage(String language) throws IOException {
         if ("czech".equals(language)) {
             return PdfFontFactory.createFont(FONT, "Cp1250", true);
         }
@@ -72,20 +72,20 @@ public class CellMethod extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         Table table = new Table(2);
-        table.addCell(new Cell().add(new Paragraph("Winansi")));
-        table.addCell(getNormalCell("Test", null, 12, pdfDoc));
-        table.addCell(new Cell().add(new Paragraph("Winansi")));
-        table.addCell(getNormalCell("Test", null, -12, pdfDoc));
-        table.addCell(new Cell().add(new Paragraph("Greek")));
-        table.addCell(getNormalCell("\u039d\u03cd\u03c6\u03b5\u03c2", "greek", 12, pdfDoc));
-        table.addCell(new Cell().add(new Paragraph("Czech")));
-        table.addCell(getNormalCell("\u010c,\u0106,\u0160,\u017d,\u0110", "czech", 12, pdfDoc));
-        table.addCell(new Cell().add(new Paragraph("Test")));
-        table.addCell(getNormalCell(" ", null, 12, pdfDoc));
-        table.addCell(new Cell().add(new Paragraph("Test")));
-        table.addCell(getNormalCell(" ", "greek", 12, pdfDoc));
-        table.addCell(new Cell().add(new Paragraph("Test")));
-        table.addCell(getNormalCell(" ", "czech", 12, pdfDoc));
+        table.addCell("Winansi");
+        table.addCell(getNormalCell("Test", null, 12));
+        table.addCell("Winansi");
+        table.addCell(getNormalCell("Test", null, -12));
+        table.addCell("Greek");
+        table.addCell(getNormalCell("\u039d\u03cd\u03c6\u03b5\u03c2", "greek", 12));
+        table.addCell("Czech");
+        table.addCell(getNormalCell("\u010c,\u0106,\u0160,\u017d,\u0110", "czech", 12));
+        table.addCell("Test");
+        table.addCell(getNormalCell(" ", null, 12));
+        table.addCell("Test");
+        table.addCell(getNormalCell(" ", "greek", 12));
+        table.addCell("Test");
+        table.addCell(getNormalCell(" ", "czech", 12));
         doc.add(table);
 
         doc.close();

@@ -10,7 +10,6 @@ package com.itextpdf.samples.sandbox.tables;
 import com.itextpdf.basics.image.ImageFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.border.Border;
@@ -19,6 +18,7 @@ import com.itextpdf.model.element.Image;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -37,6 +37,22 @@ public class ImageNextToText extends GenericTest {
         new ImageNextToText().manipulatePdf(DEST);
     }
 
+    public static Cell createImageCell(String path) throws MalformedURLException {
+        Image img = new Image(ImageFactory.getImage(path));
+        Cell cell = new Cell().add(img.setAutoScale(true));
+        cell.setBorder(null);
+        return cell;
+    }
+
+    public static Cell createTextCell(String text) {
+        Cell cell = new Cell();
+        Paragraph p = new Paragraph(text);
+        p.setTextAlignment(Property.TextAlignment.RIGHT);
+        cell.add(p).setVerticalAlignment(Property.VerticalAlignment.BOTTOM);
+        cell.setBorder(Border.NO_BORDER);
+        return cell;
+    }
+
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         FileOutputStream fos = new FileOutputStream(dest);
@@ -50,23 +66,5 @@ public class ImageNextToText extends GenericTest {
         doc.add(table);
 
         doc.close();
-    }
-
-    public static Cell createImageCell(String path) throws MalformedURLException {
-        Image img = new Image(ImageFactory.getImage(path));
-        Cell cell = new Cell().add(img.setAutoScale(true));
-        cell.setBorder(null);
-        return cell;
-    }
-
-    public static Cell createTextCell(String text) {
-        Cell cell = new Cell();
-        Paragraph p = new Paragraph(text);
-        p.setTextAlignment(Property.TextAlignment.RIGHT);
-        // TODO bottom alignment does not work
-        p.setVerticalAlignment(Property.VerticalAlignment.BOTTOM);
-        cell.add(p);
-        cell.setBorder(Border.NO_BORDER);
-        return cell;
     }
 }

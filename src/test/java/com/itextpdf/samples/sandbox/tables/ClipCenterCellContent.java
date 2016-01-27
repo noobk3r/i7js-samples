@@ -42,36 +42,6 @@ public class ClipCenterCellContent extends GenericTest {
         new ClipCenterCellContent().manipulatePdf(DEST);
     }
 
-    private class ClipCenterCellContentCellRenderer extends CellRenderer {
-        private Paragraph content;
-
-        public ClipCenterCellContentCellRenderer(Cell modelElement, Paragraph content) {
-            super(modelElement);
-            this.content = content;
-        }
-
-        @Override
-        public void draw(DrawContext drawContext) {
-            IRenderer pr = content.createRendererSubTree().setParent(this);
-            LayoutResult textArea = pr.layout(new LayoutContext(
-                    new LayoutArea(0, new Rectangle(getOccupiedAreaBBox().getWidth(), 1000))));
-
-            float spaceneeded = textArea.getOccupiedArea().getBBox().getHeight();
-            System.out.println(String.format("The content requires %s pt whereas the height is %s pt.",
-                    spaceneeded, getOccupiedAreaBBox().getHeight()));
-            float offset = (getOccupiedAreaBBox().getHeight() - textArea.getOccupiedArea().getBBox().getHeight()) / 2;
-            System.out.println(String.format("The difference is %s pt; we'll need an offset of %s pt.",
-                    -2f * offset, offset));
-
-            PdfFormXObject xObject = new PdfFormXObject(new Rectangle(getOccupiedArea().getBBox().getWidth(), getOccupiedArea().getBBox().getHeight()));
-            Canvas layoutCanvas = new Canvas(new PdfCanvas(xObject, drawContext.getDocument()), drawContext.getDocument(),
-                    new Rectangle(0, offset, getOccupiedArea().getBBox().getWidth(), spaceneeded));
-            layoutCanvas.add(content);
-
-            drawContext.getCanvas().addXObject(xObject, occupiedArea.getBBox().getLeft(), occupiedArea.getBBox().getBottom());
-        }
-    }
-
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         FileOutputStream fos = new FileOutputStream(dest);
@@ -96,5 +66,37 @@ public class ClipCenterCellContent extends GenericTest {
         doc.add(table);
 
         doc.close();
+    }
+
+
+    private class ClipCenterCellContentCellRenderer extends CellRenderer {
+        private Paragraph content;
+
+        public ClipCenterCellContentCellRenderer(Cell modelElement, Paragraph content) {
+            super(modelElement);
+            this.content = content;
+        }
+
+        @Override
+        public void draw(DrawContext drawContext) {
+            IRenderer pr = content.createRendererSubTree().setParent(this);
+            LayoutResult textArea = pr.layout(new LayoutContext(
+                    new LayoutArea(0, new Rectangle(getOccupiedAreaBBox().getWidth(), 1000))));
+
+            float spaceneeded = textArea.getOccupiedArea().getBBox().getHeight();
+            System.out.println(String.format("The content requires %s pt whereas the height is %s pt.",
+                    spaceneeded, getOccupiedAreaBBox().getHeight()));
+            float offset = (getOccupiedAreaBBox().getHeight() - textArea.getOccupiedArea().getBBox().getHeight()) / 2;
+            System.out.println(String.format("The difference is %s pt; we'll need an offset of %s pt.",
+                    -2f * offset, offset));
+
+            PdfFormXObject xObject = new PdfFormXObject(new Rectangle(getOccupiedAreaBBox().getWidth(),
+                    getOccupiedAreaBBox().getHeight()));
+            Canvas layoutCanvas = new Canvas(new PdfCanvas(xObject, drawContext.getDocument()), drawContext.getDocument(),
+                    new Rectangle(0, offset, getOccupiedAreaBBox().getWidth(), spaceneeded));
+            layoutCanvas.add(content);
+
+            drawContext.getCanvas().addXObject(xObject, occupiedArea.getBBox().getLeft(), occupiedArea.getBBox().getBottom());
+        }
     }
 }

@@ -32,6 +32,23 @@ public class RepeatLastRows2 extends GenericTest {
         new RepeatLastRows2().manipulatePdf(DEST);
     }
 
+    @Override
+    protected void manipulatePdf(String dest) throws Exception {
+        FileOutputStream fos = new FileOutputStream(dest);
+        PdfWriter writer = new PdfWriter(fos);
+        PdfDocument pdfDoc = new PdfDocument(writer);
+        Document doc = new Document(pdfDoc);
+
+        Table table = new Table(1);
+        table.setWidth(523);
+        table.setNextRenderer(new RepeatTableRenderer(table, new Table.RowRange(0, 100)));
+        for (int i = 1; i < 100; i++)
+            table.addCell(new Cell().add(new Paragraph("row " + i)));
+        doc.add(table);
+
+        doc.close();
+    }
+
 
     private class RepeatTableRenderer extends TableRenderer {
         public RepeatTableRenderer(Table modelElement, Table.RowRange rowRange) {
@@ -65,23 +82,5 @@ public class RepeatLastRows2 extends GenericTest {
             splitRenderer.occupiedArea = occupiedArea;
             return new TableRenderer[]{splitRenderer, overflowRenderer};
         }
-    }
-
-
-    @Override
-    protected void manipulatePdf(String dest) throws Exception {
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc);
-
-        Table table = new Table(1);
-        table.setWidth(523);
-        table.setNextRenderer(new RepeatTableRenderer(table, new Table.RowRange(0, 100)));
-        for (int i = 1; i < 100; i++)
-            table.addCell(new Cell().add(new Paragraph("row " + i)));
-        doc.add(table);
-
-        doc.close();
     }
 }

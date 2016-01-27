@@ -9,12 +9,10 @@ package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
-import com.itextpdf.model.element.Cell;
-import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -40,7 +38,7 @@ public class SimpleTable extends GenericTest {
 
         Table table = new Table(8);
         for (int i = 0; i < 16; i++) {
-            table.addCell(new Cell().add(new Paragraph("hi")));
+            table.addCell("hi");
         }
         doc.add(table);
 

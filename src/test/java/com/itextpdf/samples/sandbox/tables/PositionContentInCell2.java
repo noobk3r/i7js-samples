@@ -38,43 +38,9 @@ public class PositionContentInCell2 extends GenericTest {
         new PositionContentInCell2().manipulatePdf(DEST);
     }
 
-
-    private class ImageAndPositionRenderer extends CellRenderer {
-
-        private Image img;
-        private String content;
-        private Property.TextAlignment alignment;
-        private float wPct;
-        private float hPct;
-
-        public ImageAndPositionRenderer(Cell modelElement, float wPct, float hPct,
-                                        Image img, String content, Property.TextAlignment alignment) {
-            super(modelElement);
-            this.img = img;
-            this.content = content;
-            this.alignment = alignment;
-            this.wPct = wPct;
-            this.hPct = hPct;
-        }
-
-        @Override
-        public void draw(DrawContext drawContext) {
-            super.draw(drawContext);
-
-            drawContext.getCanvas().addXObject(img.getXObject(), getOccupiedAreaBBox());
-            drawContext.getCanvas().stroke();
-
-            float x = getOccupiedAreaBBox().getX() + wPct * getOccupiedAreaBBox().getWidth();
-            // TODO content has not leading yet, we can't use : y = ... - canvas.getGraphicsState().getLeading();
-            float y = getOccupiedAreaBBox().getY() + hPct * (getOccupiedAreaBBox().getHeight() - 16);
-            new Document(drawContext.getDocument()).showTextAligned(content, x, y, alignment);
-
-        }
-    }
-
-
     @Override
     protected void manipulatePdf(String dest) throws Exception {
+        // 1. Create a Document which contains a table:
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
@@ -127,5 +93,38 @@ public class PositionContentInCell2 extends GenericTest {
         doc.add(table);
 
         doc.close();
+    }
+
+
+    private class ImageAndPositionRenderer extends CellRenderer {
+        private Image img;
+        private String content;
+        private Property.TextAlignment alignment;
+        private float wPct;
+        private float hPct;
+
+        public ImageAndPositionRenderer(Cell modelElement, float wPct, float hPct,
+                                        Image img, String content, Property.TextAlignment alignment) {
+            super(modelElement);
+            this.img = img;
+            this.content = content;
+            this.alignment = alignment;
+            this.wPct = wPct;
+            this.hPct = hPct;
+        }
+
+        @Override
+        public void draw(DrawContext drawContext) {
+            super.draw(drawContext);
+
+            drawContext.getCanvas().addXObject(img.getXObject(), getOccupiedAreaBBox());
+            drawContext.getCanvas().stroke();
+
+            float x = getOccupiedAreaBBox().getX() + wPct * getOccupiedAreaBBox().getWidth();
+            // TODO content has not leading yet, we can't use : y = ... - canvas.getGraphicsState().getLeading();
+            float y = getOccupiedAreaBBox().getY() + hPct * (getOccupiedAreaBBox().getHeight() - 16);
+            new Document(drawContext.getDocument()).showTextAligned(content, x, y, alignment);
+
+        }
     }
 }

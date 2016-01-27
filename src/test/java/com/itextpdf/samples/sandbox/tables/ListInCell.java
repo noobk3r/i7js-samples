@@ -61,7 +61,7 @@ public class ListInCell extends GenericTest {
         // We add the cell to a table:
         Table phraseTable = new Table(2);
         phraseTable.setMarginTop(5);
-        phraseTable.addCell(new Cell().add(new Paragraph("List wrapped in a phrase:")));
+        phraseTable.addCell("List wrapped in a phrase:");
         //phraseTable.addCell(phraseCell);
 
         // TODO Can't add table to paragraph
@@ -83,7 +83,7 @@ public class ListInCell extends GenericTest {
         // We add the cell to the table:
         Table table = new Table(2);
         table.setMarginTop(5);
-        table.addCell(new Cell().add(new Paragraph("List placed directly into cell")));
+        table.addCell("List placed directly into cell");
         table.addCell(cell);
 
         // We add the table to the document:

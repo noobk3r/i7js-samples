@@ -32,6 +32,24 @@ public class RepeatLastRows extends GenericTest {
         new RepeatLastRows().manipulatePdf(DEST);
     }
 
+    @Override
+    protected void manipulatePdf(String dest) throws Exception {
+        FileOutputStream fos = new FileOutputStream(dest);
+        PdfWriter writer = new PdfWriter(fos);
+        PdfDocument pdfDoc = new PdfDocument(writer);
+        Document doc = new Document(pdfDoc);
+
+        Table table = new Table(1);
+        table.setWidth(523);
+        table.setNextRenderer(new RepeatTableRenderer(table, new Table.RowRange(0, 113)));
+        // the number is changed in order to provide the same as in itext5 example
+        for (int i = 1; i < 115; i++)
+            table.addCell(new Cell().add(new Paragraph("row " + i)));
+        doc.add(table);
+
+        doc.close();
+    }
+
 
     private class RepeatTableRenderer extends TableRenderer {
         public RepeatTableRenderer(Table modelElement, Table.RowRange rowRange) {
@@ -66,24 +84,4 @@ public class RepeatLastRows extends GenericTest {
             return new TableRenderer[]{splitRenderer, overflowRenderer};
         }
     }
-
-
-    @Override
-    protected void manipulatePdf(String dest) throws Exception {
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc);
-
-        Table table = new Table(1);
-        table.setWidth(523);
-        table.setNextRenderer(new RepeatTableRenderer(table, new Table.RowRange(0, 113)));
-        // the number is changed in order to provide the same as in itext5 example
-        for (int i = 1; i < 115; i++)
-            table.addCell(new Cell().add(new Paragraph("row " + i)));
-        doc.add(table);
-
-        doc.close();
-    }
-
 }

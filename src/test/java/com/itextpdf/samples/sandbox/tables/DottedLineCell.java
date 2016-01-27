@@ -11,6 +11,7 @@ import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.model.border.Border;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Cell;
@@ -35,6 +36,37 @@ public class DottedLineCell extends GenericTest {
         file.getParentFile().mkdirs();
         new DottedLineCell().manipulatePdf(DEST);
     }
+
+    @Override
+    protected void manipulatePdf(String dest) throws Exception {
+        FileOutputStream fos = new FileOutputStream(dest);
+        PdfWriter writer = new PdfWriter(fos);
+        PdfDocument pdfDoc = new PdfDocument(writer);
+        Document doc = new Document(pdfDoc);
+        doc.add(new Paragraph("Table event"));
+        Table table = new Table(3);
+        table.setNextRenderer(new DottedLineTableRenderer(table, new Table.RowRange(0, 2)));
+        table.addCell(new Cell().add("A1").setBorder(Border.NO_BORDER));
+        table.addCell(new Cell().add("A2").setBorder(Border.NO_BORDER));
+        table.addCell(new Cell().add("A3").setBorder(Border.NO_BORDER));
+        table.addCell(new Cell().add("B1").setBorder(Border.NO_BORDER));
+        table.addCell(new Cell().add("B2").setBorder(Border.NO_BORDER));
+        table.addCell(new Cell().add("B3").setBorder(Border.NO_BORDER));
+        table.addCell(new Cell().add("C1").setBorder(Border.NO_BORDER));
+        table.addCell(new Cell().add("C2").setBorder(Border.NO_BORDER));
+        table.addCell(new Cell().add("C3").setBorder(Border.NO_BORDER));
+        doc.add(table);
+        doc.add(new Paragraph("Cell event"));
+        table = new Table(1);
+        Cell cell = new Cell().add(new Paragraph("Test"));
+        cell.setNextRenderer(new DottedLineCellRenderer(cell));
+        cell.setBorder(Border.NO_BORDER);
+        table.addCell(cell.setBorder(Border.NO_BORDER));
+        doc.add(table);
+
+        doc.close();
+    }
+
 
     private class DottedLineTableRenderer extends TableRenderer {
         public DottedLineTableRenderer(Table modelElement, Table.RowRange rowRange) {
@@ -75,6 +107,7 @@ public class DottedLineCell extends GenericTest {
         }
     }
 
+
     private class DottedLineCellRenderer extends CellRenderer {
         public DottedLineCellRenderer(Cell modelElement) {
             super(modelElement);
@@ -87,38 +120,5 @@ public class DottedLineCell extends GenericTest {
             drawContext.getCanvas().rectangle(this.getOccupiedArea().getBBox());
             drawContext.getCanvas().stroke();
         }
-    }
-
-
-    @Override
-    protected void manipulatePdf(String dest) throws Exception {
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc);
-        doc.add(new Paragraph("Table event"));
-        Table table = new Table(3);
-        table.setNextRenderer(new DottedLineTableRenderer(table, new Table.RowRange(0, 2)));
-        // TODO Implement setting-for-all-cells-specific-border method
-        // table.getDefaultCell().setBorder(Cell.NO_BORDER);
-        table.addCell(new Cell().add(new Paragraph("A1")).setBorder(null));
-        table.addCell(new Cell().add(new Paragraph("A2")).setBorder(null));
-        table.addCell(new Cell().add(new Paragraph("A3")).setBorder(null));
-        table.addCell(new Cell().add(new Paragraph("B1")).setBorder(null));
-        table.addCell(new Cell().add(new Paragraph("B2")).setBorder(null));
-        table.addCell(new Cell().add(new Paragraph("B3")).setBorder(null));
-        table.addCell(new Cell().add(new Paragraph("C1")).setBorder(null));
-        table.addCell(new Cell().add(new Paragraph("C2")).setBorder(null));
-        table.addCell(new Cell().add(new Paragraph("C3")).setBorder(null));
-        doc.add(table);
-        doc.add(new Paragraph("Cell event"));
-        table = new Table(1);
-        Cell cell = new Cell().add(new Paragraph("Test"));
-        cell.setNextRenderer(new DottedLineCellRenderer(cell));
-        cell.setBorder(null);
-        table.addCell(new Cell().add(cell).setBorder(null));
-        doc.add(table);
-
-        doc.close();
     }
 }

@@ -10,7 +10,6 @@ package com.itextpdf.samples.sandbox.tables;
 import com.itextpdf.basics.image.ImageFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Cell;
@@ -18,6 +17,7 @@ import com.itextpdf.model.element.Image;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -54,8 +54,6 @@ public class RowspanAbsolutePosition extends GenericTest {
         table1.addCell(cell);
         table1.addCell(cell2);
         table1.addCell(cell3);
-        // TODO Implement writeSelectedRows
-        // table1.writeSelectedRows(0, -1, 20 , 820, writer.getDirectContent());
         doc.add(table1);
 
         doc.close();

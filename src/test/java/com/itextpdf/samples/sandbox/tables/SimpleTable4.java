@@ -9,12 +9,12 @@ package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -38,8 +38,7 @@ public class SimpleTable4 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        // What 'was wrong' as text below previously mentioned you can see in SimpleTable4.java of itext5.
-        // Here in itext6 there is only one way of adding paragraph to table.
+        // Here in itext6 there is only one way of adding paragraph to table. See itext5 example.
         Table table = new Table(1);
         Paragraph right = new Paragraph("This is right, because we create a paragraph with an indentation to the left and as we are adding the paragraph in composite mode, all the properties of the paragraph are preserved.");
         right.setMarginLeft(20);

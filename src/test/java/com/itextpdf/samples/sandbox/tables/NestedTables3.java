@@ -37,6 +37,46 @@ public class NestedTables3 extends GenericTest {
         new NestedTables3().manipulatePdf(DEST);
     }
 
+    @Override
+    protected void manipulatePdf(String dest) throws Exception {
+        FileOutputStream fos = new FileOutputStream(dest);
+        PdfWriter writer = new PdfWriter(fos);
+        PdfDocument pdfDoc = new PdfDocument(writer);
+        Document doc = new Document(pdfDoc, PageSize.A4.rotate());
+
+        Table table = new Table(2);
+        table.setNextRenderer(new InnerTableRenderer(table, new Table.RowRange(0, 0)));
+        Cell cell = new Cell(1,2).add("This outer header is repeated on every page");
+        table.addHeaderCell(cell);
+        Table inner1 = new Table(1);
+        cell = new Cell();
+        // TODO Implement setFixedHeight(float)
+        //cell.setFixedHeight(20);
+        cell.setHeight(20);
+        inner1.addHeaderCell(cell);
+        cell = new Cell().add("This inner header won't be repeated on every page");
+        inner1.addHeaderCell(cell);
+        for (int i = 0; i < 10; i++) {
+            inner1.addCell(new Cell().add(new Paragraph("test")));
+        }
+        cell = new Cell().add(inner1);
+        table.addCell(cell);
+        Table inner2 = new Table(1);
+        cell = new Cell();
+        cell.setHeight(20);
+        inner2.addHeaderCell(cell);
+        cell = new Cell().add("This inner may be repeated on every page");
+        inner2.addHeaderCell(cell);
+        for (int i = 0; i < 35; i++) {
+            inner2.addCell("test");
+        }
+        cell = new Cell().add(inner2);
+        table.addCell(cell);
+        doc.add(table);
+
+        doc.close();
+    }
+
 
     private class InnerTableRenderer extends TableRenderer {
         public InnerTableRenderer(Table modelElement, Table.RowRange rowRange) {
@@ -85,46 +125,5 @@ public class NestedTables3 extends GenericTest {
         public InnerTableRenderer getNextRenderer() {
             return new InnerTableRenderer((Table) modelElement);
         }
-    }
-
-
-    @Override
-    protected void manipulatePdf(String dest) throws Exception {
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc, PageSize.A4.rotate());
-
-        Table table = new Table(2);
-        table.setNextRenderer(new InnerTableRenderer(table, new Table.RowRange(0, 0)));
-        Cell cell = new Cell(1,2).add(new Paragraph("This outer header is repeated on every page"));
-        table.addHeaderCell(cell);
-        Table inner1 = new Table(1);
-        cell = new Cell();
-        // TODO Implement setFixedHeight(float)
-        //cell.setFixedHeight(20);
-        cell.setHeight(20);
-        inner1.addHeaderCell(cell);
-        cell = new Cell().add(new Paragraph("This inner header won't be repeated on every page"));
-        inner1.addHeaderCell(cell);
-        for (int i = 0; i < 10; i++) {
-            inner1.addCell(new Cell().add(new Paragraph("test")));
-        }
-        cell = new Cell().add(inner1);
-        table.addCell(cell);
-        Table inner2 = new Table(1);
-        cell = new Cell();
-        cell.setHeight(20);
-        inner2.addHeaderCell(cell);
-        cell = new Cell().add(new Paragraph("This inner may be repeated on every page"));
-        inner2.addHeaderCell(cell);
-        for (int i = 0; i < 35; i++) {
-            inner2.addCell(new Cell().add(new Paragraph("test")));
-        }
-        cell = new Cell().add(inner2);
-        table.addCell(cell);
-        doc.add(table);
-
-        doc.close();
     }
 }

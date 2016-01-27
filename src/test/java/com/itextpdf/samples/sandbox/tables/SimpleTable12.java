@@ -39,6 +39,26 @@ public class SimpleTable12 extends GenericTest {
         new SimpleTable12().manipulatePdf(DEST);
     }
 
+    public Cell createCell(String content, int colspan, int rowspan, int border) {
+        Cell cell = new Cell(rowspan, colspan).add(new Paragraph(content).setFont(font).setFontSize(10));
+        cell.setBorder(null);
+        if (8 == (border & 8)) {
+            cell.setBorderRight(new SolidBorder(1));
+            cell.setBorderBottom(new SolidBorder(1));
+        }
+        if (4 == (border & 4)) {
+            cell.setBorderLeft(new SolidBorder(1));
+        }
+        if (2 == (border & 2)) {
+            cell.setBorderBottom(new SolidBorder(1));
+        }
+        if (1 == (border & 1)) {
+            cell.setBorderTop(new SolidBorder(1));
+        }
+        cell.setTextAlignment(Property.TextAlignment.CENTER);
+        return cell;
+    }
+
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         FileOutputStream fos = new FileOutputStream(dest);
@@ -69,25 +89,5 @@ public class SimpleTable12 extends GenericTest {
         doc.add(table);
 
         doc.close();
-    }
-
-    public Cell createCell(String content, int colspan, int rowspan, int border) {
-        Cell cell = new Cell(rowspan, colspan).add(new Paragraph(content).setFont(font).setFontSize(10));
-        cell.setBorder(null);
-        if (8 == (border & 8)) {
-            cell.setBorderRight(new SolidBorder(1));
-            cell.setBorderBottom(new SolidBorder(1));
-        }
-        if (4 == (border & 4)) {
-            cell.setBorderLeft(new SolidBorder(1));
-        }
-        if (2 == (border & 2)) {
-            cell.setBorderBottom(new SolidBorder(1));
-        }
-        if (1 == (border & 1)) {
-            cell.setBorderTop(new SolidBorder(1));
-        }
-        cell.setTextAlignment(Property.TextAlignment.CENTER);
-        return cell;
     }
 }

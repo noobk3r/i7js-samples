@@ -11,7 +11,6 @@ import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Paragraph;
@@ -20,6 +19,7 @@ import com.itextpdf.model.layout.LayoutArea;
 import com.itextpdf.model.layout.LayoutContext;
 import com.itextpdf.model.layout.LayoutResult;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -51,6 +51,7 @@ public class FitTableOnPage extends GenericTest {
             }
             table.addCell(cell);
         }
+        // TODO
         LayoutResult tableLayoutResult = table.createRendererSubTree().layout(new LayoutContext(new LayoutArea(1, new Rectangle(600, 10000))));
 
         PdfWriter writer = new PdfWriter(new FileOutputStream(dest));

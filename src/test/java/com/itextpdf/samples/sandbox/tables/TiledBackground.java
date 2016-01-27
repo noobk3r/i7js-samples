@@ -41,6 +41,30 @@ public class TiledBackground extends GenericTest {
         new TiledBackground().manipulatePdf(DEST);
     }
 
+    @Override
+    protected void manipulatePdf(String dest) throws Exception {
+        FileOutputStream fos = new FileOutputStream(dest);
+        PdfWriter writer = new PdfWriter(fos);
+        PdfDocument pdfDoc = new PdfDocument(writer);
+        Document doc = new Document(pdfDoc);
+
+        Table table = new Table(2);
+        Cell cell = new Cell();
+        Image image = ImageFactory.getImage(IMG1);
+        cell.setNextRenderer(new TiledImageBackgroundCellRenderer(cell, image));
+        cell.setHeight(770);
+        table.addCell(cell);
+        cell = new Cell();
+        image = ImageFactory.getImage(IMG2);
+        cell.setNextRenderer(new TiledImageBackgroundCellRenderer(cell, image));
+        cell.setHeight(770);
+        table.addCell(cell);
+        doc.add(table);
+
+        doc.close();
+    }
+
+
     private class TiledImageBackgroundCellRenderer extends CellRenderer {
         protected Image img;
 
@@ -65,28 +89,5 @@ public class TiledBackground extends GenericTest {
             canvas.rectangle(getOccupiedAreaBBox());
             canvas.stroke();
         }
-    }
-
-    @Override
-    protected void manipulatePdf(String dest) throws Exception {
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc);
-
-        Table table = new Table(2);
-        Cell cell = new Cell();
-        Image image = ImageFactory.getImage(IMG1);
-        cell.setNextRenderer(new TiledImageBackgroundCellRenderer(cell, image));
-        cell.setHeight(770);
-        table.addCell(cell);
-        cell = new Cell();
-        image = ImageFactory.getImage(IMG2);
-        cell.setNextRenderer(new TiledImageBackgroundCellRenderer(cell, image));
-        cell.setHeight(770);
-        table.addCell(cell);
-        doc.add(table);
-
-        doc.close();
     }
 }

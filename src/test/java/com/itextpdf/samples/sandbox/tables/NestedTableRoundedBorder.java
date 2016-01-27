@@ -9,14 +9,13 @@ package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Cell;
-import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
 import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -33,22 +32,6 @@ public class NestedTableRoundedBorder extends GenericTest {
         new NestedTableRoundedBorder().manipulatePdf(DEST);
     }
 
-
-    private class RoundedBorderCellRenderer extends CellRenderer {
-        public RoundedBorderCellRenderer(Cell modelElement) {
-            super(modelElement);
-        }
-
-        @Override
-        public void draw(DrawContext drawContext) {
-            drawContext.getCanvas().roundRectangle(getOccupiedAreaBBox().getX() + 1.5f, getOccupiedAreaBBox().getY() + 1.5f,
-                    getOccupiedAreaBBox().getWidth() - 3, getOccupiedAreaBBox().getHeight() - 3, 4);
-            drawContext.getCanvas().stroke();
-            super.draw(drawContext);
-        }
-    }
-
-
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         FileOutputStream fos = new FileOutputStream(dest);
@@ -64,11 +47,11 @@ public class NestedTableRoundedBorder extends GenericTest {
         innertable.setWidthPercent(100);
         // first row
         // column 1
-        cell = new Cell().add(new Paragraph("Record Ref:"));
+        cell = new Cell().add("Record Ref:");
         cell.setBorder(null);
         innertable.addCell(cell);
         // column 2
-        cell = new Cell().add(new Paragraph("GN Staff"));
+        cell = new Cell().add("GN Staff");
         cell.setPaddingLeft(2);
         innertable.addCell(cell);
         // column 3
@@ -76,11 +59,11 @@ public class NestedTableRoundedBorder extends GenericTest {
         cell.setBorder(null);
         innertable.addCell(cell);
         // column 4
-        cell = new Cell().add(new Paragraph("Date: "));
+        cell = new Cell().add("Date: ");
         cell.setBorder(null);
         innertable.addCell(cell);
         // column 5
-        cell = new Cell().add(new Paragraph("30/4/2015"));
+        cell = new Cell().add("30/4/2015");
         cell.setPaddingLeft(2);
         innertable.addCell(cell);
         // spacing
@@ -90,11 +73,11 @@ public class NestedTableRoundedBorder extends GenericTest {
         innertable.addCell(cell);
         // second row
         // column 1
-        cell = new Cell().add(new Paragraph("Hospital:"));
+        cell = new Cell().add("Hospital:");
         cell.setBorder(null);
         innertable.addCell(cell);
         // column 2
-        cell = new Cell().add(new Paragraph("Derby Royal"));
+        cell = new Cell().add("Derby Royal");
         cell.setPaddingLeft(2);
         innertable.addCell(cell);
         // column 3
@@ -102,12 +85,12 @@ public class NestedTableRoundedBorder extends GenericTest {
         cell.setBorder(null);
         innertable.addCell(cell);
         // column 4
-        cell = new Cell().add(new Paragraph("Ward: "));
+        cell = new Cell().add("Ward: ");
         cell.setBorder(null);
         cell.setPaddingLeft(5);
         innertable.addCell(cell);
         // column 5
-        cell = new Cell().add(new Paragraph("21"));
+        cell = new Cell().add("21");
         cell.setPaddingLeft(2);
         innertable.addCell(cell);
         // spacing
@@ -130,7 +113,7 @@ public class NestedTableRoundedBorder extends GenericTest {
         cell.setBorder(null);
         innertable.addCell(cell);
         // column 2
-        cell = new Cell().add(new Paragraph("Name"));
+        cell = new Cell().add("Name");
         cell.setBorder(null);
         innertable.addCell(cell);
         // column 3
@@ -138,7 +121,7 @@ public class NestedTableRoundedBorder extends GenericTest {
         cell.setBorder(null);
         innertable.addCell(cell);
         // column 4
-        cell = new Cell().add(new Paragraph("Signature: "));
+        cell = new Cell().add("Signature: ");
         cell.setBorder(null);
         innertable.addCell(cell);
         // spacing
@@ -149,7 +132,7 @@ public class NestedTableRoundedBorder extends GenericTest {
         // subsequent rows
         for (int i = 1; i < 4; i++) {
             // column 1
-            cell = new Cell().add(new Paragraph(String.format("%s:", i)));
+            cell = new Cell().add(String.format("%s:", i));
             cell.setBorder(null);
             innertable.addCell(cell);
             // column 2
@@ -181,5 +164,20 @@ public class NestedTableRoundedBorder extends GenericTest {
         doc.add(outertable);
 
         doc.close();
+    }
+
+
+    private class RoundedBorderCellRenderer extends CellRenderer {
+        public RoundedBorderCellRenderer(Cell modelElement) {
+            super(modelElement);
+        }
+
+        @Override
+        public void draw(DrawContext drawContext) {
+            drawContext.getCanvas().roundRectangle(getOccupiedAreaBBox().getX() + 1.5f, getOccupiedAreaBBox().getY() + 1.5f,
+                    getOccupiedAreaBBox().getWidth() - 3, getOccupiedAreaBBox().getHeight() - 3, 4);
+            drawContext.getCanvas().stroke();
+            super.draw(drawContext);
+        }
     }
 }

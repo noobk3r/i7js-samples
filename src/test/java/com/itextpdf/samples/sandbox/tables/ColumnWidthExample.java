@@ -14,13 +14,13 @@ import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -47,7 +47,7 @@ public class ColumnWidthExample extends GenericTest {
         float[] columnWidths = {1, 5, 5};
         Table table = new Table(columnWidths);
         table.setWidthPercent(100);
-        // TODO
+        // TODO No ascender and descender usage for cells
         //table.getDefaultCell().setUseAscender(true);
         //table.getDefaultCell().setUseDescender(true);
         PdfFont f = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
@@ -60,9 +60,9 @@ public class ColumnWidthExample extends GenericTest {
         table.addHeaderCell(cell);
         for (int i = 0; i < 2; i++) {
             Cell[] headerFooter = new Cell[] {
-                    new Cell().setBackgroundColor(new DeviceGray(0.75f)).add(new Paragraph("#")),
-                    new Cell().setBackgroundColor(new DeviceGray(0.75f)).add(new Paragraph("Key")),
-                    new Cell().setBackgroundColor(new DeviceGray(0.75f)).add(new Paragraph("Value"))
+                    new Cell().setBackgroundColor(new DeviceGray(0.75f)).add("#"),
+                    new Cell().setBackgroundColor(new DeviceGray(0.75f)).add("Key"),
+                    new Cell().setBackgroundColor(new DeviceGray(0.75f)).add("Value")
             };
             for (Cell hfCell : headerFooter) {
                 if (i == 0) {
@@ -73,9 +73,9 @@ public class ColumnWidthExample extends GenericTest {
             }
         }
         for (int counter = 1; counter < 101; counter++) {
-            table.addCell(new Cell().setTextAlignment(Property.TextAlignment.CENTER).add(new Paragraph(String.valueOf(counter))));
-            table.addCell(new Cell().setTextAlignment(Property.TextAlignment.CENTER).add(new Paragraph("key " + counter)));
-            table.addCell(new Cell().setTextAlignment(Property.TextAlignment.CENTER).add(new Paragraph("value " + counter)));
+            table.addCell(new Cell().setTextAlignment(Property.TextAlignment.CENTER).add(String.valueOf(counter)));
+            table.addCell(new Cell().setTextAlignment(Property.TextAlignment.CENTER).add("key " + counter));
+            table.addCell(new Cell().setTextAlignment(Property.TextAlignment.CENTER).add("value " + counter));
         }
         doc.add(table);
         doc.close();

@@ -54,8 +54,8 @@ public class Listing_13_14_FixBrokenForm extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws IOException, SQLException, XMPException {
         changePdf(ORIGINAL, RESULT[0]);
-        //fillData(ORIGINAL, RESULT[1]);
-        //fillData(RESULT[0], RESULT[2]);
+        fillData(ORIGINAL, RESULT[1]);
+        fillData(RESULT[0], RESULT[2]);
     }
 
     public void changePdf(String src, String dest) throws IOException {
@@ -76,19 +76,22 @@ public class Listing_13_14_FixBrokenForm extends GenericTest {
         pdfDoc.close();
     }
 
-    /**
-     * @param src
-     * @param dest
-     * @throws IOException
-     */
     public void fillData(String src, String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
-        // TODO problems with setting value on acroform (NullPointerException)
-        form.getField("title").setValue("The Misfortunates");
-        form.getField("director").setValue("Felix Van Groeningen");
-        form.getField("year").setValue("2009");
-        form.getField("duration").setValue("108");
+        if (null != form.getField("title")) {
+            form.getField("title").setValue("The Misfortunates");
+        }
+        if (null != form.getField("director")) {
+            form.getField("director").setValue("Felix Van Groeningen");
+        }
+        if (null != form.getField("year")) {
+            form.getField("year").setValue("2009");
+        }
+        if (null != form.getField("duration")) {
+            form.getField("duration").setValue("108");
+        }
+        // TODO Exception on font flushing
         pdfDoc.close();
     }
 

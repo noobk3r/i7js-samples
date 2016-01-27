@@ -33,6 +33,13 @@ public class SimpleTable11 extends GenericTest {
         new SimpleTable11().manipulatePdf(DEST);
     }
 
+    public Cell createCell(String content, float borderWidth, int colspan, Property.TextAlignment alignment) {
+        Cell cell = new Cell(1, colspan).add(new Paragraph(content));
+        cell.setTextAlignment(alignment);
+        cell.setBorder(new SolidBorder(borderWidth));
+        return cell;
+    }
+
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         FileOutputStream fos = new FileOutputStream(dest);
@@ -65,12 +72,5 @@ public class SimpleTable11 extends GenericTest {
         doc.add(table);
 
         doc.close();
-    }
-
-    public Cell createCell(String content, float borderWidth, int colspan, Property.TextAlignment alignment) {
-        Cell cell = new Cell(1, colspan).add(new Paragraph(content));
-        cell.setTextAlignment(alignment);
-        cell.setBorder(new SolidBorder(borderWidth));
-        return cell;
     }
 }

@@ -39,6 +39,17 @@ public class UnitedStates extends GenericTest {
         new UnitedStates().manipulatePdf(DEST);
     }
 
+    public void process(Table table, String line, PdfFont font, boolean isHeader) {
+        StringTokenizer tokenizer = new StringTokenizer(line, ";");
+        while (tokenizer.hasMoreTokens()) {
+            if (isHeader) {
+                table.addHeaderCell(new Cell().add(new Paragraph(tokenizer.nextToken()).setFont(font)));
+            } else {
+                table.addCell(new Cell().add(new Paragraph(tokenizer.nextToken()).setFont(font)));
+            }
+        }
+    }
+
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         FileOutputStream fos = new FileOutputStream(dest);
@@ -62,14 +73,4 @@ public class UnitedStates extends GenericTest {
         doc.close();
     }
 
-    public void process(Table table, String line, PdfFont font, boolean isHeader) {
-        StringTokenizer tokenizer = new StringTokenizer(line, ";");
-        while (tokenizer.hasMoreTokens()) {
-            if (isHeader) {
-                table.addHeaderCell(new Cell().add(new Paragraph(tokenizer.nextToken()).setFont(font)));
-            } else {
-                table.addCell(new Cell().add(new Paragraph(tokenizer.nextToken()).setFont(font)));
-            }
-        }
-    }
 }

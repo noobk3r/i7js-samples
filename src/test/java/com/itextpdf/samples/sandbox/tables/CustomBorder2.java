@@ -10,6 +10,7 @@ package com.itextpdf.samples.sandbox.tables;
 import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.model.border.Border;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.border.SolidBorder;
@@ -28,9 +29,48 @@ import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
+@Ignore
+public class CustomBorder2 extends GenericTest {
+    public static final String DEST = "./target/test/resources/sandbox/tables/custom_border2.pdf";
+    public static final String TEXT = "This is some long paragraph that will be added over and over " +
+            "again to prove a point. It should result in rows that are split and rows that aren't.";
+
+    public static void main(String[] args) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+        new CustomBorder2().manipulatePdf(DEST);
+    }
+
+    @Override
+    protected void manipulatePdf(String dest) throws Exception {
+        FileOutputStream fos = new FileOutputStream(dest);
+        PdfWriter writer = new PdfWriter(fos);
+        PdfDocument pdfDoc = new PdfDocument(writer);
+        Document doc = new Document(pdfDoc);
+
+        Table table = new Table(2);
+        table.setWidth(500);
+        table.setBorder(new SolidBorder(1));
+        // TODO setSplitLate(boolean)
+        // table.setSplitLate(false);
+
+        Cell cell = new Cell().add(new Paragraph(TEXT));
+        cell.setBorder(null);
+        for (int i = 0; i < 60; ) {
+            table.addCell(new Cell().add("Cell " + (++i)).setBorder(Border.NO_BORDER));
+            table.addCell(new Cell().add(TEXT).setBorder(Border.NO_BORDER));
+        }
+        table.setNextRenderer(new CustomBorder2TableRenderer(table, new Table.RowRange(0, 59)));
+        doc.add(table);
+
+        doc.close();
+    }
+}
+
+
 class CustomBorder2TableRenderer extends TableRenderer {
-    static boolean isBottomToBeDrawn = false;
-    static boolean isTopToBeDrawn = true;
+    protected static boolean isBottomToBeDrawn = false;
+    protected static boolean isTopToBeDrawn = true;
 
     public CustomBorder2TableRenderer(Table modelElement) {
         super(modelElement);
@@ -42,7 +82,6 @@ class CustomBorder2TableRenderer extends TableRenderer {
 
     @Override
     public void drawBorder(DrawContext drawContext) {
-        // We strongly believe that everything is fine as we believe in itext5 analog example
         CellRenderer[] firstRowRenderers = rows.get(0);
         // yLines
         PdfCanvas canvas = drawContext.getCanvas();
@@ -86,45 +125,4 @@ class CustomBorder2TableRenderer extends TableRenderer {
         isBottomToBeDrawn = false;
         return super.split(row);
     }
-}
-
-@Ignore
-public class CustomBorder2 extends GenericTest {
-    public static final String DEST = "./target/test/resources/sandbox/tables/custom_border2.pdf";
-    public static final String TEXT = "This is some long paragraph that will be added over and over " +
-            "again to prove a point. It should result in rows that are split and rows that aren't.";
-
-    public static void main(String[] args) throws Exception {
-        File file = new File(DEST);
-        file.getParentFile().mkdirs();
-        new CustomBorder2().manipulatePdf(DEST);
-    }
-
-    @Override
-    protected void manipulatePdf(String dest) throws Exception {
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc);
-
-        Table table = new Table(2);
-        table.setWidth(500);
-        table.setBorder(new SolidBorder(1));
-        // TODO Implement setting-for-all-cells-specific-border method
-        //table.getDefaultCell().setBorder(Rectangle.NO_BORDER);
-        // TODO setSplitLate(boolean)
-        // table.setSplitLate(false);
-
-        Cell cell = new Cell().add(new Paragraph(TEXT));
-        cell.setBorder(null);
-        for (int i = 0; i < 60; ) {
-            table.addCell(new Cell().add(new Paragraph("Cell " + (++i))).setBorder(null));
-            table.addCell(new Cell().add(new Paragraph(TEXT)).setBorder(null));
-        }
-        table.setNextRenderer(new CustomBorder2TableRenderer(table, new Table.RowRange(0, 59)));
-        doc.add(table);
-
-        doc.close();
-    }
-
 }

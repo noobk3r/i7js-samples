@@ -42,31 +42,31 @@ public class SimpleTable9 extends GenericTest {
         Table table = new Table(new float[]{1, 1, 8});
         table.setWidthPercent(100);
         table.setMarginTop(5);
-        table.addCell(new Cell().add(new Paragraph("Col a")));
-        table.addCell(new Cell().add(new Paragraph("Col b")));
-        table.addCell(new Cell().add(new Paragraph("Col c")));
-        table.addCell(new Cell().add(new Paragraph("Value a")));
-        table.addCell(new Cell().add(new Paragraph("Value b")));
-        table.addCell(new Cell().add(new Paragraph("This is a long description for column c. " +
-                "It needs much more space hence we made sure that the third column is wider.")));
+        table.addCell("Col a");
+        table.addCell("Col b");
+        table.addCell("Col c");
+        table.addCell("Value a");
+        table.addCell("Value b");
+        table.addCell("This is a long description for column c. " +
+                "It needs much more space hence we made sure that the third column is wider.");
         doc.add(table);
         doc.add(new Paragraph("With 2 columns:"));
         table = new Table(2);
         table.setMarginTop(5);
-        table.addCell(new Cell().add(new Paragraph("Col a")));
-        table.addCell(new Cell().add(new Paragraph("Col b")));
-        table.addCell(new Cell().add(new Paragraph("Value a")));
-        table.addCell(new Cell().add(new Paragraph("Value b")));
-        table.addCell(new Cell(1, 2).add(new Paragraph("Value b")));
-        table.addCell(new Cell(1, 2).add(new Paragraph("This is a long description for column c. " +
-                "It needs much more space hence we made sure that the third column is wider.")));
-        table.addCell(new Cell().add(new Paragraph("Col a")));
-        table.addCell(new Cell().add(new Paragraph("Col b")));
-        table.addCell(new Cell().add(new Paragraph("Value a")));
-        table.addCell(new Cell().add(new Paragraph("Value b")));
-        table.addCell(new Cell(1, 2).add(new Paragraph("Value b")));
-        table.addCell(new Cell(1, 2).add(new Paragraph("This is a long description for column c. " +
-                "It needs much more space hence we made sure that the third column is wider.")));
+        table.addCell("Col a");
+        table.addCell("Col b");
+        table.addCell("Value a");
+        table.addCell("Value b");
+        table.addCell(new Cell(1, 2).add("Value b"));
+        table.addCell(new Cell(1, 2).add("This is a long description for column c. " +
+                "It needs much more space hence we made sure that the third column is wider."));
+        table.addCell("Col a");
+        table.addCell("Col b");
+        table.addCell("Value a");
+        table.addCell("Value b");
+        table.addCell(new Cell(1, 2).add("Value b"));
+        table.addCell(new Cell(1, 2).add("This is a long description for column c. " +
+                "It needs much more space hence we made sure that the third column is wider."));
         doc.add(table);
 
         doc.close();

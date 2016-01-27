@@ -9,12 +9,11 @@ package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Cell;
-import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -40,21 +39,22 @@ public class SimpleRowColspan extends GenericTest {
 
         Table table = new Table(new float[]{1, 2, 2, 2, 1});
         table.setWidthPercent(100);
+
         Cell cell;
-        cell = new Cell(2, 1).add(new Paragraph("S/N"));
+        cell = new Cell(2, 1).add("S/N");
         table.addCell(cell);
-        cell = new Cell(1, 3).add(new Paragraph("Name"));
+        cell = new Cell(1, 3).add("Name");
         table.addCell(cell);
-        cell = new Cell(2, 1).add(new Paragraph("Age"));
+        cell = new Cell(2, 1).add("Age");
         table.addCell(cell);
-        table.addCell(new Cell().add(new Paragraph("SURNAME")));
-        table.addCell(new Cell().add(new Paragraph("FIRST NAME")));
-        table.addCell(new Cell().add(new Paragraph("MIDDLE NAME")));
-        table.addCell(new Cell().add(new Paragraph("1")));
-        table.addCell(new Cell().add(new Paragraph("James")));
-        table.addCell(new Cell().add(new Paragraph("Fish")));
-        table.addCell(new Cell().add(new Paragraph("Stone")));
-        table.addCell(new Cell().add(new Paragraph("17")));
+        table.addCell("SURNAME");
+        table.addCell("FIRST NAME");
+        table.addCell("MIDDLE NAME");
+        table.addCell("1");
+        table.addCell("James");
+        table.addCell("Fish");
+        table.addCell("Stone");
+        table.addCell("17");
         doc.add(table);
 
         doc.close();

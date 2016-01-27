@@ -10,7 +10,6 @@ package com.itextpdf.samples.sandbox.tables;
 import com.itextpdf.basics.image.ImageFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Cell;
@@ -19,6 +18,7 @@ import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
 import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -36,6 +36,43 @@ public class PositionContentInCell extends GenericTest {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
         new PositionContentInCell().manipulatePdf(DEST);
+    }
+
+    @Override
+    protected void manipulatePdf(String dest) throws Exception {
+        // 1. Create a Document which contains a table:
+        FileOutputStream fos = new FileOutputStream(dest);
+        PdfWriter writer = new PdfWriter(fos);
+        PdfDocument pdfDoc = new PdfDocument(writer);
+        Document doc = new Document(pdfDoc);
+        Table table = new Table(2);
+        Cell cell1 = new Cell();
+        Cell cell2 = new Cell();
+        Cell cell3 = new Cell();
+        Cell cell4 = new Cell();
+        // 2. Inside that table, make each cell with specific height:
+        cell1.setHeight(50);
+        cell2.setHeight(50);
+        cell3.setHeight(50);
+        cell4.setHeight(50);
+        // 3. Each cell has the same background image
+        // 4. Add text in front of the image at specific position
+        cell1.setNextRenderer(new ImageAndPositionRenderer(cell1,
+                new Image(ImageFactory.getImage(IMG)), "Top left", POSITION.TOP_LEFT));
+        cell2.setNextRenderer(new ImageAndPositionRenderer(cell2,
+                new Image(ImageFactory.getImage(IMG)), "Top right", POSITION.TOP_RIGHT));
+        cell3.setNextRenderer(new ImageAndPositionRenderer(cell3,
+                new Image(ImageFactory.getImage(IMG)), "Bottom left", POSITION.BOTTOM_LEFT));
+        cell4.setNextRenderer(new ImageAndPositionRenderer(cell4,
+                new Image(ImageFactory.getImage(IMG)), "Bottom right", POSITION.BOTTOM_RIGHT));
+        // Wrap it all up!
+        table.addCell(cell1);
+        table.addCell(cell2);
+        table.addCell(cell3);
+        table.addCell(cell4);
+        doc.add(table);
+
+        doc.close();
     }
 
 
@@ -98,42 +135,5 @@ public class PositionContentInCell extends GenericTest {
             }
             new Document(drawContext.getDocument()).showTextAligned(content, x, y, alignment);
         }
-    }
-
-
-    @Override
-    protected void manipulatePdf(String dest) throws Exception {
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc);
-        Table table = new Table(2);
-        Cell cell1 = new Cell();
-        Cell cell2 = new Cell();
-        Cell cell3 = new Cell();
-        Cell cell4 = new Cell();
-        // 2. Inside that table, make each cell with specific height:
-        cell1.setHeight(50);
-        cell2.setHeight(50);
-        cell3.setHeight(50);
-        cell4.setHeight(50);
-        // 3. Each cell has the same background image
-        // 4. Add text in front of the image at specific position
-        cell1.setNextRenderer(new ImageAndPositionRenderer(cell1,
-                new Image(ImageFactory.getImage(IMG)), "Top left", POSITION.TOP_LEFT));
-        cell2.setNextRenderer(new ImageAndPositionRenderer(cell2,
-                new Image(ImageFactory.getImage(IMG)), "Top right", POSITION.TOP_RIGHT));
-        cell3.setNextRenderer(new ImageAndPositionRenderer(cell3,
-                new Image(ImageFactory.getImage(IMG)), "Bottom left", POSITION.BOTTOM_LEFT));
-        cell4.setNextRenderer(new ImageAndPositionRenderer(cell4,
-                new Image(ImageFactory.getImage(IMG)), "Bottom right", POSITION.BOTTOM_RIGHT));
-        // Wrap it all up!
-        table.addCell(cell1);
-        table.addCell(cell2);
-        table.addCell(cell3);
-        table.addCell(cell4);
-        doc.add(table);
-
-        doc.close();
     }
 }

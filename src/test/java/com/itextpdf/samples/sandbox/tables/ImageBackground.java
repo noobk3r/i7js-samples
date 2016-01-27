@@ -14,7 +14,6 @@ import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Image;
@@ -23,6 +22,7 @@ import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
 import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -38,22 +38,6 @@ public class ImageBackground extends GenericTest {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
         new ImageBackground().manipulatePdf(DEST);
-    }
-
-    private class ImageBackgroundCellRenderer extends CellRenderer {
-        protected Image img;
-
-        public ImageBackgroundCellRenderer(Cell modelElement, Image img) {
-            super(modelElement);
-            this.img = img;
-        }
-
-        @Override
-        public void draw(DrawContext drawContext) {
-            img.scaleToFit(getOccupiedAreaBBox().getWidth(), getOccupiedAreaBBox().getHeight());
-            drawContext.getCanvas().addXObject(img.getXObject(), getOccupiedAreaBBox());
-            super.draw(drawContext);
-        }
     }
 
     @Override
@@ -77,5 +61,22 @@ public class ImageBackground extends GenericTest {
         doc.add(table);
 
         doc.close();
+    }
+
+
+    private class ImageBackgroundCellRenderer extends CellRenderer {
+        protected Image img;
+
+        public ImageBackgroundCellRenderer(Cell modelElement, Image img) {
+            super(modelElement);
+            this.img = img;
+        }
+
+        @Override
+        public void draw(DrawContext drawContext) {
+            img.scaleToFit(getOccupiedAreaBBox().getWidth(), getOccupiedAreaBBox().getHeight());
+            drawContext.getCanvas().addXObject(img.getXObject(), getOccupiedAreaBBox());
+            super.draw(drawContext);
+        }
     }
 }

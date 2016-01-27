@@ -48,9 +48,9 @@ public class HyphenationExample extends GenericTest {
         doc.setMargins(0, 0, 0, 0);
         Table table = new Table(1);
         table.setWidthPercent(10);
-        Text chunk = new Text("Leistungsscheinziffer");
-        chunk.setHyphenation(new HyphenationConfig("de", "DE", 2, 2));
-        table.addCell(new Cell().add(new Paragraph(chunk)));
+        Text text = new Text("Leistungsscheinziffer");
+        text.setHyphenation(new HyphenationConfig("de", "DE", 2, 2));
+        table.addCell(new Cell().add(new Paragraph(text)));
         Paragraph phrase = new Paragraph();
         phrase.setHyphenation(new HyphenationConfig("de", "DE", 2, 2));
         phrase.add("Leistungsscheinziffer");

@@ -34,34 +34,6 @@ public class RoundedCorners extends GenericTest {
         new RoundedCorners().manipulatePdf(DEST);
     }
 
-
-    private class RoundedCornersCellRenderer extends CellRenderer {
-        public RoundedCornersCellRenderer(Cell modelElement) {
-            super(modelElement);
-        }
-
-        @Override
-        public void draw(DrawContext drawContext) {
-            float llx = getOccupiedAreaBBox().getX() + 2;
-            float lly = getOccupiedAreaBBox().getY() + 2;
-            float urx = getOccupiedAreaBBox().getX() + getOccupiedAreaBBox().getWidth() - 2;
-            float ury = getOccupiedAreaBBox().getY() + getOccupiedAreaBBox().getHeight() - 2;
-            float r = 4;
-            float b = 0.4477f;
-            PdfCanvas canvas = drawContext.getCanvas();
-            canvas.moveTo(llx, lly);
-            canvas.lineTo(urx, lly);
-            canvas.lineTo(urx, ury - r);
-            canvas.curveTo(urx, ury - r * b, urx - r * b, ury, urx - r, ury);
-            canvas.lineTo(llx + r, ury);
-            canvas.curveTo(llx + r * b, ury, llx, ury - r * b, llx, ury - r);
-            canvas.lineTo(llx, lly);
-            canvas.stroke();
-            super.draw(drawContext);
-        }
-    }
-
-
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         FileOutputStream fos = new FileOutputStream(dest);
@@ -87,5 +59,32 @@ public class RoundedCorners extends GenericTest {
         cell.setPadding(5);
         cell.setBorder(null);
         return cell;
+    }
+
+
+    private class RoundedCornersCellRenderer extends CellRenderer {
+        public RoundedCornersCellRenderer(Cell modelElement) {
+            super(modelElement);
+        }
+
+        @Override
+        public void draw(DrawContext drawContext) {
+            float llx = getOccupiedAreaBBox().getX() + 2;
+            float lly = getOccupiedAreaBBox().getY() + 2;
+            float urx = getOccupiedAreaBBox().getX() + getOccupiedAreaBBox().getWidth() - 2;
+            float ury = getOccupiedAreaBBox().getY() + getOccupiedAreaBBox().getHeight() - 2;
+            float r = 4;
+            float b = 0.4477f;
+            PdfCanvas canvas = drawContext.getCanvas();
+            canvas.moveTo(llx, lly);
+            canvas.lineTo(urx, lly);
+            canvas.lineTo(urx, ury - r);
+            canvas.curveTo(urx, ury - r * b, urx - r * b, ury, urx - r, ury);
+            canvas.lineTo(llx + r, ury);
+            canvas.curveTo(llx + r * b, ury, llx, ury - r * b, llx, ury - r);
+            canvas.lineTo(llx, lly);
+            canvas.stroke();
+            super.draw(drawContext);
+        }
     }
 }

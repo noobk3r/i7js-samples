@@ -58,12 +58,12 @@ public class NestedTables extends GenericTest {
         Table innerTable1 = new Table(1);
         Table innerTable2 = new Table(2);
         Cell cell;
-        innerTable1.addCell(new Cell().add(new Paragraph("Cell 1")));
-        innerTable1.addCell(new Cell().add(new Paragraph("Cell 2")));
-        outerTable.addCell(new Cell().add(innerTable1));
-        innerTable2.addCell(new Cell().add(new Paragraph("Cell 3")));
-        innerTable2.addCell(new Cell().add(new Paragraph("Cell 4")));
-        outerTable.addCell(new Cell().add(innerTable2));
+        innerTable1.addCell("Cell 1");
+        innerTable1.addCell("Cell 2");
+        outerTable.addCell(innerTable1);
+        innerTable2.addCell("Cell 3");
+        innerTable2.addCell("Cell 4");
+        outerTable.addCell(innerTable2);
         cell = new Cell(1, 14);
         outerTable.addCell(cell);
     }

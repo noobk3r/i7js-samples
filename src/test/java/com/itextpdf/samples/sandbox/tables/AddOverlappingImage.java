@@ -35,6 +35,29 @@ public class AddOverlappingImage extends GenericTest {
         new AddOverlappingImage().manipulatePdf(DEST);
     }
 
+    @Override
+    protected void manipulatePdf(String dest) throws Exception {
+        FileOutputStream fos = new FileOutputStream(dest);
+        PdfWriter writer = new PdfWriter(fos);
+        PdfDocument pdfDoc = new PdfDocument(writer);
+        Document doc = new Document(pdfDoc);
+
+        Table table = new Table(5);
+        table.setNextRenderer(new OverlappingImageTableRenderer(table, new Table.RowRange(0, 25),
+                ImageFactory.getImage("./src/test/resources/sandbox/tables/hero.jpg")));
+        Cell cell;
+        for (int r = 'A'; r <= 'Z'; r++) {
+            for (int c = 1; c <= 5; c++) {
+                cell = new Cell();
+                cell.add(new Paragraph(String.valueOf((char) r) + String.valueOf(c)));
+                table.addCell(cell);
+            }
+        }
+        doc.add(table);
+
+        doc.close();
+    }
+
 
     private class OverlappingImageTableRenderer extends TableRenderer {
         private Image image;
@@ -63,29 +86,5 @@ public class AddOverlappingImage extends GenericTest {
         public OverlappingImageTableRenderer getNextRenderer() {
             return new OverlappingImageTableRenderer((Table) modelElement, image);
         }
-    }
-
-
-    @Override
-    protected void manipulatePdf(String dest) throws Exception {
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc);
-
-        Table table = new Table(5);
-        table.setNextRenderer(new OverlappingImageTableRenderer(table, new Table.RowRange(0, 25),
-                ImageFactory.getImage("./src/test/resources/sandbox/tables/hero.jpg")));
-        Cell cell;
-        for (int r = 'A'; r <= 'Z'; r++) {
-            for (int c = 1; c <= 5; c++) {
-                cell = new Cell();
-                cell.add(new Paragraph(String.valueOf((char) r) + String.valueOf(c)));
-                table.addCell(cell);
-            }
-        }
-        doc.add(table);
-
-        doc.close();
     }
 }

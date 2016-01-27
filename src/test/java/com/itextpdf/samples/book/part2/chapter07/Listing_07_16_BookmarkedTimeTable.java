@@ -13,8 +13,8 @@ import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.action.PdfAction;
 import com.itextpdf.core.pdf.navigation.PdfExplicitDestination;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.PojoFactory;
@@ -44,7 +44,6 @@ public class Listing_07_16_BookmarkedTimeTable extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {
-        // Listing_03_29_MovieTemplates.main(arguments);
         // Create a reader
         PdfReader reader = new PdfReader(MOVIE_TEMPLATES);
         // Create a stamper
@@ -62,13 +61,11 @@ public class Listing_07_16_BookmarkedTimeTable extends GenericTest {
         List<Date> days = PojoFactory.getDays(connection);
         for (Date day : days) {
             kid = root.addOutline(day.toString());
-            // See pdf-reference Table 8.50; first page should be defined as 0 here
-            kid.addAction(PdfAction.createGoTo(PdfExplicitDestination.createFit(page-1)));
+            kid.addAction(PdfAction.createGoTo(PdfExplicitDestination.createFit(page)));
             page++;
         }
-        // Close the stamper
+        // Close the document
         pdfDoc.close();
-        reader.close();
         // Close the database connection
         connection.close();
     }

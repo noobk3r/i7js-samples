@@ -35,6 +35,11 @@ public class ImageNextToEachOther extends GenericTest {
         new ImageNextToEachOther().manipulatePdf(DEST);
     }
 
+    public static Cell createImageCell(String path) throws MalformedURLException {
+        Image img = new Image(ImageFactory.getImage(path));
+        return new Cell().add(img.setAutoScale(true));
+    }
+
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         FileOutputStream fos = new FileOutputStream(dest);
@@ -48,10 +53,5 @@ public class ImageNextToEachOther extends GenericTest {
         doc.add(table);
 
         doc.close();
-    }
-
-    public static Cell createImageCell(String path) throws MalformedURLException {
-        Image img = new Image(ImageFactory.getImage(path));
-        return new Cell().add(img.setAutoScale(true));
     }
 }

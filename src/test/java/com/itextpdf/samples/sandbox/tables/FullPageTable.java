@@ -52,28 +52,28 @@ public class FullPageTable extends GenericTest {
         cell.setBackgroundColor(new DeviceRgb(140, 221, 8));
         table.addCell(cell);
 
-        table.addCell(new Cell().add(new Paragraph("Calldate")));
-        table.addCell(new Cell().add(new Paragraph("Calltime")));
-        table.addCell(new Cell().add(new Paragraph("Source")));
-        table.addCell(new Cell().add(new Paragraph("DialedNo")));
-        table.addCell(new Cell().add(new Paragraph("Extension")));
-        table.addCell(new Cell().add(new Paragraph("Trunk")));
-        table.addCell(new Cell().add(new Paragraph("Duration")));
-        table.addCell(new Cell().add(new Paragraph("Calltype")));
-        table.addCell(new Cell().add(new Paragraph("Callcost")));
-        table.addCell(new Cell().add(new Paragraph("Site")));
+        table.addCell("Calldate");
+        table.addCell("Calltime");
+        table.addCell("Source");
+        table.addCell("DialedNo");
+        table.addCell("Extension");
+        table.addCell("Trunk");
+        table.addCell("Duration");
+        table.addCell("Calltype");
+        table.addCell("Callcost");
+        table.addCell("Site");
 
         for (int i = 0; i < 100; i++) {
-            table.addCell(new Cell().add(new Paragraph("date" + i)));
-            table.addCell(new Cell().add(new Paragraph("time" + i)));
-            table.addCell(new Cell().add(new Paragraph("source" + i)));
-            table.addCell(new Cell().add(new Paragraph("destination" + i)));
-            table.addCell(new Cell().add(new Paragraph("extension" + i)));
-            table.addCell(new Cell().add(new Paragraph("trunk" + i)));
-            table.addCell(new Cell().add(new Paragraph("dur" + i)));
-            table.addCell(new Cell().add(new Paragraph("toc" + i)));
-            table.addCell(new Cell().add(new Paragraph("callcost" + i)));
-            table.addCell(new Cell().add(new Paragraph("Site" + i)));
+            table.addCell("date" + i);
+            table.addCell("time" + i);
+            table.addCell("source" + i);
+            table.addCell("destination" + i);
+            table.addCell("extension" + i);
+            table.addCell("trunk" + i);
+            table.addCell("dur" + i);
+            table.addCell("toc" + i);
+            table.addCell("callcost" + i);
+            table.addCell("Site" + i);
         }
         doc.add(table);
 

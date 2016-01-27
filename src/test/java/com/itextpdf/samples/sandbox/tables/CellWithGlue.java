@@ -45,6 +45,7 @@ public class CellWithGlue extends GenericTest {
 
         Table table;
         Cell cell;
+
         table = new Table(2);
         table.setHorizontalAlignment(Property.HorizontalAlignment.LEFT);
         table.setWidthPercent(60);
@@ -56,15 +57,17 @@ public class CellWithGlue extends GenericTest {
         cell.setBorderBottom(new SolidBorder(1));
         table.addCell(cell);
         cell = new Cell().add(new Paragraph("Priceless"));
-        cell.setHorizontalAlignment(Property.HorizontalAlignment.RIGHT);
+        cell.setTextAlignment(Property.TextAlignment.RIGHT);
         cell.setBorder(null);
         cell.setBorderRight(new SolidBorder(1));
         cell.setBorderTop(new SolidBorder(1));
         cell.setBorderBottom(new SolidBorder(1));
         table.addCell(cell);
         doc.add(table);
+
         table.setWidthPercent(50);
         doc.add(table);
+
         table = new Table(1);
         table.setHorizontalAlignment(Property.HorizontalAlignment.LEFT);
         table.setWidthPercent(50);

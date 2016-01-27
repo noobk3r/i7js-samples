@@ -10,12 +10,11 @@ package com.itextpdf.samples.sandbox.tables;
 import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Cell;
-import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -40,9 +39,9 @@ public class SplitRowAtEndOfPage extends GenericTest {
         for (int i = 0; i < 5; i++) {
             Cell cell;
             if (i == 4) {
-                cell = new Cell().add(new Paragraph("Three\nLines\nHere"));
+                cell = new Cell().add("Three\nLines\nHere");
             } else {
-                cell = new Cell().add(new Paragraph(Integer.toString(i)));
+                cell = new Cell().add(Integer.toString(i));
             }
             table.addCell(cell);
         }
@@ -54,7 +53,6 @@ public class SplitRowAtEndOfPage extends GenericTest {
         // TODO Implement setSplitLate(float)
         //table.setSplitLate(false);
         doc.add(table);
-
         doc.close();
     }
 }

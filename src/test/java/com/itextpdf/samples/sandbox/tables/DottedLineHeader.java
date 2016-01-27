@@ -38,6 +38,49 @@ public class DottedLineHeader extends GenericTest {
         new DottedLineHeader().manipulatePdf(DEST);
     }
 
+    @Override
+    protected void manipulatePdf(String dest) throws Exception {
+        FileOutputStream fos = new FileOutputStream(dest);
+        PdfWriter writer = new PdfWriter(fos);
+        PdfDocument pdfDoc = new PdfDocument(writer);
+        Document doc = new Document(pdfDoc);
+
+        Table table = new Table(3);
+        table.setNextRenderer(new DottedHeaderTableRenderer(table, new Table.RowRange(0, 1)));
+        Style noBorder = new Style().setBorder(Border.NO_BORDER);
+        table.addHeaderCell(new Cell().add("A1").addStyle(noBorder));
+        table.addHeaderCell(new Cell().add("A2").addStyle(noBorder));
+        table.addHeaderCell(new Cell().add("A3").addStyle(noBorder));
+        table.addCell(new Cell().add("B1").addStyle(noBorder));
+        table.addCell(new Cell().add("B2").addStyle(noBorder));
+        table.addCell(new Cell().add("B3").addStyle(noBorder));
+        table.addCell(new Cell().add("C1").addStyle(noBorder));
+        table.addCell(new Cell().add("C2").addStyle(noBorder));
+        table.addCell(new Cell().add("C3").addStyle(noBorder));
+        doc.add(table);
+        doc.add(new Paragraph("Cell event"));
+        table = new Table(3);
+        Cell cell = new Cell().add(new Paragraph("A1")).addStyle(noBorder);
+        cell.setNextRenderer(new DottedHeaderCellRenderer(cell));
+        table.addCell(cell);
+        cell = new Cell().add(new Paragraph("A2")).addStyle(noBorder);
+        cell.setNextRenderer(new DottedHeaderCellRenderer(cell));
+        table.addCell(cell);
+        cell = new Cell().add(new Paragraph("A3")).addStyle(noBorder);
+        cell.setNextRenderer(new DottedHeaderCellRenderer(cell));
+        table.addCell(cell);
+        table.addCell(new Cell().add("B1").addStyle(noBorder));
+        table.addCell(new Cell().add("B2").addStyle(noBorder));
+        table.addCell(new Cell().add("B3").addStyle(noBorder));
+        table.addCell(new Cell().add("C1").addStyle(noBorder));
+        table.addCell(new Cell().add("C2").addStyle(noBorder));
+        table.addCell(new Cell().add("C3").addStyle(noBorder));
+        doc.add(table);
+
+        doc.close();
+    }
+
+
     private class DottedHeaderTableRenderer extends TableRenderer {
         public DottedHeaderTableRenderer(Table modelElement, Table.RowRange rowRange) {
             super(modelElement, rowRange);
@@ -58,6 +101,7 @@ public class DottedLineHeader extends GenericTest {
         }
     }
 
+
     private class DottedHeaderCellRenderer extends CellRenderer {
         public DottedHeaderCellRenderer(Cell modelElement) {
             super(modelElement);
@@ -77,48 +121,5 @@ public class DottedLineHeader extends GenericTest {
                     this.getOccupiedArea().getBBox().getTop());
             canvas.stroke();
         }
-    }
-
-
-    @Override
-    protected void manipulatePdf(String dest) throws Exception {
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc);
-
-        Table table = new Table(3);
-        table.setNextRenderer(new DottedHeaderTableRenderer(table, new Table.RowRange(0, 1)));
-        Style noBorder = new Style().setBorder(Border.NO_BORDER);
-        table.addHeaderCell(new Cell().add(new Paragraph("A1")).addStyle(noBorder));
-        table.addHeaderCell(new Cell().add(new Paragraph("A2")).addStyle(noBorder));
-        table.addHeaderCell(new Cell().add(new Paragraph("A3")).addStyle(noBorder));
-        table.addCell(new Cell().add(new Paragraph("B1")).addStyle(noBorder));
-        table.addCell(new Cell().add(new Paragraph("B2")).addStyle(noBorder));
-        table.addCell(new Cell().add(new Paragraph("B3")).addStyle(noBorder));
-        table.addCell(new Cell().add(new Paragraph("C1")).addStyle(noBorder));
-        table.addCell(new Cell().add(new Paragraph("C2")).addStyle(noBorder));
-        table.addCell(new Cell().add(new Paragraph("C3")).addStyle(noBorder));
-        doc.add(table);
-        doc.add(new Paragraph("Cell event"));
-        table = new Table(3);
-        Cell cell = new Cell().add(new Paragraph("A1")).addStyle(noBorder);
-        cell.setNextRenderer(new DottedHeaderCellRenderer(cell));
-        table.addCell(cell);
-        cell = new Cell().add(new Paragraph("A2")).addStyle(noBorder);
-        cell.setNextRenderer(new DottedHeaderCellRenderer(cell));
-        table.addCell(cell);
-        cell = new Cell().add(new Paragraph("A3")).addStyle(noBorder);
-        cell.setNextRenderer(new DottedHeaderCellRenderer(cell));
-        table.addCell(cell);
-        table.addCell(new Cell().add(new Paragraph("B1")).addStyle(noBorder));
-        table.addCell(new Cell().add(new Paragraph("B2")).addStyle(noBorder));
-        table.addCell(new Cell().add(new Paragraph("B3")).addStyle(noBorder));
-        table.addCell(new Cell().add(new Paragraph("C1")).addStyle(noBorder));
-        table.addCell(new Cell().add(new Paragraph("C2")).addStyle(noBorder));
-        table.addCell(new Cell().add(new Paragraph("C3")).addStyle(noBorder));
-        doc.add(table);
-
-        doc.close();
     }
 }

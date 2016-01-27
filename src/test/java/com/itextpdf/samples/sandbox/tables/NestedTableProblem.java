@@ -11,14 +11,13 @@ import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.border.SolidBorder;
 import com.itextpdf.model.element.Cell;
-import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -44,18 +43,18 @@ public class NestedTableProblem extends GenericTest {
         doc.setMargins(30, 21, 35, 21);
 
         // table 2
-        final Table table2 = new Table(1);
+        Table table2 = new Table(1);
         table2.setHorizontalAlignment(Property.HorizontalAlignment.LEFT);
-        table2.addCell(new Cell().setBorder(new SolidBorder(Color.RED, 1)).add(new Paragraph("Goodbye World")));
+        table2.addCell(new Cell().setBorder(new SolidBorder(Color.RED, 1)).add("Goodbye World"));
         table2.setWidthPercent(80);
         // table 1
-        final Table table1 = new Table(1);
+        Table table1 = new Table(1);
         table1.setHorizontalAlignment(Property.HorizontalAlignment.LEFT);
         Cell cell = new Cell();
         cell.setBorder(new SolidBorder(Color.BLACK, 1));
-        cell.add(new Paragraph("Hello World"));
+        cell.add("Hello World");
         cell.add(table2);
-        cell.add(new Paragraph("Hello World"));
+        cell.add("Hello World");
         table1.addCell(cell);
         doc.add(table1);
 

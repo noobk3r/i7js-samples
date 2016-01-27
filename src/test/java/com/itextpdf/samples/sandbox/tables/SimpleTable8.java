@@ -11,13 +11,12 @@ import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.xobject.PdfFormXObject;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Cell;
 import com.itextpdf.model.element.Image;
-import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -50,7 +49,7 @@ public class SimpleTable8 extends GenericTest {
         table.addCell(cell);
         for (int row = 1; row <= 50; row++) {
             for (int column = 1; column <= 3; column++) {
-                table.addCell(new Cell().add(new Paragraph(String.format("row %s, column %s", row, column))));
+                table.addCell(String.format("row %s, column %s", row, column));
             }
         }
         reader = new PdfReader(SRC + "footer.pdf");

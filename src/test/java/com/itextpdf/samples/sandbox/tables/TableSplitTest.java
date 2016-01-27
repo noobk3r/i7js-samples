@@ -51,16 +51,18 @@ public class TableSplitTest extends GenericTest {
                 "Header4", "Header5"};
         String[] content = new String[]{"column 1", "column 2",
                 "some Text in column 3", "Test data ", "column 5"};
+
         Table table = new Table(new float[]{3, 2, 4, 3, 2});
         table.setWidthPercent(98);
         table.setMarginTop(15);
+
         // TODO Implement setSplitLate(boolean)
         //table.setSplitLate(false);
         for (String columnHeader : header) {
             Cell headerCell = new Cell().add(new Paragraph(columnHeader).setFont(
                     PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD))
                     .setFontSize(10));
-            headerCell.setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
+            headerCell.setTextAlignment(Property.TextAlignment.CENTER);
             headerCell.setVerticalAlignment(Property.VerticalAlignment.MIDDLE);
             headerCell.setBorder(new SolidBorder(Color.LIGHT_GRAY, 1));
             headerCell.setPadding(8);
@@ -107,7 +109,7 @@ public class TableSplitTest extends GenericTest {
                 Cell headerCell = new Cell().add(new Paragraph(columnHeader).setFont(
                         PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD))
                         .setFontSize(10));
-                headerCell.setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
+                headerCell.setTextAlignment(Property.TextAlignment.CENTER);
                 headerCell.setVerticalAlignment(Property.VerticalAlignment.MIDDLE);
                 headerCell.setBorder(new SolidBorder(Color.LIGHT_GRAY, 1));
                 headerCell.setPaddingLeft(8);
