@@ -1,3 +1,10 @@
+/*
+
+    This file is part of the iText (R) project.
+    Copyright (c) 1998-2016 iText Group NV
+
+*/
+
 /**
  * Example written by Bruno Lowagie.
  * http://stackoverflow.com/questions/29563942/how-to-add-a-cover-pdf-in-a-existing-itext-document

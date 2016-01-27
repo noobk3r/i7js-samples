@@ -1,3 +1,10 @@
+/*
+
+    This file is part of the iText (R) project.
+    Copyright (c) 1998-2016 iText Group NV
+
+*/
+
 /**
  * Example written by Bruno Lowagie in answer to:
  * http://stackoverflow.com/questions/27820159/itext-list-how-to-remove-symbol-from-list

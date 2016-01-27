@@ -1,4 +1,11 @@
 /*
+
+    This file is part of the iText (R) project.
+    Copyright (c) 1998-2016 iText Group NV
+
+*/
+
+/*
  * This example was written by Bruno Lowagie in answer to:
  * http://stackoverflow.com/questions/30369587/how-to-write-bulleted-list-in-pdf-using-itext-jar-but-item-should-not-in-next-li
  */

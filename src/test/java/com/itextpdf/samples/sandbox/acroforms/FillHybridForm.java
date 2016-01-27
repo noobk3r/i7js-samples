@@ -1,3 +1,10 @@
+/*
+
+    This file is part of the iText (R) project.
+    Copyright (c) 1998-2016 iText Group NV
+
+*/
+
 /**
  * Example written by Bruno Lowagie in answer to:
  * http://stackoverflow.com/questions/29702986/how-to-check-a-checkbox-in-pdf-file-with-the-same-variable-name-with-itext-and-j

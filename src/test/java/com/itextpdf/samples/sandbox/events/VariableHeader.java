@@ -1,3 +1,10 @@
+/*
+
+    This file is part of the iText (R) project.
+    Copyright (c) 1998-2016 iText Group NV
+
+*/
+
 /**
  * Example written by Bruno Lowagie in answer to:
  * http://stackoverflow.com/questions/21628429/itextsharp-how-to-generate-a-report-with-dynamic-header-in-pdf-using-itextsharp

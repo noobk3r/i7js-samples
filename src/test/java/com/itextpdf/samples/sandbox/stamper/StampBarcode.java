@@ -1,8 +1,10 @@
-/**
- * Example written by Bruno Lowagie in answer to:
- * http://stackoverflow.com/questions/26325712/itext-add-image-to-existing-document-using-itext-pdfstamper
- * Copyright 2014, iText Group NV
- */
+/*
+
+    This file is part of the iText (R) project.
+    Copyright (c) 1998-2016 iText Group NV
+
+*/
+
 package com.itextpdf.samples.sandbox.stamper;
 
 import com.itextpdf.barcodes.BarcodeEAN;
@@ -16,13 +18,16 @@ import com.itextpdf.core.pdf.xobject.PdfFormXObject;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
 
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
 import org.junit.experimental.categories.Category;
 
+/**
+ * Example written by Bruno Lowagie in answer to:
+ * http://stackoverflow.com/questions/26325712/itext-add-image-to-existing-document-using-itext-pdfstamper
+ */
 @Category(SampleTest.class)
 public class StampBarcode extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/stamper/superman.pdf";

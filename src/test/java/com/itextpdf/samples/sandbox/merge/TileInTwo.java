@@ -1,3 +1,10 @@
+/*
+
+    This file is part of the iText (R) project.
+    Copyright (c) 1998-2016 iText Group NV
+
+*/
+
 /**
  * Example written by Bruno Lowagie in answer to a question on StackOverflow:
  * http://stackoverflow.com/questions/27011829/divide-one-page-pdf-file-in-two-pages-pdf-file

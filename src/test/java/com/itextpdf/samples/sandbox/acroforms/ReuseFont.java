@@ -1,3 +1,10 @@
+/*
+
+    This file is part of the iText (R) project.
+    Copyright (c) 1998-2016 iText Group NV
+
+*/
+
 /**
  * This example is based on an answer given on StackOverflow:
  * http://stackoverflow.com/questions/22186014/itextsharp-re-use-font-embedded-in-acrofield

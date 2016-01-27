@@ -1,3 +1,10 @@
+/*
+
+    This file is part of the iText (R) project.
+    Copyright (c) 1998-2016 iText Group NV
+
+*/
+
 /**
  * This example is written by Bruno Lowagie in answer to the following question:
  * http://stackoverflow.com/questions/26726485/itext-add-delete-retrieve-information-in-custom-property

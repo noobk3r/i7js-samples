@@ -1,3 +1,10 @@
+/*
+
+    This file is part of the iText (R) project.
+    Copyright (c) 1998-2016 iText Group NV
+
+*/
+
 /**
  * Example written by Bruno Lowagie in answer to the following question:
  * http://stackoverflow.com/questions/30286601/extracting-an-embedded-object-from-a-pdf

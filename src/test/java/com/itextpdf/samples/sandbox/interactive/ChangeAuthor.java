@@ -1,3 +1,10 @@
+/*
+
+    This file is part of the iText (R) project.
+    Copyright (c) 1998-2016 iText Group NV
+
+*/
+
 /**
  * This example was written by Bruno Lowagie in answer to the following question:
  * https://www.linkedin.com/groups/Script-Change-Author-Name-Comments-159987.S.5984062085800144899

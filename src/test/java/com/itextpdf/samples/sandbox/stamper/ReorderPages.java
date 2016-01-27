@@ -1,3 +1,10 @@
+/*
+
+    This file is part of the iText (R) project.
+    Copyright (c) 1998-2016 iText Group NV
+
+*/
+
 /**
  * Example written by Bruno Lowagie in answer to:
  * http://stackoverflow.com/questions/30911216/how-to-re-arrange-pages-in-pdf-using-itext

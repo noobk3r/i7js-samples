@@ -1,3 +1,10 @@
+/*
+
+    This file is part of the iText (R) project.
+    Copyright (c) 1998-2016 iText Group NV
+
+*/
+
 package com.itextpdf.samples.book.part3.chapter10;
 
 import com.itextpdf.basics.image.Image;

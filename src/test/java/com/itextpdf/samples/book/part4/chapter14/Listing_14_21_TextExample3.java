@@ -1,3 +1,10 @@
+/*
+
+    This file is part of the iText (R) project.
+    Copyright (c) 1998-2016 iText Group NV
+
+*/
+
 package com.itextpdf.samples.book.part4.chapter14;
 
 import javax.swing.*;

@@ -1,3 +1,10 @@
+/*
+
+    This file is part of the iText (R) project.
+    Copyright (c) 1998-2016 iText Group NV
+
+*/
+
 /**
  * This example was written by Bruno Lowagie in answer to the following StackOverflow question:
  * http://stackoverflow.com/questions/29775893/watermark-in-a-pdf-with-itext

@@ -1,3 +1,10 @@
+/*
+
+    This file is part of the iText (R) project.
+    Copyright (c) 1998-2016 iText Group NV
+
+*/
+
 /**
  * Example written by Bruno Lowagie in answer to the following question:
  * http://stackoverflow.com/questions/31262460/how-to-add-x-offset-to-text-pattern-with-every-x-step-itext
