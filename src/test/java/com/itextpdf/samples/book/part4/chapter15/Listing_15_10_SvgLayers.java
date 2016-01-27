@@ -18,7 +18,7 @@ import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.layer.PdfLayer;
 import com.itextpdf.core.pdf.xobject.PdfFormXObject;
-import com.itextpdf.model.Document;
+import com.itextpdf.model.Canvas;
 import com.itextpdf.model.Property;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -50,7 +50,7 @@ public class Listing_15_10_SvgLayers extends Listing_15_09_SvgToPdf {
 
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(writer, PdfVersion.PDF_1_5);
-        Document doc = new Document(pdfDoc, new PageSize(6000, 6000));
+        pdfDoc.setDefaultPageSize(new PageSize(6000, 6000));
 
         // TODO No setViewerPreferences
         // writer.setViewerPreferences(PdfWriter.PageModeUseOC | PdfWriter.FitWindow);
@@ -153,95 +153,110 @@ public class Listing_15_10_SvgLayers extends Listing_15_09_SvgToPdf {
         canvas.setFillColorRgb(0x00, 0x00, 0xFF);
         canvas.setFontAndSize(font, 36);
         canvas.beginLayer(cityInfoLayer);
-        doc.showTextAligned(String.valueOf((char) 0x69), 2700, 3100, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0x69), 3000, 2050, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0x69), 3100, 2550, Property.TextAlignment.CENTER);
+
+        Canvas canvasModel;
+        canvasModel = new Canvas(canvas, pdfDoc, pdfDoc.getDefaultPageSize());
+
+        canvasModel.showTextAligned(String.valueOf((char) 0x69), 2700, 3100, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0x69), 3000, 2050, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0x69), 3100, 2550, Property.TextAlignment.CENTER);
+
         canvas.beginLayer(hotelLayer);
-        // TODO Implement showTextAligned(properties) using canvas(in order to use layers) : LEFT here
-        doc.showTextAligned(String.valueOf((char) 0xe3), 2000, 1900, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xe3), 2100, 1950, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xe3), 2200, 2200, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xe3), 2700, 3000, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xe3), 2750, 3050, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xe3), 2500, 3500, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xe3), 2300, 2000, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xe3), 3250, 2200, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xe3), 3300, 2300, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xe3), 3400, 3050, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xe3), 3250, 3200, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xe3), 2750, 3800, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xe3), 2900, 3800, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xe3), 3000, 2400, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xe3), 2000, 2800, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xe3), 2600, 3200, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe3), 2000, 1900, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe3), 2100, 1950, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe3), 2200, 2200, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe3), 2700, 3000, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe3), 2750, 3050, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe3), 2500, 3500, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe3), 2300, 2000, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe3), 3250, 2200, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe3), 3300, 2300, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe3), 3400, 3050, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe3), 3250, 3200, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe3), 2750, 3800, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe3), 2900, 3800, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe3), 3000, 2400, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe3), 2000, 2800, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe3), 2600, 3200, Property.TextAlignment.CENTER);
         canvas.endLayer(); // hotelLayer
+
         canvas.beginLayer(parkingLayer);
-        doc.showTextAligned(String.valueOf((char) 0xe8), 2400, 2000, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xe8), 2100, 2600, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xe8), 2330, 2250, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xe8), 3000, 3900, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe8), 2400, 2000, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe8), 2100, 2600, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe8), 2330, 2250, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe8), 3000, 3900, Property.TextAlignment.CENTER);
         canvas.endLayer(); // parkingLayer
+
         canvas.beginLayer(businessLayer);
         canvas.setFillColorRgb(0xC0, 0xC0, 0xC0);
-        doc.showTextAligned(String.valueOf((char) 0x46), 3050, 3600, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0x46), 3200, 3900, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0x46), 3150, 3700, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0x46), 3260, 3610, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0x46), 3350, 3750, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0x46), 3500, 4000, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0x46), 3500, 3800, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0x46), 3450, 3700, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0x46), 3450, 3600, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0x46), 3050, 3600, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0x46), 3200, 3900, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0x46), 3150, 3700, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0x46), 3260, 3610, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0x46), 3350, 3750, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0x46), 3500, 4000, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0x46), 3500, 3800, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0x46), 3450, 3700, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0x46), 3450, 3600, Property.TextAlignment.CENTER);
         canvas.endLayer(); // businessLayer
+
         canvas.endLayer(); // cityInfoLayer
+
         canvas.beginLayer(goingoutLayer);
+
         canvas.beginLayer(restoLayer);
         canvas.setFillColorRgb(0xFF, 0x14, 0x93);
-        doc.showTextAligned(String.valueOf((char) 0xe4), 2650, 3500, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xe4), 2400, 1900, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xe4), 2750, 3850, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xe4), 2700, 3200, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xe4), 2900, 3100, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xe4), 2850, 3000, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xe4), 2800, 2900, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xe4), 2300, 2900, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xe4), 1950, 2650, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xe4), 1800, 2750, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xe4), 3350, 3150, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xe4), 3400, 3100, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xe4), 3250, 3450, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe4), 2650, 3500, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe4), 2400, 1900, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe4), 2750, 3850, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe4), 2700, 3200, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe4), 2900, 3100, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe4), 2850, 3000, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe4), 2800, 2900, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe4), 2300, 2900, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe4), 1950, 2650, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe4), 1800, 2750, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe4), 3350, 3150, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe4), 3400, 3100, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xe4), 3250, 3450, Property.TextAlignment.CENTER);
         canvas.endLayer(); // restoLayer
+
         canvas.beginLayer(theatreLayer);
         canvas.setFillColorRgb(0xDC, 0x14, 0x3C);
-        doc.showTextAligned(String.valueOf((char) 0xae), 2850, 3300, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xae), 3050, 2900, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xae), 2650, 2900, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xae), 2750, 2600, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xB8), 2800, 3350, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xB8), 2550, 2850, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xB8), 2850, 3300, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xae), 2850, 3300, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xae), 3050, 2900, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xae), 2650, 2900, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xae), 2750, 2600, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xB8), 2800, 3350, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xB8), 2550, 2850, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xB8), 2850, 3300, Property.TextAlignment.CENTER);
         canvas.endLayer(); // theatreLayer
+
         canvas.endLayer(); // goingoutLayer
+
         canvas.beginLayer(monumentLayer);
         canvas.setFillColorRgb(0x00, 0x00, 0x00);
-        doc.showTextAligned(String.valueOf((char) 0x47), 3250, 2750, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0x47), 2750, 2900, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0x47), 2850, 3500, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xad), 2150, 3550, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xad), 3300, 2730, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xad), 2200, 2000, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xad), 2900, 3300, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0xad), 2080, 3000, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0x47), 3250, 2750, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0x47), 2750, 2900, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0x47), 2850, 3500, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xad), 2150, 3550, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xad), 3300, 2730, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xad), 2200, 2000, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xad), 2900, 3300, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0xad), 2080, 3000, Property.TextAlignment.CENTER);
         canvas.endLayer(); // monumentLayer
+
         canvas.beginLayer(sportsLayer);
-        doc.showTextAligned(String.valueOf((char) 0x53), 2700, 4050, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0x53), 2700, 3900, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0x53), 2800, 3980, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0x53), 1950, 2800, Property.TextAlignment.CENTER);
-        doc.showTextAligned(String.valueOf((char) 0x53), 3700, 2450, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0x53), 2700, 4050, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0x53), 2700, 3900, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0x53), 2800, 3980, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0x53), 1950, 2800, Property.TextAlignment.CENTER);
+        canvasModel.showTextAligned(String.valueOf((char) 0x53), 3700, 2450, Property.TextAlignment.CENTER);
         canvas.endLayer(); // sportsLayer
+
         canvas.endText();
         canvas.restoreState();
-        doc.close();
+
+        pdfDoc.close();
     }
 }

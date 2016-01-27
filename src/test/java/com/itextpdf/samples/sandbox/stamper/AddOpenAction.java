@@ -11,20 +11,14 @@
  */
 package com.itextpdf.samples.sandbox.stamper;
 
-import com.itextpdf.core.pdf.PdfArray;
 import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfName;
-import com.itextpdf.core.pdf.PdfNumber;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.pdf.action.PdfAction;
-import com.itextpdf.core.pdf.navigation.PdfDestination;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.core.pdf.navigation.PdfExplicitDestination;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 
 import org.junit.experimental.categories.Category;
 
@@ -41,17 +35,9 @@ public class AddOpenAction extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(
-                new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
-        PdfArray array = new PdfArray();
-        array.add(pdfDoc.getPage(1).getPdfObject());
-        array.add(PdfName.XYZ);
-        array.add(new PdfNumber(0));
-        array.add(new PdfNumber(pdfDoc.getPage(1).getPageSize().getHeight()));
-        array.add(new PdfNumber(0.75f));
-        PdfDestination pdfDest = PdfDestination.makeDestination(array);
-        PdfAction action = PdfAction.createGoTo(pdfDest);
-        pdfDoc.getCatalog().setOpenAction(action);
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
+        pdfDoc.getCatalog()
+                .setOpenAction(PdfExplicitDestination.createXYZ(1, 0, pdfDoc.getPage(1).getPageSize().getHeight(), 0.75f));
         pdfDoc.close();
     }
 }

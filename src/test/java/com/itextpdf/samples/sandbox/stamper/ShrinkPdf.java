@@ -11,21 +11,17 @@
  */
 package com.itextpdf.samples.sandbox.stamper;
 
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
-import com.itextpdf.core.pdf.PdfArray;
-import com.itextpdf.core.pdf.PdfDictionary;
+import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfName;
-import com.itextpdf.core.pdf.PdfNumber;
+import com.itextpdf.core.pdf.PdfPage;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfResources;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 
 import org.junit.experimental.categories.Category;
 
@@ -42,26 +38,20 @@ public class ShrinkPdf extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(
-                new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
-
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
         int n = pdfDoc.getNumberOfPages();
-        PdfDictionary page;
-        PdfArray crop;
-        PdfArray media;
+        PdfPage page;
+        Rectangle crop;
+        Rectangle media;
         for (int p = 1; p <= n; p++) {
-            page = pdfDoc.getPage(p).getPdfObject();
-            media = page.getAsArray(PdfName.CropBox);
+            page = pdfDoc.getPage(p);
+            media = page.getCropBox();
             if (media == null) {
-                media = page.getAsArray(PdfName.MediaBox);
+                media = page.getMediaBox();
             }
-            crop = new PdfArray();
-            crop.add(new PdfNumber(0));
-            crop.add(new PdfNumber(0));
-            crop.add(new PdfNumber(media.getAsFloat(2) / 2));
-            crop.add(new PdfNumber(media.getAsFloat(3) / 2));
-            page.put(PdfName.MediaBox, crop);
-            page.put(PdfName.CropBox, crop);
+            crop = new Rectangle(0, 0, media.getWidth()/2, media.getHeight()/2);
+            page.setMediaBox(crop);
+            page.setCropBox(crop);
             new PdfCanvas(pdfDoc.getPage(p).newContentStreamBefore(),
                     new PdfResources(), pdfDoc).writeLiteral("\nq 0.5 0 0 0.5 0 0 cm\nq\n");
             new PdfCanvas(pdfDoc.getPage(p).newContentStreamAfter(),

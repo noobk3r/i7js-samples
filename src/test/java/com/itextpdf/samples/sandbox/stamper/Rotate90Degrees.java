@@ -17,12 +17,10 @@ import com.itextpdf.core.pdf.PdfNumber;
 import com.itextpdf.core.pdf.PdfPage;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 
 import org.junit.experimental.categories.Category;
 
@@ -39,9 +37,7 @@ public class Rotate90Degrees extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(
-                new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
-
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
         int n = pdfDoc.getNumberOfPages();
         PdfPage page;
         PdfNumber rotate;
@@ -49,10 +45,10 @@ public class Rotate90Degrees extends GenericTest {
             page = pdfDoc.getPage(p);
             rotate = page.getPdfObject().getAsNumber(PdfName.Rotate);
             if (rotate == null) {
-                page.put(PdfName.Rotate, new PdfNumber(90));
+                page.setRotation(90);
             }
             else {
-                page.put(PdfName.Rotate, new PdfNumber((rotate.getIntValue() + 90) % 360));
+                page.setRotation((rotate.getIntValue() + 90) % 360);
             }
         }
         pdfDoc.close();

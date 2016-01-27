@@ -11,21 +11,15 @@ import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
-import com.itextpdf.model.element.Cell;
-import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class AddLongTable extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/stamper/hello.pdf";
@@ -39,16 +33,15 @@ public class AddLongTable extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(
-                new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
         Document doc = new Document(pdfDoc, PageSize.A4.clone());
         doc.setTopMargin(72);
         Table table = new Table(2);
         for (int i = 0; i < 250; ) {
-            table.addCell(new Cell().add(new Paragraph("Row " + (++i))));
-            table.addCell(new Cell().add(new Paragraph("Test")));
+            table.addCell("Row " + (++i));
+            table.addCell("Test");
         }
         doc.add(table);
-        pdfDoc.close();
+        doc.close();
     }
 }

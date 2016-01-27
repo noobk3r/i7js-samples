@@ -11,20 +11,17 @@
  */
 package com.itextpdf.samples.sandbox.stamper;
 
-import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.basics.font.FontFactory;
-import com.itextpdf.core.font.PdfFontFactory;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.layer.PdfLayer;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.model.Canvas;
+import com.itextpdf.model.Property;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,11 +42,7 @@ public class AddOCG extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(
-                new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
-
-        List<PdfLayer> layers = pdfDoc.getCatalog().getOCProperties(true).getLayers();
-        PdfWriter writer = pdfDoc.getWriter();
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getPage(1));
 
         PdfLayer nested = new PdfLayer("Nested layers", pdfDoc);
@@ -59,34 +52,18 @@ public class AddOCG extends GenericTest {
         nested.addChild(nested_1);
         nested.addChild(nested_2);
 
+        Canvas canvasModel;
         canvas.beginLayer(nested);
-        canvas.beginText();
-        canvas.moveText(50, 755);
-        canvas.setFontAndSize(PdfFontFactory.createFont(FontFactory.createFont(FontConstants.HELVETICA)), 12);
-        // TODO Implement showTextAligned(properties) using canvas(in order to use layers) : LEFT here
-        canvas.showText("nested layers");
-        canvas.endText();
-        canvas.stroke();
+        canvasModel = new Canvas(canvas, pdfDoc, pdfDoc.getDefaultPageSize());
+        canvasModel.showTextAligned("nested layers", 50, 755, Property.TextAlignment.LEFT, 0);
         canvas.endLayer();
 
         canvas.beginLayer(nested_1);
-        canvas.beginText();
-        canvas.moveText(100, 800);
-        canvas.setFontAndSize(PdfFontFactory.createFont(FontFactory.createFont(FontConstants.HELVETICA)), 12);
-        // TODO Implement showTextAligned(properties) using canvas(in order to use layers) : LEFT here
-        canvas.showText("nested layers 1");
-        canvas.endText();
-        canvas.stroke();
+        canvasModel.showTextAligned("nested layers 1", 100, 800, Property.TextAlignment.LEFT, 0);
         canvas.endLayer();
 
         canvas.beginLayer(nested_2);
-        canvas.beginText();
-        canvas.moveText(100, 750);
-        canvas.setFontAndSize(PdfFontFactory.createFont(FontFactory.createFont(FontConstants.HELVETICA)), 12);
-        // TODO Implement showTextAligned(properties) using canvas(in order to use layers) : LEFT here
-        canvas.showText("nested layers 2");
-        canvas.endText();
-        canvas.stroke();
+        canvasModel.showTextAligned("nested layers 2", 100, 750, Property.TextAlignment.LEFT, 0);
         canvas.endLayer();
 
         PdfLayer group = PdfLayer.createTitle("Grouped layers", pdfDoc);
@@ -94,24 +71,13 @@ public class AddOCG extends GenericTest {
         PdfLayer layer2 = new PdfLayer("Group: layer 2", pdfDoc);
         group.addChild(layer1);
         group.addChild(layer2);
+
         canvas.beginLayer(layer1);
-        canvas.beginText();
-        canvas.moveText(50, 700);
-        canvas.setFontAndSize(PdfFontFactory.createFont(FontFactory.createFont(FontConstants.HELVETICA)), 12);
-        // TODO Implement showTextAligned(properties) using canvas(in order to use layers) : LEFT here
-        canvas.showText("layer 1 in the group");
-        canvas.endText();
-        canvas.stroke();
+        canvasModel.showTextAligned("layer 1 in the group", 50, 700, Property.TextAlignment.LEFT, 0);
         canvas.endLayer();
 
         canvas.beginLayer(layer2);
-        canvas.beginText();
-        canvas.moveText(50, 675);
-        canvas.setFontAndSize(PdfFontFactory.createFont(FontFactory.createFont(FontConstants.HELVETICA)), 12);
-        // TODO Implement showTextAligned(properties) using canvas(in order to use layers) : LEFT here
-        canvas.showText("layer 2 in the group");
-        canvas.endText();
-        canvas.stroke();
+        canvasModel.showTextAligned("layer 2 in the group", 50, 675, Property.TextAlignment.LEFT, 0);
         canvas.endLayer();
 
         PdfLayer radiogroup = PdfLayer.createTitle("Radio group", pdfDoc);
@@ -129,55 +95,33 @@ public class AddOCG extends GenericTest {
         options.add(radio2);
         options.add(radio3);
         PdfLayer.addOCGRadioGroup(pdfDoc, options);
+
         canvas.beginLayer(radio1);
-        canvas.beginText();
-        canvas.moveText(50, 600);
-        canvas.setFontAndSize(PdfFontFactory.createFont(FontFactory.createFont(FontConstants.HELVETICA)), 12);
-        // TODO Implement showTextAligned(properties) using canvas(in order to use layers) : LEFT here
-        canvas.showText("option 1");
-        canvas.endText();
+        canvasModel.showTextAligned("option 1", 50, 600, Property.TextAlignment.LEFT, 0);
         canvas.endLayer();
+
         canvas.beginLayer(radio2);
-        canvas.beginText();
-        canvas.moveText(50, 575);
-        canvas.setFontAndSize(PdfFontFactory.createFont(FontFactory.createFont(FontConstants.HELVETICA)), 12);
-        // TODO Implement showTextAligned(properties) using canvas(in order to use layers) : LEFT here
-        canvas.showText("option 2");
-        canvas.endText();
+        canvasModel.showTextAligned("option 2", 50, 575, Property.TextAlignment.LEFT, 0);
         canvas.endLayer();
+
         canvas.beginLayer(radio3);
-        canvas.beginText();
-        canvas.moveText(50, 550);
-        canvas.setFontAndSize(PdfFontFactory.createFont(FontFactory.createFont(FontConstants.HELVETICA)), 12);
-        // TODO Implement showTextAligned(properties) using canvas(in order to use layers) : LEFT here
-        canvas.showText("option 3");
-        canvas.endText();
+        canvasModel.showTextAligned("option 3", 50, 550, Property.TextAlignment.LEFT, 0);
         canvas.endLayer();
 
         PdfLayer not_printed = new PdfLayer("not printed", pdfDoc);
         not_printed.setOnPanel(false);
         not_printed.setPrint("Print", false);
+
         canvas.beginLayer(not_printed);
-        canvas.beginText();
-        canvas.moveText(300, 700);
-        canvas.setFontAndSize(PdfFontFactory.createFont(FontFactory.createFont(FontConstants.HELVETICA)), 12);
-        // TODO Implement showTextAligned(properties) using canvas(in order to use layers) : CENTER here
-        // TODO Implement rotation : 90 here
-        canvas.showText("PRINT THIS PAGE");
-        canvas.endText();
+        canvasModel.showTextAligned("PRINT THIS PAGE", 300, 700, Property.TextAlignment.CENTER, (float) Math.toRadians(90));
         canvas.endLayer();
 
         PdfLayer zoom = new PdfLayer("Zoom 0.75-1.25", pdfDoc);
         zoom.setOnPanel(false);
         zoom.setZoom(0.75f, 1.25f);
+
         canvas.beginLayer(zoom);
-        canvas.beginText();
-        canvas.moveText(30, 530);
-        canvas.setFontAndSize(PdfFontFactory.createFont(FontFactory.createFont(FontConstants.HELVETICA)), 12);
-        // TODO Implement showTextAligned(properties) using canvas(in order to use layers) : LEFT here
-        // TODO Implement rotation : 90 here
-        canvas.showText("Only visible if the zoomfactor is between 75 and 125%");
-        canvas.endText();
+        canvasModel.showTextAligned("nly visible if the zoomfactor is between 75 and 125%", 30, 530, Property.TextAlignment.LEFT, (float) Math.toRadians(90));
         canvas.endLayer();
 
         pdfDoc.close();

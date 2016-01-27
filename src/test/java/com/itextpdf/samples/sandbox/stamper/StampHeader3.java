@@ -13,19 +13,19 @@ package com.itextpdf.samples.sandbox.stamper;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.FontFactory;
+import com.itextpdf.core.color.Color;
 import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.model.Document;
+import com.itextpdf.core.pdf.canvas.PdfCanvas;
+import com.itextpdf.model.Canvas;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
@@ -44,12 +44,9 @@ public class StampHeader3 extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(
-                new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
-        Document doc = new Document(pdfDoc);
-
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
         Paragraph header = new Paragraph("Copy").setFont(
-                PdfFontFactory.createFont(FontFactory.createFont(FontConstants.HELVETICA))).setFontSize(14);
+                PdfFontFactory.createFont(FontFactory.createFont(FontConstants.HELVETICA))).setFontSize(14).setFontColor(Color.BLACK);
         float x, y;
         for (int i = 1; i <= pdfDoc.getNumberOfPages(); i++) {
             System.out.println(pdfDoc.getPage(i).getRotation());
@@ -62,10 +59,12 @@ public class StampHeader3 extends GenericTest {
                 x = pdfDoc.getPage(i).getPageSize().getHeight() / 2;
                 y = pdfDoc.getPage(i).getPageSize().getRight() - 20;
             }
-            // TODO need to get OVER content to write properly
-            doc.showTextAligned(header, x, y, i, Property.TextAlignment.CENTER, null, 0);
+            // TODO Do not show text over content
+            new Canvas(new PdfCanvas(pdfDoc.getPage(i).newContentStreamAfter(), pdfDoc.getPage(i).getResources(), pdfDoc),
+                    pdfDoc, pdfDoc.getPage(i).getPageSize()).showTextAligned(header, x, y,
+                    i, Property.TextAlignment.CENTER, Property.VerticalAlignment.MIDDLE, 0);
+            // doc.showTextAligned(header, x, y, i, Property.TextAlignment.CENTER, null, 0);
         }
-
         pdfDoc.close();
     }
 }

@@ -11,7 +11,6 @@
  */
 package com.itextpdf.samples.sandbox.stamper;
 
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.color.DeviceGray;
 import com.itextpdf.core.pdf.PdfArray;
 import com.itextpdf.core.pdf.PdfDictionary;
@@ -20,12 +19,11 @@ import com.itextpdf.core.pdf.PdfName;
 import com.itextpdf.core.pdf.PdfNumber;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 
 import org.junit.experimental.categories.Category;
 
@@ -42,8 +40,7 @@ public class AddExtraMargin extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(
-                new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
         int n = pdfDoc.getNumberOfPages();
         PdfCanvas over;
         PdfDictionary pageDict;
@@ -58,7 +55,6 @@ public class AddExtraMargin extends GenericTest {
             ury = mediaBox.getAsFloat(3);
             mediaBox.set(0, new PdfNumber(llx - 36));
             over = new PdfCanvas(pdfDoc.getPage(i));
-            //over = stamper.getOverContent(i);
             over.saveState();
             over.setFillColor(new DeviceGray(0.5f));
             over.rectangle(llx - 36, lly, 36, ury - llx);

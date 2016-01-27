@@ -21,13 +21,11 @@ import com.itextpdf.core.pdf.action.PdfAction;
 import com.itextpdf.core.pdf.annot.PdfAnnotation;
 import com.itextpdf.core.pdf.annot.PdfLinkAnnotation;
 import com.itextpdf.core.pdf.navigation.PdfDestination;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 
 import org.junit.experimental.categories.Category;
 
@@ -44,8 +42,7 @@ public class AddNavigation extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(
-                new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
         int[] borders = {0, 0, 1};
         PdfArray array = new PdfArray();
@@ -71,6 +68,6 @@ public class AddNavigation extends GenericTest {
                 .setBorder(new PdfArray(borders))
                 .setColor(new PdfArray(new float[]{0, 1, 0}));
         pdfDoc.getPage(10).addAnnotation(a1);
-        pdfDoc.close();
+        doc.close();
     }
 }

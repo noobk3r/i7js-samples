@@ -16,15 +16,15 @@ import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.core.pdf.canvas.PdfCanvas;
+import com.itextpdf.model.Canvas;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
@@ -43,8 +43,7 @@ public class StampHeader2 extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(
-                new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
         // TODO Implement setRotateContent(boolean)
         // stamper.setRotateContents(false);
@@ -53,9 +52,11 @@ public class StampHeader2 extends GenericTest {
         for (int i = 1; i <= pdfDoc.getNumberOfPages(); i++) {
             float x = pdfDoc.getPage(i).getPageSize().getWidth() / 2;
             float y = pdfDoc.getPage(i).getPageSize().getTop() - 20;
-            // TODO Implement showTextAligned to show text over content
-            doc.showTextAligned(header, x, y, i, Property.TextAlignment.CENTER, null, 0);
+            // TODO Do not show text over content
+            new Canvas(new PdfCanvas(pdfDoc.getPage(i).newContentStreamAfter(), pdfDoc.getPage(i).getResources(), pdfDoc),
+                    pdfDoc, pdfDoc.getPage(i).getPageSize()).showTextAligned(header, x, y,
+                    i, Property.TextAlignment.CENTER, Property.VerticalAlignment.MIDDLE, 0);
         }
-        pdfDoc.close();
+        doc.close();
     }
 }

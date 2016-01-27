@@ -17,15 +17,13 @@ import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 
 import org.junit.experimental.categories.Category;
 
@@ -35,8 +33,6 @@ public class StampHeader1 extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/stamper/Right.pdf";
     public static final String DEST = "./target/test/resources/sandbox/stamper/stamp_header1.pdf";
 
-
-
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
@@ -45,8 +41,7 @@ public class StampHeader1 extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(
-                new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
         Paragraph header = new Paragraph("Copy").setFont(
                 PdfFontFactory.createStandardFont(FontConstants.HELVETICA)).setFontSize(14);
@@ -54,11 +49,9 @@ public class StampHeader1 extends GenericTest {
         for (int i = 1; i <= pdfDoc.getNumberOfPages(); i++) {
             float x = pdfDoc.getPage(i).getPageSize().getWidth() / 2;
             float y = pdfDoc.getPage(i).getPageSize().getTop() - 20;
-
             doc.showTextAligned(header.setFontColor(Color.RED), x, y, i,
                     Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
         }
         doc.close();
-        //pdfDoc.close();
     }
 }

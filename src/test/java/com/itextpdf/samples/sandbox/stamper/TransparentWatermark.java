@@ -12,23 +12,22 @@ package com.itextpdf.samples.sandbox.stamper;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.font.FontFactory;
-import com.itextpdf.core.font.PdfFontFactory;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
+import com.itextpdf.core.color.Color;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfResources;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.extgstate.PdfExtGState;
-import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.model.Document;
+import com.itextpdf.model.Canvas;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
@@ -47,19 +46,20 @@ public class TransparentWatermark extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(
-                new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
-        Document doc = new Document(pdfDoc);
-
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
         PdfCanvas under = new PdfCanvas(pdfDoc.getFirstPage().newContentStreamBefore(), new PdfResources(), pdfDoc);
         PdfFont font = PdfFontFactory.createFont(FontFactory.createFont(FontConstants.HELVETICA));
         Paragraph p = new Paragraph("This watermark is added UNDER the existing content")
                 .setFont(font).setFontSize(15);
-        doc.showTextAligned(p, 297, 550, 1, Property.TextAlignment.CENTER, Property.VerticalAlignment.TOP, 0);
+        new Canvas(under, pdfDoc, pdfDoc.getDefaultPageSize())
+                .showTextAligned(p, 297, 550, 1, Property.TextAlignment.CENTER, Property.VerticalAlignment.TOP, 0);
         PdfCanvas over = new PdfCanvas(pdfDoc.getFirstPage().newContentStreamAfter(), new PdfResources(), pdfDoc);
+        // Problems with the source file, need to set the right color
+        over.setFillColor(Color.BLACK);
         p = new Paragraph("This watermark is added ON TOP OF the existing content")
                 .setFont(font).setFontSize(15);
-        doc.showTextAligned(p, 297, 500, 1, Property.TextAlignment.CENTER, Property.VerticalAlignment.TOP, 0);
+        new Canvas(over, pdfDoc, pdfDoc.getDefaultPageSize())
+                .showTextAligned(p, 297, 500, 1, Property.TextAlignment.CENTER, Property.VerticalAlignment.TOP, 0);
         p = new Paragraph("This TRANSPARENT watermark is added ON TOP OF the existing content")
                 .setFont(font).setFontSize(15);
         over.saveState();
@@ -67,10 +67,9 @@ public class TransparentWatermark extends GenericTest {
         // TODO Implement setFillOpacity(float)
         // gs1.setFillOpacity(0.5f);
         over.setExtGState(gs1);
-        doc.showTextAligned(p, 297, 450, 1, Property.TextAlignment.CENTER, Property.VerticalAlignment.TOP, 0);
+        new Canvas(over, pdfDoc, pdfDoc.getDefaultPageSize())
+                .showTextAligned(p, 297, 450, 1, Property.TextAlignment.CENTER, Property.VerticalAlignment.TOP, 0);
         over.restoreState();
-
         pdfDoc.close();
     }
-
 }

@@ -8,7 +8,6 @@
 package com.itextpdf.samples.sandbox.stamper;
 
 import com.itextpdf.basics.image.ImageFactory;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.color.DeviceCmyk;
 import com.itextpdf.core.pdf.PdfArray;
 import com.itextpdf.core.pdf.PdfDictionary;
@@ -18,13 +17,12 @@ import com.itextpdf.core.pdf.PdfNumber;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfStream;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.model.element.Image;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
@@ -41,10 +39,24 @@ public class AddSpotColorImage extends GenericTest {
         new AddSpotColorImage().manipulatePdf(DEST);
     }
 
+    public PdfArray getSeparationColorspace(PdfWriter writer, DeviceCmyk cmyk) {
+        PdfArray array = new PdfArray(PdfName.Separation);
+        array.add(new PdfName("mySpotColor"));
+        array.add(PdfName.DeviceCMYK);
+        PdfDictionary func = new PdfDictionary();
+        func.put(PdfName.FunctionType, new PdfNumber(2));
+        func.put(PdfName.Domain, new PdfArray(new float[]{0, 1}));
+        func.put(PdfName.C0, new PdfArray(new float[]{0, 0, 0, 0}));
+        // magic numbers are from itext5
+        func.put(PdfName.C1, new PdfArray(cmyk.getColorValue()));
+        func.put(PdfName.N, new PdfNumber(1));
+        array.add(func);
+        return array;
+    }
+
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(
-                new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
 
         // suppose that this is our image data
         byte circleData[] = {(byte) 0x3c, (byte) 0x7e, (byte) 0xff,
@@ -92,20 +104,5 @@ public class AddSpotColorImage extends GenericTest {
         canvas.addXObject(image.getXObject(), 100, 200, 100);
 
         pdfDoc.close();
-    }
-
-    public PdfArray getSeparationColorspace(PdfWriter writer, DeviceCmyk cmyk) {
-        PdfArray array = new PdfArray(PdfName.Separation);
-        array.add(new PdfName("mySpotColor"));
-        array.add(PdfName.DeviceCMYK);
-        PdfDictionary func = new PdfDictionary();
-        func.put(PdfName.FunctionType, new PdfNumber(2));
-        func.put(PdfName.Domain, new PdfArray(new float[]{0, 1}));
-        func.put(PdfName.C0, new PdfArray(new float[]{0, 0, 0, 0}));
-        // magic numbers are from itext5
-        func.put(PdfName.C1, new PdfArray(cmyk.getColorValue()));
-        func.put(PdfName.N, new PdfNumber(1));
-        array.add(func);
-        return array;
     }
 }

@@ -10,15 +10,13 @@ package com.itextpdf.samples.sandbox.stamper;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 
 import org.junit.experimental.categories.Category;
 
@@ -35,15 +33,13 @@ public class StampPageXofY extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(
-                new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
-
         int n = pdfDoc.getNumberOfPages();
         for (int i = 1; i <= n; i++) {
             doc.showTextAligned(new Paragraph(String.format("page %s of %s", i, n)),
                     559, 806, i, Property.TextAlignment.RIGHT, Property.VerticalAlignment.TOP, 0);
         }
-        pdfDoc.close();
+        doc.close();
     }
 }
