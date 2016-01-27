@@ -15,11 +15,10 @@ import com.itextpdf.core.pdf.PdfArray;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfFormField;
-import com.itextpdf.model.Document;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -45,15 +44,13 @@ public class FillWithUnderline extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(
                 new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
-        Document doc = new Document(pdfDoc);
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         form.flatFields();
         Map<String, PdfFormField> fields = form.getFormFields();
         PdfArray pos = form.getField("Name").getWidgets().get(0).getRectangle();
-        // TODO Implement smth like ColumnText with area defining
         // ColumnText ct = new ColumnText(stamper.getOverContent(pos.page));
         // ct.setSimpleColumn(pos.position);
-        // TODO Implement smth like XMLWorkerHelper.parseToElementList
+        // TODO Implement smth like XMLWorkerHelper.parseToElementList and then revise the sample
         //ElementList elements = XMLWorkerHelper.parseToElementList("<div>Bruno <u>Lowagie</u></div>", null);
         //for (Element element : elements) {
         //    ct.addElement(element);

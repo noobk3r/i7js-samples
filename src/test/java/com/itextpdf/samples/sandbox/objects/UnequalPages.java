@@ -29,7 +29,6 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class UnequalPages extends GenericTest {
-
     public static final String DEST = "./target/test/resources/sandbox/objects/unequal_pages.pdf";
 
     public static void main(String[] args) throws IOException {
@@ -50,6 +49,7 @@ public class UnequalPages extends GenericTest {
         doc.setMargins(2, 2, 2, 2);
         doc.add(p);
         pdfDoc.addNewPage(new PageSize(two));
+        // Skip the first page
         doc.add(new AreaBreak());
         doc.setMargins(20, 20, 20, 20);
         doc.add(p);

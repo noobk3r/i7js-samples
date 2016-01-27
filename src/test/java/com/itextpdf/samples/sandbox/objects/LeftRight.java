@@ -50,18 +50,18 @@ public class LeftRight extends GenericTest {
         p.add("Text to the right");
         doc.add(p);
         Table table = new Table(3);
-        table.addCell(getCell("Text to the left", Property.HorizontalAlignment.LEFT));
-        table.addCell(getCell("Text in the middle", Property.HorizontalAlignment.CENTER));
-        table.addCell(getCell("Text to the right", Property.HorizontalAlignment.RIGHT));
+        table.addCell(getCell("Text to the left", Property.TextAlignment.LEFT));
+        table.addCell(getCell("Text in the middle", Property.TextAlignment.CENTER));
+        table.addCell(getCell("Text to the right", Property.TextAlignment.RIGHT));
         doc.add(table);
 
         doc.close();
     }
 
-    public Cell getCell(String text, Property.HorizontalAlignment alignment) {
+    public Cell getCell(String text, Property.TextAlignment alignment) {
         Cell cell = new Cell().add(new Paragraph(text));
         cell.setPadding(0);
-        cell.setHorizontalAlignment(alignment);
+        cell.setTextAlignment(alignment);
         cell.setBorder(null);
         return cell;
     }

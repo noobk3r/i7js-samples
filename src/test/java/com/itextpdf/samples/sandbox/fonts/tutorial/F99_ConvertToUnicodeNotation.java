@@ -11,7 +11,6 @@
 package com.itextpdf.samples.sandbox.fonts.tutorial;
 
 public class F99_ConvertToUnicodeNotation {
-
     public static void main() throws Exception {
         String s = "Vous êtes d'où?";
         System.out.print("\"");

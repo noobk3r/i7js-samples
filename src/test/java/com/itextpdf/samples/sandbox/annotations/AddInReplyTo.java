@@ -12,18 +12,25 @@
 package com.itextpdf.samples.sandbox.annotations;
 
 import com.itextpdf.basics.geom.Rectangle;
-import com.itextpdf.core.pdf.*;
+import com.itextpdf.core.pdf.PdfArray;
+import com.itextpdf.core.pdf.PdfDictionary;
+import com.itextpdf.core.pdf.PdfDocument;
+import com.itextpdf.core.pdf.PdfName;
+import com.itextpdf.core.pdf.PdfPage;
+import com.itextpdf.core.pdf.PdfReader;
+import com.itextpdf.core.pdf.PdfString;
+import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.annot.PdfAnnotation;
 import com.itextpdf.core.pdf.annot.PdfTextAnnotation;
-import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.model.Document;
 import com.itextpdf.samples.GenericTest;
-import org.junit.experimental.categories.Category;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.List;
+
+import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class AddInReplyTo extends GenericTest {
@@ -40,8 +47,6 @@ public class AddInReplyTo extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)),
                 new PdfWriter(new FileOutputStream(DEST)));
-        Document doc = new Document(pdfDoc);
-
         PdfPage page = pdfDoc.getPage(1);
         List<PdfAnnotation> annots = page.getAnnotations();
         PdfDictionary sticky = annots.get(0).getPdfObject();

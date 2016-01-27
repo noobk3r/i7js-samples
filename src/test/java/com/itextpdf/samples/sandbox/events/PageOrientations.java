@@ -60,7 +60,7 @@ public class PageOrientations extends GenericTest {
         eventHandler.setOrientation(SEASCAPE);
         doc.add(new AreaBreak());
         doc.add(new Paragraph("A simple page in seascape orientation"));
-        pdfDoc.close();
+        doc.close();
     }
 
 

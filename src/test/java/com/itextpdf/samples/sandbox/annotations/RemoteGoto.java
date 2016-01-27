@@ -16,16 +16,17 @@ package com.itextpdf.samples.sandbox.annotations;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.action.PdfAction;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Link;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
-import org.junit.experimental.categories.Category;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
+
+import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class RemoteGoto extends GenericTest {
@@ -51,12 +52,10 @@ public class RemoteGoto extends GenericTest {
     private void createPdf(String src) throws Exception{
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(src)));
         Document doc = new Document(pdfDoc);
-
         Paragraph anchor = new Paragraph("This is a destination");
         anchor.setProperty(Property.DESTINATION, "dest");
         doc.add(anchor);
-
-        pdfDoc.close();
+        doc.close();
     }
 
     private void createPdf2(String dest) throws Exception {
@@ -64,6 +63,6 @@ public class RemoteGoto extends GenericTest {
         Document doc = new Document(pdfDoc);
         Paragraph chunk = new Paragraph(new Link("Link", PdfAction.createGoToR("subdir/xyz.pdf", "dest")));
         doc.add(chunk);
-        pdfDoc.close();
+        doc.close();
     }
 }

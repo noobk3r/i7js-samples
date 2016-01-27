@@ -38,7 +38,6 @@ public class NotoExample extends GenericTest {
     public static final String JAPANESE = "\u8ab0\u3082\u77e5\u3089\u306a\u3044";
     public static final String KOREAN = "\ube48\uc9d1";
 
-
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
         file.getParentFile().mkdirs();

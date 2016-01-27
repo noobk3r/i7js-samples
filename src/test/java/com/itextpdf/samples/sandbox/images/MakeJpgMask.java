@@ -17,16 +17,15 @@ import com.itextpdf.basics.image.ImageFactory;
 import com.itextpdf.basics.io.ByteArrayOutputStream;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
-import javax.imageio.ImageIO;
 
 import org.junit.experimental.categories.Category;
 
@@ -40,6 +39,15 @@ public class MakeJpgMask extends GenericTest {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
         new MakeJpgMask().manipulatePdf(DEST);
+    }
+
+    public static Image makeBlackAndWhitePng(String image) throws IOException {
+        BufferedImage bi = ImageIO.read(new File(image));
+        BufferedImage newBi = new BufferedImage(bi.getWidth(), bi.getHeight(), BufferedImage.TYPE_USHORT_GRAY);
+        newBi.getGraphics().drawImage(bi, 0, 0, null);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ImageIO.write(newBi, "png", baos);
+        return ImageFactory.getImage(baos.toByteArray());
     }
 
     @Override
@@ -58,14 +66,5 @@ public class MakeJpgMask extends GenericTest {
         img.setFixedPosition(0, 0);
         doc.add(img);
         doc.close();
-    }
-
-    public static Image makeBlackAndWhitePng(String image) throws IOException {
-        BufferedImage bi = ImageIO.read(new File(image));
-        BufferedImage newBi = new BufferedImage(bi.getWidth(), bi.getHeight(), BufferedImage.TYPE_USHORT_GRAY);
-        newBi.getGraphics().drawImage(bi, 0, 0, null);
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        ImageIO.write(newBi, "png", baos);
-        return ImageFactory.getImage(baos.toByteArray());
     }
 }

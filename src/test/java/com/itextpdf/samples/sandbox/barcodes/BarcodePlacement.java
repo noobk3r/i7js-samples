@@ -32,6 +32,13 @@ public class BarcodePlacement extends GenericTest {
         new BarcodePlacement().manipulatePdf(DEST);
     }
 
+    // IMPORTANT We've changed the order of arguments (in comparison with itext5 example) to make it more clear
+    public Image createBarcode(float mw, float mh, PdfDocument pdfDoc) {
+        BarcodePDF417 barcode = new BarcodePDF417();
+        barcode.setCode("BarcodePDF417 barcode");
+        return new Image(barcode.createFormXObject(Color.BLACK, pdfDoc)).scale(mw, mh);
+    }
+
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         FileOutputStream fos = new FileOutputStream(dest);
@@ -53,12 +60,5 @@ public class BarcodePlacement extends GenericTest {
         doc.add(img);
 
         doc.close();
-    }
-
-    // IMPORTANT We've changed the order of arguments (in comparison with itext5 example) to make it more clear
-    public Image createBarcode(float mw, float mh, PdfDocument pdfDoc) {
-        BarcodePDF417 barcode = new BarcodePDF417();
-        barcode.setCode("BarcodePDF417 barcode");
-        return new Image(barcode.createFormXObject(Color.BLACK, pdfDoc)).scale(mw, mh);
     }
 }

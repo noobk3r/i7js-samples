@@ -15,13 +15,14 @@ import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.filespec.PdfFileSpec;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
-import org.junit.experimental.categories.Category;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+
+import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class AddEmbeddedFiles extends GenericTest {
@@ -45,8 +46,6 @@ public class AddEmbeddedFiles extends GenericTest {
             PdfFileSpec spec = PdfFileSpec.createEmbeddedFileSpec(pdfDoc,
                     String.format("Some test: %s", s).getBytes(), null, String.format("%s.txt", s), null, null, null, true);
             pdfDoc.addFileAttachment(String.format("Some test: %s", s), spec);
-            //PdfFileAttachmentAnnotation fileAttach = new PdfFileAttachmentAnnotation(pdfDoc, new Rectangle(0, 0), spec);
-            //pdfDoc.getFirstPage().addAnnotation(fileAttach);
         }
         pdfDoc.close();
     }

@@ -14,20 +14,24 @@ package com.itextpdf.samples.sandbox.annotations;
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.basics.image.Image;
 import com.itextpdf.basics.image.ImageFactory;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
-import com.itextpdf.core.pdf.*;
+import com.itextpdf.core.pdf.PdfArray;
+import com.itextpdf.core.pdf.PdfDocument;
+import com.itextpdf.core.pdf.PdfName;
+import com.itextpdf.core.pdf.PdfReader;
+import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.action.PdfAction;
 import com.itextpdf.core.pdf.annot.PdfAnnotation;
 import com.itextpdf.core.pdf.annot.PdfLinkAnnotation;
+import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.navigation.PdfDestination;
-import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.model.Document;
 import com.itextpdf.samples.GenericTest;
-import org.junit.experimental.categories.Category;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+
+import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class AddImageLink extends GenericTest {
@@ -45,7 +49,6 @@ public class AddImageLink extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)),
                 new PdfWriter(new FileOutputStream(DEST)));
-        Document doc = new Document(pdfDoc);
 
         Image img = ImageFactory.getImage(IMG);
         float x = 10;
@@ -57,7 +60,7 @@ public class AddImageLink extends GenericTest {
         Rectangle linkLocation = new Rectangle(x, y, w, h);
 
         PdfArray array = new PdfArray();
-        array.add(doc.getPdfDocument().getPage(pdfDoc.getNumberOfPages()).getPdfObject());
+        array.add(pdfDoc.getPage(pdfDoc.getNumberOfPages()).getPdfObject());
         array.add(PdfName.Fit);
         PdfDestination destination = PdfDestination.makeDestination(array);
         PdfAnnotation annotation = new PdfLinkAnnotation(linkLocation)
@@ -67,5 +70,4 @@ public class AddImageLink extends GenericTest {
 
         pdfDoc.close();
     }
-
 }

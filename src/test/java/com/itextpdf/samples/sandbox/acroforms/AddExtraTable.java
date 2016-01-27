@@ -14,20 +14,16 @@ package com.itextpdf.samples.sandbox.acroforms;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.model.Document;
-import com.itextpdf.model.element.Cell;
-import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.layout.LayoutArea;
 import com.itextpdf.model.layout.LayoutResult;
 import com.itextpdf.model.renderer.DocumentRenderer;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.util.Map;
 
 import org.junit.experimental.categories.Category;
@@ -42,8 +38,8 @@ public class AddExtraTable extends GenericTest {
     }
 
     protected void manipulatePdf(String dest) throws Exception {
-        PdfReader reader = new PdfReader(new FileInputStream(SRC));
-        PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(new FileOutputStream(DEST)));
+        PdfReader reader = new PdfReader(SRC);
+        PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
 
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
@@ -55,12 +51,12 @@ public class AddExtraTable extends GenericTest {
 
         Table table = new Table(new float[]{1, 15});
         table.setWidthPercent(80);
-        table.addHeaderCell(new Cell().add(new Paragraph("#")));
-        table.addHeaderCell(new Cell().add(new Paragraph("description")));
+        table.addHeaderCell("#");
+        table.addHeaderCell("description");
 
         for (int i = 1; i <= 150; i++) {
-            table.addCell(new Cell().add(new Paragraph(String.valueOf(i))));
-            table.addCell(new Cell().add(new Paragraph("test " + i)));
+            table.addCell(String.valueOf(i));
+            table.addCell("test " + i);
         }
 
         doc.setRenderer(new DocumentRenderer(doc) {

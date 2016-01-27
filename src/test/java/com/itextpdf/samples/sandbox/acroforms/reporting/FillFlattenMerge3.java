@@ -14,18 +14,16 @@ import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.util.HashMap;
 import java.util.Map;
@@ -44,7 +42,6 @@ public class FillFlattenMerge3 extends GenericTest {
             "name", "abbr", "capital", "city", "population", "surface", "timezone1", "timezone2", "dst"
     };
 
-
     protected Map<String, Rectangle> positions;
 
     public static void main(String[] args) throws Exception {
@@ -55,10 +52,8 @@ public class FillFlattenMerge3 extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)),
-                new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
         PdfFont font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
-
 
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         positions = new HashMap<>();

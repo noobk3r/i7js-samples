@@ -13,17 +13,16 @@ package com.itextpdf.samples.sandbox.acroforms;
 
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.forms.fields.PdfTextFormField;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Cell;
-import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
 import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -49,12 +48,12 @@ public class CreateFormInTable extends GenericTest {
 
         Table table = new Table(2);
         Cell cell;
-        cell = new Cell().add(new Paragraph("Name:"));
+        cell = new Cell().add("Name:");
         table.addCell(cell);
         cell = new Cell();
         cell.setNextRenderer(new MyCellRenderer(cell, "name"));
         table.addCell(cell);
-        cell = new Cell().add(new Paragraph("Address"));
+        cell = new Cell().add("Address");
         table.addCell(cell);
         cell = new Cell();
         cell.setNextRenderer(new MyCellRenderer(cell, "address"));

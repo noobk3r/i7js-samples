@@ -12,14 +12,13 @@
 package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.basics.geom.Rectangle;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.color.DeviceGray;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.model.Document;
+import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -39,8 +38,6 @@ public class Rectangles extends GenericTest {
 
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
-        Document doc = new Document(pdfDoc);
-
         float llx = 36;
         float lly = 700;
         float urx = 200;
@@ -60,7 +57,6 @@ public class Rectangles extends GenericTest {
                 .setFillColor(new DeviceGray(0.1f))
                 .rectangle(rect2)
                 .fillStroke();
-
-        doc.close();
+        pdfDoc.close();
     }
 }

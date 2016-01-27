@@ -13,18 +13,21 @@ package com.itextpdf.samples.sandbox.annotations;
 
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.color.Color;
-import com.itextpdf.core.pdf.*;
+import com.itextpdf.core.pdf.PdfDocument;
+import com.itextpdf.core.pdf.PdfName;
+import com.itextpdf.core.pdf.PdfNumber;
+import com.itextpdf.core.pdf.PdfReader;
+import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.action.PdfAction;
 import com.itextpdf.core.pdf.annot.PdfAnnotation;
 import com.itextpdf.core.pdf.annot.PdfLinkAnnotation;
 import com.itextpdf.core.pdf.annot.PdfStampAnnotation;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
-import org.junit.experimental.categories.Category;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+
+import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class AddRotatedAnnotation extends GenericTest {
@@ -39,8 +42,7 @@ public class AddRotatedAnnotation extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)),
-                new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
 
         PdfAction action = PdfAction.createURI("http://pages.itextpdf.com/ebook-stackoverflow-questions.html");
         Rectangle linkLocation1 = new Rectangle(30, 770, 120 - 30, 800 - 770);

@@ -37,7 +37,6 @@ public class RawImages extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
@@ -46,27 +45,35 @@ public class RawImages extends GenericTest {
         Image gray = new Image(ImageFactory.getImage(1, 1, 1, 8,
                 new byte[]{(byte) 0x80}, null));
         gray.scaleToFit(30, 30);
+
         Image red = new Image(ImageFactory.getImage(1, 1, 3, 8,
                 new byte[]{(byte) 255, (byte) 0, (byte) 0}, null));
         red.scaleToFit(30, 30);
+
         Image green = new Image(ImageFactory.getImage(1, 1, 3, 8,
                 new byte[]{(byte) 0, (byte) 255, (byte) 0}, null));
         green.scaleToFit(30, 30);
+
         Image blue = new Image(ImageFactory.getImage(1, 1, 3, 8,
                 new byte[]{(byte) 0, (byte) 0, (byte) 255}, null));
         blue.scaleToFit(30, 30);
+
         Image cyan = new Image(ImageFactory.getImage(1, 1, 4, 8,
                 new byte[]{(byte) 255, (byte) 0, (byte) 0, (byte) 0}, null));
         cyan.scaleToFit(30, 30);
+
         Image magenta = new Image(ImageFactory.getImage(1, 1, 4, 8,
                 new byte[]{(byte) 0, (byte) 255, (byte) 0, (byte) 0}, null));
         magenta.scaleToFit(30, 30);
+
         Image yellow = new Image(ImageFactory.getImage(1, 1, 4, 8,
                 new byte[]{(byte) 0, (byte) 0, (byte) 255, (byte) 0}, null));
         yellow.scaleToFit(30, 30);
+
         Image black = new Image(ImageFactory.getImage(1, 1, 4, 8,
                 new byte[]{(byte) 0, (byte) 0, (byte) 0, (byte) 255}, null));
         black.scaleToFit(30, 30);
+
         doc.add(gray);
         doc.add(red);
         doc.add(green);
@@ -75,6 +82,7 @@ public class RawImages extends GenericTest {
         doc.add(magenta);
         doc.add(yellow);
         doc.add(black);
+
         doc.close();
     }
 }

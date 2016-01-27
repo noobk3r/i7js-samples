@@ -48,6 +48,6 @@ public class F03_Embedded extends GenericTest {
         doc.add(new Paragraph("On je in\u017een\u00fdr. Ona je l\u00e9ka\u0159.").setFont(font));
         doc.add(new Paragraph("Toto je okno.").setFont(font));
         doc.add(new Paragraph("Zopakujte to pros\u00edm.").setFont(font));
-        pdfDoc.close();
+        doc.close();
     }
 }

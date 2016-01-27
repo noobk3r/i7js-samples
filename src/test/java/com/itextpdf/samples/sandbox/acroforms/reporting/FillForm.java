@@ -10,13 +10,11 @@ package com.itextpdf.samples.sandbox.acroforms.reporting;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 
 import org.junit.experimental.categories.Category;
 
@@ -24,7 +22,6 @@ import org.junit.experimental.categories.Category;
 public class FillForm extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/acroforms/reporting/state.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/reporting/fill_form.pdf";
-
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -34,9 +31,7 @@ public class FillForm extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)),
-                new PdfWriter(new FileOutputStream(DEST)));
-
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         form.getField("name").setValue("CALIFORNIA");
         form.getField("abbr").setValue("CA");

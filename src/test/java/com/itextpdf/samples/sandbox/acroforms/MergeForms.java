@@ -10,10 +10,9 @@ package com.itextpdf.samples.sandbox.acroforms;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.model.Document;
-import com.itextpdf.samples.GenericTest;
 import com.itextpdf.core.utils.PdfMerger;
+import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -47,7 +46,6 @@ public class MergeForms extends GenericTest {
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc);
         PdfMerger merger = new PdfMerger(pdfDoc);
         for (PdfReader reader : readers) {
             PdfDocument readerDoc = new PdfDocument(reader);

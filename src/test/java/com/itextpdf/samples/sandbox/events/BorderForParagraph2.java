@@ -60,7 +60,7 @@ public class BorderForParagraph2 extends GenericTest {
             doc.add(renderedParagraph);
             doc.add(new Paragraph("This paragraph no longer has a border."));
         }
-        pdfDoc.close();
+        doc.close();
     }
 
 

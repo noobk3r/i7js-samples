@@ -11,16 +11,15 @@ import com.itextpdf.basics.io.ByteArrayOutputStream;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.PdfPageFormCopier;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.util.Map;
 import java.util.StringTokenizer;
@@ -34,7 +33,6 @@ public class FillFlattenMerge2 extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/acroforms/reporting/fill_flatten_merge2.pdf";
     public static final String DATA = "./src/test/resources/sandbox/acroforms/reporting/united_states.csv";
 
-
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
@@ -43,8 +41,7 @@ public class FillFlattenMerge2 extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
-
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         ByteArrayOutputStream baos;
         PdfReader reader;
         PdfDocument pdfInnerDoc;

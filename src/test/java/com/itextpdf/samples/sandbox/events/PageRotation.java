@@ -65,7 +65,7 @@ public class PageRotation extends GenericTest {
         eventHandler.setRotation(PORTRAIT);
         doc.add(new AreaBreak());
         doc.add(helloWorld);
-        pdfDoc.close();
+        doc.close();
     }
 
 

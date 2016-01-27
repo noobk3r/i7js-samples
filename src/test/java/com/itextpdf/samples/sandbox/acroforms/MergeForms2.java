@@ -12,11 +12,10 @@ import com.itextpdf.basics.io.RandomAccessSourceFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.forms.PdfAcroForm;
-import com.itextpdf.model.Document;
-import com.itextpdf.samples.GenericTest;
 import com.itextpdf.core.utils.PdfMerger;
+import com.itextpdf.forms.PdfAcroForm;
+import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -45,7 +44,6 @@ public class MergeForms2 extends GenericTest {
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc);
         PdfMerger merger = new PdfMerger(pdfDoc);
         for (int i = 0; i < 3; ) {
             PdfDocument readerDoc = new PdfDocument(new PdfReader(

@@ -21,17 +21,14 @@ import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfStream;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.xobject.PdfImageXObject;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
-import java.awt.Graphics2D;
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-
-import javax.imageio.ImageIO;
 
 import org.junit.experimental.categories.Category;
 
@@ -49,8 +46,8 @@ public class ReduceSize extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfWriter writer = new PdfWriter(new FileOutputStream(DEST)).setFullCompression(true);
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)), writer);
+        PdfWriter writer = new PdfWriter(DEST).setFullCompression(true);
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), writer);
         PdfObject object;
         PdfStream stream;
         for (PdfIndirectReference indRef : pdfDoc.listIndirectReferences()) {
@@ -86,7 +83,6 @@ public class ReduceSize extends GenericTest {
             stream.put(PdfName.BitsPerComponent, new PdfNumber(8));
             stream.put(PdfName.ColorSpace, PdfName.DeviceRGB);
         }
-
         pdfDoc.close();
     }
 }

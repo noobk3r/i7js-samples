@@ -37,6 +37,17 @@ public class Every25Words extends GenericTest {
         new Every25Words().manipulatePdf(DEST);
     }
 
+    public String readFile() throws IOException {
+        StringBuilder sb = new StringBuilder();
+        BufferedReader in = new BufferedReader(new InputStreamReader(
+                new FileInputStream("./src/test/resources/sandbox/events/liber1_1_la.txt"), "UTF8"));
+        String str;
+        while ((str = in.readLine()) != null) {
+            sb.append(str);
+        }
+        return sb.toString();
+    }
+
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
@@ -55,19 +66,7 @@ public class Every25Words extends GenericTest {
             paragraph.add(chunk);
         }
         doc.add(paragraph);
-        pdfDoc.close();
-    }
-
-
-    public String readFile() throws IOException {
-        StringBuilder sb = new StringBuilder();
-        BufferedReader in = new BufferedReader(new InputStreamReader(
-                new FileInputStream("./src/test/resources/sandbox/events/liber1_1_la.txt"), "UTF8"));
-        String str;
-        while ((str = in.readLine()) != null) {
-            sb.append(str);
-        }
-        return sb.toString();
+        doc.close();
     }
 
 

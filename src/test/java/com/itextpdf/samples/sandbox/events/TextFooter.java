@@ -54,7 +54,7 @@ public class TextFooter extends GenericTest {
                 doc.add(new AreaBreak());
             }
         }
-        pdfDoc.close();
+        doc.close();
     }
 
 

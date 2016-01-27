@@ -15,25 +15,21 @@ import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfStream;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.xobject.PdfImageXObject;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Image;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
 import org.junit.experimental.categories.Category;
-
 
 @Category(SampleTest.class)
 public class ReuseImage extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/images/single_image.pdf";
     public static final String DEST = "./target/test/resources/sandbox/images/reuse_image.pdf";
-
-
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -43,12 +39,10 @@ public class ReuseImage extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)));
-
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC));
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc2 = new PdfDocument(writer);
-
 
         PdfDictionary pageDict = pdfDoc.getPage(1).getPdfObject();
         PdfDictionary pageResources = pageDict.getAsDictionary(PdfName.Resources);
@@ -66,9 +60,7 @@ public class ReuseImage extends GenericTest {
         image.setHeight(image.getImageHeight() * (Float) image.getProperty(Property.VERTICAL_SCALING));
 
         Document doc = new Document(pdfDoc2, PageSize.A4.rotate());
-
         doc.add(image);
         doc.close();
-
     }
 }

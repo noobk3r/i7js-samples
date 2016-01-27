@@ -28,7 +28,6 @@ import java.io.FileOutputStream;
 
 import org.junit.experimental.categories.Category;
 
-
 @Category(SampleTest.class)
 public class LargeImage2 extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/images/large_image.pdf";
@@ -78,9 +77,7 @@ public class LargeImage2 extends GenericTest {
         reader.close();
         // We create a new file that only contains the new first page
         reader = new PdfReader(tmp.getAbsolutePath());
-        pdfDoc = new PdfDocument(reader, new PdfWriter(new FileOutputStream(DEST)));
+        pdfDoc = new PdfDocument(reader, new PdfWriter(DEST));
         pdfDoc.close();
-        reader.close();
-
     }
 }

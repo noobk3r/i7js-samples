@@ -16,7 +16,6 @@ package com.itextpdf.samples.sandbox.acroforms;
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfButtonFormField;
 import com.itextpdf.forms.fields.PdfFormField;
@@ -26,6 +25,7 @@ import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
 import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -59,7 +59,7 @@ public class CheckboxCell extends GenericTest {
         }
 
         doc.add(table);
-        pdfDoc.close();
+        doc.close();
     }
 
 

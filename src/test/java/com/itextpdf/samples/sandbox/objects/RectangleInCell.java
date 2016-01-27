@@ -55,26 +55,23 @@ public class RectangleInCell extends GenericTest {
                 rectangle(0, 0, 120, 80).
                 fill();
         table.addCell(new Cell().add(new Image(template).setAutoScale(true)).setPadding(3));
-        table.addCell(new Cell().add(
-                new Paragraph("The rectangle is scaled to fit inside the cell, you see a padding.")));
+        table.addCell("The rectangle is scaled to fit inside the cell, you see a padding.");
         doc.add(table);
         doc.add(new Paragraph("Option 2:"));
         table = new Table(3);
-        table.addCell(new Cell().add(new Paragraph("A rectangle:")));
+        table.addCell("A rectangle:");
         Cell cell = new Cell().add(new Image(template));
         table.addCell(cell);
-        table.addCell(new Cell().add(
-                new Paragraph("The rectangle keeps its original size, but can overlap other cells in the same row.")));
+        table.addCell("The rectangle keeps its original size, but can overlap other cells in the same row.");
         doc.add(table);
         doc.add(new Paragraph("Option 3:"));
         table = new Table(3);
-        table.addCell(new Cell().add(new Paragraph("A rectangle:")));
+        table.addCell("A rectangle:");
         cell = new Cell().add(new Image(template).setAutoScale(true));
         table.addCell(cell);
-        table.addCell(new Cell().add(
-                new Paragraph("The rectangle is scaled to fit inside the cell, no padding.")));
+        table.addCell("The rectangle is scaled to fit inside the cell, no padding.");
         doc.add(table);
-        PdfCanvas cb = new PdfCanvas(pdfDoc.getFirstPage());
+        PdfCanvas cb = new PdfCanvas(pdfDoc.getLastPage());
         cb.moveTo(228, 810);
         cb.lineTo(338, 810);
         cb.stroke();

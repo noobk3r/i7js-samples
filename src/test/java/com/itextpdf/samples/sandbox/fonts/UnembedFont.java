@@ -35,28 +35,6 @@ public class UnembedFont extends GenericTest {
         new UnembedFont().manipulatePdf(DEST);
     }
 
-    @Override
-    protected void manipulatePdf(String dest) throws Exception {
-        createPdf(SRC);
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(
-                new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
-
-        // / we loop over all objects
-        PdfObject obj;
-        for (int i = 1; i < pdfDoc.getNumberOfPdfObjects(); i++) {
-            obj = pdfDoc.getPdfObject(i);
-            // we skip all objects that aren't a dictionary
-            if (obj == null || !obj.isDictionary())
-                continue;
-            // we process all dictionaries
-            unembedTTF((PdfDictionary) obj);
-        }
-        // The unused objects will be removed automatically
-
-        // we persist the altered document
-        pdfDoc.close();
-    }
-
     /**
      * Creates a PDF with an embedded font.
      */
@@ -93,5 +71,27 @@ public class UnembedFont extends GenericTest {
         // is there is, we replace the fontname and remove the font file
         fontDescriptor.put(PdfName.FontName, baseFont);
         fontDescriptor.remove(PdfName.FontFile2);
+    }
+
+    @Override
+    protected void manipulatePdf(String dest) throws Exception {
+        createPdf(SRC);
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(
+                new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
+
+        // / we loop over all objects
+        PdfObject obj;
+        for (int i = 1; i < pdfDoc.getNumberOfPdfObjects(); i++) {
+            obj = pdfDoc.getPdfObject(i);
+            // we skip all objects that aren't a dictionary
+            if (obj == null || !obj.isDictionary())
+                continue;
+            // we process all dictionaries
+            unembedTTF((PdfDictionary) obj);
+        }
+        // The unused objects will be removed automatically
+
+        // we persist the altered document
+        pdfDoc.close();
     }
 }

@@ -67,7 +67,6 @@ public class ColumnTextParagraphs extends GenericTest {
             }
         });
 
-        pdfDoc.addNewPage();
         int paragraphs = 0;
         while (paragraphs < 30) {
             doc.add(new Paragraph(String.format("Paragraph %s: %s", ++paragraphs, TEXT)));

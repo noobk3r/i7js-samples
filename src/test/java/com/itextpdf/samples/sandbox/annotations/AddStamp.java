@@ -13,22 +13,21 @@ package com.itextpdf.samples.sandbox.annotations;
 
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.basics.image.ImageFactory;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfName;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.annot.PdfAnnotation;
 import com.itextpdf.core.pdf.annot.PdfStampAnnotation;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.model.element.Image;
 import com.itextpdf.samples.GenericTest;
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+
+import org.junit.Ignore;
+import org.junit.experimental.categories.Category;
 
 @Ignore
 @Category(SampleTest.class)
@@ -45,8 +44,7 @@ public class AddStamp extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)),
-                new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
 
         Image img = new Image(ImageFactory.getImage(IMG));
         float w = img.getImageScaledWidth();
@@ -65,5 +63,4 @@ public class AddStamp extends GenericTest {
         pdfDoc.getFirstPage().addAnnotation(stamp);
         pdfDoc.close();
     }
-
 }

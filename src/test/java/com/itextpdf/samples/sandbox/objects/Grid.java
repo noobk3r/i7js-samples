@@ -8,12 +8,11 @@
 package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.basics.geom.PageSize;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.model.Document;
+import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -34,7 +33,7 @@ public class Grid extends GenericTest {
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         PageSize pageSize = new PageSize(612, 792);
-        Document doc = new Document(pdfDoc, pageSize);
+        pdfDoc.setDefaultPageSize(pageSize);
 
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         for (float x = 0; x < pageSize.getWidth(); ) {
@@ -46,6 +45,6 @@ public class Grid extends GenericTest {
         }
         canvas.fill();
 
-        doc.close();
+        pdfDoc.close();
     }
 }

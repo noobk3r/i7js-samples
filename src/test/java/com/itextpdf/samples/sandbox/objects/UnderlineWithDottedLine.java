@@ -13,21 +13,24 @@
  */
 package com.itextpdf.samples.sandbox.objects;
 
+import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.core.pdf.canvas.PdfCanvas;
+import com.itextpdf.core.pdf.canvas.PdfCanvasConstants;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
+import com.itextpdf.model.renderer.DrawContext;
+import com.itextpdf.model.renderer.ParagraphRenderer;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class UnderlineWithDottedLine extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/objects/underline_with_dotted_line.pdf";
@@ -43,7 +46,8 @@ public class UnderlineWithDottedLine extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         Paragraph p = new Paragraph("This line will be underlined with a dotted line.");
-        // TODO There is no DottedLineSeparator & we cannot simply draw dotted line because of absence of its position before rendering
+        p.setNextRenderer(new UnderlinedParagraphRenderer(p));
+        // TODO No DottedLineSeparator
         // DottedLineSeparator dottedline = new DottedLineSeparator();
         // dottedline.setOffset(-2);
         // dottedline.setGap(2f);
@@ -51,5 +55,27 @@ public class UnderlineWithDottedLine extends GenericTest {
         doc.add(p);
 
         doc.close();
+    }
+
+
+    protected class UnderlinedParagraphRenderer extends ParagraphRenderer {
+        public UnderlinedParagraphRenderer(Paragraph modelElement) {
+            super(modelElement);
+        }
+
+        @Override
+        public void draw(DrawContext drawContext) {
+            super.draw(drawContext);
+            PdfCanvas canvas = drawContext.getCanvas();
+            Rectangle rect = getOccupiedAreaBBox();
+            canvas
+                    .saveState()
+                    .setLineDash(0, 4, 4 / 2)
+                    .setLineCapStyle(PdfCanvasConstants.LineCapStyle.ROUND)
+                    .moveTo(rect.getLeft(), rect.getBottom())
+                    .lineTo(rect.getRight(), rect.getBottom())
+                    .stroke()
+                    .restoreState();
+        }
     }
 }

@@ -34,7 +34,6 @@ public class RupeeSymbol extends GenericTest {
     public static final String FONT3 = "./src/test/resources/sandbox/fonts/FreeSans.ttf";
     public static final String RUPEE = "The Rupee character \u20B9 and the Rupee symbol \u20A8";
 
-
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
         file.getParentFile().mkdirs();

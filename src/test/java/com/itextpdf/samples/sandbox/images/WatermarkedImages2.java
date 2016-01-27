@@ -102,5 +102,4 @@ public class WatermarkedImages2 extends GenericTest {
                 (float)Math.PI / 180 * 30);
         }
     }
-
 }

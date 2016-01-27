@@ -31,7 +31,6 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class ListWithLeading extends GenericTest {
-
     public static final String DEST = "./target/test/resources/sandbox/objects/list_with_leading.pdf";
 
     public static void main(String[] args) throws IOException {
@@ -67,5 +66,4 @@ public class ListWithLeading extends GenericTest {
 
         doc.close();
     }
-
 }

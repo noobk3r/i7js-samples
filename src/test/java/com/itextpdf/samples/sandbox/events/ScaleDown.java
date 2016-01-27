@@ -61,6 +61,7 @@ public class ScaleDown extends GenericTest {
             canvas.addXObject(page, scale, 0f, 0f, scale, 0f, 0f);
         }
         pdfDoc.close();
+        srcDoc.close();
     }
 
 

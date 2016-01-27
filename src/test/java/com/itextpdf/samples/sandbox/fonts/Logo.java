@@ -10,18 +10,17 @@
  */
 package com.itextpdf.samples.sandbox.fonts;
 
-import com.itextpdf.core.font.PdfFontFactory;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
-import com.itextpdf.core.pdf.canvas.PdfCanvasConstants;
 import com.itextpdf.core.color.DeviceRgb;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.font.PdfType3Font;
 import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfPage;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.core.pdf.canvas.PdfCanvas;
+import com.itextpdf.core.pdf.canvas.PdfCanvasConstants;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -94,19 +93,8 @@ public class Logo extends GenericTest {
         x.stroke();
 
         Paragraph p = new Paragraph("ITEXT").setFont(t3).setFontSize(20);
-
-        PdfPage page = pdfDoc.addNewPage();
-        PdfCanvas canvas = new PdfCanvas(page);
-        canvas.saveState()
-                .beginText()
-                .setFontAndSize(t3, 20)
-                .moveText(50, 800)
-                .showText("ITEXT")
-                        // TODO showText doesn't notice "\n"
-                .showText("I\nT\nE\nX\nT")
-                .endText();
-        // TODO Document.add on type3-fonted text throws NullPointerException: no encoding
         doc.add(p);
+
         p = new Paragraph("I\nT\nE\nX\nT").setFixedLeading(20).setFont(t3).setFontSize(20);
         doc.add(p);
 

@@ -43,6 +43,17 @@ public class WatermarkedImages3 extends GenericTest {
         new WatermarkedImages3().manipulatePdf(DEST);
     }
 
+    public Image getWatermarkedImage(Document doc, Image img, String watermark) {
+        float width = img.getImageScaledWidth();
+        float height = img.getImageScaledHeight();
+        PdfFormXObject template = new PdfFormXObject(new Rectangle(width, height));
+        new Canvas(template, doc.getPdfDocument()).
+                add(img).
+                setProperty(Property.FONT_COLOR, DeviceGray.WHITE).
+                showTextAligned(watermark, width / 2, height / 2, Property.TextAlignment.CENTER, (float) Math.PI * 30f / 180f);
+        return new Image(template);
+    }
+
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         FileOutputStream fos = new FileOutputStream(dest);
@@ -57,16 +68,5 @@ public class WatermarkedImages3 extends GenericTest {
         doc.add(table);
         doc.showTextAligned("Bruno knows best", 260, 400, Property.TextAlignment.CENTER, 45f * (float)Math.PI / 180f);
         doc.close();
-    }
-
-    public Image getWatermarkedImage(Document doc, Image img, String watermark) {
-        float width = img.getImageScaledWidth();
-        float height = img.getImageScaledHeight();
-        PdfFormXObject template = new PdfFormXObject(new Rectangle(width, height));
-        new Canvas(template, doc.getPdfDocument()).
-                add(img).
-                setProperty(Property.FONT_COLOR, DeviceGray.WHITE).
-                showTextAligned(watermark, width / 2, height / 2, Property.TextAlignment.CENTER, (float) Math.PI * 30f / 180f);
-        return new Image(template);
     }
 }

@@ -14,10 +14,10 @@ package com.itextpdf.samples.sandbox.acroforms;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -29,7 +29,6 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class RemoveXFA extends GenericTest {
-
     public static final String SRC = "./src/test/resources/sandbox/acroforms/reportcardinitial.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/remove_xfa.pdf";
 

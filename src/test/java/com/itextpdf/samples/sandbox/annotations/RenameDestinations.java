@@ -14,17 +14,21 @@
  */
 package com.itextpdf.samples.sandbox.annotations;
 
-import com.itextpdf.core.pdf.*;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.core.pdf.PdfArray;
+import com.itextpdf.core.pdf.PdfDictionary;
+import com.itextpdf.core.pdf.PdfDocument;
+import com.itextpdf.core.pdf.PdfName;
+import com.itextpdf.core.pdf.PdfReader;
+import com.itextpdf.core.pdf.PdfString;
+import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.samples.GenericTest;
-
-import org.junit.experimental.categories.Category;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class RenameDestinations extends GenericTest {
@@ -39,8 +43,7 @@ public class RenameDestinations extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)),
-                new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
         Map<String, PdfString> renamed = new HashMap<>();
         PdfDictionary catalog = pdfDoc.getCatalog().getPdfObject();
         PdfDictionary names = catalog.getAsDictionary(PdfName.Names);

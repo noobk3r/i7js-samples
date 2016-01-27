@@ -26,7 +26,6 @@ import java.io.IOException;
 
 import org.junit.experimental.categories.Category;
 
-
 @Category(SampleTest.class)
 public class CellMethod extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/cell_method.pdf";

@@ -68,8 +68,7 @@ public class AddExtraPage extends GenericTest {
         }
 
         form.flatFields();
-        pdfDoc.close();
-
+        doc.close();
     }
 
 

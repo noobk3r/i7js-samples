@@ -36,8 +36,7 @@ import org.junit.experimental.categories.Category;
 public class RenameField {
     public static final String SRC = "./src/test/resources/sandbox/acroforms/subscribe.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/rename_field.pdf";
-
-    static List<String> cmp_result;
+    public static List<String> cmp_result;
 
     static {
         cmp_result = new ArrayList<String>();

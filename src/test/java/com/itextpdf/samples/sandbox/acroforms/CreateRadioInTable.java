@@ -13,17 +13,16 @@ package com.itextpdf.samples.sandbox.acroforms;
 
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfButtonFormField;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Cell;
-import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.model.renderer.CellRenderer;
 import com.itextpdf.model.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -50,17 +49,17 @@ public class CreateRadioInTable extends GenericTest {
         PdfButtonFormField group = PdfFormField.createRadioGroup(pdfDoc, "Language", "English");
         Table table = new Table(2);
         Cell cell;
-        cell = new Cell().add(new Paragraph("English"));
+        cell = new Cell().add("English");
         table.addCell(cell);
         cell = new Cell();
         cell.setNextRenderer(new MyCellRenderer(cell, group, "english"));
         table.addCell(cell);
-        cell = new Cell().add(new Paragraph("French"));
+        cell = new Cell().add("French");
         table.addCell(cell);
         cell = new Cell();
         cell.setNextRenderer(new MyCellRenderer(cell, group, "french"));
         table.addCell(cell);
-        cell = new Cell().add(new Paragraph("Dutch"));
+        cell = new Cell().add("Dutch");
         table.addCell(cell);
         cell = new Cell();
         cell.setNextRenderer(new MyCellRenderer(cell, group, "dutch"));
@@ -69,7 +68,7 @@ public class CreateRadioInTable extends GenericTest {
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         form.addField(group);
 
-        pdfDoc.close();
+        doc.close();
     }
 
 

@@ -13,16 +13,15 @@ package com.itextpdf.samples.sandbox.merge;
 
 import com.itextpdf.basics.geom.PageSize;
 import com.itextpdf.basics.geom.Rectangle;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.xobject.PdfFormXObject;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 import org.junit.experimental.categories.Category;
@@ -30,8 +29,10 @@ import org.junit.experimental.categories.Category;
 // TODO compare the fifth page with itext5 result to see the difference
 @Category(SampleTest.class)
 public class IncorrectExample extends GenericTest {
-    public static final String DEST = "./target/test/resources/sandbox/merge/incorrect_example.pdf";
-    public static final String SOURCE = "./src/test/resources/sandbox/merge/pages.pdf";
+    public static final String DEST
+            = "./target/test/resources/sandbox/merge/incorrect_example.pdf";
+    public static final String SOURCE
+            = "./src/test/resources/sandbox/merge/pages.pdf";
 
     public static void main(String[] args) throws IOException {
         File file = new File(DEST);
@@ -41,7 +42,7 @@ public class IncorrectExample extends GenericTest {
 
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument srcDoc = new PdfDocument(new PdfReader(SOURCE));
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
 
         Rectangle pageSize;
         PdfCanvas canvas;

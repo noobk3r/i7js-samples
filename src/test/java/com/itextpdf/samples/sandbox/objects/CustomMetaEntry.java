@@ -49,5 +49,4 @@ public class CustomMetaEntry extends GenericTest {
 
         doc.close();
     }
-
 }

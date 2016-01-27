@@ -75,7 +75,7 @@ public class VariableHeader extends GenericTest {
                 doc.add(new AreaBreak());
             }
         }
-        pdfDoc.close();
+        doc.close();
     }
 
 

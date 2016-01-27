@@ -43,6 +43,27 @@ public class WatermarkedImages4 extends GenericTest {
         new WatermarkedImages4().manipulatePdf(DEST);
     }
 
+    public Image getWatermarkedImage(PdfDocument pdfDocument, Image img) {
+        float width = img.getImageScaledWidth();
+        float height = img.getImageScaledHeight();
+        PdfFormXObject template = new PdfFormXObject(new Rectangle(width, height));
+        new Canvas(template, pdfDocument).add(img);
+        new PdfCanvas(template, pdfDocument).
+                saveState().
+                setStrokeColor(Color.GREEN).
+                setLineWidth(3).
+                moveTo(width * .25f, height * .25f).
+                lineTo(width * .75f, height * .75f).
+                moveTo(width * .25f, height * .75f).
+                lineTo(width * .25f, height * .25f).
+                stroke().
+                setStrokeColor(Color.WHITE).
+                ellipse(0, 0, width, height).
+                stroke().
+                restoreState();
+        return new Image(template);
+    }
+
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         FileOutputStream fos = new FileOutputStream(dest);
@@ -56,26 +77,5 @@ public class WatermarkedImages4 extends GenericTest {
         image.scaleToFit(400, 700);
         doc.add(getWatermarkedImage(pdfDoc, image));
         doc.close();
-    }
-
-    public Image getWatermarkedImage(PdfDocument pdfDocument, Image img) {
-        float width = img.getImageScaledWidth();
-        float height = img.getImageScaledHeight();
-        PdfFormXObject template = new PdfFormXObject(new Rectangle(width, height));
-        new Canvas(template, pdfDocument).add(img);
-        new PdfCanvas(template, pdfDocument).
-            saveState().
-            setStrokeColor(Color.GREEN).
-            setLineWidth(3).
-            moveTo(width * .25f, height * .25f).
-            lineTo(width * .75f, height * .75f).
-            moveTo(width * .25f, height * .75f).
-            lineTo(width * .25f, height * .25f).
-            stroke().
-                setStrokeColor(Color.WHITE).
-            ellipse(0, 0, width, height).
-            stroke().
-            restoreState();
-        return new Image(template);
     }
 }

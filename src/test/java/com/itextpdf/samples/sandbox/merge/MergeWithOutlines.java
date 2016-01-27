@@ -19,30 +19,34 @@ import com.itextpdf.core.pdf.PdfOutline;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.navigation.PdfExplicitDestination;
-import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.samples.GenericTest;
 import com.itextpdf.core.utils.PdfMerger;
+import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class MergeWithOutlines extends GenericTest {
-    public static final String DEST = "./target/test/resources/sandbox/merge/merge_with_outlines.pdf";
-    public static final String SRC1 = "./src/test/resources/sandbox/merge/hello.pdf";
-    public static final String SRC2 = "./src/test/resources/sandbox/merge/links1.pdf";
-    public static final String SRC3 = "./src/test/resources/sandbox/merge/links2.pdf";
+    public static final String DEST
+            = "./target/test/resources/sandbox/merge/merge_with_outlines.pdf";
+    public static final String SRC1
+            = "./src/test/resources/sandbox/merge/hello.pdf";
+    public static final String SRC2
+            = "./src/test/resources/sandbox/merge/links1.pdf";
+    public static final String SRC3
+            = "./src/test/resources/sandbox/merge/links2.pdf";
 
     public static void main(String[] args) throws IOException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
         new MergeWithOutlines().manipulatePdf(DEST);
     }
+
     public void manipulatePdf(String destFolder) throws IOException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         PdfMerger merger = new PdfMerger(pdfDoc);
         PdfOutline rootOutline = pdfDoc.getOutlines(false);
         if (rootOutline == null) {

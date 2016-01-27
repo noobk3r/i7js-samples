@@ -28,7 +28,8 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class TilingHero extends GenericTest {
-    public static final String DEST = "./target/test/resources/sandbox/merge/tiling_hero.pdf";
+    public static final String DEST
+            = "./target/test/resources/sandbox/merge/tiling_hero.pdf";
     public static final String RESOURCE
             = "./src/test/resources/sandbox/merge/hero.pdf";
     public static void main(String[] args) throws IOException {

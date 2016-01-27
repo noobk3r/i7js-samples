@@ -26,7 +26,6 @@ import org.junit.experimental.categories.Category;
 public class F02_Unembedded extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/fonts/tutorial/f02_unembedded.pdf";
 
-
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
@@ -45,6 +44,6 @@ public class F02_Unembedded extends GenericTest {
         doc.add(new Paragraph("On je in\u017Een\u00FDr. Ona je l\u00E9ka\u0159."));
         doc.add(new Paragraph("Toto je okno."));
         doc.add(new Paragraph("Zopakujte to pros\u00EDm."));
-        pdfDoc.close();
+        doc.close();
     }
 }

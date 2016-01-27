@@ -14,18 +14,19 @@ package com.itextpdf.samples.sandbox.merge;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.samples.GenericTest;
 import com.itextpdf.core.utils.PdfMerger;
-import org.junit.experimental.categories.Category;
+import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
+
+import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class AddCover extends GenericTest {
-    public static final String DEST = "./target/test/resources/sandbox/merge/add_cover.pdf";
+    public static final String DEST
+            = "./target/test/resources/sandbox/merge/add_cover.pdf";
     public static final String COVER
             = "./src/test/resources/sandbox/merge/hero.pdf";
     public static final String RESOURCE
@@ -37,14 +38,13 @@ public class AddCover extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         PdfMerger merger = new PdfMerger(pdfDoc);
         PdfDocument cover = new PdfDocument(new PdfReader(COVER));
         PdfDocument resource = new PdfDocument(new PdfReader(RESOURCE));
         merger.addPages(cover, 1, 1);
         merger.addPages(resource, 1, resource.getNumberOfPages());
         merger.merge();
-
         cover.close();
         resource.close();
         pdfDoc.close();

@@ -16,6 +16,7 @@ import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.model.border.Border;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Cell;
@@ -32,7 +33,6 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class IndentationOptions extends GenericTest {
-
     public static final String DEST = "./target/test/resources/sandbox/objects/indentation_options.pdf";
     public static final String LABEL = "A list of stuff: ";
     public static final String CONTENT = "test A, test B, coconut, coconut, watermelons, apple, oranges, many more " +
@@ -64,11 +64,10 @@ public class IndentationOptions extends GenericTest {
         doc.add(p);
 
         Table table = new Table(new float[]{indentation + 4, 519 - indentation});
-        table.addCell(new Cell().setBorder(null).add(new Paragraph(LABEL)));
-        table.addCell(new Cell().setBorder(null).add(new Paragraph(CONTENT)));
+        table.addCell(new Cell().setBorder(Border.NO_BORDER).add(LABEL));
+        table.addCell(new Cell().setBorder(Border.NO_BORDER).add(CONTENT));
         doc.add(table);
 
         doc.close();
     }
-
 }

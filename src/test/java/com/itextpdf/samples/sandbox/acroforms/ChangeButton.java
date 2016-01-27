@@ -40,7 +40,6 @@ public class ChangeButton extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(
                 new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
-
         PdfFormField button = form.copyField("Test");
         PdfArray rect = button.getWidgets().get(0).getRectangle();
         rect.set(2, new PdfNumber(rect.getAsFloat(2) + 172));

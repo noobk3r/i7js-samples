@@ -13,12 +13,11 @@ package com.itextpdf.samples.sandbox.merge;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.core.utils.PdfSplitter;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
@@ -26,7 +25,8 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class MergeAndCount {
-    public static final String DESTFOLDER = "./samples/target/test/resources/sandbox/merge/";
+    public static final String DESTFOLDER
+            = "./samples/target/test/resources/sandbox/merge/";
     public static final String RESOURCE
             = "./samples/src/test/resources/sandbox/merge/Wrong.pdf";
     public static void main(String[] args) throws IOException {
@@ -39,7 +39,7 @@ public class MergeAndCount {
             @Override
             protected PdfWriter getNextPdfWriter(PageRange documentPageRange) {
                 try {
-                    return new PdfWriter(new FileOutputStream(destFolder + "splitDocument1_" + String.valueOf(partNumber++) + ".pdf"));
+                    return new PdfWriter(destFolder + "splitDocument1_" + String.valueOf(partNumber++) + ".pdf");
                 } catch (FileNotFoundException e) {
                     throw new RuntimeException();
                 }

@@ -26,14 +26,13 @@ import org.junit.experimental.categories.Category;
 
 @Ignore
 @Category(SampleTest.class)
-public class LosingRowContent extends GenericTest {
+public class TableInColumn extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/objects/losing_row_content.pdf";
 
     public static void main(String[] args) throws IOException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
-        // LoggerFactory.getInstance().setLogger(new SysoLogger());
-        new LosingRowContent().manipulatePdf(DEST);
+        new TableInColumn().manipulatePdf(DEST);
     }
 
     public void manipulatePdf(String dest) throws IOException {

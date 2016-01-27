@@ -12,14 +12,20 @@
  */
 package com.itextpdf.samples.sandbox.annotations;
 
-import com.itextpdf.core.pdf.*;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.core.pdf.PdfArray;
+import com.itextpdf.core.pdf.PdfDictionary;
+import com.itextpdf.core.pdf.PdfDocument;
+import com.itextpdf.core.pdf.PdfName;
+import com.itextpdf.core.pdf.PdfReader;
+import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.samples.GenericTest;
-import org.junit.experimental.categories.Category;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+
+import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class RemoveEmbeddedFile extends GenericTest {
@@ -38,7 +44,7 @@ public class RemoveEmbeddedFile extends GenericTest {
                 new PdfWriter(new FileOutputStream(DEST)));
         PdfDictionary root = pdfDoc.getCatalog().getPdfObject();
         PdfDictionary names = root.getAsDictionary(PdfName.Names);
-        PdfDictionary embeddedFiles = names.getAsDictionary(PdfName.EmbeddedFiles); // there is EmbeddedeFile_ constant!
+        PdfDictionary embeddedFiles = names.getAsDictionary(PdfName.EmbeddedFiles);
         PdfArray namesArray = embeddedFiles.getAsArray(PdfName.Names);
         namesArray.remove(0);
         namesArray.remove(0);

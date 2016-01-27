@@ -45,14 +45,14 @@ public class ColoredLetters extends GenericTest {
         Paragraph p = new Paragraph();
         String s = "all text is written in red, except the letters b and g; they are written in blue and green.";
         for (int i = 0; i < s.length(); i++) {
-            p.add(returnCorrectColor(pdfDoc, s.charAt(i)));
+            p.add(returnCorrectColor( s.charAt(i)));
         }
         doc.add(p);
         
         doc.close();
     }
 
-    private Text returnCorrectColor(PdfDocument pdfDoc, char letter) throws IOException {
+    private Text returnCorrectColor(char letter) throws IOException {
         if (letter == 'b') {
             return new Text("b")
                     .setFontColor(Color.BLUE)

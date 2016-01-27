@@ -11,17 +11,17 @@
  */
 package com.itextpdf.samples.sandbox.acroforms;
 
-import com.itextpdf.core.font.PdfFontFactory;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDictionary;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfName;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -34,7 +34,6 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 @Ignore("Document Fonts")
 public class ReuseFont extends GenericTest {
-
     public static final String SRC = "./src/test/resources/sandbox/acroforms/form.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/reuse_font.pdf";
 
@@ -42,6 +41,21 @@ public class ReuseFont extends GenericTest {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
         new ReuseFont().manipulatePdf(DEST);
+    }
+
+    public PdfFont findFontInForm(PdfDocument pdfDoc, PdfName fontName) throws IOException {
+        PdfDictionary acroForm = pdfDoc.getCatalog().getPdfObject().getAsDictionary(PdfName.AcroForm);
+        if (acroForm == null) return null;
+        PdfDictionary dr = acroForm.getAsDictionary(PdfName.DR);
+        if (dr == null) return null;
+        PdfDictionary font = dr.getAsDictionary(PdfName.Font);
+        if (font == null) return null;
+        for (PdfName key : font.keySet()) {
+            if (key.equals(fontName)) {
+                return PdfFontFactory.createFont(font.getAsDictionary(key));
+            }
+        }
+        return null;
     }
 
     @Override
@@ -58,20 +72,5 @@ public class ReuseFont extends GenericTest {
         canvas.endText();
         canvas.stroke();
         pdfDoc.close();
-    }
-
-    public PdfFont findFontInForm(PdfDocument pdfDoc, PdfName fontName) throws IOException {
-        PdfDictionary acroForm = pdfDoc.getCatalog().getPdfObject().getAsDictionary(PdfName.AcroForm);
-        if (acroForm == null) return null;
-        PdfDictionary dr = acroForm.getAsDictionary(PdfName.DR);
-        if (dr == null) return null;
-        PdfDictionary font = dr.getAsDictionary(PdfName.Font);
-        if (font == null) return null;
-        for (PdfName key : font.keySet()) {
-            if (key.equals(fontName)) {
-                return PdfFontFactory.createFont(font.getAsDictionary(key));
-            }
-        }
-        return null;
     }
 }

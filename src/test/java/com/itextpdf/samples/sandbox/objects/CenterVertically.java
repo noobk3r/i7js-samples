@@ -7,19 +7,18 @@
 
 /**
  * This example was written by Bruno Lowagie in answer to the following question:
- * http://stackoverflow.com/questions/26752663/adding-maps-at-itext-java
+ * http://stackoverflow.com/questions/27834540/generating-pdf-structure-on-dynamic-inputs
  */
 package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.basics.geom.Rectangle;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Cell;
-import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.model.element.Table;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -45,8 +44,9 @@ public class CenterVertically extends GenericTest {
 
         Table table;
         Cell cell = new Cell();
-        for (int i = 1; i <= 5; i++)
-            cell.add(new Paragraph("Line " + i));
+        for (int i = 1; i <= 5; i++) {
+            cell.add("Line " + i);
+        }
         table = new Table(1);
         table.addCell(cell);
         table.addCell(cell);

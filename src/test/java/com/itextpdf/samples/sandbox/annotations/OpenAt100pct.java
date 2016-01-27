@@ -12,17 +12,18 @@
 package com.itextpdf.samples.sandbox.annotations;
 
 import com.itextpdf.basics.geom.PageSize;
-import com.itextpdf.core.pdf.*;
-import com.itextpdf.core.pdf.action.PdfAction;
-import com.itextpdf.core.pdf.navigation.PdfDestination;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.core.pdf.PdfDocument;
+import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.pdf.navigation.PdfExplicitDestination;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
-import org.junit.experimental.categories.Category;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
+
+import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class OpenAt100pct extends GenericTest {
@@ -39,14 +40,7 @@ public class OpenAt100pct extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc, new PageSize(612, 792));
         doc.add(new Paragraph("Hello World"));
-        PdfArray array = new PdfArray();
-        array.add(pdfDoc.getPage(1).getPdfObject());
-        array.add(PdfName.XYZ);
-        array.add(new PdfNumber(0));
-        array.add(new PdfNumber(842));
-        array.add(new PdfNumber(1f));
-        PdfDestination pdfDest = PdfDestination.makeDestination(array);
-        pdfDoc.getCatalog().setOpenAction(PdfAction.createGoTo(pdfDest));
-        pdfDoc.close();
+        pdfDoc.getCatalog().setOpenAction(PdfExplicitDestination.createXYZ(1, 0, 842, 1));
+        doc.close();
     }
 }

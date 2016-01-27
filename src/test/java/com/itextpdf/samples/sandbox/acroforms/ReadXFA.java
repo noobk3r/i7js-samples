@@ -9,13 +9,10 @@ package com.itextpdf.samples.sandbox.acroforms;
 
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.xfa.XfaForm;
 import com.itextpdf.samples.GenericTest;
-import org.junit.experimental.categories.Category;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
@@ -25,9 +22,12 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.FileOutputStream;
 
+import org.junit.experimental.categories.Category;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
 @Category(SampleTest.class)
 public class ReadXFA extends GenericTest {
-
     public static final String SRC = "./src/test/resources/sandbox/acroforms/xfa_form_poland.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/xfa_form_poland.xml";
 
@@ -65,5 +65,4 @@ public class ReadXFA extends GenericTest {
         tf.transform(new DOMSource(node), new StreamResult(os));
         pdfDocument.close();
     }
-
 }

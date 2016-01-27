@@ -81,5 +81,4 @@ public class ReadOnlyField2 extends GenericTest {
         doc.close();
         return baos.toByteArray();
     }
-
 }

@@ -14,15 +14,16 @@ package com.itextpdf.samples.sandbox.annotations;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.action.PdfAction;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Link;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
-import org.junit.experimental.categories.Category;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
+
+import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class RelativeLink extends GenericTest {
@@ -43,6 +44,6 @@ public class RelativeLink extends GenericTest {
         Paragraph chunk = new Paragraph(new Link("Click me", PdfAction.createURI("../../../../." + XML)));
         doc.add(chunk);
 
-        pdfDoc.close();
+        doc.close();
     }
 }

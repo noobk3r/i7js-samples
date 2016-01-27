@@ -32,7 +32,6 @@ import java.io.FileInputStream;
 
 import org.junit.experimental.categories.Category;
 
-
 @Category(SampleTest.class)
 public class RepeatImage extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/images/chinese.pdf";
@@ -64,7 +63,5 @@ public class RepeatImage extends GenericTest {
         Document doc = new Document(pdfDoc2);
         doc.add(image);
         doc.close();
-
-
     }
 }

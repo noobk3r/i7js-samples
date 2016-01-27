@@ -71,5 +71,4 @@ public class ExtractStreams {
         Assert.assertArrayEquals(new Integer[] {30965, 74}, streamLengths.toArray(new Integer[streamLengths.size()]));
         pdfDoc.close();
     }
-
 }

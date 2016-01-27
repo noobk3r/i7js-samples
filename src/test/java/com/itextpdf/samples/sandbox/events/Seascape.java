@@ -50,7 +50,7 @@ public class Seascape extends GenericTest {
         doc.add(new Paragraph("Hello World!"));
         doc.add(new AreaBreak());
         doc.add(new Paragraph("Hello World!"));
-        pdfDoc.close();
+        doc.close();
     }
 
 

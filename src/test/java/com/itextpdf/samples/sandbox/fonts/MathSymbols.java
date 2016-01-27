@@ -46,6 +46,6 @@ public class MathSymbols extends GenericTest {
         PdfFont f2 = PdfFontFactory.createFont(FONT, "Identity-H", true);
         Paragraph p2 = new Paragraph("Testing of letters \u010c,\u0106,\u0160,\u017d,\u0110").setFont(f2);
         doc.add(p2);
-        pdfDoc.close();
+        doc.close();
     }
 }

@@ -11,19 +11,20 @@
  */
 package com.itextpdf.samples.sandbox.annotations;
 
-import com.itextpdf.core.pdf.*;
+import com.itextpdf.core.pdf.PdfDocument;
+import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.navigation.PdfDestination;
 import com.itextpdf.core.pdf.navigation.PdfExplicitDestination;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.AreaBreak;
 import com.itextpdf.model.element.Link;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
-import org.junit.experimental.categories.Category;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
-import java.io.FileOutputStream;
+
+import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class XYZDestination extends GenericTest {
@@ -37,7 +38,7 @@ public class XYZDestination extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
         for (int i = 0; i < 10; i++) {
             doc.add(new Paragraph("Test"));
@@ -51,6 +52,6 @@ public class XYZDestination extends GenericTest {
             c = new Paragraph(new Link("Goto page " + i, d));
             doc.add(c);
         }
-        pdfDoc.close();
+        doc.close();
     }
 }

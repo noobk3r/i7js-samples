@@ -16,10 +16,10 @@ import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfStream;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.xobject.PdfImageXObject;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Image;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -30,12 +30,8 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class LargeImage1 extends GenericTest {
-
     public static final String SRC = "./src/test/resources/sandbox/images/large_image.pdf";
     public static final String DEST = "./target/test/resources/sandbox/images/large_image1.pdf";
-
-
-
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -75,7 +71,5 @@ public class LargeImage1 extends GenericTest {
                         image.getImageScaledHeight()));
         doc.add(image);
         doc.close();
-
-
     }
 }

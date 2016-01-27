@@ -12,14 +12,14 @@
 package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.basics.geom.Rectangle;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.model.Document;
+import com.itextpdf.core.pdf.canvas.PdfCanvas;
+import com.itextpdf.model.Canvas;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -41,30 +41,21 @@ public class ColumnTextAscender extends GenericTest {
 
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
-        Document doc = new Document(pdfDoc);
-
         pdfDoc.addNewPage();
-        Rectangle rect = new Rectangle(50, 750, 250, 800);
+        Rectangle rect = new Rectangle(50, 750, 200, 50);
         addColumn(pdfDoc, rect, false);
-        rect = new Rectangle(300, 750, 500, 800);
+        rect = new Rectangle(300, 750, 200, 50);
         addColumn(pdfDoc, rect, true);
-
-        doc.close();
+        pdfDoc.close();
     }
 
     public void addColumn(PdfDocument pdfDoc, Rectangle rect, boolean useAscender) {
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());
         canvas.setLineWidth(0.5f).setStrokeColor(Color.RED).rectangle(rect).stroke();
         Paragraph p = new Paragraph("This text is added at the top of the column.");
-        // TODO Tehre is no ColumnText therefore there is no setUseAscender(boolean)
-        // ColumnText ct = new ColumnText(canvas);
-        // ct.setSimpleColumn(rect);
-        // ct.setUseAscender(useAscender);
-        new Document(pdfDoc).add(p
-                .setWidth(rect.getWidth())
-                .setHeight(rect.getHeight())
-                .setMarginLeft(rect.getLeft()));
-        // ct.addText(p);
-        //ct.go();
+        // TODO No setUseAscender(boolean)
+        new Canvas(canvas, pdfDoc, rect).add(p.setFixedPosition(rect.getX(), rect.getBottom(), rect.getWidth()));
+//                .showTextAligned(p, rect.getLeft(), rect.getTop(), 1,
+//                        Property.TextAlignment.LEFT, Property.VerticalAlignment.TOP, 0);
     }
 }

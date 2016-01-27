@@ -20,12 +20,11 @@ import com.itextpdf.core.pdf.PdfName;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfStream;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 
 import org.junit.experimental.categories.Category;
 
@@ -57,8 +56,7 @@ public class FlateCompressJPEG2Passes extends GenericTest {
         array.add(PdfName.DCTDecode);
         imgStream.put(PdfName.Filter, array);
         pdfDoc.close();
-        pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
+        pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
         pdfDoc.close();
-
     }
 }

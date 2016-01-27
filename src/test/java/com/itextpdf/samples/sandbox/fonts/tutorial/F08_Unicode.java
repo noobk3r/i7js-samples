@@ -77,6 +77,6 @@ public class F08_Unicode extends GenericTest {
                 "\u043f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430.")
                 .setFont(font));
 
-        pdfDoc.close();
+        doc.close();
     }
 }

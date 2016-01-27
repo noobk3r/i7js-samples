@@ -49,7 +49,7 @@ public class DashedUnderline extends GenericTest {
         Text chunk2 = new Text("This text is underlined with a dashed line");
         chunk2.setNextRenderer(new DashedLineTextRenderer(chunk2));
         doc.add(new Paragraph(chunk2));
-        pdfDoc.close();
+        doc.close();
     }
 
 

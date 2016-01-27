@@ -56,5 +56,4 @@ public class FileSelectionExample extends GenericTest {
 
         pdfDoc.close();
     }
-
 }

@@ -34,9 +34,6 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class RadioGroupMultiPage1 extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/acroforms/radio_group_multi_page1.pdf";
-    /**
-     * Possible values of a Choice field.
-     */
     public static final String[] LANGUAGES = {"English", "German", "French", "Spanish", "Dutch"};
 
     public static void main(String[] args) throws Exception {
@@ -62,6 +59,6 @@ public class RadioGroupMultiPage1 extends GenericTest {
                     70, 787, page, Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
         }
         PdfAcroForm.getAcroForm(pdfDoc, true).addField(radioGroup);
-        pdfDoc.close();
+        doc.close();
     }
 }

@@ -32,7 +32,8 @@ public class MultipleImages extends GenericTest {
             "./src/test/resources/sandbox/images/javaone2013.jpg",
             "./src/test/resources/sandbox/images/map_cic.png"
     };
-    public static final String DEST = "./target/test/resources/sandbox/images/multiple_images.pdf";
+    public static final String DEST =
+            "./target/test/resources/sandbox/images/multiple_images.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -47,7 +48,6 @@ public class MultipleImages extends GenericTest {
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc, new PageSize(image.getImageWidth(), image.getImageHeight()));
-
         // TODO why not to add mechanically on the right page
         for (int i = 0; i < IMAGES.length; i++) {
             image = new Image(ImageFactory.getImage(IMAGES[i]));
