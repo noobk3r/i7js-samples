@@ -1,10 +1,6 @@
 package com.itextpdf.samples.book.part2.chapter07;
 
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfObject;
-import com.itextpdf.core.pdf.PdfOutline;
-import com.itextpdf.core.pdf.PdfReader;
-import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.pdf.*;
 import com.itextpdf.core.pdf.action.PdfAction;
 import com.itextpdf.core.pdf.navigation.PdfExplicitDestination;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -51,8 +47,7 @@ public class Listing_07_14_CreateOutlineTree extends GenericTest {
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
-        // TODO No Set viewer preferences
-        //writer.setViewerPreferences(PdfWriter.PageModeUseOutlines);
+        pdfDoc.getCatalog().setPageMode(PdfName.UseOutlines);
         PdfOutline root = pdfDoc.getOutlines(false);
         if (root == null) {
             root = new PdfOutline(pdfDoc);
