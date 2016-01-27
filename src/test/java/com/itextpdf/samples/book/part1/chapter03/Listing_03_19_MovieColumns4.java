@@ -62,9 +62,9 @@ public class Listing_03_19_MovieColumns4 extends Listing_03_16_MovieColumns1 {
             int currentPageNumber;
 
             @Override
-            public LayoutArea getNextArea(LayoutResult overflowResult) {
+            public LayoutArea updateCurrentArea(LayoutResult overflowResult) {
                 if (nextAreaNumber % COLUMNS.length == 0) {
-                    currentPageNumber = super.getNextArea(overflowResult).getPageNumber();
+                    currentPageNumber = super.updateCurrentArea(overflowResult).getPageNumber();
                     drawRectangles(new PdfCanvas(document.getPdfDocument().getLastPage()));
                 }
                 return (currentArea = new LayoutArea(currentPageNumber, COLUMNS[nextAreaNumber++ % COLUMNS.length].clone()));

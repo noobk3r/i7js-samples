@@ -52,9 +52,9 @@ public class ColumnTextParagraphs2 extends GenericTest {
             int currentPageNumber;
 
             @Override
-            public LayoutArea getNextArea(LayoutResult overflowResult) {
+            public LayoutArea updateCurrentArea(LayoutResult overflowResult) {
                 if (nextAreaNumber % 2 == 0) {
-                    currentPageNumber = super.getNextArea(overflowResult).getPageNumber();
+                    currentPageNumber = super.updateCurrentArea(overflowResult).getPageNumber();
                 } else {
                     new PdfCanvas(document.getPdfDocument(), document.getPdfDocument().getNumberOfPages())
                             .moveTo(297.5f, 36)

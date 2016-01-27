@@ -135,9 +135,9 @@ public class CreateTOCinColumn extends GenericTest {
         }
 
         @Override
-        public LayoutArea getNextArea(LayoutResult overflowResult) {
+        public LayoutArea updateCurrentArea(LayoutResult overflowResult) {
             if (nextAreaNumber % 3 == 0) {
-                currentPageNumber = super.getNextArea(overflowResult).getPageNumber();
+                currentPageNumber = super.updateCurrentArea(overflowResult).getPageNumber();
                 nextAreaNumber++;
                 return (currentArea = new LayoutArea(currentPageNumber, new Rectangle(36, 36, 173, 770)));
             } else if (nextAreaNumber % 3 == 1) {

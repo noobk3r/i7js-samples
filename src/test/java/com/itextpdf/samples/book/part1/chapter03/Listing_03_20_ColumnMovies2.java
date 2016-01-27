@@ -58,9 +58,9 @@ public class Listing_03_20_ColumnMovies2 extends GenericTest {
             int currentPageNumber;
 
             @Override
-            public LayoutArea getNextArea(LayoutResult overflowResult) {
+            public LayoutArea updateCurrentArea(LayoutResult overflowResult) {
                 if (nextAreaNumber % 4 == 0) {
-                    currentPageNumber = super.getNextArea(overflowResult).getPageNumber();
+                    currentPageNumber = super.updateCurrentArea(overflowResult).getPageNumber();
                 }
                 return (currentArea = new LayoutArea(currentPageNumber, COLUMNS[nextAreaNumber++ % 4].clone()));
             }

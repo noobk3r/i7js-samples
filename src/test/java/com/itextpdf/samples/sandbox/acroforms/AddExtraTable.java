@@ -58,8 +58,8 @@ public class AddExtraTable extends GenericTest {
 
         doc.setRenderer(new DocumentRenderer(doc) {
             @Override
-            protected LayoutArea getNextArea(LayoutResult overflowResult) {
-                LayoutArea area = super.getNextArea(overflowResult);
+            protected LayoutArea updateCurrentArea(LayoutResult overflowResult) {
+                LayoutArea area = super.updateCurrentArea(overflowResult);
                 if (area.getPageNumber() == 1) {
                     area.getBBox().decreaseHeight(266);
                 }

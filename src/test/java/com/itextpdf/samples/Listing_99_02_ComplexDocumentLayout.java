@@ -45,9 +45,9 @@ public class Listing_99_02_ComplexDocumentLayout extends GenericTest {
             int currentPageNumber;
 
             @Override
-            public LayoutArea getNextArea(LayoutResult overflowResult) {
+            public LayoutArea updateCurrentArea(LayoutResult overflowResult) {
                 if (nextAreaNumber % 2 == 0) {
-                    currentPageNumber = super.getNextArea(overflowResult).getPageNumber();
+                    currentPageNumber = super.updateCurrentArea(overflowResult).getPageNumber();
                     nextAreaNumber++;
                     return (currentArea = new LayoutArea(currentPageNumber, new Rectangle(100, 100, 100, 500)));
                 } else {

@@ -61,9 +61,9 @@ public class Listing_03_16_MovieColumns1 extends GenericTest {
             int currentPageNumber;
 
             @Override
-            public LayoutArea getNextArea(LayoutResult overflowResult) {
+            public LayoutArea updateCurrentArea(LayoutResult overflowResult) {
                 if (nextAreaNumber % 2 == 0) {
-                    currentPageNumber = super.getNextArea(overflowResult).getPageNumber();
+                    currentPageNumber = super.updateCurrentArea(overflowResult).getPageNumber();
                     nextAreaNumber++;
                     return (currentArea = new LayoutArea(currentPageNumber, new Rectangle(36, 36, 260, 770)));
                 } else {
