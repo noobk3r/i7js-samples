@@ -31,8 +31,6 @@ public class FillFormSpecialChars extends GenericTest {
     public static final String VALUE = "\u011b\u0161\u010d\u0159\u017e\u00fd\u00e1\u00ed\u00e9";
     public static final String FONT = "./src/test/resources/sandbox/acroforms/FreeSans.ttf";
 
-
-
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
         file.getParentFile().mkdirs();

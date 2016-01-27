@@ -102,12 +102,12 @@ public class Listing_08_16_MovieAds extends GenericTest {
         // pdfDoc.getFirstPage().addAnnotation(poster.getWidgets().get(0));
         PdfTextFormField movie = PdfFormField.createText(pdfDoc, new Rectangle(millimetersToPoints(0),
                 millimetersToPoints(7), millimetersToPoints(35) - millimetersToPoints(0),
-                millimetersToPoints(25) - millimetersToPoints(7)), "", TEXT);
+                millimetersToPoints(25) - millimetersToPoints(7)), TEXT, "");
         movie.setMultiline(true);
         PdfAcroForm.getAcroForm(pdfDoc, true).addField(movie);
         PdfTextFormField screening = PdfFormField.createText(pdfDoc, new Rectangle(millimetersToPoints(0),
                 millimetersToPoints(0), millimetersToPoints(35) - millimetersToPoints(0),
-                millimetersToPoints(7) - millimetersToPoints(0)), "", YEAR);
+                millimetersToPoints(7) - millimetersToPoints(0)), YEAR, "");
         // TODO No setAlignment on PdfFormField
         // screening.setAlignment(Element.ALIGN_CENTER);
         // TODO DEVSIX-233

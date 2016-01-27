@@ -172,8 +172,8 @@ public class Listing_08_12_ChoiceFields extends GenericTest {
                         langAndExpArray[i][0] = EXPORTVALUES[i];
                         langAndExpArray[i][1] = LANGUAGES[i];
                     }
-                    text = PdfFormField.createComboBox(document, getOccupiedAreaBBox(), langAndExpArray,
-                            "", String.format("choice_%s", cf));
+                    text = PdfFormField.createComboBox(document, getOccupiedAreaBBox(), String.format("choice_%s", cf), "", langAndExpArray
+                    );
                     // TODO No setChoiceSelection(int)
                     //                        text.setChoiceSelection(2);
                     break;
@@ -182,8 +182,8 @@ public class Listing_08_12_ChoiceFields extends GenericTest {
                     for (int i = 0; i < LANGUAGES.length; i++) {
                         langArray[i] = LANGUAGES[i];
                     }
-                    text = PdfFormField.createList(document, getOccupiedAreaBBox(), langArray,
-                            "", String.format("choice_%s", cf));
+                    text = PdfFormField.createList(document, getOccupiedAreaBBox(), String.format("choice_%s", cf), "", langArray
+                    );
                     // TODO DEVSIX-233
                     //text.setBorderColor(Color.GREEN);
                     PdfDictionary borderDict = new PdfDictionary();
@@ -206,8 +206,8 @@ public class Listing_08_12_ChoiceFields extends GenericTest {
                         langAndExpArray[i][0] = EXPORTVALUES[i];
                         langAndExpArray[i][1] = LANGUAGES[i];
                     }
-                    text = PdfFormField.createComboBox(document, getOccupiedAreaBBox(), langAndExpArray,
-                            "", String.format("choice_%s", cf));
+                    text = PdfFormField.createComboBox(document, getOccupiedAreaBBox(), String.format("choice_%s", cf), "", langAndExpArray
+                    );
                     // TODO No setChoiceSelection
                     //    text.setChoiceSelection(4);
                     break;
@@ -216,8 +216,8 @@ public class Listing_08_12_ChoiceFields extends GenericTest {
                     for (int i = 0; i < LANGUAGES.length; i++) {
                         langArray[i] = LANGUAGES[i];
                     }
-                    text = PdfFormField.createComboBox(document, getOccupiedAreaBBox(), langArray,
-                            "", String.format("choice_%s", cf));
+                    text = PdfFormField.createComboBox(document, getOccupiedAreaBBox(), String.format("choice_%s", cf), "", langArray
+                    );
                     text.setFieldFlag(PdfChoiceFormField.FF_EDIT, true);
                     break;
             }

@@ -136,7 +136,7 @@ public class Listing_07_29_Calculator extends GenericTest {
      * @param name   the name of the text field
      */
     public void addTextField(PdfDocument pdfDoc, Rectangle rect, String name) {
-        PdfTextFormField field = PdfFormField.createText(pdfDoc, rect, "", name);
+        PdfTextFormField field = PdfFormField.createText(pdfDoc, rect, name, "");
         field.setMultiline(false).setPassword(false).setMaxLen(0);
         field.getWidgets().get(0).setHighlightMode(PdfName.None);
         field.getWidgets().get(0).put(PdfName.Q, new PdfNumber(2));

@@ -37,14 +37,14 @@ public class FileSelectionExample extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
 
         PdfTextFormField field = PdfFormField.createText(pdfDoc,
-                new Rectangle(36, 788, 559 - 36, 806 - 788), "", "myfile");
+                new Rectangle(36, 788, 559 - 36, 806 - 788), "myfile", "");
         field.setFileSelect(true);
         field.setAdditionalAction(PdfName.U, PdfAction.createJavaScript(
                 "this.getField('myfile').browseForFileToSubmit();"
                         + "this.getField('mytitle').setFocus();"));
         PdfAcroForm.getAcroForm(pdfDoc, true).addField(field);
         PdfTextFormField title = PdfFormField.createText(pdfDoc,
-                new Rectangle(36, 752, 559 - 36, 770 - 752), "", "mytitle");
+                new Rectangle(36, 752, 559 - 36, 770 - 752), "mytitle", "");
         PdfAcroForm.getAcroForm(pdfDoc, true).addField(title);
 
         pdfDoc.close();

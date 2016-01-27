@@ -85,7 +85,7 @@ public class Listing_08_09_TextFieldFonts extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true).setNeedAppearances(appearances);
         PdfTextFormField text = PdfFormField.createText(pdfDoc,
-                new Rectangle(36, 806, 559 - 36, 780 - 806), TEXT, "description");
+                new Rectangle(36, 806, 559 - 36, 780 - 806), "description", TEXT);
         text.setMultiline(true);
         if (font) {
             PdfFont unicode = PdfFontFactory.createFont("c:/windows/fonts/arialuni.ttf", PdfEncodings.IDENTITY_H, true);

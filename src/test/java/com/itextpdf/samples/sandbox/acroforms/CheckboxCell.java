@@ -69,7 +69,7 @@ public class CheckboxCell extends GenericTest {
             float x = (getOccupiedAreaBBox().getLeft() + getOccupiedAreaBBox().getRight()) / 2;
             float y = (getOccupiedAreaBBox().getTop() + getOccupiedAreaBBox().getBottom()) / 2;
             Rectangle rect = new Rectangle(x - 10, y - 10, 20, 20);
-            PdfButtonFormField checkBox = PdfFormField.createCheckBox(drawContext.getDocument(), rect, "Yes", name);
+            PdfButtonFormField checkBox = PdfFormField.createCheckBox(drawContext.getDocument(), rect, name, "Yes");
             PdfAcroForm.getAcroForm(drawContext.getDocument(), true).addField(checkBox);
         }
     }

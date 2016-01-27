@@ -113,7 +113,7 @@ public class Listing_08_07_TextFields extends GenericTest {
         public void draw(DrawContext drawContext) {
             super.draw(drawContext);
             PdfTextFormField text = PdfFormField.createText(drawContext.getDocument(), getOccupiedAreaBBox(),
-                    "Enter your name here...", String.format("text_%s", tf));
+                    String.format("text_%s", tf), "Enter your name here...");
             // TODO DEVSIX-233
             //text.setBackgroundColor(new DeviceGray(0.75f));
             PdfDictionary borderStyleDict = new PdfDictionary();

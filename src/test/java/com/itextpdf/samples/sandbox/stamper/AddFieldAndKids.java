@@ -39,10 +39,10 @@ public class AddFieldAndKids extends GenericTest {
         PdfFormField personal = PdfFormField.createEmptyField(pdfDoc);
         personal.setFieldName("personal");
         PdfTextFormField name =
-                PdfFormField.createText(pdfDoc, new Rectangle(36, 760, 144 - 36, 790 - 760), "", "name");
+                PdfFormField.createText(pdfDoc, new Rectangle(36, 760, 144 - 36, 790 - 760), "name", "");
         personal.addKid(name);
         PdfTextFormField password =
-                PdfFormField.createText(pdfDoc, new Rectangle(150, 760, 450 - 150, 790 - 760), "", "password");
+                PdfFormField.createText(pdfDoc, new Rectangle(150, 760, 450 - 150, 790 - 760), "password", "");
         personal.addKid(password);
         PdfAcroForm.getAcroForm(pdfDoc, true).addField(personal, pdfDoc.getPage(1));
         pdfDoc.close();

@@ -92,7 +92,7 @@ public class ComboBoxItems extends GenericTest {
                 optionsArray[i][1] = options[i];
             }
             PdfChoiceFormField choice = PdfFormField.createComboBox(drawContext.getDocument(), getOccupiedAreaBBox(),
-                    optionsArray, name, name);
+                    name, name, optionsArray);
             PdfAcroForm form = PdfAcroForm.getAcroForm(drawContext.getDocument(), true);
             choice.setFont(font);
             form.addField(choice);

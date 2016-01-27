@@ -54,7 +54,7 @@ public class Listing_13_16_AddJavaScriptToForm extends GenericTest {
         canvas.endText();
 
         // create a radio button field
-        PdfButtonFormField married = PdfFormField.createRadioGroup(pdfDoc, "Yes", "married");
+        PdfButtonFormField married = PdfFormField.createRadioGroup(pdfDoc, "married", "Yes");
         Rectangle rectYes = new Rectangle(40, 744, 16, 22);
         PdfFormField yes = PdfFormField.createRadioButton(pdfDoc, rectYes, married, "Yes");
         Rectangle rectNo = new Rectangle(84, 744, 16, 22);

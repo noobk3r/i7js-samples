@@ -69,7 +69,7 @@ public class CreateFormInTable extends GenericTest {
         @Override
         public void draw(DrawContext drawContext) {
             super.draw(drawContext);
-            PdfTextFormField field = PdfFormField.createText(drawContext.getDocument(), getOccupiedAreaBBox(), "", fieldName);
+            PdfTextFormField field = PdfFormField.createText(drawContext.getDocument(), getOccupiedAreaBBox(), fieldName, "");
             PdfAcroForm form = PdfAcroForm.getAcroForm(drawContext.getDocument(), true);
             form.addField(field);
         }

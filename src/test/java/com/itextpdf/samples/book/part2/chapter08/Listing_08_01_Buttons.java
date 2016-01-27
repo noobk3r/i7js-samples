@@ -76,7 +76,7 @@ public class Listing_08_01_Buttons extends GenericTest {
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         PdfFont font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
         Rectangle rect;
-        PdfButtonFormField radioGroup = PdfFormField.createRadioGroup(pdfDoc, "", "language");
+        PdfButtonFormField radioGroup = PdfFormField.createRadioGroup(pdfDoc, "language", "");
         PdfFormField radio;
         for (int i = 0; i < LANGUAGES.length; i++) {
             rect = new Rectangle(40, 806 - i * 40, 60 - 40, 806 - 788);
@@ -118,7 +118,7 @@ public class Listing_08_01_Buttons extends GenericTest {
                     .restoreState();
 
             rect = new Rectangle(180, 806 - i * 40, 200 - 180, 806 - 788);
-            checkBox = PdfFormField.createCheckBox(pdfDoc, rect, "Off", LANGUAGES[i]);
+            checkBox = PdfFormField.createCheckBox(pdfDoc, rect, LANGUAGES[i], "Off");
             checkBox.getWidgets().get(0).getNormalAppearanceObject().put(new PdfName("Off"),
                     xObjectApp1.getPdfObject());
             checkBox.getWidgets().get(0).getNormalAppearanceObject().put(new PdfName("Yes"),
