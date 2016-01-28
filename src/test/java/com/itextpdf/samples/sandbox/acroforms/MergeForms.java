@@ -5,17 +5,20 @@
 
 */
 
+/**
+ * Example written by Bruno Lowagie in answer to
+ * http://stackoverflow.com/questions/26174675/copy-pdf-with-annotations-using-itext
+ */
 package com.itextpdf.samples.sandbox.acroforms;
 
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.utils.PdfMerger;
+import com.itextpdf.forms.PdfPageFormCopier;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
@@ -36,8 +39,8 @@ public class MergeForms extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfReader[] readers = {
-                new PdfReader(new FileInputStream(getFile1())),
-                new PdfReader(new FileInputStream(getFile2()))
+                new PdfReader(getFile1()),
+                new PdfReader(getFile2())
         };
         manipulatePdf(dest, readers);
     }
@@ -46,13 +49,14 @@ public class MergeForms extends GenericTest {
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
-        PdfMerger merger = new PdfMerger(pdfDoc);
         for (PdfReader reader : readers) {
             PdfDocument readerDoc = new PdfDocument(reader);
-            merger.addPages(readerDoc, 1, readerDoc.getNumberOfPages());
+            // Note that itext7 see name instead of personal.name in the first source file,
+            // so the result file will have the mutual field name. See MergeForms2 to find
+            // how to overcome this difficulty
+            readerDoc.copyPages(1, readerDoc.getNumberOfPages(), pdfDoc, new PdfPageFormCopier());
             readerDoc.close();
         }
-        merger.merge();
         pdfDoc.close();
     }
 

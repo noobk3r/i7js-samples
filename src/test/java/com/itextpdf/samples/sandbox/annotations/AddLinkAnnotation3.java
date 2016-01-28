@@ -53,6 +53,7 @@ public class AddLinkAnnotation3 extends GenericTest {
         Paragraph p = new Paragraph("Download ");
         p.add(link);
         p.add(" and discover \nmore than 200 questions and answers.");
+        // TODO LinkAnnotation did not rotate with the paragraph
         new Document(pdfDoc).showTextAligned(p, 30, 600, 1, Property.TextAlignment.LEFT,
                 Property.VerticalAlignment.TOP, (float) Math.PI / 6);
         pdfDoc.close();

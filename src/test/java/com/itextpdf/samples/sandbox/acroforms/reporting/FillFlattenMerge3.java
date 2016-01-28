@@ -5,17 +5,27 @@
 
 */
 
+/**
+ * This example was written by Bruno Lowagie in answer to the following question:
+ * http://stackoverflow.com/questions/24270195/wrapping-of-arabic-text-using-acrofields-in-itext-5-5
+ */
 package com.itextpdf.samples.sandbox.acroforms.reporting;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.geom.Rectangle;
+import com.itextpdf.core.events.Event;
+import com.itextpdf.core.events.IEventHandler;
+import com.itextpdf.core.events.PdfDocumentEvent;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.pdf.canvas.PdfCanvas;
+import com.itextpdf.core.pdf.xobject.PdfFormXObject;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfFormField;
+import com.itextpdf.model.Canvas;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Paragraph;
@@ -25,14 +35,13 @@ import com.itextpdf.test.annotations.type.SampleTest;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class FillFlattenMerge3 extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/acroforms/reporting/state.pdf";
@@ -52,10 +61,8 @@ public class FillFlattenMerge3 extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
-        PdfFont font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
-
-        PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
+        PdfDocument srcDoc = new PdfDocument(new PdfReader(SRC));
+        PdfAcroForm form = PdfAcroForm.getAcroForm(srcDoc, true);
         positions = new HashMap<>();
         Rectangle rectangle;
         Map<String, PdfFormField> fields = form.getFormFields();
@@ -64,22 +71,26 @@ public class FillFlattenMerge3 extends GenericTest {
             positions.put(name, rectangle);
         }
 
-        // TODO Implement PdfImportedPage
-        // writer.setPageEvent(new Background(writer.getImportedPage(reader, 1)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
+        PdfFont font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
+        pdfDoc.addEventHandler(PdfDocumentEvent.END_PAGE, new PaginationEventHandler(srcDoc.getFirstPage().copyAsFormXObject(pdfDoc)));
+        srcDoc.close();
+
         StringTokenizer tokenizer;
         BufferedReader br = new BufferedReader(new FileReader(DATA));
         String line = br.readLine();
         while ((line = br.readLine()) != null) {
+            pdfDoc.addNewPage();
             int i = 0;
             tokenizer = new StringTokenizer(line, ";");
             while (tokenizer.hasMoreTokens()) {
                 process(doc, FIELDS[i++], tokenizer.nextToken(), font);
             }
-            pdfDoc.addNewPage();
         }
         br.close();
-        pdfDoc.close();
+
+        doc.close();
     }
 
     protected void process(Document doc, String name, String value, PdfFont font) {
@@ -89,20 +100,25 @@ public class FillFlattenMerge3 extends GenericTest {
                 Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
     }
 
-//    public class Background extends PdfPageEventHelper {
-//
-//        PdfImportedPage background;
-//
-//        public Background(PdfImportedPage background) {
-//            this.background = background;
-//        }
-//
-//        @Override
-//        public void onEndPage(PdfWriter writer, Document document) {
-//            PdfContentByte cb = writer.getDirectContentUnder();
-//            cb.addTemplate(background, 0, 0);
-//            ColumnText.showTextAligned(cb, Element.ALIGN_RIGHT, new Phrase("page " + writer.getPageNumber()), 550, 800, 0);
-//        }
-//    }
 
+    protected class PaginationEventHandler implements IEventHandler {
+        PdfFormXObject background;
+
+        public PaginationEventHandler(PdfFormXObject background) throws IOException {
+            this.background = background;
+        }
+
+        @Override
+        public void handleEvent(Event event) {
+            PdfDocument pdfDoc = ((PdfDocumentEvent) event).getDocument();
+            int pageNum = pdfDoc.getPageNumber(((PdfDocumentEvent) event).getPage());
+            // Add the background
+            PdfCanvas canvas = new PdfCanvas(pdfDoc.getPage(pageNum).newContentStreamBefore(),
+                    pdfDoc.getPage(pageNum).getResources(), pdfDoc)
+                        .addXObject(background, 0, 0);
+            // Add the page number
+            new Canvas(canvas, pdfDoc, pdfDoc.getPage(pageNum).getPageSize())
+                    .showTextAligned("page " + pageNum, 550, 800, Property.TextAlignment.RIGHT);
+        }
+    }
 }
