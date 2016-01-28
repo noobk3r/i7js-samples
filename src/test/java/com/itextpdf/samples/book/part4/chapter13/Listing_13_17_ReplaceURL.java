@@ -60,35 +60,31 @@ public class Listing_13_17_ReplaceURL extends GenericTest {
 
         table.addCell("Your name:");
         cell = new Cell(1, 2);
-        PdfTextFormField field = PdfFormField.createText(pdfDoc, new Rectangle(0, 0), "name", "name");
-        // TODO DEVSIX-233
-        // field.setFontSize(12);
+        PdfTextFormField field = PdfFormField.createText(pdfDoc, new Rectangle(0, 0), "name");
+        field.setFontSize(12);
         personal.addKid(field);
         cell.setNextRenderer(new Listing_08_14_ChildFieldEvent(field, 1, cell));
         table.addCell(cell);
         table.addCell("Login:");
         cell = new Cell();
-        field = PdfFormField.createText(pdfDoc, new Rectangle(0, 0), "loginname", "loginname");
-        // TODO DEVSIX-233
-        // field.setFontSize(12);
+        field = PdfFormField.createText(pdfDoc, new Rectangle(0, 0), "loginname");
+        field.setFontSize(12);
         personal.addKid(field);
         cell.setNextRenderer(new Listing_08_14_ChildFieldEvent(field, 1, cell));
         table.addCell(cell);
         cell = new Cell();
-        field = PdfFormField.createText(pdfDoc, new Rectangle(0, 0), "password", "password");
+        field = PdfFormField.createText(pdfDoc, new Rectangle(0, 0), "password");
         field.setFieldFlag(PdfFormField.FF_PASSWORD);
-        // TODO DEVSIX-233
-        // field.setFontSize(12);
+        field.setFontSize(12);
         personal.addKid(field);
         cell.setNextRenderer(new Listing_08_14_ChildFieldEvent(field, 1, cell));
         table.addCell(cell);
         table.addCell("Your motivation:");
         cell = new Cell(1, 2);
         cell.setHeight(60);
-        field = PdfFormField.createText(pdfDoc, new Rectangle(0, 0), "reason", "reason");
+        field = PdfFormField.createText(pdfDoc, new Rectangle(0, 0), "reason");
         field.setMultiline(true);
-        // TODO DEVSIX-233
-        // field.setFontSize(12);
+        field.setFontSize(12);
         personal.addKid(field);
         cell.setNextRenderer(new Listing_08_14_ChildFieldEvent(field, 1, cell));
         table.addCell(cell);
