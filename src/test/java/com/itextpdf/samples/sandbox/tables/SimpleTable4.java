@@ -38,7 +38,7 @@ public class SimpleTable4 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        // Here in itext6 there is only one way of adding paragraph to table. See itext5 example.
+        // Here in itext7 there is only one way of adding paragraph to table. See itext5 example.
         Table table = new Table(1);
         Paragraph right = new Paragraph("This is right, because we create a paragraph with an indentation to the left and as we are adding the paragraph in composite mode, all the properties of the paragraph are preserved.");
         right.setMarginLeft(20);

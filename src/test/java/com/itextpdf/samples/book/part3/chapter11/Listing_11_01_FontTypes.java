@@ -37,7 +37,7 @@ public class Listing_11_01_FontTypes extends GenericTest {
             {/*"c:/windows/fonts/arial.ttf"*/"./src/test/resources/font/FreeSans.ttf", PdfEncodings.WINANSI},
             {/*"c:/windows/fonts/arial.ttf"*/"./src/test/resources/font/FreeSans.ttf", PdfEncodings.IDENTITY_H},
             {"./src/test/resources/book/part3/chapter11/Puritan2.otf", PdfEncodings.WINANSI},
-            // TODO Notice that we'va changed windows MS Gothic to IPA Gothic so the results in comparison with itext5 are different
+            // Notice that we'va changed windows MS Gothic to IPA Gothic so the results in comparison with itext5 are different
             {"./src/test/resources/book/part3/chapter11/ipam.ttc,0", PdfEncodings.IDENTITY_H},
             // TODO Do not render
             {"KozMinPro-Regular", "UniJIS-UCS2-H"}

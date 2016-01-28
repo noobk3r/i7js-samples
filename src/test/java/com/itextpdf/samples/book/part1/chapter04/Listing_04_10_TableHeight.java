@@ -38,7 +38,7 @@ public class Listing_04_10_TableHeight extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        // TODO The example has no sense because in itext6 the height of table and rows is not set until rendering
+        // TODO The example has no sense because in itext7 the height of table and rows is not set until rendering
         Table table = createFirstTable();
         doc.add(new Paragraph(
                 String.format("Table height before doc.add(): %f",

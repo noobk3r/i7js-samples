@@ -48,8 +48,8 @@ public class NestedTables extends GenericTest {
 
         // IMPORTANT!!!
         // Two other examples (with methods buildNestedTables1 and buildNestedTables2)
-        // make no sense in itext6 because there is only one way of adding cells to tables
-        // in itext6. Please, check NestedTables.java in itext5.
+        // make no sense in itext7 because there is only one way of adding cells to tables
+        // in itext7. Please, check NestedTables.java in itext5.
 
         doc.close();
     }

@@ -67,7 +67,7 @@ public class Listing_02_14_MovieLists2 extends GenericTest {
             ListItem item = new ListItem(
                     String.format("%s: %d movies", rs.getString("country"), rs.getInt("c")));
             //item.setListSymbol(new Text(rs.getString("country_id")));
-            // TODO There is only one listSymbol for List in itext6
+            // TODO There is only one listSymbol for List in itext7
             list.setListSymbol(new Text(rs.getString("country_id")));
             // Create a list for the movies produced in the current country
             List movielist = new List(Property.ListNumberingType.ENGLISH_LOWER);

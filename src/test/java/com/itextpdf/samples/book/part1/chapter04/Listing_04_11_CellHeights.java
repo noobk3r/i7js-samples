@@ -59,7 +59,7 @@ public class Listing_04_11_CellHeights extends GenericTest {
         cell = new Cell().add(p);
         // the phrase fits the fixed height
         table.addCell("fixed height (more than sufficient)");
-        // TODO itext6 constricts the height if necessary so this part of the example has no sense anymore
+        // TODO itext7 constricts the height if necessary so this part of the example has no sense anymore
         cell.setHeight(72f);
         table.addCell(cell);
         // the phrase doesn't fit the fixed height

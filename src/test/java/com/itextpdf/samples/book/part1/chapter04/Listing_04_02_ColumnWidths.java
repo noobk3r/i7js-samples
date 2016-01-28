@@ -104,7 +104,7 @@ public class Listing_04_02_ColumnWidths extends GenericTest {
     public static Table createTable4() {
         Table table = new Table(new float[]{144, 72, 72});
         Rectangle rect = new Rectangle(523, 770);
-        // The next line is needed in itext5, although it will cause no difference in itext6
+        // The next line is needed in itext5, although it will cause no difference in itext7
         // table.setWidthPercent((144 + 72 + 72) / 523f * 100);
         Cell cell;
         cell = new Cell(1, 3).add("Table 4");

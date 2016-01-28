@@ -65,9 +65,9 @@ public class Listing_02_24_MovieHistory extends GenericTest {
         int epoch = -1;
         int currentYear = 0;
         Paragraph title = null;
-        // TODO No Chapter in itext6
+        // TODO No Chapter in itext7
         // Chapter chapter = null;
-        // TODO No Section in itext6
+        // TODO No Section in itext7
         // Section section = null;
         // Section subsection = null;
         // loop over the movies

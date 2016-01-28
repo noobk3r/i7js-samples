@@ -52,7 +52,7 @@ public class Listing_10_13_CompressAwt extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(filename));
         Document doc = new Document(pdfDoc, new PageSize(200, 280));
         java.awt.Image awtImage = Toolkit.getDefaultToolkit().createImage(RESOURCE);
-        // TODO No quality argument in itext6(DEVSIX-413)
+        // TODO No quality argument in itext7(DEVSIX-413)
         Image img = new Image(ImageFactory.getImage(awtImage, null));
         img.setFixedPosition(15, 15);
         doc.add(img);

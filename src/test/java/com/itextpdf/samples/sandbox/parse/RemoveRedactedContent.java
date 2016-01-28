@@ -40,7 +40,7 @@ public class RemoveRedactedContent extends GenericTest {
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)),
                 new PdfWriter(new FileOutputStream(dest)));
-        // TODO There is no CleanUp functionality in itext6
+        // TODO There is no CleanUp functionality in itext7
         // PdfCleanUpProcessor cleaner = new PdfCleanUpProcessor(stamper);
         // cleaner.cleanUp();
         pdfDoc.close();

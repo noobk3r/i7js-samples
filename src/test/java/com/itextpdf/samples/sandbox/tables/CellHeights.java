@@ -59,7 +59,7 @@ public class CellHeights extends GenericTest {
         p = new Paragraph("Dr. iText or:\nHow I Learned to Stop Worrying\nand Love PDF.");
         cell = new Cell().add(p);
         table.addCell("No problems with heights");
-        // There is no problem in itext6 with Minimum anf Fixed heights.
+        // There is no problem in itext7 with Minimum anf Fixed heights.
         // If text's heights is bigger than cell's, cells's heights will grow instantly
         cell.setHeight(36f);
         table.addCell(cell.clone(true));
