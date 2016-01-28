@@ -31,7 +31,7 @@ import java.util.List;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore("Document fonts")
+@Ignore("timeout")
 @Category(SampleTest.class)
 public class Listing_06_19_FillDataSheet extends GenericTest{
     public static final String DATASHEET

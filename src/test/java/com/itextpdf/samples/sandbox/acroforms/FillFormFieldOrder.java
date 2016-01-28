@@ -28,10 +28,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Map;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore("Document fonts")
 @Category(SampleTest.class)
 public class FillFormFieldOrder extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/acroforms/calendar_example.pdf";

@@ -9,6 +9,7 @@ package com.itextpdf.samples.book.part4.chapter13;
 
 import com.itextpdf.basics.font.FontConstants;
 import com.itextpdf.basics.geom.Rectangle;
+import com.itextpdf.core.color.Color;
 import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfName;
@@ -71,8 +72,7 @@ public class Listing_13_16_AddJavaScriptToForm extends GenericTest {
         // create a text field
         Rectangle rect = new Rectangle(40, 710, 160, 16);
         PdfTextFormField partner = PdfFormField.createText(pdfDoc, rect, "partner", "partner");
-        // TODO DEVSIX-233
-        // partner.setBorderColor(Color.DARK_GRAY);
+        partner.setBorderColor(Color.DARK_GRAY);
         partner.setBorderWidth(0.5f);
         form.addField(partner);
 

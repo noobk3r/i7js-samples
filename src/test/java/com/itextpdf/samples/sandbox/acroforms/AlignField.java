@@ -24,10 +24,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.Map;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore("Document fonts")
 @Category(SampleTest.class)
 public class AlignField extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/acroforms/subscribe.pdf";

@@ -45,8 +45,7 @@ public class Listing_07_26_ButtonsActions extends GenericTest {
         PdfButtonFormField saveAs =
                 PdfFormField.createPushButton(pdfDoc, new Rectangle(636, 10, 716 - 636, 30 - 10), "Save", "Save");
         saveAs.setBorderColor(Color.BLACK);
-        // TODO DEVSIX-233
-        // saveAs.setBackgroundColor(Color.RED);
+        saveAs.setBackgroundColor(Color.RED);
         saveAs.getWidgets().get(0).setColor(Color.RED.getColorValue());
         // TODO No setTextcolor & setLayout & setRotation on PdfFormFileds
         // saveAs.setTextColor(BaseColor.RED);
@@ -71,5 +70,4 @@ public class Listing_07_26_ButtonsActions extends GenericTest {
         // Close the pdfDocument
         pdfDoc.close();
     }
-
 }

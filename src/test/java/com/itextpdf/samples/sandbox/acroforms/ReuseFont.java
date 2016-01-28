@@ -19,7 +19,6 @@ import com.itextpdf.core.pdf.PdfName;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.canvas.PdfCanvas;
-import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -28,11 +27,9 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
-@Ignore("Document Fonts")
 public class ReuseFont extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/acroforms/form.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/reuse_font.pdf";
@@ -62,7 +59,6 @@ public class ReuseFont extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(
                 new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
-        PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         PdfFont font = findFontInForm(pdfDoc, new PdfName("Calibri"));
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());
         canvas.beginText();

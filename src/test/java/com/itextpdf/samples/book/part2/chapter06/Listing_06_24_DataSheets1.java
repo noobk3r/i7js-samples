@@ -28,7 +28,7 @@ import java.util.List;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore("Document fonts")
+@Ignore("timeout")
 @Category(SampleTest.class)
 public class Listing_06_24_DataSheets1 extends Listing_06_19_FillDataSheet {
     public static final String DEST = "./target/test/resources/book/part2/chapter06/Listing_06_24_DataSheets1.pdf";

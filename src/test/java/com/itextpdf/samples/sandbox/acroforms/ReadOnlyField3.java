@@ -25,10 +25,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore("Document fonts")
 @Category(SampleTest.class)
 public class ReadOnlyField3 extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/acroforms/read_only_field3.pdf";
@@ -81,5 +79,4 @@ public class ReadOnlyField3 extends GenericTest {
         doc.close();
         return baos.toByteArray();
     }
-
 }

@@ -117,8 +117,7 @@ public class Listing_08_16_MovieAds extends GenericTest {
                 millimetersToPoints(7) - millimetersToPoints(0)), YEAR, "");
         // TODO No setAlignment on PdfFormField
         // screening.setAlignment(Element.ALIGN_CENTER);
-        // TODO DEVSIX-233
-        // screening.setBackgroundColor(new DeviceGray(0.4f));
+        screening.setBackgroundColor(new DeviceGray(0.4f));
         // TODO No setTextColor on PdfFormField
         // screening.setTextColor(GrayColor.GRAYWHITE);
         PdfAcroForm.getAcroForm(pdfDoc, true).addField(screening);

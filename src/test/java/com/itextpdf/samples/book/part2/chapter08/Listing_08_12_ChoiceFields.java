@@ -7,6 +7,7 @@
 
 package com.itextpdf.samples.book.part2.chapter08;
 
+import com.itextpdf.core.color.Color;
 import com.itextpdf.core.pdf.PdfArray;
 import com.itextpdf.core.pdf.PdfDictionary;
 import com.itextpdf.core.pdf.PdfDocument;
@@ -33,7 +34,8 @@ import java.io.IOException;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Category(SampleTest.class)  @Ignore("Document fonts")
+@Ignore("timeout")
+@Category(SampleTest.class)
 public class Listing_08_12_ChoiceFields extends GenericTest {
     public static final String DEST
             = "./target/test/resources/book/part2/chapter08/Listing_08_12_ChoiceFields.pdf";
@@ -191,8 +193,7 @@ public class Listing_08_12_ChoiceFields extends GenericTest {
                     }
                     text = PdfFormField.createList(document, getOccupiedAreaBBox(), String.format("choice_%s", cf), "", langArray
                     );
-                    // TODO DEVSIX-233
-                    //text.setBorderColor(Color.GREEN);
+                    text.setBorderColor(Color.GREEN);
                     PdfDictionary borderDict = new PdfDictionary();
                     borderDict.put(PdfName.S, PdfName.D);
                     text.getWidgets().get(0).setBorderStyle(borderDict);
@@ -204,9 +205,8 @@ public class Listing_08_12_ChoiceFields extends GenericTest {
                     // text.setChoiceSelections(selections);
                     break;
                 case 3:
-                    // TODO DEVSIX-233
-                    //text.setBorderColor(Color.RED);
-                    //text.setBackgroundColor(Color.GRAY);
+                    text.setBorderColor(Color.RED);
+                    text.setBackgroundColor(Color.GRAY);
                     langAndExpArray = new String[LANGUAGES.length][];
                     for (int i = 0; i < LANGUAGES.length; i++) {
                         langAndExpArray[i] = new String[2];

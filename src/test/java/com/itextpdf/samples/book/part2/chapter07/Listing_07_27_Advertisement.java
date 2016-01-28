@@ -8,6 +8,7 @@
 package com.itextpdf.samples.book.part2.chapter07;
 
 import com.itextpdf.basics.geom.Rectangle;
+import com.itextpdf.core.color.Color;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
@@ -56,9 +57,8 @@ public class Listing_07_27_Advertisement extends GenericTest {
         // Create the advertisement annotation for the menubar
         Rectangle rect = new Rectangle(400, 772, 545-400, 792-772);
         PdfButtonFormField button = PdfFormField.createPushButton(pdfDoc, rect, "click", "Close this advertisement");
-        // TODO DEVSIX-233
-        // button.setBackgroundColor(Color.RED);
-        // button.setBorderColor(Color.RED);
+        button.setBackgroundColor(Color.RED);
+        button.setBorderColor(Color.RED);
         // TODO No setImage & setLayout & setIconHorizontalAdjustment on PdfFormField
         // button.setImage(Image.getInstance(IMAGE));
         // button.setLayout(PushbuttonField.LAYOUT_LABEL_LEFT_ICON_RIGHT);
@@ -73,9 +73,8 @@ public class Listing_07_27_Advertisement extends GenericTest {
         rect = new Rectangle(400, 550, 545-400, 772-550);
         button = PdfFormField.createPushButton(pdfDoc, rect, "advertisement",
                 "Buy the book iText in Action 2nd edition");
-        // TODO DEVSIX-233
-        // button.setBackgroundColor(Color.WHITE);
-        // button.setBorderColor(Color.RED);
+        button.setBackgroundColor(Color.WHITE);
+        button.setBorderColor(Color.RED);
 
         // TODO No setTemplate on Button
         // button.setTemplate(stamper.getImportedPage(ad, 1));

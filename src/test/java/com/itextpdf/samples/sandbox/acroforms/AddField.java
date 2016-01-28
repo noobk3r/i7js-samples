@@ -45,8 +45,7 @@ public class AddField extends GenericTest {
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         PdfButtonFormField button = PdfFormField.createPushButton(pdfDoc, new Rectangle(36, 700, 36, 30), "post", "POST");
         button.setBackgroundColor(Color.GRAY);
-        //@TODO (DEVSIX-233)
-        //button.setValue("POST");
+        button.setValue("POST");
         button.setAction(PdfAction.createSubmitForm("http://itextpdf.com:8180/book/request", null,
                 PdfAction.SUBMIT_HTML_FORMAT | PdfAction.SUBMIT_COORDINATES));
         button.setVisibility(PdfFormField.VISIBLE_BUT_DOES_NOT_PRINT);

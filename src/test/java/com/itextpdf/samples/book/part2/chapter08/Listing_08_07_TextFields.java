@@ -8,6 +8,7 @@
 package com.itextpdf.samples.book.part2.chapter08;
 
 import com.itextpdf.core.color.Color;
+import com.itextpdf.core.color.DeviceGray;
 import com.itextpdf.core.pdf.PdfDictionary;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfName;
@@ -31,7 +32,6 @@ import java.util.Map;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore("Document fonts")
 @Category(SampleTest.class)
 public class Listing_08_07_TextFields extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part2/chapter08/Listing_08_07_TextFields.pdf";
@@ -52,7 +52,7 @@ public class Listing_08_07_TextFields extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         Cell cell;
-        Table table = new Table(new float[]{ 1, 2 });
+        Table table = new Table(new float[]{1, 2});
         table.setWidthPercent(80);
 
         table.addCell(new Cell().add(new Paragraph("Name:")));
@@ -108,7 +108,9 @@ public class Listing_08_07_TextFields extends GenericTest {
 
 
     protected class TextFilledCellRenderer extends CellRenderer {
-        /** The text field index of a TextField that needs to be added to a cell. */
+        /**
+         * The text field index of a TextField that needs to be added to a cell.
+         */
         protected int tf = 0;
 
         public TextFilledCellRenderer(Cell modelElement, int tf) {
@@ -121,16 +123,14 @@ public class Listing_08_07_TextFields extends GenericTest {
             super.draw(drawContext);
             PdfTextFormField text = PdfFormField.createText(drawContext.getDocument(), getOccupiedAreaBBox(),
                     String.format("text_%s", tf), "Enter your name here...");
-            // TODO DEVSIX-233
-            //text.setBackgroundColor(new DeviceGray(0.75f));
+            text.setBackgroundColor(new DeviceGray(0.75f));
             PdfDictionary borderStyleDict = new PdfDictionary();
-            switch(tf) {
+            switch (tf) {
                 case 1:
                     borderStyleDict.put(PdfName.S, PdfName.B);
                     text.getWidgets().get(0).setBorderStyle(borderStyleDict);
-                    // TODO DEVSIX-233
-                    // text.setFontSize(10);
-                    // text.setValue("Enter your name here...");
+                    text.setFontSize(10);
+                    text.setValue("Enter your name here...");
                     text.setRequired(true);
                     // TODO No setAlignment
                     // text.setAlignment(Element.ALIGN_CENTER);
@@ -146,18 +146,16 @@ public class Listing_08_07_TextFields extends GenericTest {
                     borderStyleDict.put(PdfName.S, PdfName.I);
                     text.getWidgets().get(0).setBorderStyle(borderStyleDict);
                     text.setPassword(true);
-                    // TODO DEVSIX-233
-                    // text.setValue("Choose a password");
+                    text.setValue("Choose a password");
                     text.setVisibility(PdfFormField.VISIBLE_BUT_DOES_NOT_PRINT);
                     break;
                 case 4:
                     borderStyleDict.put(PdfName.S, PdfName.D);
                     text.getWidgets().get(0).setBorderStyle(borderStyleDict);
-                    // TODO DEVSIX-233
-                    // text.setBorderColor(Color.RED);
-                    // text.setFontSize(8);
-                    //  text.setValue("Enter the reason why you want to win a free " +
-                    //          "accreditation for the Foobar Film Festival");
+                    text.setBorderColor(Color.RED);
+                    text.setFontSize(8);
+                    text.setValue("Enter the reason why you want to win a free " +
+                            "accreditation for the Foobar Film Festival");
                     text.setBorderWidth(2);
                     text.setMultiline(true);
                     text.setRequired(true);

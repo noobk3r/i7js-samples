@@ -144,13 +144,12 @@ public class Listing_08_01_Buttons extends GenericTest {
         rect = new Rectangle(300, 806, 370 - 300, 806 - 788);
         PdfButtonFormField button = PdfFormField.createPushButton(pdfDoc, rect, "Buttons", "Push me");
         button.setBackgroundColor(new DeviceGray(0.75f));
-        // TODO DEVSIX-233
-        // button.setBorderColor(Color.DARK_GRAY);
+        button.setBorderColor(Color.DARK_GRAY);
         button.setBorderWidth(1);
         PdfDictionary borderStyleDict = new PdfDictionary();
         borderStyleDict.put(PdfName.S, PdfName.B);
         button.getWidgets().get(0).setBorderStyle(borderStyleDict);
-//        button.setFontSize(12);
+        button.setFontSize(12);
         // TODO No setTextColor & setLayout & setScaledIcon & setProportonalIcon & setIconHorizontalAdjustment & setImage on PdfFormField
         // button.setTextColor(GrayColor.GRAYBLACK);
         // button.setLayout(PushbuttonField.LAYOUT_ICON_LEFT_LABEL_RIGHT);
