@@ -1,7 +1,10 @@
-/**
- * Example written by Bruno Lowagie in answer to the following question:
- * http://stackoverflow.com/questions/30328489/itextsharp-change-margins-no-document-setpagesize
- */
+/*
+
+    This file is part of the iText (R) project.
+    Copyright (c) 1998-2016 iText Group NV
+
+*/
+
 package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.basics.geom.PageSize;
@@ -18,6 +21,10 @@ import java.io.IOException;
 
 import org.junit.experimental.categories.Category;
 
+/**
+ * Example written by Bruno Lowagie in answer to the following question:
+ * http://stackoverflow.com/questions/30328489/itextsharp-change-margins-no-document-setpagesize
+ */
 @Category(SampleTest.class)
 public class ChangeMargin extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/objects/change_margin.pdf";
