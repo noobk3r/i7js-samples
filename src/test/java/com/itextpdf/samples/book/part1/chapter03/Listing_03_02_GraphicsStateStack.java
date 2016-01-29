@@ -7,7 +7,7 @@
 
 package com.itextpdf.samples.book.part1.chapter03;
 
-import com.itextpdf.basics.geom.PageSize;
+import com.itextpdf.core.geom.PageSize;
 import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.color.DeviceRgb;
 import com.itextpdf.core.pdf.PdfDocument;

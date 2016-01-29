@@ -7,8 +7,8 @@
 
 package com.itextpdf.samples.sandbox.tables;
 
-import com.itextpdf.basics.geom.PageSize;
-import com.itextpdf.basics.geom.Rectangle;
+import com.itextpdf.core.geom.PageSize;
+import com.itextpdf.core.geom.Rectangle;
 import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;

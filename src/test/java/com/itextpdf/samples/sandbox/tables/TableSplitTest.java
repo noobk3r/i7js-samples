@@ -8,7 +8,7 @@
 package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.basics.geom.PageSize;
+import com.itextpdf.core.geom.PageSize;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;

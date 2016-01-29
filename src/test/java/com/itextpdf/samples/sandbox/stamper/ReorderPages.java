@@ -11,7 +11,7 @@
  */
 package com.itextpdf.samples.sandbox.stamper;
 
-import com.itextpdf.basics.io.RandomAccessSourceFactory;
+import com.itextpdf.basics.source.RandomAccessSourceFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;

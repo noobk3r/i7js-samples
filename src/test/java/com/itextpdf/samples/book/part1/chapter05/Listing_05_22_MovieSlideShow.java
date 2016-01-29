@@ -7,7 +7,7 @@
 
 package com.itextpdf.samples.book.part1.chapter05;
 
-import com.itextpdf.basics.geom.PageSize;
+import com.itextpdf.core.geom.PageSize;
 import com.itextpdf.basics.image.ImageFactory;
 import com.itextpdf.core.events.Event;
 import com.itextpdf.core.events.IEventHandler;

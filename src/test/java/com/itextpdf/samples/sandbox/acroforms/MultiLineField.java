@@ -11,9 +11,9 @@
  */
 package com.itextpdf.samples.sandbox.acroforms;
 
-import com.itextpdf.basics.geom.Rectangle;
-import com.itextpdf.basics.io.ByteArrayOutputStream;
-import com.itextpdf.basics.io.RandomAccessSourceFactory;
+import com.itextpdf.core.geom.Rectangle;
+import com.itextpdf.basics.source.ByteArrayOutputStream;
+import com.itextpdf.basics.source.RandomAccessSourceFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;

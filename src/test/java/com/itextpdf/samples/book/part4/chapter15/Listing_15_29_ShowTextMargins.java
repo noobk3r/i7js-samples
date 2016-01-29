@@ -7,7 +7,7 @@
 
 package com.itextpdf.samples.book.part4.chapter15;
 
-import com.itextpdf.basics.geom.Rectangle;
+import com.itextpdf.core.geom.Rectangle;
 import com.itextpdf.core.parser.EventData;
 import com.itextpdf.core.parser.EventListener;
 import com.itextpdf.core.parser.EventType;

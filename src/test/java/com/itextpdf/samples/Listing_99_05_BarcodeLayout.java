@@ -8,7 +8,7 @@
 package com.itextpdf.samples;
 
 import com.itextpdf.barcodes.*;
-import com.itextpdf.basics.geom.PageSize;
+import com.itextpdf.core.geom.PageSize;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;

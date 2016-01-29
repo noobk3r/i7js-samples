@@ -7,7 +7,7 @@
 
 package com.itextpdf.samples.book.part2.chapter07;
 
-import com.itextpdf.basics.geom.Rectangle;
+import com.itextpdf.core.geom.Rectangle;
 import com.itextpdf.core.color.DeviceRgb;
 import com.itextpdf.core.color.WebColors;
 import com.itextpdf.core.pdf.PdfDocument;
@@ -32,8 +32,6 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.TimeZone;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.experimental.categories.Category;
 
 
