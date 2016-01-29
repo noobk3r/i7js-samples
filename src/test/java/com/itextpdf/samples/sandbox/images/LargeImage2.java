@@ -7,16 +7,16 @@
 
 package com.itextpdf.samples.sandbox.images;
 
-import com.itextpdf.core.geom.PageSize;
-import com.itextpdf.core.geom.Rectangle;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
-import com.itextpdf.core.pdf.PdfDictionary;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfName;
-import com.itextpdf.core.pdf.PdfReader;
-import com.itextpdf.core.pdf.PdfStream;
-import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.pdf.xobject.PdfImageXObject;
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.geom.Rectangle;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.kernel.pdf.PdfDictionary;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfName;
+import com.itextpdf.kernel.pdf.PdfReader;
+import com.itextpdf.kernel.pdf.PdfStream;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Image;

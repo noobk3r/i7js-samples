@@ -11,10 +11,10 @@
  */
 package com.itextpdf.samples.sandbox.annotations;
 
-import com.itextpdf.core.geom.PageSize;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.pdf.navigation.PdfExplicitDestination;
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.navigation.PdfExplicitDestination;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;

@@ -11,13 +11,13 @@
  */
 package com.itextpdf.samples.sandbox.images;
 
-import com.itextpdf.core.geom.PageSize;
+import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.io.image.Image;
 import com.itextpdf.io.image.ImageFactory;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.pdf.extgstate.PdfExtGState;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.extgstate.PdfExtGState;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;

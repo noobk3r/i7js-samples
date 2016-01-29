@@ -7,13 +7,13 @@
 
 package com.itextpdf.samples.book.part2.chapter07;
 
-import com.itextpdf.core.geom.Rectangle;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfName;
-import com.itextpdf.core.pdf.PdfString;
-import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.pdf.annot.PdfFileAttachmentAnnotation;
-import com.itextpdf.core.pdf.filespec.PdfFileSpec;
+import com.itextpdf.kernel.geom.Rectangle;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfName;
+import com.itextpdf.kernel.pdf.PdfString;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.annot.PdfFileAttachmentAnnotation;
+import com.itextpdf.kernel.pdf.filespec.PdfFileSpec;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;

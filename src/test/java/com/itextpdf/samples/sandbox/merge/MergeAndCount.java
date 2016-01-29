@@ -10,10 +10,10 @@
  */
 package com.itextpdf.samples.sandbox.merge;
 
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfReader;
-import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.utils.PdfSplitter;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfReader;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.utils.PdfSplitter;
 import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.FileInputStream;

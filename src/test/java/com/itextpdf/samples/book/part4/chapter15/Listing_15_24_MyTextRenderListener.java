@@ -7,10 +7,10 @@
 
 package com.itextpdf.samples.book.part4.chapter15;
 
-import com.itextpdf.core.parser.EventData;
-import com.itextpdf.core.parser.EventListener;
-import com.itextpdf.core.parser.EventType;
-import com.itextpdf.core.parser.TextRenderInfo;
+import com.itextpdf.kernel.parser.EventData;
+import com.itextpdf.kernel.parser.EventListener;
+import com.itextpdf.kernel.parser.EventType;
+import com.itextpdf.kernel.parser.TextRenderInfo;
 
 import java.io.PrintWriter;
 import java.util.Set;

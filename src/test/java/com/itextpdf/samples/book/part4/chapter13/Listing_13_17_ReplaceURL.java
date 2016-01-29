@@ -7,18 +7,18 @@
 
 package com.itextpdf.samples.book.part4.chapter13;
 
-import com.itextpdf.core.geom.Rectangle;
-import com.itextpdf.core.color.DeviceGray;
-import com.itextpdf.core.pdf.PdfDictionary;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfName;
-import com.itextpdf.core.pdf.PdfReader;
-import com.itextpdf.core.pdf.PdfString;
-import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.pdf.action.PdfAction;
-import com.itextpdf.core.utils.CompareTool;
+import com.itextpdf.kernel.geom.Rectangle;
+import com.itextpdf.kernel.color.DeviceGray;
+import com.itextpdf.kernel.pdf.PdfDictionary;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfName;
+import com.itextpdf.kernel.pdf.PdfReader;
+import com.itextpdf.kernel.pdf.PdfString;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.action.PdfAction;
+import com.itextpdf.kernel.utils.CompareTool;
 import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.core.xmp.XMPException;
+import com.itextpdf.kernel.xmp.XMPException;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfButtonFormField;
 import com.itextpdf.forms.fields.PdfFormField;

@@ -8,15 +8,15 @@
 package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.core.geom.PageSize;
-import com.itextpdf.core.geom.Rectangle;
-import com.itextpdf.core.font.PdfFontFactory;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
-import com.itextpdf.core.font.PdfFont;
-import com.itextpdf.core.pdf.*;
-import com.itextpdf.core.pdf.action.PdfAction;
-import com.itextpdf.core.pdf.annot.PdfTextAnnotation;
-import com.itextpdf.core.pdf.xobject.PdfFormXObject;
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.geom.Rectangle;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.kernel.font.PdfFont;
+import com.itextpdf.kernel.pdf.*;
+import com.itextpdf.kernel.pdf.action.PdfAction;
+import com.itextpdf.kernel.pdf.annot.PdfTextAnnotation;
+import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Link;

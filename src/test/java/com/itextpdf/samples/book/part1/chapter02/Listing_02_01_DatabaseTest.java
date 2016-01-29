@@ -7,8 +7,8 @@
 
 package com.itextpdf.samples.book.part1.chapter02;
 
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -17,15 +17,12 @@ import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 

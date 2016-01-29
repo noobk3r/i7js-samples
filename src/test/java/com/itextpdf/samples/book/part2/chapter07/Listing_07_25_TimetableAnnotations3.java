@@ -7,20 +7,20 @@
 
 package com.itextpdf.samples.book.part2.chapter07;
 
-import com.itextpdf.core.geom.Rectangle;
-import com.itextpdf.core.color.Color;
-import com.itextpdf.core.pdf.PdfArray;
-import com.itextpdf.core.pdf.PdfDictionary;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfName;
-import com.itextpdf.core.pdf.PdfNumber;
-import com.itextpdf.core.pdf.PdfReader;
-import com.itextpdf.core.pdf.PdfString;
-import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.pdf.annot.PdfAnnotation;
-import com.itextpdf.core.pdf.annot.PdfLineAnnotation;
-import com.itextpdf.core.pdf.annot.PdfSquareAnnotation;
-import com.itextpdf.core.pdf.annot.PdfStampAnnotation;
+import com.itextpdf.kernel.geom.Rectangle;
+import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.pdf.PdfArray;
+import com.itextpdf.kernel.pdf.PdfDictionary;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfName;
+import com.itextpdf.kernel.pdf.PdfNumber;
+import com.itextpdf.kernel.pdf.PdfReader;
+import com.itextpdf.kernel.pdf.PdfString;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
+import com.itextpdf.kernel.pdf.annot.PdfLineAnnotation;
+import com.itextpdf.kernel.pdf.annot.PdfSquareAnnotation;
+import com.itextpdf.kernel.pdf.annot.PdfStampAnnotation;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;

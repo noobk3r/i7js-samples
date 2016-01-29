@@ -8,16 +8,16 @@
 package com.itextpdf.samples.sandbox.stamper;
 
 import com.itextpdf.io.image.ImageFactory;
-import com.itextpdf.core.color.DeviceCmyk;
-import com.itextpdf.core.pdf.PdfArray;
-import com.itextpdf.core.pdf.PdfDictionary;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfName;
-import com.itextpdf.core.pdf.PdfNumber;
-import com.itextpdf.core.pdf.PdfReader;
-import com.itextpdf.core.pdf.PdfStream;
-import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
+import com.itextpdf.kernel.color.DeviceCmyk;
+import com.itextpdf.kernel.pdf.PdfArray;
+import com.itextpdf.kernel.pdf.PdfDictionary;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfName;
+import com.itextpdf.kernel.pdf.PdfNumber;
+import com.itextpdf.kernel.pdf.PdfReader;
+import com.itextpdf.kernel.pdf.PdfStream;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.model.element.Image;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;

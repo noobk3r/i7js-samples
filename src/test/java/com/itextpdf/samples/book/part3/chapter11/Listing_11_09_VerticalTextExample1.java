@@ -7,11 +7,11 @@
 
 package com.itextpdf.samples.book.part3.chapter11;
 
-import com.itextpdf.core.geom.PageSize;
-import com.itextpdf.core.font.PdfFont;
-import com.itextpdf.core.font.PdfFontFactory;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.font.PdfFont;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.samples.GenericTest;

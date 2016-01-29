@@ -11,11 +11,11 @@
  */
 package com.itextpdf.samples.sandbox.annotations;
 
-import com.itextpdf.core.geom.Rectangle;
-import com.itextpdf.core.color.Color;
-import com.itextpdf.core.pdf.*;
-import com.itextpdf.core.pdf.annot.PdfAnnotation;
-import com.itextpdf.core.pdf.annot.PdfCircleAnnotation;
+import com.itextpdf.kernel.geom.Rectangle;
+import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.pdf.*;
+import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
+import com.itextpdf.kernel.pdf.annot.PdfCircleAnnotation;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
 import org.junit.Ignore;

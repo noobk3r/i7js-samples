@@ -7,16 +7,16 @@
 
 package com.itextpdf.samples.book.part4.chapter16;
 
-import com.itextpdf.core.pdf.PdfArray;
-import com.itextpdf.core.pdf.PdfDictionary;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfName;
-import com.itextpdf.core.pdf.PdfReader;
-import com.itextpdf.core.pdf.PdfStream;
-import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.pdf.filespec.PdfFileSpec;
+import com.itextpdf.kernel.pdf.PdfArray;
+import com.itextpdf.kernel.pdf.PdfDictionary;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfName;
+import com.itextpdf.kernel.pdf.PdfReader;
+import com.itextpdf.kernel.pdf.PdfStream;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.filespec.PdfFileSpec;
 import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.core.xmp.impl.Utils;
+import com.itextpdf.kernel.xmp.impl.Utils;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.List;
 import com.itextpdf.model.element.ListItem;

@@ -13,8 +13,8 @@
  */
 package com.itextpdf.samples.sandbox.acroforms;
 
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfReader;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfFormField;

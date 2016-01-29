@@ -11,8 +11,8 @@
  */
 package com.itextpdf.samples.sandbox.interactive;
 
-import com.itextpdf.core.pdf.*;
-import com.itextpdf.core.pdf.action.PdfAction;
+import com.itextpdf.kernel.pdf.*;
+import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Link;

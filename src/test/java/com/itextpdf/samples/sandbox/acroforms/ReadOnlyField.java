@@ -7,13 +7,13 @@
 
 package com.itextpdf.samples.sandbox.acroforms;
 
-import com.itextpdf.core.geom.Rectangle;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.io.source.ByteArrayOutputStream;
 import com.itextpdf.io.source.RandomAccessSourceFactory;
-import com.itextpdf.core.font.PdfFontFactory;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfReader;
-import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfReader;
+import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfFormField;

@@ -11,12 +11,12 @@
  */
 package com.itextpdf.samples.sandbox.annotations;
 
-import com.itextpdf.core.geom.Rectangle;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.io.image.ImageFactory;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.pdf.annot.PdfFileAttachmentAnnotation;
-import com.itextpdf.core.pdf.filespec.PdfFileSpec;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.annot.PdfFileAttachmentAnnotation;
+import com.itextpdf.kernel.pdf.filespec.PdfFileSpec;
 import com.itextpdf.model.element.Image;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;

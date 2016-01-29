@@ -7,10 +7,10 @@
 
 package com.itextpdf.samples.book.part4.chapter16;
 
-import com.itextpdf.core.pdf.PdfDeveloperExtension;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfVersion;
-import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.PdfDeveloperExtension;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfVersion;
+import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
 

@@ -7,11 +7,11 @@
 
 package com.itextpdf.samples.book.part4.chapter14;
 
-import com.itextpdf.core.geom.Rectangle;
-import com.itextpdf.core.color.DeviceGray;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
+import com.itextpdf.kernel.geom.Rectangle;
+import com.itextpdf.kernel.color.DeviceGray;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.model.Canvas;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Paragraph;

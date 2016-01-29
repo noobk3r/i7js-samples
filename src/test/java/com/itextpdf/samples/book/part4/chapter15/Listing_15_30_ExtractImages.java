@@ -8,11 +8,11 @@
 package com.itextpdf.samples.book.part4.chapter15;
 
 import com.itextpdf.io.source.ByteArrayOutputStream;
-import com.itextpdf.core.parser.EventListener;
-import com.itextpdf.core.parser.PdfContentStreamProcessor;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfReader;
-import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.kernel.parser.EventListener;
+import com.itextpdf.kernel.parser.PdfContentStreamProcessor;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfReader;
+import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
 
 import javax.xml.parsers.ParserConfigurationException;

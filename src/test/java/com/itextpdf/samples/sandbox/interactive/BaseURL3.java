@@ -11,7 +11,7 @@
  */
 package com.itextpdf.samples.sandbox.interactive;
 
-import com.itextpdf.core.pdf.*;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
 

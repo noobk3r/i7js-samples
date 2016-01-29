@@ -7,10 +7,10 @@
 
 package com.itextpdf.samples.book.part3.chapter10;
 
-import com.itextpdf.core.geom.PageSize;
+import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.io.image.ImageFactory;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Image;

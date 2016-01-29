@@ -7,12 +7,12 @@
 
 package com.itextpdf.samples.book.part4.chapter15;
 
-import com.itextpdf.core.geom.PageSize;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfName;
-import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.pdf.tagging.PdfStructElem;
-import com.itextpdf.core.pdf.tagging.PdfStructTreeRoot;
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfName;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.tagging.PdfStructElem;
+import com.itextpdf.kernel.pdf.tagging.PdfStructTreeRoot;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
 

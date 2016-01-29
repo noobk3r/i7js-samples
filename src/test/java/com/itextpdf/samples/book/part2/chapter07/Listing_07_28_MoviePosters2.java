@@ -7,17 +7,17 @@
 
 package com.itextpdf.samples.book.part2.chapter07;
 
-import com.itextpdf.core.geom.Rectangle;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.io.image.ImageFactory;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfName;
-import com.itextpdf.core.pdf.PdfReader;
-import com.itextpdf.core.pdf.PdfString;
-import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.pdf.action.PdfAction;
-import com.itextpdf.core.pdf.annot.PdfAnnotation;
-import com.itextpdf.core.pdf.annot.PdfPopupAnnotation;
-import com.itextpdf.core.pdf.annot.PdfTextAnnotation;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfName;
+import com.itextpdf.kernel.pdf.PdfReader;
+import com.itextpdf.kernel.pdf.PdfString;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.action.PdfAction;
+import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
+import com.itextpdf.kernel.pdf.annot.PdfPopupAnnotation;
+import com.itextpdf.kernel.pdf.annot.PdfTextAnnotation;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.fields.PdfButtonFormField;
 import com.itextpdf.forms.fields.PdfFormField;

@@ -7,18 +7,18 @@
 
 package com.itextpdf.samples.book.part3.chapter10;
 
-import com.itextpdf.core.geom.PageSize;
-import com.itextpdf.core.geom.Rectangle;
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.io.image.Image;
 import com.itextpdf.io.image.ImageFactory;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
-import com.itextpdf.core.pdf.PdfDictionary;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfName;
-import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.pdf.extgstate.PdfExtGState;
-import com.itextpdf.core.pdf.xobject.PdfFormXObject;
-import com.itextpdf.core.pdf.xobject.PdfTransparencyGroup;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.kernel.pdf.PdfDictionary;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfName;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.extgstate.PdfExtGState;
+import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
+import com.itextpdf.kernel.pdf.xobject.PdfTransparencyGroup;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.samples.GenericTest;

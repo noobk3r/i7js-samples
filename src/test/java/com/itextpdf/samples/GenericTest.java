@@ -8,7 +8,7 @@
 package com.itextpdf.samples;
 
 import ch.qos.logback.classic.Logger;
-import com.itextpdf.core.utils.CompareTool;
+import com.itextpdf.kernel.utils.CompareTool;
 import com.itextpdf.test.annotations.type.SampleTest;
 
 
@@ -19,7 +19,6 @@ import java.lang.reflect.Method;
 
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.slf4j.LoggerFactory;

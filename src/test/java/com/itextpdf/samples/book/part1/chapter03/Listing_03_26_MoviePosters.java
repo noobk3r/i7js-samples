@@ -7,16 +7,16 @@
 
 package com.itextpdf.samples.book.part1.chapter03;
 
-import com.itextpdf.core.geom.Rectangle;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.io.image.Image;
 import com.itextpdf.io.image.ImageFactory;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
-import com.itextpdf.core.color.DeviceGray;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfPage;
-import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.pdf.xobject.PdfFormXObject;
-import com.itextpdf.core.pdf.xobject.PdfImageXObject;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.kernel.color.DeviceGray;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfPage;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
+import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;

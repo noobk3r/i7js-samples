@@ -7,13 +7,13 @@
 
 package com.itextpdf.samples.book.part4.chapter15;
 
-import com.itextpdf.core.PdfException;
+import com.itextpdf.kernel.PdfException;
 import com.itextpdf.io.image.ImageFactory;
-import com.itextpdf.core.parser.EventData;
-import com.itextpdf.core.parser.EventListener;
-import com.itextpdf.core.parser.EventType;
-import com.itextpdf.core.parser.ImageRenderInfo;
-import com.itextpdf.core.pdf.xobject.PdfImageXObject;
+import com.itextpdf.kernel.parser.EventData;
+import com.itextpdf.kernel.parser.EventListener;
+import com.itextpdf.kernel.parser.EventType;
+import com.itextpdf.kernel.parser.ImageRenderInfo;
+import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
 
 import java.io.FileOutputStream;
 import java.io.IOException;

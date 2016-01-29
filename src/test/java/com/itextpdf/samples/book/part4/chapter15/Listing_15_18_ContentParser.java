@@ -8,12 +8,12 @@
 package com.itextpdf.samples.book.part4.chapter15;
 
 import com.itextpdf.io.font.PdfEncodings;
-import com.itextpdf.core.geom.Rectangle;
-import com.itextpdf.core.font.PdfFont;
-import com.itextpdf.core.font.PdfFontFactory;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
-import com.itextpdf.core.pdf.tagging.PdfStructElem;
+import com.itextpdf.kernel.geom.Rectangle;
+import com.itextpdf.kernel.font.PdfFont;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.kernel.pdf.tagging.PdfStructElem;
 import com.itextpdf.model.Canvas;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Paragraph;

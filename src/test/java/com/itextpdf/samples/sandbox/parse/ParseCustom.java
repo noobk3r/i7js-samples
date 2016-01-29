@@ -11,9 +11,9 @@
  */
 package com.itextpdf.samples.sandbox.parse;
 
-import com.itextpdf.core.geom.Rectangle;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfReader;
+import com.itextpdf.kernel.geom.Rectangle;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;

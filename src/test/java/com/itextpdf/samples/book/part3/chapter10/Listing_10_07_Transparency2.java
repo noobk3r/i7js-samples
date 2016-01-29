@@ -7,18 +7,18 @@
 
 package com.itextpdf.samples.book.part3.chapter10;
 
-import com.itextpdf.core.geom.Rectangle;
-import com.itextpdf.core.color.Color;
-import com.itextpdf.core.color.DeviceCmyk;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
-import com.itextpdf.core.pdf.colorspace.PdfDeviceCs;
-import com.itextpdf.core.pdf.colorspace.PdfPattern;
-import com.itextpdf.core.pdf.colorspace.PdfShading;
-import com.itextpdf.core.pdf.extgstate.PdfExtGState;
-import com.itextpdf.core.pdf.xobject.PdfFormXObject;
-import com.itextpdf.core.pdf.xobject.PdfTransparencyGroup;
+import com.itextpdf.kernel.geom.Rectangle;
+import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.color.DeviceCmyk;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.kernel.pdf.colorspace.PdfDeviceCs;
+import com.itextpdf.kernel.pdf.colorspace.PdfPattern;
+import com.itextpdf.kernel.pdf.colorspace.PdfShading;
+import com.itextpdf.kernel.pdf.extgstate.PdfExtGState;
+import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
+import com.itextpdf.kernel.pdf.xobject.PdfTransparencyGroup;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 

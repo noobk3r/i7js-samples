@@ -7,14 +7,14 @@
 
 package com.itextpdf.samples.sandbox.fonts;
 
-import com.itextpdf.core.font.PdfFont;
-import com.itextpdf.core.font.PdfFontFactory;
-import com.itextpdf.core.pdf.*;
+import com.itextpdf.kernel.font.PdfFont;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
-import com.itextpdf.core.utils.PdfMerger;
+import com.itextpdf.kernel.utils.PdfMerger;
 
 import java.io.*;
 

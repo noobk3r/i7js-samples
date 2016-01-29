@@ -11,10 +11,10 @@
  */
 package com.itextpdf.samples.sandbox.annotations;
 
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.pdf.navigation.PdfDestination;
-import com.itextpdf.core.pdf.navigation.PdfExplicitDestination;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.navigation.PdfDestination;
+import com.itextpdf.kernel.pdf.navigation.PdfExplicitDestination;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.AreaBreak;
 import com.itextpdf.model.element.Link;

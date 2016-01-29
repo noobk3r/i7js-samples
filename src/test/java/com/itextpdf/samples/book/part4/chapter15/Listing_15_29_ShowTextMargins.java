@@ -7,16 +7,16 @@
 
 package com.itextpdf.samples.book.part4.chapter15;
 
-import com.itextpdf.core.geom.Rectangle;
-import com.itextpdf.core.parser.EventData;
-import com.itextpdf.core.parser.EventListener;
-import com.itextpdf.core.parser.EventType;
-import com.itextpdf.core.parser.PdfContentStreamProcessor;
-import com.itextpdf.core.parser.TextRenderInfo;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfReader;
-import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
+import com.itextpdf.kernel.geom.Rectangle;
+import com.itextpdf.kernel.parser.EventData;
+import com.itextpdf.kernel.parser.EventListener;
+import com.itextpdf.kernel.parser.EventType;
+import com.itextpdf.kernel.parser.PdfContentStreamProcessor;
+import com.itextpdf.kernel.parser.TextRenderInfo;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfReader;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.test.annotations.type.SampleTest;
 
 import javax.xml.parsers.ParserConfigurationException;

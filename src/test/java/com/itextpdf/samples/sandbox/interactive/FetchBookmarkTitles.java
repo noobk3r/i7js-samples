@@ -11,9 +11,9 @@
  */
 package com.itextpdf.samples.sandbox.interactive;
 
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfOutline;
-import com.itextpdf.core.pdf.PdfReader;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfOutline;
+import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.FileInputStream;

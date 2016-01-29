@@ -7,7 +7,7 @@
 
 package com.lowagie.filmfestival;
 
-import com.itextpdf.core.font.PdfFont;
+import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.model.element.Text;
 
 import java.util.ArrayList;

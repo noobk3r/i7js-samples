@@ -7,10 +7,10 @@
 
 package com.itextpdf.samples.sandbox.tables;
 
-import com.itextpdf.core.geom.PageSize;
-import com.itextpdf.core.color.Color;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.border.SolidBorder;

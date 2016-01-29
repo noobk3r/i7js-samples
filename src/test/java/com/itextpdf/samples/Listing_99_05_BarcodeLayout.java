@@ -8,11 +8,11 @@
 package com.itextpdf.samples;
 
 import com.itextpdf.barcodes.*;
-import com.itextpdf.core.geom.PageSize;
-import com.itextpdf.core.color.Color;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.pdf.xobject.PdfFormXObject;
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.AreaBreak;
 import com.itextpdf.model.element.Image;

@@ -7,9 +7,9 @@
 
 package com.itextpdf.samples.book.part2.chapter07;
 
-import com.itextpdf.core.pdf.*;
-import com.itextpdf.core.pdf.action.PdfAction;
-import com.itextpdf.core.pdf.navigation.PdfExplicitDestination;
+import com.itextpdf.kernel.pdf.*;
+import com.itextpdf.kernel.pdf.action.PdfAction;
+import com.itextpdf.kernel.pdf.navigation.PdfExplicitDestination;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;

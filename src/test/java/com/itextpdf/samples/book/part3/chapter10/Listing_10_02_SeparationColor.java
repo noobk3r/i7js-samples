@@ -7,15 +7,15 @@
 
 package com.itextpdf.samples.book.part3.chapter10;
 
-import com.itextpdf.core.color.Color;
-import com.itextpdf.core.color.DeviceCmyk;
-import com.itextpdf.core.color.DeviceGray;
-import com.itextpdf.core.color.DeviceRgb;
-import com.itextpdf.core.pdf.*;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
-import com.itextpdf.core.pdf.colorspace.PdfColorSpace;
-import com.itextpdf.core.pdf.colorspace.PdfSpecialCs;
-import com.itextpdf.core.pdf.function.PdfFunction;
+import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.color.DeviceCmyk;
+import com.itextpdf.kernel.color.DeviceGray;
+import com.itextpdf.kernel.color.DeviceRgb;
+import com.itextpdf.kernel.pdf.*;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.kernel.pdf.colorspace.PdfColorSpace;
+import com.itextpdf.kernel.pdf.colorspace.PdfSpecialCs;
+import com.itextpdf.kernel.pdf.function.PdfFunction;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
 
@@ -23,7 +23,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)

@@ -7,10 +7,10 @@
 
 package com.itextpdf.samples.book.part2.chapter08;
 
-import com.itextpdf.core.geom.Rectangle;
-import com.itextpdf.core.pdf.PdfArray;
-import com.itextpdf.core.pdf.annot.PdfAnnotation;
-import com.itextpdf.core.pdf.annot.PdfWidgetAnnotation;
+import com.itextpdf.kernel.geom.Rectangle;
+import com.itextpdf.kernel.pdf.PdfArray;
+import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
+import com.itextpdf.kernel.pdf.annot.PdfWidgetAnnotation;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.model.element.Cell;

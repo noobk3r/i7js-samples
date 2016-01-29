@@ -7,9 +7,9 @@
 
 package com.itextpdf.samples.book.part4.chapter13;
 
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfVersion;
-import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfVersion;
+import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Paragraph;

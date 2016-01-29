@@ -12,16 +12,16 @@
 package com.itextpdf.samples.sandbox.acroforms;
 
 import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.core.geom.Rectangle;
-import com.itextpdf.core.events.Event;
-import com.itextpdf.core.events.IEventHandler;
-import com.itextpdf.core.events.PdfDocumentEvent;
-import com.itextpdf.core.font.PdfFontFactory;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfReader;
-import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
-import com.itextpdf.core.pdf.xobject.PdfFormXObject;
+import com.itextpdf.kernel.geom.Rectangle;
+import com.itextpdf.kernel.events.Event;
+import com.itextpdf.kernel.events.IEventHandler;
+import com.itextpdf.kernel.events.PdfDocumentEvent;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfReader;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;

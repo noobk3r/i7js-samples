@@ -7,12 +7,12 @@
 
 package com.itextpdf.samples.sandbox.annotations;
 
-import com.itextpdf.core.geom.Rectangle;
-import com.itextpdf.core.pdf.*;
-import com.itextpdf.core.pdf.action.PdfAction;
-import com.itextpdf.core.pdf.annot.PdfAnnotation;
-import com.itextpdf.core.pdf.annot.PdfLinkAnnotation;
-import com.itextpdf.core.pdf.navigation.PdfDestination;
+import com.itextpdf.kernel.geom.Rectangle;
+import com.itextpdf.kernel.pdf.*;
+import com.itextpdf.kernel.pdf.action.PdfAction;
+import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
+import com.itextpdf.kernel.pdf.annot.PdfLinkAnnotation;
+import com.itextpdf.kernel.pdf.navigation.PdfDestination;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
 import org.junit.experimental.categories.Category;

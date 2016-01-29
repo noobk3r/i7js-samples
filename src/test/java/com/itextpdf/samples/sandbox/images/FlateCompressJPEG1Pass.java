@@ -12,16 +12,16 @@
  * The question was about adding compression to an image that already used /DCTDecode
  *
  * IMPORTANT:
- * This sample uses core iText functionality that was written in answer to the question.
+ * This sample uses kernel iText functionality that was written in answer to the question.
  * This example will only work starting with iText 5.5.1
  */
 package com.itextpdf.samples.sandbox.images;
 
-import com.itextpdf.core.geom.PageSize;
+import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.io.image.ImageFactory;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfOutputStream;
-import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfOutputStream;
+import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Image;

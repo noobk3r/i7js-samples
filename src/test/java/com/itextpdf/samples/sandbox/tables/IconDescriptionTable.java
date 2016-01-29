@@ -8,8 +8,8 @@
 package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.io.image.ImageFactory;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Image;
 import com.itextpdf.model.element.Table;

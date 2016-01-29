@@ -8,17 +8,17 @@
 package com.itextpdf.samples.book.part3.chapter12;
 
 import com.itextpdf.io.source.ByteArrayOutputStream;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfDocumentInfo;
-import com.itextpdf.core.pdf.PdfReader;
-import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfDocumentInfo;
+import com.itextpdf.kernel.pdf.PdfReader;
+import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.core.xmp.PdfConst;
-import com.itextpdf.core.xmp.XMPConst;
-import com.itextpdf.core.xmp.XMPException;
-import com.itextpdf.core.xmp.XMPMeta;
-import com.itextpdf.core.xmp.XMPMetaFactory;
-import com.itextpdf.core.xmp.options.PropertyOptions;
+import com.itextpdf.kernel.xmp.PdfConst;
+import com.itextpdf.kernel.xmp.XMPConst;
+import com.itextpdf.kernel.xmp.XMPException;
+import com.itextpdf.kernel.xmp.XMPMeta;
+import com.itextpdf.kernel.xmp.XMPMetaFactory;
+import com.itextpdf.kernel.xmp.options.PropertyOptions;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
 import com.itextpdf.samples.GenericTest;

@@ -7,9 +7,9 @@
 
 package com.itextpdf.samples.book.part4.chapter15;
 
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfName;
-import com.itextpdf.core.pdf.tagging.PdfStructElem;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfName;
+import com.itextpdf.kernel.pdf.tagging.PdfStructElem;
 
 import java.util.List;
 

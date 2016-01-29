@@ -7,17 +7,17 @@
 
 package com.itextpdf.samples.book.part3.chapter10;
 
-import com.itextpdf.core.geom.PageSize;
-import com.itextpdf.core.geom.Rectangle;
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.io.image.ImageFactory;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
-import com.itextpdf.core.color.Color;
-import com.itextpdf.core.color.DeviceGray;
-import com.itextpdf.core.events.IEventHandler;
-import com.itextpdf.core.events.PdfDocumentEvent;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfPage;
-import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.color.DeviceGray;
+import com.itextpdf.kernel.events.IEventHandler;
+import com.itextpdf.kernel.events.PdfDocumentEvent;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfPage;
+import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.AreaBreak;
@@ -75,7 +75,7 @@ public class Listing_10_17_TransparentAwt extends GenericTest {
         }
 
         @Override
-        public void handleEvent(com.itextpdf.core.events.Event event) {
+        public void handleEvent(com.itextpdf.kernel.events.Event event) {
             PdfDocumentEvent docEvent = (PdfDocumentEvent) event;
             PdfPage page = docEvent.getPage();
             PdfCanvas canvas = new PdfCanvas(page);

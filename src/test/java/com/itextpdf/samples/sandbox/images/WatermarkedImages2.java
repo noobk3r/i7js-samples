@@ -13,9 +13,9 @@
 package com.itextpdf.samples.sandbox.images;
 
 import com.itextpdf.io.image.ImageFactory;
-import com.itextpdf.core.color.DeviceRgb;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.kernel.color.DeviceRgb;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
 import com.itextpdf.model.element.Cell;

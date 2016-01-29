@@ -7,14 +7,14 @@
 
 package com.itextpdf.samples.book.part3.chapter10;
 
-import com.itextpdf.core.color.Color;
-import com.itextpdf.core.color.PatternColor;
-import com.itextpdf.core.pdf.PdfDocument;
-import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.core.pdf.canvas.PdfCanvas;
-import com.itextpdf.core.pdf.colorspace.PdfDeviceCs;
-import com.itextpdf.core.pdf.colorspace.PdfPattern;
-import com.itextpdf.core.pdf.colorspace.PdfShading;
+import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.color.PatternColor;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.kernel.pdf.colorspace.PdfDeviceCs;
+import com.itextpdf.kernel.pdf.colorspace.PdfPattern;
+import com.itextpdf.kernel.pdf.colorspace.PdfShading;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -48,11 +48,11 @@ public class Listing_10_04_ShadingPatternColor extends GenericTest {
         //Write to canvas
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
 
-        com.itextpdf.core.pdf.colorspace.PdfShading axial
+        com.itextpdf.kernel.pdf.colorspace.PdfShading axial
                 = new PdfShading.Axial(new PdfDeviceCs.Rgb(), 36, 716, new float[]{1, .784f, 0}, 396, 788, new float[]{0, 0, 1}, new boolean[] {true, true}, pdfDoc);
         canvas.paintShading(axial);
         canvas = new PdfCanvas(pdfDoc.addNewPage());
-        com.itextpdf.core.pdf.colorspace.PdfShading radial
+        com.itextpdf.kernel.pdf.colorspace.PdfShading radial
                 = new PdfShading.Radial(new PdfDeviceCs.Rgb(), 200, 700, 50, new float[] {1, 0.968f, 0.58f}, 300, 700, 100, new float[] {0.968f, 0.541f, 0.42f}, pdfDoc);
         canvas.paintShading(radial);
 
