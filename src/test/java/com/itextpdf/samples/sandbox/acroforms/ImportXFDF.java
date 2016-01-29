@@ -46,7 +46,7 @@ public class ImportXFDF extends GenericTest {
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         // TODO Implement xfdf features
         //fields.setFields(xfdf);
-        form.flatFields();
+        form.flattenFields();
         pdfDoc.close();
     }
 }

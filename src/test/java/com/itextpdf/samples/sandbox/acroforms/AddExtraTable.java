@@ -47,7 +47,7 @@ public class AddExtraTable extends GenericTest {
         fields.get("Name").setValue("Jeniffer");
         fields.get("Company").setValue("iText's next customer");
         fields.get("Country").setValue("No Man's Land");
-        form.flatFields();
+        form.flattenFields();
 
         Table table = new Table(new float[]{1, 15});
         table.setWidthPercent(80);

@@ -40,7 +40,7 @@ public class FlattenSignature extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(
                 new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
-        form.flatFields();
+        form.flattenFields();
         pdfDoc.close();
     }
 }

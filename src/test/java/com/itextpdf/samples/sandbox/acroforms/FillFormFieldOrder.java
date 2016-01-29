@@ -66,7 +66,7 @@ public class FillFormFieldOrder extends GenericTest {
         form.partialFormFlattening("sunday_4");
         form.partialFormFlattening("sunday_5");
         form.partialFormFlattening("sunday_6");
-        form.flatFields();
+        form.flattenFields();
         doc.close();
         return baos.toByteArray();
     }
@@ -82,7 +82,7 @@ public class FillFormFieldOrder extends GenericTest {
         fields.get("sunday_4_notes").setValue("It's Sunday today, let's go to the woods");
         fields.get("sunday_5_notes").setValue("It's Sunday today, let's go to the lake");
         fields.get("sunday_6_notes").setValue("It's Sunday today, let's go to the river");
-        form.flatFields();
+        form.flattenFields();
         pdfDoc.close();
     }
 }

@@ -45,7 +45,7 @@ public class FillWithUnderline extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(
                 new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
-        form.flatFields();
+        form.flattenFields();
         Map<String, PdfFormField> fields = form.getFormFields();
         PdfArray pos = form.getField("Name").getWidgets().get(0).getRectangle();
         // ColumnText ct = new ColumnText(stamper.getOverContent(pos.page));

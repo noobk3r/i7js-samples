@@ -66,7 +66,7 @@ public class Listing_06_19_FillDataSheet extends GenericTest{
             form.setGenerateAppearance(true);
             fill(form, movie);
             if (movie.getYear() == 2007)
-                form.flatFields();
+                form.flattenFields();
             pdfDoc.close();
 
             pdfDoc = new PdfDocument(new PdfReader(new ByteArrayInputStream(baos.toByteArray())));

@@ -51,7 +51,7 @@ public class FillFormSpecialChars2 extends GenericTest {
         PdfFont font = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H);
 
         form.getFormFields().get("Name").setValue("\u04e711111", font, 12);
-        form.flatFields();
+        form.flattenFields();
         pdfDoc.close();
     }
 }

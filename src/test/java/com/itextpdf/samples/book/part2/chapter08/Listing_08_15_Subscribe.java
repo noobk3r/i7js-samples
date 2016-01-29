@@ -59,7 +59,7 @@ public class Listing_08_15_Subscribe extends GenericTest {
         form.renameField("personal.reason", "personal.motivation");
         form.getField("personal.loginname").setReadOnly(true);
         form.partialFormFlattening("personal.name");
-        form.flatFields();
+        form.flattenFields();
 
         //Close document
         pdfDoc.close();

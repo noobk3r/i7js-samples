@@ -240,7 +240,7 @@ public class Listing_08_16_MovieAds extends GenericTest {
                 baos = new ByteArrayOutputStream();
                 stamper = new PdfDocument(new PdfReader(RESOURCE), new PdfWriter(baos));
                 form = PdfAcroForm.getAcroForm(stamper, true);
-                form.flatFields();
+                form.flattenFields();
             }
             count++;
             PdfReader ad = new PdfReader(new ByteArrayInputStream(fillTemplate(TEMPLATE, movie)));

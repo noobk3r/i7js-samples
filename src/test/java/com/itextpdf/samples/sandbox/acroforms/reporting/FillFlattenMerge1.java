@@ -66,7 +66,7 @@ public class FillFlattenMerge1 extends GenericTest {
             fields.get("timezone1").setValue(tokenizer.nextToken());
             fields.get("timezone2").setValue(tokenizer.nextToken());
             fields.get("dst").setValue(tokenizer.nextToken());
-            form.flatFields();
+            form.flattenFields();
             pdfInnerDoc.close();
 
             pdfInnerDoc = new PdfDocument(new PdfReader(new ByteArrayInputStream(baos.toByteArray())));

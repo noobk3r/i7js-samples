@@ -59,7 +59,7 @@ public class Listing_06_25_DataSheets2 extends Listing_06_24_DataSheets1 {
             PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
             form.setGenerateAppearance(true);
             fill(form, movie);
-            form.flatFields();
+            form.flattenFields();
             pdfDoc.close();
             pdfDoc = new PdfDocument(new PdfReader(new ByteArrayInputStream(baos.toByteArray())));
             // TODO No PdfSmartCopy, no sense in the example

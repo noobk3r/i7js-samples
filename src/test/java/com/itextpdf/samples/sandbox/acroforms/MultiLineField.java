@@ -47,7 +47,7 @@ public class MultiLineField extends GenericTest {
                 null, null, null, null, null), new PdfWriter(new FileOutputStream(DEST)));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         form.getField("text").setValue("A B C D E F\nG H I J K L M N\nO P Q R S T U\r\nV W X Y Z\n\nAlphabet street");
-        form.flatFields();
+        form.flattenFields();
         pdfDoc.close();
     }
 

@@ -42,7 +42,7 @@ public class FlattenForm extends GenericTest {
         form.getField("timezone1").setValue("PT (UTC-8)");
         form.getField("timezone2").setValue("-");
         form.getField("dst").setValue("YES");
-        form.flatFields();
+        form.flattenFields();
         pdfDoc.close();
     }
 }

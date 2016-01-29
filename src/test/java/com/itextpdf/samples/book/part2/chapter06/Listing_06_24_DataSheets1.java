@@ -58,7 +58,7 @@ public class Listing_06_24_DataSheets1 extends Listing_06_19_FillDataSheet {
             PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
             form.setGenerateAppearance(true);
             fill(form, movie);
-            form.flatFields();
+            form.flattenFields();
 
             pdfDoc.close();
             pdfDoc = new PdfDocument(new PdfReader(new ByteArrayInputStream(baos.toByteArray())));
