@@ -7,7 +7,7 @@
 
 package com.itextpdf.samples.book.part4.chapter13;
 
-import com.itextpdf.basics.font.FontConstants;
+import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.core.geom.Rectangle;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.font.PdfFontFactory;

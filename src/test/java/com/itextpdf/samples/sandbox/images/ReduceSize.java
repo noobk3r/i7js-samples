@@ -11,7 +11,7 @@
  */
 package com.itextpdf.samples.sandbox.images;
 
-import com.itextpdf.basics.source.ByteArrayOutputStream;
+import com.itextpdf.io.source.ByteArrayOutputStream;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfIndirectReference;
 import com.itextpdf.core.pdf.PdfName;

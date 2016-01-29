@@ -7,7 +7,7 @@
 
 package com.itextpdf.samples.book.part1.chapter02;
 
-import com.itextpdf.basics.font.FontConstants;
+import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.font.PdfFontFactory;

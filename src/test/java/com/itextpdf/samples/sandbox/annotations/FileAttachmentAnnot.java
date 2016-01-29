@@ -12,7 +12,7 @@
 package com.itextpdf.samples.sandbox.annotations;
 
 import com.itextpdf.core.geom.Rectangle;
-import com.itextpdf.basics.image.ImageFactory;
+import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.annot.PdfFileAttachmentAnnotation;

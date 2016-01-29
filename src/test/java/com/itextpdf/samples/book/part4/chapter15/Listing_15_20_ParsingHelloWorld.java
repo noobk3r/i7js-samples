@@ -7,11 +7,11 @@
 
 package com.itextpdf.samples.book.part4.chapter15;
 
-import com.itextpdf.basics.font.FontConstants;
+import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.core.geom.Rectangle;
-import com.itextpdf.basics.source.PdfTokenizer;
-import com.itextpdf.basics.source.RandomAccessFileOrArray;
-import com.itextpdf.basics.source.RandomAccessSourceFactory;
+import com.itextpdf.io.source.PdfTokenizer;
+import com.itextpdf.io.source.RandomAccessFileOrArray;
+import com.itextpdf.io.source.RandomAccessSourceFactory;
 import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.parser.EventListener;
 import com.itextpdf.core.parser.PdfContentStreamProcessor;

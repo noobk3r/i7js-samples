@@ -8,7 +8,7 @@
 package com.itextpdf.samples.book.part4.chapter15;
 
 import com.itextpdf.core.PdfException;
-import com.itextpdf.basics.image.ImageFactory;
+import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.core.parser.EventData;
 import com.itextpdf.core.parser.EventListener;
 import com.itextpdf.core.parser.EventType;

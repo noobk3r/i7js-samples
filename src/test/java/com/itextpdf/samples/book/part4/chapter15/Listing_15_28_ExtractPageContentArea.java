@@ -8,7 +8,7 @@
 package com.itextpdf.samples.book.part4.chapter15;
 
 import com.itextpdf.core.geom.Rectangle;
-import com.itextpdf.basics.source.ByteArrayOutputStream;
+import com.itextpdf.io.source.ByteArrayOutputStream;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;

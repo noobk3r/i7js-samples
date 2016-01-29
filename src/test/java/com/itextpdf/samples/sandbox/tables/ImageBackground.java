@@ -7,8 +7,8 @@
 
 package com.itextpdf.samples.sandbox.tables;
 
-import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.basics.image.ImageFactory;
+import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.core.color.DeviceGray;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.font.PdfFontFactory;

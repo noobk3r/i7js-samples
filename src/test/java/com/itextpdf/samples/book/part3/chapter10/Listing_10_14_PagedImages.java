@@ -7,11 +7,11 @@
 
 package com.itextpdf.samples.book.part3.chapter10;
 
-import com.itextpdf.basics.image.ImageFactory;
-import com.itextpdf.basics.image.Jbig2Image;
-import com.itextpdf.basics.image.TiffImage;
-import com.itextpdf.basics.source.RandomAccessFileOrArray;
-import com.itextpdf.basics.source.RandomAccessSourceFactory;
+import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.Jbig2Image;
+import com.itextpdf.io.image.TiffImage;
+import com.itextpdf.io.source.RandomAccessFileOrArray;
+import com.itextpdf.io.source.RandomAccessSourceFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;

@@ -7,8 +7,8 @@
 
 package com.itextpdf.samples.book.part3.chapter11;
 
-import com.itextpdf.basics.font.PdfEncodings;
-import com.itextpdf.basics.image.ImageFactory;
+import com.itextpdf.io.font.PdfEncodings;
+import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.font.PdfFontFactory;

@@ -9,7 +9,7 @@ package com.itextpdf.samples.book.part3.chapter10;
 
 import com.itextpdf.barcodes.BarcodeEAN;
 import com.itextpdf.barcodes.BarcodePDF417;
-import com.itextpdf.basics.image.ImageFactory;
+import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.core.pdf.canvas.wmf.WmfImage;
 import com.itextpdf.core.pdf.canvas.wmf.WmfImageHelper;
 import com.itextpdf.core.pdf.PdfDocument;
@@ -64,7 +64,7 @@ public class Listing_10_09_ImageTypes extends GenericTest {
                         = new WmfImageHelper(new WmfImage(String.format("src/test/resources/img/%s", RESOURCES[i])));
                 img = new Image((PdfFormXObject) wmf.createPdfForm(pdfDoc));
             } else {
-                com.itextpdf.basics.image.Image image
+                com.itextpdf.io.image.Image image
                         = ImageFactory.getImage(String.format("src/test/resources/img/%s", RESOURCES[i]));
                 img = new Image(new PdfImageXObject(image));
             }

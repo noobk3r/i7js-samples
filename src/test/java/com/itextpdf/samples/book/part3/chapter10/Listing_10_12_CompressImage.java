@@ -7,7 +7,7 @@
 
 package com.itextpdf.samples.book.part3.chapter10;
 
-import com.itextpdf.basics.image.ImageFactory;
+import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;

@@ -11,7 +11,7 @@
  */
 package com.itextpdf.samples.sandbox.stamper;
 
-import com.itextpdf.basics.font.FontConstants;
+import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;

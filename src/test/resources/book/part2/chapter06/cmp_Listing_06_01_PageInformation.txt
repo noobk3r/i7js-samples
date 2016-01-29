@@ -2,7 +2,7 @@
 Number of pages: 1
 Size of page 1: [0.0,0.0,595.0,842.0]
 Rotation of page 1: 0
-Page size with rotation of page 1: com.itextpdf.basics.geom.Rectangle@3f4ddd67
+Page size with rotation of page 1: com.itextpdf.io.geom.Rectangle@3f4ddd67
 Is rebuilt? false
 Is encrypted? false
 
@@ -11,7 +11,7 @@ Is encrypted? false
 Number of pages: 1
 Size of page 1: [0.0,0.0,595.0,842.0]
 Rotation of page 1: 0
-Page size with rotation of page 1: com.itextpdf.basics.geom.Rectangle@735a5cd5
+Page size with rotation of page 1: com.itextpdf.io.geom.Rectangle@735a5cd5
 Is rebuilt? false
 Is encrypted? false
 
@@ -20,7 +20,7 @@ Is encrypted? false
 Number of pages: 8
 Size of page 1: [0.0,0.0,595.0,842.0]
 Rotation of page 1: 0
-Page size with rotation of page 1: com.itextpdf.basics.geom.Rectangle@3184df1d
+Page size with rotation of page 1: com.itextpdf.io.geom.Rectangle@3184df1d
 Is rebuilt? false
 Is encrypted? false
 
@@ -29,7 +29,7 @@ Is encrypted? false
 Number of pages: 1
 Size of page 1: [0.0,0.0,595.0,842.0]
 Rotation of page 1: 0
-Page size with rotation of page 1: com.itextpdf.basics.geom.Rectangle@a540251
+Page size with rotation of page 1: com.itextpdf.io.geom.Rectangle@a540251
 Is rebuilt? false
 Is encrypted? false
 

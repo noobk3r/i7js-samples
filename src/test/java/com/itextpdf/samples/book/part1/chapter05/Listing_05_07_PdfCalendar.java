@@ -7,10 +7,10 @@
 
 package com.itextpdf.samples.book.part1.chapter05;
 
-import com.itextpdf.basics.font.PdfEncodings;
+import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.core.geom.PageSize;
 import com.itextpdf.core.geom.Rectangle;
-import com.itextpdf.basics.image.ImageFactory;
+import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.color.Color;

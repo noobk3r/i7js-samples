@@ -7,8 +7,8 @@
 
 package com.itextpdf.samples.book.part1.chapter02;
 
-import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.basics.image.ImageFactory;
+import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
@@ -24,7 +24,6 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.sql.SQLException;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 

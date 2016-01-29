@@ -7,7 +7,7 @@
 
 package com.itextpdf.samples.book.part1.chapter02;
 
-import com.itextpdf.basics.image.ImageFactory;
+import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -25,7 +25,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 

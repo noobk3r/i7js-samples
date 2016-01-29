@@ -11,7 +11,7 @@
  */
 package com.itextpdf.samples.sandbox.annotations;
 
-import com.itextpdf.basics.font.FontConstants;
+import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;

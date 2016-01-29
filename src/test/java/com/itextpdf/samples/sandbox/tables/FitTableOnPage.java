@@ -12,7 +12,7 @@
 package com.itextpdf.samples.sandbox.tables;
 
 
-import com.itextpdf.basics.source.ByteArrayOutputStream;
+import com.itextpdf.io.source.ByteArrayOutputStream;
 import com.itextpdf.core.geom.PageSize;
 import com.itextpdf.core.geom.Rectangle;
 import com.itextpdf.core.pdf.PdfDocument;

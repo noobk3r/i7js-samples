@@ -8,7 +8,7 @@
 package com.itextpdf.samples.book.part3.chapter10;
 
 import com.itextpdf.core.geom.PageSize;
-import com.itextpdf.basics.image.ImageFactory;
+import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -45,12 +45,12 @@ public class Listing_10_16_TransparentImage extends GenericTest {
         Image img2 = new Image(ImageFactory.getImage(RESOURCE2));
         img2.setFixedPosition(0, 260);
         doc.add(img2);
-        com.itextpdf.basics.image.Image img3basics = ImageFactory.getImage(RESOURCE3);
+        com.itextpdf.io.image.Image img3basics = ImageFactory.getImage(RESOURCE3);
         img3basics.setTransparency(new int[]{0x00, 0x10});
         Image img3 = new Image(img3basics);
         img3.setFixedPosition(0, 0);
         doc.add(img3);
-        com.itextpdf.basics.image.Image img4basics = ImageFactory.getImage(RESOURCE4);
+        com.itextpdf.io.image.Image img4basics = ImageFactory.getImage(RESOURCE4);
         img4basics.setTransparency(new int[]{0xF0, 0xFF});
         Image img4 = new Image(img4basics);
         img4.setFixedPosition(50, 50);

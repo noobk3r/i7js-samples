@@ -7,9 +7,9 @@
 
 package com.itextpdf.samples.book.part1.chapter04;
 
-import com.itextpdf.basics.font.PdfEncodings;
+import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.core.geom.PageSize;
-import com.itextpdf.basics.image.ImageFactory;
+import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.color.DeviceCmyk;
 import com.itextpdf.core.font.PdfFont;

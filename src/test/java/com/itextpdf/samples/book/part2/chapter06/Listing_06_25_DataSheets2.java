@@ -7,7 +7,7 @@
 
 package com.itextpdf.samples.book.part2.chapter06;
 
-import com.itextpdf.basics.source.ByteArrayOutputStream;
+import com.itextpdf.io.source.ByteArrayOutputStream;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;

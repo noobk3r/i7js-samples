@@ -13,7 +13,7 @@
  */
 package com.itextpdf.samples.sandbox.events;
 
-import com.itextpdf.basics.font.FontConstants;
+import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.canvas.PdfCanvas;
 import com.itextpdf.core.color.Color;

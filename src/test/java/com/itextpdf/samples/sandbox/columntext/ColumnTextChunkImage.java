@@ -12,7 +12,7 @@
 package com.itextpdf.samples.sandbox.columntext;
 
 import com.itextpdf.core.geom.Rectangle;
-import com.itextpdf.basics.image.ImageFactory;
+import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.model.Document;

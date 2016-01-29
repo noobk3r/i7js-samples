@@ -11,7 +11,7 @@
  */
 package com.itextpdf.samples.sandbox.acroforms;
 
-import com.itextpdf.basics.font.PdfEncodings;
+import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.core.geom.Rectangle;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.font.PdfFontFactory;

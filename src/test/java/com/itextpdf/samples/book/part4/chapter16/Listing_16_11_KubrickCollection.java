@@ -8,7 +8,7 @@
 package com.itextpdf.samples.book.part4.chapter16;
 
 import com.itextpdf.core.geom.Rectangle;
-import com.itextpdf.basics.image.ImageFactory;
+import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.core.pdf.PdfArray;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfName;

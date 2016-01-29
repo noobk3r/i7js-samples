@@ -11,7 +11,7 @@
  */
 package com.itextpdf.samples.sandbox.acroforms.reporting;
 
-import com.itextpdf.basics.font.FontConstants;
+import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.core.geom.Rectangle;
 import com.itextpdf.core.events.Event;
 import com.itextpdf.core.events.IEventHandler;

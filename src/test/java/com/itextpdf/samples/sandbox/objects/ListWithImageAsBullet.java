@@ -7,8 +7,8 @@
 
 package com.itextpdf.samples.sandbox.objects;
 
-import com.itextpdf.basics.image.Image;
-import com.itextpdf.basics.image.ImageFactory;
+import com.itextpdf.io.image.Image;
+import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.core.pdf.xobject.PdfImageXObject;

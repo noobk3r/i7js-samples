@@ -10,11 +10,11 @@
  */
 package com.itextpdf.samples.sandbox.stamper;
 
-import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.basics.font.FontFactory;
+import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.FontFactory;
 import com.itextpdf.core.geom.Rectangle;
-import com.itextpdf.basics.image.Image;
-import com.itextpdf.basics.image.ImageFactory;
+import com.itextpdf.io.image.Image;
+import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;

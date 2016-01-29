@@ -13,7 +13,7 @@ package com.itextpdf.samples.sandbox.annotations;
 
 import com.itextpdf.core.geom.PageSize;
 import com.itextpdf.core.geom.Rectangle;
-import com.itextpdf.basics.image.ImageFactory;
+import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.pdf.PdfArray;
 import com.itextpdf.core.pdf.PdfDictionary;

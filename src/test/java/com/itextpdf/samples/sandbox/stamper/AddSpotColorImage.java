@@ -7,7 +7,7 @@
 
 package com.itextpdf.samples.sandbox.stamper;
 
-import com.itextpdf.basics.image.ImageFactory;
+import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.core.color.DeviceCmyk;
 import com.itextpdf.core.pdf.PdfArray;
 import com.itextpdf.core.pdf.PdfDictionary;

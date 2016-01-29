@@ -7,8 +7,8 @@
 
 package com.itextpdf.samples.book.part1.chapter04;
 
-import com.itextpdf.basics.font.FontConstants;
-import com.itextpdf.basics.image.ImageFactory;
+import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.core.color.Color;
 import com.itextpdf.core.color.DeviceRgb;
 import com.itextpdf.core.color.WebColors;
@@ -54,7 +54,7 @@ public class Listing_04_17_NestedTables extends GenericTest {
             "./target/test/resources/book/part1/chapter04/Listing_04_17_NestedTables.pdf";
     public static final String RESOURCE = "./src/test/resources/book/part1/chapter02/posters/%s.jpg";
 
-    public Map<String, com.itextpdf.basics.image.Image> images = new HashMap<>();
+    public Map<String, com.itextpdf.io.image.Image> images = new HashMap<>();
 
     protected PdfFont bold;
 
@@ -187,7 +187,7 @@ public class Listing_04_17_NestedTables extends GenericTest {
     }
 
     public Image getImage(String imdb) throws MalformedURLException {
-        com.itextpdf.basics.image.Image img = images.get(imdb);
+        com.itextpdf.io.image.Image img = images.get(imdb);
         if (img == null) {
             img = ImageFactory.getImage(String.format(RESOURCE, imdb));
             images.put(imdb, img);

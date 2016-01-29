@@ -8,7 +8,7 @@
 package com.itextpdf.samples.book.part1.chapter04;
 
 import com.itextpdf.core.geom.PageSize;
-import com.itextpdf.basics.image.ImageFactory;
+import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;

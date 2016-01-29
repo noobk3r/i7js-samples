@@ -11,8 +11,8 @@
  */
 package com.itextpdf.samples.sandbox.acroforms;
 
-import com.itextpdf.basics.source.ByteArrayOutputStream;
-import com.itextpdf.basics.source.RandomAccessSourceFactory;
+import com.itextpdf.io.source.ByteArrayOutputStream;
+import com.itextpdf.io.source.RandomAccessSourceFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;

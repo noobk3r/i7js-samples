@@ -7,8 +7,8 @@
 
 package com.itextpdf.samples.book.part3.chapter11;
 
-import com.itextpdf.basics.font.PdfEncodings;
-import com.itextpdf.basics.font.TrueTypeCollection;
+import com.itextpdf.io.font.PdfEncodings;
+import com.itextpdf.io.font.TrueTypeCollection;
 import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;

@@ -7,7 +7,7 @@
 
 package com.itextpdf.samples.book.part2.chapter06;
 
-import com.itextpdf.basics.source.RandomAccessSourceFactory;
+import com.itextpdf.io.source.RandomAccessSourceFactory;
 import com.itextpdf.core.events.Event;
 import com.itextpdf.core.events.IEventHandler;
 import com.itextpdf.core.events.PdfDocumentEvent;
