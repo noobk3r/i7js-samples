@@ -9,8 +9,8 @@ package com.itextpdf.samples.book.part1.chapter02;
 
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.model.Document;
-import com.itextpdf.model.element.Paragraph;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
 import com.lowagie.database.DatabaseConnection;

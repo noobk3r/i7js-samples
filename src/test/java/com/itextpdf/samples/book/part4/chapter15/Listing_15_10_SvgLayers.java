@@ -18,8 +18,8 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.layer.PdfLayer;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
-import com.itextpdf.model.Canvas;
-import com.itextpdf.model.Property;
+import com.itextpdf.layout.Canvas;
+import com.itextpdf.layout.Property;
 import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.FileOutputStream;

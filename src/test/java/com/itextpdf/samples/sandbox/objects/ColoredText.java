@@ -19,10 +19,10 @@ import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.model.Canvas;
-import com.itextpdf.model.Document;
-import com.itextpdf.model.element.Paragraph;
-import com.itextpdf.model.element.Text;
+import com.itextpdf.layout.Canvas;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Text;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.File;

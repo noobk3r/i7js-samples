@@ -13,12 +13,12 @@ import com.itextpdf.kernel.color.DeviceGray;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.model.Document;
-import com.itextpdf.model.Property;
-import com.itextpdf.model.border.Border;
-import com.itextpdf.model.border.SolidBorder;
-import com.itextpdf.model.element.Cell;
-import com.itextpdf.model.element.Table;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.Property;
+import com.itextpdf.layout.border.Border;
+import com.itextpdf.layout.border.SolidBorder;
+import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.Table;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.FileOutputStream;

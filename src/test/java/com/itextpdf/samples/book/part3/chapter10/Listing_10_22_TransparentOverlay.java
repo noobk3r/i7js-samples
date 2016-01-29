@@ -20,7 +20,7 @@ import com.itextpdf.kernel.pdf.extgstate.PdfExtGState;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.kernel.pdf.xobject.PdfTransparencyGroup;
 import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.model.Document;
+import com.itextpdf.layout.Document;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.IOException;
@@ -43,7 +43,7 @@ public class Listing_10_22_TransparentOverlay extends GenericTest {
         Document doc = new Document(pdfDoc, new PageSize(850, 600));
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         Image img = ImageFactory.getImage(RESOURCE);
-        com.itextpdf.model.element.Image imgModel = new com.itextpdf.model.element.Image(img);
+        com.itextpdf.layout.element.Image imgModel = new com.itextpdf.layout.element.Image(img);
         float w = imgModel.getImageScaledWidth();
         float h = imgModel.getImageScaledHeight();
         canvas.ellipse(1, 1, 848, 598);

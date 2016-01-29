@@ -19,8 +19,8 @@ import com.itextpdf.kernel.xmp.XMPException;
 import com.itextpdf.kernel.xmp.XMPMeta;
 import com.itextpdf.kernel.xmp.XMPMetaFactory;
 import com.itextpdf.kernel.xmp.options.PropertyOptions;
-import com.itextpdf.model.Document;
-import com.itextpdf.model.element.Paragraph;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.FileOutputStream;

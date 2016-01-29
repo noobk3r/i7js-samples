@@ -13,7 +13,7 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.model.Document;
+import com.itextpdf.layout.Document;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.IOException;
@@ -57,7 +57,7 @@ public class Listing_10_18_ImageMask extends GenericTest {
         Document doc = new Document(pdfDoc);
         Image img = ImageFactory.getImage(RESOURCE);
         img.setImageMask(mask);
-        doc.add(new com.itextpdf.model.element.Image(img));
+        doc.add(new com.itextpdf.layout.element.Image(img));
         doc.close();
     }
 

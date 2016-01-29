@@ -19,9 +19,9 @@ import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.action.PdfActionOcgState;
 import com.itextpdf.kernel.pdf.layer.PdfLayer;
 import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.model.Document;
-import com.itextpdf.model.element.Link;
-import com.itextpdf.model.element.Paragraph;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Link;
+import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.FileOutputStream;

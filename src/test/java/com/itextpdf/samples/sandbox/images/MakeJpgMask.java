@@ -17,7 +17,7 @@ import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.io.source.ByteArrayOutputStream;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.model.Document;
+import com.itextpdf.layout.Document;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -61,7 +61,7 @@ public class MakeJpgMask extends GenericTest {
         Image mask = makeBlackAndWhitePng(MASK);
         mask.makeMask();
         image.setImageMask(mask);
-        com.itextpdf.model.element.Image img = new com.itextpdf.model.element.Image(image);
+        com.itextpdf.layout.element.Image img = new com.itextpdf.layout.element.Image(image);
         img.scaleAbsolute(PageSize.A4.rotate().getWidth(), PageSize.A4.rotate().getHeight());
         img.setFixedPosition(0, 0);
         doc.add(img);

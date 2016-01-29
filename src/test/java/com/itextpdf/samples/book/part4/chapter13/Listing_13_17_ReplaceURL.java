@@ -23,9 +23,9 @@ import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfButtonFormField;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.forms.fields.PdfTextFormField;
-import com.itextpdf.model.Document;
-import com.itextpdf.model.element.Cell;
-import com.itextpdf.model.element.Table;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.Table;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.samples.book.part2.chapter08.Listing_08_14_ChildFieldEvent;
 

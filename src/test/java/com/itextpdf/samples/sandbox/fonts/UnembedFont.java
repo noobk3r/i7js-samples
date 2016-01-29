@@ -14,8 +14,8 @@ import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.model.Document;
-import com.itextpdf.model.element.Paragraph;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.File;

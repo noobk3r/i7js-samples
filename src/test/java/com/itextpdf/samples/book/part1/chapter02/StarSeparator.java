@@ -7,9 +7,9 @@
 
 package com.itextpdf.samples.book.part1.chapter02;
 
-import com.itextpdf.model.Property;
-import com.itextpdf.model.element.Div;
-import com.itextpdf.model.element.Paragraph;
+import com.itextpdf.layout.Property;
+import com.itextpdf.layout.element.Div;
+import com.itextpdf.layout.element.Paragraph;
 
 public class StarSeparator extends Div {
 

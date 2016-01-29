@@ -13,9 +13,9 @@ import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfWidgetAnnotation;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.fields.PdfFormField;
-import com.itextpdf.model.element.Cell;
-import com.itextpdf.model.renderer.CellRenderer;
-import com.itextpdf.model.renderer.DrawContext;
+import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.renderer.CellRenderer;
+import com.itextpdf.layout.renderer.DrawContext;
 
 import org.junit.experimental.categories.Category;
 

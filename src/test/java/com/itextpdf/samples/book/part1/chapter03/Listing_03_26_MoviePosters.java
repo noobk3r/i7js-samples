@@ -18,8 +18,8 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
 import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.model.Document;
-import com.itextpdf.model.Property;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.Property;
 import com.itextpdf.samples.GenericTest;
 
 import com.lowagie.database.DatabaseConnection;
@@ -109,7 +109,7 @@ public class Listing_03_26_MoviePosters extends GenericTest {
 
         Document document = new Document(pdfDoc);
 
-        com.itextpdf.model.element.Image image = new com.itextpdf.model.element.Image(xObj, 0, 480).setProperty(Property.PAGE_NUMBER, 3);
+        com.itextpdf.layout.element.Image image = new com.itextpdf.layout.element.Image(xObj, 0, 480).setProperty(Property.PAGE_NUMBER, 3);
         document.add(image);
 
         image.setRotationAngle(Math.PI / 6).

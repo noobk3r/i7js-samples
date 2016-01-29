@@ -124,7 +124,7 @@ public class Listing_15_11_ObjectData extends GenericTest {
         float y = 769.7f;
         for (Map.Entry<Movie, Integer> entry : map.entrySet()) {
             img = ImageFactory.getImage(String.format(RESOURCE, entry.getKey().getImdb()));
-            com.itextpdf.model.element.Image image = new com.itextpdf.model.element.Image(img);
+            com.itextpdf.layout.element.Image image = new com.itextpdf.layout.element.Image(img);
             directors.get(entry.getValue()).addKid(new PdfStructElem(pdfDoc, image.getRole()));
             canvas.openTag(new CanvasTag(image.getRole()));
             canvas.addImage(img, x + (45 - 30) / 2, y, 30, true);

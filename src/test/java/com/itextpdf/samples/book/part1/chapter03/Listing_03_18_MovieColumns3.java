@@ -8,8 +8,8 @@
 package com.itextpdf.samples.book.part1.chapter03;
 
 import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.model.Property;
-import com.itextpdf.model.element.Paragraph;
+import com.itextpdf.layout.Property;
+import com.itextpdf.layout.element.Paragraph;
 
 import com.lowagie.filmfestival.Movie;
 

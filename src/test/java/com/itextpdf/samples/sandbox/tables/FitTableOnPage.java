@@ -17,12 +17,12 @@ import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.model.Document;
-import com.itextpdf.model.element.Table;
-import com.itextpdf.model.layout.LayoutArea;
-import com.itextpdf.model.layout.LayoutContext;
-import com.itextpdf.model.layout.LayoutResult;
-import com.itextpdf.model.renderer.IRenderer;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.layout.LayoutArea;
+import com.itextpdf.layout.layout.LayoutContext;
+import com.itextpdf.layout.layout.LayoutResult;
+import com.itextpdf.layout.renderer.IRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 

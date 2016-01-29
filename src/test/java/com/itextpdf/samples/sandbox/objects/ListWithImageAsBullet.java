@@ -13,8 +13,8 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
 import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.model.Document;
-import com.itextpdf.model.element.List;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.List;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.File;
@@ -45,7 +45,7 @@ public class ListWithImageAsBullet extends GenericTest {
 //        image.scaleAbsolute(12, 12);
 //        image.setScaleToFitHeight(false);
         List list = new List().
-                setListSymbol(new com.itextpdf.model.element.Image(xObject)).
+                setListSymbol(new com.itextpdf.layout.element.Image(xObject)).
                 add("Hello World").
                 add("This is a list item with a lot of text. " +
                         "It will certainly take more than one line." +

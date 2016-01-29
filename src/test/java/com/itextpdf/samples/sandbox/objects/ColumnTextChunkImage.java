@@ -12,8 +12,8 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
 import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.model.Document;
-import com.itextpdf.model.element.Paragraph;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.File;
@@ -44,9 +44,9 @@ public class ColumnTextChunkImage extends GenericTest {
         PdfImageXObject fox = new PdfImageXObject(ImageFactory.getImage(FOX));
         Paragraph p = new Paragraph("quick brown fox jumps over the lazy dog.").
             add("Or, to say it in a more colorful way: quick brown ").
-            add(new com.itextpdf.model.element.Image(fox)).
+            add(new com.itextpdf.layout.element.Image(fox)).
             add(" jumps over the lazy ").
-            add(new com.itextpdf.model.element.Image(dog)).
+            add(new com.itextpdf.layout.element.Image(dog)).
             add(".").
             setMultipliedLeading(1);
         doc.add(p);

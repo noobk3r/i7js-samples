@@ -8,15 +8,15 @@
 package com.lowagie.filmfestival;
 
 import com.itextpdf.kernel.font.PdfFont;
-import com.itextpdf.model.element.Text;
+import com.itextpdf.layout.element.Text;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PojoToElementFactory {
 
-    public static com.itextpdf.model.element.List getDirectorList(Movie movie) {
-        com.itextpdf.model.element.List list = new com.itextpdf.model.element.List();
+    public static com.itextpdf.layout.element.List getDirectorList(Movie movie) {
+        com.itextpdf.layout.element.List list = new com.itextpdf.layout.element.List();
         for (Director director : movie.getDirectors()) {
             list.add(String.format("%s, %s", director.getName(), director.getGivenName()));
         }
@@ -37,8 +37,8 @@ public class PojoToElementFactory {
         return duration;
     }
 
-    public static com.itextpdf.model.element.List getCountryList(Movie movie) {
-        com.itextpdf.model.element.List list = new com.itextpdf.model.element.List();
+    public static com.itextpdf.layout.element.List getCountryList(Movie movie) {
+        com.itextpdf.layout.element.List list = new com.itextpdf.layout.element.List();
         for (Country country : movie.getCountries()) {
             list.add(country.getCountry());
         }
