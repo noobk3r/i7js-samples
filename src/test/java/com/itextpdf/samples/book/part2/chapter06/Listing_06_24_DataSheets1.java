@@ -11,9 +11,8 @@ import com.itextpdf.basics.source.ByteArrayOutputStream;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
-
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
@@ -25,10 +24,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore("timeout")
 @Category(SampleTest.class)
 public class Listing_06_24_DataSheets1 extends Listing_06_19_FillDataSheet {
     public static final String DEST = "./target/test/resources/book/part2/chapter06/Listing_06_24_DataSheets1.pdf";

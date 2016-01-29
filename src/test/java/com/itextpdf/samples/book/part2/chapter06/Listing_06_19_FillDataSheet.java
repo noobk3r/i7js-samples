@@ -11,10 +11,11 @@ import com.itextpdf.basics.source.ByteArrayOutputStream;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfReader;
 import com.itextpdf.core.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
+import com.itextpdf.forms.PdfPageFormCopier;
+import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.samples.GenericTest;
-
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Director;
@@ -28,10 +29,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore("timeout")
 @Category(SampleTest.class)
 public class Listing_06_19_FillDataSheet extends GenericTest{
     public static final String DATASHEET
@@ -55,13 +54,11 @@ public class Listing_06_19_FillDataSheet extends GenericTest{
         ByteArrayOutputStream baos;
         // Fill out the data sheet form with data
         for (Movie movie : movies) {
-            // @TODO replace this check with < 2007 when copying form fields is implemented
-            if (movie.getYear() != 2007)
+            if (movie.getYear() < 2007)
                 continue;
             reader = new PdfReader(DATASHEET);
             baos = new ByteArrayOutputStream();
-            pdfDoc = new PdfDocument(reader,
-                    new PdfWriter(baos));
+            pdfDoc = new PdfDocument(reader, new PdfWriter(baos));
             PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
             form.setGenerateAppearance(true);
             fill(form, movie);
@@ -70,7 +67,16 @@ public class Listing_06_19_FillDataSheet extends GenericTest{
             pdfDoc.close();
 
             pdfDoc = new PdfDocument(new PdfReader(new ByteArrayInputStream(baos.toByteArray())));
-            pdfDoc.copyPages(1, pdfDoc.getNumberOfPages(), pdfDocResult);
+            PdfAcroForm newForm = PdfAcroForm.getAcroForm(pdfDoc, false);
+            if (newForm != null) {
+                // Rename fields so that fields on different pages do not share their value
+                for (PdfFormField field : newForm.getFormFields().values()) {
+                    if (field.getFieldName() != null) {
+                        field.setFieldName(movie.getImdb() + field.getFieldName().toUnicodeString());
+                    }
+                }
+            }
+            pdfDoc.copyPages(1, pdfDoc.getNumberOfPages(), pdfDocResult, new PdfPageFormCopier());
         }
         // Close the database connection
         connection.close();
@@ -103,7 +109,7 @@ public class Listing_06_19_FillDataSheet extends GenericTest{
      */
     public static String getDirectors(Movie movie) {
         List<Director> directors = movie.getDirectors();
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         for (Director director : directors) {
             buf.append(director.getGivenName());
             buf.append(' ');
