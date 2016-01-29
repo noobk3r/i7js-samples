@@ -34,7 +34,7 @@ import java.sql.Statement;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class Listing_02_16_MovieLists4 extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part1/chapter02/Listing_02_16_MovieLists4.pdf";

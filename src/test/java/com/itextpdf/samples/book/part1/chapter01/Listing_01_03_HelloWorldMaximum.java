@@ -59,7 +59,6 @@ public class Listing_01_03_HelloWorldMaximum extends GenericTest {
         doc.add(new Paragraph("Hello World!"));
 
         // Change the user unit
-        // TODO Implement facility to change unit (setUserunit in itext5)
         pdfDoc.getPage(1).getPdfObject().put(PdfName.UserUnit, new PdfNumber(75000f));
 
         // Close document

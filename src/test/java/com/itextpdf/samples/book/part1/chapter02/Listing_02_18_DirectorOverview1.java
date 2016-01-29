@@ -12,6 +12,10 @@ import com.itextpdf.core.font.PdfFont;
 import com.itextpdf.core.font.PdfFontFactory;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.core.pdf.canvas.draw.SolidLine;
+import com.itextpdf.model.Property;
+import com.itextpdf.model.element.Tab;
+import com.itextpdf.model.element.TabStop;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.element.Paragraph;
@@ -33,7 +37,7 @@ import java.util.TreeSet;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class Listing_02_18_DirectorOverview1 extends GenericTest {
     public static final String DEST =
@@ -66,11 +70,10 @@ public class Listing_02_18_DirectorOverview1 extends GenericTest {
                         + "GROUP BY d.id, d.name, d.given_name ORDER BY name");
         Director director;
         // creating separators
-        // TODO No LineSeparator
+
         // LineSeparator line = new LineSeparator(1, 100, null, Element.ALIGN_CENTER, -2);
-        //Paragraph stars = new Paragraph().setFixedLeading(20);
-        StarSeparator stars = new StarSeparator();
-        stars.setMarginBottom(30);
+
+
         // looping over the directors
         while (rs.next()) {
             // get the director object and use it in a Paragraph
@@ -80,11 +83,8 @@ public class Listing_02_18_DirectorOverview1 extends GenericTest {
                 p.add(text);
             }
             // if there are more than 2 movies for this director
-            // an arrow is added to the left
             if (rs.getInt("c") > 2)
-                // TODO No PositionedArrow
-                // p.add(PositionedArrow.LEFT);
-                // p.add(line);
+
                 // add the paragraph with the arrow to the document
                 doc.add(p);
 
@@ -98,12 +98,10 @@ public class Listing_02_18_DirectorOverview1 extends GenericTest {
                 p.add(": ");
                 p.add(new Text(String.valueOf(movie.getYear())));
                 if (movie.getYear() > 1999)
-                    // TODO No PositionedArrow
-                    // p.add(PositionedArrow.RIGHT);
-                    doc.add(p);
+                     doc.add(p);
             }
             // add a star separator after the director info is added
-            doc.add(stars);
+
         }
         doc.close();
         stm.close();

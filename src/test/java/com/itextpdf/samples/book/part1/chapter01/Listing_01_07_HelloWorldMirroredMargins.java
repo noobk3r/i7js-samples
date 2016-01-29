@@ -10,6 +10,9 @@ package com.itextpdf.samples.book.part1.chapter01;
 import com.itextpdf.core.geom.PageSize;
 import com.itextpdf.core.pdf.PdfDocument;
 import com.itextpdf.core.pdf.PdfWriter;
+import com.itextpdf.model.layout.LayoutArea;
+import com.itextpdf.model.layout.LayoutResult;
+import com.itextpdf.model.renderer.DocumentRenderer;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.model.Document;
 import com.itextpdf.model.Property;
@@ -18,14 +21,15 @@ import com.itextpdf.samples.GenericTest;
 
 import java.io.FileOutputStream;
 
-import org.junit.Ignore;
+
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class Listing_01_07_HelloWorldMirroredMargins extends GenericTest {
     public static final String DEST =
             "./target/test/resources/book/part1/chapter01/Listing_01_07_HelloWorldMirroredMargins.pdf";
+
 
     public static void main(String[] args) throws Exception {
         new Listing_01_07_HelloWorldMirroredMargins().manipulatePdf(DEST);
@@ -40,16 +44,29 @@ public class Listing_01_07_HelloWorldMirroredMargins extends GenericTest {
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(writer);
         PageSize customPageSize = PageSize.A5.clone();
-        // TODO document.setMarginMirroring(true);
+
         Document doc = new Document(pdfDoc, customPageSize);
         doc.setMargins(108, 72, 180, 36);
+        doc.setRenderer(new DocumentRenderer(doc) {
+            int currentPageNumber = 0;
+            @Override
+            public LayoutArea updateCurrentArea(LayoutResult overflowResult) {
+                    currentPageNumber = super.updateCurrentArea(overflowResult).getPageNumber();
+                    if(currentPageNumber % 2 == 0){
+                        document.setMargins(108, 72, 180, 36);
+                    }else{
+                        document.setMargins(108, 36, 180, 72);
+                    }
+                    return currentArea;
+            }
+        });
         doc.add(new Paragraph(
                 "The left margin of this odd page is 36pt (0.5 inch); " +
                         "the right margin 72pt (1 inch); " +
                         "the top margin 108pt (1.5 inch); " +
                         "the bottom margin 180pt (2.5 inch)."));
         Paragraph paragraph = new Paragraph().setTextAlignment(Property.TextAlignment.JUSTIFIED);
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 60; i++) {
             paragraph.add("Hello World! Hello People! " +
                     "Hello Sky! Hello Sun! Hello Moon! Hello Stars!");
         }

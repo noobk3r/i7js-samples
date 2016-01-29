@@ -36,7 +36,7 @@ import java.sql.Statement;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class Listing_02_23_MovieLinks2 extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part1/chapter02/Listing_02_23_MovieLinks2.pdf";
@@ -112,7 +112,7 @@ public class Listing_02_23_MovieLinks2 extends GenericTest {
         array.add(new PdfNumber(100));
         array.add(new PdfNumber(1));
         PdfDestination dest = PdfDestination.makeDestination(array);
-        Link topLink = new Link("top", PdfAction.createGoTo(dest));
+        Link topLink = new Link("top", PdfAction.createGoTo("top"));
         p.add(topLink);
         p.add(".");
         doc.add(p);

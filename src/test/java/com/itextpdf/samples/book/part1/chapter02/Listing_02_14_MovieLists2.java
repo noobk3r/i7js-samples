@@ -31,11 +31,11 @@ import java.sql.Statement;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+@Ignore("Implement ListItem.setListSymbol")
 @Category(SampleTest.class)
 public class Listing_02_14_MovieLists2 extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part1/chapter02/Listing_02_14_MovieLists2.pdf";
-
+    //public static final String DEST = "./target/test/resources/book/part1/chapter02/Listing_02_14_MovieLists2.pdf";
+    public static final String DEST = "d:/Listing_02_14_MovieLists2.pdf";
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_02_14_MovieLists2().manipulatePdf(DEST);
     }
@@ -58,21 +58,19 @@ public class Listing_02_14_MovieLists2 extends GenericTest {
         // Create a new list
         List list = new List();
         // loop over the countries
-        // TODO Implement setAutoIndent(boolean)
-        //list.setAutoindent(false);
+
         list.setSymbolIndent(36);
         // loop over the countries
         while (rs.next()) {
             // Create a list item for a country
             ListItem item = new ListItem(
                     String.format("%s: %d movies", rs.getString("country"), rs.getInt("c")));
-            //item.setListSymbol(new Text(rs.getString("country_id")));
+            item.setProperty(Property.LIST_SYMBOL, new Text(rs.getString("country_id")));
+
             // TODO There is only one listSymbol for List in itext7
-            list.setListSymbol(new Text(rs.getString("country_id")));
+            //list.setListSymbol(new Text(rs.getString("country_id")));
             // Create a list for the movies produced in the current country
             List movielist = new List(Property.ListNumberingType.ENGLISH_LOWER);
-            // TODO No setAlignindent(boolean)
-            //movielist.setAlignindent(false);
             for (Movie movie : PojoFactory.getMovies(connection, rs.getString("country_id"))) {
                 ListItem movieitem = new ListItem(movie.getMovieTitle());
                 List directorlist = new List(Property.ListNumberingType.DECIMAL);

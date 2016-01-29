@@ -27,7 +27,7 @@ import java.sql.SQLException;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class Listing_02_29_RiverPhoenix extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part1/chapter02/Listing_02_29_RiverPhoenix.pdf";
@@ -45,23 +45,18 @@ public class Listing_02_29_RiverPhoenix extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        // TODO No setStrictImageSequence(boolean) on FileOutputStream
-        // TODO No setInitialLeading
-        // writer.setStrictImageSequence(true);
-        // writer.setInitialLeading(18);
-
         bold = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD);
 
         // step 4
-        doc.add(new Paragraph("Movies featuring River Phoenix").setFont(bold).setFixedLeading(18));
+        doc.add(new Paragraph("Movies featuring River Phoenix").setFont(bold));
         doc.add(createParagraph(
-                "My favorite movie featuring River Phoenix was ", "0092005").setFixedLeading(18));
+                "My favorite movie featuring River Phoenix was ", "0092005"));
         doc.add(createParagraph(
-                "River Phoenix was nominated for an academy award for his role in ", "0096018").setFixedLeading(18));
+                "River Phoenix was nominated for an academy award for his role in ", "0096018"));
         doc.add(createParagraph(
-                "River Phoenix played the young Indiana Jones in ", "0097576").setFixedLeading(18));
+                "River Phoenix played the young Indiana Jones in ", "0097576"));
         doc.add(createParagraph(
-                "His best role was probably in ", "0102494").setFixedLeading(18));
+                "His best role was probably in ", "0102494"));
 
         doc.close();
     }
@@ -71,10 +66,8 @@ public class Listing_02_29_RiverPhoenix extends GenericTest {
         Paragraph p = new Paragraph(text);
         Image img = new Image(ImageFactory
                 .getImage(String.format("./src/test/resources/book/part1/chapter02/posters/%s.jpg", imdb)));
-        img.scaleToFit(1000, 72);
+        img.scaleToFit(1000,72);
         img.setRotationAngle(Math.toRadians(-30));
-        // TODO Cannot wrap Image with Text
-        // TODO Cannot set offset as in Chunk constructor
         p.add(img);
         return p;
     }

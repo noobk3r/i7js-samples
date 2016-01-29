@@ -28,7 +28,7 @@ import java.util.List;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class Listing_02_27_MoviePosters2 extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part1/chapter02/Listing_02_27_MoviePosters2.pdf";
@@ -41,9 +41,7 @@ public class Listing_02_27_MoviePosters2 extends GenericTest {
     public void manipulatePdf(String dest) throws IOException, SQLException {
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
 
-        // TODO No setStrictImageSequence(boolean) on PdfWriter
-        // writer.setStrictImageSequence(true);
-        //Initialize writer
+
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
