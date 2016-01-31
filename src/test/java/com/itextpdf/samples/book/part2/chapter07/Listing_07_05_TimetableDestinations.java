@@ -62,7 +62,7 @@ public class Listing_07_05_TimetableDestinations extends GenericTest {
             actions.add(PdfAction.createGoTo(PdfExplicitDestination.createFit(i)));
         }
 
-        PdfFont symbol = PdfFontFactory.createStandardFont(FontConstants.SYMBOL);
+        PdfFont symbol = PdfFontFactory.createFont(FontConstants.SYMBOL);
         // Add a navigation table to every page
         for (int i = 1; i <= n; i++) {
             doc.add(createNavigationTable(i, n).setFixedPosition(i, 696, 0, 120).setFont(symbol));

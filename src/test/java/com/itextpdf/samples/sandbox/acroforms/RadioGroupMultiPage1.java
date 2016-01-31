@@ -48,7 +48,7 @@ public class RadioGroupMultiPage1 extends GenericTest {
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
-        PdfFont font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
+        PdfFont font = PdfFontFactory.createFont(FontConstants.HELVETICA);
         Rectangle rect = new Rectangle(40, 806, 60 - 40, 788 - 806);
         PdfButtonFormField radioGroup = PdfFormField.createRadioGroup(pdfDoc, "Language", "");
         for (int page = 1; page <= LANGUAGES.length; page++) {

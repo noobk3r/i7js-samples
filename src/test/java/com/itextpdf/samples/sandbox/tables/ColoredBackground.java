@@ -46,7 +46,7 @@ public class ColoredBackground extends GenericTest {
 
         Table table;
         Cell cell;
-        PdfFont font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD);
+        PdfFont font = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
         table = new Table(16);
         for (int aw = 0; aw < 16; aw++) {
             cell = new Cell().add(new Paragraph("hi").setFont(font).setFontSize(12).setFontColor(Color.WHITE));

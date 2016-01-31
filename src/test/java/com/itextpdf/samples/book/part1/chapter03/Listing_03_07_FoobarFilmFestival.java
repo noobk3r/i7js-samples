@@ -55,7 +55,7 @@ public class Listing_03_07_FoobarFilmFestival extends GenericTest {
 
         String foobar = "Foobar Film Festival";
         // Measuring a String in Helvetica
-        PdfFont helvetica = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
+        PdfFont helvetica = PdfFontFactory.createFont(FontConstants.HELVETICA);
         float width_helv = helvetica.getWidth(foobar, 12);
         Text c = new Text(foobar + ": " + width_helv).setFont(helvetica);
         doc.add(new Paragraph(c));

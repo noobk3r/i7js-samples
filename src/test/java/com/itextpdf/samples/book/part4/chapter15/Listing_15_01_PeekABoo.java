@@ -53,7 +53,7 @@ public class Listing_15_01_PeekABoo extends GenericTest {
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         PdfLayer layer = new PdfLayer("Do you see me?", pdfDoc);
         layer.setOn(on);
-        canvas.beginText().setFontAndSize(PdfFontFactory.createStandardFont(FontConstants.HELVETICA), 18).
+        canvas.beginText().setFontAndSize(PdfFontFactory.createFont(FontConstants.HELVETICA), 18).
                 moveText(50, 760).showText("Do you see me?").
                 beginLayer(layer).moveText(0, -30).showText("Peek-A-Boo!!!").endLayer().
                 endText();

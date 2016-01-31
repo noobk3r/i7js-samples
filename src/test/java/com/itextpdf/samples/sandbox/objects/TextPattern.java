@@ -45,7 +45,7 @@ public class TextPattern extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
-        PdfFont font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
+        PdfFont font = PdfFontFactory.createFont(FontConstants.HELVETICA);
         String filltext = "this is the fill text! ";
         float filltextWidth = font.getWidth(filltext, 6);
 

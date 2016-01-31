@@ -69,7 +69,7 @@ public class Listing_99_02_ComplexDocumentLayout extends GenericTest {
         for (int i = 0; i < 200; i++) {
             text.append("A very long text is here...");
         }
-        doc.add(new Paragraph(text.toString()).setFont(PdfFontFactory.createStandardFont(FontConstants.HELVETICA)));
+        doc.add(new Paragraph(text.toString()).setFont(PdfFontFactory.createFont(FontConstants.HELVETICA)));
 
         //Close document
         doc.close();

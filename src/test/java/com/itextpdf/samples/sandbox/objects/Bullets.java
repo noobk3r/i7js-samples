@@ -47,9 +47,9 @@ public class Bullets extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
         Document doc = new Document(pdfDoc);
 
-        PdfFont zapfdingbats = PdfFontFactory.createStandardFont(FontConstants.ZAPFDINGBATS);
+        PdfFont zapfdingbats = PdfFontFactory.createFont(FontConstants.ZAPFDINGBATS);
         Text bullet = new Text(String.valueOf((char) 108)).setFont(zapfdingbats);
-        PdfFont font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
+        PdfFont font = PdfFontFactory.createFont(FontConstants.HELVETICA);
         Paragraph p = new Paragraph("Items can be split if they don't fit at the end: ").setFont(font);
         for (String item : ITEMS) {
             p.add(bullet);

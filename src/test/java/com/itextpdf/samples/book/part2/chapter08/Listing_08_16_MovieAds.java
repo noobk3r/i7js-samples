@@ -200,9 +200,9 @@ public class Listing_08_16_MovieAds extends GenericTest {
         PdfFont bold = null;
         PdfFont italic = null;
         try {
-            normal = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
-            bold = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD);
-            italic = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_OBLIQUE);
+            normal = PdfFontFactory.createFont(FontConstants.HELVETICA);
+            bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
+            italic = PdfFontFactory.createFont(FontConstants.HELVETICA_OBLIQUE);
         } catch (IOException e) {
             e.printStackTrace();
         }

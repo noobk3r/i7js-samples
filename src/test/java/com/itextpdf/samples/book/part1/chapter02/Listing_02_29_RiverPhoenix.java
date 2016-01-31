@@ -44,7 +44,7 @@ public class Listing_02_29_RiverPhoenix extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        bold = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD);
+        bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
 
         // step 4
         doc.add(new Paragraph("Movies featuring River Phoenix").setFont(bold));

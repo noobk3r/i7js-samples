@@ -47,7 +47,7 @@ public class Listing_14_10_TextMethods extends GenericTest {
                 .stroke();
         // draw text
         String text = "AWAY again ";
-        PdfFont font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
+        PdfFont font = PdfFontFactory.createFont(FontConstants.HELVETICA);
         canvas.beginText()
                 .setFontAndSize(font, 12)
                 .setTextMatrix(50, 800)

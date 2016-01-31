@@ -54,8 +54,8 @@ public class Listing_02_21_DirectorOverview3 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        bold = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD); // 12
-        normal = PdfFontFactory.createStandardFont(FontConstants.HELVETICA); // 12
+        bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD); // 12
+        normal = PdfFontFactory.createFont(FontConstants.HELVETICA); // 12
 
         // Make the connection to the database
         DatabaseConnection connection = new HsqldbConnection("filmfestival");

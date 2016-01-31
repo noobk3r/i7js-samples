@@ -95,9 +95,9 @@ public class Listing_06_14_TwoPasses extends GenericTest {
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4));
         doc.setMargins(54, 36, 36, 36);
 
-        bold = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD);
-        italic = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_OBLIQUE);
-        normal = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
+        bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
+        italic = PdfFontFactory.createFont(FontConstants.HELVETICA_OBLIQUE);
+        normal = PdfFontFactory.createFont(FontConstants.HELVETICA);
 
         Statement stm = connection.createStatement();
         ResultSet rs = stm.executeQuery(

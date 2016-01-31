@@ -56,17 +56,17 @@ public class ColoredLetters extends GenericTest {
         if (letter == 'b') {
             return new Text("b")
                     .setFontColor(Color.BLUE)
-                    .setFont(PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD))
+                    .setFont(PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD))
                     .setFontSize(12);
         } else if (letter == 'g') {
             return new Text("g")
                     .setFontColor(Color.GREEN)
-                    .setFont(PdfFontFactory.createStandardFont(FontConstants.HELVETICA))
+                    .setFont(PdfFontFactory.createFont(FontConstants.HELVETICA))
                     .setFontSize(12)
                     .setItalic();
         }
         return new Text(String.valueOf(letter))
                 .setFontColor(Color.RED)
-                .setFont(PdfFontFactory.createStandardFont(FontConstants.HELVETICA));
+                .setFont(PdfFontFactory.createFont(FontConstants.HELVETICA));
     }
 }

@@ -56,10 +56,10 @@ public class Listing_03_16_MovieColumns1 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        normal = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
-        bold = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD);
-        italic = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_OBLIQUE);
-        boldItalic = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLDOBLIQUE);
+        normal = PdfFontFactory.createFont(FontConstants.HELVETICA);
+        bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
+        italic = PdfFontFactory.createFont(FontConstants.HELVETICA_OBLIQUE);
+        boldItalic = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLDOBLIQUE);
 
         doc.setProperty(Property.FONT, normal);
 

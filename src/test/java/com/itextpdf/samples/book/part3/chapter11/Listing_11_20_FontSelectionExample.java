@@ -41,7 +41,7 @@ public class Listing_11_20_FontSelectionExample extends GenericTest {
         Document doc = new Document(pdfDoc);
         // TODO No FontSelector
         // FontSelector selector = new FontSelector();
-        PdfFont font1 = PdfFontFactory.createStandardFont(FontConstants.TIMES_ROMAN);
+        PdfFont font1 = PdfFontFactory.createFont(FontConstants.TIMES_ROMAN);
         // f1.setColor(BaseColor.BLUE); // 12
         PdfFont font2 = PdfFontFactory.createFont(FontFactory.createFont("MSung-Light"), "UniCNS-UCS2-H", false);
         // f2.setColor(BaseColor.RED);

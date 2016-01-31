@@ -71,8 +71,8 @@ public class Watermarking extends GenericTest {
         Document doc = new Document(pdfDoc);
         pdfDoc.addEventHandler(PdfDocumentEvent.END_PAGE, new WatermarkingEventHandler());
 
-        PdfFont font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
-        PdfFont bold = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD);
+        PdfFont font = PdfFontFactory.createFont(FontConstants.HELVETICA);
+        PdfFont bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
 
         Table table = new Table(new float[]{4, 1, 3});
         table.setWidthPercent(100);
@@ -99,7 +99,7 @@ public class Watermarking extends GenericTest {
             PdfPage page = docEvent.getPage();
             PdfFont font = null;
             try {
-                font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD);
+                font = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
             } catch (IOException e) {
                 e.printStackTrace();
             }

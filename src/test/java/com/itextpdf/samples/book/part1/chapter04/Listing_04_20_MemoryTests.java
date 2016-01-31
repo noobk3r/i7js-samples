@@ -109,10 +109,10 @@ public class Listing_04_20_MemoryTests extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
 
-        normal = PdfFontFactory.createStandardFont(FontConstants.HELVETICA); // 12
-        bold = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD); // 12
-        italic = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_OBLIQUE); // 12
-        boldItalic = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLDOBLIQUE); // 12
+        normal = PdfFontFactory.createFont(FontConstants.HELVETICA); // 12
+        bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD); // 12
+        italic = PdfFontFactory.createFont(FontConstants.HELVETICA_OBLIQUE); // 12
+        boldItalic = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLDOBLIQUE); // 12
 
         // step 4
         // Create a table with 2 columns

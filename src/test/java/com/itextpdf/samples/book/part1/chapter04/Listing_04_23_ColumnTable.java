@@ -64,7 +64,7 @@ public class Listing_04_23_ColumnTable extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
 
-        bold = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD, PdfEncodings.WINANSI);
+        bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD, PdfEncodings.WINANSI);
 
         ColumnDocumentRenderer renderer = new ColumnDocumentRenderer(doc);
         doc.setRenderer(renderer);

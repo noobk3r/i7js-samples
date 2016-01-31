@@ -52,10 +52,10 @@ public class Listing_02_24_MovieHistory extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         PdfFont[] fonts = new PdfFont[4];
-        fonts[0] = PdfFontFactory.createStandardFont(FontConstants.HELVETICA); // 24
-        fonts[1] = PdfFontFactory.createStandardFont(FontConstants.HELVETICA); // 18
-        fonts[2] = PdfFontFactory.createStandardFont(FontConstants.HELVETICA); // 14
-        fonts[3] = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD); // 12
+        fonts[0] = PdfFontFactory.createFont(FontConstants.HELVETICA); // 24
+        fonts[1] = PdfFontFactory.createFont(FontConstants.HELVETICA); // 18
+        fonts[2] = PdfFontFactory.createFont(FontConstants.HELVETICA); // 14
+        fonts[3] = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD); // 12
 
         // Make the connection to the database
         DatabaseConnection connection = new HsqldbConnection("filmfestival");

@@ -81,9 +81,9 @@ public class Listing_06_08_Stationery extends GenericTest {
         StationeryEventHandler eventHandler = new StationeryEventHandler();
         pdfDoc.addEventHandler(PdfDocumentEvent.END_PAGE, eventHandler);
 
-        bold = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD);
-        italic = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_OBLIQUE);
-        normal = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
+        bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
+        italic = PdfFontFactory.createFont(FontConstants.HELVETICA_OBLIQUE);
+        normal = PdfFontFactory.createFont(FontConstants.HELVETICA);
 
         doc.setMargins(72, 36, 36, 36);
         // useStationary(writer);
@@ -122,7 +122,7 @@ public class Listing_06_08_Stationery extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        bold = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD);
+        bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
 
         Table table = new Table(1).setWidthPercent(80).setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
         Style style = new Style().setTextAlignment(Property.TextAlignment.CENTER);
@@ -130,7 +130,7 @@ public class Listing_06_08_Stationery extends GenericTest {
                 .addStyle(style)
                 .add(new Paragraph("FOOBAR FILM FESTIVAL").setFont(bold)));
         doc.add(table);
-        PdfFont font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD);
+        PdfFont font = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getLastPage().newContentStreamBefore(),
                 pdfDoc.getLastPage().getResources(), pdfDoc);
         new Canvas(canvas, pdfDoc, pdfDoc.getLastPage().getPageSize())

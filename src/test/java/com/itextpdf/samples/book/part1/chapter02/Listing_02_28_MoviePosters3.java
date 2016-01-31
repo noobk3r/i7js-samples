@@ -59,7 +59,7 @@ public class Listing_02_28_MoviePosters3 extends GenericTest {
         // writer.setStrictImageSequence(true);
         // writer.setInitialLeading(18);
 
-        bold = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD);
+        bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
 
         List<Movie> movies = PojoFactory.getMovies(connection);
         for (Movie movie : movies) {

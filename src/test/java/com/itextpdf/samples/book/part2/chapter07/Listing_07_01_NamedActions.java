@@ -48,7 +48,7 @@ public class Listing_07_01_NamedActions extends GenericTest {
                 new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
 
-        PdfFont symbol = PdfFontFactory.createStandardFont(FontConstants.SYMBOL);
+        PdfFont symbol = PdfFontFactory.createFont(FontConstants.SYMBOL);
 
         Table table = new Table(4).
             setFont(symbol).

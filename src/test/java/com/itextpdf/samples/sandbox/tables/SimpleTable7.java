@@ -44,17 +44,17 @@ public class SimpleTable7 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        PdfFont titleFont = PdfFontFactory.createStandardFont(FontConstants.COURIER_BOLD);
+        PdfFont titleFont = PdfFontFactory.createFont(FontConstants.COURIER_BOLD);
         Paragraph docTitle = new Paragraph("UCSC Direct - Direct Payment Form").setMarginRight(1);
         docTitle.setFont(titleFont).setFontSize(11);
         doc.add(docTitle);
 
-        PdfFont subtitleFont = PdfFontFactory.createStandardFont(FontConstants.TIMES_ROMAN);
+        PdfFont subtitleFont = PdfFontFactory.createFont(FontConstants.TIMES_ROMAN);
         Paragraph subTitle = new Paragraph("(not to be used for reimbursement of services)");
         subTitle.setFont(subtitleFont).setFontSize(9);
         doc.add(subTitle);
 
-        PdfFont importantNoticeFont = PdfFontFactory.createStandardFont(FontConstants.COURIER);
+        PdfFont importantNoticeFont = PdfFontFactory.createFont(FontConstants.COURIER);
         Paragraph importantNotice = new Paragraph("Important: Form must be filled out in Adobe Reader or Acrobat Professional 8.1 or above. To save completed forms, Acrobat Professional is required. For technical and accessibility assistance, contact the Campus Controller's Office.");
         importantNotice.setFont(importantNoticeFont).setFontSize(9);
         importantNotice.setFontColor(Color.RED);

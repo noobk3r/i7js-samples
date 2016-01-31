@@ -44,7 +44,7 @@ public class Listing_14_09_TextStateOperators extends GenericTest {
         //Initialize document and add page
         PdfDocument pdfDoc = new PdfDocument(writer);
 
-        PdfFont font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
+        PdfFont font = PdfFontFactory.createFont(FontConstants.HELVETICA);
 
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         String text = "AWAY again";

@@ -45,7 +45,7 @@ public class Listing_02_02_CountryChunks extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        PdfFont font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD);
+        PdfFont font = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
 
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
         // create the statement

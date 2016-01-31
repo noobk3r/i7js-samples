@@ -71,7 +71,7 @@ public class Listing_04_17_NestedTables extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        bold = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD); // 12
+        bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD); // 12
 
         List<Date> days = PojoFactory.getDays(connection);
         int d = 1;

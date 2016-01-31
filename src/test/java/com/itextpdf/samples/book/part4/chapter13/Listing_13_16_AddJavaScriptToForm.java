@@ -50,7 +50,7 @@ public class Listing_13_16_AddJavaScriptToForm extends GenericTest {
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
 
         canvas.beginText();
-        canvas.setFontAndSize(PdfFontFactory.createStandardFont(FontConstants.HELVETICA), 12);
+        canvas.setFontAndSize(PdfFontFactory.createFont(FontConstants.HELVETICA), 12);
         canvas.moveText(36, 770);
         canvas.showText("Married?");
         canvas.moveText(22, -20) ;// 58, 750);

@@ -92,7 +92,7 @@ public class VariableHeader extends GenericTest {
             try {
                 new PdfCanvas(documentEvent.getPage())
                         .beginText()
-                        .setFontAndSize(PdfFontFactory.createStandardFont(FontConstants.HELVETICA), 12)
+                        .setFontAndSize(PdfFontFactory.createFont(FontConstants.HELVETICA), 12)
                         .moveText(450, 806)
                         .showText(header)
                         .endText()

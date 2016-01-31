@@ -44,7 +44,7 @@ public class FullDottedLine extends GenericTest {
         canvas
                 .beginText()
                 .moveText(36, 750)
-                .setFontAndSize(PdfFontFactory.createStandardFont(FontConstants.HELVETICA), 12)
+                .setFontAndSize(PdfFontFactory.createFont(FontConstants.HELVETICA), 12)
                 .showText("Before dotted line")
                 .stroke();
         canvas

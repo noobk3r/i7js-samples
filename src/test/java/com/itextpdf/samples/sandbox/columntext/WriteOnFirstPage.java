@@ -53,7 +53,7 @@ public class WriteOnFirstPage extends GenericTest {
 
         templateCanvas
                 .beginText()
-                .setFontAndSize(PdfFontFactory.createStandardFont(FontConstants.HELVETICA), 12)
+                .setFontAndSize(PdfFontFactory.createFont(FontConstants.HELVETICA), 12)
                 .showText(String.format("There are %s pages in this document", pdfDoc.getNumberOfPages()))
                 .endText()
                 .stroke();

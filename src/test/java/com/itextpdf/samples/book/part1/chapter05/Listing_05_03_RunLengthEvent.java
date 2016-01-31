@@ -196,7 +196,7 @@ public class Listing_05_03_RunLengthEvent extends GenericTest {
                 PdfCanvas canvas = drawContext.getCanvas();
                 canvas.beginText();
                 try {
-                    canvas.setFontAndSize(PdfFontFactory.createStandardFont(FontConstants.HELVETICA), 12);
+                    canvas.setFontAndSize(PdfFontFactory.createFont(FontConstants.HELVETICA), 12);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

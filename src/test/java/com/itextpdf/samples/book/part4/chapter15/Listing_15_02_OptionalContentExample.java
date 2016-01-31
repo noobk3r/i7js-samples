@@ -49,7 +49,7 @@ public class Listing_15_02_OptionalContentExample extends GenericTest {
         nested.addChild(nested_2);
         nested_2.setLocked(true);
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage())
-                .setFontAndSize(PdfFontFactory.createStandardFont(FontConstants.HELVETICA), 18);
+                .setFontAndSize(PdfFontFactory.createFont(FontConstants.HELVETICA), 18);
         canvas
                 .beginLayer(nested)
                 .beginText()

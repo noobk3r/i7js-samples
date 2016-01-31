@@ -73,7 +73,7 @@ public class FillFlattenMerge3 extends GenericTest {
 
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
-        PdfFont font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
+        PdfFont font = PdfFontFactory.createFont(FontConstants.HELVETICA);
         pdfDoc.addEventHandler(PdfDocumentEvent.END_PAGE, new PaginationEventHandler(srcDoc.getFirstPage().copyAsFormXObject(pdfDoc)));
         srcDoc.close();
 

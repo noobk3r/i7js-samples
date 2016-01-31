@@ -51,7 +51,7 @@ public class Listing_02_16_MovieLists4 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        bold = PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD);
+        bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
 
         // Make the connection to the database
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
@@ -75,7 +75,7 @@ public class Listing_02_16_MovieLists4 extends GenericTest {
             for (Movie movie : PojoFactory.getMovies(connection, rs.getString("country_id"))) {
                 ListItem movieitem = new ListItem(movie.getMovieTitle());
                 // Create a list for the directors
-                Text listSymbol = new Text(String.valueOf((char)42) + " ").setFont(PdfFontFactory.createStandardFont(FontConstants.ZAPFDINGBATS));
+                Text listSymbol = new Text(String.valueOf((char)42) + " ").setFont(PdfFontFactory.createFont(FontConstants.ZAPFDINGBATS));
                 List directorlist = new List().setListSymbol(listSymbol);
                 for (Director director : movie.getDirectors()) {
                     directorlist.add(String.format("%s, %s",

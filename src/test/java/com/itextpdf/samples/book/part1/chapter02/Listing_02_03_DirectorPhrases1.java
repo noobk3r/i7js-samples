@@ -59,8 +59,8 @@ public class Listing_02_03_DirectorPhrases1 extends GenericTest {
 
     public Paragraph createDirectorPhrase(ResultSet rs, PdfDocument pdfDoc)
             throws SQLException, IOException {
-        PdfFont boldUnderlined = PdfFontFactory.createStandardFont(FontConstants.TIMES_BOLD);
-        PdfFont normal = PdfFontFactory.createStandardFont(FontConstants.TIMES_ROMAN);
+        PdfFont boldUnderlined = PdfFontFactory.createFont(FontConstants.TIMES_BOLD);
+        PdfFont normal = PdfFontFactory.createFont(FontConstants.TIMES_ROMAN);
         Paragraph director = new Paragraph();
         director.add(new Text(rs.getString("name"))
                 .setFont(boldUnderlined)

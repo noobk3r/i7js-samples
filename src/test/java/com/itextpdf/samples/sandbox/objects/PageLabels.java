@@ -58,7 +58,7 @@ public class PageLabels extends GenericTest {
         doc.add(new Paragraph("Hello People"));
         pdfDoc.addNewPage();
 
-        PdfFont bf = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
+        PdfFont bf = PdfFontFactory.createFont(FontConstants.HELVETICA);
 
         // we add the text to the direct content, but not in the right order
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());

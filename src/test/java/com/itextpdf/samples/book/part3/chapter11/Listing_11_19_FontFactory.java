@@ -36,9 +36,9 @@ public class Listing_11_19_FontFactory extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
-        PdfFont font =  PdfFontFactory.createStandardFont(FontConstants.TIMES_ROMAN);
+        PdfFont font =  PdfFontFactory.createFont(FontConstants.TIMES_ROMAN);
         doc.add(new Paragraph("Times-Roman").setFont(font));
-        PdfFont fontBold = PdfFontFactory.createStandardFont(FontConstants.TIMES_BOLD);
+        PdfFont fontBold = PdfFontFactory.createFont(FontConstants.TIMES_BOLD);
         doc.add(new Paragraph("Times-Roman, Bold").setFont(fontBold));
         doc.add(new Paragraph("\n"));
 

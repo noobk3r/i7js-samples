@@ -50,7 +50,7 @@ public class ImageBackground extends GenericTest {
         Table table = new Table(1);
         table.setWidth(400);
         Cell cell = new Cell();
-        PdfFont font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
+        PdfFont font = PdfFontFactory.createFont(FontConstants.HELVETICA);
         Paragraph p = new Paragraph("A cell with an image as background color.")
                 .setFont(font).setFontColor(DeviceGray.WHITE).setFontSize(12);
         cell.add(p);

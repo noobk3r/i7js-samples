@@ -52,7 +52,7 @@ public class Listing_99_03_ComplexElementLayout extends GenericTest {
         Paragraph twoColumnParagraph = new Paragraph();
         twoColumnParagraph.setNextRenderer(new TwoColumnParagraphRenderer(twoColumnParagraph));
         twoColumnParagraph.add(text.toString());
-        doc.add(twoColumnParagraph.setFont(PdfFontFactory.createStandardFont(FontConstants.HELVETICA)));
+        doc.add(twoColumnParagraph.setFont(PdfFontFactory.createFont(FontConstants.HELVETICA)));
 
         doc.add(new Paragraph("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"));
 

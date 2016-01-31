@@ -45,7 +45,7 @@ public class ListWithLeading extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        PdfFont font = PdfFontFactory.createStandardFont(FontConstants.HELVETICA);
+        PdfFont font = PdfFontFactory.createFont(FontConstants.HELVETICA);
         List list1 = new List().
                 setSymbolIndent(12).
                 setListSymbol("\u2022").

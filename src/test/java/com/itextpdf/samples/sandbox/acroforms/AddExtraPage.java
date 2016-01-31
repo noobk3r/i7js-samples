@@ -68,7 +68,7 @@ public class AddExtraPage extends GenericTest {
         Paragraph p = new Paragraph();
         p.add(new Text("Hello "));
         p.add(new Text("World")
-                .setFont(PdfFontFactory.createStandardFont(FontConstants.HELVETICA_BOLD)));
+                .setFont(PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD)));
 
         for (int i = 1; i < 101; i++) {
             doc.add(new Paragraph("Hello " + i));

@@ -55,7 +55,7 @@ public class Listing_03_01_FestivalOpening extends GenericTest {
         //Initialize paragraph, add it to document, add new page, add paragraph again
         Paragraph p = new Paragraph("Foobar Film Festival").
                         setTextAlignment(Property.TextAlignment.CENTER).
-                setFont(PdfFontFactory.createStandardFont(FontConstants.HELVETICA)).
+                setFont(PdfFontFactory.createFont(FontConstants.HELVETICA)).
                 setFontSize(22);
 
         PdfImageXObject imageXObject = new PdfImageXObject(ImageFactory.getImage(RESOURCE));
@@ -73,7 +73,7 @@ public class Listing_03_01_FestivalOpening extends GenericTest {
         float cosine = (float) Math.cos(Math.PI / 60);
         canvas.saveState().beginText().setTextRenderingMode(2).
                 setLineWidth(1.5f).setFillColor(DeviceRgb.WHITE).setStrokeColor(DeviceRgb.RED).
-                setFontAndSize(PdfFontFactory.createStandardFont(FontConstants.HELVETICA), 36).setTextMatrix(cosine, sine, -sine, cosine, 50, 324).
+                setFontAndSize(PdfFontFactory.createFont(FontConstants.HELVETICA), 36).setTextMatrix(cosine, sine, -sine, cosine, 50, 324).
                 showText("SOLD OUT").endText().restoreState();
 
         //Initialize "under" canvas and write to it
