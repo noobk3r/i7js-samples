@@ -26,8 +26,10 @@ import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 
+import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
+@Ignore
 @Category(SampleTest.class)
 public class AddLinkAnnotation5 extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/annotations/primes.pdf";
