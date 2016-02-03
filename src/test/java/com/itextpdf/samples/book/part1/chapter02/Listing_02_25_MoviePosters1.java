@@ -49,8 +49,7 @@ public class Listing_02_25_MoviePosters1 extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         Rectangle rect = new Rectangle(0, 806, 36, 842);
-        // TODO Cannot add rectangle on document (the book describes this certain add-to-document facility)
-        // We set stroke color in order to draw the border with red color
+
         new PdfCanvas(pdfDoc.addNewPage())
                 .saveState()
                 .setStrokeColor(Color.RED)

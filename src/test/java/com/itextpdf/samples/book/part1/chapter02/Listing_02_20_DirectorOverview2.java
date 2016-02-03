@@ -12,6 +12,7 @@ import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.border.DottedBorder;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
@@ -36,7 +37,7 @@ import java.util.TreeSet;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class Listing_02_20_DirectorOverview2 extends GenericTest {
     public static final String DEST =
@@ -75,10 +76,8 @@ public class Listing_02_20_DirectorOverview2 extends GenericTest {
             for (Text text : PojoToElementFactory.getDirectorPhrase(director, bold, normal)) {
                 p.add(text);
             }
-            // add a dotted line separator
-            // TODO No DottedLineSeparator
-            // p.add(new Text(new DottedLineSeparator()));
-            // adds the number of movies of this director
+
+            p.setBorderTop(new DottedBorder(1));
             p.add(String.format("movies: %d", rs.getInt("c")));
             doc.add(p);
             // Creates a list
@@ -93,17 +92,8 @@ public class Listing_02_20_DirectorOverview2 extends GenericTest {
             for (Movie movie : movies) {
                 // creates a list item with a movie title
                 movieitem = new ListItem(movie.getMovieTitle());
-                // adds a vertical position mark as a separator
-                // TODO No VerticalPositionMark
-                // movieitem.add(new Text(new VerticalPositionMark()));
-                // adds the year the movie was produced
+
                 movieitem.add(new Paragraph().add(new Text(String.valueOf(movie.getYear()))));
-                // add an arrow to the right if the movie dates from 2000 or later
-                if (movie.getYear() > 1999) {
-                    // TODO No PositionedArrow
-                    // movieitem.add(PositionedArrow.RIGHT);
-                }
-                // add the list item to the list
                 list.add(movieitem);
             }
             // add the list to the document

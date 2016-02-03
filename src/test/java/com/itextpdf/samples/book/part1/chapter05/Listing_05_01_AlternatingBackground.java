@@ -74,22 +74,13 @@ public class Listing_05_01_AlternatingBackground extends GenericTest {
     public Table getTable(DatabaseConnection connection, Date day) throws UnsupportedEncodingException, SQLException {
         Table table = new Table(new float[]{2, 1, 2, 5, 1});
         table.setWidthPercent(100);
-        // TODO No facility to set default cell properties
-        // table.getDefaultCell().setPadding(3);
-        // TODO No setUseAscender(boolean) and setUseDescender(boolean)
-        // table.getDefaultCell().setUseAscender(true);
-        // table.getDefaultCell().setUseDescender(true);
-        // table.getDefaultCell().setColspan(5);
-        // table.getDefaultCell().setBackgroundColor(BaseColor.RED);
-        // table.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
+
         table.addHeaderCell(new Cell(1, 5)
                 .add(day.toString())
                 .setPadding(3)
                 .setBackgroundColor(Color.RED)
                 .setTextAlignment(Property.TextAlignment.CENTER));
-        // table.getDefaultCell().setHorizontalAlignment(Element.ALIGN_LEFT);
-        // table.getDefaultCell().setColspan(1);
-        // table.getDefaultCell().setBackgroundColor(BaseColor.ORANGE);
+
         table.addHeaderCell(new Cell()
                 .add("Location")
                 .setBackgroundColor(Color.ORANGE)

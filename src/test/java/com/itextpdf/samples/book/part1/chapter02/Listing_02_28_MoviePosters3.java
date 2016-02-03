@@ -54,11 +54,6 @@ public class Listing_02_28_MoviePosters3 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        // TODO No setStrictImageSequence(boolean) on FileOutputStream
-        // TODO No setInitialLeading
-        // writer.setStrictImageSequence(true);
-        // writer.setInitialLeading(18);
-
         bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
 
         List<Movie> movies = PojoFactory.getMovies(connection);
@@ -66,7 +61,7 @@ public class Listing_02_28_MoviePosters3 extends GenericTest {
             // Create an image
             Image img = new Image(ImageFactory.getImage(String.format(RESOURCE, movie.getImdb())));
             img.setHorizontalAlignment(Property.HorizontalAlignment.LEFT);
-            // TODO No Image.TEXTWRAP
+
             img.setBorder(new SolidBorder(Color.WHITE, 10));
             img.scaleToFit(1000, 72);
             doc.add(img);

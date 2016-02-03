@@ -33,7 +33,7 @@ import java.io.FileOutputStream;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class Listing_03_07_FoobarFilmFestival extends GenericTest {
     public static final String DEST
@@ -62,16 +62,17 @@ public class Listing_03_07_FoobarFilmFestival extends GenericTest {
         // Text element might have various properties (word/char spacing, scaling, kerning, and so on), so
         // in order to correctly get a width of a text(former chunk) we need to layout its renderer.
         // For simplified version use font's methods for getting width by string.
-        // TODO
-        float chunkWidth = new TextRenderer(c).layout(new LayoutContext(new LayoutArea(1, PageSize.Default))).getOccupiedArea().getBBox().getWidth();
+
+        float chunkWidth = helvetica.getWidth(foobar + ": " + width_helv);
         doc.add(new Paragraph(String.format("Chunk width: %f", chunkWidth)));
         // Use FreeSans instead of Times
         PdfFont freeSans = PdfFontFactory.createFont("./src/test/resources/sandbox/acroforms/FreeSans.ttf", PdfEncodings.IDENTITY_H);
         float width_freeSans = freeSans.getWidth(foobar, 12);
         c = new Text(foobar + ": " + width_freeSans).setFont(freeSans);
         doc.add(new Paragraph(c));
-        // TODO
-        chunkWidth = new TextRenderer(c).layout(new LayoutContext(new LayoutArea(1, PageSize.Default))).getOccupiedArea().getBBox().getWidth();
+
+
+        chunkWidth = freeSans.getWidth(foobar + ": " + width_freeSans);
         doc.add(new Paragraph(String.format("Chunk width: %f", chunkWidth)));
         doc.add(new Paragraph("\n"));
         // Ascent and descent of the String
@@ -83,12 +84,12 @@ public class Listing_03_07_FoobarFilmFestival extends GenericTest {
                 + helvetica.getDescent(foobar, 12)));
         doc.add(new Paragraph("Descent Times: "
                 + freeSans.getDescent(foobar, 12)));
-        doc.add(new Paragraph("\n"));
-        // TODO No getWidth with kerning taking into analysis
-        // Kerned text
-        // width_helv = bf_helv.getWidthPointKerned(foobar, 12);
+
+
+        width_helv = getWidthPointKerned(helvetica,foobar,12);
         c = new Text(foobar + ": " + width_helv).setFont(helvetica);
         doc.add(new Paragraph(c));
+        doc.add(new Paragraph("\n"));
         // Drawing lines to see where the text is added
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage())
                 .saveState()
@@ -151,14 +152,14 @@ public class Listing_03_07_FoobarFilmFestival extends GenericTest {
         phrase = new Paragraph(c);
         doc.showTextAligned(phrase, 400, 572, 1, Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
         c = new Text(foobar).setFont(freeSans);
-        // TODO No setSkew
-        // c.setSkew(15, 15);
+
+        c.setSkew(15, 15);
         phrase = new Paragraph(c);
         doc.showTextAligned(phrase, 400, 536, 1, Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
         doc.showTextAligned(phrase, 400, 536, 1, Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
         c = new Text(foobar).setFont(freeSans);
-        // TODO No setSkew
-        // c.setSkew(0, 25);
+
+        c.setSkew(0, 25);
         phrase = new Paragraph(c);
         doc.showTextAligned(phrase, 400, 500, 1, Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
         c = new Text(foobar).setFont(freeSans);
@@ -174,5 +175,18 @@ public class Listing_03_07_FoobarFilmFestival extends GenericTest {
         doc.showTextAligned(phrase, 400, 428, 1, Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
 
         doc.close();
+    }
+
+    public float getWidthPointKerned(PdfFont font, String text, float fontSize) {
+        float size = font.getWidth(text) * 0.001f * fontSize;
+        if (!font.getFontProgram().hasKernPairs())
+            return size;
+        int len = text.length() - 1;
+        int kern = 0;
+        char c[] = text.toCharArray();
+        for (int k = 0; k < len; ++k) {
+            kern += font.getFontProgram().getKerning(c[k], c[k + 1]);
+        }
+        return size + kern * 0.001f * fontSize;
     }
 }

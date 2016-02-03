@@ -47,8 +47,10 @@ public class Listing_04_07_Spacing extends GenericTest {
         table.addCell("default leading / spacing");
         table.addCell(cell);
         table.addCell("absolute leading: 20");
+
         // TODO No setLeading on Cell
         cell = new Cell().add(p.setMultipliedLeading(0).setFixedLeading(20));
+        //cell.setL
         // cell.setLeading(20f, 0f);
         table.addCell(cell);
         table.addCell("absolute leading: 3; relative leading: 1.2");
@@ -73,6 +75,7 @@ public class Listing_04_07_Spacing extends GenericTest {
                         "and Love the Portable Document Format.");
         cell = new Cell().add(p.setFixedLeading(0).setMultipliedLeading(0));
         table.addCell(cell);
+
         cell = new Cell().add("Dr. iText or: How I Learned to Stop Worrying and Love PDF");
         table.addCell("padding 10");
         cell.setPadding(10);
@@ -91,6 +94,7 @@ public class Listing_04_07_Spacing extends GenericTest {
         // TODO no setUseAscender(boolean) and setUseDescender(boolean)
         // table.getDefaultCell().setUseAscender(false);
         // table.getDefaultCell().setUseDescender(false);
+
         table.addCell(new Cell().add("padding 2; no ascender, no descender").setPadding(2));
         table.addCell(new Cell().add(p).setPadding(2));
         // table.getDefaultCell().setUseAscender(true);

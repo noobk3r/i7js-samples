@@ -39,7 +39,7 @@ import java.sql.SQLException;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class Listing_04_20_MemoryTests extends GenericTest {
     public static final String DEST =
@@ -49,8 +49,7 @@ public class Listing_04_20_MemoryTests extends GenericTest {
             = "./target/test/resources/book/part1/chapter04/Listing_04_20_MemoryTests_test_results.txt";
     public static final String RESULT1
             = "./target/test/resources/book/part1/chapter04/Listing_04_20_MemoryTests_table_without_memory_management.pdf";
-    public static final String RESULT2
-            = "./target/test/resources/book/part1/chapter04/Listing_04_20_MemoryTests_table_with_memory_management.pdf";
+
 
     protected PdfFont normal;
     protected PdfFont bold;
@@ -81,9 +80,9 @@ public class Listing_04_20_MemoryTests extends GenericTest {
             createPdfWithPdfPTable(writer, RESULT1);
             resetMaximum(writer);
             test = true;
-            println(writer, RESULT2);
+            println(writer, DEST);
             // PDF with memory management
-            createPdfWithPdfPTable(writer, RESULT2);
+            createPdfWithPdfPTable(writer, DEST);
             resetMaximum(writer);
             writer.flush();
             writer.close();
@@ -116,7 +115,7 @@ public class Listing_04_20_MemoryTests extends GenericTest {
 
         // step 4
         // Create a table with 2 columns
-        Table table = new Table(new float[]{1, 7}, test);
+        Table table = new Table(new float[]{150,600}, test);
 
         // Mark the table as not complete
         java.util.List<Movie> movies = PojoFactory.getMovies(connection);
@@ -127,8 +126,9 @@ public class Listing_04_20_MemoryTests extends GenericTest {
         for (Movie movie : movies) {
             table.setMarginTop(5);
             // add a movie poster
-            cell = new Cell().add(new Image(ImageFactory.getImage(String.format(RESOURCE, movie.getImdb()))).setAutoScale(true));
+            cell = new Cell().add(new Image(ImageFactory.getImage(String.format(RESOURCE, movie.getImdb()))).scaleToFit(100,200));
             cell.setBorder(Border.NO_BORDER);
+            cell.setMargin(10);
             table.addCell(cell);
             // add movie information
             cell = new Cell();

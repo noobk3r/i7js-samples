@@ -11,7 +11,15 @@ import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfName;
+import com.itextpdf.kernel.pdf.PdfOutline;
+import com.itextpdf.kernel.pdf.PdfString;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.navigation.PdfDestination;
+import com.itextpdf.kernel.pdf.navigation.PdfNamedDestination;
+import com.itextpdf.layout.Property;
+import com.itextpdf.layout.Style;
+import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
@@ -28,10 +36,11 @@ import java.sql.SQLException;
 import java.util.Set;
 import java.util.TreeSet;
 
+import com.lowagie.filmfestival.PojoToElementFactory;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class Listing_02_24_MovieHistory extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part1/chapter02/Listing_02_24_MovieHistory.pdf";
@@ -65,44 +74,54 @@ public class Listing_02_24_MovieHistory extends GenericTest {
         int epoch = -1;
         int currentYear = 0;
         Paragraph title = null;
-        // TODO No Chapter in itext7
-        // Chapter chapter = null;
-        // TODO No Section in itext7
-        // Section section = null;
-        // Section subsection = null;
-        // loop over the movies
+        pdfDoc.getOutlines(false);
+        PdfOutline rootOutLine = new PdfOutline(pdfDoc);
+        PdfOutline firstLevel = null;
+        PdfOutline secondLevel = null;
+        PdfOutline thirdLevel = null;
         for (Movie movie : movies) {
+
             // add the chapter if we're in a new epoch
             if (epoch < (movie.getYear() - 1940) / 10) {
                 epoch = (movie.getYear() - 1940) / 10;
-//                if (chapter != null) {
-//                    document.add(chapter);
-//                }
-                title = new Paragraph(EPOCH[epoch]).setFont(fonts[0]);
-                // chapter = new Chapter(title, epoch + 1);
+                if (pdfDoc.getNumberOfPages() != 0) {
+                    doc.add(new AreaBreak());
+                }
+
+                title = new Paragraph(EPOCH[epoch]).setFont(fonts[0]).setFontSize(18).setBold();
+                title.setProperty(Property.DESTINATION, EPOCH[epoch]);
+                doc.add(title);
+
+                firstLevel = rootOutLine.addOutline(EPOCH[epoch]);
+                firstLevel.addDestination(PdfDestination.makeDestination(new PdfString(EPOCH[epoch])));
             }
             // switch to a new year
             if (currentYear < movie.getYear()) {
                 currentYear = movie.getYear();
                 title = new Paragraph(
-                        String.format("The year %d", movie.getYear())).setFont(fonts[1]);
-                // section = chapter.addSection(title);
-                // section.setBookmarkTitle(String.valueOf(movie.getYear()));
-                // section.setIndentation(30);
-                // section.setBookmarkOpen(false);
-                // section.setNumberStyle(Section.NUMBERSTYLE_DOTTED_WITHOUT_FINAL_DOT);
-                // section.add(new Paragraph(
-                //         String.format("Movies from the year %d:", movie.getYear())));
+                        String.format("The year %d", movie.getYear())).setFont(fonts[1]).setFontSize(16);
+                title.setProperty(Property.DESTINATION, String.valueOf(movie.getYear()));
+                doc.add(title);
+                secondLevel = firstLevel.addOutline(String.valueOf(movie.getYear()));
+                secondLevel.addDestination(PdfDestination.makeDestination(new PdfString(String.valueOf(movie.getYear()))));
+
+
+                doc.add(new Paragraph(
+                        String.format("Movies from the year %d:", movie.getYear())));
             }
-            title = new Paragraph(movie.getMovieTitle()).setFont(fonts[2]);
-            // subsection = section.addSection(title);
-            // subsection.setIndentationLeft(20);
-            // subsection.setNumberDepth(1);
-            // subsection.add(new Paragraph("Duration: " + movie.getDuration(), FONT[3]));
-            // subsection.add(new Paragraph("Director(s):", FONT[3]));
-            // subsection.add(PojoToElementFactory.getDirectorList(movie));
-            // subsection.add(new Paragraph("Countries:", FONT[3]));
-            // subsection.add(PojoToElementFactory.getCountryList(movie));
+
+            title = new Paragraph(movie.getMovieTitle()).setFont(fonts[2]).setMarginLeft(20);
+            title.setProperty(Property.DESTINATION, movie.getMovieTitle());
+            doc.add(title);
+            thirdLevel = secondLevel.addOutline(movie.getMovieTitle());
+            thirdLevel.addDestination(PdfDestination.makeDestination(new PdfString(movie.getMovieTitle())));
+
+
+            doc.add(new Paragraph("Duration: " + movie.getDuration()).setFont(fonts[3]));
+            doc.add(new Paragraph("Director(s):").setFont(fonts[3]));
+            doc.add(PojoToElementFactory.getDirectorList(movie));
+            doc.add(new Paragraph("Countries:").setFont( fonts[3]));
+            doc.add(PojoToElementFactory.getCountryList(movie));
         }
         // doc.add(chapter);
         doc.close();

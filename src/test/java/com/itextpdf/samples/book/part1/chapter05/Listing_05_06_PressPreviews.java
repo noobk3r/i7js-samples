@@ -11,6 +11,7 @@ import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.border.SolidBorder;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.border.Border;
@@ -63,17 +64,13 @@ public class Listing_05_06_PressPreviews extends GenericTest {
     }
 
     public Table getTable(DatabaseConnection connection) throws UnsupportedEncodingException, SQLException {
-        Table table = new Table(new float[]{1, 2, 2, 5, 1});
+        Table table = new Table(new float[]{50, 50, 50, 100, 50});
         table.setWidthPercent(100);
-        // TODO No facility to set default-cell properties
-        // table.getDefaultCell().setPadding(5);
-        // table.getDefaultCell().setBorder(PdfPCell.NO_BORDER);
-        // table.getDefaultCell().setCellEvent(new PressPreviews());
-        // TODO One may not know the row range limits
+
+
         table.setNextRenderer(new PressPreviewTableRenderer(table, new Table.RowRange(0, 30)));
-        table.setBorder(null);
         Cell cell;
-        // TODO Setting cell renderer on headers/footers do not lasts more then one page
+
         cell = new Cell()
                 .add("Location")
                 .setPadding(5)
@@ -228,5 +225,7 @@ public class Listing_05_06_PressPreviews extends GenericTest {
         public PressPreviewTableRenderer getNextRenderer() {
             return new PressPreviewTableRenderer((Table) modelElement);
         }
+
+
     }
 }

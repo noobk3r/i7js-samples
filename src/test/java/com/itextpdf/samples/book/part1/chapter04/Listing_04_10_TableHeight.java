@@ -9,6 +9,7 @@ package com.itextpdf.samples.book.part1.chapter04;
 
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Cell;
@@ -23,8 +24,9 @@ import java.sql.SQLException;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
+// The example has no sense because in itext7 the height of table and rows is not set until rendering
 public class Listing_04_10_TableHeight extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part1/chapter04/Listing_04_10_TableHeight.pdf";
 
@@ -38,35 +40,13 @@ public class Listing_04_10_TableHeight extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        // TODO The example has no sense because in itext7 the height of table and rows is not set until rendering
+
         Table table = createFirstTable();
-        doc.add(new Paragraph(
-                String.format("Table height before doc.add(): %f",
-                        table.getHeight())));
-        doc.add(new Paragraph(
-                String.format("Height of the first row: %f",
-                        table.getCell(0, 0).getHeight())));
         doc.add(table);
-        doc.add(new Paragraph(
-                String.format("Table height after doc.add(): %f",
-                        table.getHeight())));
-        doc.add(new Paragraph(
-                String.format("Height of the first row: %f",
-                        table.getCell(0, 0).getHeight())));
         table = createFirstTable();
-        doc.add(new Paragraph(
-                String.format("Table height before setWidth(): %f",
-                        table.getHeight())));
-        doc.add(
-                new Paragraph(String.format("Height of the first row: %f",
-                        table.getCell(0, 0).getHeight())));
         table.setWidth(50);
-        doc.add(
-                new Paragraph(String.format("Table height after setWidth(): %f",
-                        table.getHeight())));
-        doc.add(new Paragraph(String.format("Height of the first row: %f",
-                table.getCell(0, 0).getHeight())));
         doc.add(table);
+
 
         doc.close();
     }

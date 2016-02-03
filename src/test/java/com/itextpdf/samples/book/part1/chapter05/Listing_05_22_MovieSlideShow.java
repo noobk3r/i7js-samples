@@ -7,6 +7,7 @@
 
 package com.itextpdf.samples.book.part1.chapter05;
 
+import com.itextpdf.kernel.events.PdfDocumentEvent;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.events.Event;
@@ -37,6 +38,8 @@ import java.util.List;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
+import javax.swing.event.DocumentEvent;
+
 @Ignore
 @Category(SampleTest.class)
 public class Listing_05_22_MovieSlideShow extends GenericTest {
@@ -59,7 +62,7 @@ public class Listing_05_22_MovieSlideShow extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer, PdfVersion.PDF_1_5);
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A5).rotate());
 
-        //pdfDoc.addEventHandler(PdfDocumentEvent.END_PAGE, new PresentationHandler());
+        pdfDoc.addEventHandler(PdfDocumentEvent.START_PAGE, new PresentationHandler());
         // TODO No viewer preferences
         // writer.setViewerPreferences(PdfWriter.PageModeFullScreen);
         List<Movie> movies = PojoFactory.getMovies(connection);
@@ -80,9 +83,12 @@ public class Listing_05_22_MovieSlideShow extends GenericTest {
     public static class PresentationHandler implements IEventHandler {
         @Override
         public void handleEvent(Event event) {
-            // TODO No setTransition, setDuration, PdfTransition
+            if(event instanceof PdfDocumentEvent) {
+                // TODO No setTransition, setDuration, PdfTransition
+                //  ((PdfDocumentEvent)event).getPage().getPdfObject().put()
 //            writer.setTransition(new PdfTransition(PdfTransition.DISSOLVE, 3));
 //            writer.setDuration(5);
+            }
         }
     }
 }

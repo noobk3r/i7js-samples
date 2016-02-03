@@ -31,11 +31,11 @@ import java.sql.Statement;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore("Implement ListItem.setListSymbol")
+@Ignore("DEVSIX-443")
 @Category(SampleTest.class)
 public class Listing_02_14_MovieLists2 extends GenericTest {
-    //public static final String DEST = "./target/test/resources/book/part1/chapter02/Listing_02_14_MovieLists2.pdf";
-    public static final String DEST = "d:/Listing_02_14_MovieLists2.pdf";
+    public static final String DEST = "./target/test/resources/book/part1/chapter02/Listing_02_14_MovieLists2.pdf";
+
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_02_14_MovieLists2().manipulatePdf(DEST);
     }
