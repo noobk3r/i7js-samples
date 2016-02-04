@@ -9,14 +9,7 @@ package com.itextpdf.samples.book.part2.chapter07;
 
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.color.Color;
-import com.itextpdf.kernel.pdf.PdfArray;
-import com.itextpdf.kernel.pdf.PdfDictionary;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfNumber;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfString;
-import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfLineAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfSquareAnnotation;
@@ -33,7 +26,6 @@ import java.sql.Date;
 import java.sql.SQLException;
 
 import org.junit.experimental.categories.Category;
-
 
 @Category(SampleTest.class)
 public class Listing_07_25_TimetableAnnotations3 extends Listing_07_21_TimetableAnnotations1 {
@@ -79,7 +71,6 @@ public class Listing_07_25_TimetableAnnotations3 extends Listing_07_21_Timetable
                 }
                 // Annotation for screenings that are sold out
                 else if (isSoldOut(screening)) {
-                    // TODO No getPageSizeWithRotation
                     top = pdfDoc.getPage(page).getPageSize().getTop();
                     float[] line = new float[]{top - rect.getTop(), rect.getRight(),
                             top - rect.getBottom(), rect.getLeft()};
@@ -95,19 +86,14 @@ public class Listing_07_25_TimetableAnnotations3 extends Listing_07_21_Timetable
                 }
                 // Annotation for screenings with tickets available
                 else {
-                    PdfArray borderArray = new PdfArray();
-                    borderArray.add(new PdfNumber(0));
-                    borderArray.add(new PdfNumber(0));
-                    borderArray.add(new PdfNumber(2));
-                    // TODO No PdfDashPattern
+                    PdfBorderArray borderArray = new PdfBorderArray(0, 0, 2, new PdfDashPattern());
                     annotation = new PdfSquareAnnotation(rect)
                             .setContents("Tickets available")
                             .setTitle(new PdfString(movie.getMovieTitle()))
                             .setColor(Color.BLUE.getColorValue())
                             .setFlags(PdfAnnotation.Print)
-                            .setBorder(borderArray);
+                            .setBorder(borderArray.getPdfObject());
                 }
-                // TODO in itext5 we add stamp/line annotations taking page rotation into account
                 pdfDoc.getPage(page).addAnnotation(annotation);
             }
             page++;

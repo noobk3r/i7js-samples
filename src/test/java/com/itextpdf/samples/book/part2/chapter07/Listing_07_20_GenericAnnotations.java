@@ -50,8 +50,6 @@ public class Listing_07_20_GenericAnnotations extends GenericTest {
 
         Paragraph p = new Paragraph();
         Text text;
-        // TODO No VerticalPosition
-//        Text tab = new Text(new VerticalPositionMark());
         for (int i = 0; i < ICONS.length; i++) {
             text = new Text(ICONS[i]);
             text.setNextRenderer(new AnnotatedTextRenderer(text));

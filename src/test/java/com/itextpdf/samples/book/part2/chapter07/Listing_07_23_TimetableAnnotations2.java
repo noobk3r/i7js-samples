@@ -66,7 +66,6 @@ public class Listing_07_23_TimetableAnnotations2 extends Listing_07_21_Timetable
                 annotation = new PdfLinkAnnotation(rect);
                 annotation.setHighlightMode(PdfAnnotation.HIGHLIGHT_INVERT);
                 annotation.setAction(PdfAction.createURI(String.format(IMDB, screening.getMovie().getImdb())));
-                // TODO Why do one not use Border class in setBorder?
                 annotation.setBorder(new PdfArray(new float[]{0, 0, 1}));
                 pdfDoc.getPage(page).addAnnotation(annotation);
             }

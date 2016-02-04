@@ -8,13 +8,7 @@
 package com.itextpdf.samples.book.part2.chapter08;
 
 import com.itextpdf.kernel.color.Color;
-import com.itextpdf.kernel.pdf.PdfArray;
-import com.itextpdf.kernel.pdf.PdfDictionary;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfString;
-import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfChoiceFormField;
 import com.itextpdf.forms.fields.PdfFormField;
@@ -68,13 +62,14 @@ public class Listing_08_12_ChoiceFields extends GenericTest {
                 .setHorizontalAlignment(Property.HorizontalAlignment.RIGHT);
         table.addCell(new Cell().add(new Paragraph("Language of the movie:")).addStyle(leftCellStyle));
         cell = new Cell();
+        cell.setHeight(20);
         cell.setNextRenderer(new ChoiceCellRenderer(cell, 1));
         table.addCell(cell);
         table.addCell(space);
         table.addCell(new Cell().add(new Paragraph("Subtitle languages:")).addStyle(leftCellStyle));
         cell = new Cell();
         cell.setNextRenderer(new ChoiceCellRenderer(cell, 2));
-        cell.setHeight(70);
+        cell.setHeight(71);
         table.addCell(cell);
         table.addCell(space);
         table.addCell(new Cell().add(new Paragraph("Select preferred language")).addStyle(leftCellStyle));
@@ -97,8 +92,8 @@ public class Listing_08_12_ChoiceFields extends GenericTest {
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         form.getField("choice_1").setValue("NL");
         PdfArray array = (PdfArray) (form.getField("choice_3")).getPdfObject().get(PdfName.Opt);
-        // TODO No setListSelection
-        //form.setListSelection("choice_2", new String[]{"German", "Spanish"});
+        PdfChoiceFormField choice2 = (PdfChoiceFormField) form.getField("choice_2");
+        choice2.setListSelected(new String[]{"German", "Spanish"});
         String[] languages = getOptions(array);
         String[] exportValues = getExports(array);
         int n = languages.length;
@@ -176,9 +171,9 @@ public class Listing_08_12_ChoiceFields extends GenericTest {
                         langAndExpArray[i][0] = EXPORTVALUES[i];
                         langAndExpArray[i][1] = LANGUAGES[i];
                     }
-                    text = PdfFormField.createComboBox(document, getOccupiedAreaBBox(), String.format("choice_%s", cf), "", langAndExpArray);
-                    // TODO No setChoiceSelection(int)
-                    //                        text.setChoiceSelection(2);
+                    text = PdfFormField.createList(document, getOccupiedAreaBBox(), String.format("choice_%s", cf), "", langAndExpArray);
+                    //@TODO (the result is ugly)
+                    text.setTopIndex(1);
                     break;
                 case 2:
                     langArray = new String[LANGUAGES.length];
@@ -189,11 +184,7 @@ public class Listing_08_12_ChoiceFields extends GenericTest {
                     borderDict.put(PdfName.S, PdfName.D);
                     text.getWidgets().get(0).setBorderStyle(borderDict);
                     text.setMultiSelect(true);
-                    // TODO No setChoiceSelecitons
-                    // ArrayList<Integer> selections = new ArrayList<Integer>();
-                    // selections.add(0);
-                    // selections.add(2);
-                    // text.setChoiceSelections(selections);
+                    text.setListSelected(new int[]{0, 2});
                     break;
                 case 3:
                     langAndExpArray = new String[LANGUAGES.length][];
@@ -206,8 +197,7 @@ public class Listing_08_12_ChoiceFields extends GenericTest {
                     text.setBorderColor(Color.RED);
                     text.setBackgroundColor(Color.GRAY);
 
-                    // TODO No setChoiceSelection
-                    //    text.setChoiceSelection(4);
+                    text.setListSelected(new int[]{4});
                     break;
                 case 4:
                     langArray = new String[LANGUAGES.length];

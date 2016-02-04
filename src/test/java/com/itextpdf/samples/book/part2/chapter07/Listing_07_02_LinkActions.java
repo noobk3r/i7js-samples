@@ -32,26 +32,31 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Map;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
+import org.w3c.dom.Element;
 
-@Ignore
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
 @Category(SampleTest.class)
 public class Listing_07_02_LinkActions extends GenericTest {
-    public static final String DEST1 = "./target/test/resources/book/part2/chapter07/Listing_07_02_LinkActions.pdf";
+    public static final String SRC = "./src/test/resources/book/part1/chapter02/cmp_Listing_02_22_MovieLinks1.pdf";
     public static final String DEST = "./target/test/resources/book/part2/chapter07/Listing_07_02_LinkActions2.pdf";
-    public static final String DEST3 = "./target/test/resources/book/part2/chapter07/Listing_07_02_LinkActions.xml";
+    public static final String DEST2 = "./target/test/resources/book/part2/chapter07/Listing_07_02_LinkActions.xml";
 
-    public static void main(String args[]) throws IOException, SQLException {
+    public static void main(String args[]) throws IOException, SQLException, TransformerException, ParserConfigurationException {
         new Listing_07_02_LinkActions().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws IOException, SQLException {
-        // TODO First revise this example
-        // Do not forget to make source file from MovieLinks1 cmp. Not simply uncomment the next line
-        //new Listing_02_22_MovieLinks1().manipulatePdf(DEST1);
+    public void manipulatePdf(String dest) throws IOException, SQLException, TransformerException, ParserConfigurationException {
         manipulatePdf2(DEST);
-        //createXml(DEST, DEST3);
+        createXml(SRC, DEST2);
     }
 
     public void manipulatePdf2(String dest) throws FileNotFoundException, SQLException {
@@ -87,7 +92,7 @@ public class Listing_07_02_LinkActions extends GenericTest {
             Paragraph country = new Paragraph(rs.getString("country"));
             country.add(": ");
             Link link = new Link(String.format("%d movies", rs.getInt("c")),
-                    PdfAction.createGoToR("movie_links_1.pdf", rs.getString("country_id"), true));
+                    PdfAction.createGoToR("../../part1/chapter02/Listing_02_22_MovieLinks1.pdf", rs.getString("country_id"), true));
             country.add(link);
             doc.add(country);
         }
@@ -117,14 +122,29 @@ public class Listing_07_02_LinkActions extends GenericTest {
      * @param dest The path to the XML file
      * @throws IOException
      */
-    public void createXml(String src, String dest) throws IOException {
+    public void createXml(String src, String dest) throws IOException, ParserConfigurationException, TransformerException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src));
 
-        Map<Object, PdfObject> map = pdfDoc.getCatalog().getNamedDestinations();
-        // TODO No exportToXML
-        // SimpleNamedDestination.exportToXML(map, new FileOutputStream(dest),
-        //        "ISO8859-1", true);
+        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder db = docFactory.newDocumentBuilder();
+
+        org.w3c.dom.Document doc = db.newDocument();
+        Element root = doc.createElement("Destination");
+        doc.appendChild(root);
+
+        Map<Object, PdfObject> names = pdfDoc.getCatalog().getNamedDestinations();
+        for (Map.Entry<Object, PdfObject> name : names.entrySet()) {
+            Element el = doc.createElement("Name");
+            el.setAttribute("Page", name.getValue().toString());
+            el.setTextContent(name.getKey().toString());
+            root.appendChild(el);
+        }
+
+        TransformerFactory tf = TransformerFactory.newInstance();
+        Transformer t = tf.newTransformer();
+        t.setOutputProperty("encoding", "ISO8859-1");
+
+        t.transform(new DOMSource(doc), new StreamResult(dest));
         pdfDoc.close();
     }
-
 }

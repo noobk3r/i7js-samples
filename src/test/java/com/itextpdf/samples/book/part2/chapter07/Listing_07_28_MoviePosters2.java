@@ -32,10 +32,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_07_28_MoviePosters2 extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part2/chapter07/Listing_07_28_MoviePosters2.pdf";
@@ -106,7 +104,7 @@ public class Listing_07_28_MoviePosters2 extends GenericTest {
                          String title, String contents, String imdb)
             throws IOException{
         // Create the text annotation
-        PdfAnnotation text = new PdfTextAnnotation(rect)
+        PdfTextAnnotation text = new PdfTextAnnotation(rect)
                 .setIconName(new PdfName("Comment"))
                 .setTitle(new PdfString(title))
                 .setContents(contents)
@@ -114,19 +112,20 @@ public class Listing_07_28_MoviePosters2 extends GenericTest {
                 .setName(new PdfString(String.format("IMDB%s", imdb)));
         text.setFlags(PdfAnnotation.ReadOnly | PdfAnnotation.NoView);
         // Create the popup annotation
-        PdfAnnotation popup = new PdfPopupAnnotation(
+        PdfPopupAnnotation popup = new PdfPopupAnnotation(
                 new Rectangle(rect.getLeft() + 10, rect.getBottom() + 10, 190, 90));
         // Add the text annotation to the popup
         popup.put(PdfName.Parent, text.getPdfObject().getIndirectReference());
         // Declare the popup annotation as popup for the text
-        text.put(PdfName.Popup, popup.getPdfObject().getIndirectReference());
+        text.setPopup(popup);
+
         // Add both annotations
         pdfDoc.getPage(1).addAnnotation(text);
         pdfDoc.getPage(1).addAnnotation(popup);
-        // TODO No facility to make field transparent
         // Create a button field
         PdfButtonFormField field = PdfFormField.createPushButton(pdfDoc, rect, String.format("b%s", imdb), "");
         PdfAnnotation widget = field.getWidgets().get(0);
+        widget.remove(PdfName.AP);
         // Show the popup onMouseEnter
         PdfAction enter = PdfAction.createJavaScript(String.format(JS1, imdb));
         widget.setAdditionalAction(PdfName.E, enter);

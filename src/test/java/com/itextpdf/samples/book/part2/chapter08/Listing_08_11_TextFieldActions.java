@@ -7,6 +7,7 @@
 
 package com.itextpdf.samples.book.part2.chapter08;
 
+import com.itextpdf.kernel.color.DeviceGray;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfBoolean;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -47,7 +48,7 @@ public class Listing_08_11_TextFieldActions extends GenericTest {
 
         PdfTextFormField date = PdfFormField.createText(pdfDoc, new Rectangle(36, 780, 90, 26)).
             setFieldName("date").
-            //TODO .setBorderColor(new GrayColor(0.2f));
+            setBorderColor(new DeviceGray(0.2f)).
             setAdditionalAction(PdfName.V, PdfAction.createJavaScript(
                     "AFDate_FormatEx( 'dd-mm-yyyy' );"));
 
@@ -55,7 +56,7 @@ public class Listing_08_11_TextFieldActions extends GenericTest {
 
         PdfTextFormField name = PdfFormField.createText(pdfDoc, new Rectangle(130, 780, 126, 26)).
                 setFieldName("name").
-                // TODO name.setBorderColor(new GrayColor(0.2f));
+                setBorderColor(new DeviceGray(0.2f)).
                 setAdditionalAction(PdfName.Fo, PdfAction.createJavaScript("app.alert('name field got the focus');")).
                 setAdditionalAction(PdfName.Bl, PdfAction.createJavaScript("app.alert('name lost the focus');")).
                 setAdditionalAction(PdfName.K, PdfAction.createJavaScript("event.change = event.change.toUpperCase();"));

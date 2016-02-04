@@ -78,7 +78,6 @@ public class Listing_06_01_PageInformation extends GenericTest {
         writer.print("Rotation of page 1: ");
         writer.println(pdfDoc.getFirstPage().getRotation());
         writer.print("Page size with rotation of page 1: ");
-        // TODO No toString() in Rectangle
         writer.println(getPageSizeWithRotation(pdfDoc.getFirstPage()));
         writer.print("Is rebuilt? ");
         writer.println(reader.hasRebuiltXref());

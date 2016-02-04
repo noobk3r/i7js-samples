@@ -44,22 +44,16 @@ public class Listing_07_26_ButtonsActions extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(MOVIE_TEMPLATES), new PdfWriter(DEST));
         PdfButtonFormField saveAs =
                 PdfFormField.createPushButton(pdfDoc, new Rectangle(636, 10, 716 - 636, 30 - 10), "Save", "Save");
-        saveAs.setBorderColor(Color.BLACK);
-        saveAs.setBackgroundColor(Color.RED);
-        saveAs.getWidgets().get(0).setColor(Color.RED.getColorValue());
-        // TODO No setTextcolor & setLayout & setRotation on PdfFormFileds
-        // saveAs.setTextColor(BaseColor.RED);
+        saveAs.setColor(Color.RED);
+        // TODO No setLayout on PdfFormFileds
         // saveAs.setLayout(PushbuttonField.LAYOUT_LABEL_ONLY);
-        // saveAs.setRotation(90);
         PdfAnnotation saveAsButton = saveAs.getWidgets().get(0);
-        saveAsButton.setAction(PdfAction.createJavaScript("app.execMenuItem('SaveAs')"));
+        saveAs.setAction(PdfAction.createJavaScript("app.execMenuItem('SaveAs')"));
 
         PdfButtonFormField mail =
                 PdfFormField.createPushButton(pdfDoc, new Rectangle(736, 10, 816 - 736, 30 - 10), "Mail", "Mail");
-        mail.setBorderColor(Color.BLACK);
-//        mail.setTextColor(BaseColor.RED);
+        mail.setColor(Color.RED);
 //        mail.setLayout(PushbuttonField.LAYOUT_LABEL_ONLY);
-//        mail.setRotation(90);
         PdfAnnotation mailButton = mail.getWidgets().get(0);
         mailButton.setAction(PdfAction.createJavaScript("app.execMenuItem('AcroSendMail:SendMail')"));
         // Add the annotations to every page of the document

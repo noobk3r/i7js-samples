@@ -54,7 +54,6 @@ public class Listing_06_10_TilingHero extends GenericTest {
     public void manipulatePdf(String dest) throws IOException, SQLException {
         PdfReader reader = new PdfReader(SOURCE);
         PdfDocument srcDoc = new PdfDocument(reader);
-        // TODO No getPageSize with rotation
         Rectangle pageSize = getPageSizeWithRotation(srcDoc.getFirstPage());
 
         PdfWriter writer = new PdfWriter(DEST);
@@ -64,11 +63,10 @@ public class Listing_06_10_TilingHero extends GenericTest {
 
         // adding the same page 16 times with a different offset
         float x, y;
+        PdfFormXObject page = srcDoc.getFirstPage().copyAsFormXObject(pdfDoc);
         for (int i = 0; i < 16; i++) {
             x = -pageSize.getWidth() * (i % 4);
             y = pageSize.getHeight() * (i / 4 - 3);
-            // TODO The size of this example result is much bigger than in itext5
-            PdfFormXObject page = srcDoc.getFirstPage().copyAsFormXObject(pdfDoc);
             new PdfCanvas(pdfDoc.getLastPage())
                     .addXObject(page, 4, 0, 0, 4, x, y);
             if (15 != i) {

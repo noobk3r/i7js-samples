@@ -7,9 +7,11 @@
 
 package com.itextpdf.samples.book.part2.chapter07;
 
+import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.navigation.PdfExplicitDestination;
+import com.itextpdf.kernel.utils.CompareTool;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
@@ -25,7 +27,19 @@ import java.sql.SQLException;
 import java.util.Map;
 import java.util.List;
 
+import org.junit.Assert;
 import org.junit.experimental.categories.Category;
+import org.w3c.dom.Element;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 @Category(SampleTest.class)
 public class Listing_07_14_CreateOutlineTree extends GenericTest {
@@ -45,9 +59,9 @@ public class Listing_07_14_CreateOutlineTree extends GenericTest {
 
     protected String[] arguments;
 
-    public static void main(String args[]) throws IOException, SQLException {
+    public static void main(String args[]) throws IOException, SQLException, TransformerException, ParserConfigurationException, SAXException {
         new Listing_07_14_CreateOutlineTree().manipulatePdf(DEST);
-        //application.createXml(DEST, DEST_XML);
+        createXml(DEST, DEST_XML);
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {
@@ -75,8 +89,9 @@ public class Listing_07_14_CreateOutlineTree extends GenericTest {
             movieBookmark.addAction(PdfAction.createGoTo(
                     PdfExplicitDestination.createFitH(pdfDoc.getLastPage(),
                             pdfDoc.getLastPage().getPageSize().getTop())));
-            // TODO No setStyle and setColor on PdfOutline
             link = movieBookmark.addOutline("link to IMDB");
+            link.setStyle(PdfOutline.FLAG_BOLD);
+            link.setColor(Color.BLUE);
             link.addAction(PdfAction.createURI((String.format(RESOURCE, movie.getImdb()))));
             info = movieBookmark.addOutline("instant info");
             info.addAction(PdfAction.createJavaScript(
@@ -97,13 +112,28 @@ public class Listing_07_14_CreateOutlineTree extends GenericTest {
      * @param dest The path to the XML file
      * @throws IOException
      */
-    public void createXml(String src, String dest) throws IOException {
+    public static void createXml(String src, String dest) throws IOException, ParserConfigurationException, TransformerException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src));
+        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder db = docFactory.newDocumentBuilder();
 
-        Map<Object, PdfObject> map = pdfDoc.getCatalog().getNamedDestinations();
-        // TODO No exportToXML
-        // SimpleNamedDestination.exportToXML(map, new FileOutputStream(dest),
-        //        "ISO8859-1", true);
+        org.w3c.dom.Document doc = db.newDocument();
+        Element root = doc.createElement("Destination");
+        doc.appendChild(root);
+
+        Map<Object, PdfObject> names = pdfDoc.getCatalog().getNamedDestinations();
+        for (Map.Entry<Object, PdfObject> name : names.entrySet()) {
+            Element el = doc.createElement("Name");
+            el.setAttribute("Page", name.getValue().toString());
+            el.setTextContent(name.getKey().toString());
+            root.appendChild(el);
+        }
+
+        TransformerFactory tf = TransformerFactory.newInstance();
+        Transformer t = tf.newTransformer();
+        t.setOutputProperty("encoding", "ISO8859-1");
+
+        t.transform(new DOMSource(doc), new StreamResult(dest));
         pdfDoc.close();
     }
 }

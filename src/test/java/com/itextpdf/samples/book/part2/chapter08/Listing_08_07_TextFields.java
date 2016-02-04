@@ -14,6 +14,7 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfFormField;
@@ -97,8 +98,7 @@ public class Listing_08_07_TextFields extends GenericTest {
         fields.get("text_2").setValue("bruno");
 
         fields.get("text_3").setFieldFlag(PdfFormField.FF_PASSWORD, false);
-        // TODO MO FLAGS_PRINT constant
-        // form.setFieldProperty("text_3", "setflags", PdfAnnotation.FLAGS_PRINT, null);
+        fields.get("text_3").getWidgets().get(0).setFlag(PdfAnnotation.Print);
         form.getField("text_3").setValue("12345678", "********");
         ((PdfTextFormField) form.getField("text_4")).setMaxLen(12);
         form.getField("text_4").regenerateField();
