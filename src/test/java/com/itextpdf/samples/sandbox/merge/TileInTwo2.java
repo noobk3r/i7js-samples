@@ -5,7 +5,7 @@
 
 */
 
-/*
+/**
  * Example written by Bruno Lowagie in answer to a question on StackOverflow:
  * http://stackoverflow.com/questions/27011829/divide-one-page-pdf-file-in-two-pages-pdf-file
  */
@@ -13,14 +13,14 @@ package com.itextpdf.samples.sandbox.merge;
 
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.IOException;
@@ -48,6 +48,7 @@ public class TileInTwo2 extends GenericTest {
 
     /**
      * Gets the rotated page from a page dictionary.
+     *
      * @param page the page
      * @return the rotated page rectangle
      */
