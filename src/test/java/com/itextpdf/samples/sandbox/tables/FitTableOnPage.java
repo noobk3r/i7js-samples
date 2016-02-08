@@ -28,10 +28,8 @@ import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class FitTableOnPage extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/fit_table_on_page.pdf";
@@ -45,7 +43,6 @@ public class FitTableOnPage extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         Table table = new Table(1);
-        table.setWidth(550);
 //        for (int i = 0; i < 10; i++) {
 //            Cell cell;
 //            if (i == 9) {
@@ -63,11 +60,9 @@ public class FitTableOnPage extends GenericTest {
         IRenderer tableRenderer = table.createRendererSubTree().setParent(doc.getRenderer());
         LayoutResult tableLayoutResult = tableRenderer.layout(new LayoutContext(new LayoutArea(0, new Rectangle(612, 1000))));
 
-
         PdfWriter writer = new PdfWriter(dest);
         pdfDoc = new PdfDocument(writer);
-        // TODO Problems with layout
-        doc = new Document(pdfDoc, new PageSize(612, tableLayoutResult.getOccupiedArea().getBBox().getHeight()+72));
+        doc = new Document(pdfDoc, new PageSize(550 + 72, tableLayoutResult.getOccupiedArea().getBBox().getHeight() + 72));
         doc.add(table);
         doc.close();
     }

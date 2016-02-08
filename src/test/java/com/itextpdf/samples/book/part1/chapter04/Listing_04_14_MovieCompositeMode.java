@@ -72,7 +72,7 @@ public class Listing_04_14_MovieCompositeMode extends GenericTest {
             table.setWidthPercent(100);
             table.setMarginTop(5);
             // a cell with an image
-            cell = new Cell().add(new Image(ImageFactory.getImage(String.format(RESOURCE, movie.getImdb()))).setAutoScale(true));
+            cell = new Cell().add(new Image(ImageFactory.getImage(String.format(RESOURCE, movie.getImdb()))).setAutoScaleWidth(true));
             cell.setBorder(Border.NO_BORDER);
             table.addCell(cell);
             cell = new Cell();
@@ -104,7 +104,7 @@ public class Listing_04_14_MovieCompositeMode extends GenericTest {
             list = PojoToElementFactory.getCountryList(movie);
             list.setMarginLeft(40);
             cell.add(list);
-            table.addCell(cell);
+            table.addCell(cell.setKeepTogether(true));
             // every movie corresponds with one table
             doc.add(table);
             // but the result looks like one big table

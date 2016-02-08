@@ -33,8 +33,10 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
+@Ignore
 @Category(SampleTest.class)
 public class Listing_04_19_HeaderFooter2 extends GenericTest {
     public static final String DEST =
