@@ -22,9 +22,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
+import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
+@Ignore("Merging forms with the same name: widget annotation of old field is removed")
 public class MergeForms extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/acroforms/merge_forms.pdf";
     public static final String SRC1 = "./src/test/resources/sandbox/acroforms/subscribe.pdf";
