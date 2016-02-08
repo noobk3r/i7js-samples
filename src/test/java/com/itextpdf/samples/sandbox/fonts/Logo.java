@@ -28,7 +28,6 @@ import java.io.FileOutputStream;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Logo extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/fonts/logo.pdf";
