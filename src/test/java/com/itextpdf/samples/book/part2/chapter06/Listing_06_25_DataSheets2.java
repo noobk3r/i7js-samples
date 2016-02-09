@@ -46,7 +46,7 @@ public class Listing_06_25_DataSheets2 extends Listing_06_24_DataSheets1 {
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
         List<Movie> movies = PojoFactory.getMovies(connection);
         PdfReader reader;
-        pdfDocResult.getWriter().setSmartCopyMode(true);
+        pdfDocResult.getWriter().setSmartMode(true);
 
         ByteArrayOutputStream baos;
 
