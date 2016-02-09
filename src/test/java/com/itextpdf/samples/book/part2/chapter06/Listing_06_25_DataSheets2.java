@@ -25,7 +25,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
@@ -62,7 +61,7 @@ public class Listing_06_25_DataSheets2 extends Listing_06_24_DataSheets1 {
             form.flattenFields();
             pdfDoc.close();
             pdfDoc = new PdfDocument(new PdfReader(new ByteArrayInputStream(baos.toByteArray())));
-            pdfDoc.copyPages(1, pdfDoc.getNumberOfPages(), pdfDocResult);
+            pdfDoc.copyPagesTo(1, pdfDoc.getNumberOfPages(), pdfDocResult);
         }
 
         // Close the database connection

@@ -56,7 +56,7 @@ public class MergeForms extends GenericTest {
             // Note that itext7 see name instead of personal.name in the first source file,
             // so the result file will have the mutual field name. See MergeForms2 to find
             // how to overcome this difficulty
-            readerDoc.copyPages(1, readerDoc.getNumberOfPages(), pdfDoc, new PdfPageFormCopier());
+            readerDoc.copyPagesTo(1, readerDoc.getNumberOfPages(), pdfDoc, new PdfPageFormCopier());
             readerDoc.close();
         }
         pdfDoc.close();

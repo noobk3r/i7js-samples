@@ -66,7 +66,7 @@ public class ReorderPages extends GenericTest {
             pages.add(i);
         }
         pages.add(16);
-        srcDoc.copyPages(pages, resultDoc);
+        srcDoc.copyPagesTo(pages, resultDoc);
 
         resultDoc.close();
         srcDoc.close();

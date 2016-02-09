@@ -50,7 +50,7 @@ public class MergeForms2 extends GenericTest {
             PdfDocument readerDoc = new PdfDocument(new PdfReader(
                     new RandomAccessSourceFactory().createSource(renameFields(SRC, ++i)),
                     null, null, null, null, null));
-            readerDoc.copyPages(1, readerDoc.getNumberOfPages(), pdfDoc, new PdfPageFormCopier());
+            readerDoc.copyPagesTo(1, readerDoc.getNumberOfPages(), pdfDoc, new PdfPageFormCopier());
             readerDoc.close();
         }
         pdfDoc.close();

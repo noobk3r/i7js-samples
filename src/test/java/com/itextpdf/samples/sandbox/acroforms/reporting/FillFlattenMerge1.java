@@ -70,7 +70,7 @@ public class FillFlattenMerge1 extends GenericTest {
             pdfInnerDoc.close();
 
             pdfInnerDoc = new PdfDocument(new PdfReader(new ByteArrayInputStream(baos.toByteArray())));
-            pdfInnerDoc.copyPages(1, pdfInnerDoc.getNumberOfPages(), pdfDoc, new PdfPageFormCopier());
+            pdfInnerDoc.copyPagesTo(1, pdfInnerDoc.getNumberOfPages(), pdfDoc, new PdfPageFormCopier());
             pdfInnerDoc.close();
         }
         br.close();

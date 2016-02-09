@@ -40,9 +40,9 @@ public class ListInColumn extends GenericTest {
 
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC));
-        // TODO copyPages doesn't give a possibility to write on copied pages
+        // TODO copyPagesTo doesn't give a possibility to write on copied pages
         PdfDocument pdfResultDoc = new PdfDocument(new PdfWriter(DEST));
-        pdfDoc.copyPages(1, 2, pdfResultDoc);
+        pdfDoc.copyPagesTo(1, 2, pdfResultDoc);
         Document doc = new Document(pdfResultDoc);
 
 //        //reader.selectPages("1-2");

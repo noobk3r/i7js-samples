@@ -46,7 +46,7 @@ public class Listing_06_26_ConcatenateForms1 extends GenericTest {
         PdfReader reader = new PdfReader(fis);
         PdfDocument srcDoc = new PdfDocument(reader);
 
-        srcDoc.copyPages(1, 1, pdfDoc, new PdfPageFormCopier());
+        srcDoc.copyPagesTo(1, 1, pdfDoc, new PdfPageFormCopier());
         srcDoc.close();
 
         // Create the second source document
@@ -54,7 +54,7 @@ public class Listing_06_26_ConcatenateForms1 extends GenericTest {
         reader = new PdfReader(fis);
         srcDoc = new PdfDocument(reader);
 
-        srcDoc.copyPages(1, 1, pdfDoc, new PdfPageFormCopier());
+        srcDoc.copyPagesTo(1, 1, pdfDoc, new PdfPageFormCopier());
         srcDoc.close();
 
         pdfDoc.close();

@@ -44,7 +44,7 @@ public class Listing_06_23_Burst extends GenericTest {
             PdfWriter writer = new PdfWriter(fos);
             PdfDocument pdfDoc = new PdfDocument(writer);
 
-            srcDoc.copyPages(i, i, pdfDoc, new PdfPageFormCopier());
+            srcDoc.copyPagesTo(i, i, pdfDoc, new PdfPageFormCopier());
             pdfDoc.close();
         }
 
@@ -64,7 +64,7 @@ public class Listing_06_23_Burst extends GenericTest {
         PdfDocument tempDoc;
         for (String name : names) {
             tempDoc = new PdfDocument(new PdfReader(name));
-            tempDoc.copyPages(1, tempDoc.getNumberOfPages(), pdfDoc);
+            tempDoc.copyPagesTo(1, tempDoc.getNumberOfPages(), pdfDoc);
             tempDoc.close();
         }
         pdfDoc.close();

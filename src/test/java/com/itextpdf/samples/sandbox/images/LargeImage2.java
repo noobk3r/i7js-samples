@@ -61,7 +61,7 @@ public class LargeImage2 extends GenericTest {
         PdfDictionary pageXObjects = pageResources.getAsDictionary(PdfName.XObject);
         PdfName imgRef = pageXObjects.keySet().iterator().next();
         PdfStream imgStream = pageXObjects.getAsStream(imgRef);
-        PdfImageXObject imgObject = new PdfImageXObject((PdfStream) imgStream.copyToDocument(pdfDoc2));
+        PdfImageXObject imgObject = new PdfImageXObject(imgStream.copyTo(pdfDoc2));
         pdfDoc.close();
 
         Image image = new Image(imgObject);

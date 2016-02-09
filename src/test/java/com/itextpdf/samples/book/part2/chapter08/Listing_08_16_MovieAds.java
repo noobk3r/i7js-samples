@@ -257,7 +257,7 @@ public class Listing_08_16_MovieAds extends GenericTest {
             if (count == 16) {
                 stamper.close();
                 stamper = new PdfDocument(new PdfReader(new ByteArrayInputStream(baos.toByteArray())));
-                stamper.copyPages(1, 1, pdfDoc);
+                stamper.copyPagesTo(1, 1, pdfDoc);
                 stamper.close();
                 count = 0;
             }
@@ -265,7 +265,7 @@ public class Listing_08_16_MovieAds extends GenericTest {
         if (count > 0) {
             stamper.close();
             stamper = new PdfDocument(new PdfReader(new ByteArrayInputStream(baos.toByteArray())));
-            stamper.copyPages(1, 1, pdfDoc);
+            stamper.copyPagesTo(1, 1, pdfDoc);
             stamper.close();
         }
         pdfDoc.close();

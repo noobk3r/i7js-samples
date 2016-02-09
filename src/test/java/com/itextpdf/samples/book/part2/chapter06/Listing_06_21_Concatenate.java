@@ -53,12 +53,12 @@ public class Listing_06_21_Concatenate extends GenericTest {
         PdfDocument resultDoc = new PdfDocument(writer);
 
         for (int i = 1; i <= n1; i++) {
-            PdfPage page = sourceDoc1.getPage(i).copy(resultDoc);
+            PdfPage page = sourceDoc1.getPage(i).copyTo(resultDoc);
             resultDoc.addPage(page);
         }
 
         for (int i = 1; i <= n2; i++) {
-            PdfPage page = sourceDoc2.getPage(i).copy(resultDoc);
+            PdfPage page = sourceDoc2.getPage(i).copyTo(resultDoc);
             resultDoc.addPage(page);
         }
 

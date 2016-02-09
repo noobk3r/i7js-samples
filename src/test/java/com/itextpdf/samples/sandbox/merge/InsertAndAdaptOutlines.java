@@ -42,7 +42,7 @@ public class InsertAndAdaptOutlines extends GenericTest {
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(dest));
         PdfDocument insertDoc = new PdfDocument(new PdfReader(INSERT));
-        insertDoc.copyPages(1, 1, pdfDoc, 4);
+        insertDoc.copyPagesTo(1, 1, pdfDoc, 4);
         insertDoc.close();
 
         PdfOutline outlines = pdfDoc.getOutlines(false);

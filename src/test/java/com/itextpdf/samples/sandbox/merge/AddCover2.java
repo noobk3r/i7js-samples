@@ -40,7 +40,7 @@ public class AddCover2 extends GenericTest {
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(RESOURCE), new PdfWriter(dest));
         PdfDocument cover = new PdfDocument(new PdfReader(COVER));
-        cover.copyPages(1, 1, pdfDoc, 1, new PdfPageFormCopier());
+        cover.copyPagesTo(1, 1, pdfDoc, 1, new PdfPageFormCopier());
         cover.close();
         pdfDoc.close();
     }

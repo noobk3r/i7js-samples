@@ -59,7 +59,7 @@ public class Listing_06_24_DataSheets1 extends Listing_06_19_FillDataSheet {
 
             pdfDoc.close();
             pdfDoc = new PdfDocument(new PdfReader(new ByteArrayInputStream(baos.toByteArray())));
-            pdfDoc.copyPages(1, pdfDoc.getNumberOfPages(), pdfDocResult);
+            pdfDoc.copyPagesTo(1, pdfDoc.getNumberOfPages(), pdfDocResult);
         }
         // Close the database connection
         pdfDocResult.close();

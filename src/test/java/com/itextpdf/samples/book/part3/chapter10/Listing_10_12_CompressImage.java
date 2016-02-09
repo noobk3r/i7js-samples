@@ -57,7 +57,7 @@ public class Listing_10_12_CompressImage extends GenericTest {
         PdfDocument tempDoc;
         for (String name : names) {
             tempDoc = new PdfDocument(new PdfReader(name));
-            tempDoc.copyPages(1, tempDoc.getNumberOfPages(), pdfDoc);
+            tempDoc.copyPagesTo(1, tempDoc.getNumberOfPages(), pdfDoc);
             tempDoc.close();
         }
         pdfDoc.close();

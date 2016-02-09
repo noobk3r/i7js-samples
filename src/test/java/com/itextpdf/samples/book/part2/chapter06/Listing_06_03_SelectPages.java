@@ -13,10 +13,8 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
@@ -40,7 +38,7 @@ public class Listing_06_03_SelectPages extends GenericTest {
     private static void manipulateWithCopy(int pageFrom, int pageTo, PdfReader reader) throws IOException {
         PdfDocument srcDoc = new PdfDocument(reader);
         PdfDocument copy = new PdfDocument(new PdfWriter(DEST));
-        srcDoc.copyPages(pageFrom, pageTo, copy);
+        srcDoc.copyPagesTo(pageFrom, pageTo, copy);
         copy.close();
         srcDoc.setCloseReader(true);
         srcDoc.close();

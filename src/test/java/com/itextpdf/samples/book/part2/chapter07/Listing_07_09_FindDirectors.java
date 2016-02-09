@@ -87,7 +87,7 @@ public class Listing_07_09_FindDirectors extends GenericTest {
         int n;
         for (int i = 0; i < pdfDocuments.length; i++) {
             n = pdfDocuments[i].getNumberOfPages();
-            pdfDocuments[i].copyPages(1, n, pdfDoc);
+            pdfDocuments[i].copyPagesTo(1, n, pdfDoc);
 //            for (int j = 1; j <= n; j++) {
 //                PdfFormXObject page = pdfDocuments[i].getPage(j).copyAsFormXObject(pdfDoc);
 //                new PdfCanvas(pdfDoc.addNewPage()).addXObject(page, 0, 0);

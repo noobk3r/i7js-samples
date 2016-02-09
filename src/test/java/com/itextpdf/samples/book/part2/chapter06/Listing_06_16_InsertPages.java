@@ -62,7 +62,7 @@ public class Listing_06_16_InsertPages extends GenericTest {
         for (int i = 1; i <= srcDoc.getNumberOfPages()-2; i++) {
             pageNumbers.add(i);
         }
-        srcDoc.copyPages(pageNumbers, resultDoc);
+        srcDoc.copyPagesTo(pageNumbers, resultDoc);
         resultDoc.close();
         srcDoc.close();
     }
@@ -91,7 +91,7 @@ public class Listing_06_16_InsertPages extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
         PdfDocument srcDoc = new PdfDocument(new PdfReader(
                 new RandomAccessSourceFactory().createSource(stream.toByteArray()), null, null, null, null, null));
-        srcDoc.copyPages(1, srcDoc.getNumberOfPages(), pdfDoc);
+        srcDoc.copyPagesTo(1, srcDoc.getNumberOfPages(), pdfDoc);
 
         pdfDoc.close();
         srcDoc.close();

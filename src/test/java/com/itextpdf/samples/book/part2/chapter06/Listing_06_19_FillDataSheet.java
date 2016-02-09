@@ -76,7 +76,7 @@ public class Listing_06_19_FillDataSheet extends GenericTest{
                     }
                 }
             }
-            pdfDoc.copyPages(1, pdfDoc.getNumberOfPages(), pdfDocResult, new PdfPageFormCopier());
+            pdfDoc.copyPagesTo(1, pdfDoc.getNumberOfPages(), pdfDocResult, new PdfPageFormCopier());
         }
         // Close the database connection
         connection.close();
