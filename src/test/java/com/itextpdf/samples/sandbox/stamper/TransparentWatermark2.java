@@ -34,7 +34,7 @@ import java.io.File;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class TransparentWatermark2 extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/stamper/pages.pdf";
@@ -78,7 +78,6 @@ public class TransparentWatermark2 extends GenericTest {
         float x, y;
         // loop over every page
         for (int i = 1; i <= n; i++) {
-            // TODO No "from box" getPageSize with rotation
             pagesize = getPageSizeWithRotation(pdfDoc.getPage(i));
             x = (pagesize.getLeft() + pagesize.getRight()) / 2;
             y = (pagesize.getTop() + pagesize.getBottom()) / 2;
@@ -86,7 +85,6 @@ public class TransparentWatermark2 extends GenericTest {
             over.saveState();
             over.setExtGState(gs1);
             if (i % 2 == 1) {
-                // TODO See the third page
                 doc.showTextAligned(p, x, y, i, Property.TextAlignment.CENTER, Property.VerticalAlignment.TOP, 0);
             } else {
                 over.addImage(img, w, 0, 0, h, x - (w / 2), y - (h / 2), false);

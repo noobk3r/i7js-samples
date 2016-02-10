@@ -12,6 +12,7 @@
 package com.itextpdf.samples.sandbox.stamper;
 
 import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
@@ -29,7 +30,7 @@ import java.io.File;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class StampHeader2 extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/stamper/Wrong.pdf";
@@ -45,17 +46,15 @@ public class StampHeader2 extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
-        // TODO Implement setRotateContent(boolean)
-        // stamper.setRotateContents(false);
+
         Paragraph header = new Paragraph("Copy").setFont(
                 PdfFontFactory.createFont(FontConstants.HELVETICA)).setFontSize(14);
         for (int i = 1; i <= pdfDoc.getNumberOfPages(); i++) {
             float x = pdfDoc.getPage(i).getPageSize().getWidth() / 2;
             float y = pdfDoc.getPage(i).getPageSize().getTop() - 20;
-            // TODO Do not show text over content
-            new Canvas(new PdfCanvas(pdfDoc.getPage(i).newContentStreamAfter(), pdfDoc.getPage(i).getResources(), pdfDoc),
-                    pdfDoc, pdfDoc.getPage(i).getPageSize()).showTextAligned(header, x, y,
-                    i, Property.TextAlignment.CENTER, Property.VerticalAlignment.MIDDLE, 0);
+
+            doc.showTextAligned(header, x, y, i,
+                    Property.TextAlignment.LEFT, Property.VerticalAlignment.MIDDLE, 0);
         }
         doc.close();
     }

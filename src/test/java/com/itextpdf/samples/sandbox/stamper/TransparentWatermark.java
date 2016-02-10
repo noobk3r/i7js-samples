@@ -32,7 +32,7 @@ import java.io.File;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class TransparentWatermark extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/stamper/hero.pdf";
@@ -53,7 +53,7 @@ public class TransparentWatermark extends GenericTest {
                 .setFont(font).setFontSize(15);
         new Canvas(under, pdfDoc, pdfDoc.getDefaultPageSize())
                 .showTextAligned(p, 297, 550, 1, Property.TextAlignment.CENTER, Property.VerticalAlignment.TOP, 0);
-        PdfCanvas over = new PdfCanvas(pdfDoc.getFirstPage().newContentStreamAfter(), new PdfResources(), pdfDoc);
+        PdfCanvas over = new PdfCanvas(pdfDoc.getFirstPage());
         // Problems with the source file, need to set the right color
         over.setFillColor(Color.BLACK);
         p = new Paragraph("This watermark is added ON TOP OF the existing content")
@@ -64,8 +64,7 @@ public class TransparentWatermark extends GenericTest {
                 .setFont(font).setFontSize(15);
         over.saveState();
         PdfExtGState gs1 = new PdfExtGState();
-        // TODO Implement setFillOpacity(float)
-        // gs1.setFillOpacity(0.5f);
+        gs1.setFillOpacity(0.5f);
         over.setExtGState(gs1);
         new Canvas(over, pdfDoc, pdfDoc.getDefaultPageSize())
                 .showTextAligned(p, 297, 450, 1, Property.TextAlignment.CENTER, Property.VerticalAlignment.TOP, 0);

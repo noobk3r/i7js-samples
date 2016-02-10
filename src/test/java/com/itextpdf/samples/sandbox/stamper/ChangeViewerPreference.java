@@ -18,7 +18,7 @@ import java.io.File;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+@Ignore("DEVSIX-457")
 @Category(SampleTest.class)
 public class ChangeViewerPreference extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/stamper/OCR.pdf";

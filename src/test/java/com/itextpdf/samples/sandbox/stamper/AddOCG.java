@@ -28,7 +28,7 @@ import java.util.List;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class AddOCG extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/stamper/hello.pdf";
@@ -121,7 +121,7 @@ public class AddOCG extends GenericTest {
         zoom.setZoom(0.75f, 1.25f);
 
         canvas.beginLayer(zoom);
-        canvasModel.showTextAligned("nly visible if the zoomfactor is between 75 and 125%", 30, 530, Property.TextAlignment.LEFT, (float) Math.toRadians(90));
+        canvasModel.showTextAligned("Only visible if the zoomfactor is between 75 and 125%", 30, 530, Property.TextAlignment.LEFT, (float) Math.toRadians(90));
         canvas.endLayer();
 
         pdfDoc.close();

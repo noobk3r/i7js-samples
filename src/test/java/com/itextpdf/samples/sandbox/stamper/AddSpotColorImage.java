@@ -7,6 +7,7 @@
 
 package com.itextpdf.samples.sandbox.stamper;
 
+import com.itextpdf.io.image.Image;
 import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.color.DeviceCmyk;
 import com.itextpdf.kernel.pdf.PdfArray;
@@ -15,10 +16,9 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfNumber;
 import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfStream;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
-import com.itextpdf.layout.element.Image;
+import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -27,7 +27,7 @@ import java.io.File;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class AddSpotColorImage extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/stamper/image.pdf";
@@ -62,46 +62,15 @@ public class AddSpotColorImage extends GenericTest {
         byte circleData[] = {(byte) 0x3c, (byte) 0x7e, (byte) 0xff,
                 (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0x7e,
                 (byte) 0x3c};
-        // we have an image of 8 by 8 with 1 component and 1 bit per component
-        // the 1 value is colored, the 0 value is transparent
-        Image image = new Image(ImageFactory.getImage(8, 8, 1, 1, circleData, new int[]{0, 0}));
-        // By default, the colorspace of such an image is DeviceGray
-        // In other words: the image is in black and white
-        // We want to use a separation colorspace:
+
         PdfArray colorspace = getSeparationColorspace(pdfDoc.getWriter(), new DeviceCmyk(0.8f, 0.3f, 0.3f, 0.1f));
-        // We get the image as a stream object
-        // TODO No PdfImage
-        PdfStream stream = new PdfStream(image.getXObject().getPdfObject().getBytes());
-//        PdfStream tempStream = new PdfStream(stream.getBytes()).makeIndirect(pdfDoc);
-//        PdfIndirectReference ref = tempStream.getIndirectReference();
-//        tempStream.flush();
-//        stream.makeIndirect(pdfDoc, ref);
-        // and we change its color space:
-        stream.put(PdfName.ColorSpace, colorspace);
-        stream.flush();
-        // We add the stream to the writer
-        // TODO Implement addToBody(PdfStream)
-        // PdfObject ref = pdfDoc.addToBody(stream);
-        // We adapt the original image
-        // TODO Implement the way of smth like setDirectReference(reference)
-        // image.setDirectReference(ref.getIndirectReference());
-        image.scaleAbsolute(100, 100);
-        image.setFixedPosition(100, 200);
-
-
-        /**
-         *         // TODO Implement addToBody(PdfStream)
-         //
-         //PdfStream stream = new PdfStream(baos.toByteArray()).makeIndirect(pdfDoc);
-         //PdfIndirectReference ref = stream.getIndirectReference();
-         //stream.flush();
-         // PdfIndirectObject ref = pdfDoc.getWriter().addToBody(new PdfStream(baos.toByteArray()));
-         */
-
-
+        Image image = ImageFactory.getImage(8, 8, 1, 1, circleData, new int[]{0, 0});
+        PdfImageXObject imageXObject = new PdfImageXObject(image);
+        imageXObject.put(PdfName.ColorSpace, colorspace);
+        imageXObject.makeIndirect(pdfDoc);
         // Now we add the image to the existing PDF document
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());
-        canvas.addXObject(image.getXObject(), 100, 200, 100);
+        canvas.addXObject(imageXObject, 300, 100, 100);
 
         pdfDoc.close();
     }
