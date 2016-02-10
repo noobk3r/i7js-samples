@@ -131,8 +131,7 @@ public class Listing_08_07_TextFields extends GenericTest {
                     text.setFontSize(10);
                     text.setValue("Enter your name here...");
                     text.setRequired(true);
-                    // TODO No setAlignment
-                    // text.setAlignment(Element.ALIGN_CENTER);
+                    text.setJustification(PdfFormField.ALIGN_CENTER);
                     break;
                 case 2:
                     borderStyleDict.put(PdfName.S, PdfName.S);

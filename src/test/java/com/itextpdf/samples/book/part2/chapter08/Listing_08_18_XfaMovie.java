@@ -196,11 +196,11 @@ public class Listing_08_18_XfaMovie extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(dest));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         form.removeXfaForm();
-        form.getField("movies[0].movie[0].imdb[0]").setValue("1075110");
-        form.getField("movies[0].movie[0].duration[0]").setValue("108");
-        form.getField("movies[0].movie[0].title[0]").setValue("The Misfortunates");
-        form.getField("movies[0].movie[0].original[0]").setValue("De helaasheid der dingen");
-        form.getField("movies[0].movie[0].year[0]").setValue("2009");
+        form.getField("imdb[0]").setValue("1075110");
+        form.getField("duration[0]").setValue("108");
+        form.getField("title[0]").setValue("The Misfortunates");
+        form.getField("original[0]").setValue("De helaasheid der dingen");
+        form.getField("year[0]").setValue("2009");
         pdfDoc.close();
     }
 

@@ -9,20 +9,17 @@ package com.itextpdf.samples.book.part2.chapter08;
 
 import com.itextpdf.kernel.PdfException;
 import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.io.source.ByteArrayOutputStream;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.color.DeviceGray;
 import com.itextpdf.kernel.color.DeviceRgb;
 import com.itextpdf.kernel.color.WebColors;
 import com.itextpdf.kernel.font.PdfFont;
-import com.itextpdf.kernel.pdf.PdfArray;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfPage;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
@@ -117,7 +114,9 @@ public class Listing_08_16_MovieAds extends GenericTest {
                 millimetersToPoints(7) - millimetersToPoints(0)), YEAR, "");
         // TODO No setAlignment on PdfFormField
         // screening.setAlignment(Element.ALIGN_CENTER);
+        screening.setJustification(PdfFormField.ALIGN_CENTER);
         screening.setBackgroundColor(new DeviceGray(0.4f));
+        screening.setColor(Color.LIGHT_GRAY);
         // TODO No setTextColor on PdfFormField
         // screening.setTextColor(GrayColor.GRAYWHITE);
         PdfAcroForm.getAcroForm(pdfDoc, true).addField(screening);
@@ -144,17 +143,18 @@ public class Listing_08_16_MovieAds extends GenericTest {
         // TODO No setImage & setLayout & setProportionalIcon in PdfFormField
         // bt.setLayout(PushbuttonField.LAYOUT_ICON_ONLY);
         // bt.setProportionalIcon(true);
+        bt.setImage(String.format(IMAGE, movie.getImdb()));
         // bt.setImage(Image.getInstance(String.format(IMAGE, movie.getImdb())));
-        bt.setBackgroundColor(color);
-        form.removeField(POSTER);
-        form.addField(bt);
+        //bt.setBackgroundColor(color);
+        //form.removeField(POSTER);
+        //form.addField(bt);
         // write the text using the appropriate font size
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());
 
         PdfArray f = form.getField(TEXT).getWidgets().get(0).getRectangle();
         Rectangle rect = new Rectangle(f.getAsFloat(0), f.getAsFloat(1), f.getAsFloat(2) - f.getAsFloat(0),
                 f.getAsFloat(3) - f.getAsFloat(1));
-        float size = 30;
+        float size = 100;
         while (!addParagraph(pdfDoc, createMovieParagraph(pdfDoc, movie, size), canvas, rect) && size > 6) {
             size -= 0.2;
         }
@@ -162,6 +162,7 @@ public class Listing_08_16_MovieAds extends GenericTest {
         // fill out the year and change the background color
         form.getField(YEAR).setBackgroundColor(color);
         form.getField(YEAR).setValue(String.valueOf(movie.getYear()));
+        form.flattenFields();
         // flatten the form and close the stamper
         pdfDoc.close();
         return baos.toByteArray();
@@ -240,7 +241,7 @@ public class Listing_08_16_MovieAds extends GenericTest {
                 baos = new ByteArrayOutputStream();
                 stamper = new PdfDocument(new PdfReader(RESOURCE), new PdfWriter(baos));
                 form = PdfAcroForm.getAcroForm(stamper, true);
-                form.flattenFields();
+                //form.flattenFields();
             }
             count++;
             PdfReader ad = new PdfReader(new ByteArrayInputStream(fillTemplate(TEMPLATE, movie)));
@@ -248,12 +249,14 @@ public class Listing_08_16_MovieAds extends GenericTest {
             PdfPage curPage = srcDoc.getFirstPage();
             PdfFormXObject xObject = curPage.copyAsFormXObject(stamper);
             PdfButtonFormField bt = (PdfButtonFormField) form.getField("movie_" + count);
+            bt.setImageAsForm(xObject);
             // TODO No setLayout & setProportionalIcon & setTemplate on PdfFormField
             // bt.setLayout(PushbuttonField.LAYOUT_ICON_ONLY);
             // bt.setProportionalIcon(true);
             // bt.setTemplate(page);
-            form.removeField("movie_" + count);
-            form.addField(bt);
+            //form = PdfAcroForm.getAcroForm(stamper, true);
+            //form.removeField("movie_" + count);
+            //form.addField(bt);
             if (count == 16) {
                 stamper.close();
                 stamper = new PdfDocument(new PdfReader(new ByteArrayInputStream(baos.toByteArray())));

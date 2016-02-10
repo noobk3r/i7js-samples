@@ -45,15 +45,12 @@ public class Listing_07_26_ButtonsActions extends GenericTest {
         PdfButtonFormField saveAs =
                 PdfFormField.createPushButton(pdfDoc, new Rectangle(636, 10, 716 - 636, 30 - 10), "Save", "Save");
         saveAs.setColor(Color.RED);
-        // TODO No setLayout on PdfFormFileds
-        // saveAs.setLayout(PushbuttonField.LAYOUT_LABEL_ONLY);
         PdfAnnotation saveAsButton = saveAs.getWidgets().get(0);
         saveAs.setAction(PdfAction.createJavaScript("app.execMenuItem('SaveAs')"));
 
         PdfButtonFormField mail =
                 PdfFormField.createPushButton(pdfDoc, new Rectangle(736, 10, 816 - 736, 30 - 10), "Mail", "Mail");
         mail.setColor(Color.RED);
-//        mail.setLayout(PushbuttonField.LAYOUT_LABEL_ONLY);
         PdfAnnotation mailButton = mail.getWidgets().get(0);
         mailButton.setAction(PdfAction.createJavaScript("app.execMenuItem('AcroSendMail:SendMail')"));
         // Add the annotations to every page of the document

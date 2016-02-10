@@ -8,20 +8,34 @@
 package com.itextpdf.samples.book.part2.chapter08;
 
 import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.image.Image;
+import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.color.DeviceGray;
 import com.itextpdf.kernel.font.PdfFont;
-import com.itextpdf.kernel.pdf.PdfDictionary;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
+import com.itextpdf.kernel.pdf.tagutils.AccessibleElementProperties;
+import com.itextpdf.kernel.pdf.tagutils.IAccessibleElement;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
+import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
+import com.itextpdf.kernel.pdf.xobject.PdfXObject;
+import com.itextpdf.layout.Canvas;
+import com.itextpdf.layout.Property;
+import com.itextpdf.layout.element.AbstractElement;
+import com.itextpdf.layout.element.IElement;
+import com.itextpdf.layout.element.ILeafElement;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.layout.LayoutArea;
+import com.itextpdf.layout.layout.LayoutContext;
+import com.itextpdf.layout.layout.LayoutResult;
+import com.itextpdf.layout.renderer.AbstractRenderer;
+import com.itextpdf.layout.renderer.DrawContext;
+import com.itextpdf.layout.renderer.IRenderer;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfButtonFormField;
@@ -50,7 +64,7 @@ public class Listing_08_01_Buttons extends GenericTest {
     /**
      * Path to an image used as button icon.
      */
-    public static final String IMAGE = "./src/test/resources/book/part2/chapter08/info.png";
+    public static final String IMAGE = "./src/test/resources/img/info.png";
     /**
      * Possible values of a radio field / checkboxes
      */
@@ -142,25 +156,17 @@ public class Listing_08_01_Buttons extends GenericTest {
 
         // Add the push button
         rect = new Rectangle(300, 806, 370 - 300, 806 - 788);
-        PdfButtonFormField button = PdfFormField.createPushButton(pdfDoc, rect, "Buttons", "Push me");
-        button.setBackgroundColor(new DeviceGray(0.75f));
-        button.setBorderColor(Color.DARK_GRAY);
-        button.setBorderWidth(1);
-        PdfDictionary borderStyleDict = new PdfDictionary();
-        borderStyleDict.put(PdfName.S, PdfName.B);
-        button.getWidgets().get(0).setBorderStyle(borderStyleDict);
-        button.setFontSize(12);
-        // TODO No setTextColor & setLayout & setScaledIcon & setProportonalIcon & setIconHorizontalAdjustment & setImage on PdfFormField
-        // button.setTextColor(GrayColor.GRAYBLACK);
-        // button.setLayout(PushbuttonField.LAYOUT_ICON_LEFT_LABEL_RIGHT);
-        // button.setScaleIcon(PushbuttonField.SCALE_ICON_ALWAYS);
-        // button.setProportionalIcon(true);
-        // button.setIconHorizontalAdjustment(0);
-        // button.setImage(Image.getInstance(IMAGE));
 
-        PdfAnnotation ann = button.getWidgets().get(0);
+        Button button = new Button("Buttons", "Push me", pdfDoc, rect);
+        button.setImage(ImageFactory.getImage(IMAGE));
+        button.setButtonBackgroundColor(new DeviceGray(0.75f));
+        button.setBorderColor(Color.DARK_GRAY);
+        button.setFontSize(12);
+
+        doc.add(new Paragraph().add(button));
+
+        PdfAnnotation ann = button.getButton().getWidgets().get(0);
         ann.setAction(PdfAction.createJavaScript("this.showButtonState()"));
-        pdfDoc.getFirstPage().addAnnotation(ann);
 
         doc.close();
     }
@@ -184,5 +190,149 @@ public class Listing_08_01_Buttons extends GenericTest {
         }
         pdfDoc.close();
         reader.close();
+    }
+
+    private class Button extends AbstractElement<Button> implements ILeafElement<Button>, IElement<Button>, IAccessibleElement {
+
+        protected PdfName role = PdfName.Figure;
+        protected PdfButtonFormField button;
+        protected String caption;
+        protected Image image;
+        protected Rectangle rect;
+        protected Color borderColor = Color.BLACK;
+        protected Color buttonBackgroundColor = Color.WHITE;
+
+        public Button(String name, String caption, PdfDocument document, Rectangle rect) {
+            button = PdfFormField.createButton(document, new Rectangle(0, 0), 0);
+            button.setFieldName(name);
+            button.setPushButton(true);
+
+            this.caption = caption;
+            this.rect = rect;
+        }
+
+        @Override
+        protected IRenderer makeNewRenderer() {
+            return new ButtonRenderer(this);
+        }
+
+        @Override
+        public PdfName getRole() {
+            return role;
+        }
+
+        @Override
+        public void setRole(PdfName role) {
+            this.role = role;
+        }
+
+        @Override
+        public AccessibleElementProperties getAccessibilityProperties() {
+            return null;
+        }
+
+        public PdfButtonFormField getButton() {
+            return button;
+        }
+
+        public String getCaption() {
+            return caption;
+        }
+
+        public void setImage(Image image) {
+            this.image = image;
+        }
+
+        public Image getImage() {
+            return image;
+        }
+
+        public Color getBorderColor() {
+            return borderColor;
+        }
+
+        public void setBorderColor(Color borderColor) {
+            this.borderColor = borderColor;
+        }
+
+        public void setButtonBackgroundColor(Color buttonBackgroundColor) {
+            this.buttonBackgroundColor = buttonBackgroundColor;
+        }
+    }
+
+    class ButtonRenderer extends AbstractRenderer {
+
+        public ButtonRenderer(Button button) {
+            super(button);
+        }
+
+        @Override
+        public LayoutResult layout(LayoutContext layoutContext) {
+            LayoutArea area = layoutContext.getArea().clone();
+            Rectangle layoutBox = area.getBBox();
+            applyMargins(layoutBox, false);
+            Button modelButton = (Button) modelElement;
+            occupiedArea = new LayoutArea(area.getPageNumber(), new Rectangle(modelButton.rect));
+            PdfButtonFormField button = ((Button) getModelElement()).getButton();
+            button.getWidgets().get(0).setRectangle(new PdfArray(occupiedArea.getBBox()));
+
+            return new LayoutResult(LayoutResult.FULL, occupiedArea, null, null);
+        }
+
+        @Override
+        public void draw(DrawContext drawContext) {
+            Button modelButton = (Button) modelElement;
+            occupiedArea.setBBox(modelButton.rect);
+
+            super.draw(drawContext);
+            float width = occupiedArea.getBBox().getWidth();
+            float height = occupiedArea.getBBox().getHeight();
+
+            PdfStream str = new PdfStream();
+            PdfCanvas canvas = new PdfCanvas(str, new PdfResources(), drawContext.getDocument());
+            PdfFormXObject xObject = new PdfFormXObject(new Rectangle(0, 0, width, height));
+
+            canvas.
+                    saveState().
+                    setStrokeColor(modelButton.getBorderColor()).
+                    setLineWidth(1).
+                    rectangle(0, 0, occupiedArea.getBBox().getWidth(), occupiedArea.getBBox().getHeight()).
+                    stroke().
+                    setFillColor(modelButton.buttonBackgroundColor).
+                    rectangle(0.5f, 0.5f, occupiedArea.getBBox().getWidth() - 1, occupiedArea.getBBox().getHeight() - 1).
+                    fill().
+                    restoreState();
+
+            Paragraph paragraph = new Paragraph(modelButton.getCaption()).setFontSize(10).setMargin(0).setMultipliedLeading(1);
+
+            new Canvas(canvas, drawContext.getDocument(), new Rectangle(0, 0, width, height)).
+                    showTextAligned(paragraph, 20, 3, Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM);
+
+            Image image = modelButton.getImage();
+            if (image != null) {
+                PdfImageXObject imageXObject = new PdfImageXObject(image);
+                float imageWidth = image.getWidth();
+
+                if (image.getWidth() > modelButton.rect.getWidth() * 2/3) {
+                    imageWidth = modelButton.rect.getWidth() * 2/3;
+                }
+                if (image.getHeight() > modelButton.rect.getHeight()) {
+                    imageWidth = image.getWidth() * (modelButton.rect.getHeight() / image.getHeight()) * 2/3;
+                }
+                canvas.addXObject(imageXObject, 3, 3, imageWidth);
+                xObject.getResources().addImage(imageXObject);
+            }
+
+            PdfButtonFormField button = modelButton.getButton();
+            button.getWidgets().get(0).setNormalAppearance(xObject.getPdfObject());
+            xObject.getPdfObject().getOutputStream().writeBytes(str.getBytes());
+
+            PdfAcroForm.getAcroForm(drawContext.getDocument(), true).addField(button, drawContext.getDocument().getPage(1));
+        }
+
+        @Override
+        public IRenderer getNextRenderer() {
+            return null;
+        }
     }
 }
