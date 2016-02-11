@@ -8,22 +8,20 @@
 package com.itextpdf.samples.book.part1.chapter03;
 
 import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.kernel.geom.PageSize;
-import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.layout.ColumnDocumentRenderer;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Div;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.layout.LayoutArea;
-import com.itextpdf.layout.layout.LayoutResult;
-import com.itextpdf.layout.renderer.DocumentRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.samples.book.part1.chapter02.StarSeparator;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
@@ -60,18 +58,7 @@ public class Listing_03_20_ColumnMovies2 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc, PageSize.A4.rotate());
 
-        doc.setRenderer(new DocumentRenderer(doc) {
-            int nextAreaNumber = 0;
-            int currentPageNumber;
-
-            @Override
-            public LayoutArea updateCurrentArea(LayoutResult overflowResult) {
-                if (nextAreaNumber % 4 == 0) {
-                    currentPageNumber = super.updateCurrentArea(overflowResult).getPageNumber();
-                }
-                return (currentArea = new LayoutArea(currentPageNumber, COLUMNS[nextAreaNumber++ % 4].clone()));
-            }
-        });
+        doc.setRenderer(new ColumnDocumentRenderer(doc, COLUMNS));
 
         // Create a database connection
         DatabaseConnection connection = new HsqldbConnection("filmfestival");

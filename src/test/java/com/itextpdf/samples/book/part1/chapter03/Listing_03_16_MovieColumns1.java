@@ -8,21 +8,18 @@
 package com.itextpdf.samples.book.part1.chapter03;
 
 import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.layout.ColumnDocumentRenderer;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
-import com.itextpdf.layout.layout.LayoutArea;
-import com.itextpdf.layout.layout.LayoutResult;
-import com.itextpdf.layout.renderer.DocumentRenderer;
 import com.itextpdf.samples.GenericTest;
-
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Country;
@@ -63,22 +60,8 @@ public class Listing_03_16_MovieColumns1 extends GenericTest {
 
         doc.setProperty(Property.FONT, normal);
 
-        doc.setRenderer(new DocumentRenderer(doc) {
-            int nextAreaNumber = 0;
-            int currentPageNumber;
-
-            @Override
-            public LayoutArea updateCurrentArea(LayoutResult overflowResult) {
-                if (nextAreaNumber % 2 == 0) {
-                    currentPageNumber = super.updateCurrentArea(overflowResult).getPageNumber();
-                    nextAreaNumber++;
-                    return (currentArea = new LayoutArea(currentPageNumber, new Rectangle(36, 36, 260, 770)));
-                } else {
-                    nextAreaNumber++;
-                    return (currentArea = new LayoutArea(currentPageNumber, new Rectangle(299, 36, 260, 770)));
-                }
-            }
-        });
+        Rectangle[] columns = {new Rectangle(36, 36, 260, 770), new Rectangle(299, 36, 260, 770)};
+        doc.setRenderer(new ColumnDocumentRenderer(doc, columns));
 
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
         List<Movie> movies = PojoFactory.getMovies(connection);

@@ -8,19 +8,19 @@
 package com.itextpdf.samples.book.part1.chapter03;
 
 import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.kernel.geom.Rectangle;
+import com.itextpdf.kernel.events.Event;
+import com.itextpdf.kernel.events.IEventHandler;
+import com.itextpdf.kernel.events.PdfDocumentEvent;
 import com.itextpdf.kernel.font.PdfFontFactory;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.layout.ColumnDocumentRenderer;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.layout.LayoutArea;
-import com.itextpdf.layout.layout.LayoutResult;
-import com.itextpdf.layout.renderer.DocumentRenderer;
-
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
@@ -54,7 +54,7 @@ public class Listing_03_19_MovieColumns4 extends Listing_03_16_MovieColumns1 {
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize document
-        final PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
         normal = PdfFontFactory.createFont(FontConstants.HELVETICA);
@@ -64,17 +64,11 @@ public class Listing_03_19_MovieColumns4 extends Listing_03_16_MovieColumns1 {
 
         doc.setProperty(Property.FONT, normal);
 
-        doc.setRenderer(new DocumentRenderer(doc) {
-            int nextAreaNumber = 0;
-            int currentPageNumber;
-
+        doc.setRenderer(new ColumnDocumentRenderer(doc, COLUMNS));
+        pdfDoc.addEventHandler(PdfDocumentEvent.START_PAGE, new IEventHandler() {
             @Override
-            public LayoutArea updateCurrentArea(LayoutResult overflowResult) {
-                if (nextAreaNumber % COLUMNS.length == 0) {
-                    currentPageNumber = super.updateCurrentArea(overflowResult).getPageNumber();
-                    drawRectangles(new PdfCanvas(document.getPdfDocument().getLastPage()));
-                }
-                return (currentArea = new LayoutArea(currentPageNumber, COLUMNS[nextAreaNumber++ % COLUMNS.length].clone()));
+            public void handleEvent(Event event) {
+                drawRectangles(new PdfCanvas(((PdfDocumentEvent)event).getPage()));
             }
         });
 

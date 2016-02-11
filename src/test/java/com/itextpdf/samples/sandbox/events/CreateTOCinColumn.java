@@ -21,7 +21,7 @@ import com.itextpdf.kernel.pdf.PdfOutline;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.navigation.PdfDestination;
 import com.itextpdf.kernel.pdf.navigation.PdfExplicitDestination;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.layout.ColumnDocumentRenderer;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Cell;
@@ -29,12 +29,10 @@ import com.itextpdf.layout.element.Link;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.element.Text;
-import com.itextpdf.layout.layout.LayoutArea;
-import com.itextpdf.layout.layout.LayoutResult;
-import com.itextpdf.layout.renderer.DocumentRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.TextRenderer;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.FileOutputStream;
 import java.util.ArrayList;
@@ -56,7 +54,8 @@ public class CreateTOCinColumn extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
-        doc.setRenderer(new ColumnDocumentRenderer(doc));
+        Rectangle[] columns = {new Rectangle(36, 36, 173, 770), new Rectangle(213, 36, 173, 770), new Rectangle(389, 36, 173, 770)};
+        doc.setRenderer(new ColumnDocumentRenderer(doc, columns));
         PdfOutline root = pdfDoc.getOutlines(false);
         if (root == null)
             root = new PdfOutline(pdfDoc);
@@ -92,7 +91,6 @@ public class CreateTOCinColumn extends GenericTest {
         return table;
     }
 
-
     protected class TOCEntry {
         protected String title;
         protected PdfDestination dest;
@@ -102,7 +100,6 @@ public class CreateTOCinColumn extends GenericTest {
             this.title = title;
         }
     }
-
 
     protected class TOCTextRenderer extends TextRenderer {
         protected PdfOutline root;
@@ -132,29 +129,5 @@ public class CreateTOCinColumn extends GenericTest {
         }
     }
 
-
-    protected class ColumnDocumentRenderer extends DocumentRenderer {
-        protected int nextAreaNumber = 0;
-        protected int currentPageNumber;
-
-        public ColumnDocumentRenderer(Document document) {
-            super(document);
-        }
-
-        @Override
-        public LayoutArea updateCurrentArea(LayoutResult overflowResult) {
-            if (nextAreaNumber % 3 == 0) {
-                currentPageNumber = super.updateCurrentArea(overflowResult).getPageNumber();
-                nextAreaNumber++;
-                return (currentArea = new LayoutArea(currentPageNumber, new Rectangle(36, 36, 173, 770)));
-            } else if (nextAreaNumber % 3 == 1) {
-                nextAreaNumber++;
-                return (currentArea = new LayoutArea(currentPageNumber, new Rectangle(213, 36, 173, 770)));
-            } else {
-                nextAreaNumber++;
-                return (currentArea = new LayoutArea(currentPageNumber, new Rectangle(389, 36, 173, 770)));
-            }
-        }
-    }
 }
 

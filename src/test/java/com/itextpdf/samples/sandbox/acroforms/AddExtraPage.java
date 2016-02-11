@@ -11,24 +11,22 @@
  */
 package com.itextpdf.samples.sandbox.acroforms;
 
+import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.events.Event;
 import com.itextpdf.kernel.events.IEventHandler;
 import com.itextpdf.kernel.events.PdfDocumentEvent;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
-import com.itextpdf.forms.PdfAcroForm;
+import com.itextpdf.layout.ColumnDocumentRenderer;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
-import com.itextpdf.layout.layout.LayoutArea;
-import com.itextpdf.layout.layout.LayoutResult;
-import com.itextpdf.layout.renderer.DocumentRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -48,7 +46,7 @@ public class AddExtraPage extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument srcDoc = new PdfDocument(new PdfReader(SRC));
         PdfAcroForm form = PdfAcroForm.getAcroForm(srcDoc, false);
-        final Rectangle rect = form.getField("body").getWidgets().get(0).getRectangle().toRectangle();
+        Rectangle rect = form.getField("body").getWidgets().get(0).getRectangle().toRectangle();
 
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
@@ -56,14 +54,7 @@ public class AddExtraPage extends GenericTest {
                 new PaginationEventHandler(srcDoc.getFirstPage().copyAsFormXObject(pdfDoc)));
         srcDoc.close();
 
-        doc.setRenderer(new DocumentRenderer(doc) {
-            @Override
-            protected LayoutArea updateCurrentArea(LayoutResult overflowResult) {
-                currentPageNumber = super.updateCurrentArea(overflowResult).getPageNumber();
-                // Notice that each time we need to pass a new rectangle object, not the same
-                return (currentArea = new LayoutArea(currentPageNumber, rect.clone()));
-            }
-        });
+        doc.setRenderer(new ColumnDocumentRenderer(doc, new Rectangle[]{rect}));
 
         Paragraph p = new Paragraph();
         p.add(new Text("Hello "));
@@ -91,7 +82,7 @@ public class AddExtraPage extends GenericTest {
             PdfDocument pdfDoc = ((PdfDocumentEvent) event).getDocument();
             int pageNum = pdfDoc.getPageNumber(((PdfDocumentEvent) event).getPage());
             // Add the background
-            PdfCanvas canvas = new PdfCanvas(pdfDoc.getPage(pageNum).newContentStreamBefore(),
+            new PdfCanvas(pdfDoc.getPage(pageNum).newContentStreamBefore(),
                     pdfDoc.getPage(pageNum).getResources(), pdfDoc)
                     .addXObject(background, 0, 0);
         }

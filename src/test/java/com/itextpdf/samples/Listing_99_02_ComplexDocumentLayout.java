@@ -8,16 +8,14 @@
 package com.itextpdf.samples;
 
 import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.layout.ColumnDocumentRenderer;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.layout.LayoutArea;
-import com.itextpdf.layout.layout.LayoutResult;
-import com.itextpdf.layout.renderer.DocumentRenderer;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -47,22 +45,8 @@ public class Listing_99_02_ComplexDocumentLayout extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         //Set up renderer. The layout consist of 2 vertical stripes.
-        doc.setRenderer(new DocumentRenderer(doc) {
-            int nextAreaNumber = 0;
-            int currentPageNumber;
-
-            @Override
-            public LayoutArea updateCurrentArea(LayoutResult overflowResult) {
-                if (nextAreaNumber % 2 == 0) {
-                    currentPageNumber = super.updateCurrentArea(overflowResult).getPageNumber();
-                    nextAreaNumber++;
-                    return (currentArea = new LayoutArea(currentPageNumber, new Rectangle(100, 100, 100, 500)));
-                } else {
-                    nextAreaNumber++;
-                    return (currentArea = new LayoutArea(currentPageNumber, new Rectangle(400, 100, 100, 500)));
-                }
-            }
-        });
+        Rectangle[] columns = {new Rectangle(100, 100, 100, 500), new Rectangle(400, 100, 100, 500)};
+        doc.setRenderer(new ColumnDocumentRenderer(doc, columns));
 
         //Create paragraph and place it to layout
         StringBuilder text = new StringBuilder();

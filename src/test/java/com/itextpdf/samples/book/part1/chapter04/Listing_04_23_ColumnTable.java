@@ -9,11 +9,11 @@ package com.itextpdf.samples.book.part1.chapter04;
 
 import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.io.font.PdfEncodings;
-import com.itextpdf.kernel.geom.PageSize;
-import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
@@ -75,12 +75,10 @@ public class Listing_04_23_ColumnTable extends GenericTest {
             // add content to the column
             doc.add(getTable(connection, days.get(i)));
 
-            if (days.size()-1 != i) {
+            if (days.size() - 1 != i) {
                 date = days.get(i + 1);
-                if (0 == renderer.nextAreaNumber % 2) {
-                    doc.add(new AreaBreak());
-                } else {
-                    doc.add(new AreaBreak());
+                int currentPageNumber = renderer.getCurrentArea().getPageNumber();
+                while (renderer.getCurrentArea().getPageNumber() == currentPageNumber) {
                     doc.add(new AreaBreak());
                 }
             }
@@ -135,7 +133,6 @@ public class Listing_04_23_ColumnTable extends GenericTest {
         return table;
     }
 
-
     protected class ColumnDocumentRenderer extends DocumentRenderer {
         protected int nextAreaNumber = 0;
 
@@ -144,7 +141,7 @@ public class Listing_04_23_ColumnTable extends GenericTest {
         }
 
         @Override
-         public LayoutArea updateCurrentArea(LayoutResult overflowResult) {
+        public LayoutArea updateCurrentArea(LayoutResult overflowResult) {
             if (nextAreaNumber % 2 == 0) {
                 currentPageNumber = super.updateCurrentArea(overflowResult).getPageNumber();
 
