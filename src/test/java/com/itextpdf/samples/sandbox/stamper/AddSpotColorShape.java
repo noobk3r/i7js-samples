@@ -43,8 +43,6 @@ public class AddSpotColorShape extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
 
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());
-        //todo: delete ctm after DEVSIX-431 resolving
-        canvas.concatMatrix(0, 1, -1, 0, 595, 0);
         canvas.arc(0, 0, 842, 595, 0, 360);
         canvas.arc(25, 25, 817, 570, 0, 360);
         canvas.arc(50, 50, 792, 545, 0, 360);

@@ -47,6 +47,7 @@ public class TransparentWatermark3 extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
+        pdfDoc.setRotateContent(false);
         Document doc = new Document(pdfDoc);
         int n = pdfDoc.getNumberOfPages();
         PdfFont font = PdfFontFactory.createFont(FontFactory.createFont(FontConstants.HELVETICA));

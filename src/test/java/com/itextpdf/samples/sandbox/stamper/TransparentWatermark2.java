@@ -47,15 +47,7 @@ public class TransparentWatermark2 extends GenericTest {
         new TransparentWatermark2().manipulatePdf(DEST);
     }
 
-    public static Rectangle getPageSizeWithRotation(PdfPage page) {
-        PageSize rect = new PageSize(page.getPageSize());
-        int rotation = page.getRotation();
-        while (rotation > 0) {
-            rect = rect.rotate();
-            rotation -= 90;
-        }
-        return rect;
-    }
+
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
@@ -78,7 +70,7 @@ public class TransparentWatermark2 extends GenericTest {
         float x, y;
         // loop over every page
         for (int i = 1; i <= n; i++) {
-            pagesize = getPageSizeWithRotation(pdfDoc.getPage(i));
+            pagesize = pdfDoc.getPage(i).getPageSizeWithRotation();
             x = (pagesize.getLeft() + pagesize.getRight()) / 2;
             y = (pagesize.getTop() + pagesize.getBottom()) / 2;
             over = new PdfCanvas(pdfDoc.getPage(i));

@@ -32,7 +32,7 @@ import java.io.File;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore("DEVSIX-463")
+
 @Category(SampleTest.class)
 public class StampHeader3 extends GenericTest {
     public static final String SRC = "./src/test/resources/sandbox/stamper/Wrong.pdf";

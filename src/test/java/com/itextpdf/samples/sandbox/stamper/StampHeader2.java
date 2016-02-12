@@ -45,6 +45,7 @@ public class StampHeader2 extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
+        pdfDoc.setRotateContent(false);
         Document doc = new Document(pdfDoc);
 
         Paragraph header = new Paragraph("Copy").setFont(
@@ -54,7 +55,7 @@ public class StampHeader2 extends GenericTest {
             float y = pdfDoc.getPage(i).getPageSize().getTop() - 20;
 
             doc.showTextAligned(header, x, y, i,
-                    Property.TextAlignment.LEFT, Property.VerticalAlignment.MIDDLE, 0);
+                    Property.TextAlignment.CENTER, Property.VerticalAlignment.BOTTOM, 0);
         }
         doc.close();
     }

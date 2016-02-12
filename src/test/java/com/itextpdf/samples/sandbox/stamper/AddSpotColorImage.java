@@ -70,7 +70,7 @@ public class AddSpotColorImage extends GenericTest {
         imageXObject.makeIndirect(pdfDoc);
         // Now we add the image to the existing PDF document
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());
-        canvas.addXObject(imageXObject, 300, 100, 100);
+        canvas.addXObject(imageXObject, 100, 200, 100);
 
         pdfDoc.close();
     }
