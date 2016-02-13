@@ -49,11 +49,11 @@ public class Listing_10_04_ShadingPatternColor extends GenericTest {
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
 
         com.itextpdf.kernel.pdf.colorspace.PdfShading axial
-                = new PdfShading.Axial(new PdfDeviceCs.Rgb(), 36, 716, new float[]{1, .784f, 0}, 396, 788, new float[]{0, 0, 1}, new boolean[] {true, true}, pdfDoc);
+                = new PdfShading.Axial(new PdfDeviceCs.Rgb(), 36, 716, new float[]{1, .784f, 0}, 396, 788, new float[]{0, 0, 1}, new boolean[] {true, true});
         canvas.paintShading(axial);
         canvas = new PdfCanvas(pdfDoc.addNewPage());
         com.itextpdf.kernel.pdf.colorspace.PdfShading radial
-                = new PdfShading.Radial(new PdfDeviceCs.Rgb(), 200, 700, 50, new float[] {1, 0.968f, 0.58f}, 300, 700, 100, new float[] {0.968f, 0.541f, 0.42f}, pdfDoc);
+                = new PdfShading.Radial(new PdfDeviceCs.Rgb(), 200, 700, 50, new float[] {1, 0.968f, 0.58f}, 300, 700, 100, new float[] {0.968f, 0.541f, 0.42f});
         canvas.paintShading(radial);
 
         PdfPattern.Shading shading = new PdfPattern.Shading(axial).makeIndirect(pdfDoc);

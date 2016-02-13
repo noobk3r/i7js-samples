@@ -37,9 +37,9 @@ public class Listing_10_02_SeparationColor extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
 
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
-        PdfColorSpace rgbColorSpace = createRgbColorSpace(pdfDoc, 0.39216f, 0.58431f, 0.92941f);
-        PdfColorSpace grayColorSpace = createGrayColorSpace(pdfDoc, .9f);
-        PdfColorSpace cmykColorSpace = createCmykColorSpace(pdfDoc, .3f, .9f, .3f, .1f);
+        PdfColorSpace rgbColorSpace = createRgbColorSpace(0.39216f, 0.58431f, 0.92941f);
+        PdfColorSpace grayColorSpace = createGrayColorSpace(.9f);
+        PdfColorSpace cmykColorSpace = createCmykColorSpace(.3f, .9f, .3f, .1f);
 
         colorRectangle(canvas, new Color(grayColorSpace, new float[]{0.5f}), 36, 770, 36, 36);
         colorRectangle(canvas, new Color(rgbColorSpace, new float[]{.1f}), 90, 770, 36, 36);
@@ -74,28 +74,28 @@ public class Listing_10_02_SeparationColor extends GenericTest {
         pdfDoc.close();
     }
 
-    private PdfColorSpace createGrayColorSpace(PdfDocument pdfDoc, float gray) {
+    private PdfColorSpace createGrayColorSpace(float gray) {
         float[] c1 = new float[]{gray};
         float[] c0 = new float[]{1};
-        PdfFunction f = new PdfFunction.Type2(pdfDoc, new PdfArray(new float[]{0, 1}), null, new PdfArray(c0), new PdfArray(c1), new PdfNumber(1));
-        PdfSpecialCs.Separation cs = new PdfSpecialCs.Separation(pdfDoc, "iTextSpotColorGray", new DeviceGray().getColorSpace(), f);
+        PdfFunction f = new PdfFunction.Type2(new PdfArray(new float[]{0, 1}), null, new PdfArray(c0), new PdfArray(c1), new PdfNumber(1));
+        PdfSpecialCs.Separation cs = new PdfSpecialCs.Separation("iTextSpotColorGray", new DeviceGray().getColorSpace(), f);
         return cs;
     }
 
-    private PdfColorSpace createRgbColorSpace(PdfDocument pdfDoc, float red, float green, float blue) {
+    private PdfColorSpace createRgbColorSpace(float red, float green, float blue) {
         float[] c0 = new float[]{1, 1, 1};
         float[] c1 = new float[]{red, green, blue};
-        PdfFunction f = new PdfFunction.Type2(pdfDoc, new PdfArray(new float[]{0, 1}), null, new PdfArray(c0), new PdfArray(c1), new PdfNumber(1));
-        PdfSpecialCs.Separation cs = new PdfSpecialCs.Separation(pdfDoc, "iTextSpotColorRGB", new DeviceRgb().getColorSpace(), f);
+        PdfFunction f = new PdfFunction.Type2(new PdfArray(new float[]{0, 1}), null, new PdfArray(c0), new PdfArray(c1), new PdfNumber(1));
+        PdfSpecialCs.Separation cs = new PdfSpecialCs.Separation("iTextSpotColorRGB", new DeviceRgb().getColorSpace(), f);
 
         return cs;
     }
 
-    private PdfColorSpace createCmykColorSpace(PdfDocument pdfDoc, float c, float m, float y, float k) {
+    private PdfColorSpace createCmykColorSpace(float c, float m, float y, float k) {
         float[] c0 = new float[]{0, 0, 0, 0};
         float[] c1 = new float[]{c, m, y, k};
-        PdfFunction f = new PdfFunction.Type2(pdfDoc, new PdfArray(new float[]{0, 1}), null, new PdfArray(c0), new PdfArray(c1), new PdfNumber(1));
-        PdfSpecialCs.Separation cs = new PdfSpecialCs.Separation(pdfDoc, "iTextSpotColorCMYK", new DeviceCmyk(c, m, y, k).getColorSpace(), f);
+        PdfFunction f = new PdfFunction.Type2(new PdfArray(new float[]{0, 1}), null, new PdfArray(c0), new PdfArray(c1), new PdfNumber(1));
+        PdfSpecialCs.Separation cs = new PdfSpecialCs.Separation("iTextSpotColorCMYK", new DeviceCmyk(c, m, y, k).getColorSpace(), f);
 
         return cs;
     }

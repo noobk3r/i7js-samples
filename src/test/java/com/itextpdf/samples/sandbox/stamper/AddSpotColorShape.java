@@ -49,18 +49,18 @@ public class AddSpotColorShape extends GenericTest {
         canvas.arc(75, 75, 767, 520, 0, 360);
         canvas.eoClip();
         canvas.newPath();
-        canvas.setFillColor(new Color(createCmykColorSpace(pdfDoc, 0.8f, 0.3f, 0.3f, 0.1f), new float[]{0.4f}));
+        canvas.setFillColor(new Color(createCmykColorSpace(0.8f, 0.3f, 0.3f, 0.1f), new float[]{0.4f}));
         canvas.rectangle(0, 0, 842, 595);
         canvas.fill();
 
         pdfDoc.close();
     }
 
-    private PdfColorSpace createCmykColorSpace(PdfDocument pdfDoc, float c, float m, float y, float k) {
+    private PdfColorSpace createCmykColorSpace( float c, float m, float y, float k) {
         float[] c0 = new float[]{0, 0, 0, 0};
         float[] c1 = new float[]{c, m, y, k};
-        PdfFunction f = new PdfFunction.Type2(pdfDoc, new PdfArray(new float[]{0, 1}), null, new PdfArray(c0), new PdfArray(c1), new PdfNumber(1));
-        PdfSpecialCs.Separation cs = new PdfSpecialCs.Separation(pdfDoc, "iTextSpotColorCMYK", new DeviceCmyk(c, m, y, k).getColorSpace(), f);
+        PdfFunction f = new PdfFunction.Type2(new PdfArray(new float[]{0, 1}), null, new PdfArray(c0), new PdfArray(c1), new PdfNumber(1));
+        PdfSpecialCs.Separation cs = new PdfSpecialCs.Separation("iTextSpotColorCMYK", new DeviceCmyk(c, m, y, k).getColorSpace(), f);
 
         return cs;
     }

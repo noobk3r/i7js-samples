@@ -43,7 +43,7 @@ public class GradientTopToBottom extends GenericTest {
         pdfDoc.setDefaultPageSize(pageSize);
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         PdfShading.Axial axial = new PdfShading.Axial(new PdfDeviceCs.Rgb(), 0, pageSize.getHeight(), Color.WHITE.getColorValue(),
-                0, 0, Color.GREEN.getColorValue(), pdfDoc);
+                0, 0, Color.GREEN.getColorValue());
         PdfPattern.Shading pattern = new PdfPattern.Shading(axial);
         canvas.setFillColorShading(pattern);
         canvas.rectangle(0, 0, pageSize.getWidth(), pageSize.getHeight());

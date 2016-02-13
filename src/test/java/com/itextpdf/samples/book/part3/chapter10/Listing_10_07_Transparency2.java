@@ -41,10 +41,10 @@ public class Listing_10_07_Transparency2 extends GenericTest {
             PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
             float gap = (pdfDoc.getDefaultPageSize().getWidth() - 400) / 3;
 
-            pictureBackdrop(gap, 500, canvas, pdfDoc);
-            pictureBackdrop(200 + 2 * gap, 500, canvas, pdfDoc);
-            pictureBackdrop(gap, 500 - 200 - gap, canvas, pdfDoc);
-            pictureBackdrop(200 + 2 * gap, 500 - 200 - gap, canvas, pdfDoc);
+            pictureBackdrop(gap, 500, canvas);
+            pictureBackdrop(200 + 2 * gap, 500, canvas);
+            pictureBackdrop(gap, 500 - 200 - gap, canvas);
+            pictureBackdrop(200 + 2 * gap, 500 - 200 - gap, canvas);
             PdfFormXObject tp;
             PdfCanvas xObjectCanvas;
             PdfTransparencyGroup group;
@@ -99,10 +99,9 @@ public class Listing_10_07_Transparency2 extends GenericTest {
      * @param canvas
      * @throws Exception
      */
-    public static void pictureBackdrop(float x, float y, PdfCanvas canvas,
-                                       PdfDocument pdfDoc) {
+    public static void pictureBackdrop(float x, float y, PdfCanvas canvas) {
         PdfShading.Axial axial = new PdfShading.Axial(new PdfDeviceCs.Rgb(), x, y, Color.YELLOW.getColorValue(),
-                x + 200, y, Color.RED.getColorValue(), pdfDoc);
+                x + 200, y, Color.RED.getColorValue());
         PdfPattern.Shading axialPattern = new PdfPattern.Shading(axial);
         canvas
                 .setFillColorShading(axialPattern)

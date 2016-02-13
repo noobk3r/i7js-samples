@@ -47,7 +47,7 @@ public class ShadedFill extends GenericTest {
         float y = 740;
         float side = 70;
         PdfShading.Axial axial = new PdfShading.Axial(new PdfDeviceCs.Rgb(), x, y, Color.PINK.getColorValue(),
-                x + side, y, Color.BLUE.getColorValue(), pdfDoc);
+                x + side, y, Color.BLUE.getColorValue());
         PdfPattern.Shading shading = new PdfPattern.Shading(axial);
         canvas.setFillColorShading(shading);
         canvas.moveTo(x, y);

@@ -85,7 +85,7 @@ public class Listing_10_03_TilingPatternColor extends GenericTest {
         new PdfPatternCanvas(img_pattern, pdfDoc).addImage(img, 0, 0, 20, false);
 
         PdfSpecialCs.UncoloredTilingPattern uncoloredRGBCS
-                = new PdfSpecialCs.UncoloredTilingPattern(pdfDoc, new PdfDeviceCs.Rgb());
+                = new PdfSpecialCs.UncoloredTilingPattern(new PdfDeviceCs.Rgb());
         float[] green = {0, 1, 0};
         float[] red = {1, 0, 0};
         float[] blue = {0, 0, 1};
