@@ -1,3 +1,10 @@
+/*
+
+    This file is part of the iText (R) project.
+    Copyright (c) 1998-2016 iText Group NV
+
+*/
+
 ///**
 // * Example written on the basis of Bruno Lowagie's answer to a question on StackOverflow
 // */
