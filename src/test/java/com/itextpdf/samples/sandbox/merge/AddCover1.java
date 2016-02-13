@@ -31,6 +31,7 @@ public class AddCover1 extends GenericTest {
             = "./src/test/resources/sandbox/merge/hero.pdf";
     public static final String RESOURCE
             = "./src/test/resources/sandbox/merge/pages.pdf";
+
     public static void main(String[] args) throws IOException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();

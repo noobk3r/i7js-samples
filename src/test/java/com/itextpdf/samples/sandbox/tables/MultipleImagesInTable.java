@@ -35,7 +35,6 @@ public class MultipleImagesInTable extends GenericTest {
     public static final String IMG3
             = "./src/test/resources/sandbox/tables/fox.bmp";
 
-
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
@@ -60,9 +59,9 @@ public class MultipleImagesInTable extends GenericTest {
 
         table.addCell(img1);
         table.addCell("Brazil");
-        table.addCell(img2.setAutoScale(true));
+        table.addCell(img2);
         table.addCell("Dog");
-        table.addCell(img3.setAutoScale(true));
+        table.addCell(img3);
         table.addCell("Fox");
 
         doc.add(table);

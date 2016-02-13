@@ -11,13 +11,13 @@
  */
 package com.itextpdf.samples.sandbox.tables;
 
-
-import com.itextpdf.io.source.ByteArrayOutputStream;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.layout.LayoutArea;
 import com.itextpdf.layout.layout.LayoutContext;
@@ -43,26 +43,23 @@ public class FitTableOnPage extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         Table table = new Table(1);
-//        for (int i = 0; i < 10; i++) {
-//            Cell cell;
-//            if (i == 9) {
-//                cell = new Cell().add(new Paragraph("Two\nLines"));
-//            } else {
-//                cell = new Cell().add(new Paragraph(Integer.toString(i)));
-//            }
-//            table.addCell(cell);
-//        }
-        // TODO Replace the next line with the commented lines above
-        table.addCell("Two\nLines");
+        for (int i = 0; i < 10; i++) {
+            Cell cell;
+            if (i == 9) {
+                cell = new Cell().add(new Paragraph("Two\nLines"));
+            } else {
+                cell = new Cell().add(new Paragraph(Integer.toString(i)));
+            }
+            table.addCell(cell);
+        }
 
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new ByteArrayOutputStream()));
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
         IRenderer tableRenderer = table.createRendererSubTree().setParent(doc.getRenderer());
-        LayoutResult tableLayoutResult = tableRenderer.layout(new LayoutContext(new LayoutArea(0, new Rectangle(612, 1000))));
+        LayoutResult tableLayoutResult =
+                tableRenderer.layout(new LayoutContext(new LayoutArea(0, new Rectangle(550 + 72, 1000))));
 
-        PdfWriter writer = new PdfWriter(dest);
-        pdfDoc = new PdfDocument(writer);
-        doc = new Document(pdfDoc, new PageSize(550 + 72, tableLayoutResult.getOccupiedArea().getBBox().getHeight() + 72));
+        pdfDoc.setDefaultPageSize(new PageSize(550 + 72, tableLayoutResult.getOccupiedArea().getBBox().getHeight() + 72));
         doc.add(table);
         doc.close();
     }

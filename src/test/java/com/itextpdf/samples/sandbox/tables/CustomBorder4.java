@@ -1,0 +1,1 @@
+// TODO No sence in the sample because setting next renderer causes clears the last setted renderer

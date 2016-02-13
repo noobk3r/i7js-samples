@@ -15,8 +15,14 @@ import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.layout.LayoutArea;
+import com.itextpdf.layout.layout.LayoutContext;
+import com.itextpdf.layout.layout.LayoutResult;
+import com.itextpdf.layout.renderer.IRenderer;
+import com.itextpdf.layout.renderer.TableRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -24,10 +30,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class CenterVertically extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/objects/center_vertically.pdf";
@@ -38,7 +42,22 @@ public class CenterVertically extends GenericTest {
         new CenterVertically().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws IOException {
+    public Rectangle addTable(Document doc, Table table) {
+        Rectangle pageDimension = new Rectangle(36, 36, 523, 770);
+        final Rectangle rect;
+        IRenderer tableRenderer = table.createRendererSubTree().setParent(doc.getRenderer());
+        LayoutResult tableLayoutResult = tableRenderer.layout(new LayoutContext(new LayoutArea(0, pageDimension)));
+        if (LayoutResult.PARTIAL == tableLayoutResult.getStatus()) {
+            rect = pageDimension;
+        } else {
+            rect = new Rectangle(36, ((tableLayoutResult.getOccupiedArea().getBBox().getBottom() + 36) / 2),
+                    523, tableLayoutResult.getOccupiedArea().getBBox().getHeight());
+        }
+        return rect;
+    }
+
+    @Override
+    protected void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
         Document doc = new Document(pdfDoc);
 
@@ -49,37 +68,40 @@ public class CenterVertically extends GenericTest {
         }
         table = new Table(1);
         table.addCell(cell);
-        table.addCell(cell);
-        table.addCell(cell);
-        addTable(pdfDoc, table);
-        pdfDoc.addNewPage();
+        table.addCell(cell.clone(true));
+        table.addCell(cell.clone(true));
+        table.setNextRenderer(new CustomTableRenderer(table, addTable(doc, table)));
+        doc.add(table);
+        doc.add(new AreaBreak());
         table = new Table(1);
-        table.addCell(cell);
-        table.addCell(cell);
-        table.addCell(cell);
-        table.addCell(cell);
-        table.addCell(cell);
-        table.addCell(cell);
-        table.addCell(cell);
-        table.addCell(cell);
-        table.addCell(cell);
-        table.addCell(cell);
-        addTable(pdfDoc, table);
+        table.addCell(cell.clone(true));
+        table.addCell(cell.clone(true));
+        table.addCell(cell.clone(true));
+        table.addCell(cell.clone(true));
+        table.addCell(cell.clone(true));
+        table.addCell(cell.clone(true));
+        table.addCell(cell.clone(true));
+        table.addCell(cell.clone(true));
+        table.addCell(cell.clone(true));
+        table.addCell(cell.clone(true));
+        table.setNextRenderer(new CustomTableRenderer(table, addTable(doc, table)));
+        doc.add(table);
 
         doc.close();
     }
 
-    public void addTable(PdfDocument pdfDoc, Table table) {
-        Rectangle pagedimension = new Rectangle(36, 36, 559, 806);
-        Rectangle rect = pagedimension;
-        drawColumnText(pdfDoc, rect, table);
-    }
 
-    public void drawColumnText(PdfDocument pdfDoc, Rectangle rect, Table table) {
-        // TODO Since we don't know paragraphs' positions before rendering, we can't center text (feels the absence of SimpleColumn)
-        new Document(pdfDoc).add(table
-                .setHeight(rect.getHeight())
-                .setWidth(rect.getWidth())
-                .setMarginLeft(rect.getLeft()));
+    class CustomTableRenderer extends TableRenderer {
+        protected Rectangle rect;
+
+        public CustomTableRenderer(Table modelElement, Rectangle rect) {
+            super(modelElement);
+            this.rect = new Rectangle(rect);
+        }
+
+        @Override
+        public LayoutResult layout(LayoutContext layoutContext) {
+            return super.layout(new LayoutContext(new LayoutArea(layoutContext.getArea().getPageNumber(), rect)));
+        }
     }
 }

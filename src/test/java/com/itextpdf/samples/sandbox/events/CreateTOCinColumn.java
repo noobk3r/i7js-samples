@@ -67,7 +67,6 @@ public class CreateTOCinColumn extends GenericTest {
             end = i * 10;
             String title = String.format("Numbers from %s to %s", start, end);
             Text c = new Text(title);
-            // TODO Implement Anchors or summat because currently a click on outline transfers you only to the needed page not the particular paragraph
             TOCTextRenderer renderer = new TOCTextRenderer(c);
             renderer.setRoot(root);
             c.setNextRenderer(renderer);
@@ -91,6 +90,7 @@ public class CreateTOCinColumn extends GenericTest {
         return table;
     }
 
+
     protected class TOCEntry {
         protected String title;
         protected PdfDestination dest;
@@ -100,6 +100,7 @@ public class CreateTOCinColumn extends GenericTest {
             this.title = title;
         }
     }
+
 
     protected class TOCTextRenderer extends TextRenderer {
         protected PdfOutline root;
@@ -128,6 +129,5 @@ public class CreateTOCinColumn extends GenericTest {
             curOutline.addDestination(dest);
         }
     }
-
 }
 

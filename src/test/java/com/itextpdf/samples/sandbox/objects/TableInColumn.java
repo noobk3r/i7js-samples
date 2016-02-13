@@ -10,24 +10,28 @@ package com.itextpdf.samples.sandbox.objects;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.layout.LayoutArea;
+import com.itextpdf.layout.layout.LayoutContext;
+import com.itextpdf.layout.layout.LayoutResult;
+import com.itextpdf.layout.renderer.IRenderer;
+import com.itextpdf.layout.renderer.TableRenderer;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class TableInColumn extends GenericTest {
-    public static final String DEST = "./target/test/resources/sandbox/objects/losing_row_content.pdf";
+    public static final String DEST = "./target/test/resources/sandbox/objects/table_in_column.pdf";
 
     public static void main(String[] args) throws IOException {
         File file = new File(DEST);
@@ -42,43 +46,50 @@ public class TableInColumn extends GenericTest {
 
         Table table;
         Cell cell = new Cell();
-        for (int i = 1; i <= 30; i++)
+        for (int i = 1; i <= 20; i++) {
             cell.add(new Paragraph("Line " + i));
+        }
         table = new Table(1);
-        // table.setSplitLate(false);
         table.addCell(cell);
-        addTable(pdfDoc, table);
-        pdfDoc.addNewPage();
-        table = new Table(1);
-        // table.setSplitLate(false);
-        table.addCell(cell);
-        table.addCell(cell);
-        addTable(pdfDoc, table);
+        table.setNextRenderer(new CustomTableRenderer(table, addTable(doc, table)));
+        doc.add(table);
 
+        doc.add(new AreaBreak());
+        table = new Table(1);
+        table.addCell(cell.clone(true));
+        table.addCell(cell.clone(true));
+        table.setNextRenderer(new CustomTableRenderer(table, addTable(doc, table)));
+        doc.add(table);
         doc.close();
     }
 
-    public void addTable(PdfDocument pdfDoc, Table table) {
-        Rectangle pagedimension = new Rectangle(36, 36, 559, 806);
-        drawColumnText(pdfDoc, pagedimension, table, true);
-        Rectangle rect;
-        // TODO We don't know before rendering size of added text
-//        if (ColumnText.hasMoreText(status)) {
-        rect = pagedimension;
-//        }
-//        else {
-//            rect = new Rectangle(36, 36, 559, 806 - ((y_position - 36) / 2));
-//        }
-        drawColumnText(pdfDoc, rect, table, false);
+    public Rectangle addTable(Document doc, Table table) {
+        Rectangle pageDimension = new Rectangle(36, 36, 523, 770);
+        final Rectangle rect;
+        IRenderer tableRenderer = table.createRendererSubTree().setParent(doc.getRenderer());
+
+        LayoutResult tableLayoutResult = tableRenderer.layout(new LayoutContext(new LayoutArea(0, pageDimension)));
+        if (LayoutResult.PARTIAL == tableLayoutResult.getStatus()) {
+            rect = pageDimension;
+        } else {
+            rect = new Rectangle(36, ((tableLayoutResult.getOccupiedArea().getBBox().getBottom() + 36) / 2),
+                    523, tableLayoutResult.getOccupiedArea().getBBox().getHeight());
+        }
+        return rect;
     }
 
-    public void drawColumnText(PdfDocument pdfDoc, Rectangle rect, Table table, boolean simulate) {
-        new Document(pdfDoc).add(table
-                // TODO setMarginXXX on table causes no effect
-                //.setFixedPosition(rect.getLeft(), rect.getBottom(), rect.getWidth()-100));
-                .setMarginBottom(rect.getBottom())
-                .setPaddingLeft(rect.getLeft())
-                .setMarginRight(pdfDoc.getFirstPage().getPageSize().getRight() - rect.getRight())
-                .setMarginTop(pdfDoc.getFirstPage().getPageSize().getTop() - rect.getTop()));
+
+    class CustomTableRenderer extends TableRenderer {
+        protected Rectangle rect;
+
+        public CustomTableRenderer(Table modelElement, Rectangle rect) {
+            super(modelElement);
+            this.rect = new Rectangle(rect);
+        }
+
+        @Override
+        public LayoutResult layout(LayoutContext layoutContext) {
+            return super.layout(new LayoutContext(new LayoutArea(layoutContext.getArea().getPageNumber(), rect)));
+        }
     }
 }
