@@ -13,15 +13,12 @@
  */
 package com.itextpdf.samples.sandbox.objects;
 
-import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvasConstants;
+import com.itextpdf.kernel.pdf.canvas.draw.DottedLine;
 import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.LineSeparator;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.renderer.DrawContext;
-import com.itextpdf.layout.renderer.ParagraphRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -45,37 +42,10 @@ public class UnderlineWithDottedLine extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
 
-        Paragraph p = new Paragraph("This line will be underlined with a dotted line.");
-        p.setNextRenderer(new UnderlinedParagraphRenderer(p));
-        // TODO No DottedLineSeparator
-        // DottedLineSeparator dottedline = new DottedLineSeparator();
-        // dottedline.setOffset(-2);
-        // dottedline.setGap(2f);
-        // p.add(dottedline);
-        doc.add(p);
+        doc.add(new Paragraph("This line will be underlined with a dotted line.").setMarginBottom(0));
+        doc.add(new LineSeparator(new DottedLine(2)).setMarginTop(-4));
 
         doc.close();
     }
 
-
-    protected class UnderlinedParagraphRenderer extends ParagraphRenderer {
-        public UnderlinedParagraphRenderer(Paragraph modelElement) {
-            super(modelElement);
-        }
-
-        @Override
-        public void draw(DrawContext drawContext) {
-            super.draw(drawContext);
-            PdfCanvas canvas = drawContext.getCanvas();
-            Rectangle rect = getOccupiedAreaBBox();
-            canvas
-                    .saveState()
-                    .setLineDash(0, 4, 4 / 2)
-                    .setLineCapStyle(PdfCanvasConstants.LineCapStyle.ROUND)
-                    .moveTo(rect.getLeft(), rect.getBottom())
-                    .lineTo(rect.getRight(), rect.getBottom())
-                    .stroke()
-                    .restoreState();
-        }
-    }
 }
