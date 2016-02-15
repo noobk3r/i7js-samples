@@ -45,7 +45,6 @@ public class StampHeader2 extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
-        pdfDoc.setRotateContent(false);
         Document doc = new Document(pdfDoc);
 
         Paragraph header = new Paragraph("Copy").setFont(

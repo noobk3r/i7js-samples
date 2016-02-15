@@ -15,6 +15,7 @@ import com.itextpdf.kernel.pdf.PdfDictionary;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfNumber;
+import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
@@ -69,7 +70,9 @@ public class AddSpotColorImage extends GenericTest {
         imageXObject.put(PdfName.ColorSpace, colorspace);
         imageXObject.makeIndirect(pdfDoc);
         // Now we add the image to the existing PDF document
-        PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());
+        PdfPage pdfPage = pdfDoc.getFirstPage();
+        pdfPage.setIgnoreContentRotation(false);
+        PdfCanvas canvas = new PdfCanvas(pdfPage);
         canvas.addXObject(imageXObject, 100, 200, 100);
 
         pdfDoc.close();

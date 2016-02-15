@@ -70,7 +70,10 @@ public class TransparentWatermark2 extends GenericTest {
         float x, y;
         // loop over every page
         for (int i = 1; i <= n; i++) {
-            pagesize = pdfDoc.getPage(i).getPageSizeWithRotation();
+            PdfPage pdfPage = pdfDoc.getPage(i);
+            pagesize = pdfPage.getPageSizeWithRotation();
+            pdfPage.setIgnoreContentRotation(false);
+
             x = (pagesize.getLeft() + pagesize.getRight()) / 2;
             y = (pagesize.getTop() + pagesize.getBottom()) / 2;
             over = new PdfCanvas(pdfDoc.getPage(i));

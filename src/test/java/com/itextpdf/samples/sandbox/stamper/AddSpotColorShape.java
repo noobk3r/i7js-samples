@@ -12,6 +12,7 @@ import com.itextpdf.kernel.color.DeviceCmyk;
 import com.itextpdf.kernel.pdf.PdfArray;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfNumber;
+import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
@@ -41,8 +42,9 @@ public class AddSpotColorShape extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
-
-        PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());
+        PdfPage pdfPage = pdfDoc.getFirstPage();
+        pdfPage.setIgnoreContentRotation(false);
+        PdfCanvas canvas = new PdfCanvas(pdfPage);
         canvas.arc(0, 0, 842, 595, 0, 360);
         canvas.arc(25, 25, 817, 570, 0, 360);
         canvas.arc(50, 50, 792, 545, 0, 360);
