@@ -47,7 +47,7 @@ public class PageLabels extends GenericTest {
         // TODO There are no viewer preferences (setWiewerPreferences for example)
         // writer.setViewerPreferences(PdfWriter.PageLayoutTwoPageLeft | PdfWriter.PageModeUseThumbs);
         // writer.addViewerPreference(PdfName.PRINTSCALING, PdfName.NONE);
-        // TODO There is no PdfPageLabels class
+        // TODO There is no PdfPageLabels class (DEVSIX-467)
         // PdfPageLabels labels = new PdfPageLabels();
         // labels.addPageLabel(1, PdfPageLabels.UPPERCASE_LETTERS);
         // labels.addPageLabel(3, PdfPageLabels.DECIMAL_ARABIC_NUMERALS);

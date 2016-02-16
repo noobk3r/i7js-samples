@@ -26,10 +26,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class ColumnTextAscender extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/objects/column_text_ascender.pdf";
@@ -58,11 +56,13 @@ public class ColumnTextAscender extends GenericTest {
 
     public void addColumn(Document doc, boolean useAscender) {
         Paragraph p = new Paragraph("This text is added at the top of the column.");
+        // No setUseAscender(boolean). We can change leading instead. This is a but different, but
+        // for now we do not see the need to implement this method in iText7
         if (useAscender) {
             p.setMargin(0);
             p.setMultipliedLeading(1);
         }
-        // TODO No setUseAscender(boolean)
+
         doc.add(p);
     }
 }

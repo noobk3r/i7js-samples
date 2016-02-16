@@ -25,10 +25,8 @@ import com.itextpdf.test.annotations.type.SampleTest;
 import java.io.File;
 import java.io.IOException;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore("Document info is not being copied")
 @Category(SampleTest.class)
 public class ListInColumn extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/objects/list_in_column.pdf";
@@ -41,10 +39,11 @@ public class ListInColumn extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC));
-        PdfDocument pdfResultDoc = new PdfDocument(new PdfWriter(DEST));
-        pdfDoc.copyPagesTo(1, 2, pdfResultDoc);
-        Document doc = new Document(pdfResultDoc);
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
+        while (pdfDoc.getNumberOfPages() > 2) {
+            pdfDoc.removePage(3);
+        }
+        Document doc = new Document(pdfDoc);
         doc.setRenderer(new ColumnDocumentRenderer(doc, new Rectangle[] {new Rectangle(250, 400, 250, 406)}));
 
         List list = new List(Property.ListNumberingType.DECIMAL);
