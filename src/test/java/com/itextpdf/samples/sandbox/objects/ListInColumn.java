@@ -11,9 +11,11 @@
  */
 package com.itextpdf.samples.sandbox.objects;
 
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.ColumnDocumentRenderer;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.List;
@@ -26,7 +28,7 @@ import java.io.IOException;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+@Ignore("Document info is not being copied")
 @Category(SampleTest.class)
 public class ListInColumn extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/objects/list_in_column.pdf";
@@ -40,25 +42,18 @@ public class ListInColumn extends GenericTest {
 
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC));
-        // TODO copyPagesTo doesn't give a possibility to write on copied pages
         PdfDocument pdfResultDoc = new PdfDocument(new PdfWriter(DEST));
         pdfDoc.copyPagesTo(1, 2, pdfResultDoc);
         Document doc = new Document(pdfResultDoc);
+        doc.setRenderer(new ColumnDocumentRenderer(doc, new Rectangle[] {new Rectangle(250, 400, 250, 406)}));
 
-//        //reader.selectPages("1-2");
-//        Document doc = new Document(pdfDoc);
         List list = new List(Property.ListNumberingType.DECIMAL);
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < 10; i++) {
             list.add("This is a list item. It will be repeated a number of times. "
                     + "This is done only for test purposes. "
                     + "I want a list item that is distributed over several lines.");
         }
-        doc.add(list
-                .setWidth(250)
-                .setMarginLeft(200)
-                .setMarginBottom(400)
-                .setMarginTop(pdfDoc.getPage(1).getPageSize().getHeight() - 806));
-        // Rectangle rect = new Rectangle(250, 400, 500 - 250, 806 - 400);
+        doc.add(list);
 
         doc.close();
     }

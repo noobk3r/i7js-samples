@@ -26,7 +26,7 @@ import java.io.IOException;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore("DEVSIX-31")
+@Ignore("vertical text DEVSIX-31")
 @Category(SampleTest.class)
 public class VTExample extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/objects/vt_example.pdf";

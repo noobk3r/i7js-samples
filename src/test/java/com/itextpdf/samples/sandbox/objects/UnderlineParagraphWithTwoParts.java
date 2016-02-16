@@ -16,25 +16,26 @@ import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.kernel.pdf.canvas.draw.SolidLine;
 import com.itextpdf.layout.Document;
+import com.itextpdf.layout.Property;
+import com.itextpdf.layout.element.LineSeparator;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Tab;
+import com.itextpdf.layout.element.TabStop;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class UnderlineParagraphWithTwoParts extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/objects/underline_paragraph_with_two_parts.pdf";
-    // TODO There is no VerticalPositionMark
-    // public static final Chunk GLUE = new Chunk(new VerticalPositionMark());
 
     public static void main(String[] args) throws IOException {
         File file = new File(DEST);
@@ -50,7 +51,7 @@ public class UnderlineParagraphWithTwoParts extends GenericTest {
         PdfFont font = PdfFontFactory.createFont(FontConstants.COURIER, "WinAnsi", false);
         float charWidth = font.getWidth(" ");
         int charactersPerLine = 101;
-        float pageWidth = pdfDoc.getPage(1).getPageSize().getWidth();
+        float pageWidth = pdfDoc.getPage(1).getPageSize().getWidth() - doc.getLeftMargin() - doc.getRightMargin();
         float fontSize = (1000 * (pageWidth / (charWidth * charactersPerLine)));
         fontSize = ((int) (fontSize * 100)) / 100f;
         String string2 = "0123456789";
@@ -98,13 +99,11 @@ public class UnderlineParagraphWithTwoParts extends GenericTest {
         Text chunk2 = new Text(string2).setFont(font).setFontSize(fontSize);
         Paragraph p = new Paragraph();
         p.add(chunk1);
-        // p.add(GLUE);
+        p.addTabStops(new TabStop(1000, Property.TabAlignment.RIGHT));
+        p.add(new Tab());
         p.add(chunk2);
-        // TODO There is no LineSeparator & we cannot draw line because of absence of its position before rendering
-        // LineSeparator line = new LineSeparator();
-        // line.setOffset(-2);
-        // p.add(line);
         doc.add(p);
+        doc.add(new LineSeparator(new SolidLine(1)).setMarginTop(-6));
     }
 
     public void addParagraphWithTwoParts2(Document doc, PdfFont font, String string1, String string2, float fontSize) {
@@ -115,10 +114,7 @@ public class UnderlineParagraphWithTwoParts extends GenericTest {
         if (string1.length() + string2.length() > 100)
             string2 = string2.substring(0, 100 - string1.length());
         Paragraph p = new Paragraph(string1 + " " + string2).setFont(font).setFontSize(fontSize);
-        // TODO There is no LineSeparator & we cannot draw line because of absence of its position before rendering
-        // LineSeparator line = new LineSeparator();
-        // line.setOffset(-2);
-        // p.add(line);
         doc.add(p);
+        doc.add(new LineSeparator(new SolidLine(1)).setMarginTop(-6));
     }
 }
