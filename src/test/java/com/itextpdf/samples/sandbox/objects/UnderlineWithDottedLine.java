@@ -43,7 +43,7 @@ public class UnderlineWithDottedLine extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         doc.add(new Paragraph("This line will be underlined with a dotted line.").setMarginBottom(0));
-        doc.add(new LineSeparator(new DottedLine(2)).setMarginTop(-4));
+        doc.add(new LineSeparator(new DottedLine(1, 2)).setMarginTop(-4));
 
         doc.close();
     }

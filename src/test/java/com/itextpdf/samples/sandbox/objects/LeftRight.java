@@ -13,22 +13,22 @@ package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Tab;
+import com.itextpdf.layout.element.TabStop;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class LeftRight extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/objects/left_right.pdf";
@@ -43,10 +43,9 @@ public class LeftRight extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
 
-        // TODO There is no VerticalPositionMark
-        Paragraph glue = null; // new Paragraph(new VerticalPositionMark());
         Paragraph p = new Paragraph("Text to the left");
-        //p.add(new (glue));
+        p.add(new Tab());
+        p.addTabStops(new TabStop(1000, Property.TabAlignment.RIGHT));
         p.add("Text to the right");
         doc.add(p);
         Table table = new Table(3);
