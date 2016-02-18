@@ -83,11 +83,11 @@ public class AddNamedDestinations extends GenericTest {
         Element root = doc.createElement("Destination");
         doc.appendChild(root);
 
-        Map<Object, PdfObject> names = pdfDoc.getCatalog().getNamedDestinations();
-        for (Map.Entry<Object, PdfObject> name : names.entrySet()) {
+        Map<String, PdfObject> names = pdfDoc.getCatalog().getNameTree(PdfName.Dests).getNames();
+        for (Map.Entry<String, PdfObject> name : names.entrySet()) {
             Element el = doc.createElement("Name");
             el.setAttribute("Page", name.getValue().toString());
-            el.setTextContent(name.getKey().toString());
+            el.setTextContent(name.getKey());
             root.appendChild(el);
         }
 
@@ -114,7 +114,7 @@ public class AddNamedDestinations extends GenericTest {
             array.add(new PdfNumber(pdfDoc.getPage(i).getPageSize().getTop()));
             array.add(new PdfNumber(1));
             // Notice that the document has already destinations like "Prime+i"
-            pdfDoc.addNewName(new PdfString("prime" + i), array);
+            pdfDoc.addNameDestination("prime" + i, array);
         }
         pdfDoc.close();
 

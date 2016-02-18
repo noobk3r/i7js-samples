@@ -77,7 +77,7 @@ public class Listing_07_02_LinkActions extends GenericTest {
         doc.add(p);
 
         p = new Paragraph("This list can be found in a ").
-                add(new Link("separate document", PdfAction.createGoToR("movie_links_1.pdf", 1))).
+                add(new Link("separate document", PdfAction.createGoToR("../../part1/chapter02/Listing_02_22_MovieLinks1.pdf", 1))).
                 add(".");
         doc.add(p);
 
@@ -108,7 +108,7 @@ public class Listing_07_02_LinkActions extends GenericTest {
         array.add(new PdfNumber(842));
         array.add(new PdfNumber(1));
 
-        pdfDoc.addNewName(new PdfString("top"), array);
+        pdfDoc.addNameDestination("top", array);
 
         //Close document
         doc.close();
@@ -132,11 +132,11 @@ public class Listing_07_02_LinkActions extends GenericTest {
         Element root = doc.createElement("Destination");
         doc.appendChild(root);
 
-        Map<Object, PdfObject> names = pdfDoc.getCatalog().getNamedDestinations();
-        for (Map.Entry<Object, PdfObject> name : names.entrySet()) {
+        Map<String, PdfObject> names = pdfDoc.getCatalog().getNameTree(PdfName.Dests).getNames();
+        for (Map.Entry<String, PdfObject> name : names.entrySet()) {
             Element el = doc.createElement("Name");
             el.setAttribute("Page", name.getValue().toString());
-            el.setTextContent(name.getKey().toString());
+            el.setTextContent(name.getKey());
             root.appendChild(el);
         }
 

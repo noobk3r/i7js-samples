@@ -202,7 +202,7 @@ public class Listing_16_11_KubrickCollection extends GenericTest {
                 array.add(drawContext.getDocument().getFirstPage().getPdfObject());
                 array.add(PdfName.FitH);
                 array.add(new PdfNumber(rect.getTop()));
-                drawContext.getDocument().addNewName(new PdfString(top), array);
+                drawContext.getDocument().addNameDestination(top, array);
             }
             drawContext.getDocument().getLastPage().addAnnotation(annotation);
 
