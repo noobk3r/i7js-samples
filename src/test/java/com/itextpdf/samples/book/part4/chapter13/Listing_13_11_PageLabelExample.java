@@ -8,13 +8,7 @@
 package com.itextpdf.samples.book.part4.chapter13;
 
 import com.itextpdf.kernel.geom.PageSize;
-import com.itextpdf.kernel.pdf.PdfArray;
-import com.itextpdf.kernel.pdf.PdfDictionary;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfString;
-import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.kernel.xmp.XMPException;
 import com.itextpdf.layout.Document;
@@ -30,21 +24,19 @@ import java.io.PrintStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Map;
 
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_13_11_PageLabelExample extends GenericTest {
     public static final String DEST
             = "./target/test/resources/book/part4/chapter13/Listing_13_11_PageLabelExample.pdf";
-    public static final String RESULT
-            = "results/part4/chapter13/page_labels.pdf";
-    public static final String RESULT2
-            = "results/part4/chapter13/page_labels_changed.pdf";
+    public static final String DEST2
+            = "./target/test/resources/book/part4/chapter13/Listing_13_11_PageLabelExample_2.pdf";
     public static final String LABELS
-            = "results/part4/chapter13/page_labels.txt";
+            = "./target/test/resources/book/part4/chapter13/page_labels.txt";
     public static final String[] SQL = {
             "SELECT country FROM film_country ORDER BY country",
             "SELECT name FROM film_director ORDER BY name",
@@ -59,9 +51,9 @@ public class Listing_13_11_PageLabelExample extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws IOException, SQLException, XMPException {
-        createPdf(RESULT);
-        listPageLabels(RESULT, LABELS);
-        manipulatePageLabel(RESULT, RESULT2);
+        createPdf(dest);
+        listPageLabels(dest, LABELS);
+        //manipulatePageLabel(RESULT, DEST2);
     }
 
     /**
@@ -82,13 +74,9 @@ public class Listing_13_11_PageLabelExample extends GenericTest {
             addParagraphs(doc, connection, SQL[i], FIELD[i]);
             doc.add(new AreaBreak());
         }
-        // TODO No PdfPageLabels
-        // PdfPageLabels labels = new PdfPageLabels();
-        // labels.addPageLabel(start[0], PdfPageLabels.UPPERCASE_LETTERS);
-        // labels.addPageLabel(start[1], PdfPageLabels.DECIMAL_ARABIC_NUMERALS);
-        // labels.addPageLabel(start[2],
-        //         PdfPageLabels.DECIMAL_ARABIC_NUMERALS, "Movies-", start[2] - start[1] + 1);
-        // writer.setPageLabels(labels);
+        pdfDoc.getPage(start[0]).setPageLabel(PageLabelNumberingStyleConstants.UPPERCASE_LETTERS, null);
+        pdfDoc.getPage(start[1]).setPageLabel(PageLabelNumberingStyleConstants.DECIMAL_ARABIC_NUMERALS, null);
+        pdfDoc.getPage(start[2]).setPageLabel(PageLabelNumberingStyleConstants.DECIMAL_ARABIC_NUMERALS, "Movies-", start[2] - start[1] + 1);
         pdfDoc.close();
         connection.close();
     }
@@ -107,7 +95,7 @@ public class Listing_13_11_PageLabelExample extends GenericTest {
         Statement stm = connection.createStatement();
         ResultSet rs = stm.executeQuery(sql);
         while (rs.next()) {
-            doc.add(new Paragraph(new String(rs.getBytes(field), "UTF-8")));
+            doc.add(new Paragraph(rs.getString(field)));
         }
     }
 
@@ -121,11 +109,12 @@ public class Listing_13_11_PageLabelExample extends GenericTest {
         // no PDF, just a text file
         PrintStream out = new PrintStream(new FileOutputStream(dest));
         PdfReader reader = new PdfReader(src);
-        // TODO No PdfPageLabels
-        // String[] labels = PdfPageLabels.getPageLabels(reader);
-        //for (int i = 0; i < labels.length; i++) {
-        //    out.println(labels[i]);
-        //}
+        PdfDocument pdfDoc = new PdfDocument(reader);
+
+        String[] pageLabels = pdfDoc.getPageLabels();
+        for (String textLabel : pageLabels) {
+            out.println(textLabel);
+        }
         out.flush();
         out.close();
         reader.close();
@@ -149,7 +138,7 @@ public class Listing_13_11_PageLabelExample extends GenericTest {
             i++;
             if (n == 5) {
                 pagelabel = nums.getAsDictionary(i);
-                pagelabel.remove(new PdfName("ST"));
+                pagelabel.remove(PdfName.St);
                 pagelabel.put(PdfName.P, new PdfString("Film-"));
             }
         }
