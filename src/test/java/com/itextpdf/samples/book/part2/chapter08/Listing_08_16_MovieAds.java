@@ -95,8 +95,7 @@ public class Listing_08_16_MovieAds extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(filename));
         Document doc = new Document(pdfDoc, new PageSize(millimetersToPoints(35), millimetersToPoints(50)));
         pdfDoc.addNewPage();
-        // TODO No setViewerPreferences
-        // writer.setViewerPreferences(PdfWriter.PageLayoutSinglePage);
+        pdfDoc.getCatalog().setPageLayout(PdfName.SinglePage);
 
         PdfButtonFormField poster = PdfFormField.createPushButton(pdfDoc, new Rectangle(millimetersToPoints(0),
                 millimetersToPoints(25), millimetersToPoints(35) - millimetersToPoints(0),
@@ -112,13 +111,9 @@ public class Listing_08_16_MovieAds extends GenericTest {
         PdfTextFormField screening = PdfFormField.createText(pdfDoc, new Rectangle(millimetersToPoints(0),
                 millimetersToPoints(0), millimetersToPoints(35) - millimetersToPoints(0),
                 millimetersToPoints(7) - millimetersToPoints(0)), YEAR, "");
-        // TODO No setAlignment on PdfFormField
-        // screening.setAlignment(Element.ALIGN_CENTER);
         screening.setJustification(PdfFormField.ALIGN_CENTER);
         screening.setBackgroundColor(new DeviceGray(0.4f));
         screening.setColor(Color.LIGHT_GRAY);
-        // TODO No setTextColor on PdfFormField
-        // screening.setTextColor(GrayColor.GRAYWHITE);
         PdfAcroForm.getAcroForm(pdfDoc, true).addField(screening);
 
         pdfDoc.close();

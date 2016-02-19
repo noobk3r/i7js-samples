@@ -44,9 +44,11 @@ public class PageLabels extends GenericTest {
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
-        // TODO There are no viewer preferences (setWiewerPreferences for example)
-        // writer.setViewerPreferences(PdfWriter.PageLayoutTwoPageLeft | PdfWriter.PageModeUseThumbs);
-        // writer.addViewerPreference(PdfName.PRINTSCALING, PdfName.NONE);
+        PdfViewerPreferences viewerPreferences = new PdfViewerPreferences();
+        viewerPreferences.setPrintScaling(PdfViewerPreferences.PdfViewerPreferencesConstants.NONE);
+        pdfDoc.getCatalog().setPageMode(PdfName.UseThumbs);
+        pdfDoc.getCatalog().setPageLayout(PdfName.TwoPageLeft);
+        pdfDoc.getCatalog().setViewerPreferences(viewerPreferences);
         // TODO There is no PdfPageLabels class (DEVSIX-467)
         // PdfPageLabels labels = new PdfPageLabels();
         // labels.addPageLabel(1, PdfPageLabels.UPPERCASE_LETTERS);
