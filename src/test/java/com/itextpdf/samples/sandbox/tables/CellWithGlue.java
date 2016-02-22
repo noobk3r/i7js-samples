@@ -9,6 +9,8 @@ package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.element.Tab;
+import com.itextpdf.layout.element.TabStop;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
@@ -25,7 +27,7 @@ import java.io.FileOutputStream;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class CellWithGlue extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/cell_with_glue.pdf";
@@ -73,8 +75,8 @@ public class CellWithGlue extends GenericTest {
         table.setWidthPercent(50);
         Paragraph p = new Paragraph();
         p.add(new Text("Received Rs (In Words):"));
-        // TODO Implement VerticalPositionMark
-        // p.add(new Text(new VerticalPositionMark()));
+        p.addTabStops(new TabStop(1000, Property.TabAlignment.RIGHT));
+        p.add(new Tab());
         p.add(new Text("Priceless"));
         table.addCell(new Cell().add(p));
         doc.add(table);

@@ -24,7 +24,7 @@ import java.io.FileOutputStream;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class IndentTable extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/indent_table.pdf";
@@ -52,11 +52,7 @@ public class IndentTable extends GenericTest {
         for (int aw = 0; aw < 16; aw++) {
             table.addCell(new Cell().add(new Paragraph("hi")));
         }
-        // TODO can't add table to paragraph
-//        Paragraph p = new Paragraph();
-//        p.setMarginLeft(36);
-//        p.add(table);
-//        doc.add(p);
+        table.setMarginLeft(25);
         doc.add(table);
 
         doc.close();

@@ -22,7 +22,7 @@ import java.io.FileOutputStream;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class FixedHeightCell extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/fixed_height_cell.pdf";
@@ -47,7 +47,6 @@ public class FixedHeightCell extends GenericTest {
                 cell = new Cell();
                 cell.add(new Paragraph(String.valueOf((char) r) + String.valueOf(c)));
                 if (r == 'D') {
-                    // TODO Implement Fixed height:
                     cell.setHeight(60);
                 }
                 if (r == 'E') {

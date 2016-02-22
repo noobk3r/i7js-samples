@@ -9,6 +9,12 @@ package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.draw.DottedLine;
+import com.itextpdf.kernel.pdf.canvas.draw.LineDrawer;
+import com.itextpdf.kernel.pdf.canvas.draw.SolidLine;
+import com.itextpdf.layout.element.LineSeparator;
+import com.itextpdf.layout.element.Tab;
+import com.itextpdf.layout.element.TabStop;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
@@ -24,7 +30,7 @@ import java.io.FileOutputStream;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class DottedLineLeader extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/dotted_line_leader.pdf";
@@ -44,25 +50,35 @@ public class DottedLineLeader extends GenericTest {
 
         Table table = new Table(new float[]{1, 3, 1});
         table.setWidthPercent(50);
-        // TODO Implement LineSeparator and all extended classes
-        // Chunk leader = new Chunk(new DottedLineSeparator());
-        Text leader = new Text("");
+        LineDrawer leader = new DottedLine(1.5f, 6);
+
         Paragraph p;
         table.addCell(getCell(new Paragraph("fig 1"), Property.VerticalAlignment.TOP));
         p = new Paragraph("Title text");
-        p.add(leader);
+
+        p.addTabStops(new TabStop(150, Property.TabAlignment.RIGHT, leader));
+        p.add(new Tab());
+
         table.addCell(getCell(p, Property.VerticalAlignment.TOP));
         table.addCell(getCell(new Paragraph("2"), Property.VerticalAlignment.BOTTOM));
         table.addCell(getCell(new Paragraph("fig 2"), Property.VerticalAlignment.TOP));
         p = new Paragraph("This is a longer title text that wraps");
-        p.add(leader);
+
+        p.addTabStops(new TabStop(150, Property.TabAlignment.RIGHT, leader));
+        p.add(new Tab());
+
         table.addCell(getCell(p, Property.VerticalAlignment.TOP));
         table.addCell(getCell(new Paragraph("55"), Property.VerticalAlignment.BOTTOM));
         table.addCell(getCell(new Paragraph("fig 3"), Property.VerticalAlignment.TOP));
         p = new Paragraph("Another title text");
-        p.add(leader);
+
+
         table.addCell(getCell(p, Property.VerticalAlignment.TOP));
+        p.addTabStops(new TabStop(150, Property.TabAlignment.RIGHT, leader));
+        p.add(new Tab());
         table.addCell(getCell(new Paragraph("89"), Property.VerticalAlignment.BOTTOM));
+
+
         doc.add(table);
 
         doc.close();
@@ -71,9 +87,8 @@ public class DottedLineLeader extends GenericTest {
     public Cell getCell(Paragraph p, Property.VerticalAlignment verticalAlignment) {
         Cell cell = new Cell();
         cell.setVerticalAlignment(verticalAlignment);
-        // TODO Implement setUseAscender/Descender(boolean)
-        //cell.setUseAscender(true);
-        //cell.setUseDescender(true);
+        p.setMargin(2);
+        p.setMultipliedLeading(1);
         cell.add(p);
         return cell;
     }

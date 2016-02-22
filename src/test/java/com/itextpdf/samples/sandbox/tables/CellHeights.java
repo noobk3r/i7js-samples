@@ -23,7 +23,7 @@ import java.io.FileOutputStream;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class CellHeights extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/cell_heights.pdf";
@@ -47,12 +47,10 @@ public class CellHeights extends GenericTest {
         Cell cell = new Cell().add(p);
         // the prhase is wrapped
         table.addCell("wrap");
-        // TODO Implement noWrap == true
         //cell.setNoWrap(false);
         table.addCell(cell.clone(true));
         // the phrase isn't wrapped
-        table.addCell("no wrap");
-        // TODO Implement noWrap == true
+        table.addCell("wrap");
         // cell.setNoWrap(true);
         table.addCell(cell.clone(true));
         // a long phrase with newlines
@@ -63,10 +61,8 @@ public class CellHeights extends GenericTest {
         // If text's heights is bigger than cell's, cells's heights will grow instantly
         cell.setHeight(36f);
         table.addCell(cell.clone(true));
-        // The last row is extended
-        // TODO Implement setExtendLastRow(boolean)
-        //table.setExtendLastRow(true);
-        table.addCell("extend last row");
+
+        table.addCell("last row");
         table.addCell(cell.clone(true));
         doc.add(table);
 

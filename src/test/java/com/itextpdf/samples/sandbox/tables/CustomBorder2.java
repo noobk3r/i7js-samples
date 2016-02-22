@@ -29,7 +29,6 @@ import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
-@Ignore
 public class CustomBorder2 extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/custom_border2.pdf";
     public static final String TEXT = "This is some long paragraph that will be added over and over " +
@@ -51,10 +50,10 @@ public class CustomBorder2 extends GenericTest {
         Table table = new Table(2);
         table.setWidth(500);
         table.setBorder(new SolidBorder(1));
-        // TODO setSplitLate(boolean)
-        // table.setSplitLate(false);
+
 
         Cell cell = new Cell().add(new Paragraph(TEXT));
+
         cell.setBorder(null);
         for (int i = 0; i < 60; ) {
             table.addCell(new Cell().add("Cell " + (++i)).setBorder(Border.NO_BORDER));

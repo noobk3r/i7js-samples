@@ -26,7 +26,7 @@ import java.io.File;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class TableMeasurements extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/tables_measurements.pdf";
@@ -60,12 +60,11 @@ public class TableMeasurements extends GenericTest {
 
     private Cell getCell(int cm) {
         Cell cell = new Cell(1, cm);
-        // TODO No setUseAscender and setUseDescender
-        // cell.setUseAscender(true);
-        // cell.setUseDescender(true);
         Paragraph p = new Paragraph(
                 String.format("%smm", 10 * cm)).setFontSize(8);
         p.setTextAlignment(Property.TextAlignment.CENTER);
+        p.setMultipliedLeading(0.5f);
+        p.setMarginTop(0);
         cell.add(p);
         return cell;
     }

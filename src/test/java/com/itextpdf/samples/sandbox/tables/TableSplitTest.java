@@ -13,6 +13,11 @@ import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.draw.LineDrawer;
+import com.itextpdf.kernel.pdf.canvas.draw.SolidLine;
+import com.itextpdf.layout.border.Border;
+import com.itextpdf.layout.element.LineSeparator;
+import com.itextpdf.layout.element.TabStop;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
@@ -28,7 +33,7 @@ import java.io.FileOutputStream;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class TableSplitTest extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/tables_split_test.pdf";
@@ -47,6 +52,12 @@ public class TableSplitTest extends GenericTest {
         Document doc = new Document(pdfDoc, new PageSize(595, 842));
         doc.setMargins(55, 15, 35, 15);
 
+        LineDrawer line = new SolidLine(2);
+        line.setColor(Color.LIGHT_GRAY);
+        LineSeparator tableEndSeparator = new LineSeparator(line);
+
+        tableEndSeparator.setMarginTop(10);
+
         String[] header = new String[]{"Header1", "Header2", "Header3",
                 "Header4", "Header5"};
         String[] content = new String[]{"column 1", "column 2",
@@ -54,10 +65,7 @@ public class TableSplitTest extends GenericTest {
 
         Table table = new Table(new float[]{3, 2, 4, 3, 2});
         table.setWidthPercent(98);
-        table.setMarginTop(15);
 
-        // TODO Implement setSplitLate(boolean)
-        //table.setSplitLate(false);
         for (String columnHeader : header) {
             Cell headerCell = new Cell().add(new Paragraph(columnHeader).setFont(
                     PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD))
@@ -87,13 +95,7 @@ public class TableSplitTest extends GenericTest {
             }
         }
         doc.add(table);
-        doc.add(new Paragraph("\n"));
-        // TODO Implement LineSeparator
-        //LineSeparator separator = new LineSeparator();
-        //separator.setPercentage(98);
-        //separator.setLineColor(BaseColor.LIGHT_GRAY);
-        //Chunk linebreak = new Chunk(separator);
-        //doc.add(linebreak);
+        doc.add(tableEndSeparator);
         for (int k = 0; k < 5; k++) {
             Paragraph info = new Paragraph("Some title").setFont(
                     PdfFontFactory.createFont(FontConstants.HELVETICA))
@@ -103,8 +105,7 @@ public class TableSplitTest extends GenericTest {
             table = new Table(new float[]{3, 2, 4, 3, 2});
             table.setWidthPercent(98);
             table.setMarginTop(15);
-            // TODO Implement setSplitLate(boolean)
-            //table.setSplitLate(false);
+
             for (String columnHeader : header) {
                 Cell headerCell = new Cell().add(new Paragraph(columnHeader).setFont(
                         PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD))
@@ -130,11 +131,7 @@ public class TableSplitTest extends GenericTest {
                 table.addCell(cell);
             }
             doc.add(table);
-            //separator = new LineSeparator();
-            //separator.setPercentage(98);
-            //separator.setLineColor(BaseColor.LIGHT_GRAY);
-            //linebreak = new Chunk(separator);
-            //document.add(linebreak);
+            doc.add(tableEndSeparator);
         }
 
         doc.close();

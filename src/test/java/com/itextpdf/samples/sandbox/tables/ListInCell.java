@@ -25,7 +25,7 @@ import java.io.FileOutputStream;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class ListInCell extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/list_in_cell.pdf";
@@ -50,29 +50,24 @@ public class ListInCell extends GenericTest {
         list.add(new ListItem("Item 2"));
         list.add(new ListItem("Item 3"));
 
-        // We wrap this list in a phrase:
-        // TODO Can't add list to paragraph
-        //Paragraph phrase = new Paragraph();
-        //phrase.add(list);
-        // We add this phrase to a cell
-        //Cell phraseCell = new Cell();
-        //phraseCell.add(phrase);
+
+
+        Cell phraseCell = new Cell();
+        phraseCell.add(list);
 
         // We add the cell to a table:
         Table phraseTable = new Table(2);
         phraseTable.setMarginTop(5);
         phraseTable.addCell("List wrapped in a phrase:");
-        //phraseTable.addCell(phraseCell);
+        phraseTable.addCell(phraseCell);
 
-        // TODO Can't add table to paragraph
-        // We wrap the phrase table in another table:
-        //Paragraph phraseTableWrapper = new Paragraph();
-        //phraseTableWrapper.add(phraseTable);
+
 
         // We add these nested tables to the document:
         doc.add(new Paragraph("A list, wrapped in a phrase, wrapped in a cell, " +
                 "wrapped in a table, wrapped in a phrase:"));
-        //doc.add(phraseTableWrapper);
+        phraseTable.setMarginTop(5);
+        doc.add(phraseTable);
 
         // This is how to do it:
 
@@ -92,11 +87,10 @@ public class ListInCell extends GenericTest {
 
         // Avoid adding tables to phrase (but it works anyway):
 
-        // TODO Can't add table to paragraph
-        // tableWrapper.add(table);
-        //Paragraph tableWrapper = new Paragraph();
+
         doc.add(new Paragraph("A list, wrapped in a cell, wrapped in a table, wrapped in a phrase:"));
-        //doc.add(tableWrapper);
+        table.setMarginTop(5);
+        doc.add(table);
 
         doc.close();
     }

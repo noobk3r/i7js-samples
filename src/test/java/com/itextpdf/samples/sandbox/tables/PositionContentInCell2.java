@@ -26,7 +26,7 @@ import java.io.FileOutputStream;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class PositionContentInCell2 extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/position_content_in_cell2.pdf";
@@ -121,8 +121,7 @@ public class PositionContentInCell2 extends GenericTest {
             drawContext.getCanvas().stroke();
 
             float x = getOccupiedAreaBBox().getX() + wPct * getOccupiedAreaBBox().getWidth();
-            // TODO content has not leading yet, we can't use : y = ... - canvas.getGraphicsState().getLeading();
-            float y = getOccupiedAreaBBox().getY() + hPct * (getOccupiedAreaBBox().getHeight() - 16);
+            float y = getOccupiedAreaBBox().getY() + hPct * (getOccupiedAreaBBox().getHeight() - drawContext.getCanvas().getGraphicsState().getLeading());
             new Document(drawContext.getDocument()).showTextAligned(content, x, y, alignment);
 
         }

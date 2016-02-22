@@ -27,7 +27,7 @@ import java.io.File;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class Splitting extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/splitting.pdf";
@@ -60,8 +60,7 @@ public class Splitting extends GenericTest {
             table.addCell("key " + i);
             table.addCell("value " + i);
         }
-        table.setKeepTogether(true);
-        doc.add(table);
+
         Table nesting = new Table(1);
         nesting.setKeepTogether(true);
         Cell cell = new Cell().add(table);
