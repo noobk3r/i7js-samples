@@ -30,15 +30,9 @@ import java.io.IOException;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore("DEVSIX-469")
 @Category(SampleTest.class)
 public class ChapterAndTitle extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/objects/chapter_and_title.pdf";
-    public static final String[] ITEMS = {
-            "Insurance system", "Agent", "Agency", "Agent Enrollment", "Agent Settings",
-            "Appointment", "Continuing Education", "Hierarchy", "Recruiting", "Contract",
-            "Message", "Correspondence", "Licensing", "Party"
-    };
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -55,7 +49,7 @@ public class ChapterAndTitle extends GenericTest {
         title.setDestination("title");
         doc.add(title);
 
-        PdfOutline root = new PdfOutline(pdfDoc);
+        PdfOutline root = pdfDoc.getOutlines(false);
         root.addOutline("This is the title").addDestination(new PdfNamedDestination("title"));
 
         Paragraph p = new Paragraph("This is the paragraph");

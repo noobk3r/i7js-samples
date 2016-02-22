@@ -57,8 +57,6 @@ public class CreateTOCinColumn extends GenericTest {
         Rectangle[] columns = {new Rectangle(36, 36, 173, 770), new Rectangle(213, 36, 173, 770), new Rectangle(389, 36, 173, 770)};
         doc.setRenderer(new ColumnDocumentRenderer(doc, columns));
         PdfOutline root = pdfDoc.getOutlines(false);
-        if (root == null)
-            root = new PdfOutline(pdfDoc);
         int start;
         int end;
         for (int i = 0; i <= 20; ) {

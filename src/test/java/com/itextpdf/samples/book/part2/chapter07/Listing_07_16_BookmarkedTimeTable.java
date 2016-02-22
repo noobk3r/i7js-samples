@@ -52,9 +52,6 @@ public class Listing_07_16_BookmarkedTimeTable extends GenericTest {
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
         // Create a list with bookmarks
         PdfOutline root = pdfDoc.getOutlines(false);
-        if (root == null) {
-            root = new PdfOutline(pdfDoc);
-        }
         root.setTitle("Calendar");
         int page = 1;
         PdfOutline kid;

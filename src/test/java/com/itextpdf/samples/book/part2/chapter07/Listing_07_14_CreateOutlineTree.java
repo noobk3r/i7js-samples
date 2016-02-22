@@ -70,9 +70,6 @@ public class Listing_07_14_CreateOutlineTree extends GenericTest {
         Document doc = new Document(pdfDoc);
         pdfDoc.getCatalog().setPageMode(PdfName.UseOutlines);
         PdfOutline root = pdfDoc.getOutlines(false);
-        if (root == null) {
-            root = new PdfOutline(pdfDoc);
-        }
         PdfOutline movieBookmark;
         PdfOutline link;
         PdfOutline info;

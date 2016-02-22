@@ -74,8 +74,7 @@ public class Listing_02_24_MovieHistory extends GenericTest {
         int epoch = -1;
         int currentYear = 0;
         Paragraph title = null;
-        pdfDoc.getOutlines(false);
-        PdfOutline rootOutLine = new PdfOutline(pdfDoc);
+        PdfOutline rootOutLine = pdfDoc.getOutlines(false);
         PdfOutline firstLevel = null;
         PdfOutline secondLevel = null;
         PdfOutline thirdLevel = null;

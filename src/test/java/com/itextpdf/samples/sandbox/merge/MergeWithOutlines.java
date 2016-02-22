@@ -49,9 +49,6 @@ public class MergeWithOutlines extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         PdfMerger merger = new PdfMerger(pdfDoc);
         PdfOutline rootOutline = pdfDoc.getOutlines(false);
-        if (rootOutline == null) {
-            rootOutline = new PdfOutline(pdfDoc);
-        }
         int page = 1;
         PdfDocument pdfDoc1 = new PdfDocument(new PdfReader(SRC1));
         merger.addPages(pdfDoc1, 1, pdfDoc1.getNumberOfPages());
