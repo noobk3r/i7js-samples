@@ -8,8 +8,10 @@
 package com.itextpdf.samples.book.part4.chapter13;
 
 import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfVersion;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.utils.CompareTool;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
@@ -20,6 +22,7 @@ import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -27,23 +30,18 @@ import java.util.List;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_13_06_PageLayoutExample extends Listing_02_07_MovieParagraphs1 {
     public static final String DEST
             = "./target/test/resources/book/part4/chapter13/Listing_13_06_PageLayoutExample.pdf";
-    public static final String RESULT1
-            = "results/part4/chapter13/page_layout_single.pdf";
-    public static final String RESULT2
-            = "results/part4/chapter13/page_layout_column.pdf";
-    public static final String RESULT3
-            = "results/part4/chapter13/page_layout_columns_l.pdf";
-    public static final String RESULT4
-            = "results/part4/chapter13/page_layout_columns_r.pdf";
-    public static final String RESULT5
-            = "results/part4/chapter13/page_layout_pages_l.pdf";
-    public static final String RESULT6
-            = "results/part4/chapter13/page_layout_pages_r.pdf";
+    public static String[] RESULT =  new String[]{
+            "./target/test/resources/book/part4/chapter13/Listing_13_06_PageLayoutSingle.pdf",
+            "./target/test/resources/book/part4/chapter13/Listing_13_06_PageLayoutColumn.pdf",
+            "./target/test/resources/book/part4/chapter13/Listing_13_06_PageLayoutColumns_l.pdf",
+            "./target/test/resources/book/part4/chapter13/Listing_13_06_PageLayoutColumns_r.pdf",
+            "./target/test/resources/book/part4/chapter13/Listing_13_06_PageLayoutPages_l.pdf",
+            "./target/test/resources/book/part4/chapter13/Listing_13_06_PageLayoutPages_r.pdf"
+    };
 
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_13_06_PageLayoutExample().manipulatePdf(DEST);
@@ -53,17 +51,17 @@ public class Listing_13_06_PageLayoutExample extends Listing_02_07_MovieParagrap
      * Creates a PDF with information about the movies
      *
      * @param dest             the name of the PDF file that will be created.
-     * @param viewerPreference value for the viewerpreferences
+     * @param pageLayoutMode   the layout mode of the page
      * @throws IOException
      * @throws SQLException
      */
-    public void createPdf(String dest, int viewerPreference) throws IOException, SQLException {
+    public void createPdf(String dest, PdfName pageLayoutMode) throws IOException, SQLException {
         // Create a database connection
+        createFonts();
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest), PdfVersion.PDF_1_5);
         Document doc = new Document(pdfDoc);
-        // TODO No setViewerPreferences
-        // writer.setViewerPreferences(viewerpreference);
+        pdfDoc.getCatalog().setPageLayout(pageLayoutMode);
 
         List<Movie> movies = PojoFactory.getMovies(connection);
         for (Movie movie : movies) {
@@ -78,14 +76,33 @@ public class Listing_13_06_PageLayoutExample extends Listing_02_07_MovieParagrap
         connection.close();
     }
 
-
     @Override
     public void manipulatePdf(String dest) throws IOException, SQLException {
-        // createPdf(RESULT1, PdfWriter.PageLayoutSinglePage);
-        // createPdf(RESULT2, PdfWriter.PageLayoutOneColumn);
-        // createPdf(RESULT3, PdfWriter.PageLayoutTwoColumnLeft);
-        // createPdf(RESULT4, PdfWriter.PageLayoutTwoColumnRight);
-        // createPdf(RESULT5, PdfWriter.PageLayoutTwoPageLeft);
-        // createPdf(RESULT6, PdfWriter.PageLayoutTwoPageRight);
+        createPdf(RESULT[0], PdfName.SinglePage);;
+        createPdf(RESULT[1], PdfName.OneColumn);
+        createPdf(RESULT[2], PdfName.TwoColumnLeft);
+        createPdf(RESULT[3], PdfName.TwoColumnRight);
+        createPdf(RESULT[4], PdfName.TwoPageLeft);
+        createPdf(RESULT[5], PdfName.TwoPageRight);
+    }
+
+    @Override
+    protected void comparePdf(String dest, String cmp) throws IOException, InterruptedException {
+        CompareTool compareTool = new CompareTool();
+        for (int i = 0; i < 6; i++) {
+            dest = RESULT[i];
+            String outPath = new File(dest).getParent();
+            int c = dest.lastIndexOf("/");
+            String cmpFile = "./src" + dest.substring(8, c + 1) + "cmp_" +dest.substring(c + 1);
+            if (compareRenders) {
+                addError(compareTool.compareVisually(dest, cmpFile, outPath, differenceImagePrefix));
+                addError(compareTool.compareLinkAnnotations(dest, cmpFile));
+            } else {
+                addError(compareTool.compareByContent(dest, cmpFile, outPath, differenceImagePrefix));
+            }
+            addError(compareTool.compareDocumentInfo(dest, cmpFile));
+        }
     }
 }
+
+

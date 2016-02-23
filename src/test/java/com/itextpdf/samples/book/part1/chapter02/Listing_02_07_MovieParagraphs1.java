@@ -54,11 +54,7 @@ public class Listing_02_07_MovieParagraphs1 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
-        boldItalic = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLDOBLIQUE);
-        italic = PdfFontFactory.createFont(FontConstants.HELVETICA_OBLIQUE);
-        normal = PdfFontFactory.createFont(FontConstants.HELVETICA);
-
+        createFonts();
         // Make the connection to the database
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
         List<Movie> movies = PojoFactory.getMovies(connection);
@@ -77,7 +73,7 @@ public class Listing_02_07_MovieParagraphs1 extends GenericTest {
      *
      * @param movie the movie for which you want to create a Paragraph
      */
-    public Paragraph createMovieInformation(Movie movie) {
+    public Paragraph createMovieInformation(Movie movie) throws IOException {
         Paragraph p = new Paragraph();
         p.setFont(normal);
         p.add(new Text("Title: ").setFont(boldItalic));
@@ -120,5 +116,12 @@ public class Listing_02_07_MovieParagraphs1 extends GenericTest {
         info.add(new Text(String.valueOf(movie.getDuration())).setFont(normal));
         info.add(new Text(" minutes").setFont(normal));
         return info;
+    }
+
+    protected void createFonts() throws IOException {
+        bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
+        boldItalic = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLDOBLIQUE);
+        italic = PdfFontFactory.createFont(FontConstants.HELVETICA_OBLIQUE);
+        normal = PdfFontFactory.createFont(FontConstants.HELVETICA);
     }
 }

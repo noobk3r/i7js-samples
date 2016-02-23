@@ -9,6 +9,7 @@ package com.itextpdf.samples.book.part4.chapter13;
 
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfVersion;
+import com.itextpdf.kernel.pdf.PdfViewerPreferences;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.kernel.xmp.XMPException;
@@ -22,7 +23,6 @@ import java.sql.SQLException;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_13_07_PrintPreferencesExample extends GenericTest {
     public static final String DEST =
@@ -36,10 +36,11 @@ public class Listing_13_07_PrintPreferencesExample extends GenericTest {
     protected void manipulatePdf(String dest) throws IOException, SQLException, XMPException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest), PdfVersion.PDF_1_5);
         Document doc = new Document(pdfDoc);
-        // TODO No setViewerPreferences
-        // writer.addViewerPreference(PdfName.PRINTSCALING, PdfName.NONE);
-        // writer.addViewerPreference(PdfName.NUMCOPIES, new PdfNumber(3));
-        // writer.addViewerPreference(PdfName.PICKTRAYBYPDFSIZE, PdfBoolean.PDFTRUE);
+        PdfViewerPreferences prefs = new PdfViewerPreferences();
+        prefs.setPrintScaling(PdfViewerPreferences.PdfViewerPreferencesConstants.NONE);
+        prefs.setNumCopies(3);
+        prefs.setPickTrayByPDFSize(true);
+        pdfDoc.getCatalog().setViewerPreferences(prefs);
         doc.add(new Paragraph("Hello World"));
         doc.close();
     }

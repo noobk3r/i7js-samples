@@ -30,7 +30,6 @@ import java.io.IOException;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class PageLabels extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/objects/page_labels.pdf";
@@ -49,13 +48,7 @@ public class PageLabels extends GenericTest {
         pdfDoc.getCatalog().setPageMode(PdfName.UseThumbs);
         pdfDoc.getCatalog().setPageLayout(PdfName.TwoPageLeft);
         pdfDoc.getCatalog().setViewerPreferences(viewerPreferences);
-        // TODO There is no PdfPageLabels class (DEVSIX-467)
-        // PdfPageLabels labels = new PdfPageLabels();
-        // labels.addPageLabel(1, PdfPageLabels.UPPERCASE_LETTERS);
-        // labels.addPageLabel(3, PdfPageLabels.DECIMAL_ARABIC_NUMERALS);
-        // labels.addPageLabel(4,
-        //         PdfPageLabels.DECIMAL_ARABIC_NUMERALS, "Custom-", 2);
-        //writer.setPageLabels(labels);
+
         doc.add(new Paragraph("Hello World"));
         doc.add(new Paragraph("Hello People"));
         pdfDoc.addNewPage();
@@ -112,6 +105,9 @@ public class PageLabels extends GenericTest {
                 .setTitle(new PdfString("Example"))
                 .setContents("This is a post-it annotation");
         pdfDoc.getPage(5).addAnnotation(a);
+        pdfDoc.getPage(1).setPageLabel(PageLabelNumberingStyleConstants.UPPERCASE_LETTERS, null);
+        pdfDoc.getPage(3).setPageLabel(PageLabelNumberingStyleConstants.DECIMAL_ARABIC_NUMERALS, null);
+        pdfDoc.getPage(4).setPageLabel(PageLabelNumberingStyleConstants.DECIMAL_ARABIC_NUMERALS, "Custom-", 2);
 
         doc.close();
     }

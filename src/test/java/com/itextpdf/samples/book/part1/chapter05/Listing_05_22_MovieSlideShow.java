@@ -13,6 +13,7 @@ import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.events.Event;
 import com.itextpdf.kernel.events.IEventHandler;
 import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfVersion;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -63,8 +64,7 @@ public class Listing_05_22_MovieSlideShow extends GenericTest {
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A5).rotate());
 
         pdfDoc.addEventHandler(PdfDocumentEvent.START_PAGE, new PresentationHandler());
-        // TODO No viewer preferences
-        // writer.setViewerPreferences(PdfWriter.PageModeFullScreen);
+        pdfDoc.getCatalog().setPageMode(PdfName.FullScreen);
         List<Movie> movies = PojoFactory.getMovies(connection);
         Image img;
         Cell cell;

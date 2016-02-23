@@ -13,6 +13,7 @@ import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfVersion;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
@@ -52,8 +53,8 @@ public class Listing_15_10_SvgLayers extends Listing_15_09_SvgToPdf {
         PdfDocument pdfDoc = new PdfDocument(writer, PdfVersion.PDF_1_5);
         pdfDoc.setDefaultPageSize(new PageSize(6000, 6000));
 
-        // TODO No setViewerPreferences
-        // writer.setViewerPreferences(PdfWriter.PageModeUseOC | PdfWriter.FitWindow);
+        pdfDoc.getCatalog().setPageMode(PdfName.UseOC).setPageMode(PdfName.FitWindow);
+        // TODO No setVersion
         // writer.setPdfVersion(PdfWriter.VERSION_1_5);
 
         // CREATE GRID LAYER
