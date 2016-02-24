@@ -1,4 +1,3 @@
-// $Id$
 package com.itextpdf.samples.sandbox.merge;
 
 import java.io.ByteArrayInputStream;
@@ -27,17 +26,15 @@ import com.itextpdf.test.annotations.type.SampleTest;
  * derived from {@link mkl.testarea.itext5.merge.PdfVeryDenseMergeTool},
  * this test is derived from {@link mkl.testarea.itext5.merge.VeryDenseMerging},
  * the test class of that older merge tool.
- * 
+ *
  * @author mklink
  */
 @Category(SampleTest.class)
-public class DenseMerging
-{
+public class DenseMerging {
     final static File RESULT_FOLDER = new File("target/test-outputs", "merge");
 
     @BeforeClass
-    public static void setUpBeforeClass() throws Exception
-    {
+    public static void setUpBeforeClass() throws Exception {
         RESULT_FOLDER.mkdirs();
     }
 
@@ -50,22 +47,18 @@ public class DenseMerging
      * </p>
      */
     @Test
-    public void testMergeGrandizerFilesA5() throws IOException
-    {
+    public void testMergeGrandizerFilesA5() throws IOException {
         File result = new File(RESULT_FOLDER, "GrandizerMerge-veryDense-A5.pdf");
-        
-        try (   PdfWriter writer = new PdfWriter(new FileOutputStream(result));
-                PdfDocument pdfDocument = new PdfDocument(writer)   )
-        {
+
+        try (PdfWriter writer = new PdfWriter(new FileOutputStream(result));
+             PdfDocument pdfDocument = new PdfDocument(writer)) {
             PdfDenseMerger pdfMerger = new PdfDenseMerger(pdfDocument);
             pdfMerger.setPageSize(PageSize.A5.rotate()).setTop(18).setBottom(18).setGap(5);
 
-            for (String resourceName : new String[]{"/sandbox/merge/Header.pdf", "/sandbox/merge/Body.pdf", "/sandbox/merge/Footer.pdf"})
-            {
-                try (   InputStream resource = getClass().getResourceAsStream(resourceName);
-                        PdfReader reader = new PdfReader(resource);
-                        PdfDocument sourceDocument = new PdfDocument(reader)    )
-                {
+            for (String resourceName : new String[]{"/sandbox/merge/Header.pdf", "/sandbox/merge/Body.pdf", "/sandbox/merge/Footer.pdf"}) {
+                try (InputStream resource = getClass().getResourceAsStream(resourceName);
+                     PdfReader reader = new PdfReader(resource);
+                     PdfDocument sourceDocument = new PdfDocument(reader)) {
                     pdfMerger.addPages(sourceDocument, 1, sourceDocument.getNumberOfPages());
                 }
             }
@@ -81,8 +74,7 @@ public class DenseMerging
      * </p>
      */
     @Test
-    public void testMergeOnlyGraphics() throws IOException
-    {
+    public void testMergeOnlyGraphics() throws IOException {
         byte[] docA = createSimpleCircleGraphicsPdf(20, 20, 20);
         Files.write(new File(RESULT_FOLDER, "circlesOnlyA.pdf").toPath(), docA);
         byte[] docB = createSimpleCircleGraphicsPdf(50, 10, 2);
@@ -93,46 +85,39 @@ public class DenseMerging
         Files.write(new File(RESULT_FOLDER, "circlesOnlyD.pdf").toPath(), docD);
 
         File result = new File(RESULT_FOLDER, "circlesOnlyMerge-veryDense.pdf");
-        
-        try (   PdfWriter writer = new PdfWriter(new FileOutputStream(result));
-                PdfDocument pdfDocument = new PdfDocument(writer)   )
-        {
+
+        try (PdfWriter writer = new PdfWriter(new FileOutputStream(result));
+             PdfDocument pdfDocument = new PdfDocument(writer)) {
             PdfDenseMerger pdfMerger = new PdfDenseMerger(pdfDocument);
             pdfMerger.setPageSize(PageSize.A4).setTop(18).setBottom(18).setGap(5);
 
-            for (byte[] bytes : new byte[][]{docA, docB, docC, docD})
-            {
-                try (   PdfReader reader = new PdfReader(new ByteArrayInputStream(bytes));
-                        PdfDocument sourceDocument = new PdfDocument(reader)    )
-                {
+            for (byte[] bytes : new byte[][]{docA, docB, docC, docD}) {
+                try (PdfReader reader = new PdfReader(new ByteArrayInputStream(bytes));
+                     PdfDocument sourceDocument = new PdfDocument(reader)) {
                     pdfMerger.addPages(sourceDocument, 1, sourceDocument.getNumberOfPages());
                 }
             }
         }
     }
-    
-    static byte[] createSimpleCircleGraphicsPdf(int radius, int gap, int count) throws IOException
-    {
+
+    static byte[] createSimpleCircleGraphicsPdf(int radius, int gap, int count) throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        
-        try (   PdfWriter writer = new PdfWriter(baos);
-                PdfDocument pdfDocument = new PdfDocument(writer)   )
-        {
+
+        try (PdfWriter writer = new PdfWriter(baos);
+             PdfDocument pdfDocument = new PdfDocument(writer)) {
             PdfPage page = pdfDocument.addNewPage();
             PdfCanvas canvas = new PdfCanvas(page);
             float y = page.getPageSize().getTop();
-            for (int i = 0; i < count; i++)
-            {
+            for (int i = 0; i < count; i++) {
                 Rectangle pageSize = page.getPageSize();
-                if (y <= pageSize.getBottom() + 2*radius)
-                {
+                if (y <= pageSize.getBottom() + 2 * radius) {
                     y = pageSize.getTop();
                     canvas.fillStroke();
                     page = pdfDocument.addNewPage();
                     canvas = new PdfCanvas(page);
                 }
-                canvas.circle((float)(pageSize.getLeft() + pageSize.getWidth() * Math.random()), y-radius, radius);
-                y-= 2*radius + gap;
+                canvas.circle((float) (pageSize.getLeft() + pageSize.getWidth() * Math.random()), y - radius, radius);
+                y -= 2 * radius + gap;
             }
             canvas.fillStroke();
         }
