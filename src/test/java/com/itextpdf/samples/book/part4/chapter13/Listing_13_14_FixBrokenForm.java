@@ -27,12 +27,10 @@ import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_13_14_FixBrokenForm extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part4/chapter13/Listing_13_14_FixBrokenForm.pdf";
     public static final String ORIGINAL = "./src/test/resources/book/part4/chapter13/broken_form.pdf";
-    // Make FIXED, RESULT1 and RESULT2 again when there will be no need for compareTool testing
     public static final String[] RESULT = {
             "./target/test/resources/book/part4/chapter13/Listing_13_14_FixBrokenForm_fixed_form.pdf",
             "./target/test/resources/book/part4/chapter13/Listing_13_14_FixBrokenForm_broken_form.pdf",
@@ -43,9 +41,6 @@ public class Listing_13_14_FixBrokenForm extends GenericTest {
             "./src/test/resources/book/part4/chapter13/cmp_Listing_13_14_FixBrokenForm_broken_form.pdf",
             "./src/test/resources/book/part4/chapter13/cmp_Listing_13_14_FixBrokenForm_filled_form.pdf"
     };
-//    public static final String FIXED = "./target/test/resources/book/part4/chapter13/Listing_13_14_FixBrokenForm_fixed_form.pdf";
-//    public static final String RESULT1 = "./target/test/resources/book/part4/chapter13/Listing_13_14_FixBrokenForm_broken_form.pdf";
-//    public static final String RESULT2 = "./target/test/resources/book/part4/chapter13/Listing_13_14_FixBrokenForm_filled_form.pdf";
 
     public static void main(String args[]) throws IOException, SQLException, XMPException {
         new Listing_13_14_FixBrokenForm().manipulatePdf(DEST);
@@ -91,7 +86,6 @@ public class Listing_13_14_FixBrokenForm extends GenericTest {
         if (null != form.getField("duration")) {
             form.getField("duration").setValue("108");
         }
-        // TODO Exception on font flushing
         pdfDoc.close();
     }
 

@@ -13,6 +13,7 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.samples.book.part2.chapter07.Listing_07_02_LinkActions;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.kernel.xmp.XMPException;
 import com.itextpdf.layout.element.Paragraph;
@@ -30,6 +31,9 @@ import java.util.TreeSet;
 
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 
 @Ignore
 @Category(SampleTest.class)
@@ -52,7 +56,7 @@ public class Listing_13_13_Bookmarks2NamedDestinations extends GenericTest {
 //        FONT[3] = new Font(FontFamily.HELVETICA, 12, Font.BOLD);
 //    }
 
-    public static void main(String args[]) throws IOException, SQLException, XMPException {
+    public static void main(String args[]) throws IOException, SQLException, XMPException, TransformerException, ParserConfigurationException {
         new Listing_13_13_Bookmarks2NamedDestinations().manipulatePdf(DEST);
     }
 
@@ -136,10 +140,9 @@ public class Listing_13_13_Bookmarks2NamedDestinations extends GenericTest {
     }
 
     @Override
-    protected void manipulatePdf(String dest) throws IOException, SQLException, XMPException {
+    protected void manipulatePdf(String dest) throws IOException, SQLException, XMPException, TransformerException, ParserConfigurationException {
         createPdf(RESULT1);
         changePdf(RESULT1, RESULT2);
-        // TODO Revise LinkActions first
-        // new LinkActions().createXml(RESULT2, RESULT3);
+        new Listing_07_02_LinkActions().createXml(RESULT2, RESULT3);
     }
 }

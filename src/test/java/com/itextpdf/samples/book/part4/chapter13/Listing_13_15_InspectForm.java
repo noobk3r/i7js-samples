@@ -55,7 +55,6 @@ public class Listing_13_15_InspectForm extends GenericTest {
         for (String key : fields.keySet()) {
             out.write(key);
             item = fields.get(key);
-            // TODO No getMerged
             dict = item.getPdfObject();
             if (null == dict.getAsNumber(PdfName.Ff)) {
                 // being here means that we should inspect widget annotations, (see getMerged() in itext5)

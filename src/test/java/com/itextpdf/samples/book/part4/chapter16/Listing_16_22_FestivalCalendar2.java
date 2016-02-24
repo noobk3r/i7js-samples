@@ -52,6 +52,7 @@ public class Listing_16_22_FestivalCalendar2 extends GenericTest {
         pdfDoc.getCatalog().addDeveloperExtension(PdfDeveloperExtension.ADOBE_1_7_EXTENSIONLEVEL3);
         pdfDoc.getCatalog().setOpenAction(PdfAction.createJavaScript(readFileToString(JS)));
         // // we prepare a RichMediaAnnotation
+
         // TODO No RichMedia: RichMediaAnnotation, RichMediaParams, RichMediaActivation and so on
         // RichMediaAnnotation richMedia = new RichMediaAnnotation(writer, new Rectangle(36, 560, 561, 760));
         // // we embed the swf file

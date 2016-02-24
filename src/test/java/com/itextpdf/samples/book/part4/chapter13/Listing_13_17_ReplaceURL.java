@@ -105,11 +105,8 @@ public class Listing_13_17_ReplaceURL extends GenericTest {
     public void changePdf(String src, String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
-        PdfFormField item = form.getField("post");
-        // TODO No getMerged()
-//        PdfDictionary field = item.getMerged(0);
-        PdfDictionary field = item.getPdfObject();
-        PdfDictionary action = field.getAsDictionary(PdfName.A);
+        PdfFormField field = form.getField("post");
+        PdfDictionary action = field.getPdfObject().getAsDictionary(PdfName.A);
         PdfDictionary f = action.getAsDictionary(PdfName.F);
         f.put(PdfName.F, new PdfString("http://itextpdf.com:8080/book/request"));
         pdfDoc.close();
