@@ -11,16 +11,17 @@ import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.layout.border.SolidBorder;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
+import com.itextpdf.layout.Property;
+import com.itextpdf.layout.Style;
 import com.itextpdf.layout.border.Border;
+import com.itextpdf.layout.border.SolidBorder;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
-import com.itextpdf.layout.renderer.TableRenderer;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
@@ -31,12 +32,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_05_06_PressPreviews extends GenericTest {
     public static final String DEST =
@@ -55,9 +55,7 @@ public class Listing_05_06_PressPreviews extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
 
-        Table table = getTable(connection);
-
-        doc.add(table);
+        doc.add(getTable(connection));
 
         doc.close();
         connection.close();
@@ -66,104 +64,54 @@ public class Listing_05_06_PressPreviews extends GenericTest {
     public Table getTable(DatabaseConnection connection) throws UnsupportedEncodingException, SQLException {
         Table table = new Table(new float[]{50, 50, 50, 100, 50});
         table.setWidthPercent(100);
-
-
-        table.setNextRenderer(new PressPreviewTableRenderer(table, new Table.RowRange(0, 30)));
+        table.setBorder(new SolidBorder(1));
         Cell cell;
 
-        cell = new Cell()
-                .add("Location")
-                .setPadding(5)
-                .setBorder(Border.NO_BORDER);
-        cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
-        table.addHeaderCell(cell);
-        cell = new Cell()
-                .add("Date/Time")
-                .setPadding(5)
-                .setBorder(Border.NO_BORDER);
-        cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
-        table.addHeaderCell(cell);
-        cell = new Cell()
-                .add("Run Length")
-                .setPadding(5)
-                .setBorder(Border.NO_BORDER);
-        cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
-        table.addHeaderCell(cell);
-        cell = new Cell()
-                .add("Title")
-                .setPadding(5)
-                .setBorder(Border.NO_BORDER);
-        cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
-        table.addHeaderCell(cell);
-        cell = new Cell()
-                .add("Year")
-                .setPadding(5)
-                .setBorder(Border.NO_BORDER);
-        cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
-        table.addHeaderCell(cell);
-        cell = new Cell()
-                .add("Location")
-                .setPadding(5)
-                .setBorder(Border.NO_BORDER);
-        cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
-        table.addFooterCell(cell);
-        cell = new Cell()
-                .add("Date/Time")
-                .setPadding(5)
-                .setBorder(Border.NO_BORDER);
-        cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
-        table.addFooterCell(cell);
-        cell = new Cell()
-                .add("Run Length")
-                .setPadding(5)
-                .setBorder(Border.NO_BORDER);
-        cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
-        table.addFooterCell(cell);
-        cell = new Cell()
-                .add("Title")
-                .setPadding(5)
-                .setBorder(Border.NO_BORDER);
-        cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
-        table.addFooterCell(cell);
-        cell = new Cell()
-                .add("Year")
-                .setPadding(5)
-                .setBorder(Border.NO_BORDER);
-        cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
-        table.addFooterCell(cell);
+        Style defaultCellStyle = new Style().setBorder(Border.NO_BORDER).
+                setProperty(Property.PADDING_BOTTOM, 5).setProperty(Property.PADDING_TOP, 5).
+                setProperty(Property.PADDING_LEFT, 5).setProperty(Property.PADDING_RIGHT, 5);
+
+        for (int i = 0; i < 2; i++) {
+            List<Cell> cells = new ArrayList<>();
+            cells.add(new Cell().add("Location"));
+            cells.add(new Cell().add("Date/Time"));
+            cells.add(new Cell().add("Run Length"));
+            cells.add(new Cell().add("Title"));
+            cells.add(new Cell().add("Year"));
+
+            for (Cell c : cells) {
+                c.addStyle(defaultCellStyle);
+                c.setNextRenderer(new PressPreviewsCellRenderer(c));
+                if (i == 0) {
+                    table.addHeaderCell(c);
+                } else {
+                    table.addFooterCell(c);
+                }
+            }
+        }
 
         List<Screening> screenings = PojoFactory.getPressPreviews(connection);
         Movie movie;
         for (Screening screening : screenings) {
             movie = screening.getMovie();
-            cell = new Cell()
-                    .add(screening.getLocation())
-                    .setPadding(5)
-                    .setBorder(Border.NO_BORDER);
+            cell = new Cell().add(screening.getLocation())
+                    .addStyle(defaultCellStyle);
             cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
             table.addCell(cell);
-            cell = new Cell()
-                    .add(String.format("%s   %2$tH:%2$tM", screening.getDate().toString(), screening.getTime()))
-                    .setPadding(5)
-                    .setBorder(Border.NO_BORDER);
+            cell = new Cell().add(String.format("%s   %2$tH:%2$tM", screening.getDate().toString(), screening.getTime()))
+                    .addStyle(defaultCellStyle);
             cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
             table.addCell(cell);
-            cell = new Cell()
-                    .add(String.format("%d '", movie.getDuration()))
-                    .setPadding(5)
-                    .setBorder(Border.NO_BORDER);
+            cell = new Cell().add(String.format("%d '", movie.getDuration()))
+                    .addStyle(defaultCellStyle);
             cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
             table.addCell(cell);
-            cell = new Cell()
-                    .add(movie.getMovieTitle())
-                    .setPadding(5)
-                    .setBorder(Border.NO_BORDER);
+            cell = new Cell().add(movie.getMovieTitle())
+                    .addStyle(defaultCellStyle);
             cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
             table.addCell(cell);
-            cell = new Cell()
-                    .add(String.valueOf(movie.getYear()))
-                    .setPadding(5)
-                    .setBorder(Border.NO_BORDER);
+            cell = new Cell().add(String.valueOf(movie.getYear()))
+                    .addStyle(defaultCellStyle);
             cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
             table.addCell(cell);
         }
@@ -186,46 +134,9 @@ public class Listing_05_06_PressPreviews extends GenericTest {
         }
 
         @Override
-        protected PressPreviewsCellRenderer createOverflowRenderer(int layoutResult) {
-            PressPreviewsCellRenderer overflowRenderer = new PressPreviewsCellRenderer(getModelElement());
-            overflowRenderer.parent = parent;
-            overflowRenderer.modelElement = modelElement;
-            overflowRenderer.addAllProperties(getOwnProperties());
-            return overflowRenderer;
-        }
-
-        @Override
-        protected CellRenderer createSplitRenderer(int layoutResult) {
-            PressPreviewsCellRenderer splitRenderer = new PressPreviewsCellRenderer(getModelElement());
-            splitRenderer.parent = parent;
-            splitRenderer.modelElement = modelElement;
-            splitRenderer.occupiedArea = occupiedArea;
-            splitRenderer.addAllProperties(getOwnProperties());
-            return splitRenderer;
+        public CellRenderer getNextRenderer() {
+            return new PressPreviewsCellRenderer((Cell) modelElement);
         }
     }
 
-
-    private class PressPreviewTableRenderer extends TableRenderer {
-        public PressPreviewTableRenderer(Table modelElement, Table.RowRange rowRange) {
-            super(modelElement, rowRange);
-        }
-
-        protected PressPreviewTableRenderer(Table modelElement) {
-            super(modelElement);
-        }
-
-        @Override
-        public void drawBorder(DrawContext drawContext) {
-            Rectangle rect = getOccupiedAreaBBox();
-            drawContext.getCanvas().rectangle(rect.getLeft(), rect.getBottom(), rect.getWidth(), rect.getHeight()).stroke();
-        }
-
-        @Override
-        public PressPreviewTableRenderer getNextRenderer() {
-            return new PressPreviewTableRenderer((Table) modelElement);
-        }
-
-
-    }
 }

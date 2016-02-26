@@ -7,12 +7,11 @@
 
 package com.itextpdf.samples.sandbox.tables;
 
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.layout.border.Border;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Document;
+import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.border.SolidBorder;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
@@ -21,11 +20,11 @@ import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.TableRenderer;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
@@ -84,30 +83,30 @@ class CustomBorder2TableRenderer extends TableRenderer {
         CellRenderer[] firstRowRenderers = rows.get(0);
         // yLines
         PdfCanvas canvas = drawContext.getCanvas();
-        canvas.moveTo(firstRowRenderers[0].getOccupiedArea().getBBox().getLeft(),
-                getOccupiedArea().getBBox().getBottom());
-        canvas.lineTo(firstRowRenderers[0].getOccupiedArea().getBBox().getLeft(),
-                getOccupiedArea().getBBox().getTop());
-        canvas.moveTo(firstRowRenderers[firstRowRenderers.length - 1].getOccupiedArea().getBBox().getRight(),
-                getOccupiedArea().getBBox().getBottom());
-        canvas.lineTo(firstRowRenderers[firstRowRenderers.length - 1].getOccupiedArea().getBBox().getRight(),
-                getOccupiedArea().getBBox().getTop());
+        canvas.moveTo(firstRowRenderers[0].getBorderAreaBBox().getLeft(),
+                getBorderAreaBBox().getBottom());
+        canvas.lineTo(firstRowRenderers[0].getBorderAreaBBox().getLeft(),
+                getBorderAreaBBox().getTop());
+        canvas.moveTo(firstRowRenderers[firstRowRenderers.length - 1].getBorderAreaBBox().getRight(),
+                getBorderAreaBBox().getBottom());
+        canvas.lineTo(firstRowRenderers[firstRowRenderers.length - 1].getBorderAreaBBox().getRight(),
+                getBorderAreaBBox().getTop());
 
         if (isTopToBeDrawn) {
-            canvas.moveTo(firstRowRenderers[0].getOccupiedArea().getBBox().getLeft(),
-                    firstRowRenderers[0].getOccupiedArea().getBBox().getTop());
-            canvas.lineTo(firstRowRenderers[firstRowRenderers.length - 1].getOccupiedArea().getBBox().getRight(),
-                    firstRowRenderers[0].getOccupiedArea().getBBox().getTop());
+            canvas.moveTo(firstRowRenderers[0].getBorderAreaBBox().getLeft(),
+                    firstRowRenderers[0].getBorderAreaBBox().getTop());
+            canvas.lineTo(firstRowRenderers[firstRowRenderers.length - 1].getBorderAreaBBox().getRight(),
+                    firstRowRenderers[0].getBorderAreaBBox().getTop());
             isTopToBeDrawn = false;
         }
         if (isBottomToBeDrawn) {
-            canvas.moveTo(rows.get(rows.size() - 1)[0].getOccupiedArea().getBBox().getLeft(),
-                    rows.get(rows.size() - 1)[0].getOccupiedArea().getBBox().getBottom());
+            canvas.moveTo(rows.get(rows.size() - 1)[0].getBorderAreaBBox().getLeft(),
+                    rows.get(rows.size() - 1)[0].getBorderAreaBBox().getBottom());
             canvas.lineTo(
                     rows.get(rows.size() - 1)[rows.get(rows.size() - 1).length - 1]
-                            .getOccupiedArea().getBBox().getRight(),
+                            .getBorderAreaBBox().getRight(),
                     rows.get(rows.size() - 1)[rows.get(rows.size() - 1).length - 1]
-                            .getOccupiedArea().getBBox().getBottom());
+                            .getBorderAreaBBox().getBottom());
 
         }
         canvas.stroke();

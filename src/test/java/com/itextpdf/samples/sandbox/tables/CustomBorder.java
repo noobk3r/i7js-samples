@@ -83,29 +83,29 @@ class CustomBorderTableRenderer extends TableRenderer {
         // yLines
         PdfCanvas canvas = drawContext.getCanvas();
         for (CellRenderer cellRenderer : firstRowRenderers) {
-            canvas.moveTo(cellRenderer.getOccupiedArea().getBBox().getRight(),
-                    getOccupiedArea().getBBox().getBottom());
-            canvas.lineTo(cellRenderer.getOccupiedArea().getBBox().getRight(),
-                    getOccupiedArea().getBBox().getTop());
+            canvas.moveTo(cellRenderer.getBorderAreaBBox().getRight(),
+                    getBorderAreaBBox().getBottom());
+            canvas.lineTo(cellRenderer.getBorderAreaBBox().getRight(),
+                    getBorderAreaBBox().getTop());
         }
         // the first yLine
-        canvas.moveTo(firstRowRenderers[0].getOccupiedArea().getBBox().getLeft(),
-                getOccupiedArea().getBBox().getBottom());
-        canvas.lineTo(firstRowRenderers[0].getOccupiedArea().getBBox().getLeft(),
-                getOccupiedArea().getBBox().getTop());
+        canvas.moveTo(firstRowRenderers[0].getBorderAreaBBox().getLeft(),
+                getBorderAreaBBox().getBottom());
+        canvas.lineTo(firstRowRenderers[0].getBorderAreaBBox().getLeft(),
+                getBorderAreaBBox().getTop());
         canvas.stroke();
 
         for (CellRenderer[] cellRenderers : rows) {
-            canvas.moveTo(cellRenderers[0].getOccupiedArea().getBBox().getLeft(),
-                    cellRenderers[0].getOccupiedArea().getBBox().getBottom());
-            canvas.lineTo(cellRenderers[cellRenderers.length - 1].getOccupiedArea().getBBox().getRight(),
-                    cellRenderers[cellRenderers.length - 1].getOccupiedArea().getBBox().getBottom());
+            canvas.moveTo(cellRenderers[0].getBorderAreaBBox().getLeft(),
+                    cellRenderers[0].getBorderAreaBBox().getBottom());
+            canvas.lineTo(cellRenderers[cellRenderers.length - 1].getBorderAreaBBox().getRight(),
+                    cellRenderers[cellRenderers.length - 1].getBorderAreaBBox().getBottom());
         }
         if (isTopToBeDrawn) {
-            canvas.moveTo(firstRowRenderers[0].getOccupiedArea().getBBox().getLeft(),
-                    firstRowRenderers[0].getOccupiedArea().getBBox().getTop());
-            canvas.lineTo(firstRowRenderers[firstRowRenderers.length - 1].getOccupiedArea().getBBox().getRight(),
-                    firstRowRenderers[0].getOccupiedArea().getBBox().getTop());
+            canvas.moveTo(firstRowRenderers[0].getBorderAreaBBox().getLeft(),
+                    firstRowRenderers[0].getBorderAreaBBox().getTop());
+            canvas.lineTo(firstRowRenderers[firstRowRenderers.length - 1].getBorderAreaBBox().getRight(),
+                    firstRowRenderers[0].getBorderAreaBBox().getTop());
             isTopToBeDrawn = false;
         }
         if (isNextPageTopToBeDrawn) {
