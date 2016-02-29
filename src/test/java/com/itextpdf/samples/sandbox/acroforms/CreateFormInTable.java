@@ -60,7 +60,7 @@ public class CreateFormInTable extends GenericTest {
         table.addCell(cell);
         doc.add(table);
 
-        pdfDoc.close();
+        doc.close();
     }
 
 

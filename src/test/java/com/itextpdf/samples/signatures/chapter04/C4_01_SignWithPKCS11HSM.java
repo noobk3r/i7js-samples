@@ -1,0 +1,130 @@
+/*
+
+    This file is part of the iText (R) project.
+    Copyright (c) 1998-2016 iText Group NV
+
+*/
+
+/*
+* This class is part of the white paper entitled
+* "Digital Signatures for PDF documents"
+* written by Bruno Lowagie
+*
+* For more info, go to: http://itextpdf.com/learn
+*/
+package com.itextpdf.samples.signatures.chapter04;
+
+import sun.security.pkcs11.SunPKCS11;
+import com.itextpdf.kernel.geom.Rectangle;
+import com.itextpdf.kernel.pdf.PdfReader;
+import com.itextpdf.samples.SignatureTest;
+import com.itextpdf.signatures.BouncyCastleDigest;
+import com.itextpdf.signatures.CertificateUtil;
+import com.itextpdf.signatures.CrlClient;
+import com.itextpdf.signatures.CrlClientOnline;
+import com.itextpdf.signatures.DigestAlgorithms;
+import com.itextpdf.signatures.ExternalDigest;
+import com.itextpdf.signatures.ExternalSignature;
+import com.itextpdf.signatures.OcspClient;
+import com.itextpdf.signatures.OcspClientBouncyCastle;
+import com.itextpdf.signatures.PdfSignatureAppearance;
+import com.itextpdf.signatures.PdfSigner;
+import com.itextpdf.signatures.PrivateKeySignature;
+import com.itextpdf.signatures.TSAClient;
+import com.itextpdf.signatures.TSAClientBouncyCastle;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.security.GeneralSecurityException;
+import java.security.KeyStore;
+import java.security.PrivateKey;
+import java.security.Provider;
+import java.security.Security;
+import java.security.cert.Certificate;
+import java.security.cert.X509Certificate;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Properties;
+
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.junit.Ignore;
+import org.junit.Test;
+
+@Ignore
+public class C4_01_SignWithPKCS11HSM extends SignatureTest {
+    public static final String SRC = "./src/test/resources/signatures/chapter04/hello.pdf";
+    public static final String DEST = "./target/test/resources/signatures/chapter04/hello_hsm.pdf";
+    public static final String PROPS = "./src/test/resources/signatures/chapter04/key.properties";
+
+    public void sign(String src, String dest,
+                     Certificate[] chain, PrivateKey pk,
+                     String digestAlgorithm, String provider, PdfSigner.CryptoStandard subfilter,
+                     String reason, String location,
+                     Collection<CrlClient> crlList,
+                     OcspClient ocspClient,
+                     TSAClient tsaClient,
+                     int estimatedSize)
+            throws GeneralSecurityException, IOException {
+        // Creating the reader and the signer
+        PdfReader reader = new PdfReader(src);
+        PdfSigner signer = new PdfSigner(reader, new FileOutputStream(dest), false);
+        // Creating the appearance
+        PdfSignatureAppearance appearance = signer.getSignatureAppearance()
+                .setReason(reason)
+                .setLocation(location)
+                .setReuseAppearance(false);
+        Rectangle rect = new Rectangle(36, 648, 200, 100);
+        appearance
+                .setPageRect(rect)
+                .setPageNumber(1);
+        signer.setFieldName("sig");
+        // Creating the signature
+        ExternalSignature pks = new PrivateKeySignature(pk, digestAlgorithm, provider);
+        ExternalDigest digest = new BouncyCastleDigest();
+        signer.signDetached(digest, pks, chain, crlList, ocspClient, tsaClient, estimatedSize, subfilter);
+    }
+
+    public static void main(String[] args) throws IOException, GeneralSecurityException {
+        Properties properties = new Properties();
+        properties.load(new FileInputStream(PROPS));
+        char[] pass = properties.getProperty("PASSWORD").toCharArray();
+        String pkcs11cfg = properties.getProperty("PKCS11CFG");
+
+        BouncyCastleProvider providerBC = new BouncyCastleProvider();
+        Security.addProvider(providerBC);
+        FileInputStream fis = new FileInputStream(pkcs11cfg);
+        Provider providerPKCS11 = new SunPKCS11(fis);
+        Security.addProvider(providerPKCS11);
+
+        KeyStore ks = KeyStore.getInstance("PKCS11");
+        ks.load(null, pass);
+        String alias = ks.aliases().nextElement();
+        PrivateKey pk = (PrivateKey) ks.getKey(alias, pass);
+        Certificate[] chain = ks.getCertificateChain(alias);
+        OcspClient ocspClient = new OcspClientBouncyCastle();
+        TSAClient tsaClient = null;
+        for (int i = 0; i < chain.length; i++) {
+            X509Certificate cert = (X509Certificate) chain[i];
+            String tsaUrl = CertificateUtil.getTSAURL(cert);
+            if (tsaUrl != null) {
+                tsaClient = new TSAClientBouncyCastle(tsaUrl);
+                break;
+            }
+        }
+        List<CrlClient> crlList = new ArrayList<CrlClient>();
+        crlList.add(new CrlClientOnline(chain));
+        C4_01_SignWithPKCS11HSM app = new C4_01_SignWithPKCS11HSM();
+        app.sign(SRC, DEST, chain, pk, DigestAlgorithms.SHA256, providerPKCS11.getName(), PdfSigner.CryptoStandard.CMS,
+                "HSM test", "Ghent", crlList, ocspClient, tsaClient, 0);
+    }
+
+    /**
+     * In this test we only run the sample. If no exception were thrown - test succeeds.
+     */
+    @Test
+    public void runTest() throws GeneralSecurityException, IOException, InterruptedException {
+        C4_01_SignWithPKCS11HSM.main(null);
+    }
+}
