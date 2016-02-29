@@ -24,9 +24,7 @@ import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
-
 
 @Category(SampleTest.class)
 public class Splitting extends GenericTest {
