@@ -7,12 +7,7 @@
 
 package com.itextpdf.samples.book.part4.chapter16;
 
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfNumber;
-import com.itextpdf.kernel.pdf.PdfObject;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfStream;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
@@ -22,18 +17,17 @@ import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_16_02_ResizeImage extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part4/chapter16/Listing_16_02_ResizeImage.pdf";
     public static float FACTOR = 0.5f;
-    // TODO First revise Listing_16_01_SpecialId
     public static final String SPECIAL_ID = "./src/test/resources/book/part4/chapter16/cmp_Listing_16_01_SpecialId.pdf";
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_16_02_ResizeImage().manipulatePdf(DEST);
@@ -43,7 +37,7 @@ public class Listing_16_02_ResizeImage extends GenericTest {
         PdfName key = new PdfName("ITXT_SpecialId");
         PdfName value = new PdfName("123456789");
         // Read the file
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SPECIAL_ID));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SPECIAL_ID), new PdfWriter(new FileOutputStream(dest)));
         int n = pdfDoc.getNumberOfPdfObjects();
         PdfObject object;
         PdfStream stream;

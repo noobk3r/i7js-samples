@@ -33,10 +33,8 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.sql.SQLException;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_16_06_KubrickDocumentary extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part4/chapter16/Listing_16_06_KubrickDocumentary.pdf";
@@ -69,16 +67,16 @@ public class Listing_16_06_KubrickDocumentary extends GenericTest {
 
         ByteArrayOutputStream txt = new ByteArrayOutputStream();
         PrintStream out = new PrintStream(txt);
-        out.println("<movies>");
+        out.print("<movies>\n");
         List list = new List();
         list.setSymbolIndent(20);
         ListItem item;
         for (Movie movie : movies) {
-            out.println("<movie>");
-            out.println(String.format("<title>%s</title>", Utils.escapeXML(movie.getMovieTitle(), true,true)));
-            out.println(String.format("<year>%s</year>", movie.getYear()));
-            out.println(String.format("<duration>%s</duration>", movie.getDuration()));
-            out.println("</movie>");
+            out.print("<movie>\n");
+            out.print(String.format("<title>%s</title>\n", Utils.escapeXML(movie.getMovieTitle(), true, true)));
+            out.print(String.format("<year>%s</year>\n", movie.getYear()));
+            out.print(String.format("<duration>%s</duration>\n", movie.getDuration()));
+            out.print("</movie>\n");
             item = new ListItem(movie.getMovieTitle());
             list.add(item);
         }

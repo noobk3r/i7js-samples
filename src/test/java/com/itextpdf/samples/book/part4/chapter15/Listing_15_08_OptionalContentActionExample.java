@@ -102,19 +102,6 @@ public class Listing_15_08_OptionalContentActionExample extends GenericTest {
         stateToggle.add(new PdfActionOcgState(new PdfName("Toggle"), dictList));
         PdfAction actionToggle = PdfAction.createSetOcgState(stateToggle, true);
 
-        // TODO Ambiguity in parameters: compare 'paragraphs' above and below
-//        ArrayList<PdfActionOcgState> stateToggle = new ArrayList<PdfActionOcgState>();
-//        dictList = new ArrayList<>();
-//        dictList.add(a1.getPdfObject());
-//        stateToggle.add(new PdfActionOcgState(new PdfName("Toggle"), dictList));
-//        dictList = new ArrayList<>();
-//        dictList.add(a2.getPdfObject());
-//        stateToggle.add(new PdfActionOcgState(new PdfName("Toggle"), dictList));
-//        dictList = new ArrayList<>();
-//        dictList.add(a3.getPdfObject());
-//        stateToggle.add(new PdfActionOcgState(new PdfName("Toggle"), dictList));
-//        PdfAction actionToggle  = PdfAction.createSetOcgState(pdfDoc, stateToggle, true);
-
         Paragraph p = new Paragraph("Change the state of the answers:");
         Link on = new Link(" on ", actionOn);
         p.add(on);

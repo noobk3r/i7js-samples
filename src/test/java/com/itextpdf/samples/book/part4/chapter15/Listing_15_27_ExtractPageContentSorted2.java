@@ -8,6 +8,8 @@
 package com.itextpdf.samples.book.part4.chapter15;
 
 import com.itextpdf.io.source.ByteArrayOutputStream;
+import com.itextpdf.kernel.parser.LocationTextExtractionStrategy;
+import com.itextpdf.kernel.parser.PdfTextExtractor;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -23,7 +25,6 @@ import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 import org.xml.sax.SAXException;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_15_27_ExtractPageContentSorted2 {
     public static final String DEST
@@ -45,8 +46,7 @@ public class Listing_15_27_ExtractPageContentSorted2 {
         PrintWriter out = new PrintWriter(new FileOutputStream(txt));
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(new ByteArrayOutputStream()));
         for (int i = 1; i <= pdfDoc.getNumberOfPages(); i++) {
-            // TODO No predefined strategies like LocationTextExtractionStrategy (used by PdfTextExtractor); No PdfTextExtractor
-            // out.println(PdfTextExtractor.getTextFromPage(reader, i));
+            out.println(PdfTextExtractor.getTextFromPage(pdfDoc.getPage(i), new LocationTextExtractionStrategy()));
         }
         out.flush();
         out.close();

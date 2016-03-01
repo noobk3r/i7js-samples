@@ -10,6 +10,7 @@ package com.itextpdf.samples.book.part4.chapter15;
 import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfVersion;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
@@ -46,8 +47,7 @@ public class Listing_15_01_PeekABoo extends GenericTest {
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(writer, PdfVersion.PDF_1_5);
 
-        // TODO No setViewerPreferences
-        // PageModeUseOC
+        pdfDoc.getCatalog().setPageLayout(PdfName.UseOC);
 
         //Write to canvas
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());

@@ -14,6 +14,8 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
 
+import java.awt.*;
+import java.awt.geom.Ellipse2D;
 import java.io.IOException;
 
 import org.junit.Ignore;
@@ -33,7 +35,8 @@ public class Listing_14_12_PearToPdf extends GenericTest {
         pdfDoc.setDefaultPageSize(new PageSize(150, 150));
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         // TODO No PdfGraphics2D
-        // Graphics2D g2 = new PdfGraphics2D(canvas, 150, 150);
+
+        //Graphics
         // Listing_14_11_PearExample pear = new Listing_14_11_PearExample();
         // pear.paint(g2);
         // g2.dispose();

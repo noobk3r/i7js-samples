@@ -14,6 +14,8 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Property;
+import com.itextpdf.layout.border.SolidBorder;
+import com.itextpdf.layout.element.Div;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -62,14 +64,15 @@ public class Listing_14_02_PathConstructionAndPainting extends GenericTest {
                 .roundRectangle(370, 270, 80, 60, 20)
                 .fillStroke()
                 .restoreState();
-        Rectangle rect = new Rectangle(470, 270, 550, 330);
-        // TODO No convenient methods in Rectangle
-//        rect.setBorderWidthBottom(10);
-//        rect.setBorderColorBottom(new GrayColor(0f));
-//        rect.setBorderWidthLeft(4);
-//        rect.setBorderColorLeft(new GrayColor(0.9f));
-//        rect.setBackgroundColor(new GrayColor(0.4f));
-        canvas.rectangle(rect);
+        Rectangle rect = new Rectangle(470, 270, 80, 60);
+        Div div = new Div();
+        div.setBorderBottom(new SolidBorder(new DeviceGray(0), 10));
+        div.setBorderLeft(new SolidBorder(new DeviceGray(0.9f), 4));
+        div.setBackgroundColor(new DeviceGray(0.4f));
+        div.setFixedPosition(470, 270, 80);
+        div.setHeight(60);
+
+        new Canvas(canvas, pdfDoc, pdfDoc.getDefaultPageSize()).add(div);
         new Canvas(canvas, pdfDoc, pdfDoc.getDefaultPageSize()).showTextAligned(
                 new Paragraph("Convenience methods"),
                 50, 250, 1, Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);

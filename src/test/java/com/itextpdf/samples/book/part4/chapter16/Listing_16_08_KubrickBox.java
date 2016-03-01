@@ -35,6 +35,7 @@ import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Set;
 import java.util.TreeSet;
@@ -42,11 +43,11 @@ import java.util.TreeSet;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_16_08_KubrickBox extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part4/chapter16/Listing_16_08_KubrickBox.pdf";
     public static final String IMG_BOX = "./src/test/resources/book/part4/chapter16/kubrick_box.jpg";
+    public static final String RESOURCE_FILES = "./src/test/resources/book/part4/chapter16/%s.pdf";
     public static final String RESOURCE = "./src/test/resources/book/part4/chapter16/posters/%s.jpg";
     public static final float[] WIDTHS = { 1 , 7 };
 
@@ -72,12 +73,11 @@ public class Listing_16_08_KubrickBox extends GenericTest {
         for (Movie movie : box) {
             if (movie.getYear() > 1960) {
                 pdfDoc.addFileAttachment(movie.getTitle(),
-                        PdfFileSpec.createEmbeddedFileSpec(pdfDoc, createMoviePage(movie), null,
-                                String.format("kubrick_%s.pdf", movie.getImdb()), null, null, null, false));
+                        PdfFileSpec.createEmbeddedFileSpec(pdfDoc, String.format(RESOURCE_FILES, movie.getImdb()), null,
+                                String.format("kubrick_%s.pdf", movie.getImdb()), null, null, false));
                 item = new ListItem(movie.getMovieTitle());
-                // TODO Implement 'from box' way to work with TargetDictionaries
                 target = new PdfTargetDictionary(PdfName.C);
-                target.put(PdfName.N, new PdfString(movie.getTitle()));
+                target.setName(movie.getTitle());
                 link = new Link(" (see info)",
                         PdfAction.createGoToE(PdfExplicitDestination.createFit(1), false, target));
                 item.add(new Paragraph(link));

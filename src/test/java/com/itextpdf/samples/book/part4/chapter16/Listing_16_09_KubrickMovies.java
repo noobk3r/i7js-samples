@@ -13,9 +13,11 @@ import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfName;
+import com.itextpdf.kernel.pdf.PdfNumber;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.action.PdfTargetDictionary;
+import com.itextpdf.kernel.pdf.collection.*;
 import com.itextpdf.kernel.pdf.filespec.PdfFileSpec;
 import com.itextpdf.kernel.pdf.navigation.PdfNamedDestination;
 import com.itextpdf.layout.Document;
@@ -39,13 +41,13 @@ import java.sql.SQLException;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_16_09_KubrickMovies extends GenericTest {
     public static final String FILENAME = "Listing_16_09_KubrickMovies.pdf";
     public static final String DEST = "./target/test/resources/book/part4/chapter16/" + FILENAME;
-    public static final String RESOURCE = "resources/posters/%s.jpg";
-    public static final float[] WIDTHS = {1, 7};
+    public static final String RESOURCE_FILES = "./src/test/resources/book/part4/chapter16/%s.pdf";
+    public static final String RESOURCE = "./src/test/resources/img/posters/%s.jpg";
+    public static final float[] WIDTHS = {50, 350};
 
     public static void main(String args[]) throws Exception {
         new Listing_16_08_KubrickBox().manipulatePdf(DEST);
@@ -64,67 +66,68 @@ public class Listing_16_09_KubrickMovies extends GenericTest {
      *
      * @return a collection schema
      */
-    // TODO No PdfCollection: PdfCollectionSchema, PdfCollectionField and so on
-//    private PdfCollectionSchema getCollectionSchema() {
-//        PdfCollectionSchema schema = new PdfCollectionSchema();
-//
-//        PdfCollectionField size = new PdfCollectionField("File size", PdfCollectionField.SIZE);
-//        size.setOrder(4);
-//        schema.addField("SIZE", size);
-//
-//        PdfCollectionField filename = new PdfCollectionField("File name", PdfCollectionField.FILENAME);
-//        filename.setVisible(false);
-//        schema.addField("FILE", filename);
-//
-//        PdfCollectionField title = new PdfCollectionField("Movie title", PdfCollectionField.TEXT);
-//        title.setOrder(1);
-//        schema.addField("TITLE", title);
-//
-//        PdfCollectionField duration = new PdfCollectionField("Duration", PdfCollectionField.NUMBER);
-//        duration.setOrder(2);
-//        schema.addField("DURATION", duration);
-//
-//        PdfCollectionField year = new PdfCollectionField("Year", PdfCollectionField.NUMBER);
-//        year.setOrder(0);
-//        schema.addField("YEAR", year);
-//
-//        return schema;
-//    }
+    private PdfCollectionSchema getCollectionSchema() {
+        PdfCollectionSchema schema = new PdfCollectionSchema();
+
+        PdfCollectionField size = new PdfCollectionField("File size", PdfCollectionField.SIZE);
+        size.setOrder(4);
+        schema.addField("SIZE", size);
+
+        PdfCollectionField filename = new PdfCollectionField("File name", PdfCollectionField.FILENAME);
+        filename.setVisibility(false);
+        schema.addField("FILE", filename);
+
+        PdfCollectionField title = new PdfCollectionField("Movie title", PdfCollectionField.TEXT);
+        title.setOrder(1);
+        schema.addField("TITLE", title);
+
+        PdfCollectionField duration = new PdfCollectionField("Duration", PdfCollectionField.NUMBER);
+        duration.setOrder(2);
+        schema.addField("DURATION", duration);
+
+        PdfCollectionField year = new PdfCollectionField("Year", PdfCollectionField.NUMBER);
+        year.setOrder(0);
+        schema.addField("YEAR", year);
+
+        return schema;
+    }
+
     public byte[] createPdf() throws IOException, SQLException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(baos));
         Document doc = new Document(pdfDoc);
         doc.add(new Paragraph("This document contains a collection of PDFs, one per Stanley Kubrick movie."));
 
-//        PdfCollection collection = new PdfCollection(PdfCollection.DETAILS);
-//        PdfCollectionSchema schema = getCollectionSchema();
-//        collection.setSchema(schema);
-//        PdfCollectionSort sort = new PdfCollectionSort("YEAR");
-//        sort.setSortOrder(false);
-//        collection.setSort(sort);
-//        collection.setInitialDocument("Eyes Wide Shut");
-//        writer.setCollection(collection);
+        PdfCollection collection = new PdfCollection();
+        collection.setView(PdfCollection.DETAILS);
+        PdfCollectionSchema schema = getCollectionSchema();
+        collection.setSchema(schema);
+        PdfCollectionSort sort = new PdfCollectionSort("YEAR");
+        sort.setSortOrder(false);
+        collection.setSort(sort);
+        collection.setInitialDocument("Eyes Wide Shut");
+        pdfDoc.getCatalog().setCollection(collection);
 
         PdfFileSpec fs;
-        // PdfCollectionItem item;
+        PdfCollectionItem item;
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
         java.util.List<Movie> movies = PojoFactory.getMovies(connection, 1);
         connection.close();
         for (Movie movie : movies) {
-            // fs = PdfFileSpecification.fileEmbedded(writer, null,
-            //         String.format("kubrick_%s.pdf", movie.getImdb()),
-            //         createMoviePage(movie));
-            // fs.addDescription(movie.getTitle(), false);
+            fs = PdfFileSpec.createEmbeddedFileSpec(pdfDoc, String.format(RESOURCE_FILES, movie.getImdb()),
+                    movie.getTitle(),
+                    String.format("kubrick_%s.pdf", movie.getImdb()),
+                    null, null, true);
 
-            // item = new PdfCollectionItem(schema);
-            // item.addItem("TITLE", movie.getMovieTitle(false));
-            // if (movie.getMovieTitle(true) != null) {
-            //     item.setPrefix("TITLE", movie.getMovieTitle(true));
-            // }
-            // item.addItem("DURATION", movie.getDuration());
-            // item.addItem("YEAR", movie.getYear());
-            // fs.addCollectionItem(item);
-            // writer.addFileAttachment(fs);
+            item = new PdfCollectionItem(schema);
+            item.addItem("TITLE", movie.getMovieTitle(false));
+            if (movie.getMovieTitle(true) != null) {
+                 item.setPrefix("TITLE", movie.getMovieTitle(true));
+            }
+            item.addItem("DURATION", new PdfNumber(movie.getDuration()));
+            item.addItem("YEAR", new PdfNumber(movie.getYear()));
+            fs.setCollectionItem(item);
+            pdfDoc.addFileAttachment(movie.getTitle(), fs);
         }
         doc.close();
         return baos.toByteArray();
@@ -146,9 +149,8 @@ public class Listing_16_09_KubrickMovies extends GenericTest {
         cell.add(new Paragraph("Duration: " + movie.getDuration()));
         table.addCell(cell);
         doc.add(table);
-        // TODO Implement 'from box' TargetDictionary usage
         PdfTargetDictionary target = new PdfTargetDictionary(PdfName.P);
-        target.put(PdfName.T, new PdfTargetDictionary(PdfName.P));
+        target.setTarget(new PdfTargetDictionary(PdfName.P));
         Link link = new Link("Go to original document",
                 PdfAction.createGoToE(new PdfNamedDestination("movies"), false, target));
         doc.add(new Paragraph(link));

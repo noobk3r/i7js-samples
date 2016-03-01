@@ -28,42 +28,19 @@ import java.sql.SQLException;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
-public class Listing_13_01_PdfXPdfA extends GenericTest {
-    // !!! Override comparePdf when PdfX'll be implemented
-    public static final String DEST = "./target/test/resources/book/part4/chapter13/Listing_13_01_PdfXPdfAa.pdf";
-    public static final String RESULT1 = "./target/test/resources/book/part4/chapter13/Listing_13_01_PdfXPdfAx.pdf";
+public class Listing_13_01_PdfA extends GenericTest {
+    public static final String DEST = "./target/test/resources/book/part4/chapter13/Listing_13_01_PdfA.pdf";
     public static final String FONT = /*"c:/windows/fonts/arial.ttf"*/"./src/test/resources/font/FreeSans.ttf";
     public static final String sourceFolder = "./src/test/resources/book/part4/chapter13/";
 
     public static void main(String args[]) throws IOException, SQLException, XMPException {
-        new Listing_13_01_PdfXPdfA().manipulatePdf(RESULT1);
+        new Listing_13_01_PdfA().manipulatePdf(DEST);
     }
 
     @Override
     protected void manipulatePdf(String dest) throws IOException, SQLException, XMPException {
-//        createPdfX(RESULT1);
-        createPdfA(DEST);
+        createPdfA(dest);
     }
-
-    // TODO NO PdfX
-//    /**
-//     * Creates a PDF document.
-//     * @param dest the path to the new PDF document
-//     * @throws IOException
-//     */
-//    public void createPdfX(String dest) throws IOException {
-//        PdfDocument pddDoc = new PdfDocument(new PdfWriter(dest));
-//        writer.setPDFXConformance(PdfWriter.PDFX1A2001);
-//        // step 3
-//        document.open();
-//        // step 4
-//        Font font = FontFactory.getFont(
-//                FONT, BaseFont.CP1252, BaseFont.EMBEDDED, Font.UNDEFINED,
-//                Font.UNDEFINED, new CMYKColor(255, 255, 0, 0));
-//        document.add(new Paragraph("Hello World", font));
-//        // step 5
-//        document.close();
-//    }
 
     public void createPdfA(String dest) throws IOException, XMPException {
         InputStream is = new FileInputStream(sourceFolder + "sRGB Color Space Profile.icm");

@@ -29,15 +29,12 @@ import java.io.RandomAccessFile;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_16_04_EmbedFontPostFacto extends GenericTest {
     public static final String DEST
-            = "./target/test/resources/book/part4/chapter16/Listing_16_04_EmbedFontPostFacto.pdf";
+            = "./target/test/resources/book/part4/chapter16/Listing_16_04_EmbedFontPostFacto_with_font.pdf";
     public static String RESULT1
             = "./target/test/resources/book/part4/chapter16/Listing_16_04_EmbedFontPostFacto_without_font.pdf";
-    public static String RESULT2
-            = "./target/test/resources/book/part4/chapter16/Listing_16_04_EmbedFontPostFacto_with_font.pdf";
     public static String FONT
             = "./src/test/resources/book/part4/chapter16/wds011402.ttf";
     public static String FONTNAME
@@ -49,13 +46,14 @@ public class Listing_16_04_EmbedFontPostFacto extends GenericTest {
 
     public void manipulatePdf(String dest) throws Exception {
         createPdf(RESULT1);
-        changePdf(RESULT1, RESULT2);
+        changePdf(RESULT1, dest);
     }
 
     public void createPdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
         PdfFont font = PdfFontFactory.createFont(FONT, "", false);
+        font.setSubset(false);
         doc.add(new Paragraph("iText in Action").setFont(font).setFontSize(60));
         doc.close();
     }
@@ -68,9 +66,8 @@ public class Listing_16_04_EmbedFontPostFacto extends GenericTest {
         raf.close();
         // create a new stream for the font file
         PdfStream stream = new PdfStream(fontfile);
-        // TODO No flateCompress
         stream.setCompressionLevel(PdfOutputStream.DEFAULT_COMPRESSION);
-        stream.put(new PdfName("Lenght1"), new PdfNumber(fontfile.length));
+        stream.put(new PdfName("Length1"), new PdfNumber(fontfile.length));
         // create a reader object
         PdfReader reader = new PdfReader(src);
         int n = (int) reader.getLastXref();
@@ -78,16 +75,14 @@ public class Listing_16_04_EmbedFontPostFacto extends GenericTest {
         PdfDictionary font;
         PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(dest));
         PdfName fontname = new PdfName(FONTNAME);
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < pdfDoc.getNumberOfPdfObjects(); i++) {
             object = pdfDoc.getPdfObject(i);
             if (object == null || !object.isDictionary())
                 continue;
             font = (PdfDictionary) object;
             if (PdfName.FontDescriptor.equals(font.get(PdfName.Type))
                     && fontname.equals(font.get(PdfName.FontName))) {
-                // TODO No addToBody
-                // PdfIndirectObject objref = pdfDoc.getWriter().addToBody(stream);
-                // font.put(PdfName.FontFile2, objref.getIndirectReference());
+                font.put(PdfName.FontFile, stream);
             }
         }
         pdfDoc.close();

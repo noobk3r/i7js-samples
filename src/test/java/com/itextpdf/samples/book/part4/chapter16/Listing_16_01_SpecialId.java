@@ -11,7 +11,10 @@ import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Image;
@@ -23,11 +26,10 @@ import java.sql.SQLException;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_16_01_SpecialId extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part4/chapter16/Listing_16_01_SpecialId.pdf";
-    public static String RESOURCE = "./src/test/resources/book/part4/chapter16/bruno.jpg";
+    public static String RESOURCE = "./src/test/resources/img/bruno.jpg";
 
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_16_01_SpecialId().manipulatePdf(DEST);
@@ -37,12 +39,10 @@ public class Listing_16_01_SpecialId extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc, new PageSize(new Rectangle(400, 300)));
         Image img = new Image(ImageFactory.getImage(RESOURCE));
-        // TODO No addToBody
-//        PdfImage stream = new PdfImage(img, "", null);
-//        stream.put(new PdfName("ITXT_SpecialId"), new PdfName("123456789"));
-//        PdfIndirectObject ref = writer.addToBody(stream);
-//        img.setDirectReference(ref.getIndirectReference());
-        doc.add(img);
+        PdfImageXObject xObject = new PdfImageXObject(ImageFactory.getImage(RESOURCE));
+        xObject.put(new PdfName("ITXT_SpecialId"), new PdfName("123456789"));
+        PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
+        canvas.addXObject(xObject, 0, 0);
         doc.close();
     }
 }

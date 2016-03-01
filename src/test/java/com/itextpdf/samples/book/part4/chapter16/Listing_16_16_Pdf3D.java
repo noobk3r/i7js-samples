@@ -38,6 +38,7 @@ public class Listing_16_16_Pdf3D extends GenericTest {
 
     public void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
+        pdfDoc.addNewPage();
         Document doc = new Document(pdfDoc);
         Rectangle rect = new Rectangle(100, 400, 500, 800);
 //        rect.setBorder(Rectangle.BOX);
@@ -48,13 +49,8 @@ public class Listing_16_16_Pdf3D extends GenericTest {
         PdfStream stream3D = new PdfStream(pdfDoc, new FileInputStream(RESOURCE));
         stream3D.put(PdfName.Type, new PdfName("3D"));
         stream3D.put(PdfName.Subtype, new PdfName("U3D"));
-        // TODO No flateCompress
-        // stream3D.flateCompress();
         stream3D.setCompressionLevel(PdfOutputStream.DEFAULT_COMPRESSION);
-        // TODO No addToBody
-        // PdfIndirectObject streamObject = pdfDoc.addToBody(stream3D);
-        // TODO No writeLength
-        //stream3D.writeLength();
+        stream3D.flush();
 
         PdfDictionary dict3D = new PdfDictionary();
         dict3D.put(PdfName.Type, new PdfName("3DView"));
@@ -65,15 +61,13 @@ public class Listing_16_16_Pdf3D extends GenericTest {
                 new PdfArray(new float[]{1, 0, 0, 0, 0, -1, 0, 1, 0, 3, -235, 28}));
         dict3D.put(PdfName.CO, new PdfNumber(235));
 
-        // TODO NO addToBody
-        // PdfIndirectObject dictObject = writer.addToBody(dict3D);
-
+        //TODO 3D Annotation
         //PdfAnnotation annot = new PdfAnnotation(pdfDoc, rect);
         // annot.put(PdfName.Contents, new PdfString("3D Model"));
         // annot.put(PdfName.Subtype, new PdfName("3D"));
         // annot.put(PdfName.Type, PdfName.Annot);
-//        annot.put(new PdfName("3DD"), streamObject.getIndirectReference());
-//        annot.put(new PdfName("3DV"), dictObject.getIndirectReference());
+//        annot.put(new PdfName("3DD"), stream3D);
+//        annot.put(new PdfName("3DV"), dict3D);
 //        PdfAppearance ap = writer.getDirectContent().createAppearance(rect.getWidth(), rect.getHeight());
 //        annot.setAppearance(PdfAnnotation.APPEARANCE_NORMAL, ap);
 //        annot.setPage();

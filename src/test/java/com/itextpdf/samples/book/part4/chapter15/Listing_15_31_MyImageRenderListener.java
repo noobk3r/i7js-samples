@@ -40,7 +40,7 @@ public class Listing_15_31_MyImageRenderListener implements EventListener {
                     if (image == null)  {
                         return;
                     }
-                    // TODO No possibility to find Image extension in this particular situation
+                    // TODO No possibility to find Image extension in this particular situation(DEVSIX-484)
                     try {
                         System.out.println(ImageFactory.getImage(image.getImageBytes(true)).getOriginalType());
                     }

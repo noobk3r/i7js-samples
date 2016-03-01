@@ -18,6 +18,7 @@ import com.itextpdf.kernel.pdf.PdfVersion;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.layer.PdfLayer;
+import com.itextpdf.kernel.pdf.layer.PdfOCProperties;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Property;
@@ -54,8 +55,6 @@ public class Listing_15_10_SvgLayers extends Listing_15_09_SvgToPdf {
         pdfDoc.setDefaultPageSize(new PageSize(6000, 6000));
 
         pdfDoc.getCatalog().setPageMode(PdfName.UseOC).setPageMode(PdfName.FitWindow);
-        // TODO No setVersion
-        // writer.setPdfVersion(PdfWriter.VERSION_1_5);
 
         // CREATE GRID LAYER
         PdfLayer gridLayer = new PdfLayer("Grid", pdfDoc);
@@ -80,8 +79,8 @@ public class Listing_15_10_SvgLayers extends Listing_15_09_SvgToPdf {
         radio.add(streetlayer_en);
         radio.add(streetlayer_fr);
         radio.add(streetlayer_nl);
-        // TODO No addOCGRadioGroup on PdfDocument
-        // writer.addOCGRadioGroup(radio);
+        PdfOCProperties ocProps = pdfDoc.getCatalog().getOCProperties(true);
+        ocProps.addOCGRadioGroup(radio);
         // CREATE MAP
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         PdfFormXObject map = new PdfFormXObject(new Rectangle(6000, 6000));

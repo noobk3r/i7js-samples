@@ -66,9 +66,7 @@ public class Listing_15_11_ObjectData extends GenericTest {
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(writer);
         pdfDoc.setTagged();
-
-        // TODO No setUserProperties(boolean)
-        // writer.setUserProperties(true);
+        pdfDoc.setUserProperties(true);
 
         pdfDoc.getStructTreeRoot().getRoleMap().put(new PdfName("Directors"), PdfName.H);
         for (int i = 1; i < 8; i++) {

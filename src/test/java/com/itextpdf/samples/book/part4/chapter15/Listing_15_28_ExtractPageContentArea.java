@@ -9,6 +9,7 @@ package com.itextpdf.samples.book.part4.chapter15;
 
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.io.source.ByteArrayOutputStream;
+import com.itextpdf.kernel.parser.*;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -24,7 +25,6 @@ import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 import org.xml.sax.SAXException;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_15_28_ExtractPageContentArea {
     public static final String DEST
@@ -46,13 +46,12 @@ public class Listing_15_28_ExtractPageContentArea {
         PrintWriter out = new PrintWriter(new FileOutputStream(txt));
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(new ByteArrayOutputStream()));
         Rectangle rect = new Rectangle(70, 80, 420, 500);
-        // TODO No predefined extraction strategies (like LocationTextExtractionStrategy) and render filters (like FilteredTextRenderListener)
-        // RenderFilter filter = new RegionTextRenderFilter(rect);
-        // TextExtractionStrategy strategy;
-        // for (int i = 1; i <= pdfDoc.getNumOfPages(); i++) {
-        //     strategy = new FilteredTextRenderListener(new LocationTextExtractionStrategy(), filter);
-        //     out.println(PdfTextExtractor.getTextFromPage(reader, i, strategy));
-        // }
+        EventFilter filter = new TextRegionEventFilter(rect);
+        TextExtractionStrategy strategy;
+        for (int i = 1; i <= pdfDoc.getNumberOfPages(); i++) {
+             strategy = new FilteredTextEventListener(new LocationTextExtractionStrategy(), filter);
+             out.println(PdfTextExtractor.getTextFromPage(pdfDoc.getPage(i), strategy));
+        }
         out.flush();
         out.close();
         pdfDoc.close();

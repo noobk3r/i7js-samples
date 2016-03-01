@@ -19,18 +19,13 @@ import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.action.PdfTargetDictionary;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfFileAttachmentAnnotation;
+import com.itextpdf.kernel.pdf.collection.*;
 import com.itextpdf.kernel.pdf.filespec.PdfFileSpec;
 import com.itextpdf.kernel.pdf.navigation.PdfDestination;
 import com.itextpdf.kernel.pdf.navigation.PdfExplicitDestination;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.border.Border;
-import com.itextpdf.layout.element.Cell;
-import com.itextpdf.layout.element.Image;
-import com.itextpdf.layout.element.Link;
-import com.itextpdf.layout.element.List;
-import com.itextpdf.layout.element.ListItem;
-import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.element.*;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
@@ -48,10 +43,10 @@ import java.util.TreeSet;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_16_11_KubrickCollection extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part4/chapter16/Listing_16_11_KubrickCollection.pdf";
+    public static final String RESOURCE = "./src/test/resources/book/part4/chapter16/";
     public static final String IMG_BOX = "./src/test/resources/book/part4/chapter16/kubrick_box.jpg";
     public static final String IMG_KUBRICK = "./src/test/resources/book/part4/chapter16/kubrick.jpg";
     public static final String TYPE_FIELD = "TYPE";
@@ -67,19 +62,19 @@ public class Listing_16_11_KubrickCollection extends GenericTest {
     public void manipulatePdf(String destination) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(destination));
         Document doc = new Document(pdfDoc);
-        // TODO No PdfCollection: PdfCollectionSchema, PdfCollectionField and so on
-        // PdfCollection collection = new PdfCollection(PdfCollection.HIDDEN);
-        // PdfCollectionSchema schema = getCollectionSchema();
-        // collection.setSchema(schema);
-        // PdfCollectionSort sort = new PdfCollectionSort(KEYS);
-        // collection.setSort(sort);
-        // writer.setCollection(collection);
+        PdfCollection collection = new PdfCollection();
+        collection.setView(PdfCollection.HIDDEN);
+        PdfCollectionSchema schema = getCollectionSchema();
+        collection.setSchema(schema);
+        PdfCollectionSort sort = new PdfCollectionSort(KEYS);
+        collection.setSort(sort);
+        pdfDoc.getCatalog().setCollection(collection);
 
-        // PdfCollectionItem collectionitem = new PdfCollectionItem(schema);
+        PdfCollectionItem collectionitem = new PdfCollectionItem(schema);
         PdfFileSpec fs;
         fs = PdfFileSpec.createEmbeddedFileSpec(pdfDoc, IMG_KUBRICK, "Stanley Kubrick", "kubrick.jpg", null, null, false);
-        // collectionitem.addItem(TYPE_FIELD, "JPEG");
-        // fs.addCollectionItem(collectionitem);
+        collectionitem.addItem(TYPE_FIELD, "JPEG");
+        fs.setCollectionItem(collectionitem);
         pdfDoc.addFileAttachment("Stanley Kubrick", fs);
 
         ByteArrayOutputStream txt = new ByteArrayOutputStream();
@@ -88,7 +83,7 @@ public class Listing_16_11_KubrickCollection extends GenericTest {
         doc.add(img);
         List list = new List();
         list.setSymbolIndent(20);
-        PdfDestination dest = PdfExplicitDestination.createFit(1);
+        PdfDestination dest = PdfExplicitDestination.createFit(2);
         PdfTargetDictionary intermediate;
         PdfTargetDictionary target;
         Link link;
@@ -102,17 +97,16 @@ public class Listing_16_11_KubrickCollection extends GenericTest {
         connection.close();
         for (Movie movie : box) {
             if (movie.getYear() > 1960) {
-                out.println(String.format(
-                        "%s;%s;%s", movie.getMovieTitle(), movie.getYear(), movie.getDuration()));
+                out.print(String.format(
+                        "%s;%s;%s\n", movie.getMovieTitle(), movie.getYear(), movie.getDuration()));
                 item = new ListItem(movie.getMovieTitle());
                 if (!"0278736".equals(movie.getImdb())) {
-                    // TODO Implement 'from box' way to work with TargetDictionaries
                     target = new PdfTargetDictionary(PdfName.C);
-                    target.put(PdfName.N, new PdfString(movie.getTitle()));
+                    target.setName(movie.getTitle());
                     intermediate = new PdfTargetDictionary(PdfName.C);
-                    intermediate.put(PdfName.P, new PdfNumber(1));
-                    intermediate.put(PdfName.A, new PdfNumber(1));
-                    intermediate.put(PdfName.T, target);
+                    intermediate.setPage(1);
+                    intermediate.setAnnotation(0);
+                    intermediate.setTarget(target);
                     action = PdfAction.createGoToE(dest, true, intermediate);
                     link = new Link(" (see info)", action);
                     item.add(new Paragraph(link));
@@ -125,18 +119,19 @@ public class Listing_16_11_KubrickCollection extends GenericTest {
         doc.add(list);
         fs = PdfFileSpec.createEmbeddedFileSpec(pdfDoc, txt.toByteArray(),
                 "Kubrick box: the movies", "kubrick.txt", null, null, null, false);
-        // collectionitem.addItem(TYPE_FIELD, "TXT");
-        // fs.addCollectionItem(collectionitem);
+        collectionitem.addItem(TYPE_FIELD, "TXT");
+        fs.setCollectionItem(collectionitem);
         pdfDoc.addFileAttachment("Kubrick box: the movies", fs);
 
+        doc.add(new AreaBreak());
         Table table = new Table(1);
         table.setMarginBottom(10);
         Cell cell = new Cell().add("All movies by Kubrick");
         cell.setBorder(Border.NO_BORDER);
-        fs = PdfFileSpec.createEmbeddedFileSpec(pdfDoc, new Listing_16_09_KubrickMovies().createPdf(),
-                null, Listing_16_09_KubrickMovies.FILENAME, null, null, null, false);
-        // collectionitem.addItem(TYPE_FIELD, "PDF");
-        // fs.addCollectionItem(collectionitem);
+        fs = PdfFileSpec.createEmbeddedFileSpec(pdfDoc, RESOURCE + "cmp_Listing_16_09_KubrickMovies.pdf",
+                null, Listing_16_09_KubrickMovies.FILENAME, null, null, false);
+        collectionitem.addItem(TYPE_FIELD, "PDF");
+        fs.setCollectionItem(collectionitem);
         target = new PdfTargetDictionary(PdfName.C);
         target.put(PdfName.P, new PdfString("movies", null));
         target.put(PdfName.A, new PdfString("The movies of Stanley Kubrick"));
@@ -147,10 +142,10 @@ public class Listing_16_11_KubrickCollection extends GenericTest {
 
         cell = new Cell().add("Kubrick DVDs");
         cell.setBorder(Border.NO_BORDER);
-        fs = PdfFileSpec.createEmbeddedFileSpec(pdfDoc, new Listing_16_05_KubrickDvds().createPdf(),
-                null, Listing_16_05_KubrickDvds.FILENAME, null, null, null, false);
-        // collectionitem.addItem(TYPE_FIELD, "PDF");
-        // fs.addCollectionItem(collectionitem);
+        fs = PdfFileSpec.createEmbeddedFileSpec(pdfDoc, RESOURCE + "cmp_Listing_16_05_KubrickDvds.pdf",
+                null, Listing_16_05_KubrickDvds.FILENAME, null, null, false);
+        collectionitem.addItem(TYPE_FIELD, "PDF");
+        fs.setCollectionItem(collectionitem);
         cell.setNextRenderer(new FileAttachmentRenderer(cell, "Kubrick DVDs", fs, false, null, null));
 
         table.addCell(cell);
@@ -158,10 +153,10 @@ public class Listing_16_11_KubrickCollection extends GenericTest {
 
         cell = new Cell().add("Kubrick documentary");
         cell.setBorder(Border.NO_BORDER);
-        fs = PdfFileSpec.createEmbeddedFileSpec(pdfDoc, new Listing_16_06_KubrickDocumentary().createPdf(),
-                null, Listing_16_06_KubrickDocumentary.FILENAME, null, null, null, false);
-        // collectionitem.addItem(TYPE_FIELD, "PDF");
-        // fs.addCollectionItem(collectionitem);
+        fs = PdfFileSpec.createEmbeddedFileSpec(pdfDoc, RESOURCE + "cmp_Listing_16_06_KubrickDocumentary.pdf",
+                null, Listing_16_06_KubrickDocumentary.FILENAME, null, null, false);
+        collectionitem.addItem(TYPE_FIELD, "PDF");
+        fs.setCollectionItem(collectionitem);
         cell.setNextRenderer(new FileAttachmentRenderer(cell, "Kubrick Documentary", fs, false, null, null));
         table.addCell(cell);
         pdfDoc.addFileAttachment(Listing_16_06_KubrickDocumentary.FILENAME, fs);
@@ -214,17 +209,17 @@ public class Listing_16_11_KubrickCollection extends GenericTest {
  * in a collection: year, title, duration, DVD acquisition, filesize (filename is present, but hidden).
  * @return a collection schema
  */
-//    private static PdfCollectionSchema getCollectionSchema() {
-//        PdfCollectionSchema schema = new PdfCollectionSchema();
-//
-//        PdfCollectionField type = new PdfCollectionField(TYPE_CAPTION, PdfCollectionField.TEXT);
-//        type.setOrder(0);
-//        schema.addField(TYPE_FIELD, type);
-//
-//        PdfCollectionField filename = new PdfCollectionField(FILE_FIELD, PdfCollectionField.FILENAME);
-//        filename.setOrder(1);
-//        schema.addField(FILE_FIELD, filename);
-//
-//        return schema;
-//    }
+    private static PdfCollectionSchema getCollectionSchema() {
+        PdfCollectionSchema schema = new PdfCollectionSchema();
+
+        PdfCollectionField type = new PdfCollectionField(TYPE_CAPTION, PdfCollectionField.TEXT);
+        type.setOrder(0);
+        schema.addField(TYPE_FIELD, type);
+
+        PdfCollectionField filename = new PdfCollectionField(FILE_FIELD, PdfCollectionField.FILENAME);
+        filename.setOrder(1);
+        schema.addField(FILE_FIELD, filename);
+
+        return schema;
+    }
 }

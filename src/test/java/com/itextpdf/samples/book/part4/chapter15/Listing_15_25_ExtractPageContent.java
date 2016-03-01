@@ -7,12 +7,8 @@
 
 package com.itextpdf.samples.book.part4.chapter15;
 
-import com.itextpdf.kernel.parser.EventData;
-import com.itextpdf.kernel.parser.EventListener;
-import com.itextpdf.kernel.parser.EventType;
+import com.itextpdf.kernel.parser.*;
 import com.itextpdf.kernel.geom.LineSegment;
-import com.itextpdf.kernel.parser.PdfContentStreamProcessor;
-import com.itextpdf.kernel.parser.TextRenderInfo;
 import com.itextpdf.kernel.geom.Vector;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
@@ -29,7 +25,6 @@ import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 import org.xml.sax.SAXException;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_15_25_ExtractPageContent {
     public static final String DEST
@@ -49,79 +44,15 @@ public class Listing_15_25_ExtractPageContent {
 
     public void parsePdf(String src, String txt) throws IOException {
         PrintWriter out = new PrintWriter(new FileOutputStream(txt));
-        // TODO No predefined strategies like TextExtractionStrategy here
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src));
-        SimpleTextStrategyListener listener = new SimpleTextStrategyListener();
-        PdfContentStreamProcessor parser = new PdfContentStreamProcessor(listener);
+        TextExtractionStrategy strategy = new SimpleTextExtractionStrategy();
+        PdfContentStreamProcessor parser = new PdfContentStreamProcessor(strategy);
         for (int i = 1; i <= pdfDoc.getNumberOfPages(); i++) {
             parser.processPageContent(pdfDoc.getPage(i));
-            out.println(listener.getResultantText());
+            out.println(strategy.getResultantText());
         }
         out.flush();
         out.close();
         pdfDoc.close();
-    }
-
-
-    class SimpleTextStrategyListener implements EventListener {
-        private Vector lastStart;
-        private Vector lastEnd;
-        private final StringBuffer result = new StringBuffer();
-
-        public Set<EventType> getSupportedEvents() {
-            return null;
-        }
-
-        public String getResultantText() {
-            return this.result.toString();
-        }
-
-        public void eventOccurred(EventData data, EventType type) {
-            switch (type) {
-                case RENDER_TEXT:
-                    TextRenderInfo renderInfo = (TextRenderInfo) data;
-                    boolean firstRender = this.result.length() == 0;
-                    boolean hardReturn = false;
-
-                    LineSegment segment = renderInfo.getBaseline();
-                    Vector start = segment.getStartPoint();
-                    Vector end = segment.getEndPoint();
-
-                    if (!firstRender) {
-                        Vector x1 = this.lastStart;
-                        Vector x2 = this.lastEnd;
-                        // see http://mathworld.wolfram.com/Point-LineDistance2-Dimensional.html
-                        float dist = x2.subtract(x1).cross(x1.subtract(start)).lengthSquared()
-                                / x2.subtract(x1).lengthSquared();
-                        float sameLineThreshold = 1.0F;
-                        if (dist > sameLineThreshold) {
-                            hardReturn = true;
-                        }
-                        // Note:  Technically, we should check both the start and end positions, in case the angle of the text changed without any displacement
-                        // but this sort of thing probably doesn't happen much in reality, so we'll leave it alone for now
-                    }
-
-                    if (hardReturn) {
-                        this.appendTextChunk("\n");
-                    } else if (!firstRender && this.result.charAt(this.result.length() - 1) != 32 &&
-                            renderInfo.getText().length() > 0 && renderInfo.getText().charAt(0) != 32) {
-                        float spacing = this.lastEnd.subtract(start).length();
-                        if (spacing > renderInfo.getSingleSpaceWidth() / 2.0F) {
-                            this.appendTextChunk(" ");
-                        }
-                    }
-
-                    this.appendTextChunk(renderInfo.getText());
-                    this.lastStart = start;
-                    this.lastEnd = end;
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        protected final void appendTextChunk(CharSequence text) {
-            this.result.append(text);
-        }
     }
 }
