@@ -9,7 +9,7 @@ package com.itextpdf.samples.book.part4.chapter15;
 
 import com.itextpdf.io.source.ByteArrayOutputStream;
 import com.itextpdf.kernel.parser.LocationTextExtractionStrategy;
-import com.itextpdf.kernel.parser.PdfContentStreamProcessor;
+import com.itextpdf.kernel.parser.PdfCanvasProcessor;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -47,7 +47,7 @@ public class Listing_15_26_ExtractPageContentSorted1 {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(new ByteArrayOutputStream()));
         LocationTextExtractionStrategy strategy = new LocationTextExtractionStrategy();
 
-        PdfContentStreamProcessor parser = new PdfContentStreamProcessor(strategy);
+        PdfCanvasProcessor parser = new PdfCanvasProcessor(strategy);
         for (int i = 1; i <= pdfDoc.getNumberOfPages(); i++) {
              parser.processPageContent(pdfDoc.getPage(i));
              out.println(strategy.getResultantText());

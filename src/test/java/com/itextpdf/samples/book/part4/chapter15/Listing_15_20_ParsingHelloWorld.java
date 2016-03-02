@@ -14,7 +14,7 @@ import com.itextpdf.io.source.RandomAccessFileOrArray;
 import com.itextpdf.io.source.RandomAccessSourceFactory;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.parser.EventListener;
-import com.itextpdf.kernel.parser.PdfContentStreamProcessor;
+import com.itextpdf.kernel.parser.PdfCanvasProcessor;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -103,7 +103,7 @@ public class Listing_15_20_ParsingHelloWorld extends GenericTest {
         PrintWriter out = new PrintWriter(new FileOutputStream(dest));
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src));
         EventListener listener = new Listing_15_24_MyTextRenderListener(out);
-        PdfContentStreamProcessor processor = new PdfContentStreamProcessor(listener);
+        PdfCanvasProcessor processor = new PdfCanvasProcessor(listener);
         processor.processPageContent(pdfDoc.getFirstPage());
         out.flush();
         out.close();

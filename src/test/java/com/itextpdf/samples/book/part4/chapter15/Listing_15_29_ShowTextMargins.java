@@ -48,10 +48,10 @@ public class Listing_15_29_ShowTextMargins extends GenericTest {
     public void addMarginRectangle(String src, String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
         TextMarginFinder finder;
-        PdfContentStreamProcessor parser;
+        PdfCanvasProcessor parser;
         for (int i = 1; i <= pdfDoc.getNumberOfPages(); i++) {
             finder  = new TextMarginFinder();
-            parser = new PdfContentStreamProcessor(finder);
+            parser = new PdfCanvasProcessor(finder);
             parser.processPageContent(pdfDoc.getPage(i));
             PdfCanvas cb = new PdfCanvas(pdfDoc.getPage(i));
             cb.rectangle(finder.getTextRectangle().getLeft(), finder.getTextRectangle().getBottom(),
