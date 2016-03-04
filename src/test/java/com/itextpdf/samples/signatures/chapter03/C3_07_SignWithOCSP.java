@@ -19,7 +19,9 @@ import com.itextpdf.signatures.DigestAlgorithms;
 import com.itextpdf.signatures.OcspClient;
 import com.itextpdf.signatures.OcspClientBouncyCastle;
 import com.itextpdf.signatures.PdfSigner;
+import com.itextpdf.test.annotations.type.SampleTest;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -34,8 +36,10 @@ import java.util.Properties;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
+@Category(SampleTest.class)
 public class C3_07_SignWithOCSP extends C3_01_SignWithCAcert {
     public static final String SRC = "./src/test/resources/signatures/chapter03/hello.pdf";
     public static final String DEST = "./target/test/resources/signatures/chapter03/hello_cacert_ocsp.pdf";
@@ -61,6 +65,7 @@ public class C3_07_SignWithOCSP extends C3_01_SignWithCAcert {
 
     @Test
     public void runTest() throws IOException, InterruptedException, GeneralSecurityException {
+        new File("./target/test/resources/signatures/chapter03/").mkdirs();
         C3_07_SignWithOCSP.main(null);
 
         String[] resultFiles = new String[]{"hello_cacert_ocsp.pdf"};

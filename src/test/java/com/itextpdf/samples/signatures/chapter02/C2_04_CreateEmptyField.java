@@ -32,7 +32,9 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.SignatureTest;
 import com.itextpdf.signatures.DigestAlgorithms;
 import com.itextpdf.signatures.PdfSigner;
+import com.itextpdf.test.annotations.type.SampleTest;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -46,8 +48,10 @@ import java.util.List;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
+@Category(SampleTest.class)
 public class C2_04_CreateEmptyField extends SignatureTest {
     public static final String KEYSTORE = "./src/test/resources/signatures/chapter02/ks";
     public static final char[] PASSWORD = "password".toCharArray();
@@ -101,6 +105,7 @@ public class C2_04_CreateEmptyField extends SignatureTest {
     }
 
     public static void main(String[] args) throws IOException, GeneralSecurityException {
+        new File("./target/test/resources/signatures/chapter02/").mkdirs();
         C2_04_CreateEmptyField appCreate = new C2_04_CreateEmptyField();
         appCreate.createPdf(UNSIGNED);
         appCreate.addField(SRC, UNSIGNED2);

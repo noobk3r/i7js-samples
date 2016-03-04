@@ -21,7 +21,9 @@ import com.itextpdf.signatures.OcspClientBouncyCastle;
 import com.itextpdf.signatures.PdfSigner;
 import com.itextpdf.signatures.TSAClient;
 import com.itextpdf.signatures.TSAClientBouncyCastle;
+import com.itextpdf.test.annotations.type.SampleTest;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -37,9 +39,11 @@ import java.util.Properties;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
 @Ignore
+@Category(SampleTest.class)
 public class C3_12_SignWithEstimatedSize extends C3_01_SignWithCAcert {
     public static final String SRC = "./src/test/resources/signatures/chapter03/hello.pdf";
     public static final String DEST = "./target/test/resources/signatures/chapter03/hello_estimated.pdf";
@@ -83,6 +87,7 @@ public class C3_12_SignWithEstimatedSize extends C3_01_SignWithCAcert {
 
     @Test
     public void runTest() throws IOException, InterruptedException, GeneralSecurityException {
+        new File("./target/test/resources/signatures/chapter03/").mkdirs();
         setupSystemOutput();
         C3_12_SignWithEstimatedSize.main(null);
         String sysOut = getSystemOutput();

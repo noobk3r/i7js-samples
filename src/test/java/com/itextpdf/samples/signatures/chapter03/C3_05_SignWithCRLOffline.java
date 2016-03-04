@@ -19,8 +19,10 @@ import com.itextpdf.signatures.CrlClient;
 import com.itextpdf.signatures.CrlClientOffline;
 import com.itextpdf.signatures.DigestAlgorithms;
 import com.itextpdf.signatures.PdfSigner;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -38,8 +40,10 @@ import java.util.Properties;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
+@Category(SampleTest.class)
 public class C3_05_SignWithCRLOffline extends C3_01_SignWithCAcert {
     public static final String CRLURL = "./src/test/resources/signatures/chapter03/revoke.crl";
     public static final String SRC = "./src/test/resources/signatures/chapter03/hello.pdf";
@@ -78,6 +82,7 @@ public class C3_05_SignWithCRLOffline extends C3_01_SignWithCAcert {
 
     @Test
     public void runTest() throws IOException, InterruptedException, GeneralSecurityException {
+        new File("./target/test/resources/signatures/chapter03/").mkdirs();
         C3_05_SignWithCRLOffline.main(null);
 
         String[] resultFiles = new String[]{"hello_cacert_crl_offline.pdf"};

@@ -24,6 +24,7 @@
 //import java.security.GeneralSecurityException;
 //import java.security.cert.X509Certificate;
 //
+// @Category(SampleTest.class)
 //public class C4_05_SignWithBEID {
 //
 //    public static void main(String[] args) throws CardException, IOException, GeneralSecurityException {

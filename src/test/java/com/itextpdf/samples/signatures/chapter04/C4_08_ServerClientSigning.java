@@ -16,8 +16,10 @@ package com.itextpdf.samples.signatures.chapter04;
 
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.samples.SignatureTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -34,8 +36,10 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
+@Category(SampleTest.class)
 public class C4_08_ServerClientSigning extends SignatureTest {
     public static final String KEYSTORE = "./src/test/resources/signatures/chapter04/ks";
     public static final char[] PASSWORD = "password".toCharArray();
@@ -112,6 +116,7 @@ public class C4_08_ServerClientSigning extends SignatureTest {
 
     @Test
     public void runTest() throws IOException, InterruptedException, GeneralSecurityException {
+        new File("./target/test/resources/signatures/chapter04/").mkdirs();
         C4_08_ServerClientSigning.main(null);
 
         String[] resultFiles = new String[]{"hello_server2.pdf"};

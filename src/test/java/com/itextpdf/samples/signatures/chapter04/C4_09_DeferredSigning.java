@@ -20,7 +20,9 @@ import com.itextpdf.signatures.PdfPKCS7;
 import com.itextpdf.signatures.PdfSignatureAppearance;
 import com.itextpdf.signatures.PdfSigner;
 import com.itextpdf.signatures.PrivateKeySignature;
+import com.itextpdf.test.annotations.type.SampleTest;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -37,11 +39,13 @@ import java.util.List;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
+@Category(SampleTest.class)
 public class C4_09_DeferredSigning extends SignatureTest {
     public static final String SRC = "./src/test/resources/signatures/chapter04/hello.pdf";
-    public static final String TEMP = "./src/test/resources/signatures/chapter04/hello_empty_sig.pdf";
+    public static final String TEMP = "./target/test/resources/signatures/chapter04/hello_empty_sig.pdf";
     public static final String KEYSTORE = "./src/test/resources/signatures/chapter04/ks";
     public static final char[] PASSWORD = "password".toCharArray();
     public static final String DEST = "./target/test/resources/signatures/chapter04/hello_sig_ok.pdf";
@@ -102,6 +106,7 @@ public class C4_09_DeferredSigning extends SignatureTest {
 
     @Test
     public void runTest() throws IOException, InterruptedException, GeneralSecurityException {
+        new File("./target/test/resources/signatures/chapter04/").mkdirs();
         C4_09_DeferredSigning.main(null);
 
         String[] resultFiles = new String[]{"hello_sig_ok.pdf"};
@@ -129,7 +134,6 @@ public class C4_09_DeferredSigning extends SignatureTest {
             fail(accumulateErrors(errors));
         }
     }
-
 
     public static void main(String[] args) throws IOException, GeneralSecurityException {
         BouncyCastleProvider providerBC = new BouncyCastleProvider();

@@ -20,8 +20,10 @@ import com.itextpdf.signatures.CertificateVerifier;
 import com.itextpdf.signatures.LtvVerification;
 import com.itextpdf.signatures.LtvVerifier;
 import com.itextpdf.signatures.VerificationOK;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import javax.smartcardio.CardException;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -36,9 +38,11 @@ import java.util.List;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
 @Ignore
+@Category(SampleTest.class)
 public class C5_06_ValidateLTV extends SignatureTest {
     public static final String ADOBE = "./src/test/resources/signatures/chapter05/adobeRootCA.cer";
     // TODO Uncomment after C5_04_LTV revision
@@ -104,6 +108,7 @@ public class C5_06_ValidateLTV extends SignatureTest {
 
     @Test
     public void runTest() throws GeneralSecurityException, IOException, InterruptedException, CardException {
+        new File("./target/test/resources/signatures/chapter05/").mkdirs();
         setupSystemOutput();
         C5_06_ValidateLTV.main(null);
         String sysOut = getSystemOutput();

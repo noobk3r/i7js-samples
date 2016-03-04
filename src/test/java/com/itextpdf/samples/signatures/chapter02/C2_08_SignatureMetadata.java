@@ -26,7 +26,9 @@ import com.itextpdf.signatures.PdfSignature;
 import com.itextpdf.signatures.PdfSignatureAppearance;
 import com.itextpdf.signatures.PdfSigner;
 import com.itextpdf.signatures.PrivateKeySignature;
+import com.itextpdf.test.annotations.type.SampleTest;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -43,8 +45,10 @@ import java.util.List;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
+@Category(SampleTest.class)
 public class C2_08_SignatureMetadata extends SignatureTest {
     public static final String KEYSTORE = "./src/test/resources/signatures/chapter02/ks";
     public static final char[] PASSWORD = "password".toCharArray();
@@ -99,6 +103,7 @@ public class C2_08_SignatureMetadata extends SignatureTest {
 
     @Test
     public void runTest() throws IOException, InterruptedException, GeneralSecurityException {
+        new File("./target/test/resources/signatures/chapter02/").mkdirs();
         C2_08_SignatureMetadata.main(null);
 
         String[] resultFiles = new String[]{"field_metadata.pdf"};

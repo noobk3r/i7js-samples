@@ -32,7 +32,9 @@ import com.itextpdf.signatures.PdfSigner;
 import com.itextpdf.signatures.PrivateKeySignature;
 import com.itextpdf.signatures.TSAClient;
 import com.itextpdf.signatures.TSAClientBouncyCastle;
+import com.itextpdf.test.annotations.type.SampleTest;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -51,8 +53,10 @@ import java.util.Properties;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 @Ignore
+@Category(SampleTest.class)
 public class C4_01_SignWithPKCS11HSM extends SignatureTest {
     public static final String SRC = "./src/test/resources/signatures/chapter04/hello.pdf";
     public static final String DEST = "./target/test/resources/signatures/chapter04/hello_hsm.pdf";
@@ -125,6 +129,7 @@ public class C4_01_SignWithPKCS11HSM extends SignatureTest {
      */
     @Test
     public void runTest() throws GeneralSecurityException, IOException, InterruptedException {
+        new File("./target/test/resources/signatures/chapter04/").mkdirs();
         C4_01_SignWithPKCS11HSM.main(null);
     }
 }

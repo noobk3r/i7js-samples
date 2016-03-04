@@ -21,8 +21,10 @@ import com.itextpdf.signatures.DigestAlgorithms;
 import com.itextpdf.signatures.OcspClient;
 import com.itextpdf.signatures.OcspClientBouncyCastle;
 import com.itextpdf.signatures.PdfSigner;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.security.KeyStore;
@@ -37,9 +39,11 @@ import java.util.List;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
 @Ignore
+@Category(SampleTest.class)
 public class C4_03_SignWithPKCS11SC extends C4_02_SignWithPKCS11USB {
     public static final String SRC = "./src/test/resources/signatures/chapter04/hello.pdf";
     public static final String DEST = "./target/test/resources/signatures/chapter04/hello_smartcard_%s.pdf";
@@ -77,6 +81,7 @@ public class C4_03_SignWithPKCS11SC extends C4_02_SignWithPKCS11USB {
 
     @Test
     public void runTest() throws IOException, InterruptedException, GeneralSecurityException {
+        new File("./target/test/resources/signatures/chapter04/").mkdirs();
         C4_03_SignWithPKCS11SC.main(null);
 
         String[] resultFiles = new String[]{ "hello_smartcard_Authentication.pdf", "hello_smartcard_Signature.pdf" };

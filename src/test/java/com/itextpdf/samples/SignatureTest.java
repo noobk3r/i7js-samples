@@ -26,10 +26,10 @@ import com.itextpdf.signatures.VerificationException;
 import com.itextpdf.signatures.VerificationOK;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.lang.reflect.Field;
 import java.security.GeneralSecurityException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
@@ -52,6 +52,7 @@ import java.util.Map;
 import org.bouncycastle.cert.ocsp.BasicOCSPResp;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.tsp.TimeStampToken;
+import org.junit.After;
 import org.junit.Before;
 
 public class SignatureTest {
@@ -69,13 +70,31 @@ public class SignatureTest {
     private ByteArrayOutputStream output;
 
     @Before
-    public void setup() {
-        new File("./target/test/resources/signatures/chapter01/").mkdirs();
-        new File("./target/test/resources/signatures/chapter02/").mkdirs();
-        new File("./target/test/resources/signatures/chapter03/").mkdirs();
-        new File("./target/test/resources/signatures/chapter04/").mkdirs();
-        new File("./target/test/resources/signatures/chapter05/").mkdirs();
+    public void before() {
+        try {
+            Field field = Class.forName("javax.crypto.JceSecurity").
+                    getDeclaredField("isRestricted");
+            field.setAccessible(true);
+            field.set(null, java.lang.Boolean.FALSE);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
+
+    @After
+    public void after() {
+        try {
+            Field field = Class.forName("javax.crypto.JceSecurity").
+                    getDeclaredField("isRestricted");
+            if (field.isAccessible()) {
+                field.set(null, java.lang.Boolean.TRUE);
+                field.setAccessible(false);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
 
 
     protected void setupSystemOutput() {

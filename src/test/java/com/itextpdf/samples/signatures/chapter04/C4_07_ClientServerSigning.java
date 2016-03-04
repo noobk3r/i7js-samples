@@ -23,8 +23,10 @@ import com.itextpdf.signatures.ExternalDigest;
 import com.itextpdf.signatures.ExternalSignature;
 import com.itextpdf.signatures.PdfSignatureAppearance;
 import com.itextpdf.signatures.PdfSigner;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -40,9 +42,11 @@ import java.util.List;
 
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
 @Ignore
+@Category(SampleTest.class)
 public class C4_07_ClientServerSigning extends SignatureTest {
     public static final String SRC = "./src/test/resources/signatures/chapter04/hello.pdf";
     public static final String DEST = "./target/test/resources/signatures/chapter04/hello_server.pdf";
@@ -122,6 +126,7 @@ public class C4_07_ClientServerSigning extends SignatureTest {
 
     @Test
     public void runTest() throws IOException, InterruptedException, GeneralSecurityException {
+        new File("./target/test/resources/signatures/chapter04/").mkdirs();
         C4_07_ClientServerSigning.main(null);
 
         String[] resultFiles = new String[]{"hello_server.pdf"};

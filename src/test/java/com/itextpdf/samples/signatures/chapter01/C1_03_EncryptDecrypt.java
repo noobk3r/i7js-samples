@@ -15,8 +15,10 @@
 package com.itextpdf.samples.signatures.chapter01;
 
 import com.itextpdf.samples.SignatureTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import javax.crypto.Cipher;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.math.BigInteger;
@@ -27,8 +29,10 @@ import java.security.KeyStoreException;
 import java.security.cert.X509Certificate;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
+@Category(SampleTest.class)
 public class C1_03_EncryptDecrypt extends SignatureTest {
     public static final  String expectedOutput = "Let's encrypt 'secret message' with a public key\n" +
             "Encrypted message: 117831320649a4b0f420466c45a2368cae6d5edf8a99e9d04c69e8a6f63c8616776406928a11b9f0e01101d1e5d90558f99152c91fd175fb6bb7b1282e6b2d2c955d1596d923c09597a6de3b15aa6f0ec720f0958a5b8180ad4042121dadef835804f653846a06280e9661e2dcf4eb89afb3fc3b61e9ccccc39cd8ca3714145e48cc9aa4013f13e3407a669117d95b173a368fab7fac1678c06c68fc79c5019718e52119cee1355c3fae7a47a8916789b0797fef9c94bca99753fd2f33d1e0849128a9c3a3e26bc09199e66d8831294b97ccdf7a5b6d37857ed1e55da946f23d4f87abc48f1b9e72e6e65f15843f24cf5784b619eb25acd19344729e37481779\n" +
@@ -96,6 +100,7 @@ public class C1_03_EncryptDecrypt extends SignatureTest {
 
     @Test
     public void runTest() throws GeneralSecurityException, IOException, InterruptedException {
+        new File("./target/test/resources/signatures/chapter01/").mkdirs();
         setupSystemOutput();
         C1_03_EncryptDecrypt.main(null);
         String sysOut = getSystemOutput();

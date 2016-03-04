@@ -15,17 +15,24 @@
 package com.itextpdf.samples.signatures.chapter01;
 
 import com.itextpdf.samples.SignatureTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
+import java.io.File;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.security.GeneralSecurityException;
 import java.security.MessageDigest;
 import java.util.Arrays;
 
+import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
+@Ignore
+@Category(SampleTest.class)
 public class C1_01_DigestDefault extends SignatureTest {
+    // The result differs on different machines
     public static final String expectedOutput = "Digest using MD5: 16\n" +
             "Digest: 5f4dcc3b5aa765d61d8327deb882cf99\n" +
             "Is the password 'password'? true\n" +
@@ -116,6 +123,7 @@ public class C1_01_DigestDefault extends SignatureTest {
 
     @Test
     public void runTest() throws GeneralSecurityException, IOException, InterruptedException {
+        new File("./target/test/resources/signatures/chapter01/").mkdirs();
         setupSystemOutput();
         C1_01_DigestDefault.main(null);
         String sysOut = getSystemOutput();

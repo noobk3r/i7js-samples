@@ -20,8 +20,10 @@ import com.itextpdf.samples.SignatureTest;
 import com.itextpdf.signatures.CertificateInfo;
 import com.itextpdf.signatures.PdfPKCS7;
 import com.itextpdf.signatures.SignatureUtil;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import javax.smartcardio.CardException;
+import java.io.File;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.security.Security;
@@ -31,9 +33,11 @@ import java.util.List;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
 @Ignore
+@Category(SampleTest.class)
 public class C5_05_CheckLTV extends SignatureTest {
     // TODO Uncomment after C5_04_LTV revision
 //    public static final String EXAMPLE1 = "results/chapter5/ltv_1.pdf";
@@ -80,6 +84,7 @@ public class C5_05_CheckLTV extends SignatureTest {
 
     @Test
     public void runTest() throws GeneralSecurityException, IOException, InterruptedException, CardException {
+        new File("./target/test/resources/signatures/chapter05/").mkdirs();
         setupSystemOutput();
         C5_05_CheckLTV.main(null);
         String sysOut = getSystemOutput();

@@ -75,6 +75,7 @@
 //
 //    @Test
 //    public void runTest() throws IOException, InterruptedException, GeneralSecurityException {
+//        new File("./target/test/resources/signatures/chapter03/").mkdirs();
 //        C3_11_SignWithToken.main(null);
 //
 //        String[] resultFiles = new String[]{"hello_token.pdf"};

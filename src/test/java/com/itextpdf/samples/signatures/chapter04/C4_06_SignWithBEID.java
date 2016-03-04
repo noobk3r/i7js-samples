@@ -40,6 +40,7 @@
 //
 //import org.bouncycastle.jce.provider.BouncyCastleProvider;
 //
+// @Category(SampleTest.class)
 //public class C4_06_SignWithBEID {
 //
 //    public static final String SRC = "src/main/resources/hello.pdf";

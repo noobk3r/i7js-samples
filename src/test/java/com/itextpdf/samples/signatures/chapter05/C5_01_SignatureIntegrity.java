@@ -19,8 +19,10 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.samples.SignatureTest;
 import com.itextpdf.signatures.PdfPKCS7;
 import com.itextpdf.signatures.SignatureUtil;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import javax.smartcardio.CardException;
+import java.io.File;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.security.Security;
@@ -29,9 +31,11 @@ import java.util.List;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
 @Ignore
+@Category(SampleTest.class)
 public class C5_01_SignatureIntegrity extends SignatureTest {
     // TODO Change hello_level_1_annotated.pdf for hello_level_1_annotated_wrong.pdf after C2_09_signatureTypes revision
     public static final String EXAMPLE1 = "./src/test/resources/signatures/chapter05/hello_level_1_annotated.pdf";
@@ -71,6 +75,7 @@ public class C5_01_SignatureIntegrity extends SignatureTest {
 
     @Test
     public void runTest() throws GeneralSecurityException, IOException, InterruptedException, CardException {
+        new File("./target/test/resources/signatures/chapter05/").mkdirs();
         setupSystemOutput();
         C5_01_SignatureIntegrity.main(null);
         String sysOut = getSystemOutput();

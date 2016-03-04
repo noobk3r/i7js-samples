@@ -22,6 +22,7 @@
 //import java.io.FileOutputStream;
 //import java.io.IOException;
 //
+// @Category(SampleTest.class)
 //public class C4_04_InspectBEID {
 //
 //    public static final String PHOTO = "results/chapter4/photo.jpg";

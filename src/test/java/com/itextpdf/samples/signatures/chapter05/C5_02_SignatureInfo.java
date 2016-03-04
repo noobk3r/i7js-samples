@@ -25,8 +25,10 @@ import com.itextpdf.signatures.CertificateInfo;
 import com.itextpdf.signatures.PdfPKCS7;
 import com.itextpdf.signatures.SignaturePermissions;
 import com.itextpdf.signatures.SignatureUtil;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import javax.smartcardio.CardException;
+import java.io.File;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.security.Security;
@@ -38,9 +40,11 @@ import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.tsp.TimeStampToken;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
 @Ignore
+@Category(SampleTest.class)
 public class C5_02_SignatureInfo extends C5_01_SignatureIntegrity {
     public static final String EXAMPLE1 = "./src/test/resources/signatures/chapter05/step_4_signed_by_alice_bob_carol_and_dave.pdf";
     // public static final String EXAMPLE2 = "results/chapter3/hello_cacert_ocsp_ts.pdf"; // TODO Uncomment after C3_09_SignWithTSA revision
@@ -127,6 +131,7 @@ public class C5_02_SignatureInfo extends C5_01_SignatureIntegrity {
 
     @Test
     public void runTest() throws GeneralSecurityException, IOException, InterruptedException, CardException {
+        new File("./target/test/resources/signatures/chapter05/").mkdirs();
         setupSystemOutput();
         C5_02_SignatureInfo.main(null);
         String sysOut = getSystemOutput();

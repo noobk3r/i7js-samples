@@ -16,7 +16,9 @@ package com.itextpdf.samples.signatures.chapter03;
 
 import com.itextpdf.samples.SignatureTest;
 import com.itextpdf.signatures.CertificateUtil;
+import com.itextpdf.test.annotations.type.SampleTest;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -29,9 +31,11 @@ import java.util.Properties;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
 @Ignore
+@Category(SampleTest.class)
 public class C3_08_GetTsaUrl extends SignatureTest {
     public static final  String expectedOutput = ""; //TODO
 
@@ -57,6 +61,7 @@ public class C3_08_GetTsaUrl extends SignatureTest {
 
     @Test
     public void runTest() throws IOException, InterruptedException, GeneralSecurityException {
+        new File("./target/test/resources/signatures/chapter03/").mkdirs();
         setupSystemOutput();
         C3_08_GetTsaUrl.main(null);
         String sysOut = getSystemOutput();

@@ -32,7 +32,9 @@ import com.itextpdf.signatures.ExternalDigest;
 import com.itextpdf.signatures.ExternalSignature;
 import com.itextpdf.signatures.PdfSigner;
 import com.itextpdf.signatures.PrivateKeySignature;
+import com.itextpdf.test.annotations.type.SampleTest;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -48,9 +50,11 @@ import java.util.List;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
 @Ignore
+@Category(SampleTest.class)
 public class C2_11_SignatureWorkflow extends SignatureTest {
     public static final String FORM = "./target/test/resources/signatures/chapter02/form.pdf";
     public static final String ALICE = "./src/test/resources/signatures/chapter02/alice";
@@ -214,6 +218,7 @@ public class C2_11_SignatureWorkflow extends SignatureTest {
 
     @Test
     public void runTest() throws IOException, InterruptedException, GeneralSecurityException {
+        new File("./target/test/resources/signatures/chapter02/").mkdirs();
         C2_10_SequentialSignatures.main(null);
 
         String[] resultFiles = new String[]{"step1_signed_by_alice.pdf", "step2_signed_by_alice_and_filled_out_by_bob.pdf", "step3_signed_by_alice_and_bob.pdf",

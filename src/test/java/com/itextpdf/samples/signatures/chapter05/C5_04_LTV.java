@@ -27,7 +27,9 @@ import com.itextpdf.signatures.PdfSigner;
 import com.itextpdf.signatures.SignatureUtil;
 import com.itextpdf.signatures.TSAClient;
 import com.itextpdf.signatures.TSAClientBouncyCastle;
+import com.itextpdf.test.annotations.type.SampleTest;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -39,9 +41,11 @@ import java.util.Properties;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
 @Ignore
+@Category(SampleTest.class)
 public class C5_04_LTV extends SignatureTest {
     // public static final String EXAMPLE1 = "results/chapter3/hello_token.pdf"; // TODO Uncomment after C3_11_SignWithToken revision
     // public static final String EXAMPLE2 = "results/chapter4/hello_smartcard_Signature.pdf"; // TODO Uncomment after C4_03_SignWithPKCS11SC revision
@@ -88,6 +92,7 @@ public class C5_04_LTV extends SignatureTest {
 
     @Test
     public void runTest() throws IOException, InterruptedException, GeneralSecurityException {
+        new File("./target/test/resources/signatures/chapter05/").mkdirs();
         C5_04_LTV.main(null);
 
         String[] resultFiles = new String[]{ "hello_smartcard_Authentication.pdf", "hello_smartcard_Signature.pdf" };

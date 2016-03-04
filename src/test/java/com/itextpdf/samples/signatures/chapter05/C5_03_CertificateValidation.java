@@ -21,8 +21,10 @@ import com.itextpdf.signatures.PdfPKCS7;
 import com.itextpdf.signatures.SignatureUtil;
 import com.itextpdf.signatures.VerificationException;
 import com.itextpdf.signatures.VerificationOK;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import javax.smartcardio.CardException;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -45,9 +47,11 @@ import org.bouncycastle.cert.ocsp.BasicOCSPResp;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
 @Ignore
+@Category(SampleTest.class)
 public class C5_03_CertificateValidation extends C5_01_SignatureIntegrity {
     public static final String ADOBE = "./src/test/resources/signatures/chapter05/adobeRootCA.cer";
     public static final String CACERT = "./src/test/resources/signatures/chapter05/CACertSigningAuthority.crt";
@@ -166,6 +170,7 @@ public class C5_03_CertificateValidation extends C5_01_SignatureIntegrity {
 
     @Test
     public void runTest() throws GeneralSecurityException, IOException, InterruptedException, CardException {
+        new File("./target/test/resources/signatures/chapter05/").mkdirs();
         setupSystemOutput();
         C5_03_CertificateValidation.main(null);
         String sysOut = getSystemOutput();

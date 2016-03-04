@@ -15,14 +15,19 @@
 
 package com.itextpdf.samples.signatures.chapter01;
 
+import com.itextpdf.test.annotations.type.SampleTest;
+
+import java.io.File;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.security.Security;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
+@Category(SampleTest.class)
 public class C1_02_DigestBC extends C1_01_DigestDefault {
     public static final BouncyCastleProvider PROVIDER = new BouncyCastleProvider();
     public static final String expectedOutput = "Digest using MD5: 16\n" +
@@ -85,6 +90,7 @@ public class C1_02_DigestBC extends C1_01_DigestDefault {
 
     @Test
     public void runTest() throws GeneralSecurityException, IOException, InterruptedException {
+        new File("./target/test/resources/signatures/chapter01/").mkdirs();
         setupSystemOutput();
         C1_02_DigestBC.main(null);
         String sysOut = getSystemOutput();
