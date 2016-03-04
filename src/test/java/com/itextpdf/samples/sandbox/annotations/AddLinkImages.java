@@ -54,7 +54,7 @@ public class AddLinkImages extends GenericTest {
         p.add(createImage(DOG, "http://pages.itextpdf.com/ebook-stackoverflow-questions.html", pdfDoc));
         p.add(createImage(FOX, "http://stackoverflow.com/q/29388313/1622493", pdfDoc));
         //@TODO Use Image constructor instead of this ugly construction when PdfDocument is removed from PdfFont constructor(DEVSIX-329)
-        p.add(new Image((PdfFormXObject) new WmfImageHelper(new WmfImage(BUTTERFLY)).createPdfForm(pdfDoc)).
+        p.add(new Image(new PdfFormXObject(new WmfImage(BUTTERFLY), pdfDoc)).
                 setProperty(Property.ACTION, PdfAction.createURI("http://stackoverflow.com/questions/tagged/itext*")));
         doc.add(p);
         pdfDoc.close();
