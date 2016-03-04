@@ -84,8 +84,7 @@ public class CreateRadioInTable extends GenericTest {
 
         @Override
         public void draw(DrawContext drawContext) {
-            PdfFormField field = PdfFormField.createRadioButton(drawContext.getDocument(), getOccupiedAreaBBox(), radioGroup, value);
-            radioGroup.addKid(field);
+            PdfFormField.createRadioButton(drawContext.getDocument(), getOccupiedAreaBBox(), radioGroup, value);
         }
     }
 }
