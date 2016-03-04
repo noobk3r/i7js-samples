@@ -25,10 +25,8 @@ import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class ArabicExample extends GenericTest {
     public static final String DEST
@@ -37,11 +35,6 @@ public class ArabicExample extends GenericTest {
             = "./src/test/resources/sandbox/fonts/NotoNaskhArabic-Regular.ttf";
     public static final String ARABIC
             = "\u0627\u0644\u0633\u0639\u0631 \u0627\u0644\u0627\u062c\u0645\u0627\u0644\u064a";
-    public static final String ARABIC1
-            = " \u0627\u0644\u0633\u0639\u0631 ";
-    public static final String ARABIC2
-            = " \u0627\u0644\u0627\u062c\u0645\u0627\u0644\u064a ";
-
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -60,19 +53,10 @@ public class ArabicExample extends GenericTest {
         p.add(new Text(": 50.00 USD"));
         doc.add(p);
 
-        // TODO No way to set direction for thwe whole paragraph, not only certain texts
-        // TODO Delete the next lines after sample revising
-        p = new Paragraph("This is correct: ").setBaseDirection(Property.BaseDirection.LEFT_TO_RIGHT).setFontScript(Character.UnicodeScript.ARABIC);
-        p.add(new Text(ARABIC1).setFont(f));
-        p.add(new Text(ARABIC2).setFont(f));
-        p.add(new Text(": 50.00"));
-        doc.add(p);
-
         p = new Paragraph("This is correct: ").setBaseDirection(Property.BaseDirection.LEFT_TO_RIGHT).setFontScript(Character.UnicodeScript.ARABIC);
         p.add(new Text(ARABIC).setFont(f));
         p.add(new Text(": 50.00"));
         doc.add(p);
-
 
         doc.close();
     }
