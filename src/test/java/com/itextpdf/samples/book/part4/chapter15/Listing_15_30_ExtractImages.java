@@ -19,12 +19,11 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.xml.sax.SAXException;
 
-@Ignore
+
 @Category(SampleTest.class)
 public class Listing_15_30_ExtractImages {
     public static final String DEST

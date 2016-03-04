@@ -40,7 +40,7 @@ import java.io.PrintStream;
 import java.util.Set;
 import java.util.TreeSet;
 
-import org.junit.Ignore;
+
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
