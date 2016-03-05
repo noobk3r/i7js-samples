@@ -48,12 +48,12 @@ public class ArabicExample extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         PdfFont f = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H, true);
-        Paragraph p = new Paragraph("This is incorrect: ");
+        Paragraph p = new Paragraph("This is auto detection: ");
         p.add(new Text(ARABIC).setFont(f));
         p.add(new Text(": 50.00 USD"));
         doc.add(p);
 
-        p = new Paragraph("This is correct: ").setBaseDirection(Property.BaseDirection.LEFT_TO_RIGHT).setFontScript(Character.UnicodeScript.ARABIC);
+        p = new Paragraph("This is correct manual property: ").setBaseDirection(Property.BaseDirection.LEFT_TO_RIGHT).setFontScript(Character.UnicodeScript.ARABIC);
         p.add(new Text(ARABIC).setFont(f));
         p.add(new Text(": 50.00"));
         doc.add(p);

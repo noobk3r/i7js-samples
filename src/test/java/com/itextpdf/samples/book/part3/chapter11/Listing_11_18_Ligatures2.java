@@ -57,7 +57,7 @@ public class Listing_11_18_Ligatures2 extends GenericTest {
         PdfFont bf = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H, true);
         document.add(new Paragraph("Movie title: Lawrence of Arabia (UK)"));
         document.add(new Paragraph("directed by David Lean"));
-        document.add(new Paragraph("Wrong: " + MOVIE).setFont(bf).setFontSize(20));
+        document.add(new Paragraph("Autodetect: " + MOVIE).setFont(bf).setFontSize(20));
 
         Style arabic = new Style().setTextAlignment(Property.TextAlignment.RIGHT).setBaseDirection(Property.BaseDirection.RIGHT_TO_LEFT).
                 setFontSize(20).setFont(bf);
