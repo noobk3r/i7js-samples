@@ -31,7 +31,6 @@ import java.sql.Statement;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore("DEVSIX-443")
 @Category(SampleTest.class)
 public class Listing_02_14_MovieLists2 extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part1/chapter02/Listing_02_14_MovieLists2.pdf";
@@ -65,10 +64,7 @@ public class Listing_02_14_MovieLists2 extends GenericTest {
             // Create a list item for a country
             ListItem item = new ListItem(
                     String.format("%s: %d movies", rs.getString("country"), rs.getInt("c")));
-            item.setProperty(Property.LIST_SYMBOL, new Text(rs.getString("country_id")));
-
-            // TODO There is only one listSymbol for List in itext7
-            //list.setListSymbol(new Text(rs.getString("country_id")));
+            item.setListSymbol(rs.getString("country_id"));
             // Create a list for the movies produced in the current country
             List movielist = new List(Property.ListNumberingType.ENGLISH_LOWER);
             for (Movie movie : PojoFactory.getMovies(connection, rs.getString("country_id"))) {
