@@ -27,9 +27,6 @@ import org.junit.experimental.categories.Category;
 public class Listing_12_09_EncryptionPdf extends GenericTest {
     public static byte[] USER = "Hello".getBytes();
     public static byte[] OWNER = "World".getBytes();
-    // alias for the RESULT1
-    public static final String DEST
-            = "./target/test/resources/book/part3/chapter12/Listing_12_09_EncryptionPdf_encryption.pdf";
     public static final String RESULT1
             = "./target/test/resources/book/part3/chapter12/Listing_12_09_EncryptionPdf_encryption.pdf";
     public static final String RESULT2
@@ -38,7 +35,7 @@ public class Listing_12_09_EncryptionPdf extends GenericTest {
             = "./target/test/resources/book/part3/chapter12/Listing_12_09_EncryptionPdf_encryption_encrypted.pdf";
 
     public static void main(String args[]) throws IOException {
-        new Listing_12_01_MetadataPdf().manipulatePdf(DEST);
+        new Listing_12_09_EncryptionPdf().manipulatePdf(RESULT1);
     }
 
     public void manipulatePdf(String dest) throws IOException {
@@ -79,11 +76,11 @@ public class Listing_12_09_EncryptionPdf extends GenericTest {
         CompareTool compareTool = new CompareTool();
         String outPath = new File(dest).getParent();
         new File(outPath).mkdirs();
-        if(compareXml){
-            if(!compareTool.compareXmls(dest,cmp)){
+        if (compareXml) {
+            if (!compareTool.compareXmls(dest, cmp)) {
                 addError("The XML structures are different.");
             }
-        }else {
+        } else {
             if (compareRenders) {
                 addError(compareTool.compareVisually(dest, cmp, outPath, differenceImagePrefix));
                 addError(compareTool.compareLinkAnnotations(dest, cmp));
@@ -93,6 +90,16 @@ public class Listing_12_09_EncryptionPdf extends GenericTest {
             addError(compareTool.compareDocumentInfo(dest, cmp, OWNER, OWNER));
         }
 
-        if (errorMessage != null) Assert.fail(errorMessage);
+        if (errorMessage != null) {
+            Assert.fail(errorMessage);
+        }
+    }
+
+    // only for GenericTest running
+    @Override
+    protected String getDest() {
+        File file = new File(RESULT1);
+        file.getParentFile().mkdirs();
+        return RESULT1;
     }
 }

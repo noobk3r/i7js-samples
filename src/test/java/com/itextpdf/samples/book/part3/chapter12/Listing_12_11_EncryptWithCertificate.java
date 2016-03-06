@@ -18,6 +18,7 @@ import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.security.GeneralSecurityException;
 import java.security.KeyStore;
 import java.security.PrivateKey;
@@ -29,10 +30,8 @@ import java.security.cert.X509Certificate;
 import java.util.Properties;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_12_11_EncryptWithCertificate extends GenericTest {
     public static String RESULT1
@@ -41,8 +40,6 @@ public class Listing_12_11_EncryptWithCertificate extends GenericTest {
             = "./target/test/resources/book/part3/chapter12/Listing_12_11_EncryptWithCertificate_certificate_decrypted.pdf";
     public static String RESULT3
             = "./target/test/resources/book/part3/chapter12/Listing_12_11_EncryptWithCertificate_certificate_encrypted.pdf";
-    // TODO We had to ignore these sample due to special security jars needed to be replaced on the server
-    public static final String DEST = RESULT1;
     /**
      * A properties file that is PRIVATE.
      * You should make your own properties file and adapt this line.
@@ -50,10 +47,11 @@ public class Listing_12_11_EncryptWithCertificate extends GenericTest {
     public static String PATH
             = "./src/test/resources/book/part3/chapter12/key.properties";
     // public static String PATH = "c:/users/ars18wrw/key.properties";
+
     public static Properties properties = new Properties();
 
     public static void main(String args[]) throws IOException {
-        new Listing_12_01_MetadataPdf().manipulatePdf(DEST);
+        new Listing_12_01_MetadataPdf().manipulatePdf(RESULT1);
     }
 
     public void manipulatePdf(String dest) throws IOException, GeneralSecurityException {
@@ -141,5 +139,24 @@ public class Listing_12_11_EncryptWithCertificate extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(reader, writer);
         pdfDoc.close();
         reader.close();
+    }
+
+    @Override
+    protected String getDest() {
+        return RESULT2;
+    }
+
+    @Override
+    protected void beforeManipulatePdf() {
+        super.beforeManipulatePdf();
+        try {
+            Field field = Class.forName("javax.crypto.JceSecurity").
+                    getDeclaredField("isRestricted");
+            field.setAccessible(true);
+            field.set(null, java.lang.Boolean.FALSE);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
     }
 }

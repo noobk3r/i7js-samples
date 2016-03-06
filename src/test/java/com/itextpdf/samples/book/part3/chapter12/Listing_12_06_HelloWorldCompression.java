@@ -16,13 +16,13 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfVersion;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.utils.CompareTool;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.kernel.xmp.XMPException;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.List;
 import com.itextpdf.layout.element.ListItem;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Director;
@@ -40,9 +40,6 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_12_06_HelloWorldCompression extends GenericTest {
-    public static final String DEST
-            = "./target/test/resources/book/part3/chapter12/Listing_12_06_HelloWorldCompression.pdf";
-
     public static final String[] RESULT = {
             "./target/test/resources/book/part3/chapter12/Listing_12_06_HelloWorldCompression_compression_not_at_all.pdf",
             "./target/test/resources/book/part3/chapter12/Listing_12_06_HelloWorldCompression_compression_zero.pdf",
@@ -62,33 +59,18 @@ public class Listing_12_06_HelloWorldCompression extends GenericTest {
             "./src/test/resources/book/part3/chapter12/cmp_Listing_12_06_HelloWorldCompression_compression_removed.pdf"
     };
 
-//    public static final String RESULT1
-//            = "./target/test/resources/book/part3/chapter12/Listing_12_06_HelloWorldCompression_compression_not_at_all.pdf";
-//    public static final String RESULT2
-//            = "./target/test/resources/book/part3/chapter12/Listing_12_06_HelloWorldCompression_compression_zero.pdf";
-//    public static final String RESULT3
-//            = "./target/test/resources/book/part3/chapter12/Listing_12_06_HelloWorldCompression_compression_normal.pdf";
-//    public static final String RESULT4
-//            = "./target/test/resources/book/part3/chapter12/Listing_12_06_HelloWorldCompression_compression_high.pdf";
-//    public static final String RESULT5
-//            = "./target/test/resources/book/part3/chapter12/Listing_12_06_HelloWorldCompression_compression_full.pdf";
-//    public static final String RESULT6
-//            = "./target/test/resources/book/part3/chapter12/Listing_12_06_HelloWorldCompression_compression_full_too.pdf";
-//    public static final String RESULT7
-//            = "./target/test/resources/book/part3/chapter12/Listing_12_06_HelloWorldCompression_compression_removed.pdf";
-
     protected PdfFont bold;
     protected PdfFont boldItalic;
     protected PdfFont italic;
     protected PdfFont normal;
 
     public static void main(String args[]) throws IOException, XMPException, SQLException {
-        new Listing_12_06_HelloWorldCompression().manipulatePdf(DEST);
+        new Listing_12_06_HelloWorldCompression().manipulatePdf(RESULT[0]);
     }
 
     public void createPdf(String dest, int compression) throws IOException, XMPException, SQLException {
         PdfWriter writer = new PdfWriter(dest);
-        switch(compression) {
+        switch (compression) {
             case -1:
                 writer.setCompressionLevel(PdfOutputStream.NO_COMPRESSION);
                 break;
@@ -131,7 +113,7 @@ public class Listing_12_06_HelloWorldCompression extends GenericTest {
             item.setFont(boldItalic);
             // create a movie list for each country
             List movielist = new List(Property.ListNumberingType.ENGLISH_LOWER);
-            for(Movie movie :
+            for (Movie movie :
                     PojoFactory.getMovies(connection, rs.getString("country_id"))) {
                 ListItem movieitem = new ListItem(movie.getMovieTitle());
                 List directorlist = new List();
@@ -160,7 +142,7 @@ public class Listing_12_06_HelloWorldCompression extends GenericTest {
         pdfDoc.close();
     }
 
-    public void decompressPdf(String src, String dest) throws IOException{
+    public void decompressPdf(String src, String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
         pdfDoc.close();
     }
@@ -197,5 +179,13 @@ public class Listing_12_06_HelloWorldCompression extends GenericTest {
         }
 
         if (errorMessage != null) Assert.fail(errorMessage);
+    }
+
+    // only for GenericTest running
+    @Override
+    protected String getDest() {
+        File file = new File(RESULT[0]);
+        file.getParentFile().mkdirs();
+        return RESULT[0];
     }
 }
