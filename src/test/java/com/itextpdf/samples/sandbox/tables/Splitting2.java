@@ -14,8 +14,6 @@ package com.itextpdf.samples.sandbox.tables;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.border.Border;
-import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.samples.GenericTest;
@@ -23,16 +21,18 @@ import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 
+import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
+@Ignore
 @Category(SampleTest.class)
-public class Splitting extends GenericTest {
-    public static final String DEST = "./target/test/resources/sandbox/tables/splitting.pdf";
+public class Splitting2 extends GenericTest {
+    public static final String DEST = "./target/test/resources/sandbox/tables/splitting2.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
-        new Splitting().manipulatePdf(DEST);
+        new Splitting2().manipulatePdf(DEST);
     }
 
     @Override
@@ -49,7 +49,7 @@ public class Splitting extends GenericTest {
             doc.add(p);
         }
         doc.add(table);
-        for (int i = 0; i < 25; i++) {
+        for (int i = 0; i < 23; i++) {
             doc.add(p);
         }
         table = new Table(2);
@@ -57,12 +57,9 @@ public class Splitting extends GenericTest {
             table.addCell("key " + i);
             table.addCell("value " + i);
         }
-
-        Table nesting = new Table(1);
-        Cell cell = new Cell().add(table);
-        cell.setBorder(Border.NO_BORDER);
-        nesting.addCell(cell.setKeepTogether(true));
-        doc.add(nesting);
+        // TODO See the result
+        table.setKeepTogether(true);
+        doc.add(table);
         doc.close();
     }
 }

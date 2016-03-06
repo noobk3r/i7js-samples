@@ -40,7 +40,7 @@ public class RectangleInCell extends GenericTest {
     public static void main(String[] args) throws IOException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
-        new OrdinalNumbers().manipulatePdf(DEST);
+        new RectangleInCell().manipulatePdf(DEST);
     }
 
     public void manipulatePdf(String dest) throws IOException {
