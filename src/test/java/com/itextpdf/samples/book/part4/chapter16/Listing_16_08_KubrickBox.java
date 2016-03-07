@@ -13,7 +13,6 @@ import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfString;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.action.PdfTargetDictionary;
@@ -35,20 +34,18 @@ import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 
 import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Set;
 import java.util.TreeSet;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_16_08_KubrickBox extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part4/chapter16/Listing_16_08_KubrickBox.pdf";
-    public static final String IMG_BOX = "./src/test/resources/book/part4/chapter16/kubrick_box.jpg";
-    public static final String RESOURCE_FILES = "./src/test/resources/book/part4/chapter16/%s.pdf";
-    public static final String RESOURCE = "./src/test/resources/book/part4/chapter16/posters/%s.jpg";
+    public static final String IMG_BOX = "./src/test/resources/img/kubrick_box.jpg";
+    public static final String RESOURCE_FILES = "./src/test/resources/pdfs/%s.pdf";
+    public static final String RESOURCE = "./src/test/resources/img/posters/%s.jpg";
     public static final float[] WIDTHS = { 1 , 7 };
 
     public static void main(String args[]) throws Exception {

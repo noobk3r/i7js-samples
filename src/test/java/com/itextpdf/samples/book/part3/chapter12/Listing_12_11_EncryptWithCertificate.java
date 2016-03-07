@@ -64,7 +64,7 @@ public class Listing_12_11_EncryptWithCertificate extends GenericTest {
 
     public void createPdf(String dest) throws IOException, CertificateException {
         PdfWriter writer = new PdfWriter(dest);
-        Certificate cert1 = getPublicCertificate("./src/test/resources/book/part3/chapter12/foobar.cer");
+        Certificate cert1 = getPublicCertificate("./src/test/resources/encryption/foobar.cer");
         Certificate cert2 = getPublicCertificate(properties.getProperty("PUBLIC"));
         writer.setEncryption(new Certificate[]{cert1, cert2},
                 new int[]{PdfWriter.ALLOW_PRINTING, PdfWriter.ALLOW_COPY}, PdfWriter.ENCRYPTION_AES_128);
@@ -97,7 +97,7 @@ public class Listing_12_11_EncryptWithCertificate extends GenericTest {
      * @throws IOException
      */
     public PrivateKey getPrivateKey() throws GeneralSecurityException, IOException {
-        String path = "./src/test/resources/book/part3/chapter12/.keystore";
+        String path = "./src/test/resources/encryption/.keystore";
         KeyStore ks = KeyStore.getInstance(KeyStore.getDefaultType());
         ks.load(new FileInputStream(path), "f00b4r".toCharArray());
         PrivateKey pk = (PrivateKey) ks.getKey("foobar", "f1lmf3st".toCharArray());
@@ -115,7 +115,7 @@ public class Listing_12_11_EncryptWithCertificate extends GenericTest {
     public void decryptPdf(String src, String dest)
             throws IOException, GeneralSecurityException {
         PdfReader reader = new PdfReader(new RandomAccessSourceFactory().createBestSource(src), null,
-                getPublicCertificate("./src/test/resources/book/part3/chapter12/foobar.cer"), getPrivateKey(), "BC", null);
+                getPublicCertificate("./src/test/resources/encryption/foobar.cer"), getPrivateKey(), "BC", null);
         PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(dest));
         pdfDoc.close();
         reader.close();
@@ -132,7 +132,7 @@ public class Listing_12_11_EncryptWithCertificate extends GenericTest {
     public void encryptPdf(String src, String dest)
             throws IOException, CertificateException {
         PdfReader reader = new PdfReader(src);
-        Certificate cert = getPublicCertificate("./src/test/resources/book/part3/chapter12/foobar.cer");
+        Certificate cert = getPublicCertificate("./src/test/resources/encryption/foobar.cer");
         PdfWriter writer = new PdfWriter(dest);
         writer.setEncryption(new Certificate[]{cert},
                 new int[]{PdfWriter.ALLOW_PRINTING}, PdfWriter.ENCRYPTION_AES_128);

@@ -26,7 +26,7 @@ public class Listing_07_07_AddVersionChecker extends GenericTest {
     public static final String DEST
             = "./target/test/resources/book/part2/chapter07/Listing_07_07_AddVersionChecker.pdf";
     public static final String RESOURCE
-            = "./src/test/resources/book/part2/chapter07/viewer_version.js";
+            = "./src/test/resources/js/viewer_version.js";
 
     public static final String HELLO_WORLD = "./src/test/resources/book/part1/chapter01/cmp_Listing_01_01_HelloWorld.pdf";
 

@@ -46,7 +46,7 @@ public class Listing_16_05_KubrickDvds extends GenericTest {
     public static final String FILENAME = "Listing_16_05_KubrickDvds.pdf";
     public static final String DEST = "./target/test/resources/book/part4/chapter16/" + FILENAME;
     public static final String RESOURCE
-            = "./src/test/resources/book/part4/chapter16/posters/%s.jpg";
+            = "./src/test/resources/img/posters/%s.jpg";
     public static final String PATH = "./target/test/resources/book/part4/chapter16/%s";
 
     public static void main(String args[]) throws Exception {

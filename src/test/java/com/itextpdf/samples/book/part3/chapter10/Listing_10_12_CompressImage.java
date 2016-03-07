@@ -28,7 +28,7 @@ public class Listing_10_12_CompressImage extends GenericTest {
     public static final String RESULT2
             = "./target/test/resources/book/part3/chapter10/compressed.pdf";
     public static final String RESOURCE
-            = "./src/test/resources/book/part3/chapter10/butterfly.bmp";
+            = "./src/test/resources/img/butterfly.bmp";
 
     public static void main(String args[]) throws IOException {
         new Listing_10_12_CompressImage().manipulatePdf(DEST);

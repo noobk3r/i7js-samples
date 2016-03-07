@@ -39,7 +39,7 @@ import org.junit.experimental.categories.Category;
 public class Listing_04_14_MovieCompositeMode extends GenericTest {
     public static final String DEST =
             "./target/test/resources/book/part1/chapter04/Listing_04_14_MovieCompositeRole.pdf";
-    public static final String RESOURCE = "./src/test/resources/book/part1/chapter02/posters/%s.jpg";
+    public static final String RESOURCE = "./src/test/resources/img/posters/%s.jpg";
 
     protected PdfFont normal;
     protected PdfFont bold;

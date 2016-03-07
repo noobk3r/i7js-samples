@@ -34,7 +34,7 @@ public class Listing_10_13_CompressAwt extends GenericTest {
     public static final String RESULT3
             = "./target/test/resources/book/part3/chapter10/hitchcock10.pdf";
     public static final String RESOURCE
-            = "./src/test/resources/book/part3/chapter10/hitchcock.png";
+            = "./src/test/resources/img/hitchcock.png";
 
     public static void main(String args[]) throws IOException {
         new Listing_10_13_CompressAwt().manipulatePdf(DEST);

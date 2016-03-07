@@ -45,7 +45,7 @@ public class Listing_07_22_MoviePosters1 extends GenericTest {
      */
     public static final String IMDB
             = "http://imdb.com/title/tt%s/";
-    public static final String RESOURCE = "./src/test/resources/book/part2/chapter07/posters/%s.jpg";
+    public static final String RESOURCE = "./src/test/resources/img/posters/%s.jpg";
 
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_07_22_MoviePosters1().manipulatePdf(DEST);

@@ -47,7 +47,7 @@ public class Listing_15_11_ObjectData extends GenericTest {
     public static final String DEST
             = "./target/test/resources/book/part4/chapter15/Listing_15_11_ObjectData.pdf";
     public static final String RESOURCE
-            = "./src/test/resources/book/part4/chapter15//posters/%s.jpg";
+            = "./src/test/resources/img/posters/%s.jpg";
     public static final String SELECTDIRECTORS
             = "SELECT DISTINCT d.id, d.name, d.given_name, count(*) AS c "
                     + "FROM film_director d, film_movie_director md "

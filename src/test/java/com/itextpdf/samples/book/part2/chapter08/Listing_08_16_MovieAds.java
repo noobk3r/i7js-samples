@@ -58,12 +58,12 @@ public class Listing_08_16_MovieAds extends GenericTest {
      * The source PDF file: the template for the complete ad.
      */
     public static final String RESOURCE
-            = "./src/test/resources/book/part2/chapter08/movie_overview.pdf";
+            = "./src/test/resources/pdfs/movie_overview.pdf";
     /**
      * Path to the movie posters
      */
     public static final String IMAGE
-            = "./src/test/resources/book/part2/chapter08/posters/%s.jpg";
+            = "./src/test/resources/img/posters/%s.jpg";
     /**
      * Field name for the poster
      */

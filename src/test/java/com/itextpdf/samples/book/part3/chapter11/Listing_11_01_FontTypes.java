@@ -31,14 +31,14 @@ public class Listing_11_01_FontTypes extends GenericTest {
     public static String[][] FONTS = {
             {FontConstants.HELVETICA, PdfEncodings.WINANSI},
             // TODO problems with CMR fonts
-            {"./src/test/resources/book/part3/chapter11/cmr10.afm", PdfEncodings.WINANSI},
-            {"./src/test/resources/book/part3/chapter11/cmr10.pfm", PdfEncodings.WINANSI},
+            {"./src/test/resources/font/cmr10.afm", PdfEncodings.WINANSI},
+            {"./src/test/resources/font/cmr10.pfm", PdfEncodings.WINANSI},
             //{"c:/windows/fonts/ARBLI__.TTF", PdfEncodings.WINANSI},
             {/*"c:/windows/fonts/arial.ttf"*/"./src/test/resources/font/FreeSans.ttf", PdfEncodings.WINANSI},
             {/*"c:/windows/fonts/arial.ttf"*/"./src/test/resources/font/FreeSans.ttf", PdfEncodings.IDENTITY_H},
-            {"./src/test/resources/book/part3/chapter11/Puritan2.otf", PdfEncodings.WINANSI},
+            {"./src/test/resources/font/Puritan2.otf", PdfEncodings.WINANSI},
             // Notice that we'va changed windows MS Gothic to IPA Gothic so the results in comparison with itext5 are different
-            {"./src/test/resources/book/part3/chapter11/ipam.ttc,0", PdfEncodings.IDENTITY_H},
+            {"./src/test/resources/font/ipam.ttc,0", PdfEncodings.IDENTITY_H},
             // TODO Do not render
             {"KozMinPro-Regular", "UniJIS-UCS2-H"}
     };

@@ -22,7 +22,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class Listing_16_15_MovieAnnotation extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part4/chapter16/Listing_16_15_MovieAnnotation.pdf";
-    public static final String RESOURCE = "./src/test/resources/book/part4/chapter16/foxdog.mpg";
+    public static final String RESOURCE = "./src/test/resources/img/foxdog.mpg";
 
     public static void main(String args[]) throws Exception {
         new Listing_16_15_MovieAnnotation().manipulatePdf(DEST);

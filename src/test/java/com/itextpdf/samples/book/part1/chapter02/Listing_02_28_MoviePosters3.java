@@ -37,7 +37,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class Listing_02_28_MoviePosters3 extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part1/chapter02/Listing_02_28_MoviePosters3.pdf";
-    public static final String RESOURCE = "./src/test/resources/book/part1/chapter02/posters/%s.jpg";
+    public static final String RESOURCE = "./src/test/resources/img/posters/%s.jpg";
 
     protected PdfFont bold;
 

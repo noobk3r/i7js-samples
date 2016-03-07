@@ -40,7 +40,7 @@ public class Listing_06_07_Superimposing extends GenericTest {
     public static final String SOURCE
             = "./target/test/resources/book/part2/chapter06/Listing_06_07_Superimposing_opening.pdf";
     public static final String RESOURCE
-            = "./src/test/resources/book/part2/chapter06/loa.jpg";
+            = "./src/test/resources/img/loa.jpg";
 
     public static final PageSize postCard = new PageSize(283, 416);
 

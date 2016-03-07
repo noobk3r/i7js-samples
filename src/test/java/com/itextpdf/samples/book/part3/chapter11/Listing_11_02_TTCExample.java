@@ -26,7 +26,7 @@ public class Listing_11_02_TTCExample extends GenericTest {
             = "./target/test/resources/book/part3/chapter11/Listing_11_02_TTCExample.pdf";
     // Notice that we'va changed windows MS Gothic to IPA Gothic so the results in comparison with itext5 are different
     public static final String FONT
-            = "./src/test/resources/book/part3/chapter11/ipam.ttc";
+            = "./src/test/resources/font/ipam.ttc";
     // public static final String FONT = "c:/windows/fonts/msgothic.ttc";
 
     public static void main(String[] agrs) throws Exception {

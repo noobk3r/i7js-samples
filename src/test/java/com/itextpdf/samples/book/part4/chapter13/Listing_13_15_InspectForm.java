@@ -37,7 +37,7 @@ public class Listing_13_15_InspectForm extends GenericTest {
     public static final String CMPTXT
             = "./src/test/resources/book/part4/chapter13/cmp_Listing_13_15_InspectForm_fieldflags.txt";
     public static final String SUBSCRIBE
-            = "./src/test/resources/book/part2/chapter08/subscribe.pdf";
+            = "./src/test/resources/pdfs/subscribe.pdf";
 
     public static void main(String args[]) throws IOException, SQLException, XMPException {
         new Listing_13_15_InspectForm().manipulatePdf(DEST);

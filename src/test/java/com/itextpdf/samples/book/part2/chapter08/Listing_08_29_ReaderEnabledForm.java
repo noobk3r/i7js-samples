@@ -28,7 +28,7 @@ public class Listing_08_29_ReaderEnabledForm extends GenericTest {
     /**
      * The original PDF.
      */
-    public static final String RESOURCE = "./src/test/resources/book/part2/chapter08/xfa_enabled.pdf";
+    public static final String RESOURCE = "./src/test/resources/pdfs/xfa_enabled.pdf";
     /**
      * The resulting PDF.
      */

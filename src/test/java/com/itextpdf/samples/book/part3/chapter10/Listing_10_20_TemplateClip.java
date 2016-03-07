@@ -27,7 +27,7 @@ public class Listing_10_20_TemplateClip extends GenericTest {
     public static final String DEST
             = "./target/test/resources/book/part3/chapter10/Listing_10_20_TemplateClip.pdf";
     public static final String RESOURCE
-            = "./src/test/resources/book/part3/chapter10/bruno_ingeborg.jpg";
+            = "./src/test/resources/img/bruno_ingeborg.jpg";
 
     public static void main(String args[]) throws IOException {
         new Listing_10_20_TemplateClip().manipulatePdf(DEST);

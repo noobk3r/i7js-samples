@@ -28,7 +28,7 @@ public class Listing_10_18_ImageMask extends GenericTest {
     public static final String RESULT2
             = "./target/test/resources/book/part3/chapter10/softmask.pdf";
     public static final String RESOURCE
-            = "./src/test/resources/book/part3/chapter10/bruno.jpg";
+            = "./src/test/resources/img/bruno.jpg";
 
     public static void main(String args[]) throws IOException {
         new Listing_10_18_ImageMask().manipulatePdf(DEST);

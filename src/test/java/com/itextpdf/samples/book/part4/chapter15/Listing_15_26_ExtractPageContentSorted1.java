@@ -21,7 +21,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 import org.xml.sax.SAXException;
 
@@ -30,7 +29,7 @@ public class Listing_15_26_ExtractPageContentSorted1 {
     public static final String DEST
             = "./samples/target/test/resources/book/part4/chapter15/Listing_15_26_ExtractPageContentSorted1.txt";
     public static final String PREFACE
-            = "./samples/src/test/resources/book/part4/chapter15/preface.pdf";
+            = "./samples/src/test/resources/pdfs/preface.pdf";
 
     public static void main(String args[])
             throws IOException, SQLException, ParserConfigurationException, SAXException {

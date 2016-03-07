@@ -8,23 +8,28 @@
 package com.itextpdf.samples.book.part4.chapter16;
 
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.pdf.*;
+import com.itextpdf.kernel.pdf.PdfArray;
+import com.itextpdf.kernel.pdf.PdfDictionary;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfName;
+import com.itextpdf.kernel.pdf.PdfNumber;
+import com.itextpdf.kernel.pdf.PdfOutputStream;
+import com.itextpdf.kernel.pdf.PdfStream;
+import com.itextpdf.kernel.pdf.PdfString;
+import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.annot.Pdf3DAnnotation;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
-import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.FileInputStream;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_16_16_Pdf3D extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part4/chapter16/Listing_16_16_Pdf3D.pdf";
-    public static String RESOURCE = "./src/test/resources/book/part4/chapter16/teapot.u3d";
+    public static String RESOURCE = "./src/test/resources/img/teapot.u3d";
 
     public static void main(String args[]) throws Exception {
         new Listing_16_16_Pdf3D().manipulatePdf(DEST);

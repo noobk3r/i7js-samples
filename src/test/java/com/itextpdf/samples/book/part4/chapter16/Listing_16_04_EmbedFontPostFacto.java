@@ -18,15 +18,14 @@ import com.itextpdf.kernel.pdf.PdfOutputStream;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfStream;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
@@ -36,7 +35,7 @@ public class Listing_16_04_EmbedFontPostFacto extends GenericTest {
     public static String RESULT1
             = "./target/test/resources/book/part4/chapter16/Listing_16_04_EmbedFontPostFacto_without_font.pdf";
     public static String FONT
-            = "./src/test/resources/book/part4/chapter16/wds011402.ttf";
+            = "./src/test/resources/font/wds011402.ttf";
     public static String FONTNAME
             = "WaltDisneyScriptv4.1";
 

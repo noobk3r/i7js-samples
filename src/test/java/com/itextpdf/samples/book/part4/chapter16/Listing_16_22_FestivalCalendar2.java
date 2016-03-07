@@ -33,7 +33,7 @@ import org.junit.experimental.categories.Category;
 public class Listing_16_22_FestivalCalendar2 extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part4/chapter16/Listing_16_22_FestivalCalendar2.pdf";
 //    public static final String RESOURCE = "resources/swf/FestivalCalendar2.swf";
-    public static final String JS = "./src/test/resources/book/part4/chapter16/show_date.js";
+    public static final String JS = "./src/test/resources/js/show_date.js";
 
     protected static String readFileToString(String path) throws IOException {
         File file = new File(path);

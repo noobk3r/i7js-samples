@@ -42,10 +42,10 @@ public class Listing_15_09_SvgToPdf extends GenericTest {
             = "./target/test/resources/book/part4/chapter15/Listing_15_09_SvgToPdf.pdf";
     /** The map (shapes). */
     public static final String CITY
-            = "./src/test/resources/book/part4/chapter15/foobarcity.svg";
+            = "./src/test/resources/xml/foobarcity.svg";
     /** The map (text = street names in English). */
     public static final String STREETS
-            = "./src/test/resources/book/part4/chapter15/foobarstreets.svg";
+            = "./src/test/resources/xml/foobarstreets.svg";
 
     protected SAXSVGDocumentFactory factory;
     protected BridgeContext ctx;

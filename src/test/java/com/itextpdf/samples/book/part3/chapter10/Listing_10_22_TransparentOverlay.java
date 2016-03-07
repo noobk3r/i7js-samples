@@ -32,7 +32,7 @@ public class Listing_10_22_TransparentOverlay extends GenericTest {
     public static final String DEST
             = "./target/test/resources/book/part3/chapter10/Listing_10_22_TransparentOverlay.pdf";
     public static final String RESOURCE
-            = "./src/test/resources/book/part3/chapter10/bruno_ingeborg.jpg";
+            = "./src/test/resources/img/bruno_ingeborg.jpg";
 
     public static void main(String args[]) throws IOException {
         new Listing_10_22_TransparentOverlay().manipulatePdf(DEST);

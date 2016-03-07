@@ -35,7 +35,7 @@ public class Listing_07_09_FindDirectors extends GenericTest {
     public static final String DEST
             = "./target/test/resources/book/part2/chapter07/Listing_07_09_FindDirectors.pdf";
     public static final String RESOURCE
-            = "./src/test/resources/book/part2/chapter07/find_director.js";
+            = "./src/test/resources/js/find_director.js";
 
     public static final String NESTED_TABLES = "./src/test/resources/book/part1/chapter04/cmp_Listing_04_17_NestedTables.pdf";
 

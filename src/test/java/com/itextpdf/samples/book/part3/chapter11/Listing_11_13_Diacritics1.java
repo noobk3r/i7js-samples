@@ -33,7 +33,7 @@ public class Listing_11_13_Diacritics1 extends GenericTest {
     public static final String MOVIE =
             "\u0e1f\u0e49\u0e32\u0e17\u0e30\u0e25\u0e32\u0e22\u0e42\u0e08\u0e23";
     public static final String POSTER =
-            "./src/test/resources/book/part3/chapter11/posters/0269217.jpg";
+            "./src/test/resources/img/posters/0269217.jpg";
     public static final String[] FONTS = {
             /*"c:/windows/fonts/angsa.ttf"*/"./src/test/resources/font/NotoSansThai-Regular.ttf",
             /*"c:/windows/fonts/arialuni.ttf"*/"./src/test/resources/font/NotoSerifThai-Regular.ttf"

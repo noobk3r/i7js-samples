@@ -30,7 +30,7 @@ public class Listing_06_10_TilingHero extends GenericTest {
     public static final String DEST
             = "./target/test/resources/book/part2/chapter06/Listing_06_10_TilingHero.pdf";
     public static final String SOURCE
-            = "./src/test/resources/book/part2/chapter06/hero.pdf";
+            = "./src/test/resources/pdfs/hero.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_06_09_NUpTool().manipulatePdf(DEST);

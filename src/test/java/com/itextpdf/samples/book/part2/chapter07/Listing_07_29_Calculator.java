@@ -47,7 +47,7 @@ public class Listing_07_29_Calculator extends GenericTest {
     /**
      * Path to the resource.
      */
-    public static final String RESOURCE = "./src/test/resources/book/part2/chapter07/calculator.js";
+    public static final String RESOURCE = "./src/test/resources/js/calculator.js";
 
     /**
      * Position of the digits

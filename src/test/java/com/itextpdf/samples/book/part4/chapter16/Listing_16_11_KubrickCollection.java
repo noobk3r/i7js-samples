@@ -47,8 +47,8 @@ import org.junit.experimental.categories.Category;
 public class Listing_16_11_KubrickCollection extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part4/chapter16/Listing_16_11_KubrickCollection.pdf";
     public static final String RESOURCE = "./src/test/resources/book/part4/chapter16/";
-    public static final String IMG_BOX = "./src/test/resources/book/part4/chapter16/kubrick_box.jpg";
-    public static final String IMG_KUBRICK = "./src/test/resources/book/part4/chapter16/kubrick.jpg";
+    public static final String IMG_BOX = "./src/test/resources/img/kubrick_box.jpg";
+    public static final String IMG_KUBRICK = "./src/test/resources/img/kubrick.jpg";
     public static final String TYPE_FIELD = "TYPE";
     public static final String TYPE_CAPTION = "File type";
     public static final String FILE_FIELD = "FILE";

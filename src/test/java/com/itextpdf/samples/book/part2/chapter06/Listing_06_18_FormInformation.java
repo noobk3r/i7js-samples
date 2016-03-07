@@ -27,7 +27,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class Listing_06_18_FormInformation extends GenericTest {
     public static final String DATASHEET
-            = "./src/test/resources/book/part2/chapter06/datasheet.pdf";
+            = "./src/test/resources/pdfs/datasheet.pdf";
     public static final String RESULT
             = "./target/test/resources/book/part2/chapter06/Listing_06_18_FormInformation.txt";
     public static final String CMP_RESULT

@@ -45,9 +45,9 @@ public class Listing_07_27_Advertisement extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part2/chapter07/Listing_07_27_Advertisement.pdf";
 
     /** Path to a resource. */
-    public static final String RESOURCE = "./src/test/resources/book/part2/chapter07/hero.pdf";
+    public static final String RESOURCE = "./src/test/resources/pdfs/hero.pdf";
     /** Path to a resource. */
-    public static final String IMAGE = "./src/test/resources/book/part2/chapter07/close.png";
+    public static final String IMAGE = "./src/test/resources/img/close.png";
     /** The resulting PDF file. */
 
     public static final String NESTED_TABLES = "./src/test/resources/book/part1/chapter04/cmp_Listing_04_17_NestedTables.pdf";

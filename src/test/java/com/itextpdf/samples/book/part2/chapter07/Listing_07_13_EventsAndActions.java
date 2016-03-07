@@ -30,7 +30,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class Listing_07_13_EventsAndActions extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part2/chapter07/Listing_07_13_EventAndActions.pdf";
-    public static final String RESOURCE = "./src/test/resources/book/part2/chapter07/print_page.js";
+    public static final String RESOURCE = "./src/test/resources/js/print_page.js";
 
     public static final String MOVIE_TEMPLATES = "./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
 

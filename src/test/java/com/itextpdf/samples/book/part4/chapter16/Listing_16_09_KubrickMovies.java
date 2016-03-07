@@ -17,7 +17,11 @@ import com.itextpdf.kernel.pdf.PdfNumber;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.action.PdfTargetDictionary;
-import com.itextpdf.kernel.pdf.collection.*;
+import com.itextpdf.kernel.pdf.collection.PdfCollection;
+import com.itextpdf.kernel.pdf.collection.PdfCollectionField;
+import com.itextpdf.kernel.pdf.collection.PdfCollectionItem;
+import com.itextpdf.kernel.pdf.collection.PdfCollectionSchema;
+import com.itextpdf.kernel.pdf.collection.PdfCollectionSort;
 import com.itextpdf.kernel.pdf.filespec.PdfFileSpec;
 import com.itextpdf.kernel.pdf.navigation.PdfNamedDestination;
 import com.itextpdf.layout.Document;
@@ -38,14 +42,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_16_09_KubrickMovies extends GenericTest {
     public static final String FILENAME = "Listing_16_09_KubrickMovies.pdf";
     public static final String DEST = "./target/test/resources/book/part4/chapter16/" + FILENAME;
-    public static final String RESOURCE_FILES = "./src/test/resources/book/part4/chapter16/%s.pdf";
+    public static final String RESOURCE_FILES = "./src/test/resources/pdfs/%s.pdf";
     public static final String RESOURCE = "./src/test/resources/img/posters/%s.jpg";
     public static final float[] WIDTHS = {50, 350};
 

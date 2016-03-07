@@ -6,12 +6,12 @@
 //*/
 //
 ///*
-// * This class is part of the white paper entitled
-// * "Digital Signatures for PDF documents"
-// * written by Bruno Lowagie
-// *
-// * For more info, go to: http://itextpdf.com/learn
-// */
+//* This class is part of the white paper entitled
+//* "Digital Signatures for PDF documents"
+//* written by Bruno Lowagie
+//*
+//* For more info, go to: http://itextpdf.com/learn
+//*/
 //package com.itextpdf.samples.signatures.chapter03;
 //
 //import sun.security.mscapi.SunMSCAPI;
@@ -25,6 +25,7 @@
 //import com.itextpdf.signatures.TSAClient;
 //import com.itextpdf.signatures.TSAClientBouncyCastle;
 //
+//import java.io.File;
 //import java.io.IOException;
 //import java.security.GeneralSecurityException;
 //import java.security.KeyStore;

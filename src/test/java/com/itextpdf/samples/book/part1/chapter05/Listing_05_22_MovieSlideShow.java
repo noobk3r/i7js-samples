@@ -7,22 +7,22 @@
 
 package com.itextpdf.samples.book.part1.chapter05;
 
-import com.itextpdf.kernel.events.PdfDocumentEvent;
-import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.events.Event;
 import com.itextpdf.kernel.events.IEventHandler;
+import com.itextpdf.kernel.events.PdfDocumentEvent;
+import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfVersion;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
@@ -39,13 +39,11 @@ import java.util.List;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-import javax.swing.event.DocumentEvent;
-
 @Ignore
 @Category(SampleTest.class)
 public class Listing_05_22_MovieSlideShow extends GenericTest {
     static public final String DEST = "./target/test/resources/book/part1/chapter05/Listing_05_22_MovieSlideShow.pdf";
-    public static final String RESOURCE = "./src/test/resources/book/part1/chapter05/posters/%s.jpg";
+    public static final String RESOURCE = "./src/test/resources/img/posters/%s.jpg";
 
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_05_22_MovieSlideShow().manipulatePdf(DEST);

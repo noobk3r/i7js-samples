@@ -30,7 +30,7 @@ public class Listing_11_03_EncodingNames extends GenericTest {
             = "./target/test/resources/book/part3/chapter11/Listing_11_03_EncodingNames.pdf";
     public static final String[] FONT = {
             //"c:/windows/fonts/ARBLI__.TTF",
-            "./src/test/resources/book/part3/chapter11/Puritan2.otf",
+            "./src/test/resources/font/Puritan2.otf",
             /*"c:/windows/fonts/arialbd.ttf"*/"./src/test/resources/font/FreeSans.ttf"
     };
 

@@ -40,7 +40,7 @@ public class Listing_07_24_MovieAnnotations3 extends GenericTest {
     /**
      * Pattern for an info String.
      */
-    public static final String RESOURCE = "./src/test/resources/book/part2/chapter07/posters/%s.jpg";
+    public static final String RESOURCE = "./src/test/resources/img/posters/%s.jpg";
 
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_07_24_MovieAnnotations3().manipulatePdf(DEST);

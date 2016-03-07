@@ -27,7 +27,7 @@ public class Listing_14_07_TransformationMatrix2 extends GenericTest {
     public static final String DEST
             = "./target/test/resources/book/part4/chapter14/Listing_14_07_TransformationMatrix2.pdf";
     public static final String RESOURCE
-            = "./src/test/resources/book/part4/chapter14/logo.pdf";
+            = "./src/test/resources/pdfs/logo.pdf";
 
     public static void main(String args[]) throws IOException {
         new Listing_14_06_TransformationMatrix1().manipulatePdf(DEST);

@@ -7,9 +7,9 @@
 
 package com.itextpdf.samples.book.part4.chapter15;
 
-import com.itextpdf.kernel.parser.*;
-import com.itextpdf.kernel.geom.LineSegment;
-import com.itextpdf.kernel.geom.Vector;
+import com.itextpdf.kernel.parser.PdfCanvasProcessor;
+import com.itextpdf.kernel.parser.SimpleTextExtractionStrategy;
+import com.itextpdf.kernel.parser.TextExtractionStrategy;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -19,9 +19,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.Set;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 import org.xml.sax.SAXException;
 
@@ -30,7 +28,7 @@ public class Listing_15_25_ExtractPageContent {
     public static final String DEST
             = "./samples/target/test/resources/book/part4/chapter15/Listing_15_25_ExtractPageContent.txt";
     public static final String PREFACE
-            = "./samples/src/test/resources/book/part4/chapter15/preface.pdf";
+            = "./samples/src/test/resources/pdfs/preface.pdf";
 
     public static void main(String args[])
             throws IOException, SQLException, ParserConfigurationException, SAXException {

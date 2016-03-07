@@ -28,8 +28,6 @@ import org.junit.experimental.categories.Category;
 public class Listing_06_04_ImportingPages1 extends GenericTest {
     public static final String DEST
             = "./target/test/resources/book/part2/chapter06/Listing_06_04_ImportingPages1.pdf";
-    public static final String SOURCE
-            = "./src/test/resources/source.pdf";
     public static final String MOVIE_TEMPLATES
             = "./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
 

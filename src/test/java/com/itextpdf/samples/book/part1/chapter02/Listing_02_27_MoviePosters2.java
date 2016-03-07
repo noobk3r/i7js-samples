@@ -31,7 +31,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class Listing_02_27_MoviePosters2 extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part1/chapter02/Listing_02_27_MoviePosters2.pdf";
-    public static final String RESOURCE = "./src/test/resources/book/part1/chapter02/posters/%s.jpg";
+    public static final String RESOURCE = "./src/test/resources/img/posters/%s.jpg";
 
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_02_27_MoviePosters2().manipulatePdf(DEST);

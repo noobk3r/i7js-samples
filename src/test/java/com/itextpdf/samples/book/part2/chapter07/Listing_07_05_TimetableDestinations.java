@@ -39,7 +39,7 @@ public class Listing_07_05_TimetableDestinations extends GenericTest {
     public static final String DEST
             = "./target/test/resources/book/part2/chapter07/Listing_07_05_TimetableDestinations.pdf";
     public static final String SRC
-            = "./src/test/resources/book/part2/chapter07/viewer_version.js";
+            = "./src/test/resources/js/viewer_version.js";
     public static final String MOVIE_TEMPLATES
             = "./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
 

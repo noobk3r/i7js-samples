@@ -24,13 +24,13 @@ import org.junit.experimental.categories.Category;
 public class Listing_10_16_TransparentImage extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part3/chapter10/Listing_10_16_TransparentImage.pdf";
     public static final String RESOURCE1
-            = "./src/test/resources/book/part3/chapter10/bruno.jpg";
+            = "./src/test/resources/img/bruno.jpg";
     public static final String RESOURCE2
-            = "./src/test/resources/book/part3/chapter10/info.png";
+            = "./src/test/resources/img/info.png";
     public static final String RESOURCE3
-            = "./src/test/resources/book/part3/chapter10/1t3xt.gif";
+            = "./src/test/resources/img/1t3xt.gif";
     public static final String RESOURCE4
-            = "./src/test/resources/book/part3/chapter10/logo.gif";
+            = "./src/test/resources/img/logo.gif";
 
     public static void main(String args[]) throws IOException {
         new Listing_10_16_TransparentImage().manipulatePdf(DEST);

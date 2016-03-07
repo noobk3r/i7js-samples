@@ -48,7 +48,7 @@ public class Listing_04_23_ColumnTable extends GenericTest {
     public static final String DEST =
             "./target/test/resources/book/part1/chapter04/Listing_04_23_ColumnTable.pdf";
     public static final String RESOURCE =
-            "./src/test/resources/book/part1/chapter02/posters/%s.jpg";
+            "./src/test/resources/img/posters/%s.jpg";
 
     protected PdfFont bold;
     protected Date date;

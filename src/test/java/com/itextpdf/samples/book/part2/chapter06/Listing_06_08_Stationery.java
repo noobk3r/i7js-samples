@@ -55,7 +55,7 @@ public class Listing_06_08_Stationery extends GenericTest {
     public static final String SOURCE
             = "./target/test/resources/book/part2/chapter06/Listing_06_08_Stationery_watermark.pdf";
     public static final String RESOURCE
-            = "./src/test/resources/book/part2/chapter06/loa.jpg";
+            = "./src/test/resources/img/loa.jpg";
 
     protected PdfFont bold;
     protected PdfFont italic;

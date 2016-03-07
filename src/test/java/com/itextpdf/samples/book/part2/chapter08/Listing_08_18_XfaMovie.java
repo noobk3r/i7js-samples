@@ -42,9 +42,9 @@ import org.xml.sax.SAXException;
 public class Listing_08_18_XfaMovie extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part2/chapter08/Listing_08_18_XfaMovie.pdf";
     /** The original PDF. */
-    public static final String RESOURCE = "./src/test/resources/book/part2/chapter08/xfa_movie.pdf";
+    public static final String RESOURCE = "./src/test/resources/pdfs/xfa_movie.pdf";
     /** XML making up an XFA form we want to put inside an existing PDF. */
-    public static final String RESOURCEXFA = "./src/test/resources/book/part2/chapter08/xfa.xml";
+    public static final String RESOURCEXFA = "./src/test/resources/xml/xfa.xml";
     /** Shows information about a form that has an AcroForm and an XFA stream. */
     public static final String RESULTTXT1 = "./target/test/resources/book/part2/chapter08/movie_xfa.txt";
     /** Shows information about a form that has an AcroForm after the XFA stream was removed. */

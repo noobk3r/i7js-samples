@@ -60,7 +60,7 @@ public class Listing_08_01_Buttons extends GenericTest {
     /**
      * Path to a JavaScript resource.
      */
-    public static final String RESOURCE = "./src/test/resources/book/part2/chapter08/buttons.js";
+    public static final String RESOURCE = "./src/test/resources/js/buttons.js";
     /**
      * Path to an image used as button icon.
      */

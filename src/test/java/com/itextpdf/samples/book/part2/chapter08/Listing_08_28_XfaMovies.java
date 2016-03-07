@@ -34,7 +34,7 @@ import org.junit.experimental.categories.Category;
 public class Listing_08_28_XfaMovies extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part2/chapter08/Listing_08_28_XfaMovies.pdf";
     /** The original PDF. */
-    public static final String RESOURCE = "./src/test/resources/book/part2/chapter08/xfa_movies.pdf";
+    public static final String RESOURCE = "./src/test/resources/pdfs/xfa_movies.pdf";
     /** Information about the form in xfa_movies.pdf */
     public static final String RESULTTXT = "./target/test/resources/book/part2/chapter08/movies_xfa.txt";
     /** The XML data that is going to be used to fill out the XFA form. */

@@ -37,9 +37,9 @@ public class Listing_15_10_SvgLayers extends Listing_15_09_SvgToPdf {
     public static final String DEST
             = "./target/test/resources/book/part4/chapter15/Listing_15_10_SvgLayers.pdf";
     public static final String RUES
-            = "./src/test/resources/book/part4/chapter15/foobarrues.svg";
+            = "./src/test/resources/xml/foobarrues.svg";
     public static final String STRATEN
-            = "./src/test/resources/book/part4/chapter15/foobarstraten.svg";
+            = "./src/test/resources/xml/foobarstraten.svg";
 
     public static void main(String args[]) throws IOException {
         new Listing_15_10_SvgLayers().manipulatePdf(DEST);

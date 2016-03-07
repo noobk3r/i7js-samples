@@ -37,7 +37,7 @@ public class Listing_15_16_StructuredContent extends GenericTest {
     public static final String DEST
             = "./target/test/resources/book/part4/chapter15/Listing_15_16_StructuredContent.pdf";
     public static String RESOURCE
-            = "./src/test/resources/book/part4/chapter15/moby.xml";
+            = "./src/test/resources/xml/moby.xml";
 
     public static void main(String args[]) throws IOException, SQLException, ParserConfigurationException, SAXException {
         new Listing_15_16_StructuredContent().manipulatePdf(DEST);

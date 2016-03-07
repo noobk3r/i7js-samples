@@ -27,7 +27,7 @@ public class Listing_09_06_SubmitForm extends GenericTest {
     public static final String DEST
             = "./target/test/resources/book/part3/chapter09/Listing_09_06_SubmitForm.pdf";
     public static final String SUBCRIBE
-            = "./src/test/resources/book/part3/chapter09/subscribe.pdf";
+            = "./src/test/resources/pdfs/subscribe.pdf";
 
     @Override
     public void manipulatePdf(String dest) throws IOException {

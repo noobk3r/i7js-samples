@@ -21,11 +21,12 @@ import java.io.IOException;
 
 import org.junit.experimental.categories.Category;
 
+// Notice that this example actually is not from book
 @Category(SampleTest.class)
 public class Listing_06_12_StampText_Option2 extends GenericTest {
 
     static public final String DEST = "./target/test/resources/book/part2/chapter06/Listing_06_12_StampText_Option2.pdf";
-    static public final String SOURCE = "./src/test/resources/source.pdf";
+    static public final String SOURCE = "./src/test/resources/pdfs/source.pdf";
 
     public static void main(String args[]) throws IOException {
         new Listing_06_12_StampText_Option2().manipulatePdf(DEST);

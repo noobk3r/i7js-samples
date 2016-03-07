@@ -82,7 +82,7 @@ public class Listing_12_15_Signatures extends SignatureTest {
     // public static String PATH = "c:/users/ars18wrw/key.properties";
 
     public static Properties properties = new Properties();
-    public static final String RESOURCE = "./src/test/resources/book/part3/chapter12/logo.gif";
+    public static final String RESOURCE = "./src/test/resources/img/logo.gif";
 
     public void createPdf(String filename) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(filename));
@@ -120,7 +120,7 @@ public class Listing_12_15_Signatures extends SignatureTest {
 
     public void signPdfSecondTime(String src, String dest)
             throws IOException, GeneralSecurityException {
-        String path = "./src/test/resources/book/part3/chapter12/.keystore";
+        String path = "./src/test/resources/encryption/.keystore";
         String keystore_password = "f00b4r";
         String key_password = "f1lmf3st";
         String alias = "foobar";
@@ -151,7 +151,7 @@ public class Listing_12_15_Signatures extends SignatureTest {
         FileInputStream is1 = new FileInputStream(properties.getProperty("ROOTCERT"));
         X509Certificate cert1 = (X509Certificate) cf.generateCertificate(is1);
         ks.setCertificateEntry("cacert", cert1);
-        FileInputStream is2 = new FileInputStream("./src/test/resources/book/part3/chapter12/foobar.cer");
+        FileInputStream is2 = new FileInputStream("./src/test/resources/encryption/foobar.cer");
         X509Certificate cert2 = (X509Certificate) cf.generateCertificate(is2);
         ks.setCertificateEntry("foobar", cert2);
 
@@ -252,7 +252,7 @@ public class Listing_12_15_Signatures extends SignatureTest {
     protected void initKeyStoreForVerification(KeyStore ks) throws IOException, NoSuchAlgorithmException, CertificateException, KeyStoreException {
         super.initKeyStoreForVerification(ks);
         CertificateFactory cf = CertificateFactory.getInstance("X.509");
-        Certificate foobarCert = cf.generateCertificate(new FileInputStream("./src/test/resources/book/part3/chapter12/foobar.cer"));
+        Certificate foobarCert = cf.generateCertificate(new FileInputStream("./src/test/resources/encryption/foobar.cer"));
         ks.setCertificateEntry("foobar", foobarCert);
     }
 }

@@ -7,9 +7,14 @@
 
 package com.itextpdf.samples.book.part4.chapter15;
 
-import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.io.source.ByteArrayOutputStream;
-import com.itextpdf.kernel.parser.*;
+import com.itextpdf.kernel.geom.Rectangle;
+import com.itextpdf.kernel.parser.EventFilter;
+import com.itextpdf.kernel.parser.FilteredTextEventListener;
+import com.itextpdf.kernel.parser.LocationTextExtractionStrategy;
+import com.itextpdf.kernel.parser.PdfTextExtractor;
+import com.itextpdf.kernel.parser.TextExtractionStrategy;
+import com.itextpdf.kernel.parser.TextRegionEventFilter;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -21,7 +26,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 import org.xml.sax.SAXException;
 
@@ -30,7 +34,7 @@ public class Listing_15_28_ExtractPageContentArea {
     public static final String DEST
             = "./samples/target/test/resources/book/part4/chapter15/Listing_15_28_ExtractPageContentArea.txt";
     public static final String PREFACE
-            = "./samples/src/test/resources/book/part4/chapter15/preface.pdf";
+            = "./samples/src/test/resources/pdfs/preface.pdf";
 
     public static void main(String args[])
             throws IOException, SQLException, ParserConfigurationException, SAXException {

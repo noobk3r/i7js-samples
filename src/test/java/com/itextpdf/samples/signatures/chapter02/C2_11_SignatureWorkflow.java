@@ -219,7 +219,7 @@ public class C2_11_SignatureWorkflow extends SignatureTest {
     @Test
     public void runTest() throws IOException, InterruptedException, GeneralSecurityException {
         new File("./target/test/resources/signatures/chapter02/").mkdirs();
-        C2_10_SequentialSignatures.main(null);
+        C2_11_SignatureWorkflow.main(null);
 
         String[] resultFiles = new String[]{"step1_signed_by_alice.pdf", "step2_signed_by_alice_and_filled_out_by_bob.pdf", "step3_signed_by_alice_and_bob.pdf",
                 "step4_signed_by_alice_and_bob_filled_out_by_carol.pdf", "step5_signed_by_alice_bob_and_carol.pdf", "step6_signed_by_alice_bob_carol_and_dave.pdf"};

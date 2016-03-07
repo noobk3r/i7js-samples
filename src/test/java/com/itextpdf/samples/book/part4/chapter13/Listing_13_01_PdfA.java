@@ -31,7 +31,7 @@ import org.junit.experimental.categories.Category;
 public class Listing_13_01_PdfA extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part4/chapter13/Listing_13_01_PdfA.pdf";
     public static final String FONT = /*"c:/windows/fonts/arial.ttf"*/"./src/test/resources/font/FreeSans.ttf";
-    public static final String sourceFolder = "./src/test/resources/book/part4/chapter13/";
+    public static final String sourceFolder = "./src/test/resources/img/";
 
     public static void main(String args[]) throws IOException, SQLException, XMPException {
         new Listing_13_01_PdfA().manipulatePdf(DEST);

@@ -28,7 +28,7 @@ import org.junit.experimental.categories.Category;
 public class Listing_05_15_Hero1 extends GenericTest {
     public static final String DEST =
             "./target/test/resources/book/part1/chapter05/Listing_05_15_Hero1.pdf";
-    public static final String RESOURCE = "./src/test/resources/book/part1/chapter05/hero.txt";
+    public static final String RESOURCE = "./src/test/resources/txt/hero.txt";
 
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_05_15_Hero1().manipulatePdf(DEST);

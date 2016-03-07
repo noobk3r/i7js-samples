@@ -32,7 +32,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class Listing_15_13_ReadOutLoud extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part4/chapter15/Listing_15_13_ReadOutLoud.pdf";
-    public static String RESOURCE = "./src/test/resources/book/part4/chapter15/posters/0062622.jpg";
+    public static String RESOURCE = "./src/test/resources/img/posters/0062622.jpg";
 
     public static void main(String args[]) throws IOException {
         new Listing_15_13_ReadOutLoud().manipulatePdf(DEST);

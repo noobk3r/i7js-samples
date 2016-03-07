@@ -26,7 +26,7 @@ import org.junit.experimental.categories.Category;
 public class Listing_05_17_Hero2 extends Listing_05_15_Hero1 {
     public static final String DEST =
             "./target/test/resources/book/part1/chapter05/Listing_05_17_Hero2.pdf";
-    public static final String RESOURCE = "./src/test/resources/book/part1/chapter05/hero.txt";
+    public static final String RESOURCE = "./src/test/resources/txt/hero.txt";
 
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_05_17_Hero2().manipulatePdf(DEST);

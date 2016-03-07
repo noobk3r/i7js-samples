@@ -27,7 +27,7 @@ public class Listing_15_29_ShowTextMargins extends GenericTest {
     public static final String DEST
             = "./target/test/resources/book/part4/chapter15/Listing_15_29_ShowTextMargins.pdf";
     public static final String PREFACE
-            = "./src/test/resources/book/part4/chapter15/preface.pdf";
+            = "./src/test/resources/pdfs/preface.pdf";
 
     public static void main(String args[])
             throws IOException, SQLException, ParserConfigurationException, SAXException {

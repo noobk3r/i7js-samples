@@ -66,7 +66,7 @@ public class Listing_12_13_SignatureField extends SignatureTest {
             "./src/test/resources/book/part3/chapter12/cmp_Listing_12_13_SignatureField_signed_2.pdf"
     };
 
-    public static final String RESOURCE = "./src/test/resources/book/part3/chapter12/1t3xt.gif";
+    public static final String RESOURCE = "./src/test/resources/img/1t3xt.gif";
 
     /**
      * A properties file that is PRIVATE.

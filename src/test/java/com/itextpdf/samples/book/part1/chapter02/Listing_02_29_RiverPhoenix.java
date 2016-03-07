@@ -64,7 +64,7 @@ public class Listing_02_29_RiverPhoenix extends GenericTest {
     public Paragraph createParagraph(String text, String imdb) throws MalformedURLException {
         Paragraph p = new Paragraph(text);
         Image img = new Image(ImageFactory
-                .getImage(String.format("./src/test/resources/book/part1/chapter02/posters/%s.jpg", imdb)));
+                .getImage(String.format("./src/test/resources/img/posters/%s.jpg", imdb)));
         img.scaleToFit(1000,72);
         img.setRotationAngle(Math.toRadians(-30));
         p.add(img);

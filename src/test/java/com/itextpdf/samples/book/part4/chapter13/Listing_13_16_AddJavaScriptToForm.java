@@ -39,7 +39,7 @@ public class Listing_13_16_AddJavaScriptToForm extends GenericTest {
     public static final String ORIGINAL
             = "./target/test/resources/book/part4/chapter13/Listing_13_16_AddJavaScriptToForm_form_without_js.pdf";
     public static final String RESOURCE
-            = "./src/test/resources/book/part4/chapter13/extra.js";
+            = "./src/test/resources/js/extra.js";
 
     public static void main(String args[]) throws IOException, SQLException, XMPException {
         new Listing_13_16_AddJavaScriptToForm().manipulatePdf(DEST);

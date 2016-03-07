@@ -57,9 +57,9 @@ public class Listing_04_21_PdfCalendar extends GenericTest {
      * Collection with the description of the images
      */
 
-    public static final String RESOURCE = "./src/test/resources/book/part1/chapter04/calendar/%tm.jpg";
-    public static final String SPECIAL = "./src/test/resources/book/part1/chapter04/calendar/%d.txt";
-    public static final String CONTENT = "./src/test/resources/book/part1/chapter04/calendar/content.txt";
+    public static final String RESOURCE = "./src/test/resources/calendar/%tm.jpg";
+    public static final String SPECIAL = "./src/test/resources/calendar/%d.txt";
+    public static final String CONTENT = "./src/test/resources/calendar/content.txt";
 
     public static Properties content = new Properties();
 
