@@ -25,6 +25,7 @@ import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.FileOutputStream;
+import java.util.Locale;
 
 import org.junit.experimental.categories.Category;
 
@@ -59,7 +60,7 @@ public class Listing_03_07_FoobarFilmFestival extends GenericTest {
         // For simplified version use font's methods for getting width by string.
 
         float chunkWidth = helvetica.getWidth(foobar + ": " + width_helv);
-        doc.add(new Paragraph(String.format("Chunk width: %f", chunkWidth)));
+        doc.add(new Paragraph(String.format(Locale.ENGLISH, "Chunk width: %f", chunkWidth)));
         // Use FreeSans instead of Times
         PdfFont freeSans = PdfFontFactory.createFont("./src/test/resources/font/FreeSans.ttf", PdfEncodings.IDENTITY_H);
         float width_freeSans = freeSans.getWidth(foobar, 12);
@@ -68,7 +69,7 @@ public class Listing_03_07_FoobarFilmFestival extends GenericTest {
 
 
         chunkWidth = freeSans.getWidth(foobar + ": " + width_freeSans);
-        doc.add(new Paragraph(String.format("Chunk width: %f", chunkWidth)));
+        doc.add(new Paragraph(String.format(Locale.ENGLISH, "Chunk width: %f", chunkWidth)));
         doc.add(new Paragraph("\n"));
         // Ascent and descent of the String
         doc.add(new Paragraph("Ascent Helvetica: "
