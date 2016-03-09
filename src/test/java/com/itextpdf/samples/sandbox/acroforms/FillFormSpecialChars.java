@@ -33,10 +33,10 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class FillFormSpecialChars extends GenericTest {
 
-    public static final String SRC = "./src/test/resources/sandbox/acroforms/test.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/test.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/fill_form_special_chars.pdf";
     public static final String VALUE = "\u011b\u0161\u010d\u0159\u017e\u00fd\u00e1\u00ed\u00e9";
-    public static final String FONT = "./src/test/resources/sandbox/acroforms/FreeSans.ttf";
+    public static final String FONT = "./src/test/resources/font/FreeSans.ttf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

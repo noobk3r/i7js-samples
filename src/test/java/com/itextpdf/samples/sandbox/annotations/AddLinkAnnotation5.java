@@ -32,7 +32,7 @@ import org.junit.experimental.categories.Category;
 @Ignore
 @Category(SampleTest.class)
 public class AddLinkAnnotation5 extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/annotations/primes.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/primes.pdf";
     public static final String DEST = "./target/test/resources/sandbox/annotations/add_link_annotation5.pdf";
 
     public static void main(String[] args) throws Exception {

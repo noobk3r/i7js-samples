@@ -32,7 +32,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class ImagesLinksTable extends GenericTest {
-    public static final String IMG = "./src/test/resources/sandbox/annotations/info.png";
+    public static final String IMG = "./src/test/resources/img/info.png";
     public static final String DEST = "./target/test/resources/sandbox/annotations/images_links_table.pdf";
 
     public static void main(String[] args) throws Exception {

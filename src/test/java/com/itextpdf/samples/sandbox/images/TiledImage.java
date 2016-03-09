@@ -29,7 +29,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class TiledImage extends GenericTest {
-    public static final String IMAGE = "./src/test/resources/sandbox/images/bruno_ingeborg.jpg";
+    public static final String IMAGE = "./src/test/resources/img/bruno_ingeborg.jpg";
     public static final String DEST = "./target/test/resources/sandbox/images/tiled_image.pdf";
 
     public static void main(String[] args) throws Exception {

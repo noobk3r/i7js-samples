@@ -29,11 +29,11 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class PortableCollection extends GenericTest {
     public static final String DATA
-            = "./src/test/resources/sandbox/collections/united_states.csv";
+            = "./src/test/resources/data/united_states.csv";
     public static final String HELLO
-            = "./src/test/resources/sandbox/collections/hello.pdf";
+            = "./src/test/resources/pdfs/hello.pdf";
     public static final String IMG =
-            "./src/test/resources/sandbox/collections/berlin2013.jpg";
+            "./src/test/resources/img/berlin2013.jpg";
     public static final String DEST
             = "./target/test/resources/sandbox/collections/portable_collection.pdf";
 

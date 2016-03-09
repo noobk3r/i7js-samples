@@ -25,13 +25,12 @@ import com.itextpdf.test.annotations.type.SampleTest;
 import java.io.File;
 import java.io.FileOutputStream;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Logo extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/fonts/logo.pdf";
-    public static final String FONT = "./src/test/resources/sandbox/fonts/FreeSans.ttf";
+    public static final String FONT = "./src/test/resources/font/FreeSans.ttf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

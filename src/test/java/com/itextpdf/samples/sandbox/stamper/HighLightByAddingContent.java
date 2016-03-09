@@ -28,7 +28,7 @@ public class HighLightByAddingContent extends GenericTest {
     public static final String DEST
             = "./target/test/resources/sandbox/stamper/high_light_by_adding_content.pdf";
     public static final String SRC
-            = "./src/test/resources/sandbox/stamper/hello.pdf";
+            = "./src/test/resources/pdfs/hello.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

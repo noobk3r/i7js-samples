@@ -27,7 +27,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class AddFieldAndKids extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/stamper/hello.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
     public static final String DEST = "./target/test/resources/sandbox/stamper/add_field_and_kids.pdf";
 
     public static void main(String[] args) throws Exception {

@@ -29,7 +29,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class RemoveEmbeddedFile extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/annotations/hello_with_attachment.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/hello_with_attachment.pdf";
     public static final String DEST = "./target/test/resources/sandbox/annotations/remove_embedded_file.pdf";
 
     public static void main(String[] args) throws Exception {

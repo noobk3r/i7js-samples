@@ -30,7 +30,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class TableTab extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/objects/table_tab.pdf";
-    public static final String FONT = "./src/test/resources/sandbox/objects/PTM55FT.ttf";
+    public static final String FONT = "./src/test/resources/font/PTM55FT.ttf";
     public static final String[][] DATA = {
             {"John Edward Jr.", "AAA"},
             {"Pascal Einstein W. Alfi", "BBB"},

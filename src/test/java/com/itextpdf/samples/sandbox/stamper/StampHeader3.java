@@ -12,30 +12,24 @@
 package com.itextpdf.samples.sandbox.stamper;
 
 import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.io.font.FontFactory;
-import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
-import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
-import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 
 @Category(SampleTest.class)
 public class StampHeader3 extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/stamper/Wrong.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/Wrong.pdf";
     public static final String DEST = "./target/test/resources/sandbox/stamper/stamp_header3.pdf";
 
     public static void main(String[] args) throws Exception {

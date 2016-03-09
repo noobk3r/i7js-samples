@@ -29,7 +29,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class CellMethod extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/cell_method.pdf";
-    public static final String FONT = "./src/test/resources/sandbox/tables/FreeSans.ttf";
+    public static final String FONT = "./src/test/resources/font/FreeSans.ttf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

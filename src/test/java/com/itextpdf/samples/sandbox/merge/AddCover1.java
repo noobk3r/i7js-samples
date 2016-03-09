@@ -28,9 +28,9 @@ public class AddCover1 extends GenericTest {
     public static final String DEST
             = "./target/test/resources/sandbox/merge/add_cover.pdf";
     public static final String COVER
-            = "./src/test/resources/sandbox/merge/hero.pdf";
+            = "./src/test/resources/pdfs/hero.pdf";
     public static final String RESOURCE
-            = "./src/test/resources/sandbox/merge/pages.pdf";
+            = "./src/test/resources/pdfs/pages.pdf";
 
     public static void main(String[] args) throws IOException {
         File file = new File(DEST);

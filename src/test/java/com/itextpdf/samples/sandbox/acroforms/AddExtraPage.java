@@ -36,7 +36,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class AddExtraPage extends GenericTest {
-    public static String SRC = "./src/test/resources/sandbox/acroforms/stationery.pdf";
+    public static String SRC = "./src/test/resources/pdfs/stationery.pdf";
     public static String DEST = "./target/test/resources/sandbox/acroforms/add_extra_page.pdf";
 
     public static void main(String[] args) throws Exception {

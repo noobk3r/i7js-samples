@@ -34,9 +34,9 @@ public class ColumnTextChunkImage extends GenericTest {
     public static final String DEST
             = "./target/test/resources/sandbox/columntext/column_text_chunk_image.pdf";
     public static final String DOG
-            = "./src/test/resources/sandbox/columntext/dog.bmp";
+            = "./src/test/resources/img/dog.bmp";
     public static final String FOX
-            = "./src/test/resources/sandbox/columntext/fox.bmp";
+            = "./src/test/resources/img/fox.bmp";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

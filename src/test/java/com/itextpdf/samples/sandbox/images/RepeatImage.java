@@ -34,7 +34,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class RepeatImage extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/images/chinese.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/chinese.pdf";
     public static final String DEST = "./target/test/resources/sandbox/images/repeat_image.pdf";
 
     public static void main(String[] args) throws Exception {

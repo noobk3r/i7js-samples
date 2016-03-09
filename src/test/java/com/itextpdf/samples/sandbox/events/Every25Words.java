@@ -40,7 +40,7 @@ public class Every25Words extends GenericTest {
     public String readFile() throws IOException {
         StringBuilder sb = new StringBuilder();
         BufferedReader in = new BufferedReader(new InputStreamReader(
-                new FileInputStream("./src/test/resources/sandbox/events/liber1_1_la.txt"), "UTF8"));
+                new FileInputStream("./src/test/resources/txt/liber1_1_la.txt"), "UTF8"));
         String str;
         while ((str = in.readLine()) != null) {
             sb.append(str);

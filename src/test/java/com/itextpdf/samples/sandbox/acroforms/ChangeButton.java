@@ -26,7 +26,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class ChangeButton extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/acroforms/hello_button.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/hello_button.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/change_button.pdf";
 
     public static void main(String[] args) throws Exception {

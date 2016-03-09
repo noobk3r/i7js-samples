@@ -31,7 +31,7 @@ public class TilingHero extends GenericTest {
     public static final String DEST
             = "./target/test/resources/sandbox/merge/tiling_hero.pdf";
     public static final String RESOURCE
-            = "./src/test/resources/sandbox/merge/hero.pdf";
+            = "./src/test/resources/pdfs/hero.pdf";
     public static void main(String[] args) throws IOException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();

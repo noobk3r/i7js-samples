@@ -30,7 +30,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class MakeBookletA3 extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/merge/make_booklet_a3.pdf";
-    public static final String SRC = "./src/test/resources/sandbox/merge/primes.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/primes.pdf";
 
     public static void main(String[] args) throws IOException {
         File file = new File(DEST);

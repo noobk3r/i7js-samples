@@ -26,8 +26,8 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class ImagesNextToEachOther extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/image_next_to_each_other.pdf";
-    public static final String IMG1 = "./src/test/resources/sandbox/tables/javaone2013.jpg";
-    public static final String IMG2 = "./src/test/resources/sandbox/tables/berlin2013.jpg";
+    public static final String IMG1 = "./src/test/resources/img/javaone2013.jpg";
+    public static final String IMG2 = "./src/test/resources/img/berlin2013.jpg";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

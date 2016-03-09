@@ -27,7 +27,7 @@ public class CheckBoxFlatten extends GenericTest {
     public static final String DEST
             = "./target/test/resources/sandbox/acroforms/checkbox_flatten.pdf";
     public static final String SRC
-            = "./src/test/resources/sandbox/acroforms/checkboxes.pdf";
+            = "./src/test/resources/pdfs/checkboxes.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

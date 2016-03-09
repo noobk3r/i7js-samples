@@ -29,7 +29,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class SubSuperScript extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/objects/sub_super_script.pdf";
-    public static final String FONT = "./src/test/resources/sandbox/objects/Cardo-Regular.ttf";
+    public static final String FONT = "./src/test/resources/font/Cardo-Regular.ttf";
 
     public static void main(String[] args) throws IOException {
         File file = new File(DEST);

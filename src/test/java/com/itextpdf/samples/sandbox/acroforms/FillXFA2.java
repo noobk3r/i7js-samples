@@ -22,8 +22,8 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class FillXFA2 extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/acroforms/xfa_form_poland.pdf";
-    public static final String XML = "./src/test/resources/sandbox/acroforms/xfa_form_poland.xml";
+    public static final String SRC = "./src/test/resources/pdfs/xfa_form_poland.pdf";
+    public static final String XML = "./src/test/resources/xml/xfa_form_poland.xml";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/xfa_form_poland_filled.pdf";
 
     public static void main(String[] args) throws Exception {

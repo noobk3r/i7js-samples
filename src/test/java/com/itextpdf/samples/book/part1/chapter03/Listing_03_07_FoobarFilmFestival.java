@@ -9,7 +9,6 @@ package com.itextpdf.samples.book.part1.chapter03;
 
 import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.io.font.PdfEncodings;
-import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
@@ -22,15 +21,11 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
-import com.itextpdf.layout.layout.LayoutArea;
-import com.itextpdf.layout.layout.LayoutContext;
-import com.itextpdf.layout.renderer.TextRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.FileOutputStream;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 
@@ -66,7 +61,7 @@ public class Listing_03_07_FoobarFilmFestival extends GenericTest {
         float chunkWidth = helvetica.getWidth(foobar + ": " + width_helv);
         doc.add(new Paragraph(String.format("Chunk width: %f", chunkWidth)));
         // Use FreeSans instead of Times
-        PdfFont freeSans = PdfFontFactory.createFont("./src/test/resources/sandbox/acroforms/FreeSans.ttf", PdfEncodings.IDENTITY_H);
+        PdfFont freeSans = PdfFontFactory.createFont("./src/test/resources/font/FreeSans.ttf", PdfEncodings.IDENTITY_H);
         float width_freeSans = freeSans.getWidth(foobar, 12);
         c = new Text(foobar + ": " + width_freeSans).setFont(freeSans);
         doc.add(new Paragraph(c));

@@ -28,7 +28,7 @@ public class MergeAndCount {
     public static final String DESTFOLDER
             = "./samples/target/test/resources/sandbox/merge/";
     public static final String RESOURCE
-            = "./samples/src/test/resources/sandbox/merge/Wrong.pdf";
+            = "./samples/src/test/resources/pdfs/Wrong.pdf";
     public static void main(String[] args) throws IOException {
         new MergeAndCount().manipulatePdf(DESTFOLDER);
     }

@@ -34,7 +34,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class RenameField {
-    public static final String SRC = "./src/test/resources/sandbox/acroforms/subscribe.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/subscribe.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/rename_field.pdf";
     public static List<String> cmp_result;
 

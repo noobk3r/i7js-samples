@@ -29,7 +29,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class TileClipped extends GenericTest {
     public static final String SRC =
-            "./src/test/resources/sandbox/stamper/hero.pdf";
+            "./src/test/resources/pdfs/hero.pdf";
     public static final String DEST =
             "./target/test/resources/sandbox/stamper/tile_clipped.pdf";
 

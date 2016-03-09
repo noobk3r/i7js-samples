@@ -29,9 +29,9 @@ import org.junit.experimental.categories.Category;
 public class RupeeSymbol extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/fonts/rupee_symbol.pdf";
 
-    public static final String FONT1 = "./src/test/resources/sandbox/fonts/PlayfairDisplay-Regular.ttf";
-    public static final String FONT2 = "./src/test/resources/sandbox/fonts/PT_Sans-Web-Regular.ttf";
-    public static final String FONT3 = "./src/test/resources/sandbox/fonts/FreeSans.ttf";
+    public static final String FONT1 = "./src/test/resources/font/PlayfairDisplay-Regular.ttf";
+    public static final String FONT2 = "./src/test/resources/font/PT_Sans-Web-Regular.ttf";
+    public static final String FONT3 = "./src/test/resources/font/FreeSans.ttf";
     public static final String RUPEE = "The Rupee character \u20B9 and the Rupee symbol \u20A8";
 
     public static void main(String[] args) throws Exception {

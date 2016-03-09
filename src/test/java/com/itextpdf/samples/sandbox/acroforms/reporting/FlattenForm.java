@@ -20,7 +20,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class FlattenForm extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/acroforms/reporting/state.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/state.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/reporting/flatten_form.pdf";
 
     public static void main(String[] args) throws Exception {

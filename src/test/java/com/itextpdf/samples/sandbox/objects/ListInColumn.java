@@ -30,7 +30,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class ListInColumn extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/objects/list_in_column.pdf";
-    public static final String SRC = "./src/test/resources/sandbox/objects/pages.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/pages.pdf";
 
     public static void main(String[] args) throws IOException {
         File file = new File(DEST);

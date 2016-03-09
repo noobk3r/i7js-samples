@@ -30,7 +30,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class GetN2fromSig {
-    public static String SRC = "./src/test/resources/sandbox/security/signature_n2.pdf";
+    public static String SRC = "./src/test/resources/pdfs/signature_n2.pdf";
     public static String CMP_RESULT = "BT\n" +
             "1 0 0 1 0 49.55 Tm\n" +
             "/F1 12 Tf\n" +

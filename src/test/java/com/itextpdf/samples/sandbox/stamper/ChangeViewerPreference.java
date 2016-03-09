@@ -16,12 +16,11 @@ import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class ChangeViewerPreference extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/stamper/OCR.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/OCR.pdf";
     public static final String DEST = "./target/test/resources/sandbox/stamper/change_viewer_preference.pdf";
 
     public static void main(String[] args) throws Exception {

@@ -28,7 +28,7 @@ import org.junit.experimental.categories.Category;
 @Ignore
 @Category(SampleTest.class)
 public class RemoveRedactedContent extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/parse/page229_redacted.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/page229_redacted.pdf";
     public static final String DEST = "./target/test/resources/sandbox/parse/remove_redacted_content.pdf";
 
     public static void main(String[] args) throws IOException {

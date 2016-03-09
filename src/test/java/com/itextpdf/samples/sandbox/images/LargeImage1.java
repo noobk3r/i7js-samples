@@ -30,7 +30,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class LargeImage1 extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/images/large_image.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/large_image.pdf";
     public static final String DEST = "./target/test/resources/sandbox/images/large_image1.pdf";
 
     public static void main(String[] args) throws Exception {

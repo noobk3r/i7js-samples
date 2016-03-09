@@ -28,7 +28,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class AlignField extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/acroforms/subscribe.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/subscribe.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/align_field.pdf";
 
     public static void main(String[] args) throws Exception {

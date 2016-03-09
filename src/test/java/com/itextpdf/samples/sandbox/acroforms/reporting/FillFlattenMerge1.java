@@ -28,9 +28,9 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class FillFlattenMerge1 extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/acroforms/reporting/state.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/state.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/reporting/fill_flatten_merge1.pdf";
-    public static final String DATA = "./src/test/resources/sandbox/acroforms/reporting/united_states.csv";
+    public static final String DATA = "./src/test/resources/data/united_states.csv";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

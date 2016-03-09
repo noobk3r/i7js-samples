@@ -28,7 +28,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class ChangeFieldSize extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/acroforms/form.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/form.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/change_field_size.pdf";
 
     public static void main(String[] args) throws Exception {

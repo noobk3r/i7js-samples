@@ -44,9 +44,9 @@ public class EncryptWithCertificate extends GenericTest {
     public static final String DEST
             = "./target/test/resources/sandbox/security/encrypt_with_certificate.pdf";
     public static final String SRC
-            = "./src/test/resources/sandbox/security/hello_encrypted.pdf";
+            = "./src/test/resources/pdfs/hello_encrypted.pdf";
     public static final String PUBLIC
-            = "./src/test/resources/sandbox/security/test.cer";
+            = "./src/test/resources/pdfs/test.cer";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

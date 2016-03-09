@@ -27,7 +27,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class F03_Embedded extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/fonts/tutorial/f03_embedded.pdf";
-    public static final String FONT = "./src/test/resources/sandbox/fonts/tutorial/FreeSans.ttf";
+    public static final String FONT = "./src/test/resources/font/FreeSans.ttf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

@@ -26,7 +26,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class SimpleTable8 extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/simple_table8.pdf";
-    public static final String SRC = "./src/test/resources/sandbox/tables/";
+    public static final String SRC = "./src/test/resources/pdfs/";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -42,7 +42,7 @@ public class SimpleTable8 extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         Table table = new Table(3);
-        PdfReader reader = new PdfReader(SRC + "header.pdf");
+        PdfReader reader = new PdfReader(SRC + "header_test_file.pdf");
         PdfDocument srcDoc = new PdfDocument(reader);
         PdfFormXObject header = srcDoc.getFirstPage().copyAsFormXObject(pdfDoc);
         Cell cell = new Cell(1,3).add(new Image(header).setAutoScale(true));
@@ -52,7 +52,7 @@ public class SimpleTable8 extends GenericTest {
                 table.addCell(String.format("row %s, column %s", row, column));
             }
         }
-        reader = new PdfReader(SRC + "footer.pdf");
+        reader = new PdfReader(SRC + "footer_test_file.pdf");
         srcDoc = new PdfDocument(reader);
         PdfFormXObject footer = srcDoc.getFirstPage().copyAsFormXObject(pdfDoc);
         cell = new Cell(1,3).add(new Image(footer).setAutoScale(true));

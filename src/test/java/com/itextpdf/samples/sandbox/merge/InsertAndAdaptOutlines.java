@@ -29,9 +29,9 @@ public class InsertAndAdaptOutlines extends GenericTest {
     public static final String DEST =
             "./target/test/resources/sandbox/merge/insert_and_adapt_outlines.pdf";
     public static final String INSERT =
-            "./src/test/resources/sandbox/merge/hello.pdf";
+            "./src/test/resources/pdfs/hello.pdf";
     public static final String SRC =
-            "./src/test/resources/sandbox/merge/bookmarks.pdf";
+            "./src/test/resources/pdfs/bookmarks.pdf";
 
     public static void main(String[] args) throws IOException {
         File file = new File(DEST);

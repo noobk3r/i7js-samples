@@ -28,7 +28,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class ImageOnRotatedPage extends GenericTest {
-    public static final String IMAGE = "./src/test/resources/sandbox/images/cardiogram.png";
+    public static final String IMAGE = "./src/test/resources/img/cardiogram.png";
     public static final String DEST = "./target/test/resources/sandbox/images/image_on_rotated_page.pdf";
 
     public static void main(String[] args) throws Exception {

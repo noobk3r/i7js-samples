@@ -22,7 +22,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class StampPageXofY extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/stamper/nameddestinations.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/nameddestinations.pdf";
     public static final String DEST = "./target/test/resources/sandbox/stamper/stamp_page_x_of_y.pdf";
 
     public static void main(String[] args) throws Exception {

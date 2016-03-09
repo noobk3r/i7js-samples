@@ -28,7 +28,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class LiberationSans extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/fonts/liberation_sans.pdf";
-    public static final String FONT = "./src/test/resources/sandbox/fonts/LiberationSans-Regular.ttf";
+    public static final String FONT = "./src/test/resources/font/LiberationSans-Regular.ttf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

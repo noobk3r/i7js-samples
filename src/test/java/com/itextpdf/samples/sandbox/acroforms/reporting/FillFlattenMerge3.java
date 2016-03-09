@@ -44,9 +44,9 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class FillFlattenMerge3 extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/acroforms/reporting/state.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/state.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/reporting/fill_flatten_merge3.pdf";
-    public static final String DATA = "./src/test/resources/sandbox/acroforms/reporting/united_states.csv";
+    public static final String DATA = "./src/test/resources/data/united_states.csv";
     public static final String[] FIELDS = {
             "name", "abbr", "capital", "city", "population", "surface", "timezone1", "timezone2", "dst"
     };

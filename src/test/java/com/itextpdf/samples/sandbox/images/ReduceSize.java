@@ -34,7 +34,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class ReduceSize extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/images/single_image.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/single_image.pdf";
     public static final String DEST = "./target/test/resources/sandbox/images/reduce_size.pdf";
     public static final float FACTOR = 0.5f;
 

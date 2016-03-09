@@ -34,8 +34,8 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class TransparentWatermark3 extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/stamper/pages.pdf";
-    public static final String IMG = "./src/test/resources/sandbox/stamper/itext.png";
+    public static final String SRC = "./src/test/resources/pdfs/pages.pdf";
+    public static final String IMG = "./src/test/resources/img/itext.png";
     public static final String DEST = "./target/test/resources/sandbox/stamper/transparent_watermark3.pdf";
 
     public static void main(String[] args) throws Exception {

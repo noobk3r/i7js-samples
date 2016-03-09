@@ -81,11 +81,11 @@ public class ThreeParts extends GenericTest {
         int lastPageNumber = 0;
         int curLastPageNumber = 0;
         for (int section = 0; section < 3; section++) {
-            latin = createParagraph(String.format("./src/test/resources/sandbox/events/liber1_%s_la.txt",
+            latin = createParagraph(String.format("./src/test/resources/txt/liber1_%s_la.txt",
                     section + 1));
-            english = createParagraph(String.format("./src/test/resources/sandbox/events/liber1_%s_en.txt",
+            english = createParagraph(String.format("./src/test/resources/txt/liber1_%s_en.txt",
                     section + 1));
-            french = createParagraph(String.format("./src/test/resources/sandbox/events/liber1_%s_fr.txt",
+            french = createParagraph(String.format("./src/test/resources/txt/liber1_%s_fr.txt",
                     section + 1));
 
             latin.setNextRenderer(new ThreePartsParagraphRenderer(latin, 2));

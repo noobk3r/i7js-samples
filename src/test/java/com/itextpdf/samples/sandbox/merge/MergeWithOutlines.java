@@ -33,11 +33,11 @@ public class MergeWithOutlines extends GenericTest {
     public static final String DEST
             = "./target/test/resources/sandbox/merge/merge_with_outlines.pdf";
     public static final String SRC1
-            = "./src/test/resources/sandbox/merge/hello.pdf";
+            = "./src/test/resources/pdfs/hello.pdf";
     public static final String SRC2
-            = "./src/test/resources/sandbox/merge/links1.pdf";
+            = "./src/test/resources/pdfs/links1.pdf";
     public static final String SRC3
-            = "./src/test/resources/sandbox/merge/links2.pdf";
+            = "./src/test/resources/pdfs/links2.pdf";
 
     public static void main(String[] args) throws IOException {
         File file = new File(DEST);

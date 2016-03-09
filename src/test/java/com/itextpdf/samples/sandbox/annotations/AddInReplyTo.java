@@ -34,7 +34,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class AddInReplyTo extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/annotations/hello_sticky_note.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/hello_sticky_note.pdf";
     public static final String DEST = "./target/test/resources/sandbox/annotations/add_in_reply_to.pdf";
 
     public static void main(String[] args) throws Exception {

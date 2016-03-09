@@ -28,7 +28,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class ChangeOCGOrder extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/stamper/ocg.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/ocg.pdf";
     public static final String DEST = "./target/test/resources/sandbox/stamper/change_ocg_order.pdf";
 
     public static void main(String[] args) throws Exception {

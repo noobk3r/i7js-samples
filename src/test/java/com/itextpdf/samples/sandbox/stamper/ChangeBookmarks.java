@@ -28,7 +28,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class ChangeBookmarks extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/stamper/bookmarks.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/bookmarks.pdf";
     public static final String DEST = "./target/test/resources/sandbox/stamper/change_bookmarks.pdf";
 
     public static void main(String[] args) throws Exception {

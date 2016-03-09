@@ -11,10 +11,10 @@
  */
 package com.itextpdf.samples.sandbox.acroforms;
 
+import com.itextpdf.forms.PdfPageFormCopier;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.forms.PdfPageFormCopier;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -22,14 +22,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class MergeForms extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/acroforms/merge_forms.pdf";
-    public static final String SRC1 = "./src/test/resources/sandbox/acroforms/subscribe.pdf";
-    public static final String SRC2 = "./src/test/resources/sandbox/acroforms/state.pdf";
+    public static final String SRC1 = "./src/test/resources/pdfs/subscribe.pdf";
+    public static final String SRC2 = "./src/test/resources/pdfs/state.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

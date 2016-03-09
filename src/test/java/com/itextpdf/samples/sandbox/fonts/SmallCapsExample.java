@@ -30,7 +30,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class SmallCapsExample extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/fonts/small_caps_example.pdf";
-    public static final String FONT = "./src/test/resources/sandbox/fonts/Delicious-SmallCaps.otf";
+    public static final String FONT = "./src/test/resources/font/Delicious-SmallCaps.otf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

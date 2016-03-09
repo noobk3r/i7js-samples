@@ -28,7 +28,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class PositionContentInCell extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/position_content_in_cell.pdf";
-    public static final String IMG = "./src/test/resources/sandbox/tables/info.png";
+    public static final String IMG = "./src/test/resources/img/info.png";
 
     public enum POSITION {TOP_LEFT, TOP_RIGHT, BOTTOM_LEFT, BOTTOM_RIGHT}
 

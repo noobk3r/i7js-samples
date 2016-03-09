@@ -27,7 +27,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class RelativeLink extends GenericTest {
-    public static final String XML = "./src/test/resources/sandbox/annotations/data.xml";
+    public static final String XML = "./src/test/resources/xml/data.xml";
     public static final String DEST = "./target/test/resources/sandbox/annotations/relative_link.pdf";
 
     public static void main(String[] args) throws Exception {

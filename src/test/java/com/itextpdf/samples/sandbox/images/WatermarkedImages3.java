@@ -34,7 +34,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class WatermarkedImages3 extends GenericTest {
-    public static final String IMAGE1 = "./src/test/resources/sandbox/images/bruno.jpg";
+    public static final String IMAGE1 = "./src/test/resources/img/bruno.jpg";
     public static final String DEST = "./target/test/resources/sandbox/images/watermarked_images3.pdf";
 
     public static void main(String[] args) throws Exception {

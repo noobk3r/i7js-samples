@@ -35,7 +35,7 @@ import org.junit.experimental.categories.Category;
 @Ignore
 @Category(SampleTest.class)
 public class ReplaceImage extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/images/image.pdf";
+    public static final String SRC = "./src/test/resources/img/image.pdf";
     public static final String DEST = "./target/test/resources/sandbox/images/replace_image.pdf";
 
     public static void main(String[] args) throws Exception {

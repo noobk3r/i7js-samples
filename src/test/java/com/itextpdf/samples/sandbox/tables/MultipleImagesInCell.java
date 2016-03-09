@@ -32,11 +32,11 @@ public class MultipleImagesInCell extends GenericTest {
     public static final String DEST
             = "./target/test/resources/sandbox/tables/multiple_images_in_cell.pdf";
     public static final String IMG1
-            = "./src/test/resources/sandbox/tables/brasil.png";
+            = "./src/test/resources/img/brasil.png";
     public static final String IMG2
-            = "./src/test/resources/sandbox/tables/dog.bmp";
+            = "./src/test/resources/img/dog.bmp";
     public static final String IMG3
-            = "./src/test/resources/sandbox/tables/fox.bmp";
+            = "./src/test/resources/img/fox.bmp";
 
 
     public static void main(String[] args) throws Exception {

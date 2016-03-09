@@ -31,7 +31,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class CreateJapaneseButton extends GenericTest {
     public static final String JAPANESE = "\u3042\u304d\u3089";
-    public static final String FONT = "./src/test/resources/sandbox/acroforms/FreeSans.ttf";
+    public static final String FONT = "./src/test/resources/font/FreeSans.ttf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/create_japanese_button.pdf";
 
     public static void main(String[] args) throws Exception {

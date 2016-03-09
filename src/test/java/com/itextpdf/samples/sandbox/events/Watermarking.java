@@ -45,7 +45,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class Watermarking extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/events/watermarkings.pdf";
-    public static final String DATA = "./src/test/resources/sandbox/events/united_states.csv";
+    public static final String DATA = "./src/test/resources/data/united_states.csv";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

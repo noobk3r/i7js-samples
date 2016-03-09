@@ -30,9 +30,9 @@ public class FreeSansBold extends GenericTest {
     public static final String DEST
             = "./target/test/resources/sandbox/fonts/free_sans_bold.pdf";
     public static final String FONT
-            = "./src/test/resources/sandbox/fonts/FreeSans.ttf";
+            = "./src/test/resources/font/FreeSans.ttf";
     public static final String FONTBOLD
-            = "./src/test/resources/sandbox/fonts/FreeSansBold.ttf";
+            = "./src/test/resources/font/FreeSansBold.ttf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

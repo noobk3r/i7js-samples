@@ -29,7 +29,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class ImageNextToText extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/image_next_to_text.pdf";
-    public static final String IMG1 = "./src/test/resources/sandbox/tables/javaone2013.jpg";
+    public static final String IMG1 = "./src/test/resources/img/javaone2013.jpg";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

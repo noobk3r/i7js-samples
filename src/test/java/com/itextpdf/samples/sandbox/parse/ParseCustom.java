@@ -28,7 +28,7 @@ import org.junit.experimental.categories.Category;
 @Ignore
 @Category(SampleTest.class)
 public class ParseCustom {
-    public static final String SRC = "./src/test/resources/sandbox/parse/nameddestinations.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/nameddestinations.pdf";
 
     @BeforeClass
     public static void beforeClass() throws IOException {

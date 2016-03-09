@@ -34,7 +34,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class AddPolygonLink extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/annotations/hello.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
     public static final String DEST = "./target/test/resources/sandbox/annotations/add_polygon_link.pdf";
 
     public static void main(String[] args) throws Exception {

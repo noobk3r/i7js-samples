@@ -30,7 +30,7 @@ public class MergeAndAddFont extends GenericTest {
     public static final String DEST =
             "./target/test/resources/sandbox/fonts/merge_and_add_font.pdf";
     public static final String FONT =
-            "./src/test/resources/sandbox/fonts/GravitasOne.ttf";
+            "./src/test/resources/font/GravitasOne.ttf";
 
     public static final String[] FILE_A = {
             "./target/test/resources/sandbox/fonts/testA1.pdf", "./target/test/resources/sandbox/fonts/testA2.pdf",

@@ -64,7 +64,7 @@ public class Bullets extends GenericTest {
         }
         doc.add(p);
         doc.add(new Paragraph("\n"));
-        PdfFont f = PdfFontFactory.createFont("./src/test/resources/sandbox/objects/FreeSans.ttf", "Identity-H", true);
+        PdfFont f = PdfFontFactory.createFont("./src/test/resources/font/FreeSans.ttf", "Identity-H", true);
         p = new Paragraph("Items can't be split if they don't fit at the end: ").setFont(f).setFontSize(12);
         for (String item : ITEMS) {
             p.add(new Text("\u2022\u00a0" + item.replace(' ', '\u00a0') + " ").setFontSize(12));

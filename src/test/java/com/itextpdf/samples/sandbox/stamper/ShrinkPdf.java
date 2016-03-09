@@ -27,7 +27,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class ShrinkPdf extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/stamper/hero.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/hero.pdf";
     public static final String DEST = "./target/test/resources/sandbox/stamper/shrink_pdf.pdf";
 
     public static void main(String[] args) throws Exception {

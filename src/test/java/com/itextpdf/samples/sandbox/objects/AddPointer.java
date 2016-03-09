@@ -31,7 +31,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class AddPointer extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/objects/add_pointer.pdf";
-    public static final String IMG = "./src/test/resources/sandbox/objects/map_cic.png";
+    public static final String IMG = "./src/test/resources/img/map_cic.png";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

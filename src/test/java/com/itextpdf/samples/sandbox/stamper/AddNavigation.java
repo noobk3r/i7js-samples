@@ -31,7 +31,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class AddNavigation extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/stamper/primes.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/primes.pdf";
     public static final String DEST = "./target/test/resources/sandbox/stamper/add_navigation.pdf";
 
     public static void main(String[] args) throws Exception {

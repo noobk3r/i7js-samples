@@ -32,9 +32,9 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class FillFormSpecialChars2 extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/acroforms/form.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/form.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/fill_form_special_chars2.pdf";
-    public static final String FONT = "./src/test/resources/sandbox/acroforms/FreeSans.ttf";
+    public static final String FONT = "./src/test/resources/font/FreeSans.ttf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

@@ -24,7 +24,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class IconDescriptionTable extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/icon_description_table.pdf";
-    public static final String IMG = "./src/test/resources/sandbox/tables/bulb.gif";
+    public static final String IMG = "./src/test/resources/img/bulb.gif";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

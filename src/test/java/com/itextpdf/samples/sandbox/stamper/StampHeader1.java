@@ -30,7 +30,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class StampHeader1 extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/stamper/Right.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/Right.pdf";
     public static final String DEST = "./target/test/resources/sandbox/stamper/stamp_header1.pdf";
 
     public static void main(String[] args) throws Exception {

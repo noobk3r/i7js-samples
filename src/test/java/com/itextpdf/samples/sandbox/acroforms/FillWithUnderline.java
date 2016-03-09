@@ -31,7 +31,7 @@ import org.junit.experimental.categories.Category;
 @Ignore
 @Category(SampleTest.class)
 public class FillWithUnderline extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/acroforms/form.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/form.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/fill_with_underline.pdf";
 
     public static void main(String[] args) throws Exception {

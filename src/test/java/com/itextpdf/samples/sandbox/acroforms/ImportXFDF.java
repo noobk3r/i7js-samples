@@ -27,8 +27,8 @@ import org.junit.experimental.categories.Category;
 @Ignore
 @Category(SampleTest.class)
 public class ImportXFDF extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/acroforms/Requisition_Fillable.pdf";
-    public static final String XFDF = "./src/test/resources/sandbox/acroforms/data.xfdf";
+    public static final String SRC = "./src/test/resources/pdfs/Requisition_Fillable.pdf";
+    public static final String XFDF = "./src/test/resources/sandbox/acroforms/data.xfdf"; // TODO Change after revision
     public static String DEST = "./target/test/resources/sandbox/acroforms/import_xfdf.pdf";
 
     public static void main(String[] args) throws Exception {

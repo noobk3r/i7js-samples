@@ -11,27 +11,27 @@
  */
 package com.itextpdf.samples.sandbox.annotations;
 
-import com.itextpdf.kernel.geom.Rectangle;
+import com.itextpdf.io.image.Image;
 import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.annot.PdfFileAttachmentAnnotation;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.filespec.PdfFileSpec;
-import com.itextpdf.layout.element.Image;
+import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class FileAttachmentAnnot extends GenericTest {
-    public static final String IMG = "./src/test/resources/sandbox/annotations/info.png";
-    public static final String PATH = "./src/test/resources/sandbox/annotations/test.docx";
+    public static final String IMG = "./src/test/resources/img/info.png";
+    public static final String PATH = "./src/test/resources/txt/test.docx";
     public static final String DEST = "./target/test/resources/sandbox/annotations/file_attachment_annot.pdf";
 
     public static void main(String[] args) throws Exception {
@@ -43,18 +43,21 @@ public class FileAttachmentAnnot extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
-        Rectangle rect = new Rectangle(36, 700, 136, 800);
+        Rectangle rect = new Rectangle(36, 700, 100, 100);
         PdfFileSpec fs = PdfFileSpec.createEmbeddedFileSpec(pdfDoc, PATH, null, "test.docx", null, null, false);
         PdfFileAttachmentAnnotation attachment = new PdfFileAttachmentAnnotation(rect, fs)
                 .setContents("Click me");
-        // TODO There is no PdfCanvas#createAppearance()
-        //PdfAnnotationAppearance app = writer.getDirectContent().createAppearance(100, 100);
-        Image img = new Image(ImageFactory.getImage(IMG));
-        img.scaleAbsolute(100, 100);
-        img.setFixedPosition(0, 0);
-        // app.addImage(img);
-        //attachment.setAppearance(PdfName.N, app);
-        pdfDoc.getFirstPage().addAnnotation(attachment);
+
+        PdfFormXObject xObject = new PdfFormXObject(rect);
+        Image img = ImageFactory.getImage(IMG);
+        com.itextpdf.layout.element.Image imgModel = new com.itextpdf.layout.element.Image(img);
+        imgModel.scaleAbsolute(100, 100);
+        imgModel.setFixedPosition(0, 0);
+        PdfCanvas canvas = new PdfCanvas(xObject, pdfDoc);
+        canvas.addImage(img, rect, true);
+        attachment.setNormalAppearance(xObject.getPdfObject());
+
+        pdfDoc.addNewPage().addAnnotation(attachment);
         pdfDoc.close();
     }
 }

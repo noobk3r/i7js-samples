@@ -30,7 +30,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class CutAndPaste extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/merge/page229_cut_paste.pdf";
-    public static final String SRC = "./src/test/resources/sandbox/merge/page229.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/page229.pdf";
     public static void main(String[] args) throws IOException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();

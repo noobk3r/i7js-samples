@@ -32,7 +32,7 @@ public class TileInTwo extends GenericTest {
     public static final String DEST
             = "./target/test/resources/sandbox/merge/tile_in_two.pdf";
     public static final String SRC
-            = "./src/test/resources/sandbox/merge/united_states.pdf";
+            = "./src/test/resources/pdfs/united_states.pdf";
 
     public static void main(String[] args) throws IOException {
         File file = new File(DEST);

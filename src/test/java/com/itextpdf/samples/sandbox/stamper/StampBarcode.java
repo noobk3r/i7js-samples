@@ -28,7 +28,7 @@ import org.junit.experimental.categories.Category;
  */
 @Category(SampleTest.class)
 public class StampBarcode extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/stamper/superman.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/superman.pdf";
     public static final String DEST = "./target/test/resources/sandbox/stamper/stamp_barcode.pdf";
 
     public static void main(String[] args) throws Exception {

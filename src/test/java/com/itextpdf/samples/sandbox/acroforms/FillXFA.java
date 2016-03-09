@@ -22,9 +22,9 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class FillXFA extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/acroforms/purchase_order.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/purchase_order.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/purchase_order_filled.pdf";
-    public static final String XML = "./src/test/resources/sandbox/acroforms/data.xml";
+    public static final String XML = "./src/test/resources/xml/data.xml";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

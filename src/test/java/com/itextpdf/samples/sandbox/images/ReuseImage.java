@@ -28,7 +28,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class ReuseImage extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/images/single_image.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/single_image.pdf";
     public static final String DEST = "./target/test/resources/sandbox/images/reuse_image.pdf";
 
     public static void main(String[] args) throws Exception {

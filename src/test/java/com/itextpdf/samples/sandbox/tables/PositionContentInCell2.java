@@ -10,7 +10,6 @@ package com.itextpdf.samples.sandbox.tables;
 import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Cell;
@@ -19,18 +18,18 @@ import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 
 @Category(SampleTest.class)
 public class PositionContentInCell2 extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/position_content_in_cell2.pdf";
-    public static final String IMG = "./src/test/resources/sandbox/tables/info.png";
+    public static final String IMG = "./src/test/resources/img/info.png";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

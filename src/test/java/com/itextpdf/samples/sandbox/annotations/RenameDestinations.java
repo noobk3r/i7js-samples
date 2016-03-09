@@ -32,7 +32,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class RenameDestinations extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/annotations/nameddestinations.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/nameddestinations.pdf";
     public static final String DEST = "./target/test/resources/sandbox/annotations/rename_destinations.pdf";
 
     public static void main(String[] args) throws Exception {

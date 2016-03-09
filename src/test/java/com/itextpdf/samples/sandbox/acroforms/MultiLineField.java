@@ -32,7 +32,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class MultiLineField extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/acroforms/multinewline.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/multinewline.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/multi_line_field.pdf";
 
     public static void main(String[] args) throws Exception {

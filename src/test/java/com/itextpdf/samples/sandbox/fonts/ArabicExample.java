@@ -32,7 +32,7 @@ public class ArabicExample extends GenericTest {
     public static final String DEST
             = "./target/test/resources/sandbox/fonts/arabic_example.pdf";
     public static final String FONT
-            = "./src/test/resources/sandbox/fonts/NotoNaskhArabic-Regular.ttf";
+            = "./src/test/resources/font/NotoNaskhArabic-Regular.ttf";
     public static final String ARABIC
             = "\u0627\u0644\u0633\u0639\u0631 \u0627\u0644\u0627\u062c\u0645\u0627\u0644\u064a";
 

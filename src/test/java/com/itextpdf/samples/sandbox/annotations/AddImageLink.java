@@ -35,8 +35,8 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class AddImageLink extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/annotations/primes.pdf";
-    public static final String IMG = "./src/test/resources/sandbox/annotations/info.png";
+    public static final String SRC = "./src/test/resources/pdfs/primes.pdf";
+    public static final String IMG = "./src/test/resources/img/info.png";
     public static final String DEST = "./target/test/resources/sandbox/annotations/add_image_link.pdf";
 
     public static void main(String[] args) throws Exception {

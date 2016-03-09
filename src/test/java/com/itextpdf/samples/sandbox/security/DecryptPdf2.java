@@ -24,7 +24,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class DecryptPdf2 extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/security/decrypt_pdf2.pdf";
-    public static String SRC = "./src/test/resources/sandbox/security/encrypt_pdf_without_user_password.pdf";
+    public static String SRC = "./src/test/resources/pdfs/encrypt_pdf_without_user_password.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

@@ -26,7 +26,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class FlattenSignature extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/acroforms/input_signed.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/input_signed.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/flatten_signature.pdf";
 
     public static void main(String[] args) throws Exception {

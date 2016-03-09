@@ -36,7 +36,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class ScaleDown extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/events/scale_down.pdf";
-    public static final String SRC = "./src/test/resources/sandbox/events/orientations.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/orientations.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

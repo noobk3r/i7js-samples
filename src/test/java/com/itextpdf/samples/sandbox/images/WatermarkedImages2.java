@@ -34,10 +34,10 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class WatermarkedImages2 extends GenericTest {
-    public static final String IMAGE1 = "./src/test/resources/sandbox/images/bruno.jpg";
-    public static final String IMAGE2 = "./src/test/resources/sandbox/images/dog.bmp";
-    public static final String IMAGE3 = "./src/test/resources/sandbox/images/fox.bmp";
-    public static final String IMAGE4 = "./src/test/resources/sandbox/images/bruno_ingeborg.jpg";
+    public static final String IMAGE1 = "./src/test/resources/img/bruno.jpg";
+    public static final String IMAGE2 = "./src/test/resources/img/dog.bmp";
+    public static final String IMAGE3 = "./src/test/resources/img/fox.bmp";
+    public static final String IMAGE4 = "./src/test/resources/img/bruno_ingeborg.jpg";
     public static final String DEST = "./target/test/resources/sandbox/images/watermarked_images2.pdf";
 
     public static void main(String[] args) throws Exception {

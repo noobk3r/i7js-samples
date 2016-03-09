@@ -29,7 +29,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class ParseCzech {
     public static final String DEST = "./target/test/resources/sandbox/interactive/czech.txt";
-    public static final String SRC = "./src/test/resources/sandbox/parse/czech.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/czech.pdf";
 
     @BeforeClass
     public static void beforeClass() throws IOException {

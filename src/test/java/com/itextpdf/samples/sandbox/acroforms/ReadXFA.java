@@ -28,8 +28,8 @@ import org.w3c.dom.NodeList;
 
 @Category(SampleTest.class)
 public class ReadXFA extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/acroforms/xfa_form_poland.pdf";
-    public static final String DEST = "./target/test/resources/sandbox/acroforms/xfa_form_poland.xml";
+    public static final String SRC = "./src/test/resources/pdfs/xfa_form_poland.pdf";
+    public static final String DEST = "./target/test/resources/xml/xfa_form_poland.xml";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

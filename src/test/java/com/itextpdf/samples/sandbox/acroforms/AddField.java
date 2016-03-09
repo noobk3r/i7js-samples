@@ -29,7 +29,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class AddField extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/acroforms/form.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/form.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/add_field.pdf";
 
     public static void main(String[] args) throws Exception {

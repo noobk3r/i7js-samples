@@ -34,7 +34,7 @@ public class TiledBackgroundColor2 extends GenericTest {
     public static final String DEST
             = "./target/test/resources/sandbox/tables/tiled_background_color2.pdf";
     public static final String IMG
-            = "./src/test/resources/sandbox/tables/bulb.gif";
+            = "./src/test/resources/img/bulb.gif";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

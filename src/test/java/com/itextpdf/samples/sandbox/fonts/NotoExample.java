@@ -28,7 +28,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class NotoExample extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/fonts/chinese.pdf";
-    public static final String FONT = "./src/test/resources/sandbox/fonts/NotoSansCJKsc-Regular.otf";
+    public static final String FONT = "./src/test/resources/font/NotoSansCJKsc-Regular.otf";
 
     public static final String TEXT = "These are the protagonists in 'Hero', a movie by Zhang Yimou:\n"
             + "\u7121\u540d (Nameless), \u6b98\u528d (Broken Sword), "

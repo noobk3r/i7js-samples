@@ -33,7 +33,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class TiledBackgroundColor extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/tiled_background_color.pdf";
-    public static final String IMG = "./src/test/resources/sandbox/tables/bulb.gif";
+    public static final String IMG = "./src/test/resources/img/bulb.gif";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

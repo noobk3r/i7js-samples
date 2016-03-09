@@ -11,18 +11,25 @@
  */
 package com.itextpdf.samples.sandbox.annotations;
 
-import com.itextpdf.kernel.pdf.*;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.kernel.pdf.PdfArray;
+import com.itextpdf.kernel.pdf.PdfDictionary;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfName;
+import com.itextpdf.kernel.pdf.PdfNumber;
+import com.itextpdf.kernel.pdf.PdfReader;
+import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.samples.GenericTest;
-import org.junit.experimental.categories.Category;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
+import org.junit.experimental.categories.Category;
+
 @Category(SampleTest.class)
 public class ChangeZoomXYZDestination extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/annotations/xyz_destination.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/xyz_destination.pdf";
     public static final String DEST = "./target/test/resources/sandbox/annotations/change_zoom_xyz_destination.pdf";
 
     public static void main(String[] args) throws Exception {

@@ -26,7 +26,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class FetchBookmarkTitles {
-    public static final String SRC = "./src/test/resources/sandbox/interactive/bookmarks.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/bookmarks.pdf";
     public static final String RESULT = "2011-10-12\n" +
             "2011-10-13\n" +
             "2011-10-14\n" +

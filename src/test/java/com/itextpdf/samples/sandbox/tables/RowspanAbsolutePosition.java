@@ -27,7 +27,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class RowspanAbsolutePosition extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/rowspan_absolute_position.pdf";
-    public static final String IMG = "./src/test/resources/sandbox/tables/berlin2013.jpg";
+    public static final String IMG = "./src/test/resources/img/berlin2013.jpg";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

@@ -33,8 +33,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class ExtractStreams {
     public static final String DEST = "./target/test/resources/sandbox/parse/extract_streams%s";
-    public static final String SRC = "./src/test/resources/sandbox/parse/image.pdf";
-    public static final String RES = "./src/test/resources/sandbox/parse/extract_streams%s";
+    public static final String SRC = "./src/test/resources/pdfs/image.pdf";
 
     @BeforeClass
     public static void before() {

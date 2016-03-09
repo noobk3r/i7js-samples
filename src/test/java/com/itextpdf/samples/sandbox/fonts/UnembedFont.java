@@ -40,7 +40,7 @@ public class UnembedFont extends GenericTest {
      */
     public void createPdf(String file) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(file)));
-        PdfFont font = PdfFontFactory.createFont("./src/test/resources/sandbox/fonts/PT_Serif-Web-Regular.ttf", "WINANSI", true);
+        PdfFont font = PdfFontFactory.createFont("./src/test/resources/font/PT_Serif-Web-Regular.ttf", "WINANSI", true);
         new Document(pdfDoc).add(new Paragraph("This is a test with Times New Roman.").setFont(font));
         pdfDoc.close();
     }

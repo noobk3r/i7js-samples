@@ -17,7 +17,6 @@ import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfNumber;
 import com.itextpdf.kernel.pdf.PdfObject;
 import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfString;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -42,7 +41,7 @@ import org.w3c.dom.Element;
 @Category(SampleTest.class)
 public class AddNamedDestinations extends GenericTest {
     public static final String SRC
-            = "./src/test/resources/sandbox/stamper/primes.pdf";
+            = "./src/test/resources/pdfs/primes.pdf";
     public static final String DEST
             = "./target/test/resources/sandbox/stamper/add_named_destinations.pdf";
     public static final String XML

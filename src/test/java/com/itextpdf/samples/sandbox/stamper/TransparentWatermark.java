@@ -29,13 +29,12 @@ import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 
 @Category(SampleTest.class)
 public class TransparentWatermark extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/stamper/hero.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/hero.pdf";
     public static final String DEST = "./target/test/resources/sandbox/stamper/transparent_watermark.pdf";
 
     public static void main(String[] args) throws Exception {

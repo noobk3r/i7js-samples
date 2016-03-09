@@ -32,7 +32,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class ColumnTextPhrase extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/objects/column_text_phrase.pdf";
-    public static final String SRC = "./src/test/resources/sandbox/objects/hello.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

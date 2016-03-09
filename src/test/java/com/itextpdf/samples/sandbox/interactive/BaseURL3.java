@@ -25,7 +25,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class BaseURL3 extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/interactive/base_url3.pdf";
-    public static final String SRC = "./src/test/resources/sandbox/interactive/base_url.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/base_url.pdf";
 
     public static void main(String[] args) throws IOException {
         File file = new File(DEST);

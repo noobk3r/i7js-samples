@@ -29,7 +29,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 
 public class CheckBoxValues {
-    public static String SRC = "./src/test/resources/sandbox/acroforms/datasheet.pdf";
+    public static String SRC = "./src/test/resources/pdfs/datasheet.pdf";
     public static String DEST = "./target/test/resources/sandbox/acroforms/check_box_values.pdf";
     public static final String FIELD = "CP_1";
 

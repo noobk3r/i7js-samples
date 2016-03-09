@@ -30,7 +30,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class BackgroundTransparent extends GenericTest {
-    public static final String IMAGE = "./src/test/resources/sandbox/images/berlin2013.jpg";
+    public static final String IMAGE = "./src/test/resources/img/berlin2013.jpg";
     public static final String DEST = "./target/test/resources/sandbox/images/background_transparent.pdf";
 
     public static void main(String[] args) throws Exception {

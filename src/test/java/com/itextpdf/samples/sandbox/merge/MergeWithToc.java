@@ -39,9 +39,9 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class MergeWithToc extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/merge/merge_with_toc.pdf";
-    public static final String SRC1 = "./src/test/resources/sandbox/merge/united_states.pdf";
-    public static final String SRC2 = "./src/test/resources/sandbox/merge/hello.pdf";
-    public static final String SRC3 = "./src/test/resources/sandbox/merge/toc.pdf";
+    public static final String SRC1 = "./src/test/resources/pdfs/united_states.pdf";
+    public static final String SRC2 = "./src/test/resources/pdfs/hello.pdf";
+    public static final String SRC3 = "./src/test/resources/pdfs/toc.pdf";
 
     public Map<String, PdfDocument> filesToMerge;
 

@@ -35,7 +35,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class FlateCompressJPEG1Pass extends GenericTest {
-    public static final String IMAGE = "./src/test/resources/sandbox/images/berlin2013.jpg";
+    public static final String IMAGE = "./src/test/resources/img/berlin2013.jpg";
     public static final String DEST = "./target/test/resources/sandbox/images/flate_compress_jpeg_1pass.pdf";
 
     public static void main(String[] args) throws Exception {

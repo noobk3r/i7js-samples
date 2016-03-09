@@ -28,9 +28,9 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class MultipleImages extends GenericTest {
     public static final String[] IMAGES = {
-            "./src/test/resources/sandbox/images/berlin2013.jpg",
-            "./src/test/resources/sandbox/images/javaone2013.jpg",
-            "./src/test/resources/sandbox/images/map_cic.png"
+            "./src/test/resources/img/berlin2013.jpg",
+            "./src/test/resources/img/javaone2013.jpg",
+            "./src/test/resources/img/map_cic.png"
     };
     public static final String DEST =
             "./target/test/resources/sandbox/images/multiple_images.pdf";

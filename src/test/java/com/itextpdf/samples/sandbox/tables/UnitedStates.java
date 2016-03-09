@@ -31,7 +31,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class UnitedStates extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/united_states.pdf";
-    public static final String DATA = "./src/test/resources/sandbox/tables/united_states.csv";
+    public static final String DATA = "./src/test/resources/data/united_states.csv";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

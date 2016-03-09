@@ -31,8 +31,8 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class MakeJpgMask extends GenericTest {
-    public static final String IMAGE = "./src/test/resources/sandbox/images/javaone2013.jpg";
-    public static final String MASK = "./src/test/resources/sandbox/images/berlin2013.jpg";
+    public static final String IMAGE = "./src/test/resources/img/javaone2013.jpg";
+    public static final String MASK = "./src/test/resources/img/berlin2013.jpg";
     public static final String DEST = "./target/test/resources/sandbox/images/make_jpg_mask.pdf";
 
     public static void main(String[] args) throws Exception {

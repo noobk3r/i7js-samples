@@ -11,12 +11,11 @@
 package com.itextpdf.samples.sandbox.stamper;
 
 import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.kernel.geom.PageSize;
-import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.io.image.Image;
 import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfReader;
@@ -31,14 +30,13 @@ import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 
 @Category(SampleTest.class)
 public class TransparentWatermark2 extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/stamper/pages.pdf";
-    public static final String IMG = "./src/test/resources/sandbox/stamper/itext.png";
+    public static final String SRC = "./src/test/resources/pdfs/pages.pdf";
+    public static final String IMG = "./src/test/resources/img/itext.png";
     public static final String DEST = "./target/test/resources/sandbox/stamper/transparent_watermark2.pdf";
 
     public static void main(String[] args) throws Exception {

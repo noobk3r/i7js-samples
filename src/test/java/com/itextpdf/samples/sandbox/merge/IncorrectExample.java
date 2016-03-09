@@ -32,7 +32,7 @@ public class IncorrectExample extends GenericTest {
     public static final String DEST
             = "./target/test/resources/sandbox/merge/incorrect_example.pdf";
     public static final String SOURCE
-            = "./src/test/resources/sandbox/merge/pages.pdf";
+            = "./src/test/resources/pdfs/pages.pdf";
 
     public static void main(String[] args) throws IOException {
         File file = new File(DEST);

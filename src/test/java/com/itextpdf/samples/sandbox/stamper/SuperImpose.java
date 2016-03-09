@@ -26,11 +26,11 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class SuperImpose extends GenericTest {
     public static final String SRC =
-            "./src/test/resources/sandbox/stamper/primes.pdf";
+            "./src/test/resources/pdfs/primes.pdf";
     public static final String[] EXTRA = {
-            "./src/test/resources/sandbox/stamper/hello.pdf",
-            "./src/test/resources/sandbox/stamper/base_url.pdf",
-            "./src/test/resources/sandbox/stamper/state.pdf"
+            "./src/test/resources/pdfs/hello.pdf",
+            "./src/test/resources/pdfs/base_url.pdf",
+            "./src/test/resources/pdfs/state.pdf"
     };
     public static final String DEST =
             "./target/test/resources/sandbox/stamper/super_impose.pdf";

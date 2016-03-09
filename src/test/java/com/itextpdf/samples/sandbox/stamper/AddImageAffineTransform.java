@@ -27,9 +27,9 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class AddImageAffineTransform extends GenericTest {
-    public static final String SRC = "./src/test/resources/sandbox/stamper/hello.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
     public static final String DEST = "./target/test/resources/sandbox/stamper/add_image_affine_transform.pdf";
-    public static final String IMG = "./src/test/resources/sandbox/stamper/bruno.jpg";
+    public static final String IMG = "./src/test/resources/img/bruno.jpg";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
