@@ -24,7 +24,6 @@ import java.io.File;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Splitting2 extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/splitting2.pdf";
@@ -57,7 +56,6 @@ public class Splitting2 extends GenericTest {
             table.addCell("key " + i);
             table.addCell("value " + i);
         }
-        // TODO See the result
         table.setKeepTogether(true);
         doc.add(table);
         doc.close();
