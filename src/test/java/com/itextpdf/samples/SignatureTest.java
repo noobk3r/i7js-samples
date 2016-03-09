@@ -57,9 +57,9 @@ import org.junit.Before;
 
 public class SignatureTest {
 
-    public static final String ADOBE = "./src/test/resources/signatures/chapter05/adobeRootCA.cer";
-    public static final String CACERT = "./src/test/resources/signatures/chapter05/CACertSigningAuthority.crt";
-    public static final String BRUNO = "./src/test/resources/signatures/chapter05/bruno.crt";
+    public static final String ADOBE = "./src/test/resources/encryption/adobeRootCA.cer";
+    public static final String CACERT = "./src/test/resources/encryption/CACertSigningAuthority.crt";
+    public static final String BRUNO = "./src/test/resources/encryption/bruno.crt";
 
     public final static String cmpPath = "./src/test/resources/signatures/%s/";
     public final static String outPath = "./target/test/resources/signatures/%s/";

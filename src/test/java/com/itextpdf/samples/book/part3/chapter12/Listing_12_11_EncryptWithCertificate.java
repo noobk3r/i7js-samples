@@ -45,7 +45,7 @@ public class Listing_12_11_EncryptWithCertificate extends GenericTest {
      * You should make your own properties file and adapt this line.
      */
     public static String PATH
-            = "./src/test/resources/book/part3/chapter12/key.properties";
+            = "./src/test/resources/encryption/key.properties";
     // public static String PATH = "c:/users/ars18wrw/key.properties";
 
     public static Properties properties = new Properties();
