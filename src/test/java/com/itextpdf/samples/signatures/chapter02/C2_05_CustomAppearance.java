@@ -51,9 +51,9 @@ import static org.junit.Assert.fail;
 
 @Category(SampleTest.class)
 public class C2_05_CustomAppearance extends SignatureTest {
-    public static final String KEYSTORE = "./src/test/resources/signatures/chapter02/ks";
+    public static final String KEYSTORE = "./src/test/resources/encryption/ks";
     public static final char[] PASSWORD = "password".toCharArray();
-    public static final String SRC = "./src/test/resources/signatures/chapter02/hello_to_sign.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/hello_to_sign.pdf";
     public static final String DEST = "./target/test/resources/signatures/chapter02/signature_custom.pdf";
 
     public void sign(String src, String name, String dest,

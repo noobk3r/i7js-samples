@@ -41,7 +41,7 @@ public class C3_02_GetCrlUrl extends SignatureTest {
 
     public static void main(String[] args) throws IOException, GeneralSecurityException {
         Properties properties = new Properties();
-        properties.load(new FileInputStream("./src/test/resources/signatures/chapter03/key.properties"));
+        properties.load(new FileInputStream("./src/test/resources/encryption/signkey.properties"));
         // TODO Put right properties file
         String path = properties.getProperty("PRIVATE");
         char[] pass = properties.getProperty("PASSWORD").toCharArray();

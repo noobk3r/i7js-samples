@@ -41,10 +41,10 @@ import static org.junit.Assert.fail;
 
 @Category(SampleTest.class)
 public class C4_08_ServerClientSigning extends SignatureTest {
-    public static final String KEYSTORE = "./src/test/resources/signatures/chapter04/ks";
+    public static final String KEYSTORE = "./src/test/resources/encryption/ks";
     public static final char[] PASSWORD = "password".toCharArray();
     public static final String DEST = "./target/test/resources/signatures/chapter04/hello_server2.pdf";
-    public static final String CERT = "./src/test/resources/signatures/chapter04/bruno.crt";
+    public static final String CERT = "./src/test/resources/encryption/bruno.crt";
     public static final String PRE = "http://demo.itextsupport.com/SigningApp/presign";
     public static final String POST = "http://demo.itextsupport.com/SigningApp/postsign";
 

@@ -59,11 +59,11 @@ import static org.junit.Assert.fail;
 @Category(SampleTest.class)
 public class C2_12_LockFields extends SignatureTest {
     public static final String FORM = "./target/test/resources/signatures/chapter02/form_lock.pdf";
-    public static final String ALICE = "./src/test/resources/signatures/chapter02/alice";
-    public static final String BOB = "./src/test/resources/signatures/chapter02/bob";
-    public static final String CAROL = "./src/test/resources/signatures/chapter02/carol";
-    public static final String DAVE = "./src/test/resources/signatures/chapter02/dave";
-    public static final String KEYSTORE = "./src/test/resources/signatures/chapter02/ks";
+    public static final String ALICE = "./src/test/resources/encryption/alice";
+    public static final String BOB = "./src/test/resources/encryption/bob";
+    public static final String CAROL = "./src/test/resources/encryption/carol";
+    public static final String DAVE = "./src/test/resources/encryption/dave";
+    public static final String KEYSTORE = "./src/test/resources/encryption/ks";
     public static final char[] PASSWORD = "password".toCharArray();
     public static final String DEST = "./target/test/resources/signatures/chapter02/step_%s_signed_by_%s.pdf";
 

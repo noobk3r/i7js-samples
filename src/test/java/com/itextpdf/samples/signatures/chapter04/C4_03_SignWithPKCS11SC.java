@@ -45,7 +45,7 @@ import static org.junit.Assert.fail;
 @Ignore
 @Category(SampleTest.class)
 public class C4_03_SignWithPKCS11SC extends C4_02_SignWithPKCS11USB {
-    public static final String SRC = "./src/test/resources/signatures/chapter04/hello.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
     public static final String DEST = "./target/test/resources/signatures/chapter04/hello_smartcard_%s.pdf";
     public static final String DLL = "c:/windows/system32/beidpkcs11.dll";
 

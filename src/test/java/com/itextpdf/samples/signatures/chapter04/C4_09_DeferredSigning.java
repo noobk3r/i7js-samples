@@ -44,9 +44,9 @@ import static org.junit.Assert.fail;
 
 @Category(SampleTest.class)
 public class C4_09_DeferredSigning extends SignatureTest {
-    public static final String SRC = "./src/test/resources/signatures/chapter04/hello.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
     public static final String TEMP = "./target/test/resources/signatures/chapter04/hello_empty_sig.pdf";
-    public static final String KEYSTORE = "./src/test/resources/signatures/chapter04/ks";
+    public static final String KEYSTORE = "./src/test/resources/encryption/ks";
     public static final char[] PASSWORD = "password".toCharArray();
     public static final String DEST = "./target/test/resources/signatures/chapter04/hello_sig_ok.pdf";
 

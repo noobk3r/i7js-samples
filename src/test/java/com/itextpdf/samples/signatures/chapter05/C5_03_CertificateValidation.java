@@ -53,13 +53,14 @@ import static org.junit.Assert.fail;
 @Ignore
 @Category(SampleTest.class)
 public class C5_03_CertificateValidation extends C5_01_SignatureIntegrity {
-    public static final String ADOBE = "./src/test/resources/signatures/chapter05/adobeRootCA.cer";
-    public static final String CACERT = "./src/test/resources/signatures/chapter05/CACertSigningAuthority.crt";
-    public static final String BRUNO = "./src/test/resources/signatures/chapter05/bruno.crt";
+    // TODO Make resources from cmp files after revision
+    public static final String ADOBE = "./src/test/resources/encryption/adobeRootCA.cer";
+    public static final String CACERT = "./src/test/resources/encryption/CACertSigningAuthority.crt";
+    public static final String BRUNO = "./src/test/resources/encryption/bruno.crt";
 
     // public static final String EXAMPLE1 = "results/chapter3/hello_cacert_ocsp_ts.pdf"; // TODO Uncomment after C3_09_SignWithTSA revision
     // public static final String EXAMPLE2 = "results/chapter3/hello_token.pdf"; // TODO Uncomment after C3_11_SignWithToken revision
-    public static final String EXAMPLE3 = "./src/test/resources/signatures/chapter05/hello_signed1.pdf";
+    public static final String EXAMPLE3 = "./src/test/resources/pdfs/hello_signed1.pdf";
     // public static final String EXAMPLE4 = "results/chapter4/hello_smartcard_Signature.pdf"; // TODO Uncomment after C4_03_SignWithPKCS11SC revision
 
     public static final  String expectedOutput = ""; //TODO

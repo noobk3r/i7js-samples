@@ -58,9 +58,9 @@ import org.junit.experimental.categories.Category;
 @Ignore
 @Category(SampleTest.class)
 public class C4_01_SignWithPKCS11HSM extends SignatureTest {
-    public static final String SRC = "./src/test/resources/signatures/chapter04/hello.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
     public static final String DEST = "./target/test/resources/signatures/chapter04/hello_hsm.pdf";
-    public static final String PROPS = "./src/test/resources/signatures/chapter04/key.properties";
+    public static final String PROPS = "./src/test/resources/encryption/signkey.properties";
 
     public void sign(String src, String dest,
                      Certificate[] chain, PrivateKey pk,

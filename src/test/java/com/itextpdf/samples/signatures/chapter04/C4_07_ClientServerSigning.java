@@ -48,7 +48,7 @@ import static org.junit.Assert.fail;
 @Ignore
 @Category(SampleTest.class)
 public class C4_07_ClientServerSigning extends SignatureTest {
-    public static final String SRC = "./src/test/resources/signatures/chapter04/hello.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
     public static final String DEST = "./target/test/resources/signatures/chapter04/hello_server.pdf";
     public static final String CERT = "http://demo.itextsupport.com/SigningApp/itextpdf.cer";
 

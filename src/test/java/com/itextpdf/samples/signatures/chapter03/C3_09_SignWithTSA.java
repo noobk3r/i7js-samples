@@ -41,12 +41,12 @@ import static org.junit.Assert.fail;
 @Ignore
 @Category(SampleTest.class)
 public class C3_09_SignWithTSA extends C3_01_SignWithCAcert {
-    public static final String SRC = "./src/test/resources/signatures/chapter03/hello.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
     public static final String DEST = "./target/test/resources/signatures/chapter03/hello_cacert_ocsp_ts.pdf";
 
     public static void main(String[] args) throws IOException, GeneralSecurityException {
         Properties properties = new Properties();
-        properties.load(new FileInputStream("./src/test/resources/signatures/chapter03/key.properties"));
+        properties.load(new FileInputStream("./src/test/resources/encryption/signkey.properties"));
         String path = properties.getProperty("PRIVATE");
         char[] pass = properties.getProperty("PASSWORD").toCharArray();
         // TODO Put right properties file

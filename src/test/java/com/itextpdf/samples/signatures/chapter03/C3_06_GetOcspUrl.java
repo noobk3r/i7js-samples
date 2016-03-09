@@ -42,7 +42,7 @@ public class C3_06_GetOcspUrl extends SignatureTest {
     public static void main(String[] args) throws IOException, GeneralSecurityException {
         Properties properties = new Properties();
         // TODO Put right properties file
-        properties.load(new FileInputStream("./src/test/resources/signatures/chapter03/key.properties"));
+        properties.load(new FileInputStream("./src/test/resources/encryption/signkey.properties"));
         String path = properties.getProperty("PRIVATE");
         char[] pass = properties.getProperty("PASSWORD").toCharArray();
 

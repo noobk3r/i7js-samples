@@ -55,11 +55,11 @@ import static org.junit.Assert.fail;
 
 @Category(SampleTest.class)
 public class C2_06_SignatureAppearance extends SignatureTest {
-    public static final String KEYSTORE = "./src/test/resources/signatures/chapter02/ks";
+    public static final String KEYSTORE = "./src/test/resources/encryption/ks";
     public static final char[] PASSWORD = "password".toCharArray();
-    public static final String SRC = "./src/test/resources/signatures/chapter02/hello_to_sign.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/hello_to_sign.pdf";
     public static final String DEST = "./target/test/resources/signatures/chapter02/signature_appearance%s.pdf";
-    public static final String IMG = "./src/test/resources/signatures/chapter02/1t3xt.gif";
+    public static final String IMG = "./src/test/resources/img/1t3xt.gif";
 
     public void sign1(String src, String name, String dest,
                       Certificate[] chain, PrivateKey pk,
@@ -103,7 +103,7 @@ public class C2_06_SignatureAppearance extends SignatureTest {
         // Custom text, custom font, and right-to-left writing
         Text text = new Text("\u0644\u0648\u0631\u0627\u0646\u0633 \u0627\u0644\u0639\u0631\u0628");
         text.setFont(PdfFontFactory.createFont(/*"C:/windows/fonts/arialuni.ttf"*/
-                "./src/test/resources/signatures/chapter02/NotoNaskhArabic-Regular.ttf", PdfEncodings.IDENTITY_H, true));
+                "./src/test/resources/font/NotoNaskhArabic-Regular.ttf", PdfEncodings.IDENTITY_H, true));
         text.setBaseDirection(Property.BaseDirection.RIGHT_TO_LEFT);
         // TODO The text doesn't right centered by default
         new Canvas(n2, signer.getDocument()).add(new Paragraph(text).setTextAlignment(Property.TextAlignment.RIGHT));

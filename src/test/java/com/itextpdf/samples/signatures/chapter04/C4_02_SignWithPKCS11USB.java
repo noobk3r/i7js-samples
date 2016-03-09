@@ -54,13 +54,13 @@ import static org.junit.Assert.fail;
 @Ignore
 @Category(SampleTest.class)
 public class C4_02_SignWithPKCS11USB extends C4_01_SignWithPKCS11HSM {
-    public static final String SRC = "./src/test/resources/signatures/chapter04/hello.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
     public static final String DEST = "./target/test/resources/signatures/chapter04/hello_token.pdf";
     public static final String DLL = "c:/windows/system32/dkck201.dll";
 
     public static void main(String[] args) throws IOException, GeneralSecurityException {
         Properties properties = new Properties();
-        properties.load(new FileInputStream("./src/test/resources/signatures/chapter03/key.properties"));
+        properties.load(new FileInputStream("./src/test/resources/encryption/signkey.properties"));
         char[] pass = properties.getProperty("PASSWORD").toCharArray();
 
         String config = "name=ikey4000\n" +

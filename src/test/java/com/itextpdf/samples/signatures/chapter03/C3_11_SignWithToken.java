@@ -43,7 +43,7 @@
 //
 //@Ignore
 //public class C3_11_SignWithToken extends C3_01_SignWithCAcert {
-//    public static final String SRC = "./src/test/resources/signatures/chapter03/hello.pdf";
+//    public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
 //    public static final String DEST = "./target/test/resources/signatures/chapter03/hello_token.pdf";
 //
 //    public static void main(String[] args) throws IOException, GeneralSecurityException {

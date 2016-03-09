@@ -46,12 +46,13 @@ import static org.junit.Assert.fail;
 @Ignore
 @Category(SampleTest.class)
 public class C5_02_SignatureInfo extends C5_01_SignatureIntegrity {
-    public static final String EXAMPLE1 = "./src/test/resources/signatures/chapter05/step_4_signed_by_alice_bob_carol_and_dave.pdf";
+    // TODO Make resources from cmp files after revision
+    public static final String EXAMPLE1 = "./src/test/resources/pdfs/step_4_signed_by_alice_bob_carol_and_dave.pdf";
     // public static final String EXAMPLE2 = "results/chapter3/hello_cacert_ocsp_ts.pdf"; // TODO Uncomment after C3_09_SignWithTSA revision
     // public static final String EXAMPLE3 = "results/chapter3/hello_token.pdf"; // TODO Uncomment after C3_11_SignWithToken revision
-    public static final String EXAMPLE4 = "./src/test/resources/signatures/chapter05/hello_signed4.pdf";
+    public static final String EXAMPLE4 = "./src/test/resources/pdfs/hello_signed4.pdf";
     // public static final String EXAMPLE5 = "results/chapter4/hello_smartcard_Signature.pdf"; // TODO Uncomment after C4_03_SignWithPKCS11SC revision
-    public static final String EXAMPLE6 = "./src/test/resources/signatures/chapter05/field_metadata.pdf";
+    public static final String EXAMPLE6 = "./src/test/resources/pdfs/field_metadata.pdf";
 
     public static final  String expectedOutput = ""; //TODO
 

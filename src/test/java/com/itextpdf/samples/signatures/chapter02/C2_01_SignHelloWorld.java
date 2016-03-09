@@ -46,9 +46,9 @@ import static org.junit.Assert.fail;
 
 @Category(SampleTest.class)
 public class C2_01_SignHelloWorld extends SignatureTest {
-    public static final String KEYSTORE = "./src/test/resources/signatures/chapter02/ks";
+    public static final String KEYSTORE = "./src/test/resources/encryption/ks";
     public static final char[] PASSWORD = "password".toCharArray();
-    public static final String SRC = "./src/test/resources/signatures/chapter02/hello.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
     public static final String DEST = "./target/test/resources/signatures/chapter02/hello_signed%s.pdf";
 
     public void sign(String src, String dest,

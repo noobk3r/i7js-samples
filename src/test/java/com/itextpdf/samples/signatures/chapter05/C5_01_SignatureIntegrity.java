@@ -38,9 +38,10 @@ import static org.junit.Assert.fail;
 @Category(SampleTest.class)
 public class C5_01_SignatureIntegrity extends SignatureTest {
     // TODO Change hello_level_1_annotated.pdf for hello_level_1_annotated_wrong.pdf after C2_09_signatureTypes revision
-    public static final String EXAMPLE1 = "./src/test/resources/signatures/chapter05/hello_level_1_annotated.pdf";
-    public static final String EXAMPLE2 = "./src/test/resources/signatures/chapter05/step_4_signed_by_alice_bob_carol_and_dave.pdf";
-    public static final String EXAMPLE3 = "./src/test/resources/signatures/chapter05/step_6_signed_by_dave_broken_by_chuck.pdf";
+    // TODO Make resources from cmp files after revision
+    public static final String EXAMPLE1 = "./src/test/resources/pdfs/hello_level_1_annotated.pdf";
+    public static final String EXAMPLE2 = "./src/test/resources/pdfs/step_4_signed_by_alice_bob_carol_and_dave.pdf";
+    public static final String EXAMPLE3 = "./src/test/resources/pdfs/step_6_signed_by_dave_broken_by_chuck.pdf";
 
     public static final String expectedOutput = ""; //TODO
 
