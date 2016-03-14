@@ -27,7 +27,6 @@ import java.util.StringTokenizer;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
-// Note that this file is exactly like FillFlattenMerge1 because there is neither PdfCopy nor PdfSmartCopy in itext7
 public class FillFlattenMerge2 extends GenericTest {
     public static final String SRC = "./src/test/resources/pdfs/state.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/reporting/fill_flatten_merge2.pdf";
@@ -41,7 +40,9 @@ public class FillFlattenMerge2 extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
+        PdfWriter writer = new PdfWriter(DEST);
+        writer.setSmartMode(true);
+        PdfDocument pdfDoc = new PdfDocument(writer);
         ByteArrayOutputStream baos;
         PdfReader reader;
         PdfDocument pdfInnerDoc;
