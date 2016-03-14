@@ -42,12 +42,12 @@ public class SplittingNestedTable2 extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
-        Document doc = new Document(pdfDoc, new PageSize(300, 150));
-        doc.add(new Paragraph("Table with setSplitLate(true):"));
+        Document doc = new Document(pdfDoc, new PageSize(300, 150)); // TODO Change the height to see interesting results : 200, 150, 180
+        doc.add(new Paragraph("Table with setKeepTogether(false):"));
         Table table = new Table(2);
         table.setMarginTop(10);
         Cell cell = new Cell().add("GROUPS");
-        // TODO Think: we demand degree/radian angle value in different cases
+        // TODO Think: we demand degree/radian angle values in different cases ?!
         cell.setRotationAngle(Math.toRadians(90));
         cell.setVerticalAlignment(Property.VerticalAlignment.MIDDLE);
         cell.setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
@@ -61,11 +61,13 @@ public class SplittingNestedTable2 extends GenericTest {
         cell = new Cell().add(inner);
         cell.setPadding(0);
         table.addCell(cell);
-        // TODO See the results
         doc.add(table);
         doc.add(new AreaBreak());
-        doc.add(new Paragraph("Table with setSplitLate(false):"));
-        // doc.add(table);
+
+        doc.add(new Paragraph("Table with setKeepTogether(true):"));
+        table.setKeepTogether(true);
+        doc.add(table);
+
         doc.close();
     }
 }

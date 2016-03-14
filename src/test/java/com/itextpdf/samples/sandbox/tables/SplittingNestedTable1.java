@@ -42,9 +42,9 @@ public class SplittingNestedTable1 extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
-        // TODO Maybe change the page size after revision
-        Document doc = new Document(pdfDoc, new PageSize(300, 150));
-        doc.add(new Paragraph("Table with setSplitLate(true):"));
+        Document doc = new Document(pdfDoc, new PageSize(300, 180));
+
+        doc.add(new Paragraph("Table with setKeepTogether(false):"));
         Table table = new Table(2);
         table.setMarginTop(10);
         Cell cell = new Cell();
@@ -65,9 +65,11 @@ public class SplittingNestedTable1 extends GenericTest {
         table.addCell(cell);
         doc.add(table);
         doc.add(new AreaBreak());
-        doc.add(new Paragraph("Table with setSplitLate(false):"));
-        // TODO Add clone functionality for Table
+
+        doc.add(new Paragraph("Table with setKeepTogether(true):"));
+        table.setKeepTogether(true);
         doc.add(table);
+
         doc.close();
     }
 }

@@ -7,13 +7,13 @@
 
 package com.itextpdf.samples.sandbox.acroforms.reporting;
 
+import com.itextpdf.forms.PdfAcroForm;
+import com.itextpdf.forms.PdfPageFormCopier;
+import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.io.source.ByteArrayOutputStream;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.forms.PdfAcroForm;
-import com.itextpdf.forms.PdfPageFormCopier;
-import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -27,7 +27,7 @@ import java.util.StringTokenizer;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
-// TODO This file is exactly like FillFlattenMerge1 because there is neither PdfCopy nor PdfSmartCopy in itext7
+// Note that this file is exactly like FillFlattenMerge1 because there is neither PdfCopy nor PdfSmartCopy in itext7
 public class FillFlattenMerge2 extends GenericTest {
     public static final String SRC = "./src/test/resources/pdfs/state.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/reporting/fill_flatten_merge2.pdf";
