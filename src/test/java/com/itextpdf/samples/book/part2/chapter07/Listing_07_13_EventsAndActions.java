@@ -60,7 +60,7 @@ public class Listing_07_13_EventsAndActions extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(reader, writer);
         int n = pdfDoc.getNumberOfPages();
         // Add some javascript
-        pdfDoc.getCatalog().setOpenAction(PdfAction.createJavaScript(readFileToString(RESOURCE)));
+        pdfDoc.getCatalog().setOpenAction(PdfAction.createJavaScript(readFileToString(RESOURCE).replace("\r\n", "\n")));
         // Create a Chunk with a chained action
         PdfCanvas canvas;
         PdfAction action = PdfAction.createJavaScript("app.alert('Think before you print!');");

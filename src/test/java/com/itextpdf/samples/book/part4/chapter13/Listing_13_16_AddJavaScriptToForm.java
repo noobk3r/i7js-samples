@@ -82,7 +82,7 @@ public class Listing_13_16_AddJavaScriptToForm extends GenericTest {
     public void changePdf(String src, String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
         // Add JavaScript
-        pdfDoc.getCatalog().setOpenAction(PdfAction.createJavaScript(readFileToString(RESOURCE)));
+        pdfDoc.getCatalog().setOpenAction(PdfAction.createJavaScript(readFileToString(RESOURCE).replace("\r\n", "\n")));
         // get the form fields
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         PdfFormField fd = form.getField("married");

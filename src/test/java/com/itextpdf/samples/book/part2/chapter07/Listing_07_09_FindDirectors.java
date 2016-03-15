@@ -50,7 +50,7 @@ public class Listing_07_09_FindDirectors extends GenericTest {
         byte[] jsBytes = new byte[(int) file.length()];
         FileInputStream f = new FileInputStream(file);
         f.read(jsBytes);
-        return new String(jsBytes);
+        return new String(jsBytes).replace("\r\n", "\n");
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {
