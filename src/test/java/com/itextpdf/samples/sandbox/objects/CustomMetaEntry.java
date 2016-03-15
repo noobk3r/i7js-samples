@@ -40,8 +40,8 @@ public class CustomMetaEntry extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        pdfDoc.getInfo().setTitle("Some example");
-        pdfDoc.getInfo().setMoreInfo("Test", "test");
+        pdfDoc.getDocumentInfo().setTitle("Some example");
+        pdfDoc.getDocumentInfo().setMoreInfo("Test", "test");
         Paragraph p = new Paragraph("Hello World");
         doc.add(p);
 

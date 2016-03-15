@@ -41,7 +41,7 @@ public class ChangeInfoDictionary extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
-        PdfDocumentInfo info = pdfDoc.getInfo();
+        PdfDocumentInfo info = pdfDoc.getDocumentInfo();
         Map<String, String> newInfo = new HashMap<>();
         newInfo.put("Special Character: \u00e4", "\u00e4");
         StringBuilder buf = new StringBuilder();

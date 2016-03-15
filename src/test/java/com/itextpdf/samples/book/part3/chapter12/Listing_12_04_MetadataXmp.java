@@ -67,7 +67,7 @@ public class Listing_12_04_MetadataXmp extends GenericTest {
     public void createPdfAutomatic(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
-        PdfDocumentInfo info = pdfDoc.getInfo();
+        PdfDocumentInfo info = pdfDoc.getDocumentInfo();
         info
                 .setTitle("Hello World example")
                 .setSubject("This example shows how to add metadata & XMP")
@@ -81,7 +81,7 @@ public class Listing_12_04_MetadataXmp extends GenericTest {
 
     public void manipulatePdf(String src, String dest) throws IOException, XMPException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
-        PdfDocumentInfo info = pdfDoc.getInfo();
+        PdfDocumentInfo info = pdfDoc.getDocumentInfo();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         // TODO
         // pdfDoc.setXmpMetadata();

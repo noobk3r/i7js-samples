@@ -46,7 +46,7 @@ public class Listing_12_01_MetadataPdf extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        PdfDocumentInfo info = pdfDoc.getInfo();
+        PdfDocumentInfo info = pdfDoc.getDocumentInfo();
         info
                 .setTitle("Hello World example")
                 .setAuthor("Bruno Lowagie")
@@ -61,7 +61,7 @@ public class Listing_12_01_MetadataPdf extends GenericTest {
 
     public void changePdf(String src, String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
-        PdfDocumentInfo info = pdfDoc.getInfo();
+        PdfDocumentInfo info = pdfDoc.getDocumentInfo();
         info.setTitle("Hello World stamped");
         info.setSubject("Hello World with changed metadata");
         info.setKeywords("iText in Action, PdfStamper");
