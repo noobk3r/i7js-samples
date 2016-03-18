@@ -50,7 +50,7 @@
             <groupId>com.itextpdf</groupId>
             <artifactId>hyph</artifactId>
             <version>${project.version}</version>
-            <scope>runtime</scope>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.itextpdf</groupId>
@@ -62,7 +62,7 @@
             <groupId>com.itextpdf</groupId>
             <artifactId>pdfa</artifactId>
             <version>${project.version}</version>
-            <scope>test</scope>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
