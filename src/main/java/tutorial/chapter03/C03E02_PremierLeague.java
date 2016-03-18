@@ -1,29 +1,22 @@
 package tutorial.chapter03;
 
 import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.color.DeviceCmyk;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
-import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
-import com.itextpdf.layout.border.*;
+import com.itextpdf.layout.border.SolidBorder;
 import com.itextpdf.layout.element.Cell;
-import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
-import com.itextpdf.layout.layout.LayoutArea;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
-import com.itextpdf.layout.renderer.ParagraphRenderer;
-import com.itextpdf.layout.renderer.TableRenderer;
 
 import java.io.*;
 import java.util.StringTokenizer;
@@ -55,23 +48,18 @@ public class C03E02_PremierLeague {
 
         //Initialize PDF document
         PdfDocument pdf = new PdfDocument(writer);
-        PageSize ps = PageSize.A4.rotate();
+        PageSize ps = new PageSize(842, 680);
 
         // Initialize document
         Document document = new Document(pdf, ps);
-
-        /*Table table = new Table(4);
-        for(int aw = 0; aw < 16; aw++){
-            table.addCell(new Cell().add("hi")).setBorder(Border.NO_BORDER);
-        }*/
 
         PdfFont font = PdfFontFactory.createFont(FontConstants.HELVETICA);
         PdfFont bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
         Table table = new Table(new float[]{1.5f, 7, 2, 2, 2, 2, 3, 4, 4, 2});
         table.setWidthPercent(100)
-            .setTextAlignment(Property.TextAlignment.CENTER)
-            .setHorizontalAlignment(Property.HorizontalAlignment.CENTER)
-            .setVerticalAlignment(Property.VerticalAlignment.MIDDLE);
+                .setTextAlignment(Property.TextAlignment.CENTER)
+                .setHorizontalAlignment(Property.HorizontalAlignment.CENTER)
+                .setVerticalAlignment(Property.VerticalAlignment.MIDDLE);
 
         BufferedReader br = new BufferedReader(new FileReader(DATA));
         String line = br.readLine();
@@ -81,7 +69,6 @@ public class C03E02_PremierLeague {
         }
         br.close();
 
-        //table.setNextRenderer(new TableBorderRenderer(table));
         document.add(table);
 
         //Close document
@@ -94,47 +81,31 @@ public class C03E02_PremierLeague {
         int columnNumber = 0;
         while (tokenizer.hasMoreTokens()) {
             if (isHeader) {
-                Cell cell = getCell(tokenizer.nextToken());
+                Cell cell = new Cell().add(new Paragraph(tokenizer.nextToken()));
+                cell.setNextRenderer(new RoundedCornersCellRenderer(cell));
+                cell.setPadding(5).setBorder(null);
                 table.addHeaderCell(cell);
             } else {
                 columnNumber++;
-                Cell cell = new Cell().add(new Paragraph(tokenizer.nextToken()).
-                        setFont(font))
-                        .setBorder(new DottedBorder(Color.BLACK, 1));
-                if (columnNumber == 4)
-                    cell.setBackgroundColor(greenColor);
-                else if (columnNumber == 5)
-                    cell.setBackgroundColor(yellowColor);
-                else if (columnNumber == 6)
-                    cell.setBackgroundColor(redColor);
-                else cell.setBackgroundColor(blueColor);
+                Cell cell = new Cell().add(new Paragraph(tokenizer.nextToken()));
+                cell.setFont(font).setBorder(new SolidBorder(Color.BLACK, 0.5f));
+                switch (columnNumber) {
+                    case 4:
+                        cell.setBackgroundColor(greenColor);
+                        break;
+                    case 5:
+                        cell.setBackgroundColor(yellowColor);
+                        break;
+                    case 6:
+                        cell.setBackgroundColor(redColor);
+                        break;
+                    default:
+                        cell.setBackgroundColor(blueColor);
+                        break;
+                }
                 table.addCell(cell);
             }
         }
-    }
-
-    class TableBorderRenderer extends TableRenderer {
-        public TableBorderRenderer(Table modelElement) {
-            super(modelElement);
-        }
-
-        @Override
-        protected void drawBorders(PdfCanvas canvas) {
-            Rectangle rect = getOccupiedAreaBBox();
-            canvas
-                    .saveState()
-                    .rectangle(rect.getLeft(), rect.getBottom(), rect.getWidth(), rect.getHeight())
-                    .stroke()
-                    .restoreState();
-        }
-    }
-
-    public Cell getCell(String content) {
-        Cell cell = new Cell().add(new Paragraph(content));
-        cell.setNextRenderer(new RoundedCornersCellRenderer(cell));
-        cell.setPadding(5);
-        cell.setBorder(null);
-        return cell;
     }
 
 
@@ -152,14 +123,11 @@ public class C03E02_PremierLeague {
             float r = 4;
             float b = 0.4477f;
             PdfCanvas canvas = drawContext.getCanvas();
-            canvas.moveTo(llx, lly);
-            canvas.lineTo(urx, lly);
-            canvas.lineTo(urx, ury - r);
-            canvas.curveTo(urx, ury - r * b, urx - r * b, ury, urx - r, ury);
-            canvas.lineTo(llx + r, ury);
-            canvas.curveTo(llx + r * b, ury, llx, ury - r * b, llx, ury - r);
-            canvas.lineTo(llx, lly);
-            canvas.stroke();
+            canvas.moveTo(llx, lly).lineTo(urx, lly).lineTo(urx, ury - r)
+                    .curveTo(urx, ury - r * b, urx - r * b, ury, urx - r, ury)
+                    .lineTo(llx + r, ury)
+                    .curveTo(llx + r * b, ury, llx, ury - r * b, llx, ury - r)
+                    .lineTo(llx, lly).stroke();
             super.draw(drawContext);
         }
     }
