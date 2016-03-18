@@ -27,6 +27,9 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.util.StringTokenizer;
 
+/**
+ * Simple event handler example.
+ */
 public class C03E03_UFO {
 
     public static final String DATA = "src/main/resources/data/ufo.csv";

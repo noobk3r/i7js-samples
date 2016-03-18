@@ -22,7 +22,7 @@ import java.io.*;
 import java.util.StringTokenizer;
 
 /**
- * Simple columns example.
+ * Simple table renderer example.
  */
 public class C03E02_PremierLeague {
 

@@ -1,41 +1,52 @@
 package tutorial.chapter03;
 
+import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.font.PdfFont;
+import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfPage;
-import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.*;
+import com.itextpdf.layout.ColumnDocumentRenderer;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.element.Image;
-import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.layout.LayoutArea;
-import com.itextpdf.layout.renderer.ParagraphRenderer;
+import com.itextpdf.layout.element.*;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
- * Simple columns example.
+ * Simple column renderer example.
  */
 public class C03E01_NewYorkTimes {
 
-    public static final String SENATOR = "src/main/resources/img/senator.jpg";
-    public static final String CAR = "src/main/resources/img/car.jpg";
-
     public static final String DEST = "results/chapter03/new_york_times.pdf";
 
-    public static void main(String args[]) throws IOException {
+    public static final String APPLE_IMG = "src/main/resources/img/ny_times_apple.jpg";
+    public static final String APPLE_TXT = "src/main/resources/data/ny_times_apple.txt";
+    public static final String FACEBOOK_IMG = "src/main/resources/img/ny_times_fb.jpg";
+    public static final String FACEBOOK_TXT = "src/main/resources/data/ny_times_fb.txt";
+    public static final String INST_IMG = "src/main/resources/img/ny_times_inst.jpg";
+    public static final String INST_TXT = "src/main/resources/data/ny_times_inst.txt";
+
+    static PdfFont timesNewRoman = null;
+    static PdfFont timesNewRomanBold = null;
+
+    public static void main(String[] args) throws Exception {
+        timesNewRoman = PdfFontFactory.createFont(FontConstants.TIMES_ROMAN);
+        timesNewRomanBold = PdfFontFactory.createFont(FontConstants.TIMES_BOLD);
         File file = new File(DEST);
         file.getParentFile().mkdirs();
         new C03E01_NewYorkTimes().createPdf(DEST);
     }
 
-    public void createPdf(String dest) throws IOException {
+    protected void createPdf(String dest) throws Exception {
+
+        String articleApple = new String(Files.readAllBytes(Paths.get(APPLE_TXT)), StandardCharsets.UTF_8);
+        String articleFB = new String(Files.readAllBytes(Paths.get(FACEBOOK_TXT)), StandardCharsets.UTF_8);
+        String articleInstagram = new String(Files.readAllBytes(Paths.get(INST_TXT)), StandardCharsets.UTF_8);
 
         //Initialize PDF writer
         FileOutputStream fos = new FileOutputStream(dest);
@@ -43,102 +54,50 @@ public class C03E01_NewYorkTimes {
 
         //Initialize PDF document
         PdfDocument pdf = new PdfDocument(writer);
-        PageSize ps = PageSize.A5.rotate();
-        PdfPage page = pdf.addNewPage(ps);
+        PageSize ps = PageSize.A5;
 
         // Initialize document
-        Document document = new Document(pdf);
+        Document doc = new Document(pdf, ps);
 
         //Set column parameters
-        final float columnWidth = (ps.getWidth() - 100) / 3 - 5;
-        final float columnHeight = ps.getHeight() / 2 - 100;
+        float offSet = 36;
+        float columnWidth = (ps.getWidth() - offSet * 2 + 10) / 3;
+        float columnHeight = ps.getHeight() - offSet * 2;
 
-        Image senator = new Image(ImageFactory.getImage(SENATOR)).setWidth(columnWidth);
-        Image car = new Image(ImageFactory.getImage(CAR)).setWidth(columnWidth);
+        //Define column areas
+        Rectangle[] columns = {new Rectangle(offSet - 5, offSet, columnWidth, columnHeight),
+                new Rectangle(offSet + columnWidth, offSet, columnWidth, columnHeight),
+                new Rectangle(offSet + columnWidth * 2 + 5, offSet, columnWidth, columnHeight)};
+        doc.setRenderer(new ColumnDocumentRenderer(doc, columns));
 
-        Paragraph p = new Paragraph("Ohio Looms Large in Both Races on Tuesday" +
-                "By TRIP GABRIEL")
-                .setFontSize(9)
-                .add(car);
+        Image apple = new Image(ImageFactory.getImage(APPLE_IMG)).setWidth(columnWidth);
+        Image facebook = new Image(ImageFactory.getImage(FACEBOOK_IMG)).setWidth(columnWidth);
+        Image inst = new Image(ImageFactory.getImage(INST_IMG)).setWidth(columnWidth);
 
-        p.setNextRenderer(new ParagraphRenderer(p) {
-            @Override
-            public List<Rectangle> initElementAreas(LayoutArea area) {
-                List<Rectangle> areas = new ArrayList<Rectangle>();
-                Rectangle rect = new Rectangle(50, 50, columnWidth, columnHeight);
-                areas.add(rect);
-                return areas;
-            }
-        });
-        document.add(p);
+        C03E01_NewYorkTimes.addArticle(doc, "Apple Encryption Engineers, if Ordered to Unlock iPhone, Might Resist", "By JOHN MARKOFF MARCH 18, 2016", apple, articleApple);
+        C03E01_NewYorkTimes.addArticle(doc, "With ‘Smog Jog’ Through Beijing, Zuckerberg Stirs Debate on Air Pollution", "By PAUL MOZUR MARCH 18, 2016", facebook, articleFB);
+        C03E01_NewYorkTimes.addArticle(doc, "Instagram May Change Your Feed, Personalizing It With an Algorithm","By MIKE ISAAC MARCH 15, 2016", inst, articleInstagram);
 
-        Paragraph p2 = new Paragraph("Ohio Looms Large in Both Races on Tuesday\n" +
-                "By TRIP GABRIEL\n")
-                .setFontSize(9)
-                .add(car);
-        p2.setNextRenderer(new ParagraphRenderer(p) {
-            @Override
-            public List<Rectangle> initElementAreas(LayoutArea area) {
-                List<Rectangle> areas = new ArrayList<Rectangle>();
-                Rectangle rect = new Rectangle(columnWidth + 55, 50, columnWidth, columnHeight);
-                areas.add(rect);
-                return areas;
-            }
-        });
-        document.add(p2);
+        doc.close();
 
-        /*Paragraph p2 = new Paragraph("\nOhio Looms Large in Both Races on Tuesday\n" +
-                "By TRIP GABRIEL\n")
-                .setFontSize(9)
-                .add(senator)
-                .add("\nOhio has emerged as the one large state voting this week where " +
-                        "Mr. Trump appears vulnerable. On the Democratic side, Bernie " +
-                        "Sanders hopes for a repeat of his upset in Michigan.\n");
-        p2.add("\nHere's One Answer to Electric Cars' Lack of Range: Electric Road\n" +
-                "By ANNA HIRTENSTEIN\n")
-                .add(car)
-                .add("\nA father-daughter team that founded the Scotland-based Tracked" +
-                        "Electric Vehicle project where battery-powered cars recharge while" +
-                        "they drive from a metal strip embedded in highways.\n");
+    }
 
-        p2.setNextRenderer(new ParagraphRenderer(p2) {
-            @Override
-            public List<Rectangle> initElementAreas(LayoutArea area) {
-                List<Rectangle> areas = new ArrayList<Rectangle>();
-                Rectangle rect = new Rectangle(columnWidth + 55, 50, columnWidth, columnHeight);
-                areas.add(rect);
-                return areas;
-            }
-        });
-        document.add(p2);
-
-        Paragraph p3 = new Paragraph("\nOhio Looms Large in Both Races on Tuesday\n" +
-                "By TRIP GABRIEL\n")
-                .setFontSize(9)
-                .add(senator)
-                .add("\nOhio has emerged as the one large state voting this week where " +
-                        "Mr. Trump appears vulnerable. On the Democratic side, Bernie " +
-                        "Sanders hopes for a repeat of his upset in Michigan.\n");
-        p3.add("\nHere's One Answer to Electric Cars' Lack of Range: Electric Road\n" +
-                "By ANNA HIRTENSTEIN\n")
-                .add(car)
-                .add("\nA father-daughter team that founded the Scotland-based Tracked" +
-                        "Electric Vehicle project where battery-powered cars recharge while" +
-                        "they drive from a metal strip embedded in highways.\n");
-
-        p3.setNextRenderer(new ParagraphRenderer(p2) {
-            @Override
-            public List<Rectangle> initElementAreas(LayoutArea area) {
-                List<Rectangle> areas = new ArrayList<Rectangle>();
-                Rectangle rect = new Rectangle(2 * columnWidth + 60, 50, columnWidth, columnHeight);
-                areas.add(rect);
-                return areas;
-            }
-        });
-        document.add(p3);*/
-
-        //Close document
-        document.close();
-
+    public static void addArticle(Document doc, String title, String author, Image img, String text) throws IOException {
+        Paragraph p1 = new Paragraph(title)
+                .setFont(timesNewRomanBold)
+                .setFontSize(14);
+        doc.add(p1);
+        doc.add(img);
+        Paragraph p2 = new Paragraph()
+                .setFont(timesNewRoman)
+                .setFontSize(7)
+                .setFontColor(Color.GRAY)
+                .add(author);
+        doc.add(p2);
+        Paragraph p3 = new Paragraph()
+                .setFont(timesNewRoman)
+                .setFontSize(10)
+                .add(text);
+        doc.add(p3);
     }
 }
