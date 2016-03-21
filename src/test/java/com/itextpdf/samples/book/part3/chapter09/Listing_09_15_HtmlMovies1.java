@@ -7,6 +7,9 @@
 
 package com.itextpdf.samples.book.part3.chapter09;
 
+import com.itextpdf.io.font.PdfEncodings;
+import com.itextpdf.kernel.font.PdfFont;
+import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
@@ -27,15 +30,20 @@ import javax.xml.parsers.SAXParserFactory;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.io.Reader;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+@Ignore
 public class Listing_09_15_HtmlMovies1 extends GenericTest {
     public static final String HTML = "./target/test/resources/book/part3/chapter09/Listing_09_15_HtmlMovies1.html";
     public static final String DEST = "./target/test/resources/book/part3/chapter09/Listing_09_15_HtmlMovies1.pdf";
@@ -69,7 +77,11 @@ public class Listing_09_15_HtmlMovies1 extends GenericTest {
         out.close();
 
         SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
-        parser.parse(new InputSource(new FileInputStream(HTML)), new CustomHandler(doc));
+        InputStream inputStream = new FileInputStream(HTML);
+        Reader reader = new InputStreamReader(inputStream, "UTF-8");
+        InputSource is = new InputSource(reader);
+        is.setEncoding("UTF-8");
+        parser.parse(is, new CustomHandler(doc));
 
         // close the database connection and the document
         connection.close();
@@ -116,15 +128,26 @@ public class Listing_09_15_HtmlMovies1 extends GenericTest {
 
 
     private static class CustomHandler extends DefaultHandler {
+        public static final String FONT = "./src/test/resources/font/FreeSans.ttf";
+
         protected Document document;
-        protected Paragraph paragraph = new Paragraph();
-        protected com.itextpdf.layout.element.List list
-                = new com.itextpdf.layout.element.List().setListSymbol("").setSymbolIndent(10);
-        protected ListItem listItem = new ListItem();
-        protected boolean isItalic = false;
+        protected Paragraph paragraph;
+        protected com.itextpdf.layout.element.List list;
+        protected ListItem listItem;
+        protected PdfFont font;
+        protected boolean isItalic;
 
         public CustomHandler(Document document) {
             this.document = document;
+            list = new com.itextpdf.layout.element.List().setListSymbol("").setSymbolIndent(10);
+            listItem = new ListItem();
+            try {
+                font = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H, true);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            paragraph = new Paragraph().setFont(font);
+            isItalic = false;
         }
 
         /**
@@ -148,7 +171,7 @@ public class Listing_09_15_HtmlMovies1 extends GenericTest {
                 throws SAXException {
             if ("span".equals(qName)) {
                 document.add(paragraph);
-                paragraph = new Paragraph();
+                paragraph = new Paragraph().setFont(font);
             } else if ("ul".equals(qName)) {
                 document.add(list);
                 list = new com.itextpdf.layout.element.List();
@@ -157,7 +180,7 @@ public class Listing_09_15_HtmlMovies1 extends GenericTest {
                 listItem.add(paragraph);
                 list.add(listItem);
                 listItem = new ListItem();
-                paragraph = new Paragraph();
+                paragraph = new Paragraph().setFont(font);
             } else if ("i".equals(qName)) {
                 isItalic = false;
             }
