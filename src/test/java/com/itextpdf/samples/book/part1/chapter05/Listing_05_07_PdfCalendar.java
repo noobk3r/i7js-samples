@@ -47,9 +47,9 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
     public static final String DEST = "./target/test/resources/book/part1/chapter05/Listing_05_07_PdfCalendar.pdf";
 
     float[] cmykGreen = new float[]{1, 0, 1, 0};
-    float[] cmykGray = new float[]{0, 0, 0, 50/255};
+    float[] cmykGray = new float[]{0, 0, 0, 50f/255};
     float[] cmykWhite = new float[]{0, 0, 0, 0};
-    float[] cmykYellow = new float[]{0, 0, 1, 15/255};
+    float[] cmykYellow = new float[]{0, 0, 1, 15f/255};
 
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_05_07_PdfCalendar().manipulatePdf(DEST);
@@ -139,7 +139,7 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
                 .setFont(normal)
                 .setFontColor(new DeviceCmyk(cmykGray[0], cmykGray[1], cmykGray[2], cmykGray[3]))
                 .setFontSize(8);
-        doc.showTextAligned(p, 893, 5, calendar.get(Calendar.MONTH) + 1,
+        doc.showTextAligned(p, 837, 5, calendar.get(Calendar.MONTH) + 1,
                 Property.TextAlignment.RIGHT, Property.VerticalAlignment.BOTTOM, 0);
     }
 
@@ -230,7 +230,6 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
             drawContext.getCanvas()
                     .saveState()
                     .roundRectangle(rect.getX() - 3, rect.getBottom() - 3, rect.getWidth() + 6, rect.getHeight() + 6, 10)
-                    // TODO Cmyk colors do not render correct
                     .setFillColorCmyk(cmykYellow[0], cmykYellow[1], cmykYellow[2], cmykYellow[3])
                     .setStrokeColorCmyk(cmykYellow[0], cmykYellow[1], cmykYellow[2], cmykYellow[3])
                     .fillStroke()

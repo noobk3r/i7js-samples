@@ -31,13 +31,11 @@ import java.io.PrintStream;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.junit.Ignore;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-@Ignore
 public class Listing_09_15_HtmlMovies1 extends GenericTest {
     public static final String HTML = "./target/test/resources/book/part3/chapter09/Listing_09_15_HtmlMovies1.html";
     public static final String DEST = "./target/test/resources/book/part3/chapter09/Listing_09_15_HtmlMovies1.pdf";
@@ -77,7 +75,6 @@ public class Listing_09_15_HtmlMovies1 extends GenericTest {
         connection.close();
         doc.close();
     }
-
 
     /**
      * Creates an HTML snippet with info about a movie.
@@ -153,7 +150,6 @@ public class Listing_09_15_HtmlMovies1 extends GenericTest {
         public void endElement(String uri, String localName, String qName)
                 throws SAXException {
             if ("span".equals(qName)) {
-                // TODO DEVSIX-500
                 document.add(paragraph);
                 paragraph = new Paragraph();
             } else if ("ul".equals(qName)) {
@@ -198,5 +194,4 @@ public class Listing_09_15_HtmlMovies1 extends GenericTest {
             return buf.toString();
         }
     }
-
 }
