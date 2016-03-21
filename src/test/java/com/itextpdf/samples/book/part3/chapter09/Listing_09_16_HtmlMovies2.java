@@ -34,13 +34,11 @@ import java.net.MalformedURLException;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.junit.Ignore;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-@Ignore
 public class Listing_09_16_HtmlMovies2 extends Listing_09_15_HtmlMovies1 {
     public static final String HTML = "./target/test/resources/book/part3/chapter09/Listing_09_16_HtmlMovies2.html";
     public static final String DEST = "./target/test/resources/book/part3/chapter09/Listing_09_16_HtmlMovies2.pdf";
@@ -119,9 +117,9 @@ public class Listing_09_16_HtmlMovies2 extends Listing_09_15_HtmlMovies1 {
          */
         public void startElement(String uri, String localName, String qName,
                                  Attributes attributes) throws SAXException {
-            // TODO Think about the right place to create elements
             if ("span".equals(qName)) {
                 if ("director".equals(attributes.getValue("class"))) {
+                    // MidNightBlue color
                     paragraph.setFontColor(new DeviceRgb(0.09803922f, 0.09803922f, 0.4392157f));
                     paragraph.setBold();
                 }
@@ -137,8 +135,6 @@ public class Listing_09_16_HtmlMovies2 extends Listing_09_15_HtmlMovies1 {
                 isItalic = true;
             } else if ("br".equals(qName)) {
                 paragraph.add(new Text("\n"));
-            } else if ("tr".equals(qName)) {
-            } else if ("td".equals(qName)) {
             } else if ("img".equals(qName)) {
                 String path = attributes.getValue("src");
                 try {
@@ -156,7 +152,6 @@ public class Listing_09_16_HtmlMovies2 extends Listing_09_15_HtmlMovies1 {
         public void endElement(String uri, String localName, String qName)
                 throws SAXException {
             if ("span".equals(qName)) {
-                // TODO DEVSIX-500
                 cell.add(paragraph);
                 paragraph = new Paragraph();
             } else if ("ul".equals(qName)) {

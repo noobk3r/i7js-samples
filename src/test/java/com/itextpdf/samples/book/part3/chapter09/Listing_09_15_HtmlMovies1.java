@@ -118,7 +118,8 @@ public class Listing_09_15_HtmlMovies1 extends GenericTest {
     private static class CustomHandler extends DefaultHandler {
         protected Document document;
         protected Paragraph paragraph = new Paragraph();
-        protected com.itextpdf.layout.element.List list = new com.itextpdf.layout.element.List();
+        protected com.itextpdf.layout.element.List list
+                = new com.itextpdf.layout.element.List().setListSymbol("").setSymbolIndent(10);
         protected ListItem listItem = new ListItem();
         protected boolean isItalic = false;
 
@@ -132,11 +133,7 @@ public class Listing_09_15_HtmlMovies1 extends GenericTest {
          */
         public void startElement(String uri, String localName, String qName,
                                  Attributes attributes) throws SAXException {
-            // TODO Think about the right place to create elements
-            if ("span".equals(qName)) {
-            } else if ("ul".equals(qName)) {
-            } else if ("li".equals(qName)) {
-            } else if ("i".equals(qName)) {
+            if ("i".equals(qName)) {
                 isItalic = true;
             } else if ("br".equals(qName)) {
                 paragraph.add(new Text("\n"));
@@ -155,6 +152,7 @@ public class Listing_09_15_HtmlMovies1 extends GenericTest {
             } else if ("ul".equals(qName)) {
                 document.add(list);
                 list = new com.itextpdf.layout.element.List();
+                list.setListSymbol("").setSymbolIndent(10);
             } else if ("li".equals(qName)) {
                 listItem.add(paragraph);
                 list.add(listItem);
