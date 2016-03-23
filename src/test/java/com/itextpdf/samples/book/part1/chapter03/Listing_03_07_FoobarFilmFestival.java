@@ -70,7 +70,7 @@ public class Listing_03_07_FoobarFilmFestival extends GenericTest {
 
         chunkWidth = freeSans.getWidth(foobar + ": " + width_freeSans);
         doc.add(new Paragraph(String.format(Locale.ENGLISH, "Chunk width: %f", chunkWidth)));
-        doc.add(new Paragraph("\n"));
+        // doc.add(new Paragraph("\n"));
         // Ascent and descent of the String
         doc.add(new Paragraph("Ascent Helvetica: "
                 + helvetica.getAscent(foobar, 12)));
@@ -85,7 +85,7 @@ public class Listing_03_07_FoobarFilmFestival extends GenericTest {
         width_helv = getWidthPointKerned(helvetica,foobar,12);
         c = new Text(foobar + ": " + width_helv).setFont(helvetica);
         doc.add(new Paragraph(c));
-        doc.add(new Paragraph("\n"));
+//        doc.add(new Paragraph("\n"));
         // Drawing lines to see where the text is added
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage())
                 .saveState()

@@ -75,7 +75,6 @@ public class Listing_02_22_MovieLinks1 extends GenericTest {
                 imdb = new Link(movie.getMovieTitle(),
                         PdfAction.createURI(String.format("http://www.imdb.com/title/tt%s/", movie.getImdb())));
                 doc.add(new Paragraph().add(imdb));
-                doc.add(new Paragraph("\n"));
             }
             doc.add(new AreaBreak());
         }
