@@ -16,6 +16,7 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
 import com.itextpdf.layout.Style;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.licensekey.LicenseKey;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.FileOutputStream;
@@ -46,6 +47,8 @@ public class Listing_11_18_Ligatures2 extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
+        //Load the license file to use advanced typography features
+        LicenseKey.loadLicenseFile(System.getenv("ITEXT7_LICENSEKEY") + "/itextkey-typography.xml");
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);

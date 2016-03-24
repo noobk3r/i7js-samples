@@ -15,6 +15,7 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Property;
+import com.itextpdf.licensekey.LicenseKey;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -32,6 +33,8 @@ public class Listing_14_10_TextMethods extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException {
+        //Load the license file to use advanced typography features
+        LicenseKey.loadLicenseFile(System.getenv("ITEXT7_LICENSEKEY") + "/itextkey-typography.xml");
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         // draw helper lines
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());

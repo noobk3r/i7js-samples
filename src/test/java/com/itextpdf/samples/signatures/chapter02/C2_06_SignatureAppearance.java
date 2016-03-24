@@ -25,6 +25,7 @@ import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
+import com.itextpdf.licensekey.LicenseKey;
 import com.itextpdf.samples.SignatureTest;
 import com.itextpdf.signatures.BouncyCastleDigest;
 import com.itextpdf.signatures.DigestAlgorithms;
@@ -185,6 +186,8 @@ public class C2_06_SignatureAppearance extends SignatureTest {
 
     @Test
     public void runTest() throws IOException, InterruptedException, GeneralSecurityException {
+        //Load the license file to use advanced typography features
+        LicenseKey.loadLicenseFile(System.getenv("ITEXT7_LICENSEKEY") + "/itextkey-typography.xml");
         new File("./target/test/resources/signatures/chapter02/").mkdirs();
         C2_06_SignatureAppearance.main(null);
 
