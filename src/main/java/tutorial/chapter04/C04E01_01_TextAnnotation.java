@@ -1,0 +1,57 @@
+package tutorial.chapter04;
+
+import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.geom.Rectangle;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfName;
+import com.itextpdf.kernel.pdf.PdfString;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
+import com.itextpdf.kernel.pdf.annot.PdfStampAnnotation;
+import com.itextpdf.kernel.pdf.annot.PdfTextAnnotation;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+/**
+ * Simple text annotation example.
+ */
+public class C04E01_01_TextAnnotation {
+
+    public static final String DEST = "results/chapter04/text_annotation.pdf";
+
+    public static void main(String args[]) throws IOException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+        new C04E01_01_TextAnnotation().createPdf(DEST);
+    }
+
+    public void createPdf(String dest) throws IOException {
+
+        //Initialize PDF writer
+        FileOutputStream fos = new FileOutputStream(dest);
+        PdfWriter writer = new PdfWriter(fos);
+
+        //Initialize PDF document
+        PdfDocument pdfDoc = new PdfDocument(writer);
+
+        //Initialize document
+        Document doc = new Document(pdfDoc);
+        doc.add(new Paragraph("The example of text annotation."));
+
+        //Create text annotation
+        PdfTextAnnotation ann = new PdfTextAnnotation(new Rectangle(20, 800, 0, 0))
+                .setColor(Color.GREEN)
+                .setTitle(new PdfString("iText"))
+                .setContents("With iText, you can truly take your documentation needs to the next level.")
+                .setOpen(true);
+        pdfDoc.getFirstPage().addAnnotation(ann);
+
+        //Close document
+        doc.close();
+
+    }
+}
