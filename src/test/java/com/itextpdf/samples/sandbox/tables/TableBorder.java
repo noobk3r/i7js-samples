@@ -14,11 +14,11 @@ package com.itextpdf.samples.sandbox.tables;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.TableRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -58,9 +58,9 @@ public class TableBorder extends GenericTest {
         }
 
         @Override
-        protected void drawBorders(PdfCanvas canvas) {
+        protected void drawBorders(DrawContext drawContext) {
             Rectangle rect = getOccupiedAreaBBox();
-            canvas
+            drawContext.getCanvas()
                     .saveState()
                     .rectangle(rect.getLeft(), rect.getBottom(), rect.getWidth(), rect.getHeight())
                     .stroke()

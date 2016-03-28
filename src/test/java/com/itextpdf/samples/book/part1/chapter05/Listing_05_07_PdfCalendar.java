@@ -238,7 +238,7 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
         }
 
         @Override
-        protected void drawBorders(PdfCanvas canvas) {
+        protected void drawBorders(DrawContext drawContext) {
             //super.drawBorders(canvas);
         }
     }
