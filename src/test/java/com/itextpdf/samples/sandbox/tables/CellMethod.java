@@ -30,10 +30,14 @@ import org.junit.experimental.categories.Category;
 public class CellMethod extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/cell_method.pdf";
     public static final String FONT = "./src/test/resources/font/FreeSans.ttf";
+    private static PdfFont czechFont = null;
+    private static PdfFont defaultFont = null;
+    private static PdfFont greekFont = null;
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
+
         new CellMethod().manipulatePdf(DEST);
     }
 
@@ -54,17 +58,20 @@ public class CellMethod extends GenericTest {
 
     public static PdfFont getFontForThisLanguage(String language) throws IOException {
         if ("czech".equals(language)) {
-            return PdfFontFactory.createFont(FONT, "Cp1250", true);
+            return czechFont;
         }
         if ("greek".equals(language)) {
-            return PdfFontFactory.createFont(FONT, "Cp1253", true);
+            return greekFont;
         }
-        return PdfFontFactory.createFont(FONT, null, true);
+        return defaultFont;
     }
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         setCompareRenders(true);
+        czechFont = PdfFontFactory.createFont(FONT, "Cp1250", true);
+        greekFont = PdfFontFactory.createFont(FONT, "Cp1253", true);
+        defaultFont = PdfFontFactory.createFont(FONT, null, true);
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
