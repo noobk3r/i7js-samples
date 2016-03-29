@@ -9,6 +9,7 @@ package com.itextpdf.samples.book.part4.chapter15;
 
 
 import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageType;
 import com.itextpdf.kernel.parser.EventData;
 import com.itextpdf.kernel.parser.EventListener;
 import com.itextpdf.kernel.parser.EventType;
@@ -46,30 +47,29 @@ public class Listing_15_31_MyImageRenderListener implements EventListener {
                     byte[] imageByte = null;
                     try {
                         imageByte = image.getImageBytes(true);
-                        int imageType = ImageFactory.getImage(imageByte).getOriginalType();
-                        switch (imageType) {
-                            case 1:
+                        switch (ImageFactory.getImage(imageByte).getOriginalType()) {
+                            case JPEG:
                                 extension = "jpg";
                                 break;
-                            case 2:
+                            case PNG:
                                 extension = "png";
                                 break;
-                            case 3:
+                            case GIF:
                                 extension = "gif";
                                 break;
-                            case 4:
+                            case BMP:
                                 extension = "bmp";
                                 break;
-                            case 5:
+                            case TIFF:
                                 extension = "tif";
                                 break;
-                            case 6:
+                            case WMF:
                                 extension = "wmf";
                                 break;
-                            case 8:
+                            case JPEG2000:
                                 extension = "jp2";
                                 break;
-                            case 9:
+                            case JBIG2:
                                 extension = "jbig2";
                                 break;
 
