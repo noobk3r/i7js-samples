@@ -34,7 +34,12 @@ public class C06E09_FillOutFlattenAndMergeForms {
 
         BufferedReader bufferedReader = new BufferedReader(new FileReader(DATA));
         String line;
+        boolean headerLine = true;
         while ((line = bufferedReader.readLine()) != null) {
+            if (headerLine) {
+                headerLine = false;
+                continue;
+            }
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             PdfDocument sourcePdfDocument = new PdfDocument(new PdfReader(SRC), new PdfWriter(baos));
 

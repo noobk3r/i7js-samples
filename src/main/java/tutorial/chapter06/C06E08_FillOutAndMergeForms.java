@@ -29,7 +29,13 @@ public class C06E08_FillOutAndMergeForms {
 
         BufferedReader bufferedReader = new BufferedReader(new FileReader(DATA));
         String line;
+        boolean headerLine = true;
         while ((line = bufferedReader.readLine()) != null) {
+            if (headerLine) {
+                headerLine = false;
+                continue;
+            }
+
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             PdfDocument sourcePdfDocument = new PdfDocument(new PdfReader(SRC), new PdfWriter(baos));
 
