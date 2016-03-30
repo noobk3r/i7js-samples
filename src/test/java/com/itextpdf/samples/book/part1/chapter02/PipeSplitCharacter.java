@@ -14,10 +14,10 @@ public class PipeSplitCharacter implements ISplitCharacters {
 
     @Override
     public boolean isSplitCharacter(GlyphLine text, int glyphPos) {
-        if (text.glyphs.get(glyphPos).getUnicode() == null) {
+        if (text.get(glyphPos).getUnicode() == null) {
             return false;
         }
-        int charCode = text.glyphs.get(glyphPos).getUnicode();
+        int charCode = text.get(glyphPos).getUnicode();
         return (charCode == '|' || charCode <= ' ' || charCode == '-');
     }
 
