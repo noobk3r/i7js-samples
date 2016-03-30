@@ -44,16 +44,16 @@ public class AlignField extends GenericTest {
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         Map<String, PdfFormField> fields = form.getFormFields();
         PdfFormField field;
-        field = fields.get("name");
+        field = fields.get("personal.name");
         field.setJustification(PdfFormField.ALIGN_LEFT);
         field.setValue("Test");
-        field = fields.get("loginname");
+        field = fields.get("personal.loginname");
         field.setJustification(PdfFormField.ALIGN_CENTER);
         field.setValue("Test");
-        field = fields.get("password");
+        field = fields.get("personal.password");
         field.setJustification(PdfFormField.ALIGN_RIGHT);
         field.setValue("Test");
-        field = fields.get("reason");
+        field = fields.get("personal.reason");
         field.setValue("Test");
         pdfDoc.close();
     }

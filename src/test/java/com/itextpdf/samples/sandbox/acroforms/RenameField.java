@@ -41,10 +41,10 @@ public class RenameField {
     static {
         cmp_result = new ArrayList<String>();
         cmp_result.add("personal");
-        cmp_result.add("name");
-        cmp_result.add("login");
-        cmp_result.add("password");
-        cmp_result.add("reason");
+        cmp_result.add("personal.name");
+        cmp_result.add("personal.login");
+        cmp_result.add("personal.password");
+        cmp_result.add("personal.reason");
     }
 
     @BeforeClass
@@ -58,9 +58,9 @@ public class RenameField {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(
                 new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
-        PdfFormField login = form.getField("loginname");
+        PdfFormField login = form.getField("personal.loginname");
         login.setFieldName("login");
-        form.getFormFields().remove("loginname");
+        form.getFormFields().remove("personal.loginname");
         form.getFormFields().put("login", login);
         pdfDoc.close();
 

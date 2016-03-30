@@ -56,7 +56,7 @@ public class Listing_08_15_Subscribe extends GenericTest {
         form.removeField("personal.password");
         form.getField("personal.name").setValue(name);
         form.getField("personal.loginname").setValue(login);
-        form.renameField("personal.reason", "personal.motivation");
+        form.renameField("personal.reason", "motivation");
         form.getField("personal.loginname").setReadOnly(true);
         form.partialFormFlattening("personal.name");
         form.flattenFields();
