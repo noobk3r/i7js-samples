@@ -19,8 +19,6 @@ import com.itextpdf.samples.GenericTest;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-// TODO Do not render (look at the result file)
-@Ignore
 @Category(SampleTest.class)
 public class Listing_11_08_CJKExample extends GenericTest {
     public static final String DEST =
@@ -57,7 +55,6 @@ public class Listing_11_08_CJKExample extends GenericTest {
         PdfFont font;
         for (int i = 0; i < 3; i++) {
             font = PdfFontFactory.createFont(MOVIES[i][0], MOVIES[i][1], false);
-            // TODO No getPostscriptionFontName()
             doc.add(new Paragraph(font.getFontProgram().getFontNames().getFontName()).setFont(font));
             for (int j = 2; j < 5; j++)
                 doc.add(new Paragraph(MOVIES[i][j]).setFont(font));
