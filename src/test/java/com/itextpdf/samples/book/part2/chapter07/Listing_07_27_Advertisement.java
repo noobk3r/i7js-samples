@@ -15,7 +15,7 @@ import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
-import com.itextpdf.kernel.pdf.tagutils.AccessibleElementProperties;
+import com.itextpdf.kernel.pdf.tagutils.AccessibilityProperties;
 import com.itextpdf.kernel.pdf.tagutils.IAccessibleElement;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
@@ -135,7 +135,7 @@ public class Listing_07_27_Advertisement extends GenericTest {
         }
 
         @Override
-        public AccessibleElementProperties getAccessibilityProperties() {
+        public AccessibilityProperties getAccessibilityProperties() {
             return null;
         }
 

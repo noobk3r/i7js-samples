@@ -12,7 +12,7 @@ import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
-import com.itextpdf.kernel.pdf.tagutils.AccessibleElementProperties;
+import com.itextpdf.kernel.pdf.tagutils.AccessibilityProperties;
 import com.itextpdf.kernel.pdf.tagutils.IAccessibleElement;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
@@ -105,7 +105,7 @@ public class Listing_08_06_ReplaceIcon extends GenericTest {
         }
 
         @Override
-        public AccessibleElementProperties getAccessibilityProperties() {
+        public AccessibilityProperties getAccessibilityProperties() {
             return null;
         }
 

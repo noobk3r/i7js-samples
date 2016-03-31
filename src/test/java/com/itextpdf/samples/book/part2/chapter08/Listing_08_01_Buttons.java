@@ -19,11 +19,10 @@ import com.itextpdf.kernel.color.DeviceGray;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
-import com.itextpdf.kernel.pdf.tagutils.AccessibleElementProperties;
+import com.itextpdf.kernel.pdf.tagutils.AccessibilityProperties;
 import com.itextpdf.kernel.pdf.tagutils.IAccessibleElement;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
-import com.itextpdf.kernel.pdf.xobject.PdfXObject;
 import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.AbstractElement;
@@ -227,7 +226,7 @@ public class Listing_08_01_Buttons extends GenericTest {
         }
 
         @Override
-        public AccessibleElementProperties getAccessibilityProperties() {
+        public AccessibilityProperties getAccessibilityProperties() {
             return null;
         }
 
