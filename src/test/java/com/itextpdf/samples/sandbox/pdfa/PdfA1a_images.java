@@ -16,7 +16,7 @@ import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
-import com.itextpdf.kernel.pdf.PdfAConformanceLevel;
+import com.itextpdf.pdfa.PdfAConformanceLevel;
 import com.itextpdf.kernel.pdf.PdfDocumentInfo;
 import com.itextpdf.kernel.pdf.PdfOutputIntent;
 import com.itextpdf.kernel.pdf.PdfString;
@@ -68,7 +68,7 @@ public class PdfA1a_images extends GenericTest {
                 .setCreator("My program using iText")
                 .addCreationDate();
         pdfDoc.setTagged();
-        pdfDoc.setXmpMetadata();
+        pdfDoc.createXmpMetadata();
 
         Paragraph element = new Paragraph("Hello World").setFont(font).setFontSize(10);
         doc.add(element);

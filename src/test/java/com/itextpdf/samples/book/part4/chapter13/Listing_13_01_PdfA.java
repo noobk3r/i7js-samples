@@ -10,7 +10,7 @@ package com.itextpdf.samples.book.part4.chapter13;
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
-import com.itextpdf.kernel.pdf.PdfAConformanceLevel;
+import com.itextpdf.pdfa.PdfAConformanceLevel;
 import com.itextpdf.kernel.pdf.PdfOutputIntent;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -48,7 +48,7 @@ public class Listing_13_01_PdfA extends GenericTest {
         PdfADocument pdfADocument = new PdfADocument(new PdfWriter(dest),
                 PdfAConformanceLevel.PDF_A_1B,
                 new PdfOutputIntent("Custom", "", "http://www.color.org", "sRGB IEC61966-2.1", is));
-        pdfADocument.setXmpMetadata();
+        pdfADocument.createXmpMetadata();
         pdfADocument.addNewPage();
 
         PdfFont font = PdfFontFactory.createFont(FONT, PdfEncodings.CP1252, true);

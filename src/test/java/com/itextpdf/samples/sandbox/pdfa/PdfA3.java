@@ -12,7 +12,7 @@ import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
-import com.itextpdf.kernel.pdf.PdfAConformanceLevel;
+import com.itextpdf.pdfa.PdfAConformanceLevel;
 import com.itextpdf.kernel.pdf.PdfArray;
 import com.itextpdf.kernel.pdf.PdfDate;
 import com.itextpdf.kernel.pdf.PdfDictionary;
@@ -60,7 +60,7 @@ public class PdfA3 extends GenericTest {
                 new PdfOutputIntent("Custom", "", "http://www.color.org", "sRGB IEC61966-2.1", is));
 
         Document document = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
-        pdfDoc.setXmpMetadata();
+        pdfDoc.createXmpMetadata();
 
         PdfDictionary parameters = new PdfDictionary();
         parameters.put(PdfName.ModDate, new PdfDate().getPdfObject());

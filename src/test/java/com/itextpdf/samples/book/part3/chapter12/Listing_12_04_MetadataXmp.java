@@ -12,22 +12,17 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfDocumentInfo;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.kernel.xmp.PdfConst;
-import com.itextpdf.kernel.xmp.XMPConst;
-import com.itextpdf.kernel.xmp.XMPException;
-import com.itextpdf.kernel.xmp.XMPMeta;
-import com.itextpdf.kernel.xmp.XMPMetaFactory;
+import com.itextpdf.kernel.xmp.*;
 import com.itextpdf.kernel.xmp.options.PropertyOptions;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.Ignore;
+import org.junit.experimental.categories.Category;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
-
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
 
 @Ignore
 @Category(SampleTest.class)
@@ -84,7 +79,7 @@ public class Listing_12_04_MetadataXmp extends GenericTest {
         PdfDocumentInfo info = pdfDoc.getDocumentInfo();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         // TODO
-        // pdfDoc.setXmpMetadata();
+        // pdfDoc.createXmpMetadata();
         pdfDoc.close();
     }
 
@@ -97,7 +92,7 @@ public class Listing_12_04_MetadataXmp extends GenericTest {
     public void readXmpMetadata(String src, String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src));
         FileOutputStream fos = new FileOutputStream(dest);
-        byte[] b = pdfDoc.getXmpMetadata().getBytes();
+        byte[] b = pdfDoc.getXmpMetadata();
         fos.write(b, 0, b.length);
         fos.flush();
         fos.close();

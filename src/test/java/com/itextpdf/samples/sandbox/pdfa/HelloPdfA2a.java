@@ -13,7 +13,7 @@ package com.itextpdf.samples.sandbox.pdfa;
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
-import com.itextpdf.kernel.pdf.PdfAConformanceLevel;
+import com.itextpdf.pdfa.PdfAConformanceLevel;
 import com.itextpdf.kernel.pdf.PdfOutputIntent;
 import com.itextpdf.kernel.pdf.PdfString;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -47,7 +47,7 @@ public class HelloPdfA2a extends GenericTest {
         PdfADocument pdfDoc = new PdfADocument(new PdfWriter(dest), PdfAConformanceLevel.PDF_A_2A,
                 new PdfOutputIntent("Custom", "", "http://www.color.org", "sRGB IEC61966-2.1", is));
         Document document = new Document(pdfDoc);
-        pdfDoc.setXmpMetadata();
+        pdfDoc.createXmpMetadata();
         pdfDoc.setTagged();
         pdfDoc.getCatalog().setLang(new PdfString("en-us"));
         Paragraph p = new Paragraph("Hello World!").setFont(font).setFontSize(10);

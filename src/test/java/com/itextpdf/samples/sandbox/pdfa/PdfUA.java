@@ -17,29 +17,17 @@ import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfDocumentInfo;
-import com.itextpdf.kernel.pdf.PdfString;
-import com.itextpdf.kernel.pdf.PdfVersion;
-import com.itextpdf.kernel.pdf.PdfViewerPreferences;
-import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.xmp.XMPException;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.element.Image;
-import com.itextpdf.layout.element.List;
-import com.itextpdf.layout.element.ListItem;
-import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.element.Text;
+import com.itextpdf.layout.element.*;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.IOException;
 
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
-
-@Ignore
 @Category(SampleTest.class)
 public class PdfUA extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/pdfa/pdf_ua.pdf";
@@ -68,7 +56,7 @@ public class PdfUA extends GenericTest {
         PdfDocumentInfo info = pdfDoc.getDocumentInfo();
         info.setTitle("English pangram");
 
-        pdfDoc.setXmpMetadata();
+        pdfDoc.createXmpMetadata();
         //=====================
 
         Paragraph p = new Paragraph();
@@ -93,7 +81,6 @@ public class PdfUA extends GenericTest {
         //==================
         p.add(i);
         document.add(p);
-        // TODO (close to DEVSIX-500)
         p = new Paragraph("\n\n\n\n\n\n\n\n\n\n\n\n").setFont(font).setFontSize(20);
         document.add(p);
         List list = new List();

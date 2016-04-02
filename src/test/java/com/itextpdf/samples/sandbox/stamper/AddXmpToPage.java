@@ -12,16 +12,15 @@
 package com.itextpdf.samples.sandbox.stamper;
 
 import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.kernel.xmp.XMPMeta;
 import com.itextpdf.kernel.xmp.XMPMetaFactory;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class AddXmpToPage extends GenericTest {
@@ -38,8 +37,8 @@ public class AddXmpToPage extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
 
-        XMPMeta xmp = XMPMetaFactory.create();
-        pdfDoc.setXmpMetadata(xmp);
+        PdfPage page = pdfDoc.getFirstPage();
+        page.setXmpMetadata(XMPMetaFactory.create());
 
         pdfDoc.close();
     }
