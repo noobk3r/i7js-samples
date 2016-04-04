@@ -1,0 +1,77 @@
+package tutorial.chapter05;
+
+import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.geom.Rectangle;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfReader;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.kernel.pdf.extgstate.PdfExtGState;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.Property;
+import com.itextpdf.layout.element.Paragraph;
+
+import java.io.File;
+import java.io.IOException;
+
+/**
+ * Simple adding content example.
+ */
+public class C05E03_AddContent {
+
+    public static final String SRC = "src/main/resources/pdf/ufo.pdf";
+
+    public static final String DEST = "results/chapter05/add_content.pdf";
+
+    public static void main(String args[]) throws IOException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+        new C05E03_AddContent().manipulatePdf(DEST);
+    }
+
+    public void manipulatePdf(String dest) throws IOException {
+
+        //Initialize PDF reader
+        PdfReader reader = new PdfReader(SRC);
+
+        //Initialize PDF writer
+        PdfWriter writer = new PdfWriter(dest);
+
+        //Initialize PDF document
+        PdfDocument pdfDoc = new PdfDocument(reader, writer);
+        Document doc = new Document(pdfDoc);
+        Rectangle pageSize;
+        PdfCanvas canvas;
+        for (int i = 1; i < pdfDoc.getNumberOfPages() + 1; i++) {
+            pageSize = pdfDoc.getPage(i).getPageSize();
+            canvas = new PdfCanvas(pdfDoc.getPage(i));
+            //Draw header text
+            canvas.beginText().setFontAndSize(PdfFontFactory.createFont(FontConstants.HELVETICA), 7)
+                    .moveText(pageSize.getWidth() / 2 - 24, pageSize.getHeight() - 10)
+                    .showText("I want to believe")
+                    .endText();
+            //Draw footer line
+            canvas.beginText().setFontAndSize(PdfFontFactory.createFont(FontConstants.HELVETICA), 7)
+                    .moveText(pageSize.getWidth() / 2, 10)
+                    .showText(String.valueOf(i))
+                    .endText();
+            //Draw page number
+            canvas.setStrokeColor(Color.BLACK)
+                    .setLineWidth(.2f)
+                    .moveTo(pageSize.getWidth() / 2, 20)
+                    .lineTo(pageSize.getWidth() / 2 - 30, 20)
+                    .lineTo(pageSize.getWidth() / 2 + 30, 20).stroke();
+            //Draw watermark
+            Paragraph p = new Paragraph("CONFIDENTIALLY").setFontSize(60);
+            PdfExtGState gs1 = new PdfExtGState().setFillOpacity(0.2f);
+            canvas.setExtGState(gs1);
+            doc.showTextAligned(p, 298, 421, pdfDoc.getPageNumber(pdfDoc.getPage(i)),
+                    Property.TextAlignment.CENTER, Property.VerticalAlignment.MIDDLE, 45);
+        }
+
+        pdfDoc.close();
+
+    }
+}
