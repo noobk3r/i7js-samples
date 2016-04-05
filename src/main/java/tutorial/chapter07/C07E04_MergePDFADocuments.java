@@ -7,6 +7,7 @@ import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.utils.PdfMerger;
 import com.itextpdf.kernel.xmp.XMPException;
 import com.itextpdf.pdfa.PdfADocument;
+import com.itextpdf.pdfa.PdfAConformanceLevel;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -40,7 +41,7 @@ public class C07E04_MergePDFADocuments {
         info.setTitle("iText7 PDF/A-1a example");
 
         //Create XMP meta data
-        pdf.setXmpMetadata();
+        pdf.createXmpMetadata();
 
         PdfMerger merger = new PdfMerger(pdf);
 

@@ -15,6 +15,7 @@ import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.pdfa.PdfADocument;
+import com.itextpdf.pdfa.PdfAConformanceLevel;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -54,7 +55,7 @@ public class C07E03_UnitedStates_PDFA_3a {
         info.setTitle("iText7 PDF/A-3 example");
 
         //Create XMP meta data
-        pdf.setXmpMetadata();
+        pdf.createXmpMetadata();
 
         //Add attachment
         PdfDictionary parameters = new PdfDictionary();

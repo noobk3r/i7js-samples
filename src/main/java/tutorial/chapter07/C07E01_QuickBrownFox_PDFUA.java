@@ -46,7 +46,7 @@ public class C07E01_QuickBrownFox_PDFUA {
         info.setTitle("iText7 PDF/UA example");
 
         //Create XMP meta data
-        pdf.setXmpMetadata();
+        pdf.createXmpMetadata();
 
         Paragraph p = new Paragraph();
 

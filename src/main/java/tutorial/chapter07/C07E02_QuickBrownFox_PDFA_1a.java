@@ -13,6 +13,7 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.*;
 
 import com.itextpdf.pdfa.PdfADocument;
+import com.itextpdf.pdfa.PdfAConformanceLevel;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -51,7 +52,7 @@ public class C07E02_QuickBrownFox_PDFA_1a {
         info.setTitle("iText7 PDF/A-1a example");
 
         //Create XMP meta data
-        pdf.setXmpMetadata();
+        pdf.createXmpMetadata();
 
         Paragraph p = new Paragraph();
         //Embed font
