@@ -1,6 +1,5 @@
 /*
- * This example was written by Bruno Lowagie.
- * It is part of the iText 7 tutorial.
+ * This example is part of the iText 7 tutorial.
  */
 package tutorial.chapter01;
 
@@ -19,6 +18,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.StringTokenizer;
 
 /**
@@ -37,7 +37,7 @@ public class C01E04_UnitedStates {
     
     public void createPdf(String dest) throws IOException {
         //Initialize PDF writer
-        FileOutputStream fos = new FileOutputStream(dest);
+        OutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize PDF document

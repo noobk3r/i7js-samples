@@ -1,6 +1,5 @@
 /*
- * This example was written by Bruno Lowagie.
- * It is part of the iText 7 tutorial.
+ * This example is part of the iText 7 tutorial.
  */
 package tutorial.chapter01;
 

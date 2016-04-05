@@ -1,6 +1,5 @@
 /*
- * This example was written by Bruno Lowagie.
- * It is part of the iText 7 tutorial.
+ * This example is part of the iText 7 tutorial.
  */
 package tutorial.chapter01;
 
@@ -14,6 +13,7 @@ import com.itextpdf.layout.element.Paragraph;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 
 /**
  * Simple image example.
@@ -32,7 +32,7 @@ public class C01E03_QuickBrownFox1 {
     
     public void createPdf(String dest) throws IOException {
         //Initialize PDF writer
-        FileOutputStream fos = new FileOutputStream(dest);
+        OutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize PDF document

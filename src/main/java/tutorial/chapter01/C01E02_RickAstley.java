@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * This example is part of the iText 7 tutorial.
  */
 package tutorial.chapter01;
 
@@ -17,6 +15,7 @@ import com.itextpdf.layout.element.Paragraph;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 
 /**
  * Simple List example.
@@ -32,7 +31,7 @@ public class C01E02_RickAstley {
     
     public void createPdf(String dest) throws IOException {
         //Initialize PDF writer
-        FileOutputStream fos = new FileOutputStream(dest);
+        OutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize PDF document
@@ -41,14 +40,16 @@ public class C01E02_RickAstley {
         // Initialize document
         Document document = new Document(pdf);
         
-        // Create a ListPdf
+        // Create a PdfFont
         PdfFont font = PdfFontFactory.createFont(FontConstants.TIMES_ROMAN);
         // Add a Paragraph
         document.add(new Paragraph("iText is:").setFont(font));
+        // Create a List
         List list = new List()
             .setSymbolIndent(12)
             .setListSymbol("\u2022")
             .setFont(font);
+        // Add ListItem objects
         list.add(new ListItem("Never gonna give you up"))
             .add(new ListItem("Never gonna let you down"))
             .add(new ListItem("Never gonna run around and desert you"))
