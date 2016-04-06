@@ -10,6 +10,8 @@ package com.itextpdf.samples.book.part1.chapter04;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Property;
+import com.itextpdf.layout.element.Text;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Cell;
@@ -24,7 +26,6 @@ import java.sql.SQLException;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_04_11_CellHeights extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part1/chapter04/Listing_04_11_CellHeights.pdf";
@@ -46,20 +47,14 @@ public class Listing_04_11_CellHeights extends GenericTest {
         Cell cell = new Cell().add(p);
         // the prhase is wrapped
         table.addCell("wrap");
-        // TODO No setNoWrap(boolean)
-        // cell.setNoWrap(false);
         table.addCell(cell);
-        // the phrase isn't wrapped
-        table.addCell("no wrap");
-        // cell.setNoWrap(true);
-        table.addCell(cell.clone(true));
+        table.addCell(new Cell().add(p));
         // a long phrase with newlines
         p = new Paragraph(
                 "Dr. iText or:\nHow I Learned to Stop Worrying\nand Love PDF.");
         cell = new Cell().add(p);
         // the phrase fits the fixed height
         table.addCell("fixed height (more than sufficient)");
-        // TODO itext7 constricts the height if necessary so this part of the example has no sense anymore
         cell.setHeight(72f);
         table.addCell(cell);
         // the phrase doesn't fit the fixed height
@@ -69,12 +64,8 @@ public class Listing_04_11_CellHeights extends GenericTest {
         // The minimum height is exceeded
         table.addCell("minimum height");
         cell = new Cell().add(new Paragraph("Dr. iText"));
-        // TODO No setMinimumHeight(float)
         cell.setHeight(36f);
         table.addCell(cell);
-        // The last row is extended
-        // TODO No setExtendedLastRow
-        // table.setExtendLastRow(true);
         table.addCell("extend last row");
         table.addCell(cell.clone(true));
         doc.add(table);

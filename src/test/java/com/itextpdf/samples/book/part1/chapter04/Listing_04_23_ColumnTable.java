@@ -42,7 +42,6 @@ import java.util.List;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_04_23_ColumnTable extends GenericTest {
     public static final String DEST =
@@ -105,9 +104,6 @@ public class Listing_04_23_ColumnTable extends GenericTest {
             throws SQLException, IOException {
         Table table = new Table(new float[]{2, 1, 2, 5, 1});
         table.setWidthPercent(100);
-        // TODO No setUseAscender(boolean)
-        // table.getDefaultCell().setUseAscender(true);
-        // table.getDefaultCell().setUseDescender(true);
         Style style = new Style().setBackgroundColor(Color.LIGHT_GRAY);
         table.addHeaderCell(new Cell().add("Location").addStyle(style));
         table.addHeaderCell(new Cell().add("Time").addStyle(style));

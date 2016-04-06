@@ -28,7 +28,6 @@ import java.sql.SQLException;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_04_12_RotationAndColors extends GenericTest {
     public static final String DEST =
@@ -65,8 +64,6 @@ public class Listing_04_12_RotationAndColors extends GenericTest {
         // row 1, cell 4
         cell = new Cell().add("cyan / blue top border + padding");
         cell.setBorderTop(new SolidBorder(Color.BLUE, 5f));
-        // TODO No setUseBorderPadding
-        // cell.setUseBorderPadding(true);
         cell.setBackgroundColor(Color.CYAN);
         table.addCell(cell);
         // row 2, cell 1
@@ -104,8 +101,6 @@ public class Listing_04_12_RotationAndColors extends GenericTest {
         table.addCell(cell);
         // row 3, cell 3
         cell = new Cell().add("with correct padding");
-        // TODO No setUseBorderPadding(boolean)
-        // cell.setUseBorderPadding(true);
         cell.setBorderLeft(new SolidBorder(Color.RED, 16f));
         cell.setBorderBottom(new SolidBorder(Color.ORANGE, 12f));
         cell.setBorderRight(new SolidBorder(Color.YELLOW, 8f));

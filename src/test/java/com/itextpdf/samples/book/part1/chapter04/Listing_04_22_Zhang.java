@@ -8,28 +8,20 @@
 package com.itextpdf.samples.book.part1.chapter04;
 
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
-import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.AreaBreak;
-import com.itextpdf.layout.element.Cell;
-import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.samples.GenericTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
-import com.lowagie.filmfestival.PojoToElementFactory;
-import com.lowagie.filmfestival.Screening;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -77,62 +69,6 @@ public class Listing_04_22_Zhang extends GenericTest {
 
         doc.close();
         connection.close();
-    }
-
-    public Table getTable(DatabaseConnection connection, Date day) throws UnsupportedEncodingException, SQLException {
-        // Create a table with 7 columns
-        Table table = new Table(new float[]{2, 1, 2, 5, 1, 3, 2});
-        table.setWidthPercent(100);
-        // TODO No faciliry to set default-cell properties
-        // TODO No setUseAscender(boolean) and setUseDescender(boolean)
-        // table.getDefaultCell().setUseAscender(true);
-        // table.getDefaultCell().setUseDescender(true);
-        // Add the first header row
-        Cell cell = new Cell(1, 7).add(new Paragraph(day.toString()).setFontColor(Color.WHITE));
-        cell.setBackgroundColor(Color.BLACK);
-        cell.setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
-        table.addHeaderCell(cell);
-
-        // set headers and footers
-        table.addHeaderCell(new Cell().add("Location").setBackgroundColor(Color.LIGHT_GRAY));
-        table.addHeaderCell(new Cell().add("Time").setBackgroundColor(Color.LIGHT_GRAY));
-        table.addHeaderCell(new Cell().add("Run Length").setBackgroundColor(Color.LIGHT_GRAY));
-        table.addHeaderCell(new Cell().add("Title").setBackgroundColor(Color.LIGHT_GRAY));
-        table.addHeaderCell(new Cell().add("Year").setBackgroundColor(Color.LIGHT_GRAY));
-        table.addHeaderCell(new Cell().add("Directors").setBackgroundColor(Color.LIGHT_GRAY));
-        table.addHeaderCell(new Cell().add("Countries").setBackgroundColor(Color.LIGHT_GRAY));
-
-        table.addFooterCell(new Cell().add("Location").setBackgroundColor(Color.LIGHT_GRAY));
-        table.addFooterCell(new Cell().add("Time").setBackgroundColor(Color.LIGHT_GRAY));
-        table.addFooterCell(new Cell().add("Run Length").setBackgroundColor(Color.LIGHT_GRAY));
-        table.addFooterCell(new Cell().add("Title").setBackgroundColor(Color.LIGHT_GRAY));
-        table.addFooterCell(new Cell().add("Year").setBackgroundColor(Color.LIGHT_GRAY));
-        table.addFooterCell(new Cell().add("Directors").setBackgroundColor(Color.LIGHT_GRAY));
-        table.addFooterCell(new Cell().add("Countries").setBackgroundColor(Color.LIGHT_GRAY));
-
-        // Now let's loop over the screenings
-        List<Screening> screenings = PojoFactory.getScreenings(connection, day);
-        Movie movie;
-        for (Screening screening : screenings) {
-            movie = screening.getMovie();
-            table.addCell(screening.getLocation());
-            table.addCell(String.format("%1$tH:%1$tM", screening.getTime()));
-            table.addCell(String.format("%d '", movie.getDuration()));
-            table.addCell(movie.getMovieTitle());
-            table.addCell(String.valueOf(movie.getYear()));
-            cell = new Cell();
-            // TODO No setUseAscender(boolean) and setUseDescender(boolean)
-            // cell.setUseAscender(true);
-            // cell.setUseDescender(true);
-            cell.add(PojoToElementFactory.getDirectorList(movie));
-            table.addCell(cell);
-            cell = new Cell();
-            // cell.setUseAscender(true);
-            // cell.setUseDescender(true);
-            cell.add(PojoToElementFactory.getCountryList(movie));
-            table.addCell(cell);
-        }
-        return table;
     }
 }
 
