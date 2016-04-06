@@ -1,3 +1,6 @@
+/*
+ * This example is part of the iText 7 tutorial.
+ */
 package tutorial.chapter02;
 
 import com.itextpdf.io.font.FontConstants;
@@ -13,6 +16,7 @@ import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,7 +59,7 @@ public class C02E04_StarWarsCrawl {
         }
 
         //Initialize PDF writer
-        FileOutputStream fos = new FileOutputStream(dest);
+        OutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize PDF document
