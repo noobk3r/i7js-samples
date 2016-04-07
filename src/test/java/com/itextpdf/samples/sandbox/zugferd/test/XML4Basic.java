@@ -1,4 +1,11 @@
 /*
+
+    This file is part of the iText (R) project.
+    Copyright (c) 1998-2016 iText Group NV
+
+*/
+
+/*
  * This class creates an XML that has the structure needed to conform with
  * the BASIC level, but the content isn't valid. Instead we used test values
  * that make it easy for us to detect errors.

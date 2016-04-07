@@ -1,4 +1,11 @@
 /*
+
+    This file is part of the iText (R) project.
+    Copyright (c) 1998-2016 iText Group NV
+
+*/
+
+/*
  * Part of a set of classes based on a sample database.
  */
 package com.itextpdf.samples.sandbox.zugferd.pojo;

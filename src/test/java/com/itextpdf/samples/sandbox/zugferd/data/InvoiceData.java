@@ -1,4 +1,11 @@
 /*
+
+    This file is part of the iText (R) project.
+    Copyright (c) 1998-2016 iText Group NV
+
+*/
+
+/*
  * Code written by Bruno Lowagie in the context of an example.
  */
 package com.itextpdf.samples.sandbox.zugferd.data;

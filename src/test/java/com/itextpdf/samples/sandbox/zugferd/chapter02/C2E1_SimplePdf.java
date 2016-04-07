@@ -1,4 +1,11 @@
 /*
+
+    This file is part of the iText (R) project.
+    Copyright (c) 1998-2016 iText Group NV
+
+*/
+
+/*
 * This code sample was written in the context of the tutorial:
 * ZUGFeRD: The future of Invoicing
 */
