@@ -38,10 +38,6 @@ public class C02E02_GridLines {
         //Initialize PDF document
         PdfDocument pdf = new PdfDocument(writer);
 
-        Color grayColor = new DeviceCmyk(0.f, 0.f, 0.f, 0.875f);
-        Color greenColor = new DeviceCmyk(1.f, 0.f, 1.f, 0.176f);
-        Color blueColor = new DeviceCmyk(1.f, 0.156f, 0.f, 0.118f);
-
         PageSize ps = PageSize.A4.rotate();
         PdfPage page = pdf.addNewPage(ps);
 
@@ -49,20 +45,23 @@ public class C02E02_GridLines {
         //Replace the origin of the coordinate system to the center of the page
         canvas.concatMatrix(1, 0, 0, 1, ps.getWidth() / 2, ps.getHeight() / 2);
 
+        Color grayColor = new DeviceCmyk(0.f, 0.f, 0.f, 0.875f);
+        Color greenColor = new DeviceCmyk(1.f, 0.f, 1.f, 0.176f);
+        Color blueColor = new DeviceCmyk(1.f, 0.156f, 0.f, 0.118f);
+        
         canvas.setLineWidth(0.5f).setStrokeColor(blueColor);
 
         //Draw horizontal grid lines
         for (int i = -((int) ps.getHeight() / 2 - 57); i < ((int) ps.getHeight() / 2 - 56); i += 40) {
             canvas.moveTo(-(ps.getWidth() / 2 - 15), i)
-                    .lineTo(ps.getWidth() / 2 - 15, i)
-                    .stroke();
+                    .lineTo(ps.getWidth() / 2 - 15, i);
         }
         //Draw vertical grid lines
         for (int j = -((int) ps.getWidth() / 2 - 61); j < ((int) ps.getWidth() / 2 - 60); j += 40) {
             canvas.moveTo(j, -(ps.getHeight() / 2 - 15))
-                    .lineTo(j, ps.getHeight() / 2 - 15)
-                    .stroke();
+                    .lineTo(j, ps.getHeight() / 2 - 15);
         }
+        canvas.stroke();
 
         //Draw axes
         canvas.setLineWidth(3).setStrokeColor(grayColor);
