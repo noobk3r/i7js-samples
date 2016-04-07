@@ -78,26 +78,25 @@ public class C02E04_StarWarsCrawl {
 
         //Replace the origin of the coordinate system to the top left corner
         canvas.concatMatrix(1, 0, 0, 1, 0, ps.getHeight());
-
         Color yellowColor = new DeviceCmyk(0.f, 0.0537f, 0.769f, 0.051f);
         float lineHeight = 5;
         float yOffset = -40;
-
-        //Set font and color
         canvas.beginText()
-                .setFontAndSize(PdfFontFactory.createFont(FontConstants.COURIER_BOLD), 1)
-                .setColor(yellowColor, true);
+            .setFontAndSize(PdfFontFactory.createFont(FontConstants.COURIER_BOLD), 1)
+            .setColor(yellowColor, true);
         for (int j = 0; j < text.size(); j++) {
-            int stringWidth = text.get(j).length();
+            String line = text.get(j);
             float xOffset = ps.getWidth() / 2 - 45 - 8 * j;
-            float lineSpacing = (lineHeight + j) * j / 1.5f;
             float fontSizeCoeff = 6 + j;
+            float lineSpacing = (lineHeight + j) * j / 1.5f;
+            int stringWidth = line.length();
             for (int i = 0; i < stringWidth; i++) {
                 float angle = (maxStringWidth / 2 - i) / 2f;
                 float charXOffset = (4 + (float) j / 2) * i;
-                //Add text
-                canvas.setTextMatrix(fontSizeCoeff, 0, angle, fontSizeCoeff / 1.5f, (xOffset + charXOffset), (yOffset - lineSpacing))
-                        .showText(String.valueOf(text.get(j).charAt(i)));
+                canvas.setTextMatrix(fontSizeCoeff, 0,
+                        angle, fontSizeCoeff / 1.5f,
+                        xOffset + charXOffset, yOffset - lineSpacing)
+                    .showText(String.valueOf(line.charAt(i)));
             }
         }
         canvas.endText();
