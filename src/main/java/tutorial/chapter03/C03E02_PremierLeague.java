@@ -61,8 +61,7 @@ public class C03E02_PremierLeague {
         Table table = new Table(new float[]{1.5f, 7, 2, 2, 2, 2, 3, 4, 4, 2});
         table.setWidthPercent(100)
                 .setTextAlignment(Property.TextAlignment.CENTER)
-                .setHorizontalAlignment(Property.HorizontalAlignment.CENTER)
-                .setVerticalAlignment(Property.VerticalAlignment.MIDDLE);
+                .setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
 
         BufferedReader br = new BufferedReader(new FileReader(DATA));
         String line = br.readLine();
