@@ -71,13 +71,13 @@ public class C02E04_StarWarsCrawl {
 
         PdfCanvas canvas = new PdfCanvas(page);
 
+        //Set black background
+        canvas.rectangle(0, 0, ps.getWidth(), ps.getHeight())
+                .setColor(Color.BLACK, true)
+                .fill();
+
         //Replace the origin of the coordinate system to the top left corner
         canvas.concatMatrix(1, 0, 0, 1, 0, ps.getHeight());
-
-        //Set black background
-        canvas.rectangle(0, -ps.getHeight(), ps.getWidth(), ps.getHeight())
-                .setColor(Color.BLACK, true)
-                .fillStroke();
 
         Color yellowColor = new DeviceCmyk(0.f, 0.0537f, 0.769f, 0.051f);
         float lineHeight = 5;

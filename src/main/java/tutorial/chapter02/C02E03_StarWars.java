@@ -45,8 +45,6 @@ public class C02E03_StarWars {
         PdfPage page = pdf.addNewPage(ps);
 
         PdfCanvas canvas = new PdfCanvas(page);
-        //Replace the origin of the coordinate system to the top left corner
-        canvas.concatMatrix(1, 0, 0, 1, 0, ps.getHeight());
 
         List<String> text = new ArrayList();
         text.add("         Episode V         ");
@@ -65,16 +63,15 @@ public class C02E03_StarWars {
         text.add("base on the remote ice world");
         text.add("of Hoth...");
 
-        float xOffset = 70;
-        float yOffset = -40;
-
+        //Replace the origin of the coordinate system to the top left corner
+        canvas.concatMatrix(1, 0, 0, 1, 0, ps.getHeight());
         canvas.beginText()
                 .setFontAndSize(PdfFontFactory.createFont(FontConstants.COURIER_BOLD), 14)
                 .setLeading(14 * 1.2f)
-                .moveText(xOffset, yOffset);
-        for (int j = 0; j < text.size(); j++) {
+                .moveText(70, -40);
+        for (String s : text) {
             //Add text and move to the next line
-            canvas.newlineShowText(text.get(j));
+            canvas.newlineShowText(s);
         }
         canvas.endText();
 
