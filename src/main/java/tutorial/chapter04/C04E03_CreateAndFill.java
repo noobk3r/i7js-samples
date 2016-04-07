@@ -1,3 +1,6 @@
+/*
+ * This example is part of the iText 7 tutorial.
+ */
 package tutorial.chapter04;
 
 import com.itextpdf.forms.PdfAcroForm;
@@ -8,6 +11,7 @@ import com.itextpdf.layout.Document;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Map;
 
 /**
@@ -26,7 +30,7 @@ public class C04E03_CreateAndFill {
     public void createPdf(String dest) throws IOException {
 
         //Initialize PDF writer
-        FileOutputStream fos = new FileOutputStream(dest);
+        OutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize PDF document

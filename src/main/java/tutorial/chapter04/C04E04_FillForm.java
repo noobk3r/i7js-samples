@@ -1,3 +1,6 @@
+/*
+ * This example is part of the iText 7 tutorial.
+ */
 package tutorial.chapter04;
 
 import com.itextpdf.kernel.pdf.PdfDocument;

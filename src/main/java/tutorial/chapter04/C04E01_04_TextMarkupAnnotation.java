@@ -1,12 +1,11 @@
+/*
+ * This example is part of the iText 7 tutorial.
+ */
 package tutorial.chapter04;
 
 import com.itextpdf.kernel.color.Color;
-import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.*;
-import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
-import com.itextpdf.kernel.pdf.annot.PdfStampAnnotation;
-import com.itextpdf.kernel.pdf.annot.PdfTextAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfTextMarkupAnnotation;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
@@ -15,6 +14,7 @@ import com.itextpdf.layout.element.Paragraph;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 
 /**
  * Simple text markup annotation example.
@@ -32,7 +32,7 @@ public class C04E01_04_TextMarkupAnnotation {
     public void createPdf(String dest) throws IOException {
 
         //Initialize PDF writer
-        FileOutputStream fos = new FileOutputStream(dest);
+        OutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize PDF document
