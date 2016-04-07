@@ -1,3 +1,6 @@
+/*
+ * This example is part of the iText 7 tutorial.
+ */
 package tutorial.chapter03;
 
 import com.itextpdf.io.font.FontConstants;
@@ -43,7 +46,7 @@ public class C03E02_PremierLeague {
     public void createPdf(String dest) throws IOException {
 
         //Initialize PDF writer
-        FileOutputStream fos = new FileOutputStream(dest);
+        OutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize PDF document

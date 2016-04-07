@@ -1,3 +1,6 @@
+/*
+ * This example is part of the iText 7 tutorial.
+ */
 package tutorial.chapter03;
 
 import com.itextpdf.io.font.FontConstants;
@@ -49,7 +52,7 @@ public class C03E01_NewYorkTimes {
         String articleInstagram = new String(Files.readAllBytes(Paths.get(INST_TXT)), StandardCharsets.UTF_8);
 
         //Initialize PDF writer
-        FileOutputStream fos = new FileOutputStream(dest);
+        OutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize PDF document
@@ -75,7 +78,7 @@ public class C03E01_NewYorkTimes {
         Image inst = new Image(ImageFactory.getImage(INST_IMG)).setWidth(columnWidth);
 
         C03E01_NewYorkTimes.addArticle(doc, "Apple Encryption Engineers, if Ordered to Unlock iPhone, Might Resist", "By JOHN MARKOFF MARCH 18, 2016", apple, articleApple);
-        C03E01_NewYorkTimes.addArticle(doc, "With ‘Smog Jog’ Through Beijing, Zuckerberg Stirs Debate on Air Pollution", "By PAUL MOZUR MARCH 18, 2016", facebook, articleFB);
+        C03E01_NewYorkTimes.addArticle(doc, "With \"Smog Jog\" Through Beijing, Zuckerberg Stirs Debate on Air Pollution", "By PAUL MOZUR MARCH 18, 2016", facebook, articleFB);
         C03E01_NewYorkTimes.addArticle(doc, "Instagram May Change Your Feed, Personalizing It With an Algorithm","By MIKE ISAAC MARCH 15, 2016", inst, articleInstagram);
 
         doc.close();
