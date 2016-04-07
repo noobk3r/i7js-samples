@@ -46,11 +46,6 @@ public class C03E01_NewYorkTimes {
     }
 
     protected void createPdf(String dest) throws Exception {
-
-        String articleApple = new String(Files.readAllBytes(Paths.get(APPLE_TXT)), StandardCharsets.UTF_8);
-        String articleFB = new String(Files.readAllBytes(Paths.get(FACEBOOK_TXT)), StandardCharsets.UTF_8);
-        String articleInstagram = new String(Files.readAllBytes(Paths.get(INST_TXT)), StandardCharsets.UTF_8);
-
         //Initialize PDF writer
         OutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
@@ -60,7 +55,7 @@ public class C03E01_NewYorkTimes {
         PageSize ps = PageSize.A5;
 
         // Initialize document
-        Document doc = new Document(pdf, ps);
+        Document document = new Document(pdf, ps);
 
         //Set column parameters
         float offSet = 36;
@@ -71,17 +66,19 @@ public class C03E01_NewYorkTimes {
         Rectangle[] columns = {new Rectangle(offSet - 5, offSet, columnWidth, columnHeight),
                 new Rectangle(offSet + columnWidth, offSet, columnWidth, columnHeight),
                 new Rectangle(offSet + columnWidth * 2 + 5, offSet, columnWidth, columnHeight)};
-        doc.setRenderer(new ColumnDocumentRenderer(doc, columns));
+        document.setRenderer(new ColumnDocumentRenderer(document, columns));
 
         Image apple = new Image(ImageFactory.getImage(APPLE_IMG)).setWidth(columnWidth);
+        String articleApple = new String(Files.readAllBytes(Paths.get(APPLE_TXT)), StandardCharsets.UTF_8);
+        C03E01_NewYorkTimes.addArticle(document, "Apple Encryption Engineers, if Ordered to Unlock iPhone, Might Resist", "By JOHN MARKOFF MARCH 18, 2016", apple, articleApple);
         Image facebook = new Image(ImageFactory.getImage(FACEBOOK_IMG)).setWidth(columnWidth);
+        String articleFB = new String(Files.readAllBytes(Paths.get(FACEBOOK_TXT)), StandardCharsets.UTF_8);
+        C03E01_NewYorkTimes.addArticle(document, "With \"Smog Jog\" Through Beijing, Zuckerberg Stirs Debate on Air Pollution", "By PAUL MOZUR MARCH 18, 2016", facebook, articleFB);
         Image inst = new Image(ImageFactory.getImage(INST_IMG)).setWidth(columnWidth);
+        String articleInstagram = new String(Files.readAllBytes(Paths.get(INST_TXT)), StandardCharsets.UTF_8);
+        C03E01_NewYorkTimes.addArticle(document, "Instagram May Change Your Feed, Personalizing It With an Algorithm","By MIKE ISAAC MARCH 15, 2016", inst, articleInstagram);
 
-        C03E01_NewYorkTimes.addArticle(doc, "Apple Encryption Engineers, if Ordered to Unlock iPhone, Might Resist", "By JOHN MARKOFF MARCH 18, 2016", apple, articleApple);
-        C03E01_NewYorkTimes.addArticle(doc, "With \"Smog Jog\" Through Beijing, Zuckerberg Stirs Debate on Air Pollution", "By PAUL MOZUR MARCH 18, 2016", facebook, articleFB);
-        C03E01_NewYorkTimes.addArticle(doc, "Instagram May Change Your Feed, Personalizing It With an Algorithm","By MIKE ISAAC MARCH 15, 2016", inst, articleInstagram);
-
-        doc.close();
+        document.close();
 
     }
 
