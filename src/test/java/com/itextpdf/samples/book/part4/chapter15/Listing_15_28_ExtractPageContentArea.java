@@ -9,12 +9,12 @@ package com.itextpdf.samples.book.part4.chapter15;
 
 import com.itextpdf.io.source.ByteArrayOutputStream;
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.parser.EventFilter;
-import com.itextpdf.kernel.parser.FilteredTextEventListener;
-import com.itextpdf.kernel.parser.LocationTextExtractionStrategy;
-import com.itextpdf.kernel.parser.PdfTextExtractor;
-import com.itextpdf.kernel.parser.TextExtractionStrategy;
-import com.itextpdf.kernel.parser.TextRegionEventFilter;
+import com.itextpdf.kernel.pdf.canvas.parser.filter.EventFilter;
+import com.itextpdf.kernel.pdf.canvas.parser.listener.FilteredTextEventListener;
+import com.itextpdf.kernel.pdf.canvas.parser.listener.LocationTextExtractionStrategy;
+import com.itextpdf.kernel.pdf.canvas.parser.PdfTextExtractor;
+import com.itextpdf.kernel.pdf.canvas.parser.listener.TextExtractionStrategy;
+import com.itextpdf.kernel.pdf.canvas.parser.filter.TextRegionEventFilter;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;

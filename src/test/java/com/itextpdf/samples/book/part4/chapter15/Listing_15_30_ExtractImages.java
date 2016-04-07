@@ -8,8 +8,8 @@
 package com.itextpdf.samples.book.part4.chapter15;
 
 import com.itextpdf.io.source.ByteArrayOutputStream;
-import com.itextpdf.kernel.parser.EventListener;
-import com.itextpdf.kernel.parser.PdfCanvasProcessor;
+import com.itextpdf.kernel.pdf.canvas.parser.listener.EventListener;
+import com.itextpdf.kernel.pdf.canvas.parser.PdfCanvasProcessor;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;

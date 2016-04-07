@@ -6,12 +6,12 @@ import com.itextpdf.kernel.geom.Path;
 import com.itextpdf.kernel.geom.Point2D;
 import com.itextpdf.kernel.geom.Subpath;
 import com.itextpdf.kernel.geom.Vector;
-import com.itextpdf.kernel.parser.EventData;
-import com.itextpdf.kernel.parser.EventListener;
-import com.itextpdf.kernel.parser.EventType;
-import com.itextpdf.kernel.parser.ImageRenderInfo;
-import com.itextpdf.kernel.parser.PathRenderInfo;
-import com.itextpdf.kernel.parser.TextRenderInfo;
+import com.itextpdf.kernel.pdf.canvas.parser.data.EventData;
+import com.itextpdf.kernel.pdf.canvas.parser.listener.EventListener;
+import com.itextpdf.kernel.pdf.canvas.parser.EventType;
+import com.itextpdf.kernel.pdf.canvas.parser.data.ImageRenderInfo;
+import com.itextpdf.kernel.pdf.canvas.parser.data.PathRenderInfo;
+import com.itextpdf.kernel.pdf.canvas.parser.data.TextRenderInfo;
 
 import java.util.ArrayList;
 import java.util.Arrays;

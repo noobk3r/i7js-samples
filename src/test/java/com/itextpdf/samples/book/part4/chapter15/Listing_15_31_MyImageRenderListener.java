@@ -9,11 +9,10 @@ package com.itextpdf.samples.book.part4.chapter15;
 
 
 import com.itextpdf.io.image.ImageFactory;
-import com.itextpdf.io.image.ImageType;
-import com.itextpdf.kernel.parser.EventData;
-import com.itextpdf.kernel.parser.EventListener;
-import com.itextpdf.kernel.parser.EventType;
-import com.itextpdf.kernel.parser.ImageRenderInfo;
+import com.itextpdf.kernel.pdf.canvas.parser.data.EventData;
+import com.itextpdf.kernel.pdf.canvas.parser.listener.EventListener;
+import com.itextpdf.kernel.pdf.canvas.parser.EventType;
+import com.itextpdf.kernel.pdf.canvas.parser.data.ImageRenderInfo;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
 
 

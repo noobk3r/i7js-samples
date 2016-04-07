@@ -2,7 +2,7 @@ package com.itextpdf.samples.sandbox.merge;
 
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.parser.PdfDocumentContentParser;
+import com.itextpdf.kernel.pdf.canvas.parser.PdfDocumentContentParser;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;

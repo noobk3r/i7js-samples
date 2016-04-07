@@ -7,9 +7,9 @@
 
 package com.itextpdf.samples.book.part4.chapter15;
 
-import com.itextpdf.kernel.parser.PdfCanvasProcessor;
-import com.itextpdf.kernel.parser.SimpleTextExtractionStrategy;
-import com.itextpdf.kernel.parser.TextExtractionStrategy;
+import com.itextpdf.kernel.pdf.canvas.parser.PdfCanvasProcessor;
+import com.itextpdf.kernel.pdf.canvas.parser.listener.SimpleTextExtractionStrategy;
+import com.itextpdf.kernel.pdf.canvas.parser.listener.TextExtractionStrategy;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.test.annotations.type.SampleTest;

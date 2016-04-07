@@ -7,8 +7,8 @@
 
 package com.itextpdf.samples.book.part4.chapter15;
 
-import com.itextpdf.kernel.parser.PdfCanvasProcessor;
-import com.itextpdf.kernel.parser.TextMarginFinder;
+import com.itextpdf.kernel.pdf.canvas.parser.PdfCanvasProcessor;
+import com.itextpdf.kernel.pdf.canvas.parser.listener.TextMarginFinder;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;

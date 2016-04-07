@@ -8,8 +8,8 @@
 package com.itextpdf.samples.book.part4.chapter15;
 
 import com.itextpdf.io.source.ByteArrayOutputStream;
-import com.itextpdf.kernel.parser.LocationTextExtractionStrategy;
-import com.itextpdf.kernel.parser.PdfTextExtractor;
+import com.itextpdf.kernel.pdf.canvas.parser.listener.LocationTextExtractionStrategy;
+import com.itextpdf.kernel.pdf.canvas.parser.PdfTextExtractor;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
