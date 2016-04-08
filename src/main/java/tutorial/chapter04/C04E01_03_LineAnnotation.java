@@ -41,7 +41,9 @@ public class C04E01_03_LineAnnotation {
         lineEndings.add(new PdfName("Diamond"));
 
         //Create line annotation with inside caption
-        PdfLineAnnotation annotation = new PdfLineAnnotation(new Rectangle(0, 0, 0, 0), new float[]{20, 790, page.getPageSize().getWidth() - 20, 790})
+        PdfLineAnnotation annotation = new PdfLineAnnotation(
+            new Rectangle(0, 0),
+            new float[]{20, 790, page.getPageSize().getWidth() - 20, 790})
                 .setLineEndingStyles((lineEndings))
                 .setContentsAsCaption(true)
                 .setTitle(new PdfString("iText"))

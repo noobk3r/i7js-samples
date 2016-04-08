@@ -42,9 +42,8 @@ public class C04E01_02_LinkAnnotation {
         Document document = new Document(pdf);
 
         //Create link annotation
-        PdfLinkAnnotation annotation = new PdfLinkAnnotation(new Rectangle(523, 770, 36, 36))
-                .setAction(PdfAction.createURI("http://itextpdf.com/"))
-                .setBorder(new PdfArray(new int[] {0,0,1}));
+        PdfLinkAnnotation annotation = new PdfLinkAnnotation(new Rectangle(0, 0))
+                .setAction(PdfAction.createURI("http://itextpdf.com/"));
         Link link = new Link("here", annotation);
         Paragraph p = new Paragraph("The example of link annotation. Click ")
                 .add(link.setUnderline())
