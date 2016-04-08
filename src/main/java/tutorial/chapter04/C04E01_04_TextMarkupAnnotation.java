@@ -36,13 +36,13 @@ public class C04E01_04_TextMarkupAnnotation {
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize PDF document
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdf = new PdfDocument(writer);
 
         //Initialize document
-        Document doc = new Document(pdfDoc);
+        Document document = new Document(pdf);
 
         Paragraph p = new Paragraph("The example of text markup annotation.");
-        doc.showTextAligned(p, 20, 795, 1, Property.TextAlignment.LEFT,
+        document.showTextAligned(p, 20, 795, 1, Property.TextAlignment.LEFT,
                 Property.VerticalAlignment.MIDDLE, 0);
 
         //Create text markup annotation
@@ -54,10 +54,10 @@ public class C04E01_04_TextMarkupAnnotation {
                 .setTitle(new PdfString("iText"))
                 .setOpen(true)
                 .setRectangle(new PdfArray(new float[]{100, 600, 200, 100}));
-        pdfDoc.getFirstPage().addAnnotation(ann);
+        pdf.getFirstPage().addAnnotation(ann);
 
         //Close document
-        doc.close();
+        document.close();
 
     }
 }

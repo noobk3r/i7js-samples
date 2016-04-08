@@ -35,9 +35,9 @@ public class C04E04_FillForm {
         PdfWriter writer = new PdfWriter(dest);
 
         //Initialize PDF document
-        PdfDocument pdfDoc = new PdfDocument(reader, writer);
+        PdfDocument pdf = new PdfDocument(reader, writer);
 
-        PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
+        PdfAcroForm form = PdfAcroForm.getAcroForm(pdf, true);
         Map<String, PdfFormField> fields = form.getFormFields();
         fields.get("name").setValue("James Bond");
         fields.get("language").setValue("English");
@@ -47,7 +47,7 @@ public class C04E04_FillForm {
         fields.get("shift").setValue("Any");
         fields.get("info").setValue("I was 38 years old when I became a 007 agent.");
 
-        pdfDoc.close();
+        pdf.close();
 
     }
 }

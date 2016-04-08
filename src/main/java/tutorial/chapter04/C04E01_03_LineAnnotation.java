@@ -33,8 +33,8 @@ public class C04E01_03_LineAnnotation {
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize PDF document
-        PdfDocument pdfDoc = new PdfDocument(writer);
-        PdfPage page = pdfDoc.addNewPage();
+        PdfDocument pdf = new PdfDocument(writer);
+        PdfPage page = pdf.addNewPage();
 
         PdfArray lineEndings = new PdfArray();
         lineEndings.add(new PdfName("Diamond"));
@@ -50,7 +50,7 @@ public class C04E01_03_LineAnnotation {
         page.addAnnotation(annotation);
 
         //Close document
-        pdfDoc.close();
+        pdf.close();
 
     }
 }

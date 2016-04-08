@@ -36,10 +36,10 @@ public class C04E01_02_LinkAnnotation {
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize PDF document
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdf = new PdfDocument(writer);
 
         //Initialize document
-        Document doc = new Document(pdfDoc);
+        Document document = new Document(pdf);
 
         //Create link annotation
         PdfLinkAnnotation annotation = new PdfLinkAnnotation(new Rectangle(523, 770, 36, 36))
@@ -49,10 +49,10 @@ public class C04E01_02_LinkAnnotation {
         Paragraph p = new Paragraph("The example of link annotation. Click ")
                 .add(link.setUnderline())
                 .add(" to learn more...");
-        doc.add(p);
+        document.add(p);
 
         //Close document
-        doc.close();
+        document.close();
 
     }
 }

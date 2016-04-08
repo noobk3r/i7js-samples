@@ -42,17 +42,17 @@ public class C04E02_JobApplication {
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize PDF document
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdf = new PdfDocument(writer);
         PageSize ps = PageSize.A4;
-        pdfDoc.setDefaultPageSize(ps);
+        pdf.setDefaultPageSize(ps);
 
         // Initialize document
-        Document doc = new Document(pdfDoc);
+        Document document = new Document(pdf);
 
-        C04E02_JobApplication.addAcroForm(doc);
+        C04E02_JobApplication.addAcroForm(document);
 
         //Close document
-        doc.close();
+        document.close();
 
     }
 

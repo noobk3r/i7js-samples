@@ -34,10 +34,10 @@ public class C04E03_CreateAndFill {
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize PDF document
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdf = new PdfDocument(writer);
 
         // Initialize document
-        Document doc = new Document(pdfDoc);
+        Document doc = new Document(pdf);
 
         PdfAcroForm form = C04E02_JobApplication.addAcroForm(doc);
         Map<String, PdfFormField> fields = form.getFormFields();

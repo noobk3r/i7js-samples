@@ -37,11 +37,11 @@ public class C04E01_01_TextAnnotation {
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize PDF document
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdf = new PdfDocument(writer);
 
         //Initialize document
-        Document doc = new Document(pdfDoc);
-        doc.add(new Paragraph("The example of text annotation."));
+        Document document = new Document(pdf);
+        document.add(new Paragraph("The example of text annotation."));
 
         //Create text annotation
         PdfTextAnnotation ann = new PdfTextAnnotation(new Rectangle(20, 800, 0, 0))
@@ -49,10 +49,10 @@ public class C04E01_01_TextAnnotation {
                 .setTitle(new PdfString("iText"))
                 .setContents("With iText, you can truly take your documentation needs to the next level.")
                 .setOpen(true);
-        pdfDoc.getFirstPage().addAnnotation(ann);
+        pdf.getFirstPage().addAnnotation(ann);
 
         //Close document
-        doc.close();
+        document.close();
 
     }
 }
