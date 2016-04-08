@@ -9,6 +9,7 @@ import com.itextpdf.kernel.color.DeviceCmyk;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
@@ -117,20 +118,21 @@ public class C03E02_PremierLeague {
         }
 
         @Override
-        public void draw(DrawContext drawContext) {
-            float llx = getOccupiedAreaBBox().getX() + 1;
-            float lly = getOccupiedAreaBBox().getY() + 1;
-            float urx = getOccupiedAreaBBox().getX() + getOccupiedAreaBBox().getWidth() - 1;
-            float ury = getOccupiedAreaBBox().getY() + getOccupiedAreaBBox().getHeight() - 1;
+        public void drawBorder(DrawContext drawContext) {
+            Rectangle rectangle = getOccupiedAreaBBox();
+            float llx = rectangle.getX() + 1;
+            float lly = rectangle.getY() + 1;
+            float urx = rectangle.getX() + getOccupiedAreaBBox().getWidth() - 1;
+            float ury = rectangle.getY() + getOccupiedAreaBBox().getHeight() - 1;
+            PdfCanvas canvas = drawContext.getCanvas();
             float r = 4;
             float b = 0.4477f;
-            PdfCanvas canvas = drawContext.getCanvas();
             canvas.moveTo(llx, lly).lineTo(urx, lly).lineTo(urx, ury - r)
                     .curveTo(urx, ury - r * b, urx - r * b, ury, urx - r, ury)
                     .lineTo(llx + r, ury)
                     .curveTo(llx + r * b, ury, llx, ury - r * b, llx, ury - r)
                     .lineTo(llx, lly).stroke();
-            super.draw(drawContext);
+            super.drawBorder(drawContext);
         }
     }
 

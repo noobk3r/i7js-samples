@@ -57,16 +57,15 @@ public class C03E03_UFO {
         PdfWriter writer = new PdfWriter(fos);
 
         //Initialize PDF document
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdf = new PdfDocument(writer);
+        pdf.addEventHandler(PdfDocumentEvent.END_PAGE, new MyEventHandler());
 
         // Initialize document
-        Document doc = new Document(pdfDoc);
-
-        pdfDoc.addEventHandler(PdfDocumentEvent.END_PAGE, new NewEventHandler());
+        Document document = new Document(pdf);
 
         Paragraph p = new Paragraph("List of reported UFO sightings in 20th century")
                 .setTextAlignment(Property.TextAlignment.CENTER).setFont(helveticaBold).setFontSize(14);
-        doc.add(p);
+        document.add(p);
 
         Table table = new Table(new float[]{3, 5, 7, 4});
         table.setWidthPercent(100);
@@ -79,9 +78,9 @@ public class C03E03_UFO {
         }
         br.close();
 
-        doc.add(table);
+        document.add(table);
 
-        doc.close();
+        document.close();
     }
 
     public void process(Table table, String line, PdfFont font, boolean isHeader) {
@@ -96,7 +95,7 @@ public class C03E03_UFO {
     }
 
 
-    protected class NewEventHandler implements IEventHandler {
+    protected class MyEventHandler implements IEventHandler {
 
         public void handleEvent(Event event) {
             PdfDocumentEvent docEvent = (PdfDocumentEvent) event;
@@ -112,8 +111,7 @@ public class C03E03_UFO {
             canvas.saveState()
                     .setFillColor(pageNumber % 2 == 1 ? limeColor : blueColor)
                     .rectangle(pageSize.getLeft(), pageSize.getBottom(), pageSize.getWidth(), pageSize.getHeight())
-                    .fillStroke()
-                    .restoreState();
+                    .fill().restoreState();
 
             //Add header and footer
             canvas.beginText()
