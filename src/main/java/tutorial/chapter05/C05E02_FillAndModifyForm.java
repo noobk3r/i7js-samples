@@ -28,21 +28,19 @@ public class C05E02_FillAndModifyForm {
     public static void main(String args[]) throws IOException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
-        new C05E02_FillAndModifyForm().manipulatePdf(DEST);
+        new C05E02_FillAndModifyForm().manipulatePdf(SRC, DEST);
     }
 
-    public void manipulatePdf(String dest) throws IOException {
+    public void manipulatePdf(String src, String dest) throws IOException {
 
         //Initialize PDF reader
-        PdfReader reader = new PdfReader(SRC);
+        PdfReader reader = new PdfReader(src);
 
         //Initialize PDF writer
         PdfWriter writer = new PdfWriter(dest);
 
         //Initialize PDF document
         PdfDocument pdfDoc = new PdfDocument(reader, writer);
-
-        PdfFont italic = PdfFontFactory.createFont(FontConstants.COURIER);
 
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         Map<String, PdfFormField> fields = form.getFormFields();
@@ -66,7 +64,8 @@ public class C05E02_FillAndModifyForm {
         fields.get("shift").setOptions(arr);
         fields.get("shift").setValue("Any");
 
-        fields.get("info").setValue("I was 38 years old when I became a 007 agent.", italic, 7);
+        PdfFont courier = PdfFontFactory.createFont(FontConstants.COURIER);
+        fields.get("info").setValue("I was 38 years old when I became a 007 agent.", courier, 7);
 
         pdfDoc.close();
 

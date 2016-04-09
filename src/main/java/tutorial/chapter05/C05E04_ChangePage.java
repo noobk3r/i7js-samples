@@ -22,13 +22,13 @@ public class C05E04_ChangePage {
     public static void main(String args[]) throws IOException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
-        new C05E04_ChangePage().manipulatePdf(DEST);
+        new C05E04_ChangePage().manipulatePdf(SRC, DEST);
     }
 
-    public void manipulatePdf(String dest) throws IOException {
+    public void manipulatePdf(String src, String dest) throws IOException {
 
         //Initialize PDF reader
-        PdfReader reader = new PdfReader(SRC);
+        PdfReader reader = new PdfReader(src);
 
         //Initialize PDF writer
         PdfWriter writer = new PdfWriter(dest);
