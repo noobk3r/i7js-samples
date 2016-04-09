@@ -72,10 +72,14 @@ public class C05E03_AddContent {
                     .endText();
             //Draw watermark
             Paragraph p = new Paragraph("CONFIDENTIALLY").setFontSize(60);
+            canvas.saveState();
             PdfExtGState gs1 = new PdfExtGState().setFillOpacity(0.2f);
             canvas.setExtGState(gs1);
-            document.showTextAligned(p, 298, 421, pdfDoc.getPageNumber(page),
+            document.showTextAligned(p,
+                    pageSize.getWidth() / 2, pageSize.getHeight() / 2,
+                    pdfDoc.getPageNumber(page),
                     Property.TextAlignment.CENTER, Property.VerticalAlignment.MIDDLE, 45);
+            canvas.restoreState();
         }
 
         pdfDoc.close();
