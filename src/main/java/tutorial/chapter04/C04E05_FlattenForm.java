@@ -15,21 +15,21 @@ import java.util.Map;
 /**
  * Simple filling out form example.
  */
-public class C04E04_FillForm {
+public class C04E05_FlattenForm {
 
     public static final String SRC = "src/main/resources/pdf/job_application.pdf";
-    public static final String DEST = "results/chapter04/fill_form.pdf";
+    public static final String DEST = "results/chapter04/flatten_form.pdf";
 
     public static void main(String args[]) throws IOException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
-        new C04E04_FillForm().manipulatePdf(SRC, DEST);
+        new C04E05_FlattenForm().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String src, String dest) throws IOException {
+    public void manipulatePdf(String dest) throws IOException {
 
         //Initialize PDF reader
-        PdfReader reader = new PdfReader(src);
+        PdfReader reader = new PdfReader(SRC);
 
         //Initialize PDF writer
         PdfWriter writer = new PdfWriter(dest);
@@ -46,6 +46,7 @@ public class C04E04_FillForm {
         fields.get("experience3").setValue("Yes");
         fields.get("shift").setValue("Any");
         fields.get("info").setValue("I was 38 years old when I became a 007 agent.");
+        form.flattenFields();
 
         pdf.close();
 

@@ -74,7 +74,6 @@ public class C04E02_JobApplication {
         //Create text field
         PdfTextFormField nameField = PdfTextFormField.createText(doc.getPdfDocument(),
                 new Rectangle(99, 753, 425, 15), "name", "");
-        nameField.setBackgroundColor(Color.LIGHT_GRAY);
         form.addField(nameField);
 
         //Create radio buttons
@@ -102,13 +101,11 @@ public class C04E02_JobApplication {
         //Create multiline text field
         PdfTextFormField infoField = PdfTextFormField.createMultilineText(doc.getPdfDocument(),
                 new Rectangle(158, 625, 366, 40), "info", "");
-        infoField.setBackgroundColor(Color.LIGHT_GRAY);
         form.addField(infoField);
 
         //Create push button field
         PdfButtonFormField button = PdfFormField.createPushButton(doc.getPdfDocument(),
                 new Rectangle(479, 594, 45, 15), "reset", "RESET");
-        button.setBackgroundColor(Color.LIGHT_GRAY);
         button.setAction(PdfAction.createResetForm(new String[] {"name", "language", "experience1", "experience2", "experience3", "shift", "info"}, 0));
         form.addField(button);
 
