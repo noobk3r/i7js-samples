@@ -45,7 +45,7 @@ public class C05E03_AddContent {
 
         //Initialize PDF document
         PdfDocument pdfDoc = new PdfDocument(reader, writer);
-        Document doc = new Document(pdfDoc);
+        Document document = new Document(pdfDoc);
         Rectangle pageSize;
         PdfCanvas canvas;
         int n = pdfDoc.getNumberOfPages();
@@ -59,23 +59,22 @@ public class C05E03_AddContent {
                     .showText("I want to believe")
                     .endText();
             //Draw footer line
+            canvas.setStrokeColor(Color.BLACK)
+                    .setLineWidth(.2f)
+                    .moveTo(pageSize.getWidth() / 2 - 30, 20)
+                    .lineTo(pageSize.getWidth() / 2 + 30, 20).stroke();
+            //Draw page number
             canvas.beginText().setFontAndSize(PdfFontFactory.createFont(FontConstants.HELVETICA), 7)
                     .moveText(pageSize.getWidth() / 2 - 7, 10)
                     .showText(String.valueOf(i))
                     .showText(" of ")
                     .showText(String.valueOf(n))
                     .endText();
-            //Draw page number
-            canvas.setStrokeColor(Color.BLACK)
-                    .setLineWidth(.2f)
-                    .moveTo(pageSize.getWidth() / 2, 20)
-                    .lineTo(pageSize.getWidth() / 2 - 30, 20)
-                    .lineTo(pageSize.getWidth() / 2 + 30, 20).stroke();
             //Draw watermark
             Paragraph p = new Paragraph("CONFIDENTIALLY").setFontSize(60);
             PdfExtGState gs1 = new PdfExtGState().setFillOpacity(0.2f);
             canvas.setExtGState(gs1);
-            doc.showTextAligned(p, 298, 421, pdfDoc.getPageNumber(pdfDoc.getPage(i)),
+            document.showTextAligned(p, 298, 421, pdfDoc.getPageNumber(page),
                     Property.TextAlignment.CENTER, Property.VerticalAlignment.MIDDLE, 45);
         }
 
