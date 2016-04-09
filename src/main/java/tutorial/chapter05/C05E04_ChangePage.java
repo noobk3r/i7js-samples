@@ -39,16 +39,17 @@ public class C05E04_ChangePage {
         float margin = 72;
         for (int i = 1; i <= pdfDoc.getNumberOfPages(); i++) {
             PdfPage page = pdfDoc.getPage(i);
+            // change page size
             Rectangle mediaBox = page.getMediaBox();
             Rectangle newMediaBox = new Rectangle(mediaBox.getLeft() - margin, mediaBox.getBottom() - margin,
                     mediaBox.getWidth() + margin * 2, mediaBox.getHeight() + margin * 2);
             page.setMediaBox(newMediaBox);
-
-            PdfCanvas over = new PdfCanvas(pdfDoc.getPage(i));
+            // add border
+            PdfCanvas over = new PdfCanvas(page);
             over.setStrokeColor(Color.GRAY);
             over.rectangle(mediaBox.getLeft(), mediaBox.getBottom(), mediaBox.getWidth(), mediaBox.getHeight());
             over.stroke();
-
+            // change rotation of the even pages
             if (i % 2 == 0) {
                 page.setRotation(180);
             }
