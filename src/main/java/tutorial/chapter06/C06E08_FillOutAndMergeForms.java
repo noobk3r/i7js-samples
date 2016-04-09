@@ -1,3 +1,6 @@
+/*
+ * This example is part of the iText 7 tutorial.
+ */
 package tutorial.chapter06;
 
 import com.itextpdf.forms.PdfAcroForm;
@@ -30,6 +33,7 @@ public class C06E08_FillOutAndMergeForms {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(DATA));
         String line;
         boolean headerLine = true;
+        int i = 1;
         while ((line = bufferedReader.readLine()) != null) {
             if (headerLine) {
                 headerLine = false;
@@ -40,20 +44,30 @@ public class C06E08_FillOutAndMergeForms {
             PdfDocument sourcePdfDocument = new PdfDocument(new PdfReader(SRC), new PdfWriter(baos));
 
             //Read fields
+            i++;
             PdfAcroForm form = PdfAcroForm.getAcroForm(sourcePdfDocument, true);
+            form.renameField("name", "name_" + i);
+            form.renameField("abbr", "abbr_" + i);
+            form.renameField("capital", "capital_" + i);
+            form.renameField("city", "city_" + i);
+            form.renameField("population", "population_" + i);
+            form.renameField("surface", "surface_" + i);
+            form.renameField("timezone1", "timezone1_" + i);
+            form.renameField("timezone2", "timezone2_" + i);
+            form.renameField("dst", "dst_" + i);
             StringTokenizer tokenizer = new StringTokenizer(line, ";");
             Map<String, PdfFormField> fields = form.getFormFields();
 
             //Fill out fields
-            fields.get("name").setValue(tokenizer.nextToken());
-            fields.get("abbr").setValue(tokenizer.nextToken());
-            fields.get("capital").setValue(tokenizer.nextToken());
-            fields.get("city").setValue(tokenizer.nextToken());
-            fields.get("population").setValue(tokenizer.nextToken());
-            fields.get("surface").setValue(tokenizer.nextToken());
-            fields.get("timezone1").setValue(tokenizer.nextToken());
-            fields.get("timezone2").setValue(tokenizer.nextToken());
-            fields.get("dst").setValue(tokenizer.nextToken());
+            fields.get("name_" + i).setValue(tokenizer.nextToken());
+            fields.get("abbr_" + i).setValue(tokenizer.nextToken());
+            fields.get("capital_" + i).setValue(tokenizer.nextToken());
+            fields.get("city_" + i).setValue(tokenizer.nextToken());
+            fields.get("population_" + i).setValue(tokenizer.nextToken());
+            fields.get("surface_" + i).setValue(tokenizer.nextToken());
+            fields.get("timezone1_" + i).setValue(tokenizer.nextToken());
+            fields.get("timezone2_" + i).setValue(tokenizer.nextToken());
+            fields.get("dst_" + i).setValue(tokenizer.nextToken());
 
             sourcePdfDocument.close();
             sourcePdfDocument = new PdfDocument(new PdfReader(new ByteArrayInputStream(baos.toByteArray())));

@@ -1,5 +1,5 @@
 /*
- * Combine documents example
+ * This example is part of the iText 7 tutorial.
  */
 package tutorial.chapter06;
 

@@ -1,5 +1,5 @@
 /*
- * Pdf document manipulation. Shrink/Scale page example.
+ * This example is part of the iText 7 tutorial.
  */
 package tutorial.chapter06;
 
@@ -12,13 +12,12 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.kernel.xmp.XMPException;
-import com.itextpdf.layout.Document;
 
 import java.io.File;
 import java.io.IOException;
 
 public class C06E01_TheGoldenGateBridge_Scale_Shrink {
-    public static final String SOURCE = "src/main/resources/pdf/the_golden_gate_bridge.pdf";
+    public static final String SRC = "src/main/resources/pdf/the_golden_gate_bridge.pdf";
     public static final String DEST = "results/chapter06/the_golden_gate_bridge_scale_shrink.pdf";
 
     public static void main(String args[]) throws IOException, XMPException {
@@ -30,7 +29,7 @@ public class C06E01_TheGoldenGateBridge_Scale_Shrink {
     public void createPdf(String dest) throws IOException, XMPException {
         //Initialize PDF document
         PdfDocument pdf = new PdfDocument(new PdfWriter(dest));
-        PdfDocument sourcePdf = new PdfDocument(new PdfReader(SOURCE));
+        PdfDocument sourcePdf = new PdfDocument(new PdfReader(SRC));
 
         //Original page size
         PageSize a3 = PageSize.A3.rotate();
