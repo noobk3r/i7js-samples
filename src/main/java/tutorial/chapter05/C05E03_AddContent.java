@@ -1,3 +1,6 @@
+/*
+ * This example is part of the iText 7 tutorial.
+ */
 package tutorial.chapter05;
 
 import com.itextpdf.io.font.FontConstants;
@@ -5,6 +8,7 @@ import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
@@ -44,9 +48,11 @@ public class C05E03_AddContent {
         Document doc = new Document(pdfDoc);
         Rectangle pageSize;
         PdfCanvas canvas;
-        for (int i = 1; i < pdfDoc.getNumberOfPages() + 1; i++) {
-            pageSize = pdfDoc.getPage(i).getPageSize();
-            canvas = new PdfCanvas(pdfDoc.getPage(i));
+        int n = pdfDoc.getNumberOfPages();
+        for (int i = 1; i <= n; i++) {
+            PdfPage page = pdfDoc.getPage(i);
+            pageSize = page.getPageSize();
+            canvas = new PdfCanvas(page);
             //Draw header text
             canvas.beginText().setFontAndSize(PdfFontFactory.createFont(FontConstants.HELVETICA), 7)
                     .moveText(pageSize.getWidth() / 2 - 24, pageSize.getHeight() - 10)
@@ -54,8 +60,10 @@ public class C05E03_AddContent {
                     .endText();
             //Draw footer line
             canvas.beginText().setFontAndSize(PdfFontFactory.createFont(FontConstants.HELVETICA), 7)
-                    .moveText(pageSize.getWidth() / 2, 10)
+                    .moveText(pageSize.getWidth() / 2 - 7, 10)
                     .showText(String.valueOf(i))
+                    .showText(" of ")
+                    .showText(String.valueOf(n))
                     .endText();
             //Draw page number
             canvas.setStrokeColor(Color.BLACK)

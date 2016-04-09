@@ -1,3 +1,6 @@
+/*
+ * This example is part of the iText 7 tutorial.
+ */
 package tutorial.chapter05;
 
 import com.itextpdf.forms.PdfAcroForm;
@@ -20,7 +23,7 @@ import java.io.IOException;
 /**
  * Simple adding annotations example.
  */
-public class C05E01_AddAnnotations {
+public class C05E01_AddAnnotationsAndContent {
 
     public static final String SRC = "src/main/resources/pdf/job_application.pdf";
     public static final String DEST = "results/chapter05/edited_job_application.pdf";
@@ -28,7 +31,7 @@ public class C05E01_AddAnnotations {
     public static void main(String args[]) throws IOException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
-        new C05E01_AddAnnotations().manipulatePdf(DEST);
+        new C05E01_AddAnnotationsAndContent().manipulatePdf(DEST);
     }
 
     public void manipulatePdf(String dest) throws IOException {
