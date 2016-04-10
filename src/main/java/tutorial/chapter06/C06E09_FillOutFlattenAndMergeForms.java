@@ -4,7 +4,6 @@
 package tutorial.chapter06;
 
 import com.itextpdf.forms.PdfAcroForm;
-import com.itextpdf.forms.PdfPageFormCopier;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.io.source.ByteArrayOutputStream;
 import com.itextpdf.kernel.pdf.PdfDocument;
