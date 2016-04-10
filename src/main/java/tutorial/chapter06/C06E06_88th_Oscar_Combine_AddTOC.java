@@ -22,7 +22,7 @@ import java.util.*;
 public class C06E06_88th_Oscar_Combine_AddTOC {
     public static final String SRC1 = "src/main/resources/pdf/88th_noms_announcement.pdf";
     public static final String SRC2 = "src/main/resources/pdf/oscars_movies_checklist_2016.pdf";
-    public static final String DEST = "results/chapter06/88th_oscar_the_relevant_nominations_TOC.pdf";
+    public static final String DEST = "results/chapter06/88th_oscar_the_revenant_nominations_TOC.pdf";
 
     public static final Map<String, Integer> TheRevenantNominations = new TreeMap<String, Integer>();
     static {

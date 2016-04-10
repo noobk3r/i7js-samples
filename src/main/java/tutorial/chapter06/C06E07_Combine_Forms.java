@@ -23,13 +23,15 @@ public class C06E07_Combine_Forms {
     }
 
     public void createPdf(String dest) throws IOException, XMPException {
-        PdfDocument destPdfDocument = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
-
-        for (PdfDocument sourcePdfDocument : new PdfDocument[] {
+        PdfDocument destPdfDocument = new PdfDocument(new PdfWriter(dest));
+        PdfDocument[] sources = new PdfDocument[] {
                 new PdfDocument(new PdfReader(SRC1)),
                 new PdfDocument(new PdfReader(SRC2))
-        }) {
-            sourcePdfDocument.copyPagesTo(1, sourcePdfDocument.getNumberOfPages(), destPdfDocument, new PdfPageFormCopier());
+        };
+        for (PdfDocument sourcePdfDocument : sources) {
+            sourcePdfDocument.copyPagesTo(
+                    1, sourcePdfDocument.getNumberOfPages(),
+                    destPdfDocument, new PdfPageFormCopier());
             sourcePdfDocument.close();
         }
         destPdfDocument.close();

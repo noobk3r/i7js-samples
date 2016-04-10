@@ -43,7 +43,7 @@ public class C06E08_FillOutAndMergeForms {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             PdfDocument sourcePdfDocument = new PdfDocument(new PdfReader(SRC), new PdfWriter(baos));
 
-            //Read fields
+            //Rename fields
             i++;
             PdfAcroForm form = PdfAcroForm.getAcroForm(sourcePdfDocument, true);
             form.renameField("name", "name_" + i);
@@ -55,10 +55,10 @@ public class C06E08_FillOutAndMergeForms {
             form.renameField("timezone1", "timezone1_" + i);
             form.renameField("timezone2", "timezone2_" + i);
             form.renameField("dst", "dst_" + i);
+            
+            //Fill out fields
             StringTokenizer tokenizer = new StringTokenizer(line, ";");
             Map<String, PdfFormField> fields = form.getFormFields();
-
-            //Fill out fields
             fields.get("name_" + i).setValue(tokenizer.nextToken());
             fields.get("abbr_" + i).setValue(tokenizer.nextToken());
             fields.get("capital_" + i).setValue(tokenizer.nextToken());
