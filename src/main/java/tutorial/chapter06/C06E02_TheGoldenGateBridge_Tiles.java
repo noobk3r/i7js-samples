@@ -11,6 +11,7 @@ import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.kernel.xmp.XMPException;
 
 import java.io.File;
@@ -23,66 +24,49 @@ public class C06E02_TheGoldenGateBridge_Tiles {
     public static void main(String args[]) throws IOException, XMPException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
-        new C06E02_TheGoldenGateBridge_Tiles().createPdf(DEST);
+        new C06E02_TheGoldenGateBridge_Tiles().createPdf(SRC, DEST);
     }
 
-    public void createPdf(String dest) throws IOException, XMPException {
+    public void createPdf(String src, String dest) throws IOException, XMPException {
         //Initialize PDF document
         PdfDocument pdf = new PdfDocument(new PdfWriter(dest));
-        PdfDocument sourcePdf = new PdfDocument(new PdfReader(SRC));
+        PdfDocument sourcePdf = new PdfDocument(new PdfReader(src));
 
         //Original page
-        PdfPage originalPage = sourcePdf.getPage(1);
+        PdfPage origPage = sourcePdf.getPage(1);
+        PdfFormXObject pageCopy = origPage.copyAsFormXObject(pdf);
 
         //Original page size
-        Rectangle originalPageSize = originalPage.getPageSize();
-
+        Rectangle orig = origPage.getPageSize();
         //Tile size
         Rectangle tileSize = PageSize.A4.rotate();
-
-
-        AffineTransform transformationMatrix = AffineTransform.getScaleInstance(
-                tileSize.getWidth() / originalPageSize.getWidth() * 2f, tileSize.getHeight() / originalPageSize.getHeight() * 2f);
+        // Transformation matrix
+        AffineTransform transformationMatrix = AffineTransform.getScaleInstance(tileSize.getWidth() / orig.getWidth() * 2f, tileSize.getHeight() / orig.getHeight() * 2f);
 
 
         //The first tile
         PdfPage page = pdf.addNewPage(PageSize.A4.rotate());
-
-        //Create page canvas
         PdfCanvas canvas = new PdfCanvas(page);
-
-        //Scale page
         canvas.concatMatrix(transformationMatrix);
-
-        //Add tile as form XObject
-        canvas.addXObject(originalPage.copyAsFormXObject(pdf), 0, -originalPageSize.getHeight() / 2f);
+        canvas.addXObject(pageCopy, 0, -orig.getHeight() / 2f);
 
         //The second tile
         page = pdf.addNewPage(PageSize.A4.rotate());
-
         canvas = new PdfCanvas(page);
-
         canvas.concatMatrix(transformationMatrix);
-
-        canvas.addXObject(originalPage.copyAsFormXObject(pdf), -originalPageSize.getWidth() / 2f, -originalPageSize.getHeight() / 2f);
+        canvas.addXObject(pageCopy, -orig.getWidth() / 2f, -orig.getHeight() / 2f);
 
         //The third tile
         page = pdf.addNewPage(PageSize.A4.rotate());
-
         canvas = new PdfCanvas(page);
-
         canvas.concatMatrix(transformationMatrix);
-
-        canvas.addXObject(originalPage.copyAsFormXObject(pdf), 0, 0);
+        canvas.addXObject(pageCopy, 0, 0);
 
         //The fourth tile
         page = pdf.addNewPage(PageSize.A4.rotate());
-
         canvas = new PdfCanvas(page);
-
         canvas.concatMatrix(transformationMatrix);
-
-        canvas.addXObject(originalPage.copyAsFormXObject(pdf), -originalPageSize.getWidth() / 2f, 0);
+        canvas.addXObject(pageCopy, -orig.getWidth() / 2f, 0);
 
         pdf.close();
         sourcePdf.close();

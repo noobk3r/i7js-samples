@@ -24,7 +24,6 @@ public class C06E04_88th_Oscar_Combine {
     public void createPdf(String dest) throws IOException, XMPException {
         //Initialize PDF document with output intent
         PdfDocument pdf = new PdfDocument(new PdfWriter(dest));
-
         PdfMerger merger = new PdfMerger(pdf);
 
         //Add pages from the first document
@@ -35,8 +34,8 @@ public class C06E04_88th_Oscar_Combine {
         PdfDocument secondSourcePdf = new PdfDocument(new PdfReader(SRC2));
         merger.addPages(secondSourcePdf, 1, secondSourcePdf.getNumberOfPages());
 
+        // merge and close
         merger.merge();
-
         firstSourcePdf.close();
         secondSourcePdf.close();
         pdf.close();

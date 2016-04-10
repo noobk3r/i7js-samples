@@ -5,6 +5,7 @@ package tutorial.chapter06;
 
 import com.itextpdf.kernel.geom.AffineTransform;
 import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfReader;
@@ -23,43 +24,39 @@ public class C06E01_TheGoldenGateBridge_Scale_Shrink {
     public static void main(String args[]) throws IOException, XMPException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
-        new C06E01_TheGoldenGateBridge_Scale_Shrink().createPdf(DEST);
+        new C06E01_TheGoldenGateBridge_Scale_Shrink().createPdf(SRC, DEST);
     }
 
-    public void createPdf(String dest) throws IOException, XMPException {
+    public void createPdf(String src, String dest) throws IOException, XMPException {
         //Initialize PDF document
         PdfDocument pdf = new PdfDocument(new PdfWriter(dest));
-        PdfDocument sourcePdf = new PdfDocument(new PdfReader(SRC));
+        PdfDocument origPdf = new PdfDocument(new PdfReader(src));
 
         //Original page size
-        PageSize a3 = PageSize.A3.rotate();
+        PdfPage origPage = origPdf.getPage(1);
+        Rectangle orig = origPage.getPageSizeWithRotation();
 
         //Add A4 page
         PdfPage page = pdf.addNewPage(PageSize.A4.rotate());
-
-        //Shrink A3 page content by transformation matrix
+        //Shrink original page content using transformation matrix
         PdfCanvas canvas = new PdfCanvas(page);
-        AffineTransform transformationMatrix = AffineTransform.getScaleInstance(
-                page.getPageSize().getWidth() / a3.getWidth(), page.getPageSize().getHeight() / a3.getHeight());
+        AffineTransform transformationMatrix = AffineTransform.getScaleInstance(page.getPageSize().getWidth() / orig.getWidth(), page.getPageSize().getHeight() / orig.getHeight());
         canvas.concatMatrix(transformationMatrix);
-        PdfFormXObject pageCopy = sourcePdf.getPage(1).copyAsFormXObject(pdf);
+        PdfFormXObject pageCopy = origPage.copyAsFormXObject(pdf);
         canvas.addXObject(pageCopy, 0, 0);
 
-        //Add page with original A3 size
-        pdf.addPage(sourcePdf.getPage(1).copyTo(pdf));
+        //Add page with original size
+        pdf.addPage(origPage.copyTo(pdf));
 
         //Add A2 page
         page = pdf.addNewPage(PageSize.A2.rotate());
-
-        //Scale A3 page content by transformation matrix
+        //Scale original page content using transformation matrix
         canvas = new PdfCanvas(page);
-        transformationMatrix = AffineTransform.getScaleInstance(
-                page.getPageSize().getWidth() / a3.getWidth(), page.getPageSize().getHeight() / a3.getHeight());
+        transformationMatrix = AffineTransform.getScaleInstance(page.getPageSize().getWidth() / orig.getWidth(), page.getPageSize().getHeight() / orig.getHeight());
         canvas.concatMatrix(transformationMatrix);
-        pageCopy = sourcePdf.getPage(1).copyAsFormXObject(pdf);
         canvas.addXObject(pageCopy, 0, 0);
 
         pdf.close();
-        sourcePdf.close();
+        origPdf.close();
     }
 }

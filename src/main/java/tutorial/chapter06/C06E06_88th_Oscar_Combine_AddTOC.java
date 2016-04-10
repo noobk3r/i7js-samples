@@ -48,12 +48,11 @@ public class C06E06_88th_Oscar_Combine_AddTOC {
 
     public void createPdf(String dest) throws IOException, XMPException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
-        Document doc = new Document(pdfDoc);
+        Document document = new Document(pdfDoc);
+        document.add(new Paragraph(new Text("The Revenant nominations list"))
+            .setTextAlignment(Property.TextAlignment.CENTER));
 
-        pdfDoc.addNewPage();
-        doc.add(new Paragraph(new Text("The Revenant nominations list")).setTextAlignment(Property.TextAlignment.CENTER));
         PdfDocument firstSourcePdf = new PdfDocument(new PdfReader(SRC1));
-
         for (Map.Entry<String, Integer> entry : TheRevenantNominations.entrySet()) {
             //Copy page
             PdfPage page  = firstSourcePdf.getPage(entry.getValue()).copyTo(pdfDoc);
@@ -62,7 +61,8 @@ public class C06E06_88th_Oscar_Combine_AddTOC {
             //Overwrite page number
             Text text = new Text(String.format("Page %d", pdfDoc.getNumberOfPages() - 1));
             text.setBackgroundColor(Color.WHITE);
-            doc.add(new Paragraph(text).setFixedPosition(pdfDoc.getNumberOfPages(), 549, 742, 100));
+            document.add(new Paragraph(text).setFixedPosition(
+                    pdfDoc.getNumberOfPages(), 549, 742, 100));
 
             //Add destination
             String destinationKey = "p" + (pdfDoc.getNumberOfPages() - 1);
@@ -81,8 +81,9 @@ public class C06E06_88th_Oscar_Combine_AddTOC {
             p.add(new Tab());
             p.add(String.valueOf(pdfDoc.getNumberOfPages() - 1));
             p.setProperty(Property.ACTION, PdfAction.createGoTo(destinationKey));
-            doc.add(p);
+            document.add(p);
         }
+        firstSourcePdf.close();
 
         //Add the last page
         PdfDocument secondSourcePdf = new PdfDocument(new PdfReader(SRC2));
@@ -101,16 +102,15 @@ public class C06E06_88th_Oscar_Combine_AddTOC {
         //Add TOC line with bookmark
         Paragraph p = new Paragraph();
         p.addTabStops(new TabStop(540, Property.TabAlignment.RIGHT, new DottedLine()));
-        p.add("Oscars® 2016 Movie Checklist");
+        p.add("Oscars\u00ae 2016 Movie Checklist");
         p.add(new Tab());
         p.add(String.valueOf(pdfDoc.getNumberOfPages() - 1));
         p.setProperty(Property.ACTION, PdfAction.createGoTo("checklist"));
-        doc.add(p);
-
-        //Close documents
-        firstSourcePdf.close();
+        document.add(p);
         secondSourcePdf.close();
-        doc.close();
+
+        // close the document
+        document.close();
     }
 }
 
