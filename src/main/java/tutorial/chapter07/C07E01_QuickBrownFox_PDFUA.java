@@ -31,47 +31,32 @@ public class C07E01_QuickBrownFox_PDFUA {
     }
     
     public void createPdf(String dest) throws IOException, XMPException {
-        //Initialize PDFA document with output intent
         PdfDocument pdf = new PdfDocument(new PdfWriter(dest));
-
-        //Initialize document
         Document document = new Document(pdf);
 
-        //Make document tagged
+        //Setting some required parameters
         pdf.setTagged();
-
-        pdf.getCatalog().setViewerPreferences(new PdfViewerPreferences().setDisplayDocTitle(true));
+        pdf.getCatalog().setViewerPreferences(
+                new PdfViewerPreferences().setDisplayDocTitle(true));
         pdf.getCatalog().setLang(new PdfString("en-US"));
         PdfDocumentInfo info = pdf.getDocumentInfo();
         info.setTitle("iText7 PDF/UA example");
-
         //Create XMP meta data
         pdf.createXmpMetadata();
 
-        Paragraph p = new Paragraph();
-
-        //Embed font
+        //Fonts need to be embedded
         PdfFont font = PdfFontFactory.createFont(FONT, PdfEncodings.WINANSI, true);
+        Paragraph p = new Paragraph();
         p.setFont(font);
-
         p.add(new Text("The quick brown "));
-
         Image foxImage = new Image(ImageFactory.getImage(FOX));
-
-        //PDF/UA
-        //Set alt text
+        //PDF/UA: Set alt text
         foxImage.getAccessibilityProperties().setAlternateDescription("Fox");
-
         p.add(foxImage);
-
         p.add(" jumps over the lazy ");
-
         Image dogImage = new Image(ImageFactory.getImage(DOG));
-
-        //PDF/UA
-        //Set alt text
+        //PDF/UA: Set alt text
         dogImage.getAccessibilityProperties().setAlternateDescription("Dog");
-
         p.add(dogImage);
 
         document.add(p);

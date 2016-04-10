@@ -36,47 +36,35 @@ public class C07E02_QuickBrownFox_PDFA_1a {
     
     public void createPdf(String dest) throws IOException, XMPException {
         //Initialize PDFA document with output intent
-        PdfADocument pdf = new PdfADocument(new PdfWriter(dest), PdfAConformanceLevel.PDF_A_1A,
-                new PdfOutputIntent("Custom", "", "http://www.color.org", "sRGB IEC61966-2.1", new FileInputStream(INTENT)));
-
-        //Initialize document
+        PdfADocument pdf = new PdfADocument(new PdfWriter(dest),
+            PdfAConformanceLevel.PDF_A_1A,
+            new PdfOutputIntent("Custom", "", "http://www.color.org",
+                    "sRGB IEC61966-2.1", new FileInputStream(INTENT)));
         Document document = new Document(pdf);
 
-        //Make document tagged
+        //Setting some required parameters
         pdf.setTagged();
-
-        //Set document metadata
-        pdf.getCatalog().setViewerPreferences(new PdfViewerPreferences().setDisplayDocTitle(true));
+        pdf.getCatalog().setViewerPreferences(
+                new PdfViewerPreferences().setDisplayDocTitle(true));
         pdf.getCatalog().setLang(new PdfString("en-US"));
         PdfDocumentInfo info = pdf.getDocumentInfo();
         info.setTitle("iText7 PDF/A-1a example");
-
         //Create XMP meta data
         pdf.createXmpMetadata();
 
-        Paragraph p = new Paragraph();
-        //Embed font
+        //Fonts need to be embedded
         PdfFont font = PdfFontFactory.createFont(FONT, PdfEncodings.WINANSI, true);
+        Paragraph p = new Paragraph();
         p.setFont(font);
-
         p.add(new Text("The quick brown "));
-
         Image foxImage = new Image(ImageFactory.getImage(FOX));
-
-        //PDF/UA
         //Set alt text
         foxImage.getAccessibilityProperties().setAlternateDescription("Fox");
-
         p.add(foxImage);
-
         p.add(" jumps over the lazy ");
-
         Image dogImage = new Image(ImageFactory.getImage(DOG));
-
-        //PDF/UA
         //Set alt text
         dogImage.getAccessibilityProperties().setAlternateDescription("Dog");
-
         p.add(dogImage);
 
         document.add(p);

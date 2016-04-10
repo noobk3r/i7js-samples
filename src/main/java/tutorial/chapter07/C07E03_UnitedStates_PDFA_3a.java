@@ -38,30 +38,29 @@ public class C07E03_UnitedStates_PDFA_3a {
     }
     
     public void createPdf(String dest) throws IOException, XMPException {
-        //Initialize PDFA document with output intent
-        PdfADocument pdf = new PdfADocument(new PdfWriter(dest), PdfAConformanceLevel.PDF_A_3A,
-                new PdfOutputIntent("Custom", "", "http://www.color.org", "sRGB IEC61966-2.1", new FileInputStream(INTENT)));
-
-        //Initialize document
+        PdfADocument pdf = new PdfADocument(new PdfWriter(dest),
+            PdfAConformanceLevel.PDF_A_3A,
+            new PdfOutputIntent("Custom", "", "http://www.color.org",
+                    "sRGB IEC61966-2.1", new FileInputStream(INTENT)));
         Document document = new Document(pdf, PageSize.A4.rotate());
 
-        //Make document tagged
+        //Setting some required parameters
         pdf.setTagged();
-
-        //Set document metadata
-        pdf.getCatalog().setViewerPreferences(new PdfViewerPreferences().setDisplayDocTitle(true));
+        pdf.getCatalog().setViewerPreferences(
+                new PdfViewerPreferences().setDisplayDocTitle(true));
         pdf.getCatalog().setLang(new PdfString("en-US"));
         PdfDocumentInfo info = pdf.getDocumentInfo();
         info.setTitle("iText7 PDF/A-3 example");
-
         //Create XMP meta data
         pdf.createXmpMetadata();
 
         //Add attachment
         PdfDictionary parameters = new PdfDictionary();
         parameters.put(PdfName.ModDate, new PdfDate().getPdfObject());
-        PdfFileSpec fileSpec = PdfFileSpec.createEmbeddedFileSpec(pdf, Files.readAllBytes(Paths.get(DATA)), "united_states.csv",
-                "united_states.csv", new PdfName("text/csv"), parameters, PdfName.Data, false);
+        PdfFileSpec fileSpec = PdfFileSpec.createEmbeddedFileSpec(
+            pdf, Files.readAllBytes(Paths.get(DATA)), "united_states.csv",
+            "united_states.csv", new PdfName("text/csv"), parameters,
+            PdfName.Data, false);
         fileSpec.put(new PdfName("AFRelationship"), new PdfName("Data"));
         pdf.addFileAttachment("united_states.csv", fileSpec);
         PdfArray array = new PdfArray();
@@ -72,6 +71,7 @@ public class C07E03_UnitedStates_PDFA_3a {
         PdfFont font = PdfFontFactory.createFont(FONT, true);
         PdfFont bold = PdfFontFactory.createFont(BOLD_FONT, true);
 
+        // Create content
         Table table = new Table(new float[]{4, 1, 3, 4, 3, 3, 3, 3, 1});
         table.setWidthPercent(100);
         BufferedReader br = new BufferedReader(new FileReader(DATA));
