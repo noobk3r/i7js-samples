@@ -28,24 +28,21 @@ import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.MalformedURLException;
 import java.sql.SQLException;
 import java.util.List;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 
-import org.junit.Ignore;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-@Ignore
 public class Listing_09_16_HtmlMovies2 extends Listing_09_15_HtmlMovies1 {
     public static final String HTML = "./target/test/resources/book/part3/chapter09/Listing_09_16_HtmlMovies2.html";
     public static final String DEST = "./target/test/resources/book/part3/chapter09/Listing_09_16_HtmlMovies2.pdf";
@@ -61,11 +58,10 @@ public class Listing_09_16_HtmlMovies2 extends Listing_09_15_HtmlMovies1 {
         // Create a database connection
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
         // Create a stream to produce HTML
-        PrintStream out = new PrintStream(new FileOutputStream(HTML));
+        PrintStream out = new PrintStream(HTML, "UTF-8");
         out.println("<html>\n<body>");
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(pdf));
         Document doc = new Document(pdfDoc);
-
 
         List<Movie> movies = PojoFactory.getMovies(connection);
         String snippet;
@@ -95,7 +91,7 @@ public class Listing_09_16_HtmlMovies2 extends Listing_09_15_HtmlMovies1 {
      * @return a String with HTML code
      */
     public String createHtmlSnippet(Movie movie) {
-        StringBuffer buf = new StringBuffer("<table width=\"500\">\n<tr>\n");
+        StringBuilder buf = new StringBuilder("<table width=\"500\">\n<tr>\n");
         buf.append("\t<td><img src=\"./src/test/resources/img/posters/");
         buf.append(movie.getImdb());
         buf.append(".jpg\" /></td>\t<td>\n");
@@ -130,7 +126,6 @@ public class Listing_09_16_HtmlMovies2 extends Listing_09_15_HtmlMovies1 {
             cell = new Cell().setBorder(Border.NO_BORDER).setVerticalAlignment(Property.VerticalAlignment.MIDDLE);
             table = new Table(2).setBorder(Border.NO_BORDER);
             isItalic = false;
-
         }
 
         /**
@@ -148,6 +143,7 @@ public class Listing_09_16_HtmlMovies2 extends Listing_09_15_HtmlMovies1 {
             } else if ("ul".equals(qName)) {
                 list.setSymbolIndent(10);
             } else if ("li".equals(qName)) {
+                paragraph = new Paragraph().setFont(font);
                 if ("country".equals(attributes.getValue("class"))) {
                     isItalic = true;
                     paragraph.setFontColor(new DeviceRgb(0, 128, 128));
@@ -191,8 +187,7 @@ public class Listing_09_16_HtmlMovies2 extends Listing_09_15_HtmlMovies1 {
                 table = new Table(2).setBorder(Border.NO_BORDER);
             } else if ("td".equals(qName)) {
                 table.addCell(cell);
-                // TODO set vertical alignment and see the problem
-                cell = new Cell().setBorder(Border.NO_BORDER);
+                cell = new Cell().setBorder(Border.NO_BORDER).setVerticalAlignment(Property.VerticalAlignment.MIDDLE);
             } else if ("img".equals(qName)) {
                 cell.add(img);
             }

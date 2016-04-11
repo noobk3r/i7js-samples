@@ -24,11 +24,7 @@ import com.lowagie.filmfestival.Director;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -36,14 +32,15 @@ import java.io.PrintStream;
 import java.io.Reader;
 import java.sql.SQLException;
 import java.util.List;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 
-import org.junit.Ignore;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-@Ignore
 public class Listing_09_15_HtmlMovies1 extends GenericTest {
     public static final String HTML = "./target/test/resources/book/part3/chapter09/Listing_09_15_HtmlMovies1.html";
     public static final String DEST = "./target/test/resources/book/part3/chapter09/Listing_09_15_HtmlMovies1.pdf";
@@ -59,7 +56,7 @@ public class Listing_09_15_HtmlMovies1 extends GenericTest {
         // Create a database connection
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
         // Create a stream to produce HTML
-        PrintStream out = new PrintStream(new FileOutputStream(HTML));
+        PrintStream out = new PrintStream(HTML, "UTF-8");
         out.println("<html>\n<body>");
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(pdf));
         Document doc = new Document(pdfDoc);
@@ -95,7 +92,7 @@ public class Listing_09_15_HtmlMovies1 extends GenericTest {
      * @return a String with HTML code
      */
     public String createHtmlSnippet(Movie movie) {
-        StringBuffer buf = new StringBuffer("\t<span class=\"title\">");
+        StringBuilder buf = new StringBuilder("\t<span class=\"title\">");
         buf.append(movie.getMovieTitle());
         buf.append("</span><br />\n");
         buf.append("\t<ul>\n");
