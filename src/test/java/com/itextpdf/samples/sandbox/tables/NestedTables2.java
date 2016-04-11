@@ -38,8 +38,6 @@ public class NestedTables2 extends GenericTest {
 
         Table table = new Table(new float[]{1, 15});
         table.setWidthPercent(100);
-        // TODO Implement setSplitLate(boolean) method
-        //table.setSplitLate(false);
         for (int i = 1; i <= 20; i++) {
             table.addCell(String.valueOf(i));
             table.addCell("It is not smart to use iText 2.1.7!");

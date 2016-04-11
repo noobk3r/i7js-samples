@@ -11,17 +11,16 @@
  */
 package com.itextpdf.samples.sandbox.events;
 
-import com.itextpdf.kernel.geom.PageSize;
-import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.events.Event;
 import com.itextpdf.kernel.events.IEventHandler;
 import com.itextpdf.kernel.events.PdfDocumentEvent;
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.AreaBreak;
@@ -29,11 +28,11 @@ import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileOutputStream;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class TableFooter extends GenericTest {
@@ -88,7 +87,6 @@ public class TableFooter extends GenericTest {
             PdfDocument pdfDoc = docEvent.getDocument();
             PdfPage page = docEvent.getPage();
             PdfCanvas canvas = new PdfCanvas(page.newContentStreamBefore(), page.getResources(), pdfDoc);
-            // TODO Get rid of magic numbers (cannot get margins from PdfDocument)
             new Canvas(canvas, pdfDoc, new Rectangle(36, 36, page.getPageSize().getWidth() - 72, 100))
                     .add(table);
         }

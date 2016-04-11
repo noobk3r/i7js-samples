@@ -7,11 +7,11 @@
 
 package com.itextpdf.samples.book.part2.chapter08;
 
-import com.itextpdf.kernel.color.Color;
-import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfChoiceFormField;
 import com.itextpdf.forms.fields.PdfFormField;
+import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
 import com.itextpdf.layout.Style;
@@ -23,13 +23,10 @@ import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.IOException;
 
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
-
-@Ignore
 @Category(SampleTest.class)
 public class Listing_08_12_ChoiceFields extends GenericTest {
     public static final String DEST
@@ -172,7 +169,6 @@ public class Listing_08_12_ChoiceFields extends GenericTest {
                         langAndExpArray[i][1] = LANGUAGES[i];
                     }
                     text = PdfFormField.createList(document, getOccupiedAreaBBox(), String.format("choice_%s", cf), "", langAndExpArray);
-                    //@TODO (the result is ugly)
                     text.setTopIndex(1);
                     break;
                 case 2:

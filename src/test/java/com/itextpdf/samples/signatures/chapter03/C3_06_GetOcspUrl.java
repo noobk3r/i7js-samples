@@ -17,6 +17,10 @@ package com.itextpdf.samples.signatures.chapter03;
 import com.itextpdf.samples.SignatureTest;
 import com.itextpdf.signatures.CertificateUtil;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -28,16 +32,12 @@ import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
 import java.util.Properties;
 
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
 @Ignore
 @Category(SampleTest.class)
 public class C3_06_GetOcspUrl extends SignatureTest {
-    public static final  String expectedOutput = ""; //TODO
+    public static final  String expectedOutput = "";
 
     public static void main(String[] args) throws IOException, GeneralSecurityException {
         Properties properties = new Properties();

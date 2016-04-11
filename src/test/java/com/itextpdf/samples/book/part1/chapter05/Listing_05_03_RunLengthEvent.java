@@ -8,28 +8,30 @@
 package com.itextpdf.samples.book.part1.chapter05;
 
 import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.kernel.geom.PageSize;
-import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.font.PdfFontFactory;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.color.DeviceRgb;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
+import com.itextpdf.layout.Style;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.Screening;
+import org.junit.experimental.categories.Category;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -37,8 +39,6 @@ import java.io.UnsupportedEncodingException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_05_03_RunLengthEvent extends GenericTest {
@@ -74,71 +74,49 @@ public class Listing_05_03_RunLengthEvent extends GenericTest {
     public Table getTable(DatabaseConnection connection, Date day) throws UnsupportedEncodingException, SQLException {
         Table table = new Table(new float[]{2, 1, 2, 5, 1});
         table.setWidthPercent(100);
-        // TODO No facility to set default cell properties
-        // table.getDefaultCell().setPadding(3);
-        // table.getDefaultCell().setUseAscender(true);
-        // table.getDefaultCell().setUseDescender(true);
-        // table.getDefaultCell().setColspan(5);
-        // table.getDefaultCell().setBackgroundColor(BaseColor.RED);
-        // table.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
         table.addHeaderCell(new Cell(1, 5)
                 .add(day.toString())
                 .setPadding(3)
                 .setBackgroundColor(Color.RED)
                 .setTextAlignment(Property.TextAlignment.CENTER));
-        // table.getDefaultCell().setHorizontalAlignment(Element.ALIGN_LEFT);
-        // table.getDefaultCell().setColspan(1);
-        // table.getDefaultCell().setBackgroundColor(BaseColor.YELLOW);
+        Style style = new Style();
+        style
+                .setBackgroundColor(Color.YELLOW)
+                .setTextAlignment(Property.TextAlignment.LEFT)
+                .setProperty(Property.PADDING_LEFT, 3)
+                .setProperty(Property.PADDING_RIGHT, 3)
+                .setProperty(Property.PADDING_TOP, 3)
+                .setProperty(Property.PADDING_BOTTOM, 3);
         table.addHeaderCell(new Cell()
                 .add("Location")
-                .setPadding(3)
-                .setBackgroundColor(Color.YELLOW)
-                .setTextAlignment(Property.TextAlignment.LEFT));
+                .addStyle(style));
         table.addHeaderCell(new Cell()
                 .add("Time")
-                .setPadding(3)
-                .setBackgroundColor(Color.YELLOW)
-                .setTextAlignment(Property.TextAlignment.LEFT));
+                .addStyle(style));
         table.addHeaderCell(new Cell()
                 .add("Run Length")
-                .setPadding(3)
-                .setBackgroundColor(Color.YELLOW)
-                .setTextAlignment(Property.TextAlignment.LEFT));
+                .addStyle(style));
         table.addHeaderCell(new Cell()
                 .add("Title")
-                .setPadding(3)
-                .setBackgroundColor(Color.YELLOW)
-                .setTextAlignment(Property.TextAlignment.LEFT));
+                .addStyle(style));
         table.addHeaderCell(new Cell()
                 .add("Year")
-                .setPadding(3)
-                .setBackgroundColor(Color.YELLOW)
-                .setTextAlignment(Property.TextAlignment.LEFT));
+                .addStyle(style));
         table.addFooterCell(new Cell()
                 .add("Location")
-                .setPadding(3)
-                .setBackgroundColor(Color.YELLOW)
-                .setTextAlignment(Property.TextAlignment.LEFT));
+                .addStyle(style));
         table.addFooterCell(new Cell()
                 .add("Time")
-                .setPadding(3)
-                .setBackgroundColor(Color.YELLOW)
-                .setTextAlignment(Property.TextAlignment.LEFT));
+                .addStyle(style));
         table.addFooterCell(new Cell()
                 .add("Run Length")
-                .setPadding(3)
-                .setBackgroundColor(Color.YELLOW)
-                .setTextAlignment(Property.TextAlignment.LEFT));
+                .addStyle(style));
         table.addFooterCell(new Cell()
                 .add("Title")
-                .setPadding(3)
-                .setBackgroundColor(Color.YELLOW)
-                .setTextAlignment(Property.TextAlignment.LEFT));
+                .addStyle(style));
         table.addFooterCell(new Cell()
                 .add("Year")
-                .setPadding(3)
-                .setBackgroundColor(Color.YELLOW)
-                .setTextAlignment(Property.TextAlignment.LEFT));
+                .addStyle(style));
         List<Screening> screenings = PojoFactory.getScreenings(connection, day);
         Movie movie;
         Cell runLength;
@@ -200,7 +178,6 @@ public class Listing_05_03_RunLengthEvent extends GenericTest {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                // TODO No showTextAligned on canvas
                 Rectangle rect = getOccupiedAreaBBox();
                 canvas.moveText(rect.getLeft() + rect.getWidth() / 4, rect.getBottom() + 4.5f);
                 canvas.showText("PRESS PREVIEW");

@@ -10,21 +10,17 @@ package com.itextpdf.samples.book.part1.chapter04;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.layout.Property;
-import com.itextpdf.layout.element.Text;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
-
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_04_11_CellHeights extends GenericTest {
@@ -64,6 +60,7 @@ public class Listing_04_11_CellHeights extends GenericTest {
         // The minimum height is exceeded
         table.addCell("minimum height");
         cell = new Cell().add(new Paragraph("Dr. iText"));
+        // TODO DEVSIX-522
         cell.setHeight(36f);
         table.addCell(cell);
         table.addCell("extend last row");

@@ -21,6 +21,11 @@ import com.itextpdf.signatures.LtvVerification;
 import com.itextpdf.signatures.LtvVerifier;
 import com.itextpdf.signatures.VerificationOK;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import javax.smartcardio.CardException;
 import java.io.File;
@@ -35,12 +40,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import static org.junit.Assert.fail;
-
 @Ignore
 @Category(SampleTest.class)
 public class C5_06_ValidateLTV extends SignatureTest {
@@ -51,7 +50,7 @@ public class C5_06_ValidateLTV extends SignatureTest {
 //    public static final String EXAMPLE3 = "results/chapter5/ltv_3.pdf";
 //    public static final String EXAMPLE4 = "results/chapter5/ltv_4.pdf";
 
-    public static final  String expectedOutput = ""; //TODO
+    public static final  String expectedOutput = "";
 
     public static void main(String[] args) throws IOException, GeneralSecurityException {
         BouncyCastleProvider provider = new BouncyCastleProvider();
@@ -113,8 +112,6 @@ public class C5_06_ValidateLTV extends SignatureTest {
         C5_06_ValidateLTV.main(null);
         String sysOut = getSystemOutput();
 
-        if (!sysOut.equals(expectedOutput)) {
-            fail("Unexpected output.");
-        }
+        Assert.assertEquals("Unexpected output.", expectedOutput, sysOut);
     }
 }

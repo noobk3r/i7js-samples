@@ -29,12 +29,12 @@ import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.samples.SignatureTest;
-import com.itextpdf.signatures.BouncyCastleDigest;
-import com.itextpdf.signatures.DigestAlgorithms;
-import com.itextpdf.signatures.ExternalDigest;
-import com.itextpdf.signatures.PdfSigner;
-import com.itextpdf.signatures.PrivateKeySignature;
+import com.itextpdf.signatures.*;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -49,10 +49,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
 @Ignore
@@ -112,7 +108,7 @@ public class C2_12_LockFields extends SignatureTest {
         PdfReader reader = new PdfReader(src);
         PdfSigner signer = new PdfSigner(reader, new FileOutputStream(dest), true);
         signer.setFieldName(name);
-        // TODO Setting any level except NOT_CERTIFIED invalidates the signature
+        // TODO DEVSIX-488
         signer.setCertificationLevel(PdfSigner.CERTIFIED_FORM_FILLING);
         PdfAcroForm form = PdfAcroForm.getAcroForm(signer.getDocument(), true);
         form.getField(name).setReadOnly(true);

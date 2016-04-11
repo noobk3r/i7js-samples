@@ -11,24 +11,23 @@
  */
 package com.itextpdf.samples.sandbox.acroforms;
 
+import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.layout.Document;
 import com.itextpdf.samples.GenericTest;
-
-import java.io.FileOutputStream;
-
+import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
+
+import java.io.FileOutputStream;
 
 @Ignore
 @Category(SampleTest.class)
 public class ImportXFDF extends GenericTest {
     public static final String SRC = "./src/test/resources/pdfs/Requisition_Fillable.pdf";
-    public static final String XFDF = "./src/test/resources/sandbox/acroforms/data.xfdf"; // TODO Change after revision
+    public static final String XFDF = "./src/test/resources/sandbox/acroforms/data.xfdf";
     public static String DEST = "./target/test/resources/sandbox/acroforms/import_xfdf.pdf";
 
     public static void main(String[] args) throws Exception {

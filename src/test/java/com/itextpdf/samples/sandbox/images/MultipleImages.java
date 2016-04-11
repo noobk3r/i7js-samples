@@ -11,19 +11,18 @@
  */
 package com.itextpdf.samples.sandbox.images;
 
-import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileOutputStream;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class MultipleImages extends GenericTest {
@@ -48,10 +47,11 @@ public class MultipleImages extends GenericTest {
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc, new PageSize(image.getImageWidth(), image.getImageHeight()));
-        // TODO why not to add mechanically on the right page
         for (int i = 0; i < IMAGES.length; i++) {
             image = new Image(ImageFactory.getImage(IMAGES[i]));
             pdfDoc.addNewPage(new PageSize(image.getImageWidth(), image.getImageHeight()));
+            // Notice that now it is not necessary to set image position,
+            // because images are not overlapped while adding.
             image.setFixedPosition(i + 1, 0, 0);
             doc.add(image);
         }

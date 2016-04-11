@@ -26,12 +26,12 @@ import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.samples.SignatureTest;
-import com.itextpdf.signatures.BouncyCastleDigest;
-import com.itextpdf.signatures.ExternalDigest;
-import com.itextpdf.signatures.ExternalSignature;
-import com.itextpdf.signatures.PdfSigner;
-import com.itextpdf.signatures.PrivateKeySignature;
+import com.itextpdf.signatures.*;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -42,11 +42,6 @@ import java.security.KeyStore;
 import java.security.PrivateKey;
 import java.security.Security;
 import java.security.cert.Certificate;
-
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 @Ignore
 @Category(SampleTest.class)
@@ -127,7 +122,7 @@ public class C2_10_SequentialSignatures extends SignatureTest {
         C2_10_SequentialSignatures app = new C2_10_SequentialSignatures();
         app.createForm();
 
-        // TODO Setting any level except NOT_CERTIFIED invalidates the signature
+        // TODO DEVSIX-488
         app.sign(ALICE, PdfSigner.CERTIFIED_FORM_FILLING, FORM, "sig1", String.format(DEST, "alice"));
 //        app.sign(BOB, PdfSigner.NOT_CERTIFIED, String.format(DEST, "alice"), "sig2", String.format(DEST, "bob"));
 //        app.sign(CAROL, PdfSigner.NOT_CERTIFIED, String.format(DEST, "bob"), "sig3", String.format(DEST, "carol"));

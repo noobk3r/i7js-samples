@@ -7,42 +7,41 @@
 
 package com.itextpdf.samples.book.part2.chapter08;
 
-import com.itextpdf.kernel.PdfException;
-import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.kernel.color.Color;
-import com.itextpdf.kernel.geom.PageSize;
-import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.io.source.ByteArrayOutputStream;
-import com.itextpdf.kernel.font.PdfFontFactory;
-import com.itextpdf.kernel.pdf.*;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
-import com.itextpdf.kernel.color.DeviceGray;
-import com.itextpdf.kernel.color.DeviceRgb;
-import com.itextpdf.kernel.color.WebColors;
-import com.itextpdf.kernel.font.PdfFont;
-import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfButtonFormField;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.forms.fields.PdfTextFormField;
+import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.source.ByteArrayOutputStream;
+import com.itextpdf.kernel.PdfException;
+import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.color.DeviceGray;
+import com.itextpdf.kernel.color.DeviceRgb;
+import com.itextpdf.kernel.color.WebColors;
+import com.itextpdf.kernel.font.PdfFont;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.geom.Rectangle;
+import com.itextpdf.kernel.pdf.*;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Director;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
+import org.junit.Ignore;
+import org.junit.experimental.categories.Category;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
 
 @Ignore
 @Category(SampleTest.class)
@@ -139,8 +138,7 @@ public class Listing_08_16_MovieAds extends GenericTest {
         // bt.setLayout(PushbuttonField.LAYOUT_ICON_ONLY);
         // bt.setProportionalIcon(true);
         bt.setImage(String.format(IMAGE, movie.getImdb()));
-        // bt.setImage(Image.getInstance(String.format(IMAGE, movie.getImdb())));
-        //bt.setBackgroundColor(color);
+        bt.setBackgroundColor(color);
         //form.removeField(POSTER);
         //form.addField(bt);
         // write the text using the appropriate font size

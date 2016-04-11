@@ -19,14 +19,13 @@ import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.MovieComparator;
 import com.lowagie.filmfestival.PojoFactory;
+import org.junit.Ignore;
+import org.junit.experimental.categories.Category;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Set;
 import java.util.TreeSet;
-
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
 
 @Ignore
 @Category(SampleTest.class)
@@ -48,7 +47,6 @@ public class Listing_05_19_MovieHistory2 extends GenericTest {
         // TODO No onChapter and onSection events implementations
         // HeaderFooter event = new HeaderFooter();
         // writer.setPageEvent(event);
-        // TODO No method toset Art Box by default for all pages, not a certain one
         pdfDoc.addNewPage().setArtBox(new Rectangle(36, 54, 523, 734));
         Set<Movie> movies =
                 new TreeSet<Movie>(new MovieComparator(MovieComparator.BY_YEAR));

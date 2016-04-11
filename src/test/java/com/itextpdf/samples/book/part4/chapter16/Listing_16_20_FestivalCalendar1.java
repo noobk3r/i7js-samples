@@ -31,7 +31,7 @@ public class Listing_16_20_FestivalCalendar1 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest), PdfVersion.PDF_1_7);
         pdfDoc.getCatalog().addDeveloperExtension(PdfDeveloperExtension.ADOBE_1_7_EXTENSIONLEVEL3);
         // // we prepare a RichMediaAnnotation
-        // TODO No RichMedia: RichMediaAnnotation, RichMediaParams, RichMediaActivation and so on
+        // TODO Implement RichMedia annotations
         // RichMediaAnnotation richMedia = new RichMediaAnnotation(writer, new Rectangle(36, 400, 559,806));
         // // we embed the swf file
         // PdfFileSpec fs = PdfFileSpec.createEmbeddedFileSpec(RESOURCE, "FestivalCalendar1.swf", false);

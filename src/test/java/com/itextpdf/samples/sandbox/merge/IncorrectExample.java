@@ -20,13 +20,11 @@ import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.IOException;
 
-import org.junit.experimental.categories.Category;
-
-// TODO compare the fifth page with itext5 result to see the difference
 @Category(SampleTest.class)
 public class IncorrectExample extends GenericTest {
     public static final String DEST

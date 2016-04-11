@@ -11,30 +11,29 @@
 */
 package com.itextpdf.samples.sandbox.events;
 
-import com.itextpdf.kernel.geom.PageSize;
-import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.events.Event;
 import com.itextpdf.kernel.events.IEventHandler;
 import com.itextpdf.kernel.events.PdfDocumentEvent;
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.layout.layout.LayoutArea;
-import com.itextpdf.layout.layout.LayoutContext;
-import com.itextpdf.layout.renderer.TableRenderer;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.layout.LayoutArea;
+import com.itextpdf.layout.layout.LayoutContext;
+import com.itextpdf.layout.renderer.TableRenderer;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class TableHeader extends GenericTest {
@@ -48,11 +47,11 @@ public class TableHeader extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        TableHeaderEventHandler handler = new TableHeaderEventHandler();
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
-
-        pdfDoc.addEventHandler(PdfDocumentEvent.END_PAGE, handler);
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4));
+
+        TableHeaderEventHandler handler = new TableHeaderEventHandler(doc);
+        pdfDoc.addEventHandler(PdfDocumentEvent.END_PAGE, handler);
         doc.setMargins(20 + handler.getTableHeight(), 36, 36, 36);
         for (int i = 0; i < 50; i++) {
             doc.add(new Paragraph("Hello World!"));
@@ -69,7 +68,10 @@ public class TableHeader extends GenericTest {
     public class TableHeaderEventHandler implements IEventHandler {
         protected Table table;
         protected float tableHeight;
-        public TableHeaderEventHandler() {
+        protected Document doc;
+
+        public TableHeaderEventHandler(Document doc) {
+            this.doc = doc;
             table = new Table(1);
             table.setWidth(523);
             table.addCell("Header row 1");
@@ -86,9 +88,8 @@ public class TableHeader extends GenericTest {
             PdfDocument pdfDoc = docEvent.getDocument();
             PdfPage page = docEvent.getPage();
             PdfCanvas canvas = new PdfCanvas(page.newContentStreamBefore(), page.getResources(), pdfDoc);
-            // TODO Get rid of magic numbers (cannot get margins from PdfDocument)
-            new Canvas(canvas, pdfDoc, new Rectangle(36,
-                    pdfDoc.getDefaultPageSize().getTop() - getTableHeight() - 20,
+            new Canvas(canvas, pdfDoc, new Rectangle(pdfDoc.getDefaultPageSize().getX()+doc.getLeftMargin(),
+                    pdfDoc.getDefaultPageSize().getTop() - doc.getTopMargin(),
                     100, getTableHeight()))
                     .add(table);
         }

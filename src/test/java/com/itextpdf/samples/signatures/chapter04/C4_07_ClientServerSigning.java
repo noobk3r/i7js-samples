@@ -14,6 +14,7 @@
  */
 package com.itextpdf.samples.signatures.chapter04;
 
+import com.itextpdf.kernel.PdfException;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.samples.SignatureTest;
@@ -84,9 +85,7 @@ public class C4_07_ClientServerSigning extends SignatureTest {
                 is.close();
                 return baos.toByteArray();
             } catch (IOException e) {
-                // TODO No ExceptionConverter
-                throw new RuntimeException(e);
-                // throw new ExceptionConverter(e);
+                throw new PdfException(e);
             }
         }
     }

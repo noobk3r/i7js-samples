@@ -10,17 +10,16 @@ package com.itextpdf.samples.book.part1.chapter04;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_04_02_ColumnWidths extends GenericTest {
@@ -72,8 +71,6 @@ public class Listing_04_02_ColumnWidths extends GenericTest {
     public static Table createTable2() {
         Table table = new Table(new float[]{2, 1, 1});
         table.setWidth(288);
-        // TODO No setLockedWidth(boolean)
-        // table.setLockedWidth(true);
         Cell cell;
         cell = new Cell(1, 3).add("Table 2");
         table.addCell(cell);
@@ -104,8 +101,7 @@ public class Listing_04_02_ColumnWidths extends GenericTest {
     public static Table createTable4() {
         Table table = new Table(new float[]{144, 72, 72});
         Rectangle rect = new Rectangle(523, 770);
-        // The next line is needed in itext5, although it will cause no difference in itext7
-        // table.setWidthPercent((144 + 72 + 72) / 523f * 100);
+        table.setWidthPercent((144 + 72 + 72) / rect.getWidth() * 100);
         Cell cell;
         cell = new Cell(1, 3).add("Table 4");
         table.addCell(cell);

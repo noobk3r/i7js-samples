@@ -19,9 +19,7 @@ import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.forms.fields.PdfSignatureFormField;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
@@ -33,6 +31,9 @@ import com.itextpdf.samples.SignatureTest;
 import com.itextpdf.signatures.DigestAlgorithms;
 import com.itextpdf.signatures.PdfSigner;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -46,9 +47,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
 @Category(SampleTest.class)
@@ -71,6 +69,25 @@ public class C2_04_CreateEmptyField extends SignatureTest {
         // set the widget properties
         field.setPage(1);
         field.getWidgets().get(0).setHighlightMode(PdfAnnotation.HIGHLIGHT_INVERT).setFlags(PdfAnnotation.Print);
+
+        // TODO No "from-box" MK Dictionary usage
+        // field.setMKBorderColor(BaseColor.BLACK);
+        if (null == field.getWidgets().get(0).getAppearanceCharacteristics()) {
+            field.getWidgets().get(0).setAppearanceCharacteristics(new PdfDictionary());
+        }
+        PdfArray black = new PdfArray();
+        black.add(new PdfNumber(Color.BLACK.getColorValue()[0]));
+        black.add(new PdfNumber(Color.BLACK.getColorValue()[1]));
+        black.add(new PdfNumber(Color.BLACK.getColorValue()[2]));
+        field.getWidgets().get(0).getAppearanceCharacteristics().put(PdfName.BC, black);
+        // field.setMKBackgroundColor(BaseColor.WHITE);
+        PdfArray white = new PdfArray();
+        black.add(new PdfNumber(Color.WHITE.getColorValue()[0]));
+        black.add(new PdfNumber(Color.WHITE.getColorValue()[1]));
+        black.add(new PdfNumber(Color.WHITE.getColorValue()[2]));
+        field.getWidgets().get(0).getAppearanceCharacteristics().put(PdfName.BG, white);
+
+
         // add the field
         PdfAcroForm.getAcroForm(pdfDoc, true).addField(field);
         // maybe you want to define an appearance

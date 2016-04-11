@@ -52,7 +52,6 @@ public class Listing_11_03_EncodingNames extends GenericTest {
     public void showEncodings(Document doc, String fontConstant) throws IOException {
         PdfFont font = PdfFontFactory.createFont(fontConstant, PdfEncodings.WINANSI, true);
 
-        // TODO No getPostscriptFontName
         doc.add(new Paragraph("PostScript name: " + font.getFontProgram().getFontNames().getFontName()));
         doc.add(new Paragraph("Available code pages:"));
         // TODO No getCodePagesSupported

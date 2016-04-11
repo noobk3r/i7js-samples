@@ -7,28 +7,23 @@
 
 package com.itextpdf.samples.sandbox.fonts;
 
+import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.*;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
-import com.itextpdf.kernel.utils.PdfMerger;
-
-import java.io.*;
-
-import org.junit.Ignore;
+import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
 
-// !!! IMPORTANT
-// Because we want to use GenericTest and this particular sample produces too many outputs we will merge all outputs
-// in one big file and check it through GenericTest
-@Ignore
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+
 @Category(SampleTest.class)
 public class MergeAndAddFont extends GenericTest {
-    public static final String DEST =
-            "./target/test/resources/sandbox/fonts/merge_and_add_font.pdf";
     public static final String FONT =
             "./src/test/resources/font/GravitasOne.ttf";
 
@@ -60,6 +55,10 @@ public class MergeAndAddFont extends GenericTest {
     public static final String MERGED_C2 =
             "./target/test/resources/sandbox/fonts/testC_merged2.pdf";
 
+    // Since there are so many output files, we will check only one.
+    public static final String DEST =
+            MERGED_C1;
+
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
@@ -69,23 +68,22 @@ public class MergeAndAddFont extends GenericTest {
     public void createPdf(String filename, String text, boolean embedded, boolean subset) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(filename)));
         Document doc = new Document(pdfDoc);
-        PdfFont font = PdfFontFactory.createFont(FONT, "WinAnsi", embedded);
+        PdfFont font = PdfFontFactory.createFont(FONT, PdfEncodings.WINANSI, embedded);
         font.setSubset(subset);
         doc.add(new Paragraph(text).setFont(font).setFontSize(12));
         doc.close();
     }
 
-    // !!!IMPORTANT Mind that PdfMerger is a substitute both for PdfCopy ans PdfSmartCopy,
-    // so the third argument of itext5 sample is redundant
-    public void mergeFiles(String[] files, String result) throws IOException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(result)));
-        PdfMerger merger = new PdfMerger(pdfDoc);
+    public void mergeFiles(String[] files, String result, boolean isSmartModeOn) throws IOException {
+        PdfWriter writer = new PdfWriter(result);
+        writer.setSmartMode(isSmartModeOn);
+        PdfDocument pdfDoc = new PdfDocument(writer);
         for (int i = 0; i < files.length; i++) {
-            PdfDocument addedDoc = new PdfDocument(new PdfReader(new FileInputStream(files[i])));
-            merger.addPages(addedDoc, 1, addedDoc.getNumberOfPages());
+            PdfDocument addedDoc = new PdfDocument(new PdfReader(files[i]));
+            addedDoc.copyPagesTo(1, addedDoc.getNumberOfPages(), pdfDoc);
             addedDoc.close();
         }
-        merger.merge();
+        pdfDoc.close();
     }
 
     @Override
@@ -95,19 +93,19 @@ public class MergeAndAddFont extends GenericTest {
         for (int i = 0; i < FILE_A.length; i++) {
             app.createPdf(FILE_A[i], CONTENT[i], true, true);
         }
-        app.mergeFiles(FILE_A, MERGED_A1);
-        app.mergeFiles(FILE_A, MERGED_A2);
+        app.mergeFiles(FILE_A, MERGED_A1, false);
+        app.mergeFiles(FILE_A, MERGED_A2, true);
 
         for (int i = 0; i < FILE_B.length; i++) {
             app.createPdf(FILE_B[i], CONTENT[i], true, false);
         }
-        app.mergeFiles(FILE_B, MERGED_B1);
-        app.mergeFiles(FILE_B, MERGED_B2);
+        app.mergeFiles(FILE_B, MERGED_B1, false);
+        app.mergeFiles(FILE_B, MERGED_B2, true);
 
         for (int i = 0; i < FILE_C.length; i++) {
             app.createPdf(FILE_C[i], CONTENT[i], false, false);
         }
-        app.mergeFiles(FILE_C, MERGED_C1);
+        app.mergeFiles(FILE_C, MERGED_C1, true);
         app.embedFont(MERGED_C1, FONT, MERGED_C2);
 
     }
@@ -121,30 +119,26 @@ public class MergeAndAddFont extends GenericTest {
         // create a new stream for the font file
         PdfStream stream = new PdfStream(fontbytes);
         stream.setCompressionLevel(PdfOutputStream.DEFAULT_COMPRESSION);
-        stream.put(new PdfName("Length1"), new PdfNumber(fontbytes.length));
+        stream.put(PdfName.Length1, new PdfNumber(fontbytes.length));
         // create a reader object
         PdfReader reader = new PdfReader(merged);
         PdfObject object;
         PdfDictionary font;
-        PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(new FileOutputStream(result)));
-        PdfName fontname = new PdfName(PdfFontFactory.createFont(fontfile, "WinAnsi", false)
-                .getFontProgram()
-                .getFontNames()
-                .getFontName());
+        PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(result));
+        PdfName fontname = new PdfName(PdfFontFactory.createFont(fontfile, PdfEncodings.WINANSI, false)
+                .getFontProgram().getFontNames().getFontName());
         int n = pdfDoc.getNumberOfPdfObjects();
         for (int i = 0; i < n; i++) {
             object = pdfDoc.getPdfObject(i);
-            if (object == null || !object.isDictionary())
+            if (object == null || !object.isDictionary()) {
                 continue;
+            }
             font = (PdfDictionary) object;
             if (PdfName.FontDescriptor.equals(font.get(PdfName.Type))
                     && fontname.equals(font.get(PdfName.FontName))) {
-                // TODO Implement addToBody(PdfStream)
-                // PdfIndirectObject objref = pdfDoc.getWriter().addToBody(stream);
-                // font.put(PdfName.FontFile2, objref.getIndirectReference());
+                font.put(PdfName.FontFile2, stream.makeIndirect(pdfDoc).getIndirectReference());
             }
         }
         pdfDoc.close();
-        reader.close();
     }
 }

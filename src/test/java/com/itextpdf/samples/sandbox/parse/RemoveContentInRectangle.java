@@ -11,21 +11,25 @@
  */
 package com.itextpdf.samples.sandbox.parse;
 
+import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.licensekey.LicenseKey;
+import com.itextpdf.pdfcleanup.PdfCleanUpLocation;
+import com.itextpdf.pdfcleanup.PdfCleanUpTool;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
-
-@Ignore
 @Category(SampleTest.class)
 public class RemoveContentInRectangle extends GenericTest {
     public static final String SRC = "./src/test/resources/pdfs/page229.pdf";
@@ -38,15 +42,17 @@ public class RemoveContentInRectangle extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException {
+        //Load the license file to use cleanup features
+        LicenseKey.loadLicenseFile(System.getenv("ITEXT7_LICENSEKEY") + "/itextkey-multiple-products.xml");
+
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)),
                 new PdfWriter(new FileOutputStream(dest)));
-        // TODO There is no CleanUp functionality in itext7
-        // List<PdfCleanUpLocation> cleanUpLocations = new ArrayList<PdfCleanUpLocation>();
-        // cleanUpLocations.add(new PdfCleanUpLocation(1, new Rectangle(97f, 405f, 480f, 445f), BaseColor.GRAY));
-        // PdfCleanUpProcessor cleaner = new PdfCleanUpProcessor(cleanUpLocations, stamper);
-        // cleaner.cleanUp();
-        // stamper.close();
-        //reader.close();
+        List<PdfCleanUpLocation> cleanUpLocations = new ArrayList<PdfCleanUpLocation>();
+        cleanUpLocations.add(new PdfCleanUpLocation(1, new Rectangle(97f, 405f, 383f, 40f), Color.GRAY));
+
+        PdfCleanUpTool cleaner = new PdfCleanUpTool(pdfDoc, cleanUpLocations);
+        cleaner.cleanUp();
+
         pdfDoc.close();
     }
 }

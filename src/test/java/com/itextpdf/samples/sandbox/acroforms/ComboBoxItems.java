@@ -11,19 +11,17 @@
  */
 package com.itextpdf.samples.sandbox.acroforms;
 
-import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.kernel.geom.PageSize;
-import com.itextpdf.kernel.color.Color;
-import com.itextpdf.kernel.font.PdfFont;
-import com.itextpdf.kernel.font.PdfFontFactory;
-import com.itextpdf.kernel.pdf.PdfDictionary;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfChoiceFormField;
 import com.itextpdf.forms.fields.PdfFormField;
+import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.font.PdfFont;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
@@ -31,12 +29,12 @@ import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class ComboBoxItems extends GenericTest {
@@ -103,10 +101,7 @@ public class ComboBoxItems extends GenericTest {
             PdfAcroForm form = PdfAcroForm.getAcroForm(drawContext.getDocument(), true);
             choice.setFont(font);
             form.addField(choice);
-            // TODO Implement BorderStyles constant
-            PdfDictionary borderStyleDict = new PdfDictionary();
-            borderStyleDict.put(PdfName.S, PdfName.B);
-            choice.getWidgets().get(0).setBorderStyle(borderStyleDict);
+            choice.getWidgets().get(0).setBorderStyle(PdfAnnotation.STYLE_BEVELED);
             choice.setVisibility(PdfFormField.VISIBLE_BUT_DOES_NOT_PRINT);
             choice.setBorderColor(Color.GRAY);
             choice.setJustification(PdfFormField.ALIGN_CENTER);

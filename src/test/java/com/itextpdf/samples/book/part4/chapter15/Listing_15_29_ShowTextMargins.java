@@ -7,15 +7,14 @@
 
 package com.itextpdf.samples.book.part4.chapter15;
 
-import com.itextpdf.kernel.pdf.canvas.parser.PdfCanvasProcessor;
-import com.itextpdf.kernel.pdf.canvas.parser.listener.TextMarginFinder;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.kernel.pdf.canvas.parser.PdfCanvasProcessor;
+import com.itextpdf.kernel.pdf.canvas.parser.listener.TextMarginFinder;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 import org.xml.sax.SAXException;
 
@@ -23,7 +22,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_15_29_ShowTextMargins extends GenericTest {
     public static final String DEST

@@ -10,16 +10,14 @@ package com.itextpdf.samples.book.part3.chapter11;
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.font.PdfType0Font;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
-
-import org.junit.Ignore;
+import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_11_05_UnicodeExample extends Listing_11_04_EncodingExample {
     public static final String DEST
@@ -36,10 +34,9 @@ public class Listing_11_05_UnicodeExample extends Listing_11_04_EncodingExample 
         PdfFont font;
         for (int i = 0; i < 4; i++) {
             font = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H, true);
-            // TODO No getPostscriptFontName()
-            // TODO No getEncoding()
+            // IDENTITY_H results in PdfType0Font and PdfType0Font supports cmap encoding
             doc.add(new Paragraph("Font: " + font.getFontProgram().getFontNames().getFontName()
-                    + " with encoding: "));
+                    + " with encoding: " + ((PdfType0Font)font).getCmapEncoding().getCmapName()));
             doc.add(new Paragraph(MOVIES[i][1]));
             doc.add(new Paragraph(MOVIES[i][2]));
             doc.add(new Paragraph(MOVIES[i][3]).setFont(font).setFontSize(12));

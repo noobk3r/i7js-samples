@@ -11,6 +11,7 @@
  */
 package com.itextpdf.samples.sandbox.annotations;
 
+import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -23,11 +24,10 @@ import com.itextpdf.layout.element.Link;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
-
-import java.io.File;
-
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
+
+import java.io.File;
 
 @Ignore
 @Category(SampleTest.class)
@@ -46,10 +46,11 @@ public class AddLinkAnnotation5 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
         Link link = new Link("This is a link. Click it and you'll be forwarded to another page in this document.",
                 PdfAction.createGoTo(PdfExplicitDestination.createFit(3)));
+        link.setBackgroundColor(Color.RED);
         link.getLinkAnnotation().setHighlightMode(PdfAnnotation.HIGHLIGHT_INVERT);
 
         Paragraph p = new Paragraph(link).setWidth(240);
-        // TODO Problems with link annotation positioning
+        // TODO DEVSIX-549
         new Document(pdfDoc).showTextAligned(p, 320, 695, 1, Property.TextAlignment.LEFT,
                 Property.VerticalAlignment.TOP, 0);
         pdfDoc.close();

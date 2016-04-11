@@ -7,13 +7,19 @@
 
 package com.itextpdf.samples.book.part2.chapter08;
 
+import com.itextpdf.forms.PdfAcroForm;
+import com.itextpdf.forms.xfa.XfaForm;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.forms.PdfAcroForm;
-import com.itextpdf.forms.xfa.XfaForm;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.Ignore;
+import org.junit.experimental.categories.Category;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -30,17 +36,9 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Set;
 
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
-
 @Ignore
 @Category(SampleTest.class)
 public class Listing_08_18_XfaMovie extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part2/chapter08/Listing_08_18_XfaMovie.pdf";
     /** The original PDF. */
     public static final String RESOURCE = "./src/test/resources/pdfs/xfa_movie.pdf";
     /** XML making up an XFA form we want to put inside an existing PDF. */
@@ -61,6 +59,8 @@ public class Listing_08_18_XfaMovie extends GenericTest {
     public static final String RESULT2 = "./target/test/resources/book/part2/chapter08/xfa_filled_2.pdf";
     /** The resulting PDF. */
     public static final String RESULT3 = "./target/test/resources/book/part2/chapter08/xfa_filled_3.pdf";
+    // for GenericTest usage only; we will check all three pdfs
+    public static final String DEST = RESULT3;
 
     /**
      * Checks if a PDF containing an interactive form uses
@@ -118,12 +118,11 @@ public class Listing_08_18_XfaMovie extends GenericTest {
         PdfReader reader = new PdfReader(src);
         PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(dest));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
-        form.getField("imdb[0]").setValue("1075110");
-        form.getField("duration[0]").setValue("108");
-        form.getField("title[0]").setValue("The Misfortunates");
-        form.getField("original[0]").setValue("De helaasheid der dingen");
-        form.getField("year[0]").setValue("2009");
-        // TODO Exception on getStructParentIndex
+        form.getField("movies[0].movie[0].imdb[0]").setValue("1075110");
+        form.getField("movies[0].movie[0].duration[0]").setValue("108");
+        form.getField("movies[0].movie[0].title[0]").setValue("The Misfortunates");
+        form.getField("movies[0].movie[0].original[0]").setValue("De helaasheid der dingen");
+        form.getField("movies[0].movie[0].year[0]").setValue("2009");
         pdfDoc.close();
     }
 
@@ -196,11 +195,11 @@ public class Listing_08_18_XfaMovie extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(dest));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         form.removeXfaForm();
-        form.getField("imdb[0]").setValue("1075110");
-        form.getField("duration[0]").setValue("108");
-        form.getField("title[0]").setValue("The Misfortunates");
-        form.getField("original[0]").setValue("De helaasheid der dingen");
-        form.getField("year[0]").setValue("2009");
+        form.getField("movies[0].movie[0].imdb[0]").setValue("1075110");
+        form.getField("movies[0].movie[0].duration[0]").setValue("108");
+        form.getField("movies[0].movie[0].title[0]").setValue("The Misfortunates");
+        form.getField("movies[0].movie[0].original[0]").setValue("De helaasheid der dingen");
+        form.getField("movies[0].movie[0].year[0]").setValue("2009");
         pdfDoc.close();
     }
 
@@ -217,5 +216,10 @@ public class Listing_08_18_XfaMovie extends GenericTest {
         readData(RESULT2, RESULTDATA);
         fillData3(RESOURCE, RESULT3);
         readFieldnames(RESULT3, RESULTTXT2);
+    }
+
+    @Override
+    protected void comparePdf(String dest, String cmp) throws Exception {
+        super.comparePdf(dest, cmp);
     }
 }

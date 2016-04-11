@@ -12,25 +12,24 @@
 package com.itextpdf.samples.sandbox.events;
 
 import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.font.PdfFontFactory;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.events.Event;
 import com.itextpdf.kernel.events.IEventHandler;
 import com.itextpdf.kernel.events.PdfDocumentEvent;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class TextFooter extends GenericTest {
@@ -46,7 +45,7 @@ public class TextFooter extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
-        pdfDoc.addEventHandler(PdfDocumentEvent.END_PAGE, new TextFooterEventHandler());
+        pdfDoc.addEventHandler(PdfDocumentEvent.END_PAGE, new TextFooterEventHandler(doc));
         for (int i = 0; i < 3; ) {
             i++;
             doc.add(new Paragraph("Test " + i));
@@ -59,6 +58,12 @@ public class TextFooter extends GenericTest {
 
 
     protected class TextFooterEventHandler implements IEventHandler {
+        protected Document doc;
+
+        public TextFooterEventHandler(Document doc) {
+            this.doc = doc;
+        }
+
         @Override
         public void handleEvent(Event event) {
             PdfDocumentEvent docEvent = (PdfDocumentEvent) event;
@@ -70,10 +75,9 @@ public class TextFooter extends GenericTest {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            // TODO We do not know leftMargin by PdfDocument
-            canvas.moveText(pageSize.getWidth() / 2 - 20, pageSize.getTop() - 10);
+            canvas.moveText((pageSize.getRight()-doc.getRightMargin() - (pageSize.getLeft()+doc.getLeftMargin())) / 2 + doc.getLeftMargin(), pageSize.getTop() - doc.getTopMargin() + 10);
             canvas.showText("this is a header");
-            canvas.moveText(0, -820);
+            canvas.moveText(0, (pageSize.getBottom()+doc.getBottomMargin()) - (pageSize.getTop()+doc.getTopMargin()) - 20);
             canvas.showText("this is a footer");
             canvas.endText();
             canvas.release();

@@ -16,16 +16,19 @@ package com.itextpdf.samples.signatures.chapter05;
 
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.pdf.PdfDictionary;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfString;
+import com.itextpdf.kernel.pdf.*;
+import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.signatures.CertificateInfo;
 import com.itextpdf.signatures.PdfPKCS7;
 import com.itextpdf.signatures.SignaturePermissions;
 import com.itextpdf.signatures.SignatureUtil;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.bouncycastle.tsp.TimeStampToken;
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import javax.smartcardio.CardException;
 import java.io.File;
@@ -35,13 +38,6 @@ import java.security.Security;
 import java.security.cert.X509Certificate;
 import java.text.SimpleDateFormat;
 import java.util.List;
-
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.tsp.TimeStampToken;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import static org.junit.Assert.fail;
 
 @Ignore
 @Category(SampleTest.class)
@@ -54,21 +50,148 @@ public class C5_02_SignatureInfo extends C5_01_SignatureIntegrity {
     // public static final String EXAMPLE5 = "results/chapter4/hello_smartcard_Signature.pdf"; // TODO Uncomment after C4_03_SignWithPKCS11SC revision
     public static final String EXAMPLE6 = "./src/test/resources/pdfs/field_metadata.pdf";
 
-    public static final  String expectedOutput = ""; //TODO
+    public static final  String expectedOutput = "===== sig1 =====\r\n" +
+            "\r\n" +
+            "Field on page 1; llx: 36.0, lly: 728.02, urx: 559.0; ury: 779.02\r\n" +
+            "Signature covers whole document: false\r\n" +
+            "Document revision: 1 of 4\r\n" +
+            "Integrity check OK? true\r\n" +
+            "Digest algorithm: SHA256\r\n" +
+            "Encryption algorithm: RSA\r\n" +
+            "Filter subtype: /adbe.pkcs7.detached\r\n" +
+            "Name of the signer: Alice Specimen\r\n" +
+            "Signed on: 2016-02-23 11:55:01.00\r\n" +
+            "Location: \r\n" +
+            "Reason: \r\n" +
+            "Contact info: \r\n" +
+            "Signature type: certification\r\n" +
+            "Filling out fields allowed: true\r\n" +
+            "Adding annotations allowed: false\r\n" +
+            "===== sig2 =====\r\n" +
+            "\r\n" +
+            "\r\n" +
+            "\r\n" +
+            "Field on page 1; llx: 36.0, lly: 629.04, urx: 559.0; ury: 680.04\r\n" +
+            "Signature covers whole document: false\r\n" +
+            "Document revision: 2 of 4\r\n" +
+            "Integrity check OK? true\r\n" +
+            "Digest algorithm: SHA256\r\n" +
+            "Encryption algorithm: RSA\r\n" +
+            "Filter subtype: /adbe.pkcs7.detached\r\n" +
+            "Name of the signer: Bob Specimen\r\n" +
+            "Signed on: 2016-02-23 11:55:02.00\r\n" +
+            "Location: \r\n" +
+            "Reason: \r\n" +
+            "Contact info: \r\n" +
+            "Signature type: approval\r\n" +
+            "Filling out fields allowed: true\r\n" +
+            "Adding annotations allowed: false\r\n" +
+            "Lock: /Include[sig1 approved_bob sig2 ]\r\n" +
+            "===== sig3 =====\r\n" +
+            "\r\n" +
+            "\r\n" +
+            "\r\n" +
+            "\r\n" +
+            "\r\n" +
+            "Field on page 1; llx: 36.0, lly: 530.05, urx: 559.0; ury: 581.05\r\n" +
+            "Signature covers whole document: false\r\n" +
+            "Document revision: 3 of 4\r\n" +
+            "Integrity check OK? true\r\n" +
+            "Digest algorithm: SHA256\r\n" +
+            "Encryption algorithm: RSA\r\n" +
+            "Filter subtype: /adbe.pkcs7.detached\r\n" +
+            "Name of the signer: Carol Specimen\r\n" +
+            "Signed on: 2016-02-23 11:55:02.00\r\n" +
+            "Location: \r\n" +
+            "Reason: \r\n" +
+            "Contact info: \r\n" +
+            "Signature type: approval\r\n" +
+            "Filling out fields allowed: true\r\n" +
+            "Adding annotations allowed: false\r\n" +
+            "Lock: /Include[sig1 approved_bob sig2 ]\r\n" +
+            "Lock: /Exclude[approved_dave sig4 ]\r\n" +
+            "===== sig4 =====\r\n" +
+            "\r\n" +
+            "\r\n" +
+            "\r\n" +
+            "\r\n" +
+            "\r\n" +
+            "\r\n" +
+            "\r\n" +
+            "Field on page 1; llx: 36.0, lly: 431.07, urx: 559.0; ury: 482.07\r\n" +
+            "Signature covers whole document: true\r\n" +
+            "Document revision: 4 of 4\r\n" +
+            "Integrity check OK? true\r\n" +
+            "Digest algorithm: SHA256\r\n" +
+            "Encryption algorithm: RSA\r\n" +
+            "Filter subtype: /adbe.pkcs7.detached\r\n" +
+            "Name of the signer: Dave Specimen\r\n" +
+            "Signed on: 2016-02-23 11:55:02.00\r\n" +
+            "Location: \r\n" +
+            "Reason: \r\n" +
+            "Contact info: \r\n" +
+            "Signature type: approval\r\n" +
+            "Filling out fields allowed: false\r\n" +
+            "Adding annotations allowed: false\r\n" +
+            "Lock: /Include[sig1 approved_bob sig2 ]\r\n" +
+            "Lock: /Exclude[approved_dave sig4 ]\r\n" +
+            "\r\n" +
+            "===== sig =====\r\n" +
+            "\r\n" +
+            "Field on page 1; llx: 36.0, lly: 648.0, urx: 236.0; ury: 748.0\r\n" +
+            "Signature covers whole document: true\r\n" +
+            "Document revision: 1 of 1\r\n" +
+            "Integrity check OK? true\r\n" +
+            "Digest algorithm: RIPEMD160\r\n" +
+            "Encryption algorithm: RSA\r\n" +
+            "Filter subtype: /ETSI.CAdES.detached\r\n" +
+            "Name of the signer: Bruno Specimen\r\n" +
+            "Signed on: 2016-02-23 12:24:30.00\r\n" +
+            "Location: Ghent\r\n" +
+            "Reason: Test 4\r\n" +
+            "Contact info: \r\n" +
+            "Signature type: approval\r\n" +
+            "Filling out fields allowed: true\r\n" +
+            "Adding annotations allowed: true\r\n" +
+            "\r\n" +
+            "===== Signature1 =====\r\n" +
+            "\r\n" +
+            "Field on page 1; llx: 46.0674, lly: 472.172, urx: 332.563; ury: 726.831\r\n" +
+            "Signature covers whole document: true\r\n" +
+            "Document revision: 1 of 1\r\n" +
+            "Integrity check OK? true\r\n" +
+            "Digest algorithm: SHA256\r\n" +
+            "Encryption algorithm: RSA\r\n" +
+            "Filter subtype: /adbe.pkcs7.detached\r\n" +
+            "Name of the signer: Bruno Specimen\r\n" +
+            "Alternative name of the signer: Bruno L. Specimen\r\n" +
+            "Signed on: 2016-02-23 12:22:40.00\r\n" +
+            "Location: Ghent\r\n" +
+            "Reason: Test metadata\r\n" +
+            "Contact info: 555 123 456\r\n" +
+            "Signature type: approval\r\n" +
+            "Filling out fields allowed: true\r\n" +
+            "Adding annotations allowed: true\r\n" +
+            "\r\n"; 
 
-    public SignaturePermissions inspectSignature(SignatureUtil signUtil, PdfAcroForm form, String name, SignaturePermissions perms) throws GeneralSecurityException, IOException {
-        //form.getField(name).getWidgets().get(0).getRectangle().toRectangle();
-        // List<FieldPosition> fps = fields.getFieldPositions(name);
+    public SignaturePermissions inspectSignature(PdfDocument pdfDoc, SignatureUtil signUtil, PdfAcroForm form, String name, SignaturePermissions perms) throws GeneralSecurityException, IOException {
         if (form.getField(name).getWidgets() != null && form.getField(name).getWidgets().size() > 0) {
-            // FieldPosition fp = fps.get(0);
-            // Rectangle pos = fp.position;
+            int pageNum = 0;
             Rectangle pos = form.getField(name).getWidgets().get(0).getRectangle().toRectangle();
+            for (int i = 1; i <= pdfDoc.getNumberOfPages(); i++) {
+                PdfPage page = pdfDoc.getPage(i);
+                for (PdfAnnotation annot : page.getAnnotations()) {
+                    System.out.println();
+                    if (PdfName.Sig.equals(annot.getPdfObject().get(PdfName.FT)) && name.equals(annot.getPdfObject().get(PdfName.T).toString())) {
+                        pageNum = pdfDoc.getPageNumber(page);
+                        break;
+                    }
+                }
+            }
             if (pos.getWidth() == 0 || pos.getHeight() == 0) {
                 System.out.println("Invisible signature");
             } else {
-                // TODO One do not the page number until layout, so let's pass -1
-                System.out.println(String.format("Field on page %s; llx: %s, lly: %s, urx: %s; ury: %s",
-                        -1, pos.getLeft(), pos.getBottom(), pos.getRight(), pos.getTop()));
+                System.out.println(String.format("Field on page %s; llx: %s, lly: %s, urx: %s; ury: %s", pageNum, pos.getLeft(), pos.getBottom(), pos.getRight(), pos.getTop()));
             }
         }
 
@@ -105,7 +228,7 @@ public class C5_02_SignatureInfo extends C5_01_SignatureIntegrity {
     }
 
     public void inspectSignatures(String path) throws IOException, GeneralSecurityException {
-        System.out.println(path);
+        // System.out.println(path);
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(path));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, false);
         SignaturePermissions perms = null;
@@ -113,7 +236,7 @@ public class C5_02_SignatureInfo extends C5_01_SignatureIntegrity {
         List<String> names = signUtil.getSignatureNames();
         for (String name : names) {
             System.out.println("===== " + name + " =====");
-            perms = inspectSignature(signUtil, form, name, perms);
+            perms = inspectSignature(pdfDoc, signUtil, form, name, perms);
         }
         System.out.println();
     }
@@ -136,9 +259,6 @@ public class C5_02_SignatureInfo extends C5_01_SignatureIntegrity {
         setupSystemOutput();
         C5_02_SignatureInfo.main(null);
         String sysOut = getSystemOutput();
-
-        if (!sysOut.equals(expectedOutput)) {
-            fail("Unexpected output.");
-        }
+        Assert.assertEquals("Unexpected output", expectedOutput, sysOut);
     }
 }

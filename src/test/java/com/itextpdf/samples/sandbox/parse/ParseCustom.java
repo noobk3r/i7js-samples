@@ -11,49 +11,76 @@
  */
 package com.itextpdf.samples.sandbox.parse;
 
+import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
+import com.itextpdf.kernel.pdf.canvas.parser.EventType;
+import com.itextpdf.kernel.pdf.canvas.parser.PdfCanvasProcessor;
+import com.itextpdf.kernel.pdf.canvas.parser.data.EventData;
+import com.itextpdf.kernel.pdf.canvas.parser.data.TextRenderInfo;
+import com.itextpdf.kernel.pdf.canvas.parser.filter.TextRegionEventFilter;
+import com.itextpdf.kernel.pdf.canvas.parser.listener.FilteredEventListener;
+import com.itextpdf.kernel.pdf.canvas.parser.listener.LocationTextExtractionStrategy;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.Assert;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-import org.junit.BeforeClass;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
-
-@Ignore
 @Category(SampleTest.class)
 public class ParseCustom {
     public static final String SRC = "./src/test/resources/pdfs/nameddestinations.pdf";
+    public static final String EXPECTED_TEXT = "Country List\n" +
+            "Internet Movie Database";
+
 
     @BeforeClass
     public static void beforeClass() throws IOException {
         File file = new File(SRC);
         file.getParentFile().mkdirs();
-        new ParseCustom().manipulatePdf();
     }
 
     @Test
     public void manipulatePdf() throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)));
-        Rectangle rect = new Rectangle(36, 750, 559, 806);
-        // RenderFilter regionFilter = new RegionTextRenderFilter(rect);
-        // FontRenderFilter fontFilter = new FontRenderFilter();
-        // TextExtractionStrategy strategy = new FilteredTextRenderListener(
-        //         new LocationTextExtractionStrategy(), regionFilter, fontFilter);
-        // System.out.println(PdfTextExtractor.getTextFromPage(reader, 1, strategy));
+        Rectangle rect = new Rectangle(36, 750, 523, 56);
+
+        FontFilter fontFilter = new FontFilter(rect);
+        FilteredEventListener listener = new FilteredEventListener();
+        LocationTextExtractionStrategy extractionStrategy = listener.attachEventListener(new LocationTextExtractionStrategy(), fontFilter);
+        new PdfCanvasProcessor(listener).processPageContent(pdfDoc.getFirstPage());
+
+        String actualText = extractionStrategy.getResultantText();
+        System.out.println(actualText);
+
         pdfDoc.close();
+
+        Assert.assertEquals(EXPECTED_TEXT, actualText);
     }
 
-    // TODO There is no predefined extraction strategies
-//    class FontRenderFilter extends RenderFilter {
-//        public boolean allowText(TextRenderInfo renderInfo) {
-//            String font = renderInfo.getFont().getPostscriptFontName();
-//            return font.endsWith("Bold") || font.endsWith("Oblique");
-//        }
-//    }
+
+    class FontFilter extends TextRegionEventFilter {
+        public FontFilter(Rectangle filterRect) {
+            super(filterRect);
+        }
+
+        @Override
+        public boolean accept(EventData data, EventType type) {
+            if (type.equals(EventType.RENDER_TEXT)) {
+                TextRenderInfo renderInfo = (TextRenderInfo) data;
+
+                PdfFont font = renderInfo.getFont();
+                if (null != font) {
+                    String fontName = font.getFontProgram().getFontNames().getFontName();
+                    return fontName.endsWith("Bold") || fontName.endsWith("Oblique");
+                }
+            }
+            return false;
+        }
+    }
 }

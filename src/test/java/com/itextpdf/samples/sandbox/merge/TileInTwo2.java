@@ -14,18 +14,16 @@ package com.itextpdf.samples.sandbox.merge;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class TileInTwo2 extends GenericTest {
@@ -46,26 +44,9 @@ public class TileInTwo2 extends GenericTest {
         return new Rectangle(width / 2, height);
     }
 
-    /**
-     * Gets the rotated page from a page dictionary.
-     *
-     * @param page the page
-     * @return the rotated page rectangle
-     */
-    public static Rectangle getPageSizeWithRotation(final PdfPage page) {
-        Rectangle rect = page.getPageSize();
-        int rotation = page.getRotation();
-        while (rotation > 0) {
-            rect = new Rectangle(rect.getHeight(), rect.getWidth());
-            rotation -= 90;
-        }
-        return rect;
-    }
-
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument srcDoc = new PdfDocument(new PdfReader(SRC));
-        // TODO No getPageSizeWithRotation
-        Rectangle mediaBox = new Rectangle(getHalfPageSize(getPageSizeWithRotation(srcDoc.getFirstPage())));
+        Rectangle mediaBox = new Rectangle(getHalfPageSize(srcDoc.getFirstPage().getPageSizeWithRotation()));
 
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         pdfDoc.setDefaultPageSize(new PageSize(mediaBox));
@@ -79,12 +60,10 @@ public class TileInTwo2 extends GenericTest {
             canvas.addXObject(page, 0, 0);
             canvas = new PdfCanvas(pdfDoc.addNewPage());
             canvas.addXObject(page, -mediaBox.getWidth(), 0);
-            //content.addTemplate(page, 0, 0);
             if (++i > n) {
                 break;
             }
-            // TODO No getPageSizeWithRotation
-            mediaBox = new Rectangle(getHalfPageSize(getPageSizeWithRotation(srcDoc.getPage(i))));
+            mediaBox = new Rectangle(getHalfPageSize(srcDoc.getPage(i).getPageSizeWithRotation()));
             pdfDoc.setDefaultPageSize(new PageSize(mediaBox));
         }
         pdfDoc.close();

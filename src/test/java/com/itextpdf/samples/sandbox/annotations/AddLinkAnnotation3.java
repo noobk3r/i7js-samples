@@ -13,23 +13,23 @@ package com.itextpdf.samples.sandbox.annotations;
 
 import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.io.font.FontFactory;
+import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Link;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.Ignore;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileOutputStream;
-
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 @Ignore
@@ -49,13 +49,14 @@ public class AddLinkAnnotation3 extends GenericTest {
         PdfFont bold = PdfFontFactory.createFont(FontFactory.createFont(FontConstants.HELVETICA_BOLD));
         Link link = new Link("The Best iText Questions on StackOverflow",
                 PdfAction.createURI("http://pages.itextpdf.com/ebook-stackoverflow-questions.html"));
+        link.setBackgroundColor(Color.RED);
         link.setFont(bold).setFontSize(12);
         Paragraph p = new Paragraph("Download ");
         p.add(link);
         p.add(" and discover \nmore than 200 questions and answers.");
-        // TODO LinkAnnotation did not rotate with the paragraph
+        // TODO DEVSIX-549
         new Document(pdfDoc).showTextAligned(p, 30, 600, 1, Property.TextAlignment.LEFT,
-                Property.VerticalAlignment.TOP, (float) Math.PI / 6);
+                Property.VerticalAlignment.TOP, 0);//(float) Math.PI / 6);
         pdfDoc.close();
     }
 }

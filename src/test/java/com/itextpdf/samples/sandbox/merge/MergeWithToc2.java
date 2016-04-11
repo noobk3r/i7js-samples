@@ -30,15 +30,14 @@ import com.itextpdf.layout.element.TabStop;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.Ignore;
+import org.junit.experimental.categories.Category;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 import java.util.TreeMap;
-
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
 
 @Ignore
 @Category(SampleTest.class)
@@ -79,6 +78,7 @@ public class MergeWithToc2 extends GenericTest {
                 entry.getValue().copyPagesTo(i, i, pdfDoc);
                 // Put the destination at the very first page of each merged document
                 if (i == 1) {
+
                     text.setProperty(Property.DESTINATION, "p" + pageNo);
                 }
                 doc.add(new Paragraph(text).setFixedPosition(pageNo, 549, 810, 40));

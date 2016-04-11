@@ -13,22 +13,22 @@ package com.itextpdf.samples.sandbox.parse;
 
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
+import com.itextpdf.kernel.pdf.canvas.parser.PdfCanvasProcessor;
+import com.itextpdf.kernel.pdf.canvas.parser.listener.LocationTextExtractionStrategy;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.Assert;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import org.junit.BeforeClass;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
-
-@Ignore
 @Category(SampleTest.class)
 public class ParseCzech {
-    public static final String DEST = "./target/test/resources/sandbox/interactive/czech.txt";
+    public static final String DEST = "./target/test/resources/sandbox/parse/czech.txt";
     public static final String SRC = "./src/test/resources/pdfs/czech.pdf";
 
     @BeforeClass
@@ -42,11 +42,19 @@ public class ParseCzech {
     public void manipulatePdf() throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)));
         FileOutputStream fos = new FileOutputStream(DEST);
-        // TODO There is no PdfTextExtractor
-//        for (int page = 1; page <= 1; page++) {
-//            fos.write(PdfTextExtractor.getTextFromPage(reader, page).getBytes("UTF-8"));
-//        }
+
+        LocationTextExtractionStrategy strategy = new LocationTextExtractionStrategy();
+
+        PdfCanvasProcessor parser = new PdfCanvasProcessor(strategy);
+        parser.processPageContent(pdfDoc.getFirstPage());
+        byte[] array = strategy.getResultantText().getBytes("UTF-8");
+        fos.write(array);
+
         fos.flush();
         fos.close();
+
+        pdfDoc.close();
+
+        Assert.assertEquals(67, array.length);
     }
 }

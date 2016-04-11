@@ -8,10 +8,9 @@
 package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.kernel.geom.PageSize;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Cell;
@@ -21,11 +20,11 @@ import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.IRenderer;
 import com.itextpdf.layout.renderer.TableRenderer;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileOutputStream;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class NestedTables3 extends GenericTest {
@@ -50,8 +49,6 @@ public class NestedTables3 extends GenericTest {
         table.addHeaderCell(cell);
         Table inner1 = new Table(1);
         cell = new Cell();
-        // TODO Implement setFixedHeight(float)
-        //cell.setFixedHeight(20);
         cell.setHeight(20);
         inner1.addHeaderCell(cell);
         cell = new Cell().add("This inner header won't be repeated on every page");

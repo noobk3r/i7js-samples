@@ -21,6 +21,11 @@ import com.itextpdf.signatures.CertificateInfo;
 import com.itextpdf.signatures.PdfPKCS7;
 import com.itextpdf.signatures.SignatureUtil;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import javax.smartcardio.CardException;
 import java.io.File;
@@ -29,12 +34,6 @@ import java.security.GeneralSecurityException;
 import java.security.Security;
 import java.security.cert.X509Certificate;
 import java.util.List;
-
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import static org.junit.Assert.fail;
 
 @Ignore
 @Category(SampleTest.class)
@@ -45,7 +44,7 @@ public class C5_05_CheckLTV extends SignatureTest {
 //    public static final String EXAMPLE3 = "results/chapter5/ltv_3.pdf";
 //    public static final String EXAMPLE4 = "results/chapter5/ltv_4.pdf";
 
-    public static final  String expectedOutput = ""; //TODO
+    public static final  String expectedOutput = "";
 
     public PdfPKCS7 verifySignature(SignatureUtil signUtil, String name) throws GeneralSecurityException, IOException {
         System.out.println("Signature covers whole document: " + signUtil.signatureCoversWholeDocument(name));
@@ -89,8 +88,6 @@ public class C5_05_CheckLTV extends SignatureTest {
         C5_05_CheckLTV.main(null);
         String sysOut = getSystemOutput();
 
-        if (!sysOut.equals(expectedOutput)) {
-            fail("Unexpected output.");
-        }
+        Assert.assertEquals("Unexpected output.", expectedOutput, sysOut);
     }
 }

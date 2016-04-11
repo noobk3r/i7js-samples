@@ -20,6 +20,11 @@ import com.itextpdf.samples.SignatureTest;
 import com.itextpdf.signatures.PdfPKCS7;
 import com.itextpdf.signatures.SignatureUtil;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import javax.smartcardio.CardException;
 import java.io.File;
@@ -27,12 +32,6 @@ import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.security.Security;
 import java.util.List;
-
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import static org.junit.Assert.fail;
 
 @Ignore
 @Category(SampleTest.class)
@@ -43,7 +42,7 @@ public class C5_01_SignatureIntegrity extends SignatureTest {
     public static final String EXAMPLE2 = "./src/test/resources/pdfs/step_4_signed_by_alice_bob_carol_and_dave.pdf";
     public static final String EXAMPLE3 = "./src/test/resources/pdfs/step_6_signed_by_dave_broken_by_chuck.pdf";
 
-    public static final String expectedOutput = ""; //TODO
+    public static final String expectedOutput = "";
 
     public PdfPKCS7 verifySignature(SignatureUtil signUtil, String name) throws GeneralSecurityException, IOException {
         System.out.println("Signature covers whole document: " + signUtil.signatureCoversWholeDocument(name));
@@ -54,7 +53,7 @@ public class C5_01_SignatureIntegrity extends SignatureTest {
     }
 
     public void verifySignatures(String path) throws IOException, GeneralSecurityException {
-        System.out.println(path);
+        // System.out.println(path);
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(path));
         SignatureUtil signUtil = new SignatureUtil(pdfDoc);
         List<String> names = signUtil.getSignatureNames();
@@ -81,8 +80,6 @@ public class C5_01_SignatureIntegrity extends SignatureTest {
         C5_01_SignatureIntegrity.main(null);
         String sysOut = getSystemOutput();
 
-        if (!sysOut.equals(expectedOutput)) {
-            fail("Unexpected output.");
-        }
+        Assert.assertEquals("Unexpected output", expectedOutput, sysOut);
     }
 }

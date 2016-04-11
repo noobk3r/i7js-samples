@@ -13,23 +13,17 @@ package com.itextpdf.samples.sandbox.annotations;
 
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.pdf.PdfArray;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfString;
-import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfCircleAnnotation;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.Ignore;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
 
 @Ignore
 @Category(SampleTest.class)
@@ -48,13 +42,15 @@ public class CircleAnnotation extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)),
                 new PdfWriter(new FileOutputStream(DEST)));
         Rectangle rect = new Rectangle(150, 770, 200 - 150, 820 - 770);
+
         PdfCircleAnnotation annotation = new PdfCircleAnnotation(rect)
                 .setContents("Circle")
                 .setTitle(new PdfString("Circle"))
                 .setColor(Color.BLUE)
                 .setFlags(PdfAnnotation.Print)
-                        // TODO Find way to use DashBorder here
-                .setBorder(new PdfArray(new float[]{0, 0, 2})) // new PdfBorderArray(0, 0, 2, new PdfDashPattern()));
+                .setBorderStyle(PdfAnnotation.STYLE_DASHED)
+                .setDashPattern(new PdfArray(new int[]{3, 2}))
+                .setBorder(new PdfArray(new float[]{0, 0, 2}))
                 .put(PdfName.IC, new PdfArray(new int[]{1, 0, 0}));
         pdfDoc.getFirstPage().addAnnotation(annotation);
         pdfDoc.close();

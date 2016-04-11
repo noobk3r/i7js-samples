@@ -21,14 +21,13 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.Ignore;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Set;
 import java.util.TreeSet;
-
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
 
 @Ignore
 @Category(SampleTest.class)
@@ -72,9 +71,8 @@ public class FontTest extends GenericTest {
                     String.format("The font %s doesn't have unicode support: %s", fontname, e.getMessage())));
             return;
         }
-        // TODO There is no .getPostscriptFontName()
-//        doc.add(new Paragraph(
-//                String.format("Postscript name for %s: %s", fontname, font.getBaseFont().getPostscriptFontName())));
+        doc.add(new Paragraph(
+                String.format("Postscript name for %s: %s", fontname, font.getFontProgram().getFontNames().getFontName())));
         doc.add(new Paragraph(TEXT).setFont(font));
         doc.add(new Paragraph(String.format("CP1250: %s", CP1250)).setFont(font));
         doc.add(new Paragraph(String.format("CP1251: %s", CP1251)).setFont(font));

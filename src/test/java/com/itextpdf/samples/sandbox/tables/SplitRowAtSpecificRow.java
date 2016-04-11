@@ -15,11 +15,10 @@ import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileOutputStream;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class SplitRowAtSpecificRow extends GenericTest {
@@ -51,10 +50,6 @@ public class SplitRowAtSpecificRow extends GenericTest {
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc, new PageSize(612, 237));
-        // TODO Implement setSplitLate(boolean)
-        // table.setSplitLate(false);
-        // TODO Implement setBreakPoints(int)
-        // table.setBreakPoints(8);
         doc.add(table);
         doc.close();
     }

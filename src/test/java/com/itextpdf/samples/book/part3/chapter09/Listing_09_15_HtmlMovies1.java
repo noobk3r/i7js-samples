@@ -23,23 +23,17 @@ import com.lowagie.filmfestival.Country;
 import com.lowagie.filmfestival.Director;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
-import java.io.Reader;
-import java.sql.SQLException;
-import java.util.List;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import java.io.*;
+import java.sql.SQLException;
+import java.util.List;
 
 public class Listing_09_15_HtmlMovies1 extends GenericTest {
     public static final String HTML = "./target/test/resources/book/part3/chapter09/Listing_09_15_HtmlMovies1.html";
@@ -92,7 +86,7 @@ public class Listing_09_15_HtmlMovies1 extends GenericTest {
      * @return a String with HTML code
      */
     public String createHtmlSnippet(Movie movie) {
-        StringBuilder buf = new StringBuilder("\t<span class=\"title\">");
+        StringBuffer buf = new StringBuffer("\t<span class=\"title\">");
         buf.append(movie.getMovieTitle());
         buf.append("</span><br />\n");
         buf.append("\t<ul>\n");

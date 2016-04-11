@@ -5,25 +5,32 @@
 
 */
 
+/*
+ * Example written by Bruno Lowagie in answer to the following question:
+ * http://stackoverflow.com/questions/31169268/cell-background-image-with-text-itextsharp
+ */
+
 package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Image;
+import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.renderer.CellRenderer;
+import com.itextpdf.layout.renderer.DocumentRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileOutputStream;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class PositionContentInCell extends GenericTest {
@@ -103,29 +110,32 @@ public class PositionContentInCell extends GenericTest {
                     img.getImageWidth() * (float) img.getProperty(Property.HORIZONTAL_SCALING));
             drawContext.getCanvas().stroke();
 
-            float x = 0;
-            float y = 0;
+            Paragraph p = new Paragraph(content);
+            Property.Leading leading = p.getDefaultProperty(Property.LEADING);
+            Float defaultFontSize = new DocumentRenderer(new Document(drawContext.getDocument())).getPropertyAsFloat(Property.FONT_SIZE);
+
+            float x;
+            float y;
             Property.TextAlignment alignment;
-            // TODO content has not leading yet, we can't use y = ... - canvas.getGraphicsState().getLeading();
             switch (position) {
                 case TOP_LEFT:
-                    x = getOccupiedAreaBBox().getX() + 3;
-                    y = getOccupiedAreaBBox().getY() + getOccupiedAreaBBox().getHeight() - 16;
+                    x = getOccupiedAreaBBox().getLeft() + 3;
+                    y = getOccupiedAreaBBox().getTop() - defaultFontSize*leading.getValue();
                     alignment = Property.TextAlignment.LEFT;
                     break;
                 case TOP_RIGHT:
-                    x = getOccupiedAreaBBox().getX() + getOccupiedAreaBBox().getWidth() - 3;
-                    y = getOccupiedAreaBBox().getY() + getOccupiedAreaBBox().getHeight() - 16;
+                    x = getOccupiedAreaBBox().getRight() - 3;
+                    y = getOccupiedAreaBBox().getTop() - defaultFontSize*leading.getValue();
                     alignment = Property.TextAlignment.RIGHT;
                     break;
                 case BOTTOM_LEFT:
-                    x = getOccupiedAreaBBox().getX() + 3;
-                    y = getOccupiedAreaBBox().getY() + 3;
+                    x = getOccupiedAreaBBox().getLeft() + 3;
+                    y = getOccupiedAreaBBox().getBottom() + 3;
                     alignment = Property.TextAlignment.LEFT;
                     break;
                 case BOTTOM_RIGHT:
-                    x = getOccupiedAreaBBox().getX() + getOccupiedAreaBBox().getWidth() - 3;
-                    y = getOccupiedAreaBBox().getY() + 3;
+                    x = getOccupiedAreaBBox().getRight() - 3;
+                    y = getOccupiedAreaBBox().getBottom() + 3;
                     alignment = Property.TextAlignment.RIGHT;
                     break;
                 default:
@@ -133,7 +143,7 @@ public class PositionContentInCell extends GenericTest {
                     y = 0;
                     alignment = Property.TextAlignment.CENTER;
             }
-            new Document(drawContext.getDocument()).showTextAligned(content, x, y, alignment);
+            new Canvas(drawContext.getCanvas(), drawContext.getDocument(), getOccupiedAreaBBox()).showTextAligned(p, x, y, alignment);
         }
     }
 }

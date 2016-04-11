@@ -21,10 +21,9 @@ import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_11_13_Diacritics1 extends GenericTest {
@@ -59,7 +58,6 @@ public class Listing_11_13_Diacritics1 extends GenericTest {
         doc.add(new Paragraph("directed by Wisit Sasanatieng"));
         for (int i = 0; i < 2; i++) {
             font = PdfFontFactory.createFont(FONTS[i], PdfEncodings.IDENTITY_H, true);
-            // TODO No getPostscriptFontName()
             doc.add(new Paragraph("Font: " + font.getFontProgram().getFontNames().getFontName()));
             doc.add(new Paragraph(MOVIE).setFont(font).setFontSize(20));
         }

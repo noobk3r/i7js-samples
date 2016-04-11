@@ -92,7 +92,6 @@ public class Listing_04_06_MovieTextMode extends GenericTest {
                 cell.setMarginLeft(10 * count++);
                 table.addCell(cell);
             }
-            // TODO Implement facility to set default-cell configs
             table.addCell(new Cell().add("Year:")
                     .setTextAlignment(Property.TextAlignment.RIGHT));
             table.addCell(new Cell().add(String.valueOf(movie.getYear()))

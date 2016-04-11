@@ -139,9 +139,14 @@
             <groupId>com.itextpdf</groupId>
             <artifactId>zugferd</artifactId>
             <version>${project.version}</version>
-            <scope>compile</scope>
+            <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>cleanup</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.jfree</groupId>
             <artifactId>jfreechart</artifactId>

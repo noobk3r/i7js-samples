@@ -7,15 +7,16 @@
 
 package com.itextpdf.samples.sandbox.acroforms.reporting;
 
+import com.itextpdf.forms.PdfAcroForm;
+import com.itextpdf.forms.PdfPageFormCopier;
+import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.io.source.ByteArrayOutputStream;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.forms.PdfAcroForm;
-import com.itextpdf.forms.PdfPageFormCopier;
-import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -23,8 +24,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.Map;
 import java.util.StringTokenizer;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class FillFlattenMerge1 extends GenericTest {
@@ -42,7 +41,6 @@ public class FillFlattenMerge1 extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         ByteArrayOutputStream baos;
-        PdfReader reader;
         PdfDocument pdfInnerDoc;
         Map<String, PdfFormField> fields;
         PdfAcroForm form;
@@ -52,8 +50,7 @@ public class FillFlattenMerge1 extends GenericTest {
         while ((line = br.readLine()) != null) {
             // create a PDF in memory
             baos = new ByteArrayOutputStream();
-            reader = new PdfReader(SRC);
-            pdfInnerDoc = new PdfDocument(reader, new PdfWriter(baos));
+            pdfInnerDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(baos));
             form = PdfAcroForm.getAcroForm(pdfInnerDoc, true);
             tokenizer = new StringTokenizer(line, ";");
             fields = form.getFormFields();

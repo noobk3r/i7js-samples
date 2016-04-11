@@ -25,6 +25,7 @@ import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.PojoToElementFactory;
 import com.lowagie.filmfestival.Screening;
+import org.junit.experimental.categories.Category;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -32,8 +33,6 @@ import java.io.UnsupportedEncodingException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_04_18_HeaderFooter1 extends GenericTest {
@@ -72,10 +71,6 @@ public class Listing_04_18_HeaderFooter1 extends GenericTest {
         // Create a table with 7 columns
         Table table = new Table(new float[]{2, 1, 2, 5, 1, 3, 2});
         table.setWidthPercent(100);
-        // TODO Implement a facility to set default-cell properties
-        // TODO No setUseAscender(boolean) and setUseDescender(boolean)
-        // table.getDefaultCell().setUseAscender(true);
-        // table.getDefaultCell().setUseDescender(true);
         // Add the first header row
         Cell cell = new Cell(1, 7).add(new Paragraph(day.toString()).setFontColor(Color.WHITE));
         cell.setBackgroundColor(Color.BLACK);
@@ -110,14 +105,9 @@ public class Listing_04_18_HeaderFooter1 extends GenericTest {
             table.addCell(movie.getMovieTitle());
             table.addCell(String.valueOf(movie.getYear()));
             cell = new Cell();
-            // TODO No setUseAscender(boolean) and setUseDescender(boolean)
-            // cell.setUseAscender(true);
-            // cell.setUseDescender(true);
             cell.add(PojoToElementFactory.getDirectorList(movie));
             table.addCell(cell);
             cell = new Cell();
-            // cell.setUseAscender(true);
-            // cell.setUseDescender(true);
             cell.add(PojoToElementFactory.getCountryList(movie));
             table.addCell(cell);
         }

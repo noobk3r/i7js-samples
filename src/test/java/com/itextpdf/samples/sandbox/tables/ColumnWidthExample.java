@@ -47,9 +47,6 @@ public class ColumnWidthExample extends GenericTest {
         float[] columnWidths = {1, 5, 5};
         Table table = new Table(columnWidths);
         table.setWidthPercent(100);
-        // TODO No ascender and descender usage for cells
-        //table.getDefaultCell().setUseAscender(true);
-        //table.getDefaultCell().setUseDescender(true);
         PdfFont f = PdfFontFactory.createFont(FontConstants.HELVETICA);
         Cell cell = new Cell(1, 3).add(new Paragraph("This is a header")).
                 setFont(f).

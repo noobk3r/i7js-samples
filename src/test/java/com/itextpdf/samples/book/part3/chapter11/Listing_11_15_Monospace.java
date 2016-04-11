@@ -13,16 +13,12 @@ import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.font.PdfSimpleFont;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
-
-import org.junit.Ignore;
+import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
 
-// TODO Font do not render (see the difference)
-@Ignore
 @Category(SampleTest.class)
 public class Listing_11_15_Monospace extends GenericTest {
     public static final String DEST
@@ -46,7 +42,7 @@ public class Listing_11_15_Monospace extends GenericTest {
         PdfFont font2 = PdfFontFactory.createFont(/*"c:/windows/fonts/cour.ttf*/"./src/test/resources/font/LiberationMono-Regular.ttf",
                 PdfEncodings.CP1252, true);
         doc.add(new Paragraph(MOVIE).setFont(font2));
-        PdfSimpleFont font3 = (PdfSimpleFont) PdfFontFactory.createFont("./src/test/resources/font/FreeSans.ttf"/*"c:/windows/fonts/arialbd.ttf"*/,
+        PdfSimpleFont font3 = (PdfSimpleFont) PdfFontFactory.createFont("./src/test/resources/font/FreeSansBold.ttf"/*"c:/windows/fonts/arialbd.ttf"*/,
                 PdfEncodings.CP1252, true);
         int[] widths = font3.getFontProgram().getFontMetrics().getGlyphWidths();
         for (int k = 0; k < widths.length; ++k) {

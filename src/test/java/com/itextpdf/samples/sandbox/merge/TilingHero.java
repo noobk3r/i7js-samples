@@ -12,19 +12,18 @@ package com.itextpdf.samples.sandbox.merge;
 
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class TilingHero extends GenericTest {
@@ -56,8 +55,7 @@ public class TilingHero extends GenericTest {
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument srcDoc = new PdfDocument(new PdfReader(RESOURCE));
 
-        // TODO No getPageSizeWithRotation
-        Rectangle pageSize = getPageSizeWithRotation(srcDoc.getFirstPage());
+        Rectangle pageSize = srcDoc.getFirstPage().getPageSizeWithRotation();
         float width = pageSize.getWidth();
         float height = pageSize.getHeight();
         Rectangle mediaBox = new Rectangle(0, 3 * height, width, height);

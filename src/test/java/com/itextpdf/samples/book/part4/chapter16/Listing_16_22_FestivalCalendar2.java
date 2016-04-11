@@ -7,26 +7,27 @@
 
 package com.itextpdf.samples.book.part4.chapter16;
 
-import com.itextpdf.kernel.geom.Rectangle;
+import com.itextpdf.forms.PdfAcroForm;
+import com.itextpdf.forms.fields.PdfButtonFormField;
+import com.itextpdf.forms.fields.PdfFormField;
+import com.itextpdf.forms.fields.PdfTextFormField;
+import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.color.DeviceGray;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDeveloperExtension;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfVersion;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
-import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.forms.PdfAcroForm;
-import com.itextpdf.forms.fields.PdfButtonFormField;
-import com.itextpdf.forms.fields.PdfFormField;
-import com.itextpdf.forms.fields.PdfTextFormField;
+import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.Ignore;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
 
 @Ignore
 @Category(SampleTest.class)
@@ -53,7 +54,7 @@ public class Listing_16_22_FestivalCalendar2 extends GenericTest {
         pdfDoc.getCatalog().setOpenAction(PdfAction.createJavaScript(readFileToString(JS)));
         // // we prepare a RichMediaAnnotation
 
-        // TODO No RichMedia: RichMediaAnnotation, RichMediaParams, RichMediaActivation and so on
+        // TODO Implement RichMedia annotations
         // RichMediaAnnotation richMedia = new RichMediaAnnotation(writer, new Rectangle(36, 560, 561, 760));
         // // we embed the swf file
         // PdfFileSpecification fs
@@ -82,10 +83,10 @@ public class Listing_16_22_FestivalCalendar2 extends GenericTest {
             Rectangle rect = new Rectangle(36 + (65 * i), 765, 64, 15);
             PdfButtonFormField button = PdfFormField.createPushButton(pdfDoc, rect, "button" + i, days[i]);
             button.setBackgroundColor(new DeviceGray(0.75f));
-            // TODO No setBorderStyle, setLayout, setScaleIcon, setProportionalIcon, seticonHorizontalAdjustment on PdfFormField
-            // button.setsetBorderStyle(PdfBorderDictionary.STYLE_BEVELED);
-            // button.setTextColor(GrayColor.GRAYBLACK);
-            // button.setFontSize(12);
+            button.setColor(Color.DARK_GRAY);
+            button.getWidgets().get(0).setBorderStyle(PdfAnnotation.STYLE_BEVELED);
+            button.setFontSize(12);
+            // TODO Implement custom renderer
             // button.setLayout(PushbuttonField.LAYOUT_ICON_LEFT_LABEL_RIGHT);
             // button.setScaleIcon(PushbuttonField.SCALE_ICON_ALWAYS);
             // button.setProportionalIcon(true);

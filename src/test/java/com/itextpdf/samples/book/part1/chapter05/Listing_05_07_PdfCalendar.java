@@ -153,8 +153,6 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
     public Cell getMonthCell(Calendar calendar, Locale locale) {
         Cell cell = new Cell(1, 7);
         cell.setNextRenderer(new RoundedCellRenderer(cell, cmykYellow, false));
-        // TODO No setUseDescender(boolean)
-        // cell.setUseDescender(true);
         Paragraph p = new Paragraph(String.format(locale, "%1$tB %1$tY", calendar)).setFont(bold).setFontSize(14);
         p.setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
         cell.add(p);

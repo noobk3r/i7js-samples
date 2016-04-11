@@ -7,18 +7,14 @@
 
 package com.itextpdf.samples.book.part2.chapter08;
 
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfVersion;
-import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.samples.GenericTest;
-
-import java.io.IOException;
-
+import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
+
+import java.io.IOException;
 
 @Ignore
 @Category(SampleTest.class)
@@ -42,30 +38,47 @@ public class Listing_08_29_ReaderEnabledForm extends GenericTest {
      */
     public static final String RESULT3 = "./target/test/resources/book/part2/chapter08/xfa_preserved.pdf";
 
+    /**
+     * Removes any usage rights that this PDF may have. Only Adobe can grant usage rights
+     * and any PDF modification with iText will invalidate them. Invalidated usage rights may
+     * confuse Acrobat and it's advisable to remove them altogether.
+     */
+    public void removeUsageRights(PdfDocument pdfDoc) {
+        PdfDictionary perms = pdfDoc.getCatalog().getPdfObject().getAsDictionary(PdfName.Perms);
+        if (perms == null) {
+            return;
+        }
+        perms.remove(new PdfName("UR"));
+        perms.remove(PdfName.UR3);
+        if (perms.size() == 0) {
+            pdfDoc.getCatalog().remove(PdfName.Perms);
+        }
+    }
+
     public void manipulatePdf2(String src, String dest, boolean remove, boolean preserve) throws IOException {
         // create the reader
         PdfReader reader = new PdfReader(src);
-        // remove the usage rights (or not)
-        if (remove) {
-            // TODO No removeUsageRights
-            // reader.removeUsageRights();
-        }
         // create the pdfDoc
         PdfDocument pdfDoc;
         // preserve the reader enabling by creating a PDF in append mode (or not)
         if (preserve) {
-            pdfDoc = new PdfDocument(reader, new PdfWriter(dest), true, PdfVersion.PDF_1_0);
+            pdfDoc = new PdfDocument(reader, new PdfWriter(dest), true);
         } else {
             pdfDoc = new PdfDocument(reader, new PdfWriter(dest));
         }
+        // TODO is this move valid ?
+        // remove the usage rights (or not)
+        if (remove) {
+            removeUsageRights(pdfDoc);
+            // TODO No removeUsageRights
+            // reader.removeUsageRights();
+        }
         // fill out the fields
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
-        form.getField("title[0]").setValue("The Misfortunates");
-        form.getField("original[0]").setValue("De helaasheid der dingen");
-        form.getField("duration[0]").setValue("108");
-        form.getField("year[0]").setValue("2009");
-        // close the pdfDoc
-        // TODO Exception on getStructParentIndex
+        form.getField("movie[0].#subform[0].title[0]").setValue("The Misfortunates");
+        form.getField("movie[0].#subform[0].original[0]").setValue("De helaasheid der dingen");
+        form.getField("movie[0].#subform[0].duration[0]").setValue("108");
+        form.getField("movie[0].#subform[0].year[0]").setValue("2009");
         pdfDoc.close();
     }
 

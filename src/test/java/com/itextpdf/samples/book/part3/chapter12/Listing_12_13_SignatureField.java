@@ -11,26 +11,19 @@ import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.pdf.PdfArray;
-import com.itextpdf.kernel.pdf.PdfDictionary;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfNumber;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.SignatureTest;
-import com.itextpdf.signatures.BouncyCastleDigest;
-import com.itextpdf.signatures.ExternalDigest;
-import com.itextpdf.signatures.ExternalSignature;
-import com.itextpdf.signatures.PdfSignatureAppearance;
-import com.itextpdf.signatures.PdfSigner;
-import com.itextpdf.signatures.PrivateKeySignature;
+import com.itextpdf.signatures.*;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -45,10 +38,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
 @Ignore

@@ -8,24 +8,20 @@
 package com.itextpdf.samples.book.part1.chapter04;
 
 import com.itextpdf.io.font.PdfEncodings;
-import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.color.DeviceCmyk;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
-import com.itextpdf.layout.element.AreaBreak;
-import com.itextpdf.layout.element.Cell;
-import com.itextpdf.layout.element.Image;
-import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.element.Table;
-import com.itextpdf.layout.element.Text;
+import com.itextpdf.layout.element.*;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -35,8 +31,6 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.Properties;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_04_21_PdfCalendar extends GenericTest {
@@ -99,8 +93,6 @@ public class Listing_04_21_PdfCalendar extends GenericTest {
             // create a table with 7 columns
             table = new Table(7);
             table.setWidth(504);
-            // TODO Add facility to set default cell settings
-            // table.getDefaultCell().setBackgroundColor(BaseColor.WHITE);
             // add the name of the month
             table.addCell(getMonthCell(calendar, locale));
             int daysInMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
@@ -171,8 +163,6 @@ public class Listing_04_21_PdfCalendar extends GenericTest {
     public Cell getMonthCell(Calendar calendar, Locale locale) {
         Cell cell = new Cell(1, 7);
         cell.setBackgroundColor(Color.WHITE);
-        // TODO No setUseDescender(boolean)
-        // cell.setUseDescender(true);
         Paragraph p = new Paragraph(String.format(locale, "%1$tB %1$tY", calendar)).setFont(bold).setFontSize(14);
         p.setTextAlignment(Property.TextAlignment.CENTER);
         cell.add(p);

@@ -14,14 +14,14 @@
  */
 package com.itextpdf.samples.signatures.chapter05;
 
-import com.itextpdf.signatures.CRLVerifier;
-import com.itextpdf.signatures.CertificateVerification;
-import com.itextpdf.signatures.OCSPVerifier;
-import com.itextpdf.signatures.PdfPKCS7;
-import com.itextpdf.signatures.SignatureUtil;
-import com.itextpdf.signatures.VerificationException;
-import com.itextpdf.signatures.VerificationOK;
+import com.itextpdf.signatures.*;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.bouncycastle.cert.ocsp.BasicOCSPResp;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import javax.smartcardio.CardException;
 import java.io.File;
@@ -30,25 +30,12 @@ import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.security.KeyStore;
 import java.security.Security;
-import java.security.cert.CRL;
-import java.security.cert.Certificate;
-import java.security.cert.CertificateExpiredException;
-import java.security.cert.CertificateFactory;
-import java.security.cert.CertificateNotYetValidException;
-import java.security.cert.X509CRL;
-import java.security.cert.X509Certificate;
+import java.security.cert.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
-import org.bouncycastle.cert.ocsp.BasicOCSPResp;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import static org.junit.Assert.fail;
 
 @Ignore
 @Category(SampleTest.class)
@@ -63,7 +50,27 @@ public class C5_03_CertificateValidation extends C5_01_SignatureIntegrity {
     public static final String EXAMPLE3 = "./src/test/resources/pdfs/hello_signed1.pdf";
     // public static final String EXAMPLE4 = "results/chapter4/hello_smartcard_Signature.pdf"; // TODO Uncomment after C4_03_SignWithPKCS11SC revision
 
-    public static final  String expectedOutput = ""; //TODO
+    public static final  String expectedOutput = "===== sig =====\r\n" +
+            "Signature covers whole document: true\r\n" +
+            "Document revision: 1 of 1\r\n" +
+            "Integrity check OK? true\r\n" +
+            "Certificates verified against the KeyStore\r\n" +
+            "=== Certificate 0 ===\r\n" +
+            "Issuer: C=BE,ST=OVL,L=Ghent,O=iText Software,OU=IT,CN=Bruno Specimen\r\n" +
+            "Subject: C=BE,ST=OVL,L=Ghent,O=iText Software,OU=IT,CN=Bruno Specimen\r\n" +
+            "Valid from: 2016-02-15 \r\n" +
+            "Valid to: 2016-05-15 \r\n" +
+            "The certificate was valid at the time of signing.\r\n" +
+            "The certificate is still valid.\r\n" +
+            "=== Checking validity of the document at the time of signing ===\r\n" +
+            " [main] INFO  com.itextpdf.signatures.OCSPVerifier - Valid OCSPs found: 0\r\n" +
+            " [main] INFO  com.itextpdf.signatures.CRLVerifier - Valid CRLs found: 0\r\n" +
+            "The signing certificate couldn't be verified\r\n" +
+            "=== Checking validity of the document today ===\r\n" +
+            " [main] INFO  com.itextpdf.signatures.OCSPVerifier - Valid OCSPs found: 0\r\n" +
+            " [main] INFO  com.itextpdf.signatures.CRLVerifier - Valid CRLs found: 0\r\n" +
+            "The signing certificate couldn't be verified\r\n" +
+            "\r\n";
 
     KeyStore ks;
 
@@ -123,14 +130,11 @@ public class C5_03_CertificateValidation extends C5_01_SignatureIntegrity {
         System.out.println("Valid to: " + date_format.format(cert.getNotAfter()));
         try {
             cert.checkValidity(signDate);
-            System.out
-                    .println("The certificate was valid at the time of signing.");
+            System.out.println("The certificate was valid at the time of signing.");
         } catch (CertificateExpiredException e) {
-            System.out
-                    .println("The certificate was expired at the time of signing.");
+            System.out.println("The certificate was expired at the time of signing.");
         } catch (CertificateNotYetValidException e) {
-            System.out
-                    .println("The certificate wasn't valid yet at the time of signing.");
+            System.out.println("The certificate wasn't valid yet at the time of signing.");
         }
         try {
             cert.checkValidity();
@@ -151,12 +155,9 @@ public class C5_03_CertificateValidation extends C5_01_SignatureIntegrity {
 
         ks.load(null, null);
         CertificateFactory cf = CertificateFactory.getInstance("X.509");
-        ks.setCertificateEntry("adobe",
-                cf.generateCertificate(new FileInputStream(ADOBE)));
-        ks.setCertificateEntry("cacert",
-                cf.generateCertificate(new FileInputStream(CACERT)));
-        ks.setCertificateEntry("bruno",
-                cf.generateCertificate(new FileInputStream(BRUNO)));
+        ks.setCertificateEntry("adobe", cf.generateCertificate(new FileInputStream(ADOBE)));
+        ks.setCertificateEntry("cacert", cf.generateCertificate(new FileInputStream(CACERT)));
+        ks.setCertificateEntry("bruno", cf.generateCertificate(new FileInputStream(BRUNO)));
         app.setKeyStore(ks);
 
         // app.verifySignatures(EXAMPLE1);
@@ -165,19 +166,18 @@ public class C5_03_CertificateValidation extends C5_01_SignatureIntegrity {
         // app.verifySignatures(EXAMPLE4);
     }
 
-    private void setKeyStore(KeyStore ks) {
-        this.ks = ks;
-    }
-
     @Test
     public void runTest() throws GeneralSecurityException, IOException, InterruptedException, CardException {
         new File("./target/test/resources/signatures/chapter05/").mkdirs();
         setupSystemOutput();
         C5_03_CertificateValidation.main(null);
         String sysOut = getSystemOutput();
+        // Replace time added by LOGGER
+        String outputForComparison = sysOut.replaceAll("[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{3}", "");
+        Assert.assertEquals("Unexpected output.", expectedOutput, outputForComparison);
+    }
 
-        if (!sysOut.equals(expectedOutput)) {
-            fail("Unexpected output.");
-        }
+    private void setKeyStore(KeyStore ks) {
+        this.ks = ks;
     }
 }

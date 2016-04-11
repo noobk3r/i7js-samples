@@ -15,13 +15,12 @@
 package com.itextpdf.samples.signatures.chapter03;
 
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.signatures.DigestAlgorithms;
-import com.itextpdf.signatures.OcspClient;
-import com.itextpdf.signatures.OcspClientBouncyCastle;
-import com.itextpdf.signatures.PdfSigner;
-import com.itextpdf.signatures.TSAClient;
-import com.itextpdf.signatures.TSAClientBouncyCastle;
+import com.itextpdf.signatures.*;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -36,10 +35,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
 @Ignore
@@ -47,7 +42,7 @@ import static org.junit.Assert.fail;
 public class C3_12_SignWithEstimatedSize extends C3_01_SignWithCAcert {
     public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
     public static final String DEST = "./target/test/resources/signatures/chapter03/hello_estimated.pdf";
-    public static final String expectedOutput = ""; //TODO
+    public static final String expectedOutput = "";
 
     public static void main(String[] args) throws IOException, GeneralSecurityException {
         Properties properties = new Properties();

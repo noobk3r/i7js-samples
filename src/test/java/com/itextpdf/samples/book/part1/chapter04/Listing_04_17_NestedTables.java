@@ -16,25 +16,19 @@ import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
 import com.itextpdf.layout.border.Border;
-import com.itextpdf.layout.element.AreaBreak;
-import com.itextpdf.layout.element.Cell;
-import com.itextpdf.layout.element.Image;
-import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.element.Table;
-import com.itextpdf.layout.element.Text;
+import com.itextpdf.layout.element.*;
 import com.itextpdf.samples.GenericTest;
-
-
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.PojoToElementFactory;
 import com.lowagie.filmfestival.Screening;
+import org.junit.experimental.categories.Category;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -45,8 +39,6 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_04_17_NestedTables extends GenericTest {
@@ -121,9 +113,6 @@ public class Listing_04_17_NestedTables extends GenericTest {
         // empty cell
         cell = new Cell();
         cell.setBorder(Border.NO_BORDER);
-        // TODO No setUseAscender(boolean) and setUseDescender(boolean)
-        // cell.setUseAscender(true);
-        // cell.setUseDescender(true);
         table.addCell(cell);
         // cell with the movie poster
         cell = new Cell().add(getImage(movie.getImdb()));
@@ -133,15 +122,11 @@ public class Listing_04_17_NestedTables extends GenericTest {
         cell = new Cell();
         cell.add(PojoToElementFactory.getDirectorList(movie));
         cell.setBorder(Border.NO_BORDER);
-        // cell.setUseAscender(true);
-        // cell.setUseDescender(true);
         table.addCell(cell);
         // cell with the list of countries
         cell = new Cell();
         cell.add(PojoToElementFactory.getCountryList(movie));
         cell.setBorder(Border.NO_BORDER);
-        // cell.setUseAscender(true);
-        // cell.setUseDescender(true);
         table.addCell(cell);
         return table;
     }
@@ -153,8 +138,6 @@ public class Listing_04_17_NestedTables extends GenericTest {
         Cell cell = new Cell();
         cell.setBorder(Border.NO_BORDER);
         cell.setBackgroundColor(Color.WHITE);
-        // cell.setUseAscender(true);
-        // cell.setUseDescender(true);
         String s = String.format("%s \u2013 %2$tH:%2$tM",
                 screening.getLocation(), screening.getTime().getTime());
         cell.add(new Paragraph(s).setTextAlignment(Property.TextAlignment.CENTER));
@@ -170,15 +153,11 @@ public class Listing_04_17_NestedTables extends GenericTest {
         cell = new Cell();
         cell.add(p);
         cell.setBorder(Border.NO_BORDER);
-        // cell.setUseAscender(true);
-        // cell.setUseDescender(true);
         table.addCell(cell);
         // cell 3 duration
         cell = new Cell();
         cell.setBorder(Border.NO_BORDER);
         cell.setBackgroundColor(Color.WHITE);
-        // cell.setUseAscender(true);
-        // cell.setUseDescender(true);
         p = new Paragraph(String.format("%d'", movie.getDuration()));
         p.setTextAlignment(Property.TextAlignment.CENTER);
         cell.add(p);

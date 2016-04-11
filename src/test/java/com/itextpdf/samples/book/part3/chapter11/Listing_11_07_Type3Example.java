@@ -7,23 +7,20 @@
 
 package com.itextpdf.samples.book.part3.chapter11;
 
-import com.itextpdf.kernel.font.PdfFontFactory;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
-import com.itextpdf.kernel.font.PdfType3Font;
 import com.itextpdf.kernel.color.DeviceGray;
 import com.itextpdf.kernel.color.DeviceRgb;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.font.PdfType3Font;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.samples.GenericTest;
-
-import org.junit.Ignore;
+import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_11_07_Type3Example extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part3/chapter11/Listing_11_07_Type3Example.pdf";
@@ -48,14 +45,14 @@ public class Listing_11_07_Type3Example extends GenericTest {
         d.closePathFillStroke();
 
         PdfCanvas s = t3.addGlyph('S', 600, 0, 0, 600, 700);
-        d.setStrokeColor(new DeviceRgb(0x00, 0x80, 0x80));
-        d.setLineWidth(100);
-        d.moveTo(595, 5);
-        d.lineTo(5, 5);
-        d.lineTo(300, 350);
-        d.lineTo(5, 695);
-        d.lineTo(595, 695);
-        d.stroke();
+        s.setStrokeColor(new DeviceRgb(0x00, 0x80, 0x80));
+        s.setLineWidth(100);
+        s.moveTo(595, 5);
+        s.lineTo(5, 5);
+        s.lineTo(300, 350);
+        s.lineTo(5, 695);
+        s.lineTo(595, 695);
+        s.stroke();
 
         Paragraph p = new Paragraph();
         p.add("This is a String with a Type3 font that contains a fancy Delta (");
@@ -63,10 +60,8 @@ public class Listing_11_07_Type3Example extends GenericTest {
         p.add(") and a custom Sigma (");
         p.add(new Text("S").setFont(t3));
         p.add(").");
-        // TODO Document.add on type3-fonted text throws NullPointerException
         doc.add(p);
 
-        // close the document
         doc.close();
     }
 }

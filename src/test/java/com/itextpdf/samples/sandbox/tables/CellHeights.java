@@ -10,18 +10,16 @@ package com.itextpdf.samples.sandbox.tables;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileOutputStream;
-
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
 
 
 @Category(SampleTest.class)
@@ -42,30 +40,25 @@ public class CellHeights extends GenericTest {
         Document doc = new Document(pdfDoc, PageSize.A5.rotate());
 
         Table table = new Table(2);
-        // a long phrase
-        Paragraph p = new Paragraph("Dr. iText or: How I Learned to Stop Worrying and Love PDF.");
-        Cell cell = new Cell().add(p);
-        // the prhase is wrapped
-        table.addCell("wrap");
-        //cell.setNoWrap(false);
-        table.addCell(cell.clone(true));
-        // the phrase isn't wrapped
-        table.addCell("wrap");
-        // cell.setNoWrap(true);
-        table.addCell(cell.clone(true));
         // a long phrase with newlines
-        p = new Paragraph("Dr. iText or:\nHow I Learned to Stop Worrying\nand Love PDF.");
-        cell = new Cell().add(p);
-        table.addCell("No problems with heights");
-        // There is no problem in itext7 with Minimum anf Fixed heights.
-        // If text's heights is bigger than cell's, cells's heights will grow instantly
+        Paragraph p = new Paragraph("Dr. iText or:\nHow I Learned to Stop Worrying\nand Love PDF.");
+        Cell cell = new Cell().add(p);
+        // the phrase fits the fixed height
+        table.addCell("fixed height (more than sufficient)");
+        cell.setHeight(72f);
+        table.addCell(cell.clone(true));
+        // the phrase doesn't fit the fixed height
+        table.addCell("fixed height (not sufficient)");
+        // TODO DEVSIX-555 (Revise the entire sample)
         cell.setHeight(36f);
         table.addCell(cell.clone(true));
+        // The minimum height is exceeded
+        table.addCell("minimum height");
+        cell = new Cell().add("Dr. iText");
+        cell.setHeight(36f);
+        table.addCell(cell);
 
-        table.addCell("last row");
-        table.addCell(cell.clone(true));
         doc.add(table);
-
         doc.close();
     }
 }

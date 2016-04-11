@@ -15,15 +15,12 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
-
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_11_04_EncodingExample extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part3/chapter11/Listing_11_04_EncodingExample.pdf";
-    public static final String FONT = /*"c:/windows/fonts/arialbd.ttf"*/"./src/test/resources/font/FreeSans.ttf";
+    public static final String FONT = /*"c:/windows/fonts/arialbd.ttf"*/"./src/test/resources/font/FreeSansBold.ttf";
     public static final String[][] MOVIES = {
             {
                     "Cp1252",
@@ -62,10 +59,8 @@ public class Listing_11_04_EncodingExample extends GenericTest {
         PdfFont font;
         for (int i = 0; i < 4; i++) {
             font = PdfFontFactory.createFont(FONT, MOVIES[i][0], true);
-            // TODO No getPostscriptFontName()
-            // TODO No getEncoding()
             doc.add(new Paragraph("Font: " + font.getFontProgram().getFontNames().getFontName()
-                    + " with encoding: "));
+                    + " with encoding: " + font.getFontEncoding().getBaseEncoding()));
             doc.add(new Paragraph(MOVIES[i][1]));
             doc.add(new Paragraph(MOVIES[i][2]));
             doc.add(new Paragraph(MOVIES[i][3]).setFont(font).setFontSize(12));

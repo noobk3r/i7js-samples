@@ -50,8 +50,6 @@ public class SplitRowAtEndOfPage extends GenericTest {
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc, new PageSize(612, 237));
-        // TODO Implement setSplitLate(float)
-        //table.setSplitLate(false);
         doc.add(table);
         doc.close();
     }

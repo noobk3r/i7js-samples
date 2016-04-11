@@ -11,21 +11,18 @@
  */
 package com.itextpdf.samples.sandbox.acroforms;
 
+import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
-
-@Ignore
 @Category(SampleTest.class)
 public class FillHybridForm extends GenericTest {
     public static final String SRC = "./src/test/resources/pdfs/f8966.pdf";
@@ -42,14 +39,13 @@ public class FillHybridForm extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(
                 new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
-        // TODO Implement Xfa and its removing
-        // form.removeXfa();
-        form.getField("p2_cb01[0]").setValue("5");
-        form.getField("p2_cb01[1]").setValue("5");
-        form.getField("p2_cb01[2]").setValue("5");
-        form.getField("p2_cb01[3]").setValue("5");
-        form.getField("p2_cb01[4]").setValue("5");
-        form.getField("p2_cb01[5]").setValue("5");
+        form.removeXfaForm();
+        form.getField("topmostSubform[0].Page2[0].p2_cb01[0]").setValue("1");
+        form.getField("topmostSubform[0].Page2[0].p2_cb01[1]").setValue("2");
+        form.getField("topmostSubform[0].Page2[0].p2_cb01[2]").setValue("3");
+        form.getField("topmostSubform[0].Page2[0].p2_cb01[3]").setValue("4");
+        form.getField("topmostSubform[0].Page2[0].p2_cb01[4]").setValue("5");
+        form.getField("topmostSubform[0].Page2[0].p2_cb01[5]").setValue("6");
         pdfDoc.close();
     }
 }
