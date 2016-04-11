@@ -3,7 +3,7 @@ package com.itextpdf.samples.sandbox.merge;
 import com.itextpdf.kernel.geom.LineSegment;
 import com.itextpdf.kernel.geom.Matrix;
 import com.itextpdf.kernel.geom.Path;
-import com.itextpdf.kernel.geom.Point2D;
+import com.itextpdf.kernel.geom.Point;
 import com.itextpdf.kernel.geom.Subpath;
 import com.itextpdf.kernel.geom.Vector;
 import com.itextpdf.kernel.pdf.canvas.parser.data.EventData;
@@ -67,8 +67,8 @@ public class PageVerticalAnalyzer implements EventListener {
                     Matrix ctm = renderInfo.getCtm();
                     Path path = renderInfo.getPath();
                     for (Subpath subpath : path.getSubpaths()) {
-                        List<Float> yCoordsList = new ArrayList<Float>();
-                        for (Point2D point2d : subpath.getPiecewiseLinearApproximation()) {
+                        List<Float> yCoordsList = new ArrayList<>();
+                        for (Point point2d : subpath.getPiecewiseLinearApproximation()) {
                             Vector vector = new Vector((float) point2d.getX(), (float) point2d.getY(), 1);
                             vector = vector.cross(ctm);
                             yCoordsList.add(vector.get(Vector.I2));
