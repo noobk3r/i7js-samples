@@ -7,7 +7,7 @@
 
 package com.itextpdf.samples.book.part1.chapter02;
 
-// TODO No VerticalPositionMark
+// TODO DEVSIX-459 No VerticalPositionMark
 //public class PositionedArrow extends VerticalPositionMark {
 //
 //    /** Indicates if the arrow needs to be drawn to the left. */

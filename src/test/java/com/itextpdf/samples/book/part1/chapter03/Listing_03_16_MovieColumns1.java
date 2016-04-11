@@ -26,11 +26,10 @@ import com.lowagie.filmfestival.Country;
 import com.lowagie.filmfestival.Director;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
+import org.junit.experimental.categories.Category;
 
 import java.io.FileOutputStream;
 import java.util.List;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_03_16_MovieColumns1 extends GenericTest {
@@ -102,7 +101,7 @@ public class Listing_03_16_MovieColumns1 extends GenericTest {
         p.add(new Text(" Duration: ").setFont(boldItalic));
         p.add(new Text(String.valueOf(movie.getDuration())));
         p.add(new Text(" minutes"));
-        // TODO No LineSeparator
+        // TODO DEVSIX-459 No LineSeparator
         //p.add(new LineSeparator(0.3f, 100, null, Element.ALIGN_CENTER, -2));
         return p;
     }

@@ -56,7 +56,6 @@ public class ReorderPages extends GenericTest {
                 null, null, null, null, null));
         PdfDocument resultDoc = new PdfDocument(new PdfWriter(dest));
 
-        // TODO It wiil be much easier to implement patterns usage
         Set<Integer> pages = new LinkedHashSet<>();
         pages.add(1);
         for (int i = 13; i <= 15; i++) {
