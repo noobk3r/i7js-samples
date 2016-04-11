@@ -46,9 +46,9 @@ public class C07E03_UnitedStates_PDFA_3a {
 
         //Setting some required parameters
         pdf.setTagged();
+        pdf.getCatalog().setLang(new PdfString("en-US"));
         pdf.getCatalog().setViewerPreferences(
                 new PdfViewerPreferences().setDisplayDocTitle(true));
-        pdf.getCatalog().setLang(new PdfString("en-US"));
         PdfDocumentInfo info = pdf.getDocumentInfo();
         info.setTitle("iText7 PDF/A-3 example");
         //Create XMP meta data

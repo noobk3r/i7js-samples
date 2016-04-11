@@ -44,11 +44,6 @@ public class C07E02_QuickBrownFox_PDFA_1a {
 
         //Setting some required parameters
         pdf.setTagged();
-        pdf.getCatalog().setViewerPreferences(
-                new PdfViewerPreferences().setDisplayDocTitle(true));
-        pdf.getCatalog().setLang(new PdfString("en-US"));
-        PdfDocumentInfo info = pdf.getDocumentInfo();
-        info.setTitle("iText7 PDF/A-1a example");
         //Create XMP meta data
         pdf.createXmpMetadata();
 
