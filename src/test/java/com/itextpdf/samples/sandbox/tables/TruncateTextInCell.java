@@ -64,7 +64,7 @@ public class TruncateTextInCell extends GenericTest {
         doc.close();
     }
 
-    static private class FitCellRenderer extends CellRenderer {
+    private static class FitCellRenderer extends CellRenderer {
         private String content;
 
         public FitCellRenderer(Cell modelElement, String content) throws IOException {

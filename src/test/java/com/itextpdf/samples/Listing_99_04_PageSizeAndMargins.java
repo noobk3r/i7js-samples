@@ -24,7 +24,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class Listing_99_04_PageSizeAndMargins extends GenericTest {
 
-    static public final String DEST = "./target/test/resources/Listing_99_03_PageSizeAndMargins/Listing_99_03_PageSizeAndMargins.pdf";
+    public static final String DEST = "./target/test/resources/Listing_99_03_PageSizeAndMargins/Listing_99_03_PageSizeAndMargins.pdf";
 
 
     public static void main(String args[]) throws IOException {

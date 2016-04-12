@@ -99,7 +99,7 @@ public class Listing_07_21_TimetableAnnotations1 extends GenericTest {
 
     public static final String MOVIE_TEMPLATES = "./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
 
-    static public TimeZone CURRENT_USER_TIME_ZONE;
+    public static TimeZone CURRENT_USER_TIME_ZONE;
 
 
     protected void beforeManipulatePdf() {

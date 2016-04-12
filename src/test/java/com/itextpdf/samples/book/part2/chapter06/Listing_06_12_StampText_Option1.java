@@ -26,8 +26,8 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class Listing_06_12_StampText_Option1 extends GenericTest {
 
-    static public final String DEST = "./target/test/resources/book/part2/chapter06/Listing_06_12_StampText_Option1.pdf";
-    static public final String SOURCE = "./src/test/resources/pdfs/source.pdf";
+    public static final String DEST = "./target/test/resources/book/part2/chapter06/Listing_06_12_StampText_Option1.pdf";
+    public static final String SOURCE = "./src/test/resources/pdfs/source.pdf";
 
     public static void main(String args[]) throws IOException {
         new Listing_06_12_StampText_Option1().manipulatePdf(DEST);

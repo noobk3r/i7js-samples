@@ -30,7 +30,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_01_13_HelloZip {
-    static public final String DEST = "./target/test/resources/book/part1/chapter01/Listing_01_13_HelloZip.zip";
+    public static final String DEST = "./target/test/resources/book/part1/chapter01/Listing_01_13_HelloZip.zip";
 
     @BeforeClass
     public static void beforeClass() throws Exception {

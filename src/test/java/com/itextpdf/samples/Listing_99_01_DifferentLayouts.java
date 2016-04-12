@@ -26,7 +26,7 @@ import org.junit.experimental.categories.Category;
 @Category(SampleTest.class)
 public class Listing_99_01_DifferentLayouts extends GenericTest {
 
-    static public final String DEST = "./target/test/resources/Listing_99_01_DifferentLayouts/Listing_99_01_DifferentLayouts.pdf";
+    public static final String DEST = "./target/test/resources/Listing_99_01_DifferentLayouts/Listing_99_01_DifferentLayouts.pdf";
 
     public static void main(String args[]) throws IOException {
         new Listing_99_01_DifferentLayouts().manipulatePdf(DEST);
