@@ -98,7 +98,7 @@ public class Listing_08_07_TextFields extends GenericTest {
         fields.get("text_2").setValue("bruno");
 
         fields.get("text_3").setFieldFlag(PdfFormField.FF_PASSWORD, false);
-        fields.get("text_3").getWidgets().get(0).setFlag(PdfAnnotation.Print);
+        fields.get("text_3").getWidgets().get(0).setFlag(PdfAnnotation.PRINT);
         form.getField("text_3").setValue("12345678", "********");
         ((PdfTextFormField) form.getField("text_4")).setMaxLen(12);
         form.getField("text_4").regenerateField();

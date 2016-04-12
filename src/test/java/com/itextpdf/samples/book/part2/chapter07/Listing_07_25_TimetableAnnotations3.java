@@ -67,7 +67,7 @@ public class Listing_07_25_TimetableAnnotations3 extends Listing_07_21_Timetable
                             .setStampName(new PdfName("NotForPublicRelease"))
                             .setContents("Press only")
                             .setColor(Color.BLACK.getColorValue())
-                            .setFlags(PdfAnnotation.Print);
+                            .setFlags(PdfAnnotation.PRINT);
                 }
                 // Annotation for screenings that are sold out
                 else if (isSoldOut(screening)) {
@@ -81,7 +81,7 @@ public class Listing_07_25_TimetableAnnotations3 extends Listing_07_21_Timetable
                             setContents("SOLD OUT")
                             .setTitle(new PdfString(movie.getMovieTitle()))
                             .setColor(Color.GREEN.getColorValue())
-                            .setFlags(PdfAnnotation.Print)
+                            .setFlags(PdfAnnotation.PRINT)
                             .setBorderStyle(borderStyleDict);
                 }
                 // Annotation for screenings with tickets available
@@ -91,7 +91,7 @@ public class Listing_07_25_TimetableAnnotations3 extends Listing_07_21_Timetable
                             .setContents("Tickets available")
                             .setTitle(new PdfString(movie.getMovieTitle()))
                             .setColor(Color.BLUE.getColorValue())
-                            .setFlags(PdfAnnotation.Print)
+                            .setFlags(PdfAnnotation.PRINT)
                             .setBorder(borderArray.getPdfObject());
                 }
                 pdfDoc.getPage(page).addAnnotation(annotation);

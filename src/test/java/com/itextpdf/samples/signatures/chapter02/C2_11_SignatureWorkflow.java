@@ -206,7 +206,7 @@ public class C2_11_SignatureWorkflow extends SignatureTest {
             PdfFormField field = PdfFormField.createSignature(drawContext.getDocument(), getOccupiedAreaBBox());
             field.setFieldName(name);
             field.getWidgets().get(0).setHighlightMode(PdfAnnotation.HIGHLIGHT_INVERT);
-            field.getWidgets().get(0).setFlags(PdfAnnotation.Print);
+            field.getWidgets().get(0).setFlags(PdfAnnotation.PRINT);
             PdfAcroForm.getAcroForm(drawContext.getDocument(), true).addField(field);
         }
     }

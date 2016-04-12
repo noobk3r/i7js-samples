@@ -214,7 +214,7 @@ public class C2_12_LockFields extends SignatureTest {
             if (lock != null) {
                 field.put(PdfName.Lock, lock.makeIndirect(drawContext.getDocument()).getPdfObject());
             }
-            field.getWidgets().get(0).setFlag(PdfAnnotation.Print);
+            field.getWidgets().get(0).setFlag(PdfAnnotation.PRINT);
             field.getWidgets().get(0).setHighlightMode(PdfAnnotation.HIGHLIGHT_INVERT);
             PdfAcroForm.getAcroForm(drawContext.getDocument(), true).addField(field);
         }

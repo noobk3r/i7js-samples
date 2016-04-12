@@ -47,7 +47,7 @@ public class CircleAnnotation extends GenericTest {
                 .setContents("Circle")
                 .setTitle(new PdfString("Circle"))
                 .setColor(Color.BLUE)
-                .setFlags(PdfAnnotation.Print)
+                .setFlags(PdfAnnotation.PRINT)
                 .setBorderStyle(PdfAnnotation.STYLE_DASHED)
                 .setDashPattern(new PdfArray(new int[]{3, 2}))
                 .setBorder(new PdfArray(new float[]{0, 0, 2}))

@@ -74,7 +74,7 @@ public class Listing_12_13_SignatureField extends SignatureTest {
         PdfFormField field = PdfFormField.createSignature(pdfDoc, new Rectangle(72, 632, 200, 100));
         field.getWidgets().get(0)
                 .setHighlightMode(PdfAnnotation.HIGHLIGHT_INVERT)
-                .setFlags(PdfAnnotation.Print);
+                .setFlags(PdfAnnotation.PRINT);
         field.setFieldName("mySig");
         field.setPage(1);
         // TODO No "from-box" MK Dictionary usage

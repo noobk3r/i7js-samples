@@ -61,7 +61,7 @@ public class AddPointerAnnotation extends GenericTest {
         lineAnnotation.setTitle(new PdfString("You are here:"));
         lineAnnotation.setContents("Cambridge Innovation Center");
         lineAnnotation.setColor(Color.RED);
-        lineAnnotation.setFlag(PdfAnnotation.Print);
+        lineAnnotation.setFlag(PdfAnnotation.PRINT);
         PdfDictionary borderStyle = new PdfDictionary();
         borderStyle.put(PdfName.S, PdfName.S);
         borderStyle.put(PdfName.W, new PdfNumber(5));

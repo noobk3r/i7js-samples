@@ -54,7 +54,7 @@ public class AddStamp extends GenericTest {
         PdfCanvas canvas = new PdfCanvas(xObj, pdfDoc);
         canvas.addImage(img, 0, 0, false);
         stamp.setNormalAppearance(xObj.getPdfObject());
-        stamp.setFlags(PdfAnnotation.Print);
+        stamp.setFlags(PdfAnnotation.PRINT);
 
         pdfDoc.getFirstPage().addAnnotation(stamp);
         pdfDoc.close();

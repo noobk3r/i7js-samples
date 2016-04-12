@@ -110,7 +110,7 @@ public class Listing_07_28_MoviePosters2 extends GenericTest {
                 .setContents(contents)
                 .setOpen(false)
                 .setName(new PdfString(String.format("IMDB%s", imdb)));
-        text.setFlags(PdfAnnotation.ReadOnly | PdfAnnotation.NoView);
+        text.setFlags(PdfAnnotation.READ_ONLY | PdfAnnotation.NO_VIEW);
         // Create the popup annotation
         PdfPopupAnnotation popup = new PdfPopupAnnotation(
                 new Rectangle(rect.getLeft() + 10, rect.getBottom() + 10, 190, 90));

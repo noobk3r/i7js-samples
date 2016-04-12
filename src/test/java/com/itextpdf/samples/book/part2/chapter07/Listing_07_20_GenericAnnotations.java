@@ -81,7 +81,7 @@ public class Listing_07_20_GenericAnnotations extends GenericTest {
                             rect.getWidth() + 20, rect.getHeight()));
             annotation.setTitle(new PdfString("Text annotation"));
             annotation.put(PdfName.Subtype, PdfName.Text);
-            annotation.put(PdfName.Open, PdfBoolean.PdfFalse);
+            annotation.put(PdfName.Open, PdfBoolean.FALSE);
             annotation.put(PdfName.Contents,
                     new PdfString(String.format("Icon: %s", text)));
             annotation.put(PdfName.Name, new PdfName(text));

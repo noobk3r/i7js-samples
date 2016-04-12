@@ -68,7 +68,7 @@ public class C2_04_CreateEmptyField extends SignatureTest {
         field.setFieldName(SIGNAME);
         // set the widget properties
         field.setPage(1);
-        field.getWidgets().get(0).setHighlightMode(PdfAnnotation.HIGHLIGHT_INVERT).setFlags(PdfAnnotation.Print);
+        field.getWidgets().get(0).setHighlightMode(PdfAnnotation.HIGHLIGHT_INVERT).setFlags(PdfAnnotation.PRINT);
 
         // TODO No "from-box" MK Dictionary usage
         // field.setMKBorderColor(BaseColor.BLACK);
@@ -114,7 +114,7 @@ public class C2_04_CreateEmptyField extends SignatureTest {
         PdfSignatureFormField field = PdfFormField.createSignature(pdfDoc, new Rectangle(72, 632, 200, 100));
         field.setFieldName(SIGNAME);
         // set the widget properties
-        field.getWidgets().get(0).setHighlightMode(PdfAnnotation.HIGHLIGHT_OUTLINE).setFlags(PdfAnnotation.Print);
+        field.getWidgets().get(0).setHighlightMode(PdfAnnotation.HIGHLIGHT_OUTLINE).setFlags(PdfAnnotation.PRINT);
         // add the field
         PdfAcroForm.getAcroForm(pdfDoc, true).addField(field);
         // close the document
