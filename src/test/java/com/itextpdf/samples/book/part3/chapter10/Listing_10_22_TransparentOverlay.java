@@ -54,7 +54,7 @@ public class Listing_10_22_TransparentOverlay extends GenericTest {
         PdfFormXObject xObject2 = new PdfFormXObject(new Rectangle(850, 600));
         PdfCanvas xObject2Canvas = new PdfCanvas(xObject2, pdfDoc);
         PdfTransparencyGroup transGroup = new PdfTransparencyGroup();
-        transGroup.put( PdfName.CS, PdfName.DeviceGray);
+        transGroup.put(PdfName.CS, PdfName.DeviceGray);
         transGroup.setIsolated(true);
         transGroup.setKnockout(false);
         xObject2.setGroup(transGroup);

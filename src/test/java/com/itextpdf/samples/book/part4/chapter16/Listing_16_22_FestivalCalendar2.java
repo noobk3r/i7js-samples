@@ -97,7 +97,7 @@ public class Listing_16_22_FestivalCalendar2 extends GenericTest {
             // RichMediaExecuteAction action
             //         = new RichMediaExecuteAction(richMediaAnnotation.getIndirectReference(), command);
             // field.setAction(action);
-            form.add(button);
+            form.addField(button);
         }
         PdfTextFormField text = PdfFormField.createText(pdfDoc, new Rectangle(36, 785, 523, 21), "date", "date");
         text.setReadOnly(true);
