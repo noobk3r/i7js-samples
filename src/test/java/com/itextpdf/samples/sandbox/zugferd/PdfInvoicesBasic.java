@@ -103,7 +103,7 @@ public class PdfInvoicesBasic extends GenericTest {
 
         pdfDoc.createXmpMetadata();
         XMPMeta xmp = XMPMetaFactory.parseFromBuffer(pdfDoc.getXmpMetadata());
-        xmp.setProperty(ZugferdXMPUtil.zugferdSchemaNS, ZugferdXMPUtil.zugferdDocumentFileName, "ZUGFeRD-invoice.xml");
+        xmp.setProperty(ZugferdXMPUtil.ZUGFERD_SCHEMA_NS, ZugferdXMPUtil.ZUGFERD_DOCUMENT_FILE_NAME, "ZUGFeRD-invoice.xml");
         pdfDoc.setXmpMetadata(xmp);
 
         // header
