@@ -10,7 +10,6 @@ import com.itextpdf.io.source.ByteArrayOutputStream;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.kernel.xmp.XMPException;
 
 import java.io.*;
 import java.util.Map;
@@ -21,13 +20,13 @@ public class C06E08_FillOutAndMergeForms {
     public static final String SRC = "src/main/resources/pdf/state.pdf";
     public static final String DATA = "src/main/resources/data/united_states.csv";
 
-    public static void main(String args[]) throws IOException, XMPException {
+    public static void main(String args[]) throws IOException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
         new C06E08_FillOutAndMergeForms().createPdf(DEST);
     }
 
-    public void createPdf(String dest) throws IOException, XMPException {
+    public void createPdf(String dest) throws IOException {
         PdfDocument pdfDocument = new PdfDocument(new PdfWriter(dest));
 
         BufferedReader bufferedReader = new BufferedReader(new FileReader(DATA));

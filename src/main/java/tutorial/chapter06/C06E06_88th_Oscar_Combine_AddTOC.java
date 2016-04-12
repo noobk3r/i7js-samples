@@ -7,7 +7,6 @@ import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.canvas.draw.DottedLine;
-import com.itextpdf.kernel.xmp.XMPException;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
@@ -40,13 +39,13 @@ public class C06E06_88th_Oscar_Combine_AddTOC {
         TheRevenantNominations.put("Achievement in visual effects", 10);
     }
 
-    public static void main(String args[]) throws IOException, XMPException {
+    public static void main(String args[]) throws IOException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
         new C06E06_88th_Oscar_Combine_AddTOC().createPdf(DEST);
     }
 
-    public void createPdf(String dest) throws IOException, XMPException {
+    public void createPdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document document = new Document(pdfDoc);
         document.add(new Paragraph(new Text("The Revenant nominations list"))

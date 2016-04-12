@@ -5,10 +5,8 @@ package tutorial.chapter06;
 
 import com.itextpdf.forms.PdfPageFormCopier;
 import com.itextpdf.kernel.pdf.*;
-import com.itextpdf.kernel.xmp.XMPException;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class C06E07_Combine_Forms {
@@ -16,13 +14,13 @@ public class C06E07_Combine_Forms {
     public static final String SRC1 = "src/main/resources/pdf/subscribe.pdf";
     public static final String SRC2 = "src/main/resources/pdf/state.pdf";
 
-    public static void main(String args[]) throws IOException, XMPException {
+    public static void main(String args[]) throws IOException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
         new C06E07_Combine_Forms().createPdf(DEST);
     }
 
-    public void createPdf(String dest) throws IOException, XMPException {
+    public void createPdf(String dest) throws IOException {
         PdfDocument destPdfDocument = new PdfDocument(new PdfWriter(dest));
         PdfDocument[] sources = new PdfDocument[] {
                 new PdfDocument(new PdfReader(SRC1)),

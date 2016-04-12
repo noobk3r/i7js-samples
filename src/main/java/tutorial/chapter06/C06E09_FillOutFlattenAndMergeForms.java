@@ -9,7 +9,6 @@ import com.itextpdf.io.source.ByteArrayOutputStream;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.kernel.xmp.XMPException;
 
 import java.io.*;
 import java.util.Map;
@@ -21,7 +20,7 @@ public class C06E09_FillOutFlattenAndMergeForms {
     public static final String SRC = "src/main/resources/pdf/state.pdf";
     public static final String DATA = "src/main/resources/data/united_states.csv";
 
-    public static void main(String args[]) throws IOException, XMPException {
+    public static void main(String args[]) throws IOException {
         File file = new File(DEST1);
         file.getParentFile().mkdirs();
         file = new File(DEST2);
@@ -29,7 +28,7 @@ public class C06E09_FillOutFlattenAndMergeForms {
         new C06E09_FillOutFlattenAndMergeForms().createPdf(DEST1, DEST2);
     }
 
-    public void createPdf(String dest1, String dest2) throws IOException, XMPException {
+    public void createPdf(String dest1, String dest2) throws IOException {
         PdfDocument destPdfDocument = new PdfDocument(new PdfWriter(dest1));
         //Smart mode
         PdfDocument destPdfDocumentSmartMode = new PdfDocument(new PdfWriter(dest2).setSmartMode(true));

@@ -7,7 +7,6 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.utils.PdfMerger;
-import com.itextpdf.kernel.xmp.XMPException;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,13 +17,13 @@ public class C06E05_88th_Oscar_CombineXofY {
     public static final String SRC2 = "src/main/resources/pdf/88th_noms_announcement.pdf";
     public static final String DEST = "results/chapter06/88th_oscar_combined_documents_xy_pages.pdf";
 
-    public static void main(String args[]) throws IOException, XMPException {
+    public static void main(String args[]) throws IOException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
         new C06E05_88th_Oscar_CombineXofY().createPdf(DEST);
     }
 
-    public void createPdf(String dest) throws IOException, XMPException {
+    public void createPdf(String dest) throws IOException {
         //Initialize PDF document with output intent
         PdfDocument pdf = new PdfDocument(new PdfWriter(dest));
 
