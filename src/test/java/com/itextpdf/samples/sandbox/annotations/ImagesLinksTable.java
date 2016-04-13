@@ -75,8 +75,7 @@ public class ImagesLinksTable extends GenericTest {
         public void draw(DrawContext drawContext) {
             super.draw(drawContext);
             PdfAnnotation a = new PdfLinkAnnotation(getOccupiedAreaBBox())
-                    .setAction(PdfAction.createURI("http://lowagie.com/bio"))
-                    .setBorder(null);
+                    .setAction(PdfAction.createURI("http://lowagie.com/bio"));
             drawContext.getDocument().getLastPage().addAnnotation(a);
         }
     }
