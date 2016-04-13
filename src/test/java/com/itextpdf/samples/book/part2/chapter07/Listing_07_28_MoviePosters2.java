@@ -104,8 +104,8 @@ public class Listing_07_28_MoviePosters2 extends GenericTest {
                          String title, String contents, String imdb)
             throws IOException{
         // Create the text annotation
-        PdfTextAnnotation text = new PdfTextAnnotation(rect)
-                .setIconName(new PdfName("Comment"))
+        PdfTextAnnotation text = new PdfTextAnnotation(rect);
+        text.setIconName(new PdfName("Comment"))
                 .setTitle(new PdfString(title))
                 .setContents(contents)
                 .setOpen(false)

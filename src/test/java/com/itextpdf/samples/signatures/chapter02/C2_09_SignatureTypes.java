@@ -20,6 +20,7 @@ import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfString;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfTextAnnotation;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Canvas;
@@ -97,7 +98,7 @@ public class C2_09_SignatureTypes extends SignatureTest {
     public void addAnnotation(String src, String dest) throws IOException {
         PdfReader reader = new PdfReader(src);
         PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(dest), true);
-        PdfTextAnnotation comment = new PdfTextAnnotation(new Rectangle(200, 800, 50, 20))
+        PdfAnnotation comment = new PdfTextAnnotation(new Rectangle(200, 800, 50, 20))
                 .setIconName(new PdfName("Comment"))
                 .setTitle(new PdfString("Finally Signed!"))
                 .setContents("Bruno Specimen has finally signed the document")
@@ -109,7 +110,7 @@ public class C2_09_SignatureTypes extends SignatureTest {
     public void addWrongAnnotation(String src, String dest) throws IOException {
         PdfReader reader = new PdfReader(src);
         PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(dest));
-        PdfTextAnnotation comment = new PdfTextAnnotation(new Rectangle(200, 800, 50, 20))
+        PdfAnnotation comment = new PdfTextAnnotation(new Rectangle(200, 800, 50, 20))
                 .setIconName(new PdfName("Comment"))
                 .setTitle(new PdfString("Finally Signed!"))
                 .setContents("Bruno Specimen has finally signed the document")

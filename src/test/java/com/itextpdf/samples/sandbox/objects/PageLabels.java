@@ -11,6 +11,7 @@ import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.pdf.*;
@@ -100,7 +101,7 @@ public class PageLabels extends GenericTest {
         Paragraph p = new Paragraph("Hello ");
         p.add(link);
         doc.add(p);
-        PdfTextAnnotation a = new PdfTextAnnotation(
+        PdfAnnotation a = new PdfTextAnnotation(
                 new Rectangle(10, 10, 30, 30))
                 .setTitle(new PdfString("Example"))
                 .setContents("This is a post-it annotation");

@@ -16,6 +16,7 @@ import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfFileAttachmentAnnotation;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.filespec.PdfFileSpec;
@@ -45,7 +46,7 @@ public class FileAttachmentAnnot extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Rectangle rect = new Rectangle(36, 700, 100, 100);
         PdfFileSpec fs = PdfFileSpec.createEmbeddedFileSpec(pdfDoc, PATH, null, "test.docx", null, null, false);
-        PdfFileAttachmentAnnotation attachment = new PdfFileAttachmentAnnotation(rect, fs)
+        PdfAnnotation attachment = new PdfFileAttachmentAnnotation(rect, fs)
                 .setContents("Click me");
 
         PdfFormXObject xObject = new PdfFormXObject(rect);

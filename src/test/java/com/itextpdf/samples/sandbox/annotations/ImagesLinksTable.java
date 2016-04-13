@@ -15,6 +15,7 @@ import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
+import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfLinkAnnotation;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
@@ -73,7 +74,7 @@ public class ImagesLinksTable extends GenericTest {
         @Override
         public void draw(DrawContext drawContext) {
             super.draw(drawContext);
-            PdfLinkAnnotation a = new PdfLinkAnnotation(getOccupiedAreaBBox())
+            PdfAnnotation a = new PdfLinkAnnotation(getOccupiedAreaBBox())
                     .setAction(PdfAction.createURI("http://lowagie.com/bio"))
                     .setBorder(null);
             drawContext.getDocument().getLastPage().addAnnotation(a);

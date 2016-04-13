@@ -10,6 +10,7 @@ package com.itextpdf.samples.book.part2.chapter07;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.PdfArray;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -59,7 +60,7 @@ public class Listing_07_22_MoviePosters1 extends GenericTest {
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4));
         // Add the movie posters
         Image img;
-        PdfLinkAnnotation linkAnnotation;
+        PdfAnnotation linkAnnotation;
         // Annotation annotation;
         float x = 11.5f;
         float y = 769.7f;
