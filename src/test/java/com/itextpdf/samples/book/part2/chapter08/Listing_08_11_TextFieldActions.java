@@ -17,7 +17,6 @@ import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfFormField;
-import com.itextpdf.forms.fields.PdfTextFormField;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.FileOutputStream;
@@ -46,7 +45,7 @@ public class Listing_08_11_TextFieldActions extends GenericTest {
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         form.put(PdfName.NeedAppearances, new PdfBoolean(true));
 
-        PdfTextFormField date = PdfFormField.createText(pdfDoc, new Rectangle(36, 780, 90, 26)).
+        PdfFormField date = PdfFormField.createText(pdfDoc, new Rectangle(36, 780, 90, 26)).
             setFieldName("date").
             setBorderColor(new DeviceGray(0.2f)).
             setAdditionalAction(PdfName.V, PdfAction.createJavaScript(
@@ -54,7 +53,7 @@ public class Listing_08_11_TextFieldActions extends GenericTest {
 
         form.addField(date);
 
-        PdfTextFormField name = PdfFormField.createText(pdfDoc, new Rectangle(130, 780, 126, 26)).
+        PdfFormField name = PdfFormField.createText(pdfDoc, new Rectangle(130, 780, 126, 26)).
                 setFieldName("name").
                 setBorderColor(new DeviceGray(0.2f)).
                 setAdditionalAction(PdfName.Fo, PdfAction.createJavaScript("app.alert('name field got the focus');")).

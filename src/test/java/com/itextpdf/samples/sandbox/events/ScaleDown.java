@@ -82,24 +82,25 @@ public class ScaleDown extends GenericTest {
             PdfDocumentEvent docEvent = (PdfDocumentEvent) event;
             PdfPage page = docEvent.getPage();
             page.put(PdfName.Rotate, pageDict.getAsNumber(PdfName.Rotate));
-            page.put(PdfName.MediaBox, scaleDown(pageDict.getAsArray(PdfName.MediaBox), scale));
-            page.put(PdfName.CropBox, scaleDown(pageDict.getAsArray(PdfName.CropBox), scale));
 
+            scaleDown(page, pageDict, PdfName.MediaBox, scale);
+            scaleDown(page, pageDict, PdfName.CropBox, scale);
         }
 
-        protected PdfArray scaleDown(PdfArray original, float scale) {
-            if (original == null)
-                return null;
-            float width = original.getAsFloat(2)
-                    - original.getAsFloat(0);
-            float height = original.getAsFloat(3)
-                    - original.getAsFloat(1);
-            PdfArray result = new PdfArray();
-            result.add(new PdfNumber(0));
-            result.add(new PdfNumber(0));
-            result.add(new PdfNumber(width * scale));
-            result.add(new PdfNumber(height * scale));
-            return result;
+        protected void scaleDown(PdfPage destPage, PdfDictionary pageDictSrc, PdfName box, float scale) {
+            PdfArray original = pageDictSrc.getAsArray(box);
+            if (original != null) {
+                float width = original.getAsFloat(2)
+                        - original.getAsFloat(0);
+                float height = original.getAsFloat(3)
+                        - original.getAsFloat(1);
+                PdfArray result = new PdfArray();
+                result.add(new PdfNumber(0));
+                result.add(new PdfNumber(0));
+                result.add(new PdfNumber(width * scale));
+                result.add(new PdfNumber(height * scale));
+                destPage.put(box, result);
+            }
         }
     }
 }
