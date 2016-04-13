@@ -9,6 +9,7 @@ package com.itextpdf.samples.book.part3.chapter11;
 
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.font.PdfSimpleFont;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
@@ -56,9 +57,9 @@ public class Listing_11_04_EncodingExample extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
-        PdfFont font;
+        PdfSimpleFont font;
         for (int i = 0; i < 4; i++) {
-            font = PdfFontFactory.createFont(FONT, MOVIES[i][0], true);
+            font = (PdfSimpleFont) PdfFontFactory.createFont(FONT, MOVIES[i][0], true);
             doc.add(new Paragraph("Font: " + font.getFontProgram().getFontNames().getFontName()
                     + " with encoding: " + font.getFontEncoding().getBaseEncoding()));
             doc.add(new Paragraph(MOVIES[i][1]));

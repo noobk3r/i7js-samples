@@ -36,7 +36,7 @@ public class Listing_11_05_UnicodeExample extends Listing_11_04_EncodingExample 
             font = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H, true);
             // IDENTITY_H results in PdfType0Font and PdfType0Font supports cmap encoding
             doc.add(new Paragraph("Font: " + font.getFontProgram().getFontNames().getFontName()
-                    + " with encoding: " + ((PdfType0Font)font).getCmapEncoding().getCmapName()));
+                    + " with encoding: " + ((PdfType0Font)font).getCmap().getCmapName()));
             doc.add(new Paragraph(MOVIES[i][1]));
             doc.add(new Paragraph(MOVIES[i][2]));
             doc.add(new Paragraph(MOVIES[i][3]).setFont(font).setFontSize(12));
