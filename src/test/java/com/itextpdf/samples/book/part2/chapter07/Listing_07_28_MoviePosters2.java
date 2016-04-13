@@ -115,7 +115,8 @@ public class Listing_07_28_MoviePosters2 extends GenericTest {
         PdfPopupAnnotation popup = new PdfPopupAnnotation(
                 new Rectangle(rect.getLeft() + 10, rect.getBottom() + 10, 190, 90));
         // Add the text annotation to the popup
-        popup.put(PdfName.Parent, text.getPdfObject().getIndirectReference());
+        popup.setParent(text);
+        //popup.put(PdfName.Parent, text.getPdfObject());
         // Declare the popup annotation as popup for the text
         text.setPopup(popup);
 
