@@ -64,7 +64,6 @@ public class ScaleDown extends GenericTest {
         srcDoc.close();
     }
 
-
     protected class ScaleDownEventHandler implements IEventHandler {
         protected float scale = 1;
         protected PdfDictionary pageDict;
@@ -90,10 +89,10 @@ public class ScaleDown extends GenericTest {
         protected void scaleDown(PdfPage destPage, PdfDictionary pageDictSrc, PdfName box, float scale) {
             PdfArray original = pageDictSrc.getAsArray(box);
             if (original != null) {
-                float width = original.getAsFloat(2)
-                        - original.getAsFloat(0);
-                float height = original.getAsFloat(3)
-                        - original.getAsFloat(1);
+                float width = original.getAsNumber(2).getFloatValue()
+                        - original.getAsNumber(0).getFloatValue();
+                float height = original.getAsNumber(3).getFloatValue()
+                        - original.getAsNumber(1).getFloatValue();
                 PdfArray result = new PdfArray();
                 result.add(new PdfNumber(0));
                 result.add(new PdfNumber(0));

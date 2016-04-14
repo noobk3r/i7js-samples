@@ -24,9 +24,7 @@ import java.io.PrintStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Map;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)

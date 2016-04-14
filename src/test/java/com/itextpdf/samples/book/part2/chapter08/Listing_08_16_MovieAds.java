@@ -143,10 +143,7 @@ public class Listing_08_16_MovieAds extends GenericTest {
         //form.addField(bt);
         // write the text using the appropriate font size
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());
-
-        PdfArray f = form.getField(TEXT).getWidgets().get(0).getRectangle();
-        Rectangle rect = new Rectangle(f.getAsFloat(0), f.getAsFloat(1), f.getAsFloat(2) - f.getAsFloat(0),
-                f.getAsFloat(3) - f.getAsFloat(1));
+        Rectangle rect = form.getField(TEXT).getWidgets().get(0).getRectangle().toRectangle();
         float size = 100;
         while (!addParagraph(pdfDoc, createMovieParagraph(pdfDoc, movie, size), canvas, rect) && size > 6) {
             size -= 0.2;

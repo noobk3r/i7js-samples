@@ -50,11 +50,8 @@ public class AddInReplyTo extends GenericTest {
         PdfPage page = pdfDoc.getPage(1);
         List<PdfAnnotation> annots = page.getAnnotations();
         PdfDictionary sticky = annots.get(0).getPdfObject();
-        PdfArray stickyRect = sticky.getAsArray(PdfName.Rect);
-        Rectangle stickyRectangle = new Rectangle(
-                stickyRect.getAsFloat(0), stickyRect.getAsFloat(1),
-                stickyRect.getAsFloat(2), stickyRect.getAsFloat(3)
-        );
+        Rectangle stickyRectangle = sticky.getAsArray(PdfName.Rect).toRectangle();
+
         PdfAnnotation replySticky = new PdfTextAnnotation(stickyRectangle)
                 .setIconName(new PdfName("Comment"))
                 .setInReplyTo(annots.get(0))

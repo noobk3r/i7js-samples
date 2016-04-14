@@ -50,10 +50,10 @@ public class ClipPdf extends GenericTest {
             if (media == null) {
                 media = page.getAsArray(PdfName.MediaBox);
             }
-            float llx = media.getAsFloat(0) + 200;
-            float lly = media.getAsFloat(1) + 200;
-            float w = media.getAsFloat(2) - media.getAsFloat(0) - 400;
-            float h = media.getAsFloat(3) - media.getAsFloat(1) - 400;
+            float llx = media.getAsNumber(0).getFloatValue() + 200;
+            float lly = media.getAsNumber(1).getFloatValue() + 200;
+            float w = media.getAsNumber(2).getFloatValue() - media.getAsNumber(0).getFloatValue() - 400;
+            float h = media.getAsNumber(3).getFloatValue() - media.getAsNumber(1).getFloatValue() - 400;
             // !IMPORTANT to write Locale
             String command = String.format(
                     Locale.ENGLISH,

@@ -46,7 +46,7 @@ public class ChangeFieldSize extends GenericTest {
         PdfFormField fieldName = form.getField("Name");
         PdfWidgetAnnotation annotationName = fieldName.getWidgets().get(0);
         PdfArray annotationRect = annotationName.getRectangle();
-        annotationRect.set(2, new PdfNumber(annotationRect.getAsFloat(2) + 20f));
+        annotationRect.set(2, new PdfNumber(annotationRect.getAsNumber(2).getFloatValue() + 20f));
         fieldName.setValue(value);
         form.getField("Company").setValue(value);
         pdfDoc.close();
