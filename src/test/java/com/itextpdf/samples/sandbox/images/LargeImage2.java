@@ -17,6 +17,8 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfStream;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Image;
@@ -43,41 +45,40 @@ public class LargeImage2 extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfReader reader = new PdfReader(new FileInputStream(SRC));
         reader.setCloseStream(false);
-        PdfDocument pdfDoc = new PdfDocument(reader);
-        Rectangle rect = pdfDoc.getPage(1).getPageSize();
 
         File tmp = File.createTempFile("large_image", ".pdf", new File("."));
         tmp.deleteOnExit();
-        // TODO problem with double opening of reader
-        PdfDocument pdfDoc2 = new PdfDocument(reader, new PdfWriter(new FileOutputStream(tmp)));
+
+        PdfDocument tempDoc = new PdfDocument(reader, new PdfWriter(new FileOutputStream(tmp)));
+        Rectangle rect = tempDoc.getPage(1).getPageSize();
 
         if (rect.getWidth() < 14400 && rect.getHeight() < 14400) {
             System.out.println("The size of the PDF document is within the accepted limits");
             System.exit(0);
         }
 
-        PdfDictionary pageDict = pdfDoc.getPage(1).getPdfObject();
+        PdfDictionary pageDict = tempDoc.getPage(1).getPdfObject();
         PdfDictionary pageResources = pageDict.getAsDictionary(PdfName.Resources);
         PdfDictionary pageXObjects = pageResources.getAsDictionary(PdfName.XObject);
         PdfName imgRef = pageXObjects.keySet().iterator().next();
         PdfStream imgStream = pageXObjects.getAsStream(imgRef);
-        PdfImageXObject imgObject = new PdfImageXObject(imgStream.copyTo(pdfDoc2));
-        pdfDoc.close();
+        PdfImageXObject imgObject = new PdfImageXObject(imgStream);
 
-        Image image = new Image(imgObject);
-        image.scaleToFit(14400, 14400);
-        image.setFixedPosition(0, 0);
+        Image img = new Image(imgObject);
+        img.scaleToFit(14400, 14400);
+        img.setFixedPosition(0, 0);
+        tempDoc.addNewPage(1, new PageSize(img.getImageScaledWidth(), img.getImageScaledHeight()));
+        new Document(tempDoc).add(img);
+        tempDoc.close();
 
 
-        pdfDoc2.addNewPage(1,
-                new PageSize(image.getImageWidth() * (Float) image.getProperty(Property.HORIZONTAL_SCALING),
-                        image.getImageHeight() * (Float) image.getProperty(Property.VERTICAL_SCALING)));
-        new PdfCanvas(pdfDoc2.getFirstPage()).addXObject(image.getXObject(), 0, 0);
-        pdfDoc2.close();
-        reader.close();
         // We create a new file that only contains the new first page
-        reader = new PdfReader(tmp.getAbsolutePath());
-        pdfDoc = new PdfDocument(reader, new PdfWriter(DEST));
-        pdfDoc.close();
+        tempDoc = new PdfDocument(new PdfReader(tmp.getAbsolutePath()));
+
+        PdfDocument resultDoc = new PdfDocument(new PdfWriter(DEST));
+        tempDoc.copyPagesTo(1, 1, resultDoc);
+
+        resultDoc.close();
+        tempDoc.close();
     }
 }

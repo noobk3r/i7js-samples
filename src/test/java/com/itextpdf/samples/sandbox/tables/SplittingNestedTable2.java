@@ -42,12 +42,11 @@ public class SplittingNestedTable2 extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
-        Document doc = new Document(pdfDoc, new PageSize(300, 150)); // TODO Change the height to see interesting results : 200, 150, 180
+        Document doc = new Document(pdfDoc, new PageSize(300, 150)); // TODO DEVSIX-466 Change the height to see interesting results : 200, 150, 180
         doc.add(new Paragraph("Table with setKeepTogether(false):"));
         Table table = new Table(2);
         table.setMarginTop(10);
         Cell cell = new Cell().add("GROUPS");
-        // TODO Think: we demand degree/radian angle values in different cases ?!
         cell.setRotationAngle(Math.toRadians(90));
         cell.setVerticalAlignment(Property.VerticalAlignment.MIDDLE);
         cell.setHorizontalAlignment(Property.HorizontalAlignment.CENTER);

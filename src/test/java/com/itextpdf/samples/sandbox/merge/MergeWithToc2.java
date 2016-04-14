@@ -17,11 +17,10 @@
 package com.itextpdf.samples.sandbox.merge;
 
 import com.itextpdf.io.source.RandomAccessSourceFactory;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.canvas.draw.DashedLine;
+import com.itextpdf.kernel.pdf.navigation.PdfDestination;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
@@ -66,6 +65,7 @@ public class MergeWithToc2 extends GenericTest {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(baos));
         Document doc = new Document(pdfDoc);
+        PdfOutline rootOutLine = pdfDoc.getOutlines(false);
         Map<Integer, String> toc = new TreeMap<Integer, String>();
         int n;
         int pageNo = 0;
@@ -78,8 +78,9 @@ public class MergeWithToc2 extends GenericTest {
                 entry.getValue().copyPagesTo(i, i, pdfDoc);
                 // Put the destination at the very first page of each merged document
                 if (i == 1) {
-
                     text.setProperty(Property.DESTINATION, "p" + pageNo);
+                    PdfOutline outline = rootOutLine.addOutline("p" + pageNo);
+                    outline.addDestination(PdfDestination.makeDestination(new PdfString("p" + pageNo)));
                 }
                 doc.add(new Paragraph(text).setFixedPosition(pageNo, 549, 810, 40));
             }
@@ -103,10 +104,11 @@ public class MergeWithToc2 extends GenericTest {
         }
         doc.close();
 
-        // TODO copying named destinations
+
         PdfDocument resultDoc = new PdfDocument(new PdfWriter(dest));
         PdfDocument srcDoc = new PdfDocument(new PdfReader(
                 new RandomAccessSourceFactory().createSource(baos.toByteArray()), null, null, null, null, null));
+        srcDoc.getOutlines(false);
         srcDoc.copyPagesTo(srcDoc.getNumberOfPages(), srcDoc.getNumberOfPages(), resultDoc);
         srcDoc.copyPagesTo(1, srcDoc.getNumberOfPages() - 1, resultDoc);
         srcDoc.close();

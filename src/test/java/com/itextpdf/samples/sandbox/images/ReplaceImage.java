@@ -19,6 +19,7 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfStream;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
+import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -32,10 +33,9 @@ import java.io.IOException;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class ReplaceImage extends GenericTest {
-    public static final String SRC = "./src/test/resources/img/image.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/image.pdf";
     public static final String DEST = "./target/test/resources/sandbox/images/replace_image.pdf";
 
     public static void main(String[] args) throws Exception {
@@ -55,9 +55,7 @@ public class ReplaceImage extends GenericTest {
 
     public static void replaceStream(PdfStream orig, PdfStream stream) throws IOException {
         orig.clear();
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        stream.setData(baos.toByteArray(), true);
-        orig.setData(baos.toByteArray(), false);
+        orig.setData(stream.getBytes());
         for (PdfName name : stream.keySet()) {
             orig.put(name, stream.get(name));
         }
@@ -70,9 +68,8 @@ public class ReplaceImage extends GenericTest {
         PdfDictionary resources = page.getAsDictionary(PdfName.Resources);
         PdfDictionary xobjects = resources.getAsDictionary(PdfName.XObject);
         PdfName imgRef = xobjects.keySet().iterator().next();
-        PdfStream stream = (PdfStream) xobjects.getAsStream(imgRef);
+        PdfStream stream = xobjects.getAsStream(imgRef);
         Image img = makeBlackAndWhitePng(new PdfImageXObject(stream));
-        // TODO Investigate the problem
         replaceStream(stream, img.getXObject().getPdfObject());
         pdfDoc.close();
     }

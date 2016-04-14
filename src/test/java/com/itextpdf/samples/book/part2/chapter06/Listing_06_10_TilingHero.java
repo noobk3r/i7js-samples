@@ -36,25 +36,10 @@ public class Listing_06_10_TilingHero extends GenericTest {
         new Listing_06_09_NUpTool().manipulatePdf(DEST);
     }
 
-    /**
-     * Gets the rotated page from a page dictionary.
-     * @param page the page
-     * @return the rotated  rectangle
-     */
-    public static Rectangle getPageSizeWithRotation(final PdfPage page) {
-        Rectangle rect = page.getPageSize();
-        int rotation = page.getRotation();
-        while (rotation > 0) {
-            rect = new Rectangle(rect.getHeight(), rect.getWidth());
-            rotation -= 90;
-        }
-        return rect;
-    }
-
     public void manipulatePdf(String dest) throws IOException, SQLException {
         PdfReader reader = new PdfReader(SOURCE);
         PdfDocument srcDoc = new PdfDocument(reader);
-        Rectangle pageSize = getPageSizeWithRotation(srcDoc.getFirstPage());
+        Rectangle pageSize = srcDoc.getFirstPage(). getPageSizeWithRotation();
 
         PdfWriter writer = new PdfWriter(DEST);
         PdfDocument pdfDoc = new PdfDocument(writer);

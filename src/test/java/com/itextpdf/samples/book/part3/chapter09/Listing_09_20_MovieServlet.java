@@ -25,7 +25,6 @@ import org.junit.Ignore;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-@Ignore
 public class Listing_09_20_MovieServlet extends HttpServlet {
 
     /**

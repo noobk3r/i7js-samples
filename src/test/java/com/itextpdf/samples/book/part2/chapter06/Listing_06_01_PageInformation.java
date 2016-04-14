@@ -78,7 +78,7 @@ public class Listing_06_01_PageInformation extends GenericTest {
         writer.print("Rotation of page 1: ");
         writer.println(pdfDoc.getFirstPage().getRotation());
         writer.print("Page size with rotation of page 1: ");
-        writer.println(getPageSizeWithRotation(pdfDoc.getFirstPage()));
+        writer.println(pdfDoc.getFirstPage().getPageSizeWithRotation());
         writer.print("Is rebuilt? ");
         writer.println(reader.hasRebuiltXref());
         writer.print("Is encrypted? ");
@@ -87,22 +87,6 @@ public class Listing_06_01_PageInformation extends GenericTest {
         writer.println();
         writer.flush();
         reader.close();
-    }
-
-    /**
-     * Gets the rotated page from a page dictionary.
-     *
-     * @param page the page
-     * @return the rotated page rectangle
-     */
-    public static Rectangle getPageSizeWithRotation(final PdfPage page) {
-        Rectangle rect = page.getPageSize();
-        int rotation = page.getRotation();
-        while (rotation > 0) {
-            rect = new Rectangle(rect.getHeight(), rect.getWidth());
-            rotation -= 90;
-        }
-        return rect;
     }
 
     @Override

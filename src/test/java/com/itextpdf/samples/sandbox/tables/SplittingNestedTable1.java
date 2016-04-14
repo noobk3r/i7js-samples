@@ -27,8 +27,8 @@ import java.io.File;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-// TODO See The results
 @Ignore
+// TODO DEVSIX-466
 @Category(SampleTest.class)
 public class SplittingNestedTable1 extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/splitting_nested_table1.pdf";

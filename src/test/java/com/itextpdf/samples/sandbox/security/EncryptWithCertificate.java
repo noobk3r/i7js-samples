@@ -21,6 +21,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.security.Security;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
@@ -46,12 +47,30 @@ public class EncryptWithCertificate extends GenericTest {
     public static final String SRC
             = "./src/test/resources/pdfs/hello_encrypted.pdf";
     public static final String PUBLIC
-            = "./src/test/resources/pdfs/test.cer";
+            = "./src/test/resources/encryption/test.cer";
 
     public static void main(String[] args) throws Exception {
+        try {
+            Field field = Class.forName("javax.crypto.JceSecurity").
+                    getDeclaredField("isRestricted");
+            field.setAccessible(true);
+            field.set(null, java.lang.Boolean.FALSE);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         File file = new File(DEST);
         file.getParentFile().mkdirs();
         new EncryptWithCertificate().manipulatePdf(DEST);
+        try {
+            Field field = Class.forName("javax.crypto.JceSecurity").
+                    getDeclaredField("isRestricted");
+            if (field.isAccessible()) {
+                field.set(null, java.lang.Boolean.TRUE);
+                field.setAccessible(false);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     public Certificate getPublicCertificate(String path)

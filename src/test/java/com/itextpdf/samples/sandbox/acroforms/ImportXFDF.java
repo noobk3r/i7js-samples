@@ -35,7 +35,7 @@ public class ImportXFDF extends GenericTest {
     }
 
     protected void manipulatePdf(String dest) throws Exception {
-        // TODO Implement XfdfReader
+        // TODO DEVSIX-526
         // XfdfReader xfdf = new XfdfReader(new FileInputStream(XFDF));
         PdfReader reader = new PdfReader(SRC);
         FileOutputStream fos = new FileOutputStream(dest);
@@ -43,7 +43,6 @@ public class ImportXFDF extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(reader, writer);
         Document doc = new Document(pdfDoc);
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
-        // TODO Implement xfdf features
         //fields.setFields(xfdf);
         form.flattenFields();
         pdfDoc.close();

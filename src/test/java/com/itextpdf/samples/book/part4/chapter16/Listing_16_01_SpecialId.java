@@ -38,7 +38,6 @@ public class Listing_16_01_SpecialId extends GenericTest {
     public void manipulatePdf(String dest) throws IOException, SQLException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc, new PageSize(new Rectangle(400, 300)));
-        Image img = new Image(ImageFactory.getImage(RESOURCE));
         PdfImageXObject xObject = new PdfImageXObject(ImageFactory.getImage(RESOURCE));
         xObject.put(new PdfName("ITXT_SpecialId"), new PdfName("123456789"));
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());

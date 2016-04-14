@@ -106,7 +106,6 @@ public class C2_06_SignatureAppearance extends SignatureTest {
         text.setFont(PdfFontFactory.createFont(/*"C:/windows/fonts/arialuni.ttf"*/
                 "./src/test/resources/font/NotoNaskhArabic-Regular.ttf", PdfEncodings.IDENTITY_H, true));
         text.setBaseDirection(Property.BaseDirection.RIGHT_TO_LEFT);
-        // TODO The text doesn't right centered by default
         new Canvas(n2, signer.getDocument()).add(new Paragraph(text).setTextAlignment(Property.TextAlignment.RIGHT));
         // Creating the signature
         PrivateKeySignature pks = new PrivateKeySignature(pk, digestAlgorithm, provider);

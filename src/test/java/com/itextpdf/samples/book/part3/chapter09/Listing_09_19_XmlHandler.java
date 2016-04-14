@@ -11,14 +11,7 @@ import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.element.BlockElement;
-import com.itextpdf.layout.element.IElement;
-import com.itextpdf.layout.element.ILeafElement;
-import com.itextpdf.layout.element.Link;
-import com.itextpdf.layout.element.List;
-import com.itextpdf.layout.element.ListItem;
-import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.element.Text;
+import com.itextpdf.layout.element.*;
 
 import java.util.EmptyStackException;
 import java.util.Stack;
@@ -28,7 +21,6 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-@Ignore
 public class Listing_09_19_XmlHandler extends DefaultHandler {
     /**
      * The Document to which the content is written.
@@ -78,8 +70,7 @@ public class Listing_09_19_XmlHandler extends DefaultHandler {
         if (currentChunk == null) {
             currentChunk = new Text(content.trim());
         } else {
-            ((Text) currentChunk).setText(((Text) currentChunk).getText() + " ");
-            ((Text) currentChunk).setText(((Text) currentChunk).getText() + content.trim());
+            (currentChunk).setText((currentChunk).getText() + " " + content.trim());
         }
     }
 
@@ -97,14 +88,14 @@ public class Listing_09_19_XmlHandler extends DefaultHandler {
                 stack.push(new ListItem());
             } else if ("movie".equals(qName)) {
                 flushStack();
-                Paragraph p = new Paragraph();
+                Div p = new Div();
                 p.setFont(PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD));
                 stack.push(p);
                 year = attributes.getValue("year");
                 duration = attributes.getValue("duration");
                 imdb = attributes.getValue("imdb");
             } else if ("original".equals(qName)) {
-                stack.push(new Paragraph("Original title: "));
+                stack.push(new Div().add(new Paragraph("Original title: ")));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -121,17 +112,17 @@ public class Listing_09_19_XmlHandler extends DefaultHandler {
             updateStack();
             if ("directors".equals(qName)) {
                 flushStack();
-                Paragraph p = new Paragraph(
-                        String.format("Year: %s; duration: %s; ", year, duration));
+                Div p = new Div().add(new Paragraph(
+                        String.format("Year: %s; duration: %s; ", year, duration)));
                 Link link = new Link("link to IMDB", PdfAction.createURI(
                         String.format("http://www.imdb.com/title/tt%s/", imdb)));
-                p.add(link);
+                p.add(new Paragraph(link));
                 stack.push(p);
             } else if ("countries".equals(qName) || "title".equals(qName)) {
                 flushStack();
             } else if ("original".equals(qName)
                     || "movie".equals(qName)) {
-                currentChunk = new Text("\n");
+                currentChunk = new Text("");
                 updateStack();
             } else if ("director".equals(qName)
                     || "country".equals(qName)) {
@@ -154,17 +145,17 @@ public class Listing_09_19_XmlHandler extends DefaultHandler {
             IElement current;
             try {
                 current = stack.pop();
-                if (!(current instanceof Paragraph) || !((Paragraph) current).isEmpty())
-                    if (current instanceof Paragraph) {
-                        ((Paragraph) current).add(" ");
+                if (!(current instanceof Div) || !((Div) current).isEmpty())
+                    if (current instanceof Div) {
+                        ((Div) current).add(new Paragraph(" "));
                     } else if (current instanceof List) {
                         ((List) current).add(" ");
                     }
             } catch (EmptyStackException ese) {
                 current = new Paragraph();
             }
-            if (current instanceof Paragraph) {
-                ((Paragraph) current).add((ILeafElement) currentChunk);
+            if (current instanceof Div) {
+                ((Div) current).add(new Paragraph(currentChunk));
             } else if (current instanceof ListItem) {
                 ((ListItem) current).add(new Paragraph(currentChunk));
             } else if (current instanceof List) {
@@ -181,12 +172,11 @@ public class Listing_09_19_XmlHandler extends DefaultHandler {
     private void flushStack() {
         try {
             while (stack.size() > 0) {
-                IElement element = (IElement) stack.pop();
+                IElement element = stack.pop();
                 try {
-                    IElement previous = (IElement) stack.pop();
-                    if (previous instanceof Paragraph) {
-                        // TODO Cannot add List on Paragraph
-//                        ((Paragraph)previous).add(((List)element));
+                    IElement previous = stack.pop();
+                    if (previous instanceof Div) {
+                        ((Div)previous).add(((List)element));
                     } else if (previous instanceof ListItem) {
                         ((ListItem) previous).add((BlockElement) element);
                     }
@@ -199,5 +189,4 @@ public class Listing_09_19_XmlHandler extends DefaultHandler {
             System.err.println(e.getMessage());
         }
     }
-
 }

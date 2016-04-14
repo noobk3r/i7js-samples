@@ -39,27 +39,11 @@ public class TileClipped extends GenericTest {
         new TileClipped().manipulatePdf(DEST);
     }
 
-    /**
-     * Gets the rotated page from a page dictionary.
-     *
-     * @param page the page
-     * @return the rotated page rectangle
-     */
-    public static Rectangle getPageSizeWithRotation(final PdfPage page) {
-        Rectangle rect = page.getPageSize();
-        int rotation = page.getRotation();
-        while (rotation > 0) {
-            rect = new Rectangle(rect.getHeight(), rect.getWidth());
-            rotation -= 90;
-        }
-        return rect;
-    }
-
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         float margin = 30;
         PdfDocument srcDoc = new PdfDocument(new PdfReader(SRC));
-        Rectangle rect = getPageSizeWithRotation(srcDoc.getFirstPage());
+        Rectangle rect = srcDoc.getFirstPage().getPageSizeWithRotation();
         Rectangle pageSize = new Rectangle(rect.getWidth() + margin * 2, rect.getHeight() + margin * 2);
 
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));

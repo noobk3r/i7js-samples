@@ -10,6 +10,8 @@ package com.itextpdf.samples.book.part1.chapter04;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.renderer.DrawContext;
+import com.itextpdf.layout.renderer.TableRenderer;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.AreaBreak;
@@ -54,19 +56,20 @@ public class Listing_04_22_Zhang extends GenericTest {
         table.setWidth(600);
         for (Movie movie : movies) {
             table.addCell(String.valueOf(movie.getYear()));
-            table.addCell(movie.getMovieTitle());
-            table.addCell(movie.getOriginalTitle());
+            table.addCell(movie.getMovieTitle() == null ? "" : movie.getMovieTitle());
+            table.addCell(movie.getOriginalTitle()== null ? "" : movie.getOriginalTitle());
             table.addCell(String.valueOf(movie.getDuration()));
         }
-        // set the total width of the table
-        PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());
-        // draw the first two columns on one page
-        // TODO No writeSelectedRows
-        // table.writeSelectedRows(0, 2, 0, -1, 236, 806, canvas);
-        doc.add(new AreaBreak());
-        // draw the remaining two columns on the next page
-        // table.writeSelectedRows(2, -1, 0, -1, 36, 806, canvas);
-
+        doc.add(table);
+//        // set the total width of the table
+//        PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());
+//        // draw the first two columns on one page
+//        // TODO No writeSelectedRows
+//        // table.writeSelectedRows(0, 2, 0, -1, 236, 806, canvas);
+//        doc.add(new AreaBreak());
+//        // draw the remaining two columns on the next page
+//        // table.writeSelectedRows(2, -1, 0, -1, 36, 806, canvas);
+//
         doc.close();
         connection.close();
     }

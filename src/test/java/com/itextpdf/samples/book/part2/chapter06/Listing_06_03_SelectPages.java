@@ -30,9 +30,7 @@ public class Listing_06_03_SelectPages extends GenericTest {
 
     public void manipulatePdf(String dest) throws IOException {
         PdfReader reader = new PdfReader(MOVIE_TEMPLATES);
-        PdfDocument pdfDoc = new PdfDocument(reader);
         manipulateWithCopy(4, 8, reader);
-        pdfDoc.close();
     }
 
     private static void manipulateWithCopy(int pageFrom, int pageTo, PdfReader reader) throws IOException {
@@ -40,7 +38,6 @@ public class Listing_06_03_SelectPages extends GenericTest {
         PdfDocument copy = new PdfDocument(new PdfWriter(DEST));
         srcDoc.copyPagesTo(pageFrom, pageTo, copy);
         copy.close();
-        srcDoc.setCloseReader(true);
         srcDoc.close();
     }
 }

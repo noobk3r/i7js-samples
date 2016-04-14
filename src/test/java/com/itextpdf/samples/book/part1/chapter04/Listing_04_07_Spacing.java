@@ -47,7 +47,6 @@ public class Listing_04_07_Spacing extends GenericTest {
         table.addCell(cell);
         table.addCell("absolute leading: 20");
 
-        // TODO No setLeading on Cell
         cell = new Cell().add(new Paragraph(longText).setMultipliedLeading(0).setFixedLeading(20));
         table.addCell(cell);
         table.addCell("absolute leading: 3; relative leading: 1.2");

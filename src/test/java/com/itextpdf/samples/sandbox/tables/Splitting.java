@@ -49,7 +49,7 @@ public class Splitting extends GenericTest {
             doc.add(p);
         }
         doc.add(table);
-        for (int i = 0; i < 25; i++) {
+        for (int i = 0; i < 23; i++) {
             doc.add(p);
         }
         table = new Table(2);

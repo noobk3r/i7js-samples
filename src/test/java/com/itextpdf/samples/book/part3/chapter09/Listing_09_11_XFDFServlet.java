@@ -64,7 +64,7 @@ public class Listing_09_11_XFDFServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("application/pdf");
         // Create a reader that interprets the request's input stream
-        // TODO No XfdfReaderXF
+        // TODO DEVSIX-526
         // XfdfReader xfdf = new XfdfReader(request.getInputStream());
         // We get a resource from our web app
         InputStream is

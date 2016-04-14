@@ -28,8 +28,8 @@ import java.io.IOException;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-// TODO See the results
 @Ignore
+// TODO DEVSIX-466
 @Category(SampleTest.class)
 public class SplittingAndRowspan extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/splitting_and_rowspan.pdf";
