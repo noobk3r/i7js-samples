@@ -89,10 +89,10 @@ public class ScaleDown extends GenericTest {
         protected void scaleDown(PdfPage destPage, PdfDictionary pageDictSrc, PdfName box, float scale) {
             PdfArray original = pageDictSrc.getAsArray(box);
             if (original != null) {
-                float width = original.getAsNumber(2).getFloatValue()
-                        - original.getAsNumber(0).getFloatValue();
-                float height = original.getAsNumber(3).getFloatValue()
-                        - original.getAsNumber(1).getFloatValue();
+                float width = original.getAsNumber(2).floatValue()
+                        - original.getAsNumber(0).floatValue();
+                float height = original.getAsNumber(3).floatValue()
+                        - original.getAsNumber(1).floatValue();
                 PdfArray result = new PdfArray();
                 result.add(new PdfNumber(0));
                 result.add(new PdfNumber(0));

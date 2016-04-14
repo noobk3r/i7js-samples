@@ -42,7 +42,7 @@ public class ChangeButton extends GenericTest {
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         PdfFormField button = form.copyField("Test");
         PdfArray rect = button.getWidgets().get(0).getRectangle();
-        rect.set(2, new PdfNumber(rect.getAsNumber(2).getFloatValue() + 172));
+        rect.set(2, new PdfNumber(rect.getAsNumber(2).floatValue() + 172));
         button.setValue("Print Amended");
         form.replaceField("Test", button);
         pdfDoc.close();

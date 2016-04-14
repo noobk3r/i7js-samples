@@ -61,7 +61,7 @@ public class Listing_13_15_InspectForm extends GenericTest {
                 dict = item.getWidgets().get(0).getPdfObject();
             }
             if (null != dict.getAsNumber(PdfName.Ff)) {
-                flags = dict.getAsNumber(PdfName.Ff).getIntValue();
+                flags = dict.getAsNumber(PdfName.Ff).intValue();
                 if ((flags & PdfFormField.FF_PASSWORD) > 0)
                     out.write(" -> password");
                 if ((flags & PdfFormField.FF_MULTILINE) > 0)

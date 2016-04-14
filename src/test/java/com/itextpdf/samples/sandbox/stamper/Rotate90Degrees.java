@@ -48,7 +48,7 @@ public class Rotate90Degrees extends GenericTest {
                 page.setRotation(90);
             }
             else {
-                page.setRotation((rotate.getIntValue() + 90) % 360);
+                page.setRotation((rotate.intValue() + 90) % 360);
             }
         }
         pdfDoc.close();

@@ -46,7 +46,7 @@ public class ChangeFieldPosition extends GenericTest {
         PdfFormField fieldName = fields.get("timezone2");
         PdfWidgetAnnotation annotationName = fieldName.getWidgets().get(0);
         PdfArray annotationRect = annotationName.getRectangle();
-        annotationRect.set(2, new PdfNumber(annotationRect.getAsNumber(2).getFloatValue() - 10f));
+        annotationRect.set(2, new PdfNumber(annotationRect.getAsNumber(2).floatValue() - 10f));
         pdfDoc.close();
     }
 }

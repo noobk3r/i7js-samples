@@ -46,15 +46,15 @@ public class MovePopup extends GenericTest {
         PdfDictionary sticky = annots.getAsDictionary(0);
         PdfArray stickyRect = sticky.getAsArray(PdfName.Rect);
         PdfArray stickyRectangle = new PdfArray(new float[]{
-                stickyRect.getAsNumber(0).getFloatValue() - 120, stickyRect.getAsNumber(1).getFloatValue() - 70,
-                stickyRect.getAsNumber(2).getFloatValue(), stickyRect.getAsNumber(3).getFloatValue() - 30
+                stickyRect.getAsNumber(0).floatValue() - 120, stickyRect.getAsNumber(1).floatValue() - 70,
+                stickyRect.getAsNumber(2).floatValue(), stickyRect.getAsNumber(3).floatValue() - 30
         });
         sticky.put(PdfName.Rect, stickyRectangle);
         PdfDictionary popup = annots.getAsDictionary(1);
         PdfArray popupRect = popup.getAsArray(PdfName.Rect);
         PdfArray popupRectangle = new PdfArray(new float[]{
-                popupRect.getAsNumber(0).getFloatValue() - 250, popupRect.getAsNumber(1).getFloatValue(),
-                popupRect.getAsNumber(2).getFloatValue(), popupRect.getAsNumber(3).getFloatValue() - 250
+                popupRect.getAsNumber(0).floatValue() - 250, popupRect.getAsNumber(1).floatValue(),
+                popupRect.getAsNumber(2).floatValue(), popupRect.getAsNumber(3).floatValue() - 250
         });
         popup.put(PdfName.Rect, popupRectangle);
 

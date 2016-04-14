@@ -50,9 +50,9 @@ public class AddExtraMargin extends GenericTest {
         for (int i = 1; i <= n; i++) {
             pageDict = pdfDoc.getPage(i).getPdfObject();
             mediaBox = pageDict.getAsArray(PdfName.MediaBox);
-            llx = mediaBox.getAsNumber(0).getFloatValue();
-            lly = mediaBox.getAsNumber(1).getFloatValue();
-            ury = mediaBox.getAsNumber(3).getFloatValue();
+            llx = mediaBox.getAsNumber(0).floatValue();
+            lly = mediaBox.getAsNumber(1).floatValue();
+            ury = mediaBox.getAsNumber(3).floatValue();
             mediaBox.set(0, new PdfNumber(llx - 36));
             over = new PdfCanvas(pdfDoc.getPage(i));
             over.saveState();

@@ -132,7 +132,7 @@ public class Listing_13_11_PageLabelExample extends GenericTest {
         int n;
         PdfDictionary pagelabel;
         for (int i = 0; i < nums.size(); i++) {
-            n = nums.getAsNumber(i).getIntValue();
+            n = nums.getAsNumber(i).intValue();
             i++;
             if (n == 5) {
                 pagelabel = nums.getAsDictionary(i);
