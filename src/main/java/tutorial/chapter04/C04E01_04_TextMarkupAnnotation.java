@@ -6,6 +6,7 @@ package tutorial.chapter04;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.*;
+import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfTextMarkupAnnotation;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
@@ -46,7 +47,7 @@ public class C04E01_04_TextMarkupAnnotation {
                 Property.VerticalAlignment.MIDDLE, 0);
 
         //Create text markup annotation
-        PdfTextMarkupAnnotation ann = PdfTextMarkupAnnotation.createHighLight(new Rectangle(105, 790, 64, 10),
+        PdfAnnotation ann = PdfTextMarkupAnnotation.createHighLight(new Rectangle(105, 790, 64, 10),
                 new float[]{169, 790, 105, 790, 169, 800, 105, 800})
                 .setColor(Color.YELLOW)
                 .setTitle(new PdfString("Hello!"))

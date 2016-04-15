@@ -6,6 +6,7 @@ package tutorial.chapter04;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.*;
+import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfLineAnnotation;
 
 import java.io.File;
@@ -41,7 +42,7 @@ public class C04E01_03_LineAnnotation {
         lineEndings.add(new PdfName("Diamond"));
 
         //Create line annotation with inside caption
-        PdfLineAnnotation annotation = new PdfLineAnnotation(
+        PdfAnnotation annotation = new PdfLineAnnotation(
             new Rectangle(0, 0),
             new float[]{20, 790, page.getPageSize().getWidth() - 20, 790})
                 .setLineEndingStyles((lineEndings))

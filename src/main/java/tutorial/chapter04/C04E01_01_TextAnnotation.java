@@ -8,6 +8,7 @@ import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfString;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfTextAnnotation;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
@@ -44,7 +45,7 @@ public class C04E01_01_TextAnnotation {
         document.add(new Paragraph("The example of text annotation."));
 
         //Create text annotation
-        PdfTextAnnotation ann = new PdfTextAnnotation(new Rectangle(20, 800, 0, 0))
+        PdfAnnotation ann = new PdfTextAnnotation(new Rectangle(20, 800, 0, 0))
                 .setColor(Color.GREEN)
                 .setTitle(new PdfString("iText"))
                 .setContents("With iText, you can truly take your documentation needs to the next level.")

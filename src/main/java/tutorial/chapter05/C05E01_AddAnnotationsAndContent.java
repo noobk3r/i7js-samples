@@ -14,6 +14,7 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfString;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
+import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfTextAnnotation;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 
@@ -46,7 +47,7 @@ public class C05E01_AddAnnotationsAndContent {
         PdfDocument pdfDoc = new PdfDocument(reader, writer);
 
         //Add text annotation
-        PdfTextAnnotation ann = new PdfTextAnnotation(new Rectangle(400, 795, 0, 0))
+        PdfAnnotation ann = new PdfTextAnnotation(new Rectangle(400, 795, 0, 0))
                 .setTitle(new PdfString("iText"))
                 .setContents("Please, fill out the form.")
                 .setOpen(true);

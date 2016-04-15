@@ -6,7 +6,6 @@ package tutorial.chapter01;
 import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
@@ -42,12 +41,12 @@ public class C01E03_QuickBrownFox1 {
         Document document = new Document(pdf);
         
         // Compose Paragraph
-        PdfImageXObject fox = new PdfImageXObject(ImageFactory.getImage(FOX));
-        PdfImageXObject dog = new PdfImageXObject(ImageFactory.getImage(DOG));
+        Image fox = new Image(ImageFactory.getImage(FOX));
+        Image dog = new Image(ImageFactory.getImage(DOG));
         Paragraph p = new Paragraph("Quick brown ")
-                .add(new Image(fox))
+                .add(fox)
                 .add(" jumps over the lazy ")
-                .add(new Image(dog));
+                .add(dog);
         // Add Paragraph to document
         document.add(p);
         
