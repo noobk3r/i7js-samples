@@ -61,8 +61,8 @@ public class SignatureTest {
     public static final String CACERT = "./src/test/resources/encryption/CACertSigningAuthority.crt";
     public static final String BRUNO = "./src/test/resources/encryption/bruno.crt";
 
-    public final static String cmpPath = "./src/test/resources/signatures/%s/";
-    public final static String outPath = "./target/test/resources/signatures/%s/";
+    public static final String cmpPath = "./src/test/resources/signatures/%s/";
+    public static final String outPath = "./target/test/resources/signatures/%s/";
 
     private String errorMessage;
 

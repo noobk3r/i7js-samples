@@ -28,7 +28,7 @@ import org.slf4j.LoggerFactory;
 public class GenericTest {
 
     /** The logger class */
-    private final static Logger LOGGER = (Logger) LoggerFactory.getLogger(GenericTest.class.getName());
+    private static final Logger LOGGER = (Logger) LoggerFactory.getLogger(GenericTest.class.getName());
 
     protected boolean compareRenders = false;
 

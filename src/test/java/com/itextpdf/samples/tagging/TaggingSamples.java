@@ -37,8 +37,8 @@ import static org.junit.Assert.fail;
 
 @Category(SampleTest.class)
 public class TaggingSamples extends ExtendedITextTest {
-    static final public String src = "./src/test/resources/tagging/";
-    static final public String dest = "./target/test/resources/tagging/";
+    public static final String src = "./src/test/resources/tagging/";
+    public static final String dest = "./target/test/resources/tagging/";
 
     private static final String text1 = "The 88th Academy Awards ceremony, presented by the Academy of Motion Picture Arts and Sciences (AMPAS), " +
             "honored the best films of 2015 and took place on February 28, 2016, at the Dolby Theatre in Hollywood, Los Angeles, beginning " +

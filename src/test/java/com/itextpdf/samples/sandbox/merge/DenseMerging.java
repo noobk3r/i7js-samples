@@ -38,7 +38,7 @@
 // */
 //@Category(SampleTest.class)
 //public class DenseMerging {
-//    final static File RESULT_FOLDER = new File("target/test-outputs", "merge");
+//    static final File RESULT_FOLDER = new File("target/test-outputs", "merge");
 //
 //    @BeforeClass
 //    public static void setUpBeforeClass() throws Exception {
