@@ -17,7 +17,7 @@ import java.io.OutputStream;
 /**
  * Simple image example.
  */
-public class C01E03_QuickBrownFox1 {
+public class C01E03_QuickBrownFox {
     public static final String DOG = "src/main/resources/img/dog.bmp";
     public static final String FOX = "src/main/resources/img/fox.bmp";
         
@@ -26,7 +26,7 @@ public class C01E03_QuickBrownFox1 {
     public static void main(String args[]) throws IOException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
-        new C01E03_QuickBrownFox1().createPdf(DEST);
+        new C01E03_QuickBrownFox().createPdf(DEST);
     }
     
     public void createPdf(String dest) throws IOException {
