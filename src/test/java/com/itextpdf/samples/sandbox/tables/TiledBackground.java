@@ -80,7 +80,7 @@ public class TiledBackground extends GenericTest {
         @Override
         public void draw(DrawContext drawContext) {
             PdfPattern.Tiling img_pattern = new PdfPattern.Tiling(img.getWidth(), img.getHeight(), img.getWidth(),
-                    img.getHeight()).makeIndirect(drawContext.getDocument());
+                    img.getHeight());
             new PdfPatternCanvas(img_pattern, drawContext.getDocument()).addImage(img, 0, 0, false);
             PdfCanvas canvas = drawContext.getCanvas();
             colorRectangle(canvas, new PatternColor(img_pattern), getOccupiedAreaBBox().getX(),

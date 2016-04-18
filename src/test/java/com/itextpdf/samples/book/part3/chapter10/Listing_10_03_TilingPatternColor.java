@@ -58,14 +58,14 @@ public class Listing_10_03_TilingPatternColor extends GenericTest {
         //Write to canvas
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
 
-        PdfPattern.Tiling square = new PdfPattern.Tiling(15, 15).makeIndirect(pdfDoc);
+        PdfPattern.Tiling square = new PdfPattern.Tiling(15, 15);
         new PdfPatternCanvas(square, pdfDoc).setFillColor(new DeviceRgb(0xFF, 0xFF, 0x00))
                 .setStrokeColor(new DeviceRgb(0xFF, 0x00, 0x00))
                 .rectangle(5, 5, 5, 5)
                 .fillStroke()
                 .release();
 
-        PdfPattern.Tiling ellipse = new PdfPattern.Tiling(15, 10, 20, 25).makeIndirect(pdfDoc);
+        PdfPattern.Tiling ellipse = new PdfPattern.Tiling(15, 10, 20, 25);
         new PdfPatternCanvas(ellipse, pdfDoc)
                 .setFillColor(new DeviceRgb(0xFF, 0xFF, 0x00))
                 .setStrokeColor(new DeviceRgb(0xFF, 0x00, 0x00))
@@ -73,14 +73,14 @@ public class Listing_10_03_TilingPatternColor extends GenericTest {
                 .fillStroke()
                 .release();
 
-        PdfPattern.Tiling circle = new PdfPattern.Tiling(15, 15, 10, 20, false).makeIndirect(pdfDoc);
+        PdfPattern.Tiling circle = new PdfPattern.Tiling(15, 15, 10, 20, false);
         new PdfPatternCanvas(circle, pdfDoc).circle(7.5f, 7.5f, 2.5f).fill().release();
 
-        PdfPattern.Tiling line = new PdfPattern.Tiling(5, 10, false).makeIndirect(pdfDoc);
+        PdfPattern.Tiling line = new PdfPattern.Tiling(5, 10, false);
         new PdfPatternCanvas(line, pdfDoc).setLineWidth(1).moveTo(3, -1).lineTo(3, 11).stroke().release();
 
         Image img = ImageFactory.getImage(IMG_SRC);
-        PdfPattern.Tiling img_pattern = new PdfPattern.Tiling(20, 20, 20, 20).makeIndirect(pdfDoc);
+        PdfPattern.Tiling img_pattern = new PdfPattern.Tiling(20, 20, 20, 20);
         img_pattern.setMatrix(new PdfArray(new float[]{-0.5f, 0f, 0f, 0.5f, 0f, 0f}));
         new PdfPatternCanvas(img_pattern, pdfDoc).addImage(img, 0, 0, 20, false);
 

@@ -56,7 +56,7 @@ public class Listing_10_04_ShadingPatternColor extends GenericTest {
                 = new PdfShading.Radial(new PdfDeviceCs.Rgb(), 200, 700, 50, new float[] {1, 0.968f, 0.58f}, 300, 700, 100, new float[] {0.968f, 0.541f, 0.42f});
         canvas.paintShading(radial);
 
-        PdfPattern.Shading shading = new PdfPattern.Shading(axial).makeIndirect(pdfDoc);
+        PdfPattern.Shading shading = new PdfPattern.Shading(axial);
         colorRectangle(canvas, new PatternColor(shading), 150, 420, 126, 126);
         canvas.setFillColorShading(shading);
         canvas.rectangle(300, 420, 126, 126);
