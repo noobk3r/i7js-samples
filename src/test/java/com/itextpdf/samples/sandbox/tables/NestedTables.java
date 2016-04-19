@@ -39,7 +39,7 @@ public class NestedTables extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc, PageSize.A4.rotate());
 
-        float[] columnWidths = {183, 31, 88, 49, 35, 25, 35, 35, 35, 32, 32, 33, 35, 60, 46, 26};
+        float[] columnWidths = {150, 40, 90, 51, 35, 25, 35, 35, 35, 32, 32, 33, 35, 60, 46, 26};
         Table table = new Table(columnWidths);
         table.setWidth(770F);
         buildNestedTables(table);

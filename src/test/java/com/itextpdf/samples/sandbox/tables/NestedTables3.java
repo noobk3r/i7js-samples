@@ -8,6 +8,7 @@
 package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
@@ -16,15 +17,17 @@ import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.renderer.AbstractRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.IRenderer;
 import com.itextpdf.layout.renderer.TableRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileOutputStream;
+
+import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class NestedTables3 extends GenericTest {
@@ -57,7 +60,7 @@ public class NestedTables3 extends GenericTest {
             inner1.addCell(new Cell().add(new Paragraph("test")));
         }
         cell = new Cell().add(inner1);
-        table.addCell(cell);
+        table.addCell(cell.setPadding(0));
         Table inner2 = new Table(1);
         cell = new Cell();
         cell.setHeight(20);
@@ -68,7 +71,7 @@ public class NestedTables3 extends GenericTest {
             inner2.addCell("test");
         }
         cell = new Cell().add(inner2);
-        table.addCell(cell);
+        table.addCell(cell.setPadding(0));
         doc.add(table);
 
         doc.close();
@@ -108,8 +111,8 @@ public class NestedTables3 extends GenericTest {
             for (IRenderer renderer : childRenderers) {
                 PdfCanvas canvas = drawContext.getCanvas();
                 canvas.beginText();
-                canvas.moveText(renderer.getOccupiedArea().getBBox().getLeft(),
-                        renderer.getOccupiedArea().getBBox().getTop() - this.getPropertyAsFloat(Property.FONT_SIZE));
+                Rectangle box = ((AbstractRenderer)renderer).getInnerAreaBBox();
+                canvas.moveText(box.getLeft(), box.getTop() - this.getPropertyAsFloat(Property.FONT_SIZE));
                 canvas.setFontAndSize(this.getPropertyAsFont(Property.FONT),
                         this.getPropertyAsFloat(Property.FONT_SIZE));
                 canvas.showText("This inner table header will always be repeated");
