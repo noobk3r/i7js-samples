@@ -30,9 +30,8 @@ public class Listing_06_22_ConcatenateStamp extends GenericTest {
             "./target/test/resources/book/part2/chapter06/Listing_06_22_ConcatenateStamp.pdf";
     public static final String MOVIE_LINKS1 =
             "./src/test/resources/book/part1/chapter02/cmp_Listing_02_22_MovieLinks1.pdf";
-    // TODO Change with MovieHistory1 destination after revising the latter
-    public static final String MOVIE_POSTERS3 =
-            "./src/test/resources/book/part1/chapter02/cmp_Listing_02_28_MoviePosters3.pdf";
+    public static final String MOVIE_HISTORY =
+            "./src/test/resources/book/part1/chapter02/cmp_Listing_02_24_MovieHistory.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_06_22_ConcatenateStamp().manipulatePdf(DEST);
@@ -45,7 +44,7 @@ public class Listing_06_22_ConcatenateStamp extends GenericTest {
 
         PdfDocument srcDoc1 = new PdfDocument(new PdfReader(MOVIE_LINKS1));
         int n1 = srcDoc1.getNumberOfPages();
-        PdfDocument srcDoc2 = new PdfDocument(new PdfReader(MOVIE_POSTERS3));
+        PdfDocument srcDoc2 = new PdfDocument(new PdfReader(MOVIE_HISTORY));
         int n2 = srcDoc2.getNumberOfPages();
 
         PdfPage page;

@@ -13,9 +13,11 @@ import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.draw.SolidLine;
 import com.itextpdf.layout.ColumnDocumentRenderer;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
+import com.itextpdf.layout.element.LineSeparator;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.samples.GenericTest;
@@ -33,7 +35,6 @@ import java.util.List;
 
 @Category(SampleTest.class)
 public class Listing_03_16_MovieColumns1 extends GenericTest {
-
     public static final String DEST = "./target/test/resources/book/part1/chapter03/Listing_03_16_MovieColumns1.pdf";
 
     protected PdfFont normal, bold, italic, boldItalic;
@@ -66,6 +67,7 @@ public class Listing_03_16_MovieColumns1 extends GenericTest {
         List<Movie> movies = PojoFactory.getMovies(connection);
         for (Movie movie : movies) {
             doc.add(createMovieInformation(movie));
+            doc.add(new LineSeparator(new SolidLine(0.3f)));
         }
 
         doc.close();
@@ -101,8 +103,6 @@ public class Listing_03_16_MovieColumns1 extends GenericTest {
         p.add(new Text(" Duration: ").setFont(boldItalic));
         p.add(new Text(String.valueOf(movie.getDuration())));
         p.add(new Text(" minutes"));
-        // TODO DEVSIX-459 No LineSeparator
-        //p.add(new LineSeparator(0.3f, 100, null, Element.ALIGN_CENTER, -2));
         return p;
     }
 

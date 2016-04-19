@@ -26,9 +26,8 @@ public class Listing_06_21_Concatenate extends GenericTest {
             = "./target/test/resources/book/part2/chapter06/Listing_06_21_Concatenate.pdf";
     public static final String MOVIE_LINKS1 =
             "./src/test/resources/book/part1/chapter02/cmp_Listing_02_22_MovieLinks1.pdf";
-    // TODO Change with MovieHistory1 destination after revising the latter
-    public static final String MOVIE_POSTERS3 =
-            "./src/test/resources/book/part1/chapter02/cmp_Listing_02_28_MoviePosters3.pdf";
+    public static final String MOVIE_HISTORY =
+            "./src/test/resources/book/part1/chapter02/cmp_Listing_02_24_MovieHistory.pdf";
 
     public static void main(String args[]) throws IOException {
         new Listing_06_21_Concatenate().manipulatePdf(DEST);
@@ -42,7 +41,7 @@ public class Listing_06_21_Concatenate extends GenericTest {
         int n1 = sourceDoc1.getNumberOfPages();
 
         //Initialize source document 1
-        FileInputStream fis2 = new FileInputStream(MOVIE_POSTERS3);
+        FileInputStream fis2 = new FileInputStream(MOVIE_HISTORY);
         PdfReader reader2 = new PdfReader(fis2);
         PdfDocument sourceDoc2 = new PdfDocument(reader2);
         int n2 = sourceDoc2.getNumberOfPages();

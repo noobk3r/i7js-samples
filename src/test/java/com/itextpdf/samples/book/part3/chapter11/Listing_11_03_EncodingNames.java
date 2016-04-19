@@ -8,6 +8,7 @@
 package com.itextpdf.samples.book.part3.chapter11;
 
 import com.itextpdf.io.font.PdfEncodings;
+import com.itextpdf.io.font.TrueTypeFont;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -23,13 +24,11 @@ import java.io.IOException;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_11_03_EncodingNames extends GenericTest {
     public static final String DEST
             = "./target/test/resources/book/part3/chapter11/Listing_11_03_EncodingNames.pdf";
     public static final String[] FONT = {
-            //"c:/windows/fonts/ARBLI__.TTF",
             "./src/test/resources/font/Puritan2.otf",
             /*"c:/windows/fonts/arialbd.ttf"*/"./src/test/resources/font/FreeSans.ttf"
     };
@@ -43,9 +42,8 @@ public class Listing_11_03_EncodingNames extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
         showEncodings(doc, FONT[0]);
-        showEncodings(doc, FONT[1]);
         doc.add(new AreaBreak());
-        showEncodings(doc, FONT[2]);
+        showEncodings(doc, FONT[1]);
         doc.close();
     }
 
@@ -54,11 +52,10 @@ public class Listing_11_03_EncodingNames extends GenericTest {
 
         doc.add(new Paragraph("PostScript name: " + font.getFontProgram().getFontNames().getFontName()));
         doc.add(new Paragraph("Available code pages:"));
-        // TODO No getCodePagesSupported
-        // String[] encoding = font.getCodePagesSupported();
-//        for (int i = 0; i < encoding.length; i++) {
-//            doc.add(new Paragraph("encoding[" + i + "] = " + encoding[i]));
-//        }
-        doc.add(new Paragraph("\n"));
+
+        String[] encoding = ((TrueTypeFont)font.getFontProgram()).getCodePagesSupported();
+        for (int i = 0; i < encoding.length; i++) {
+            doc.add(new Paragraph("encoding[" + i + "] = " + encoding[i]));
+        }
     }
 }

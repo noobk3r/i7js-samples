@@ -77,22 +77,22 @@ public class Listing_12_13_SignatureField extends SignatureTest {
                 .setFlags(PdfAnnotation.PRINT);
         field.setFieldName("mySig");
         field.setPage(1);
-        // TODO No "from-box" MK Dictionary usage
-        // field.setMKBorderColor(BaseColor.BLACK);
-        if (null == field.getWidgets().get(0).getAppearanceCharacteristics()) {
-            field.getWidgets().get(0).setAppearanceCharacteristics(new PdfDictionary());
+
+        PdfDictionary mkDictionary = field.getWidgets().get(0).getAppearanceCharacteristics();
+        if (null == mkDictionary) {
+            mkDictionary = new PdfDictionary();
         }
         PdfArray black = new PdfArray();
         black.add(new PdfNumber(Color.BLACK.getColorValue()[0]));
         black.add(new PdfNumber(Color.BLACK.getColorValue()[1]));
         black.add(new PdfNumber(Color.BLACK.getColorValue()[2]));
-        field.getWidgets().get(0).getAppearanceCharacteristics().put(PdfName.BC, black);
-        // field.setMKBackgroundColor(BaseColor.WHITE);
+        mkDictionary.put(PdfName.BC, black);
         PdfArray white = new PdfArray();
         black.add(new PdfNumber(Color.WHITE.getColorValue()[0]));
         black.add(new PdfNumber(Color.WHITE.getColorValue()[1]));
         black.add(new PdfNumber(Color.WHITE.getColorValue()[2]));
-        field.getWidgets().get(0).getAppearanceCharacteristics().put(PdfName.BG, white);
+        mkDictionary.put(PdfName.BG, white);
+        field.getWidgets().get(0).setAppearanceCharacteristics(mkDictionary);
 
         PdfFormXObject xObject = new PdfFormXObject(new Rectangle(200, 100));
         PdfCanvas canvas = new PdfCanvas(xObject, pdfDoc);

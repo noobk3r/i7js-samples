@@ -15,11 +15,16 @@ import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.layout.LayoutArea;
-import com.itextpdf.layout.renderer.ParagraphRenderer;
+import com.itextpdf.layout.layout.LayoutContext;
+import com.itextpdf.layout.layout.LayoutResult;
+import com.itextpdf.layout.renderer.*;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -36,13 +41,7 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class ThreeParts extends GenericTest {
-    public static final String DEST
-            = "./target/test/resources/sandbox/events/three_parts.pdf";
-    public static final String TEMP1
-            = "./target/test/resources/sandbox/events/three_partsLATIN.pdf";
-    public static final String TEMP2
-            = "./target/test/resources/sandbox/events/three_partsENGLISH.pdf";
-
+    public static final String DEST = "./target/test/resources/sandbox/events/three_parts.pdf";
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
@@ -52,7 +51,7 @@ public class ThreeParts extends GenericTest {
     public Paragraph createParagraph(String path) throws IOException {
         Paragraph p = new Paragraph();
         BufferedReader in = new BufferedReader(
-                new InputStreamReader(new FileInputStream(path), "UTF8"));
+                new InputStreamReader(new FileInputStream(path), "UTF-8"));
         StringBuffer buffer = new StringBuffer();
         String line = in.readLine();
         while (null != line) {
@@ -64,94 +63,40 @@ public class ThreeParts extends GenericTest {
         return p;
     }
 
-    @Override
-    protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc;
-        Document doc;
-        Paragraph latin;
-        Paragraph english;
-        Paragraph french;
-
-        // TODO Simplify this sample because the solution is pretty ugly
-        pdfDoc = new PdfDocument(new PdfWriter(dest));
-        doc = new Document(pdfDoc);
-        doc.add(new AreaBreak());
-        doc.close();
-
-        int lastPageNumber = 0;
-        int curLastPageNumber = 0;
-        for (int section = 0; section < 3; section++) {
-            latin = createParagraph(String.format("./src/test/resources/txt/liber1_%s_la.txt",
-                    section + 1));
-            english = createParagraph(String.format("./src/test/resources/txt/liber1_%s_en.txt",
-                    section + 1));
-            french = createParagraph(String.format("./src/test/resources/txt/liber1_%s_fr.txt",
-                    section + 1));
-
-            latin.setNextRenderer(new ThreePartsParagraphRenderer(latin, 2));
-            english.setNextRenderer(new ThreePartsParagraphRenderer(english, 1));
-            french.setNextRenderer(new ThreePartsParagraphRenderer(french, 0));
-
-            pdfDoc = new PdfDocument(new PdfReader(dest), new PdfWriter(TEMP1));
-            doc = new Document(pdfDoc);
-            for (int i = 0; i < lastPageNumber; i++) {
-                doc.add(new AreaBreak());
+    public void addSection(PdfDocument pdfDoc, Paragraph paragraph, int pageNumber, int sectionNumber) throws IOException {
+        LayoutResult layoutResult;
+        ParagraphRenderer renderer = (ParagraphRenderer) paragraph.createRendererSubTree();
+        renderer.setParent(new DocumentRenderer(new Document(pdfDoc)));
+        while (((layoutResult = renderer.layout(new LayoutContext(new LayoutArea(pageNumber, new Rectangle(36, 36 + ((842 - 72) / 3) * sectionNumber, 523, (842 - 72) / 3)))))).getStatus() != LayoutResult.FULL) {
+            if (pdfDoc.getNumberOfPages() < pageNumber) {
+                pdfDoc.addNewPage();
             }
-            doc.add(latin);
-            curLastPageNumber = Math.max(pdfDoc.getNumberOfPages(), curLastPageNumber);
-            doc.close();
-
-            pdfDoc = new PdfDocument(new PdfReader(TEMP1), new PdfWriter(TEMP2));
-            doc = new Document(pdfDoc);
-            for (int i = 0; i < lastPageNumber; i++) {
-                doc.add(new AreaBreak());
-            }
-            doc.add(english);
-            curLastPageNumber = Math.max(pdfDoc.getNumberOfPages(), curLastPageNumber);
-            doc.close();
-
-            pdfDoc = new PdfDocument(new PdfReader(TEMP2), new PdfWriter(dest));
-            doc = new Document(pdfDoc);
-            for (int i = 0; i < lastPageNumber; i++) {
-                doc.add(new AreaBreak());
-            }
-            doc.add(french);
-            curLastPageNumber = Math.max(pdfDoc.getNumberOfPages(), curLastPageNumber);
-            doc.close();
-
-            lastPageNumber = curLastPageNumber;
+            layoutResult.getSplitRenderer().draw(new DrawContext(pdfDoc, new PdfCanvas(pdfDoc.getPage(pageNumber++)), false));
+            renderer = (ParagraphRenderer) layoutResult.getOverflowRenderer();
         }
-        Files.delete(new File(TEMP1).toPath());
-        Files.delete(new File(TEMP2).toPath());
+        if (pdfDoc.getNumberOfPages() < pageNumber) {
+            pdfDoc.addNewPage();
+        }
+        renderer.draw(new DrawContext(pdfDoc, new PdfCanvas(pdfDoc.getPage(pageNumber)), false));
     }
 
 
-    class ThreePartsParagraphRenderer extends ParagraphRenderer {
-        private int number;
+    @Override
+    protected void manipulatePdf(String dest) throws Exception {
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
+        int firstPageNumber = 1;
 
-        public ThreePartsParagraphRenderer(Paragraph modelElement, int number) {
-            super(modelElement);
-            this.number = number;
+        for (int section = 0; section < 3; section++) {
+            // latin
+            addSection(pdfDoc, createParagraph(String.format("./src/test/resources/txt/liber1_%s_la.txt", section + 1)), firstPageNumber, 2);
+            // english
+            addSection(pdfDoc, createParagraph(String.format("./src/test/resources/txt/liber1_%s_en.txt", section + 1)), firstPageNumber, 1);
+            // french
+            addSection(pdfDoc, createParagraph(String.format("./src/test/resources/txt/liber1_%s_fr.txt", section + 1)), firstPageNumber, 0);
+
+            firstPageNumber = pdfDoc.getNumberOfPages()+1;
         }
 
-        @Override
-        public List<Rectangle> initElementAreas(LayoutArea area) {
-            List<Rectangle> areas = new ArrayList<Rectangle>();
-            Rectangle reviewedArea = area.getBBox().clone();
-            reviewedArea.setHeight((842 - 72) / 3);
-            reviewedArea.setY(36 + ((842 - 72) / 3) * number);
-            areas.add(reviewedArea);
-            return areas;
-        }
-
-        @Override
-        protected ParagraphRenderer createSplitRenderer() {
-            return new ThreePartsParagraphRenderer((Paragraph) modelElement, number);
-        }
-
-        @Override
-        protected ParagraphRenderer createOverflowRenderer() {
-            return new ThreePartsParagraphRenderer((Paragraph) modelElement, number);
-        }
+        pdfDoc.close();
     }
 }

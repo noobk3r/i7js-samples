@@ -9,34 +9,32 @@ package com.itextpdf.samples.book.part2.chapter08;
 
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.kernel.pdf.*;
+import com.itextpdf.kernel.utils.CompareTool;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.IOException;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_08_29_ReaderEnabledForm extends GenericTest {
     public static final String DEST
-            = "./target/test/resources/book/part2/chapter08/Listing_08_29_ReaderEnabledForm.pdf";
-    /**
-     * The original PDF.
-     */
+            = "./target/test/resources/book/part2/chapter08/Listing_08_29_ReaderEnabledForm_xfa_preserved.pdf";
     public static final String RESOURCE = "./src/test/resources/pdfs/xfa_enabled.pdf";
-    /**
-     * The resulting PDF.
-     */
-    public static final String RESULT1 = "./target/test/resources/book/part2/chapter08/xfa_broken.pdf";
-    /**
-     * The resulting PDF.
-     */
-    public static final String RESULT2 = "./target/test/resources/book/part2/chapter08/xfa_removed.pdf";
-    /**
-     * The resulting PDF.
-     */
-    public static final String RESULT3 = "./target/test/resources/book/part2/chapter08/xfa_preserved.pdf";
+    public static final String[] RESULT = {
+            "./target/test/resources/book/part2/chapter08/Listing_08_29_ReaderEnabledForm_xfa_broken.pdf",
+            "./target/test/resources/book/part2/chapter08/Listing_08_29_ReaderEnabledForm_xfa_removed.pdf",
+            "./target/test/resources/book/part2/chapter08/Listing_08_29_ReaderEnabledForm_xfa_preserved.pdf"
+    };
+
+    public static final String[] CMP_RESULT = {
+            "./src/test/resources/book/part2/chapter08/cmp_Listing_08_29_ReaderEnabledForm_xfa_broken.pdf",
+            "./src/test/resources/book/part2/chapter08/cmp_Listing_08_29_ReaderEnabledForm_xfa_removed.pdf",
+            "./src/test/resources/book/part2/chapter08/cmp_Listing_08_29_ReaderEnabledForm_xfa_preserved.pdf"
+    };
 
     /**
      * Removes any usage rights that this PDF may have. Only Adobe can grant usage rights
@@ -66,12 +64,9 @@ public class Listing_08_29_ReaderEnabledForm extends GenericTest {
         } else {
             pdfDoc = new PdfDocument(reader, new PdfWriter(dest));
         }
-        // TODO is this move valid ?
         // remove the usage rights (or not)
         if (remove) {
             removeUsageRights(pdfDoc);
-            // TODO No removeUsageRights
-            // reader.removeUsageRights();
         }
         // fill out the fields
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
@@ -87,8 +82,31 @@ public class Listing_08_29_ReaderEnabledForm extends GenericTest {
     }
 
     protected void manipulatePdf(String dest) throws Exception {
-        manipulatePdf2(RESOURCE, RESULT1, false, false);
-        manipulatePdf2(RESOURCE, RESULT2, true, false);
-        manipulatePdf2(RESOURCE, RESULT3, false, true);
+        manipulatePdf2(RESOURCE, RESULT[0], false, false);
+        manipulatePdf2(RESOURCE, RESULT[1], true, false);
+        manipulatePdf2(RESOURCE, RESULT[2], false, true);
+    }
+
+    @Override
+    protected void comparePdf(String dest, String cmp) throws Exception {
+        CompareTool compareTool = new CompareTool();
+        String outPath;
+        for (int i = 0; i < RESULT.length; i++) {
+            outPath = new File(RESULT[i]).getParent();
+            if (compareXml) {
+                if (!compareTool.compareXmls(RESULT[i], CMP_RESULT[i])) {
+                    addError("The XML structures are different.");
+                }
+            } else {
+                if (compareRenders) {
+                    addError(compareTool.compareVisually(RESULT[i], CMP_RESULT[i], outPath, differenceImagePrefix));
+                    addError(compareTool.compareLinkAnnotations(dest, cmp));
+                } else {
+                    addError(compareTool.compareByContent(RESULT[i], CMP_RESULT[i], outPath, differenceImagePrefix));
+                }
+                addError(compareTool.compareDocumentInfo(RESULT[i], CMP_RESULT[i]));
+            }
+        }
+        if (errorMessage != null) Assert.fail(errorMessage);
     }
 }

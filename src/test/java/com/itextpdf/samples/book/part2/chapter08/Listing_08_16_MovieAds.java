@@ -139,7 +139,7 @@ public class Listing_08_16_MovieAds extends GenericTest {
         // bt.setProportionalIcon(true);
         bt.setImage(String.format(IMAGE, movie.getImdb()));
         bt.setBackgroundColor(color);
-        //form.removeField(POSTER);
+//        form.removeField(POSTER);
         //form.addField(bt);
         // write the text using the appropriate font size
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());

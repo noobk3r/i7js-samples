@@ -68,8 +68,6 @@ public class Listing_11_06_FontFileAndSizes extends GenericTest {
         writeAndClosePdf(pdfDoc, font, OOOO);
         pdfDoc = new PdfDocument(new PdfWriter(RESULT[3]));
         font = PdfFontFactory.createFont(FONT, PdfEncodings.WINANSI, true);
-        // TODO No setCompressionLevel on PdfFont
-        // font.setCompressionLevel(9);
         writeAndClosePdf(pdfDoc, font, TEXT);
         pdfDoc = new PdfDocument(new PdfWriter(RESULT[4]));
         font = PdfFontFactory.createFont(FONT, PdfEncodings.WINANSI, true);

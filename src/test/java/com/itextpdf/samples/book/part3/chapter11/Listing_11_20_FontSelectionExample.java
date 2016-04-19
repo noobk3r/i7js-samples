@@ -20,7 +20,7 @@ import com.itextpdf.samples.GenericTest;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+@Ignore("Font selector not implemented")
 @Category(SampleTest.class)
 public class Listing_11_20_FontSelectionExample extends GenericTest {
     public static final String DEST
@@ -39,7 +39,6 @@ public class Listing_11_20_FontSelectionExample extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
-        // TODO No FontSelector
         // FontSelector selector = new FontSelector();
         PdfFont font1 = PdfFontFactory.createFont(FontConstants.TIMES_ROMAN);
         // f1.setColor(BaseColor.BLUE); // 12

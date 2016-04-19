@@ -7,36 +7,40 @@
 
 package com.itextpdf.samples.book.part3.chapter12;
 
-import com.itextpdf.io.source.ByteArrayOutputStream;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfDocumentInfo;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.utils.CompareTool;
 import com.itextpdf.kernel.xmp.*;
 import com.itextpdf.kernel.xmp.options.PropertyOptions;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.Ignore;
+import org.junit.Assert;
 import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_12_04_MetadataXmp extends GenericTest {
-    public static final String DEST
-            = "./target/test/resources/book/part3/chapter12/Listing_12_04_MetadataXmp.pdf";
-    public static final String RESULT1
-            = "./target/test/resources/book/part3/chapter12/Listing_12_04_MetadataXmp_xmp_metadata.pdf";
-    public static final String RESULT2
-            = "./target/test/resources/book/part3/chapter12/Listing_12_04_MetadataXmp_xmp_metadata_automatic.pdf";
-    public static final String RESULT3
-            = "./target/test/resources/book/part3/chapter12/Listing_12_04_MetadataXmp_xmp_metadata_added.pdf";
-    public static final String RESULT4
-            = "./target/test/resources/book/part3/chapter12/Listing_12_04_MetadataXmp_xmp.xml";
+    public static final String METADATA_PDF
+            = "./src/test/resources/book/part3/chapter12/cmp_Listing_12_01_MetadataPdf.pdf";
+    public static final String[] RESULTS = {
+            "./target/test/resources/book/part3/chapter12/Listing_12_04_MetadataXmp_xmp_metadata.pdf",
+            "./target/test/resources/book/part3/chapter12/Listing_12_04_MetadataXmp_xmp_metadata_automatic.pdf",
+            "./target/test/resources/book/part3/chapter12/Listing_12_04_MetadataXmp_xmp_metadata_added.pdf"
+    };
+    public static final String[] CMP_RESULTS = {
+            "./src/test/resources/book/part3/chapter12/cmp_Listing_12_04_MetadataXmp_xmp_metadata.pdf",
+            "./src/test/resources/book/part3/chapter12/cmp_Listing_12_04_MetadataXmp_xmp_metadata_automatic.pdf",
+            "./src/test/resources/book/part3/chapter12/cmp_Listing_12_04_MetadataXmp_xmp_metadata_added.pdf"
+    };
+    public static final String RESULT_XML = "./target/test/resources/book/part3/chapter12/Listing_12_04_MetadataXmp_xmp.xml";
+    public static final String DEST = RESULTS[0];
 
     public static void main(String args[]) throws IOException, XMPException {
         new Listing_12_04_MetadataXmp().manipulatePdf(DEST);
@@ -76,15 +80,13 @@ public class Listing_12_04_MetadataXmp extends GenericTest {
 
     public void manipulatePdf(String src, String dest) throws IOException, XMPException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
-        PdfDocumentInfo info = pdfDoc.getDocumentInfo();
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        // TODO
-        // pdfDoc.createXmpMetadata();
+        pdfDoc.createXmpMetadata();
         pdfDoc.close();
     }
 
     /**
      * Reads the XML stream inside a PDF file into an XML file.
+     *
      * @param src  A PDF file containing XMP data
      * @param dest XML file containing the XMP data extracted from the PDF
      * @throws IOException
@@ -100,11 +102,32 @@ public class Listing_12_04_MetadataXmp extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException, XMPException {
-        createPdf(RESULT1);
-        createPdfAutomatic(RESULT2);
-        // TODO Make cmp
-        new Listing_12_01_MetadataPdf().createPdf(Listing_12_01_MetadataPdf.DEST);
-        manipulatePdf(Listing_12_01_MetadataPdf.DEST, RESULT3);
-        // readXmpMetadata(RESULT3, RESULT4);
+        createPdf(RESULTS[0]);
+        createPdfAutomatic(RESULTS[1]);
+        manipulatePdf(METADATA_PDF, RESULTS[2]);
+        readXmpMetadata(RESULTS[2], RESULT_XML);
+    }
+
+    @Override
+    protected void comparePdf(String dest, String cmp) throws Exception {
+        CompareTool compareTool = new CompareTool();
+        String outPath;
+        for (int i = 0; i < RESULTS.length; i++) {
+            outPath = new File(RESULTS[i]).getParent();
+            if (compareXml) {
+                if (!compareTool.compareXmls(RESULTS[i], CMP_RESULTS[i])) {
+                    addError("The XML structures are different.");
+                }
+            } else {
+                if (compareRenders) {
+                    addError(compareTool.compareVisually(RESULTS[i], CMP_RESULTS[i], outPath, differenceImagePrefix));
+                    addError(compareTool.compareLinkAnnotations(dest, cmp));
+                } else {
+                    addError(compareTool.compareByContent(RESULTS[i], CMP_RESULTS[i], outPath, differenceImagePrefix));
+                }
+                addError(compareTool.compareDocumentInfo(RESULTS[i], CMP_RESULTS[i]));
+            }
+        }
+        if (errorMessage != null) Assert.fail(errorMessage);
     }
 }

@@ -20,7 +20,6 @@ import com.itextpdf.samples.GenericTest;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_11_14_Diacritics2 extends GenericTest {
     public static final String DEST =
@@ -43,11 +42,10 @@ public class Listing_11_14_Diacritics2 extends GenericTest {
         doc.add(new Paragraph("Movie title: In Bed With Santa (Sweden)"));
         doc.add(new Paragraph("directed by Kjell Sundvall"));
         PdfFont f = PdfFontFactory.createFont(FONTS[0], PdfEncodings.CP1252, true);
-        // TODO No setCharacterAdvance
-        // f.setCharAdvance('\u00a8', -100);
+        f.getGlyph('\u00a8').setXAdvance((short)-450);
         doc.add(new Paragraph(MOVIE).setFont(f));
         f = PdfFontFactory.createFont(FONTS[1], PdfEncodings.CP1252, true);
-        // f.setCharAdvance('\u00a8', 0);
+        f.getGlyph('\u00a8').setXAdvance((short)-600);
         doc.add(new Paragraph(MOVIE).setFont(f));
         doc.close();
     }

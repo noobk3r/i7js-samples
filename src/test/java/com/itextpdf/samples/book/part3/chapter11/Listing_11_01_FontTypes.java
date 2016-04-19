@@ -9,11 +9,15 @@ package com.itextpdf.samples.book.part3.chapter11;
 
 import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.io.font.PdfEncodings;
+import com.itextpdf.io.font.TrueTypeCollection;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.draw.LineDrawer;
+import com.itextpdf.kernel.pdf.canvas.draw.SolidLine;
 import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.LineSeparator;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -24,22 +28,18 @@ import org.junit.experimental.categories.Category;
 @Ignore
 @Category(SampleTest.class)
 public class Listing_11_01_FontTypes extends GenericTest {
-    public static final String DEST
-            = "./target/test/resources/book/part3/chapter11/Listing_11_01_FontTypes.pdf";
-    public static String TEXT
-            = "quick brown fox jumps over the lazy dog\nQUICK BROWN FOX JUMPS OVER THE LAZY DOG";
+    public static final String DEST = "./target/test/resources/book/part3/chapter11/Listing_11_01_FontTypes.pdf";
+    public static String TEXT = "quick brown fox jumps over the lazy dog\nQUICK BROWN FOX JUMPS OVER THE LAZY DOG";
     public static String[][] FONTS = {
             {FontConstants.HELVETICA, PdfEncodings.WINANSI},
-            // TODO problems with CMR fonts
             {"./src/test/resources/font/cmr10.afm", PdfEncodings.WINANSI},
+            // TODO problems with CMR fonts
             {"./src/test/resources/font/cmr10.pfm", PdfEncodings.WINANSI},
-            //{"c:/windows/fonts/ARBLI__.TTF", PdfEncodings.WINANSI},
             {/*"c:/windows/fonts/arial.ttf"*/"./src/test/resources/font/FreeSans.ttf", PdfEncodings.WINANSI},
             {/*"c:/windows/fonts/arial.ttf"*/"./src/test/resources/font/FreeSans.ttf", PdfEncodings.IDENTITY_H},
             {"./src/test/resources/font/Puritan2.otf", PdfEncodings.WINANSI},
             // Notice that we'va changed windows MS Gothic to IPA Gothic so the results in comparison with itext5 are different
-            {"./src/test/resources/font/ipam.ttc,0", PdfEncodings.IDENTITY_H},
-            // TODO Do not render
+            {"./src/test/resources/font/ipam.ttc", PdfEncodings.IDENTITY_H},
             {"KozMinPro-Regular", "UniJIS-UCS2-H"}
     };
 
@@ -53,14 +53,17 @@ public class Listing_11_01_FontTypes extends GenericTest {
         Document doc = new Document(pdfDoc);
         PdfFont font;
         for (int i = 0; i < FONTS.length; i++) {
-            font = PdfFontFactory.createFont(FONTS[i][0], FONTS[i][1], true);
-            doc.add(new Paragraph(
-                    String.format("Font file: %s with encoding %s", FONTS[i][0], FONTS[i][1])));
-            doc.add(new Paragraph(
-                    String.format("iText class: %s", font.getClass().getName())));
+            if (FONTS[i][0].endsWith(".ttc")) {
+                TrueTypeCollection coll = new TrueTypeCollection(FONTS[i][0], FONTS[i][1]);
+                font = PdfFontFactory.createFont(coll.getFontByTccIndex(0), FONTS[i][1], true);
+            } else {
+                font = PdfFontFactory.createFont(FONTS[i][0], FONTS[i][1], true);
+            }
+            doc.add(new Paragraph(String.format("Font file: %s with encoding %s", FONTS[i][0], FONTS[i][1])));
+            doc.add(new Paragraph(String.format("iText class: %s", font.getClass().getName())));
             doc.add(new Paragraph(TEXT).setFont(font).setFontSize(12));
-            // TODO No LineSeparator
-            // doc.add(new LineSeparator(0.5f, 100, null, 0, -5));
+            LineDrawer line = new SolidLine(0.5f);
+            doc.add(new LineSeparator(line));
         }
         doc.close();
     }

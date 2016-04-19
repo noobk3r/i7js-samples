@@ -50,7 +50,6 @@ public class Listing_11_13_Diacritics1 extends GenericTest {
         Image img = new Image(ImageFactory.getImage(POSTER));
         img.scale(0.5f, 0.5f);
         img.setBorder(new SolidBorder(Color.LIGHT_GRAY, 18f));
-        // TODO No TextWrap alignment
         img.setHorizontalAlignment(Property.HorizontalAlignment.LEFT);
         doc.add(img);
         doc.add(new Paragraph(

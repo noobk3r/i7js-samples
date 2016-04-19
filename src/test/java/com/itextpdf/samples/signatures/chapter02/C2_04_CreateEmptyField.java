@@ -70,23 +70,23 @@ public class C2_04_CreateEmptyField extends SignatureTest {
         field.setPage(1);
         field.getWidgets().get(0).setHighlightMode(PdfAnnotation.HIGHLIGHT_INVERT).setFlags(PdfAnnotation.PRINT);
 
-        // TODO No "from-box" MK Dictionary usage
-        // field.setMKBorderColor(BaseColor.BLACK);
-        if (null == field.getWidgets().get(0).getAppearanceCharacteristics()) {
-            field.getWidgets().get(0).setAppearanceCharacteristics(new PdfDictionary());
+        PdfDictionary mkDictionary = field.getWidgets().get(0).getAppearanceCharacteristics();
+        if (null == mkDictionary) {
+            mkDictionary = new PdfDictionary();
         }
         PdfArray black = new PdfArray();
         black.add(new PdfNumber(Color.BLACK.getColorValue()[0]));
         black.add(new PdfNumber(Color.BLACK.getColorValue()[1]));
         black.add(new PdfNumber(Color.BLACK.getColorValue()[2]));
-        field.getWidgets().get(0).getAppearanceCharacteristics().put(PdfName.BC, black);
-        // field.setMKBackgroundColor(BaseColor.WHITE);
+        mkDictionary.put(PdfName.BC, black);
+
         PdfArray white = new PdfArray();
         black.add(new PdfNumber(Color.WHITE.getColorValue()[0]));
         black.add(new PdfNumber(Color.WHITE.getColorValue()[1]));
         black.add(new PdfNumber(Color.WHITE.getColorValue()[2]));
-        field.getWidgets().get(0).getAppearanceCharacteristics().put(PdfName.BG, white);
+        mkDictionary.put(PdfName.BG, white);
 
+        field.getWidgets().get(0).setAppearanceCharacteristics(mkDictionary);
 
         // add the field
         PdfAcroForm.getAcroForm(pdfDoc, true).addField(field);

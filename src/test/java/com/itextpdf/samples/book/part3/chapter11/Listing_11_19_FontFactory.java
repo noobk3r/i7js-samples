@@ -36,7 +36,7 @@ public class Listing_11_19_FontFactory extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
-        PdfFont font =  PdfFontFactory.createFont(FontConstants.TIMES_ROMAN);
+        PdfFont font = PdfFontFactory.createFont(FontConstants.TIMES_ROMAN);
         doc.add(new Paragraph("Times-Roman").setFont(font));
         PdfFont fontBold = PdfFontFactory.createFont(FontConstants.TIMES_BOLD);
         doc.add(new Paragraph("Times-Roman, Bold").setFont(fontBold));
@@ -46,6 +46,7 @@ public class Listing_11_19_FontFactory extends GenericTest {
         PdfFont myBoldFont = PdfFontFactory.createRegisteredFont("my_bold_font");
         doc.add(new Paragraph(font.getFontProgram().getFontNames().getFontName()).setFont(myBoldFont));
         String[][] name = myBoldFont.getFontProgram().getFontNames().getFullName();
+        // TODO Problems with CMR font
         for (int i = 0; i < name.length; i++) {
             doc.add(new Paragraph(name[i][3] + " (" + name[i][0]
                     + "; " + name[i][1] + "; " + name[i][2] + ")"));
@@ -56,18 +57,16 @@ public class Listing_11_19_FontFactory extends GenericTest {
         doc.add(new Paragraph("\n"));
 
         doc.add(new Paragraph("Registered fonts:"));
-        FontFactory.registerDirectory("resources/fonts");
+        // "./src/test/resources/font" include so many fonts that we decided to use the other directory
+        FontFactory.registerDirectory("./src/test/resources/book/part3/chapter11/font/");
         for (String f : FontFactory.getRegisteredFonts()) {
             doc.add(new Paragraph(f).setFont(PdfFontFactory.createRegisteredFont(f, "", true)));
         }
         doc.add(new Paragraph("\n"));
 
-        // TODO CMR font issue
-        // PdfFont cmr10 = PdfFont.createRegisteredFont(pdfDoc, "cmr10");
-        // cmr10.getFontProgram().getFontNames().setFontName("Computer Modern Regular");
-        // PdfFont computerModern = PdfFont.createRegisteredFont(pdfDoc,"Computer Modern Regular", "", true);
-        // doc.add(new Paragraph("Computer Modern").setFont(computerModern));
-        // doc.add(new Paragraph("\n"));
+        PdfFont cmr10 = PdfFontFactory.createRegisteredFont("cmr10");
+        doc.add(new Paragraph("Computer Modern").setFont(cmr10));
+        doc.add(new Paragraph("\n"));
 
         FontFactory.registerSystemDirectories();
         for (String f : FontFactory.getRegisteredFamilies()) {
@@ -78,8 +77,6 @@ public class Listing_11_19_FontFactory extends GenericTest {
         PdfFont garamond = PdfFontFactory.createRegisteredFont("garamond", PdfEncodings.WINANSI, true);
         doc.add(new Paragraph("Garamond").setFont(garamond));
         PdfFont garamondItalic = PdfFontFactory.createRegisteredFont("Garamond", PdfEncodings.WINANSI, true, FontConstants.ITALIC);
-        // PdfFont garamondItalic
-        //         = FontFactory.getFont("Garamond", BaseFont.WINANSI, BaseFont.EMBEDDED, 12, Font.ITALIC);
         doc.add(new Paragraph("Garamond-Italic").setFont(garamondItalic).setFontSize(12));
 
         doc.close();

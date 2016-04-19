@@ -48,7 +48,6 @@ public class ColoredBorder extends GenericTest {
         cell.setBorderBottom(new SolidBorder(Color.BLUE, 1));
         table.addCell(cell);
         cell = new Cell().add("Cell 2");
-        // TODO Compare with itext5 border rendering to see the difference
         cell.setBorderLeft(new SolidBorder(Color.GREEN, 5));
         cell.setBorderTop(new SolidBorder(Color.YELLOW, 8));
         table.addCell(cell);
