@@ -27,9 +27,9 @@ import java.util.StringTokenizer;
 
 @Category(SampleTest.class)
 public class FillFlattenMerge2 extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/state.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/reporting/fill_flatten_merge2.pdf";
     public static final String DATA = "./src/test/resources/data/united_states.csv";
+    public static final String SRC = "./src/test/resources/pdfs/state.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -43,12 +43,14 @@ public class FillFlattenMerge2 extends GenericTest {
         writer.setSmartMode(true);
         PdfDocument pdfDoc = new PdfDocument(writer);
         pdfDoc.initializeOutlines();
+
         ByteArrayOutputStream baos;
         PdfReader reader;
         PdfDocument pdfInnerDoc;
         Map<String, PdfFormField> fields;
         PdfAcroForm form;
         StringTokenizer tokenizer;
+
         BufferedReader br = new BufferedReader(new FileReader(DATA));
         String line = br.readLine();
         while ((line = br.readLine()) != null) {
@@ -76,6 +78,7 @@ public class FillFlattenMerge2 extends GenericTest {
             pdfInnerDoc.close();
         }
         br.close();
+
         pdfDoc.close();
     }
 }
