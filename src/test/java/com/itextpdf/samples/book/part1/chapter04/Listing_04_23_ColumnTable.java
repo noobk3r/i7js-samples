@@ -39,7 +39,6 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
@@ -102,7 +101,7 @@ public class Listing_04_23_ColumnTable extends GenericTest {
 
     public Table getTable(DatabaseConnection connection, Date day)
             throws SQLException, IOException {
-        Table table = new Table(new float[]{2, 1, 2, 5, 1});
+        Table table = new Table(new float[]{2, 1.5f, 2, 4.5f, 1});
         table.setWidthPercent(100);
         Style style = new Style().setBackgroundColor(Color.LIGHT_GRAY);
         table.addHeaderCell(new Cell().add("Location").addStyle(style));
