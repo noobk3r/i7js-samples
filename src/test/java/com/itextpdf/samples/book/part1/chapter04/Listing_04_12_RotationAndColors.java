@@ -7,12 +7,11 @@
 
 package com.itextpdf.samples.book.part1.chapter04;
 
-import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.color.DeviceGray;
+import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
 import com.itextpdf.layout.border.Border;
@@ -20,15 +19,16 @@ import com.itextpdf.layout.border.SolidBorder;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
+// TODO DEVSIX-574
 public class Listing_04_12_RotationAndColors extends GenericTest {
     public static final String DEST =
             "./target/test/resources/book/part1/chapter04/Listing_04_12_RotationAndColors.pdf";
