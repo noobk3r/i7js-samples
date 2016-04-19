@@ -61,7 +61,7 @@ public class WatermarkedImages3 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
         Table table = new Table(1).setWidthPercent(80);
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 40; i++) {
             table.addCell(new Cell().add(new Paragraph("rahlrokks doesn't listen to what people tell him")));
         }
         table.addCell(new Cell().add(getWatermarkedImage(doc, new Image(ImageFactory.getImage(IMAGE1)), "Bruno").setAutoScale(true)));

@@ -59,7 +59,7 @@ public class UnitedStates extends GenericTest {
 
         PdfFont font = PdfFontFactory.createFont(FontConstants.HELVETICA);
         PdfFont bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
-        Table table = new Table(new float[]{4, 1, 3, 4, 3, 3, 3, 3, 1});
+        Table table = new Table(new float[]{4, 1.5f, 3, 4, 3, 3, 3, 3, 1});
         table.setWidthPercent(100);
         BufferedReader br = new BufferedReader(new FileReader(DATA));
         String line = br.readLine();
