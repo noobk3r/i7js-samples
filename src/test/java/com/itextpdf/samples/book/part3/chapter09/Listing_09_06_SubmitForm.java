@@ -20,9 +20,6 @@ import com.itextpdf.samples.GenericTest;
 
 import java.io.IOException;
 
-import org.junit.Ignore;
-
-@Ignore
 public class Listing_09_06_SubmitForm extends GenericTest {
     public static final String DEST
             = "./target/test/resources/book/part3/chapter09/Listing_09_06_SubmitForm.pdf";
