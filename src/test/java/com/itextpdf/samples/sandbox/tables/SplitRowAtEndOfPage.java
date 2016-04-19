@@ -36,9 +36,9 @@ public class SplitRowAtEndOfPage extends GenericTest {
         Table table = new Table(1);
         table.setWidth(550);
         // the number of iterations has been changed in order to provide the same as in itext5 example
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 6; i++) {
             Cell cell;
-            if (i == 4) {
+            if (i == 5) {
                 cell = new Cell().add("Three\nLines\nHere");
             } else {
                 cell = new Cell().add(Integer.toString(i));

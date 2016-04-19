@@ -15,10 +15,11 @@ import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileOutputStream;
+
+import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class SplitRowAtSpecificRow extends GenericTest {
@@ -35,9 +36,9 @@ public class SplitRowAtSpecificRow extends GenericTest {
         Table table = new Table(1);
         table.setWidth(550);
         // the number of iterations has been changed in order to provide the same as in itext5 example
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 6; i++) {
             Cell cell;
-            if (i == 4) {
+            if (i == 5) {
                 cell = new Cell().add("Three\nLines\nHere");
             }
             else {

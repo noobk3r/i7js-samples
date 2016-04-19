@@ -43,7 +43,7 @@ public class CellTitle extends GenericTest {
     public Cell getCell(String content, String title) {
         Cell cell = new Cell().add(content);
         cell.setNextRenderer(new CellTitleRenderer(cell, title));
-        cell.setPadding(5);
+        cell.setPaddingTop(8).setPaddingBottom(8);
         return cell;
     }
 
@@ -79,7 +79,7 @@ public class CellTitle extends GenericTest {
             new Canvas(aboveCanvas, drawContext.getDocument(), getOccupiedAreaBBox())
                     .add(new Paragraph(title)
                             .setBackgroundColor(Color.LIGHT_GRAY)
-                            .setFixedPosition(getOccupiedAreaBBox().getLeft() + 5, getOccupiedAreaBBox().getTop() - 5, 30));
+                            .setFixedPosition(getOccupiedAreaBBox().getLeft() + 5, getOccupiedAreaBBox().getTop() - 8, 30));
         }
     }
 }
