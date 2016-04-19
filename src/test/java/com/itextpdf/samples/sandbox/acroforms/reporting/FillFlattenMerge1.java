@@ -40,6 +40,7 @@ public class FillFlattenMerge1 extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
+        pdfDoc.initializeOutlines();
         ByteArrayOutputStream baos;
         PdfDocument pdfInnerDoc;
         Map<String, PdfFormField> fields;

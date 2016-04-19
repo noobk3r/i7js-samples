@@ -7,13 +7,13 @@
 
 package com.itextpdf.samples.book.part2.chapter06;
 
+import com.itextpdf.forms.PdfAcroForm;
+import com.itextpdf.forms.PdfPageFormCopier;
+import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.io.source.ByteArrayOutputStream;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.forms.PdfAcroForm;
-import com.itextpdf.forms.PdfPageFormCopier;
-import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
@@ -22,14 +22,13 @@ import com.lowagie.filmfestival.Director;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.Screening;
+import org.junit.experimental.categories.Category;
 
 import java.io.ByteArrayInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_06_19_FillDataSheet extends GenericTest{
@@ -48,6 +47,7 @@ public class Listing_06_19_FillDataSheet extends GenericTest{
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
         // Get the movies
         PdfDocument pdfDocResult = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
+        pdfDocResult.initializeOutlines();
         List<Movie> movies = PojoFactory.getMovies(connection);
         PdfReader reader;
         PdfDocument pdfDoc;

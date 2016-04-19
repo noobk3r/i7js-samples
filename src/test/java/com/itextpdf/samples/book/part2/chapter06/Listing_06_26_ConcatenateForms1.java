@@ -7,20 +7,18 @@
 
 package com.itextpdf.samples.book.part2.chapter06;
 
+import com.itextpdf.forms.PdfPageFormCopier;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.forms.PdfPageFormCopier;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
-
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_06_26_ConcatenateForms1 extends GenericTest {
@@ -39,6 +37,7 @@ public class Listing_06_26_ConcatenateForms1 extends GenericTest {
         FileOutputStream fos = new FileOutputStream(DEST);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
+        pdfDoc.initializeOutlines();
 
         // Create the first source document
         FileInputStream fis = new FileInputStream(DATASHEET);

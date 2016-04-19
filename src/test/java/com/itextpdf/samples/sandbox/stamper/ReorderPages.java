@@ -20,13 +20,12 @@ import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.util.LinkedHashSet;
 import java.util.Set;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class ReorderPages extends GenericTest {
@@ -55,6 +54,7 @@ public class ReorderPages extends GenericTest {
         PdfDocument srcDoc = new PdfDocument(new PdfReader(new RandomAccessSourceFactory().createSource(baos.toByteArray()),
                 null, null, null, null, null));
         PdfDocument resultDoc = new PdfDocument(new PdfWriter(dest));
+        resultDoc.initializeOutlines();
 
         Set<Integer> pages = new LinkedHashSet<>();
         pages.add(1);

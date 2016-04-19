@@ -28,13 +28,12 @@ import com.itextpdf.layout.element.TabStop;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 import java.util.TreeMap;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class MergeWithToc extends GenericTest {
@@ -60,6 +59,7 @@ public class MergeWithToc extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
+        pdfDoc.initializeOutlines();
         Document doc = new Document(pdfDoc);
         Map<Integer, String> toc = new TreeMap<Integer, String>();
         int n;

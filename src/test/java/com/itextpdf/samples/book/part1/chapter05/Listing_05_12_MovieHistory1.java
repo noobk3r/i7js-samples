@@ -14,29 +14,28 @@ import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.navigation.PdfDestination;
+import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
-import com.itextpdf.layout.element.*;
+import com.itextpdf.layout.element.AreaBreak;
+import com.itextpdf.layout.element.BlockElement;
+import com.itextpdf.layout.element.Div;
+import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.renderer.BlockRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
-import com.itextpdf.layout.renderer.ParagraphRenderer;
-import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.layout.Document;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.MovieComparator;
 import com.lowagie.filmfestival.PojoFactory;
+import com.lowagie.filmfestival.PojoToElementFactory;
+import org.junit.experimental.categories.Category;
 
 import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.*;
-import java.util.List;
-
-import com.lowagie.filmfestival.PojoToElementFactory;
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_05_12_MovieHistory1 extends GenericTest {
@@ -174,6 +173,7 @@ public class Listing_05_12_MovieHistory1 extends GenericTest {
         }
 
         PdfDocument resultDoc = new PdfDocument(new PdfWriter(DEST));
+        resultDoc.initializeOutlines();
         Set<Integer> pages = new LinkedHashSet<>();
         for (int i : order) {
             pages.add(i);

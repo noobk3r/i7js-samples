@@ -16,6 +16,7 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -23,8 +24,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.Map;
 import java.util.StringTokenizer;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class FillFlattenMerge2 extends GenericTest {
@@ -43,6 +42,7 @@ public class FillFlattenMerge2 extends GenericTest {
         PdfWriter writer = new PdfWriter(DEST);
         writer.setSmartMode(true);
         PdfDocument pdfDoc = new PdfDocument(writer);
+        pdfDoc.initializeOutlines();
         ByteArrayOutputStream baos;
         PdfReader reader;
         PdfDocument pdfInnerDoc;

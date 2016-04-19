@@ -12,13 +12,14 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Link;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
+import org.junit.experimental.categories.Category;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -27,8 +28,6 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_07_09_FindDirectors extends GenericTest {
@@ -82,6 +81,7 @@ public class Listing_07_09_FindDirectors extends GenericTest {
                 new PdfDocument(new PdfReader(NESTED_TABLES))};
 
         pdfDoc = new PdfDocument(new PdfWriter(DEST));
+        pdfDoc.initializeOutlines();
         pdfDoc.getCatalog()
                 .setOpenAction(PdfAction.createJavaScript(readFileToString(RESOURCE)));
         int n;

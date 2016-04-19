@@ -7,15 +7,16 @@
 
 package com.itextpdf.samples.book.part2.chapter06;
 
+import com.itextpdf.forms.PdfAcroForm;
+import com.itextpdf.forms.PdfPageFormCopier;
+import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.io.source.ByteArrayOutputStream;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.forms.PdfAcroForm;
-import com.itextpdf.forms.PdfPageFormCopier;
-import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.ByteArrayInputStream;
 import java.io.FileOutputStream;
@@ -24,8 +25,6 @@ import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_06_27_ConcatenateForms2 extends GenericTest {
@@ -63,6 +62,7 @@ public class Listing_06_27_ConcatenateForms2 extends GenericTest {
         FileOutputStream fos = new FileOutputStream(DEST);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
+        pdfDoc.initializeOutlines();
 
         // Create the first source document
         PdfReader reader = new PdfReader(new ByteArrayInputStream(renameFieldsIn(DATASHEET, 1)));

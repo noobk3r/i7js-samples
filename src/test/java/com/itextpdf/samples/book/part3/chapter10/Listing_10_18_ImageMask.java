@@ -12,13 +12,12 @@ import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_10_18_ImageMask extends GenericTest {
@@ -64,6 +63,7 @@ public class Listing_10_18_ImageMask extends GenericTest {
     // Only for testing reasons
     protected void concatenateResults(String dest, String[] names) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
+        pdfDoc.initializeOutlines();
         PdfDocument tempDoc;
         for (String name : names) {
             tempDoc = new PdfDocument(new PdfReader(name));

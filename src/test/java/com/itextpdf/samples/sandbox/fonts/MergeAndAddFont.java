@@ -78,6 +78,7 @@ public class MergeAndAddFont extends GenericTest {
         PdfWriter writer = new PdfWriter(result);
         writer.setSmartMode(isSmartModeOn);
         PdfDocument pdfDoc = new PdfDocument(writer);
+        pdfDoc.initializeOutlines();
         for (int i = 0; i < files.length; i++) {
             PdfDocument addedDoc = new PdfDocument(new PdfReader(files[i]));
             addedDoc.copyPagesTo(1, addedDoc.getNumberOfPages(), pdfDoc);

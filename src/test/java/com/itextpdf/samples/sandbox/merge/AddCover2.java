@@ -11,17 +11,16 @@
  */
 package com.itextpdf.samples.sandbox.merge;
 
+import com.itextpdf.forms.PdfPageFormCopier;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.forms.PdfPageFormCopier;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class AddCover2 extends GenericTest {
@@ -40,6 +39,7 @@ public class AddCover2 extends GenericTest {
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(RESOURCE), new PdfWriter(dest));
         PdfDocument cover = new PdfDocument(new PdfReader(COVER));
+        pdfDoc.initializeOutlines();
         cover.copyPagesTo(1, 1, pdfDoc, 1, new PdfPageFormCopier());
         cover.close();
         pdfDoc.close();

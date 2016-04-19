@@ -22,6 +22,7 @@ import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
+import org.junit.experimental.categories.Category;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -30,8 +31,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedHashSet;
 import java.util.Set;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_06_16_InsertPages extends GenericTest {
@@ -54,6 +53,7 @@ public class Listing_06_16_InsertPages extends GenericTest {
         changePdf(STAMP_STATIONERY, DEST_TEMP);
 
         PdfDocument resultDoc = new PdfDocument(new PdfWriter(DEST));
+        resultDoc.initializeOutlines();
 
         PdfDocument srcDoc = new PdfDocument(new PdfReader(DEST_TEMP));
         Set<Integer> pageNumbers = new LinkedHashSet<Integer>();
