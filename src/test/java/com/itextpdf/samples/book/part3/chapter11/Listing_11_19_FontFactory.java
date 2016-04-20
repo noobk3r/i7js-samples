@@ -8,6 +8,7 @@
 package com.itextpdf.samples.book.part3.chapter11;
 
 import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.FontEncoding;
 import com.itextpdf.io.font.FontFactory;
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.kernel.font.PdfFont;
@@ -46,7 +47,6 @@ public class Listing_11_19_FontFactory extends GenericTest {
         PdfFont myBoldFont = PdfFontFactory.createRegisteredFont("my_bold_font");
         doc.add(new Paragraph(font.getFontProgram().getFontNames().getFontName()).setFont(myBoldFont));
         String[][] name = myBoldFont.getFontProgram().getFontNames().getFullName();
-        // TODO Problems with CMR font
         for (int i = 0; i < name.length; i++) {
             doc.add(new Paragraph(name[i][3] + " (" + name[i][0]
                     + "; " + name[i][1] + "; " + name[i][2] + ")"));
@@ -64,7 +64,7 @@ public class Listing_11_19_FontFactory extends GenericTest {
         }
         doc.add(new Paragraph("\n"));
 
-        PdfFont cmr10 = PdfFontFactory.createRegisteredFont("cmr10");
+        PdfFont cmr10 = PdfFontFactory.createRegisteredFont("cmr10", FontEncoding.FONT_SPECIFIC);
         doc.add(new Paragraph("Computer Modern").setFont(cmr10));
         doc.add(new Paragraph("\n"));
 

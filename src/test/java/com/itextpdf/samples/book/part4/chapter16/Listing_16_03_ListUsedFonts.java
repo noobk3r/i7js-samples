@@ -30,12 +30,12 @@ public class Listing_16_03_ListUsedFonts {
     public static final String DEST = "./target/test/resources/book/part4/chapter16/Listing_16_03_ListUsedFonts.pdf";
     public static final String RESULT = "./target/test/resources/book/part4/chapter16/Listing_16_03_ListUsedFonts.txt";
     public static final String FONT_TYPES = "./src/test/resources/book/part3/chapter11/cmp_Listing_11_01_FontTypes.pdf";
-    public static final String CMP_RESULT = "ArialMT subset (HMHOIF)\n" +
-            "ArialMT subset (HRQGHL)\n" +
-            "CMR10\n" +
+    public static final String CMP_RESULT = "CMR10 (Type 1) embedded\n" +
+            "FreeSans subset (ETQTMI)\n" +
+            "FreeSans subset (IOFFKS)\n" +
             "Helvetica nofontdescriptor\n" +
+            "IPAMincho subset (WPTCON)\n" +
             "KozMinPro-Regular-UniJIS-UCS2-H nofontdescriptor\n" +
-            "MS-Gothic subset (GKOUJJ)\n" +
             "Puritan2 (Type1) embedded\n";
 
     public static void main(String args[]) throws Exception {

@@ -8,6 +8,7 @@
 package com.itextpdf.samples.book.part3.chapter11;
 
 import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.FontEncoding;
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.io.font.TrueTypeCollection;
 import com.itextpdf.kernel.font.PdfFont;
@@ -22,10 +23,8 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_11_01_FontTypes extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part3/chapter11/Listing_11_01_FontTypes.pdf";
@@ -33,12 +32,10 @@ public class Listing_11_01_FontTypes extends GenericTest {
     public static String[][] FONTS = {
             {FontConstants.HELVETICA, PdfEncodings.WINANSI},
             {"./src/test/resources/font/cmr10.afm", PdfEncodings.WINANSI},
-            // TODO problems with CMR fonts
-            {"./src/test/resources/font/cmr10.pfm", PdfEncodings.WINANSI},
-            {/*"c:/windows/fonts/arial.ttf"*/"./src/test/resources/font/FreeSans.ttf", PdfEncodings.WINANSI},
-            {/*"c:/windows/fonts/arial.ttf"*/"./src/test/resources/font/FreeSans.ttf", PdfEncodings.IDENTITY_H},
+            {"./src/test/resources/font/cmr10.pfm", FontEncoding.FONT_SPECIFIC},
+            {"./src/test/resources/font/FreeSans.ttf", PdfEncodings.WINANSI},
+            {"./src/test/resources/font/FreeSans.ttf", PdfEncodings.IDENTITY_H},
             {"./src/test/resources/font/Puritan2.otf", PdfEncodings.WINANSI},
-            // Notice that we'va changed windows MS Gothic to IPA Gothic so the results in comparison with itext5 are different
             {"./src/test/resources/font/ipam.ttc", PdfEncodings.IDENTITY_H},
             {"KozMinPro-Regular", "UniJIS-UCS2-H"}
     };
