@@ -14,6 +14,8 @@
  */
 package com.itextpdf.samples.signatures.chapter03;
 
+import static org.junit.Assert.fail;
+
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.signatures.CrlClient;
 import com.itextpdf.signatures.CrlClientOnline;
@@ -36,11 +38,12 @@ import java.util.List;
 import java.util.Properties;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
-import static org.junit.Assert.fail;
 
 @Category(SampleTest.class)
+@Ignore("This test takes over 24 minutes to run")
 public class C3_04_SignWithCRLOnline extends C3_01_SignWithCAcert {
     public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
     public static final String DEST = "./target/test/resources/signatures/chapter03/hello_cacert_crl.pdf";
