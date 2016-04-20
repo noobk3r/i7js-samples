@@ -39,20 +39,20 @@ public class FileSelectionExample extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
+        PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
 
         PdfTextFormField field = PdfFormField.createText(pdfDoc,
-                new Rectangle(36, 788, 559 - 36, 806 - 788), "myfile", "");
+                new Rectangle(36, 788, 523, 18), "myfile", "");
         field.setFileSelect(true);
         field.setAdditionalAction(PdfName.U, PdfAction.createJavaScript(
                 "this.getField('myfile').browseForFileToSubmit();"
                         + "this.getField('mytitle').setFocus();"));
-        PdfAcroForm.getAcroForm(pdfDoc, true).addField(field);
+        form.addField(field);
+
         PdfTextFormField title = PdfFormField.createText(pdfDoc,
-                new Rectangle(36, 752, 559 - 36, 770 - 752), "mytitle", "");
-        PdfAcroForm.getAcroForm(pdfDoc, true).addField(title);
+                new Rectangle(36, 752, 523, 18), "mytitle", "");
+        form.addField(title);
 
         pdfDoc.close();
     }

@@ -41,9 +41,7 @@ public class CreateRadioInTable extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
 
         PdfButtonFormField group = PdfFormField.createRadioGroup(pdfDoc, "Language", "English");
@@ -65,6 +63,7 @@ public class CreateRadioInTable extends GenericTest {
         cell.setNextRenderer(new MyCellRenderer(cell, group, "dutch"));
         table.addCell(cell);
         doc.add(table);
+
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         form.addField(group);
 

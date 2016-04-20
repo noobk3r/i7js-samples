@@ -32,11 +32,10 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class FillFormSpecialChars extends GenericTest {
-
-    public static final String SRC = "./src/test/resources/pdfs/test.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/fill_form_special_chars.pdf";
-    public static final String VALUE = "\u011b\u0161\u010d\u0159\u017e\u00fd\u00e1\u00ed\u00e9";
     public static final String FONT = "./src/test/resources/font/FreeSans.ttf";
+    public static final String SRC = "./src/test/resources/pdfs/test.pdf";
+    public static final String VALUE = "\u011b\u0161\u010d\u0159\u017e\u00fd\u00e1\u00ed\u00e9";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -46,13 +45,16 @@ public class FillFormSpecialChars extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(
-                new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
+
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         form.setGenerateAppearance(true);
+
         PdfFont font = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H);
-        form.getFormFields().get("test").setValue(VALUE, font, 12);
-        form.getFormFields().get("test2").setValue(VALUE, font, 12);
+
+        form.getField("test").setValue(VALUE, font, 12);
+        form.getField("test2").setValue(VALUE, font, 12);
+
         pdfDoc.close();
     }
 }

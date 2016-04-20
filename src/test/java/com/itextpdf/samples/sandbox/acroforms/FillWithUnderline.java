@@ -34,8 +34,8 @@ import java.io.StringReader;
 
 @Category(SampleTest.class)
 public class FillWithUnderline extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/form.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/fill_with_underline.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/form.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -46,10 +46,11 @@ public class FillWithUnderline extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
-
         Document doc = new Document(pdfDoc);
+
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         form.flattenFields();
+
         Rectangle pos = form.getField("Name").getWidgets().get(0).getRectangle().toRectangle();
 
         SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
@@ -77,8 +78,7 @@ public class FillWithUnderline extends GenericTest {
          * @see org.xml.sax.ContentHandler#startElement(java.lang.String,
          * java.lang.String, java.lang.String, org.xml.sax.Attributes)
          */
-        public void startElement(String uri, String localName, String qName,
-                                 Attributes attributes) throws SAXException {
+        public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
             if ("u".equals(qName)) {
                 isUnderlined = true;
             }

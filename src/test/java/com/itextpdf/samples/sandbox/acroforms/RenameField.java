@@ -21,8 +21,6 @@ import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfFormField;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -34,17 +32,17 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class RenameField {
-    public static final String SRC = "./src/test/resources/pdfs/subscribe.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/rename_field.pdf";
-    public static List<String> cmp_result;
+    public static final String SRC = "./src/test/resources/pdfs/subscribe.pdf";
+    public static List<String> CMP_RESULT;
 
     static {
-        cmp_result = new ArrayList<String>();
-        cmp_result.add("personal");
-        cmp_result.add("personal.name");
-        cmp_result.add("personal.login");
-        cmp_result.add("personal.password");
-        cmp_result.add("personal.reason");
+        CMP_RESULT = new ArrayList<String>();
+        CMP_RESULT.add("personal");
+        CMP_RESULT.add("personal.name");
+        CMP_RESULT.add("personal.login");
+        CMP_RESULT.add("personal.password");
+        CMP_RESULT.add("personal.reason");
     }
 
     @BeforeClass
@@ -55,24 +53,27 @@ public class RenameField {
 
     @Test
     public void manipulatePdf() throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(
-                new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
+
         PdfFormField login = form.getField("personal.loginname");
         login.setFieldName("login");
         form.getFormFields().remove("personal.loginname");
         form.getFormFields().put("login", login);
+
         pdfDoc.close();
 
-        pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(DEST)));
+        pdfDoc = new PdfDocument(new PdfReader(DEST));
+
         Map<String, PdfFormField> fields = PdfAcroForm.getAcroForm(pdfDoc, true).getFormFields();
         List<String> result = new ArrayList<>();
         for (String name : fields.keySet()) {
             System.out.println(name);
             result.add(name);
         }
+
         pdfDoc.close();
 
-        Assert.assertArrayEquals(cmp_result.toArray(), result.toArray());
+        Assert.assertArrayEquals(CMP_RESULT.toArray(), result.toArray());
     }
 }

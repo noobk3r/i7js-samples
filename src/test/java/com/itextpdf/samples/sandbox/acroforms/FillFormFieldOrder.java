@@ -32,8 +32,8 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class FillFormFieldOrder extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/calendar_example.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/fill_form_field_order.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/calendar_example.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -48,11 +48,12 @@ public class FillFormFieldOrder extends GenericTest {
 
     public byte[] go1() throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        PdfWriter writer = new PdfWriter(baos);
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)), writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(baos));
         Document doc = new Document(pdfDoc);
+
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, false);
         Map<String, PdfFormField> fields = form.getFormFields();
+
         fields.get("sunday_1").setValue("1");
         fields.get("sunday_2").setValue("2");
         fields.get("sunday_3").setValue("3");
@@ -66,15 +67,18 @@ public class FillFormFieldOrder extends GenericTest {
         form.partialFormFlattening("sunday_4");
         form.partialFormFlattening("sunday_5");
         form.partialFormFlattening("sunday_6");
+
         form.flattenFields();
         doc.close();
+
         return baos.toByteArray();
     }
 
     public void go2(byte[] src) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(new RandomAccessSourceFactory().createSource(src),
-                null, null, null, null, null), new PdfWriter(new FileOutputStream(DEST)));
+                null, null, null, null, null), new PdfWriter(DEST));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
+
         Map<String, PdfFormField> fields = form.getFormFields();
         fields.get("sunday_1_notes").setValue("It's Sunday today, let's go to the sea");
         fields.get("sunday_2_notes").setValue("It's Sunday today, let's go to the park");
@@ -82,6 +86,7 @@ public class FillFormFieldOrder extends GenericTest {
         fields.get("sunday_4_notes").setValue("It's Sunday today, let's go to the woods");
         fields.get("sunday_5_notes").setValue("It's Sunday today, let's go to the lake");
         fields.get("sunday_6_notes").setValue("It's Sunday today, let's go to the river");
+
         form.flattenFields();
         pdfDoc.close();
     }

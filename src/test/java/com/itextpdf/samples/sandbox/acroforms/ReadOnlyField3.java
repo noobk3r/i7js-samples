@@ -40,7 +40,7 @@ public class ReadOnlyField3 extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(new RandomAccessSourceFactory().createSource(createForm()),
-                null, null, null, null, null), new PdfWriter(new FileOutputStream(DEST)));
+                null, null, null, null, null), new PdfWriter(DEST));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         form.getField("text1").setReadOnly(true).setValue("A B C D E F G H I J K L M N O P Q R S T U V W X Y Z");
         form.getField("text2").setReadOnly(true).setValue("A B C D E F G H I J K L M N O P Q R S T U V W X Y Z");
@@ -51,32 +51,34 @@ public class ReadOnlyField3 extends GenericTest {
 
     public byte[] createForm() throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        PdfWriter writer = new PdfWriter(baos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(baos));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
 
-        Rectangle rect = new Rectangle(36, 770, 144 - 36, 806 - 770);
+        Rectangle rect = new Rectangle(36, 770, 108, 36);
         PdfTextFormField tf1 = PdfFormField.createText(pdfDoc, rect,
                 "text1", "text1", PdfFontFactory.createFont(), 18);
         tf1.setMultiline(true);
         form.addField(tf1);
-        rect = new Rectangle(148, 770, 256 - 148, 806 - 770);
+
+        rect = new Rectangle(148, 770, 108, 36);
         PdfTextFormField tf2 = PdfFormField.createText(pdfDoc, rect,
                 "text2", "text2", PdfFontFactory.createFont(), 18);
         tf2.setMultiline(true);
         form.addField(tf2);
-        rect = new Rectangle(36, 724, 144 - 36, 760 - 724);
+
+        rect = new Rectangle(36, 724, 108, 36);
         PdfTextFormField tf3 = PdfFormField.createText(pdfDoc, rect,
                 "text3", "text3", PdfFontFactory.createFont(), 18);
         tf3.setMultiline(true);
         form.addField(tf3);
-        rect = new Rectangle(148, 727, 256 - 148, 760 - 727);
+
+        rect = new Rectangle(148, 727, 108, 33);
         PdfTextFormField tf4 = PdfFormField.createText(pdfDoc, rect,
                 "text4", "text4", PdfFontFactory.createFont(), 18);
         tf4.setMultiline(true);
         form.addField(tf4);
-        doc.close();
+
+        pdfDoc.close();
         return baos.toByteArray();
     }
 }

@@ -30,9 +30,9 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class CreateJapaneseButton extends GenericTest {
-    public static final String JAPANESE = "\u3042\u304d\u3089";
-    public static final String FONT = "./src/test/resources/font/FreeSans.ttf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/create_japanese_button.pdf";
+    public static final String FONT = "./src/test/resources/font/FreeSans.ttf";
+    public static final String JAPANESE = "\u3042\u304d\u3089";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -42,19 +42,21 @@ public class CreateJapaneseButton extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
+
         PdfFont font = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H);
+
         PdfButtonFormField pushButton = PdfFormField.createPushButton(
                 pdfDoc,
-                new Rectangle(36, 780, 144 - 36, 806 - 780),
+                new Rectangle(36, 780, 108, 26),
                 "japanese",
                 JAPANESE,
                 font,
                 PdfFormField.DEFAULT_FONT_SIZE);
+
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         form.addField(pushButton);
+
         pdfDoc.close();
     }
 }

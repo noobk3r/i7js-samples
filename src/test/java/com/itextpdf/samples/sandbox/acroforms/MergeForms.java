@@ -45,9 +45,7 @@ public class MergeForms extends GenericTest {
     }
 
     protected void manipulatePdf(String dest, PdfReader[] readers) throws FileNotFoundException {
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         pdfDoc.initializeOutlines();
         for (PdfReader reader : readers) {
             PdfDocument readerDoc = new PdfDocument(reader);

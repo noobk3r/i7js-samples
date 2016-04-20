@@ -26,9 +26,9 @@ import java.io.FileOutputStream;
 @Ignore
 @Category(SampleTest.class)
 public class ImportXFDF extends GenericTest {
+    public static String DEST = "./target/test/resources/sandbox/acroforms/import_xfdf.pdf";
     public static final String SRC = "./src/test/resources/pdfs/Requisition_Fillable.pdf";
     public static final String XFDF = "./src/test/resources/sandbox/acroforms/data.xfdf";
-    public static String DEST = "./target/test/resources/sandbox/acroforms/import_xfdf.pdf";
 
     public static void main(String[] args) throws Exception {
         new ImportXFDF().manipulatePdf(DEST);
@@ -37,11 +37,7 @@ public class ImportXFDF extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         // TODO DEVSIX-526
         // XfdfReader xfdf = new XfdfReader(new FileInputStream(XFDF));
-        PdfReader reader = new PdfReader(SRC);
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(reader, writer);
-        Document doc = new Document(pdfDoc);
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(dest));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         //fields.setFields(xfdf);
         form.flattenFields();

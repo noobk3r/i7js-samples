@@ -11,26 +11,27 @@
  */
 package com.itextpdf.samples.sandbox.acroforms.reporting;
 
+import com.itextpdf.forms.PdfAcroForm;
+import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.events.Event;
 import com.itextpdf.kernel.events.IEventHandler;
 import com.itextpdf.kernel.events.PdfDocumentEvent;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
-import com.itextpdf.forms.PdfAcroForm;
-import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -39,8 +40,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class FillFlattenMerge3 extends GenericTest {
@@ -64,11 +63,9 @@ public class FillFlattenMerge3 extends GenericTest {
         PdfDocument srcDoc = new PdfDocument(new PdfReader(SRC));
         PdfAcroForm form = PdfAcroForm.getAcroForm(srcDoc, true);
         positions = new HashMap<>();
-        Rectangle rectangle;
         Map<String, PdfFormField> fields = form.getFormFields();
-        for (String name : fields.keySet()) {
-            rectangle = fields.get(name).getWidgets().get(0).getRectangle().toRectangle();
-            positions.put(name, rectangle);
+        for (PdfFormField field : fields.values()) {
+            positions.put(field.getFieldName().getValue(), field.getWidgets().get(0).getRectangle().toRectangle());
         }
 
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
@@ -114,10 +111,10 @@ public class FillFlattenMerge3 extends GenericTest {
             int pageNum = pdfDoc.getPageNumber(((PdfDocumentEvent) event).getPage());
             // Add the background
             PdfCanvas canvas = new PdfCanvas(pdfDoc.getPage(pageNum).newContentStreamBefore(),
-                    pdfDoc.getPage(pageNum).getResources(), pdfDoc)
-                        .addXObject(background, 0, 0);
+                    ((PdfDocumentEvent) event).getPage().getResources(), pdfDoc)
+                    .addXObject(background, 0, 0);
             // Add the page number
-            new Canvas(canvas, pdfDoc, pdfDoc.getPage(pageNum).getPageSize())
+            new Canvas(canvas, pdfDoc, ((PdfDocumentEvent) event).getPage().getPageSize())
                     .showTextAligned("page " + pageNum, 550, 800, Property.TextAlignment.RIGHT);
         }
     }

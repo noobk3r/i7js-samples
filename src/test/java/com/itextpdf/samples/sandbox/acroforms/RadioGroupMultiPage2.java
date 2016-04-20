@@ -42,11 +42,11 @@ public class RadioGroupMultiPage2 extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
+
         PdfButtonFormField radioGroup = PdfFormField.createRadioGroup(pdfDoc, "answer", "answer 1");
+
         Table table = new Table(2);
         Cell cell;
         for (int i = 0; i < 25; i++) {
@@ -63,6 +63,7 @@ public class RadioGroupMultiPage2 extends GenericTest {
             table.addCell(cell);
         }
         doc.add(table);
+
         PdfAcroForm.getAcroForm(pdfDoc, true).addField(radioGroup);
         pdfDoc.close();
     }
@@ -82,8 +83,7 @@ public class RadioGroupMultiPage2 extends GenericTest {
         public void draw(DrawContext drawContext) {
             PdfDocument document = drawContext.getDocument();
             PdfFormField field = PdfFormField.createRadioButton(document, getOccupiedAreaBBox(), radioGroup, value);
-            PdfAcroForm.getAcroForm(document, true).addFieldAppearanceToPage(field, document.getLastPage());
+            PdfAcroForm.getAcroForm(document, true).addFieldAppearanceToPage(field, document.getPage(getOccupiedArea().getPageNumber()));
         }
     }
-
 }

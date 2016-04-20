@@ -44,20 +44,22 @@ public class RadioGroupMultiPage1 extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
+
         PdfFont font = PdfFontFactory.createFont(FontConstants.HELVETICA);
-        Rectangle rect = new Rectangle(40, 806, 60 - 40, 788 - 806);
+        Rectangle rect = new Rectangle(40, 788, 20, 18);
+
         PdfButtonFormField radioGroup = PdfFormField.createRadioGroup(pdfDoc, "Language", "");
+
         for (int page = 1; page <= LANGUAGES.length; page++) {
             pdfDoc.addNewPage();
             PdfFormField field = PdfFormField.createRadioButton(pdfDoc, rect, radioGroup, LANGUAGES[page - 1]);
             field.setPage(page);
             doc.showTextAligned(new Paragraph(LANGUAGES[page - 1]).setFont(font).setFontSize(18),
-                    70, 787, page, Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
+                    70, 786, page, Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
         }
+
         PdfAcroForm.getAcroForm(pdfDoc, true).addField(radioGroup);
         doc.close();
     }

@@ -26,8 +26,8 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class FormatFields extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/form.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/format_fields.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/form.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -37,8 +37,7 @@ public class FormatFields extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfReader reader = new PdfReader(new FileInputStream(SRC));
-        PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         form.getField("Name").setValue("1.0", "100%");
         form.getField("Company").setValue("1217000.000000", "$1,217,000");

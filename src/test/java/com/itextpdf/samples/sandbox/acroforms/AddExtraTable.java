@@ -11,11 +11,11 @@
  */
 package com.itextpdf.samples.sandbox.acroforms;
 
+import com.itextpdf.forms.PdfAcroForm;
+import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.forms.PdfAcroForm;
-import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.layout.LayoutArea;
@@ -23,23 +23,21 @@ import com.itextpdf.layout.layout.LayoutResult;
 import com.itextpdf.layout.renderer.DocumentRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.util.Map;
 
-import org.junit.experimental.categories.Category;
-
 @Category(SampleTest.class)
 public class AddExtraTable extends GenericTest {
-    public static String SRC = "./src/test/resources/pdfs/form.pdf";
     public static String DEST = "./target/test/resources/sandbox/acroforms/add_extra_table.pdf";
+    public static String SRC = "./src/test/resources/pdfs/form.pdf";
 
     public static void main(String[] args) throws Exception {
         new AddExtraTable().manipulatePdf(DEST);
     }
 
     protected void manipulatePdf(String dest) throws Exception {
-        PdfReader reader = new PdfReader(SRC);
-        PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(DEST));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
 
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
@@ -53,7 +51,6 @@ public class AddExtraTable extends GenericTest {
         table.setWidthPercent(80);
         table.addHeaderCell("#");
         table.addHeaderCell("description");
-
         for (int i = 1; i <= 150; i++) {
             table.addCell(String.valueOf(i));
             table.addCell("test " + i);

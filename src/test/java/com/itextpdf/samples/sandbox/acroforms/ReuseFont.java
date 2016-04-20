@@ -31,8 +31,8 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class ReuseFont extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/form.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/reuse_font.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/form.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -42,11 +42,17 @@ public class ReuseFont extends GenericTest {
 
     public PdfFont findFontInForm(PdfDocument pdfDoc, PdfName fontName) throws IOException {
         PdfDictionary acroForm = pdfDoc.getCatalog().getPdfObject().getAsDictionary(PdfName.AcroForm);
-        if (acroForm == null) return null;
+        if (acroForm == null) {
+            return null;
+        }
         PdfDictionary dr = acroForm.getAsDictionary(PdfName.DR);
-        if (dr == null) return null;
+        if (dr == null) {
+            return null;
+        }
         PdfDictionary font = dr.getAsDictionary(PdfName.Font);
-        if (font == null) return null;
+        if (font == null) {
+            return null;
+        }
         for (PdfName key : font.keySet()) {
             if (key.equals(fontName)) {
                 return PdfFontFactory.createFont(font.getAsDictionary(key));
@@ -57,8 +63,8 @@ public class ReuseFont extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(
-                new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
+
         PdfFont font = findFontInForm(pdfDoc, new PdfName("Calibri"));
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());
         canvas.beginText();
@@ -67,6 +73,7 @@ public class ReuseFont extends GenericTest {
         canvas.showText("Some text in Calibri");
         canvas.endText();
         canvas.stroke();
+
         pdfDoc.close();
     }
 }

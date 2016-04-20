@@ -29,15 +29,14 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.IOException;
 
-import org.junit.experimental.categories.Category;
-
 @Category(SampleTest.class)
 public class AddExtraPage extends GenericTest {
-    public static String SRC = "./src/test/resources/pdfs/stationery.pdf";
     public static String DEST = "./target/test/resources/sandbox/acroforms/add_extra_page.pdf";
+    public static String SRC = "./src/test/resources/pdfs/stationery.pdf";
 
     public static void main(String[] args) throws Exception {
         new AddExtraPage().manipulatePdf(DEST);
@@ -46,6 +45,7 @@ public class AddExtraPage extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument srcDoc = new PdfDocument(new PdfReader(SRC));
         PdfAcroForm form = PdfAcroForm.getAcroForm(srcDoc, false);
+
         Rectangle rect = form.getField("body").getWidgets().get(0).getRectangle().toRectangle();
 
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
@@ -57,9 +57,10 @@ public class AddExtraPage extends GenericTest {
         doc.setRenderer(new ColumnDocumentRenderer(doc, new Rectangle[]{rect}));
 
         Paragraph p = new Paragraph();
-        p.add(new Text("Hello "));
-        p.add(new Text("World")
-                .setFont(PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD)));
+        // the easiest way to add a Text object to Paragraph
+        p.add("Hello ");
+        // use add(Text) if you want to specify some Text characteristics, for example, font size
+        p.add(new Text("World").setFont(PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD)));
 
         for (int i = 1; i < 101; i++) {
             doc.add(new Paragraph("Hello " + i));
@@ -71,7 +72,7 @@ public class AddExtraPage extends GenericTest {
 
 
     protected class PaginationEventHandler implements IEventHandler {
-        PdfFormXObject background;
+        protected PdfFormXObject background;
 
         public PaginationEventHandler(PdfFormXObject background) throws IOException {
             this.background = background;
@@ -80,10 +81,8 @@ public class AddExtraPage extends GenericTest {
         @Override
         public void handleEvent(Event event) {
             PdfDocument pdfDoc = ((PdfDocumentEvent) event).getDocument();
-            int pageNum = pdfDoc.getPageNumber(((PdfDocumentEvent) event).getPage());
             // Add the background
-            new PdfCanvas(pdfDoc.getPage(pageNum).newContentStreamBefore(),
-                    pdfDoc.getPage(pageNum).getResources(), pdfDoc)
+            new PdfCanvas(((PdfDocumentEvent) event).getPage().newContentStreamBefore(), ((PdfDocumentEvent) event).getPage().getResources(), pdfDoc)
                     .addXObject(background, 0, 0);
         }
     }

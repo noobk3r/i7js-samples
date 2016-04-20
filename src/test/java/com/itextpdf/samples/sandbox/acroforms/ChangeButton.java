@@ -8,26 +8,22 @@
 /**
  * This example was written by Bruno Lowagie in answer to the following question:
  * http://stackoverflow.com/questions/26804092/itext-button-resize-affects-label
- * It will only work starting with iText 5.5.4 +
  */
 package com.itextpdf.samples.sandbox.acroforms;
 
-import com.itextpdf.kernel.pdf.*;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfFormField;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class ChangeButton extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/hello_button.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/change_button.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/hello_button.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -37,8 +33,7 @@ public class ChangeButton extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(
-                new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         PdfFormField button = form.copyField("Test");
         PdfArray rect = button.getWidgets().get(0).getRectangle();

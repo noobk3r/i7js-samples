@@ -32,8 +32,8 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class MultiLineField extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/multinewline.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/multi_line_field.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/multinewline.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -44,7 +44,7 @@ public class MultiLineField extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(new RandomAccessSourceFactory().createSource(createForm()),
-                null, null, null, null, null), new PdfWriter(new FileOutputStream(DEST)));
+                null, null, null, null, null), new PdfWriter(DEST));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         form.getField("text").setValue("A B C D E F\nG H I J K L M N\nO P Q R S T U\r\nV W X Y Z\n\nAlphabet street");
         form.flattenFields();
@@ -53,14 +53,15 @@ public class MultiLineField extends GenericTest {
 
     public byte[] createForm() throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        PdfWriter writer = new PdfWriter(baos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc);
-        Rectangle rect = new Rectangle(36, 720, 144 - 36, 806 - 720);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(baos));
+
+        Rectangle rect = new Rectangle(36, 720, 108, 86);
         PdfTextFormField tf = PdfFormField.createText(pdfDoc, rect, "text", "text");
         tf.setMultiline(true);
+
         PdfAcroForm.getAcroForm(pdfDoc, true).addField(tf);
-        doc.close();
+
+        pdfDoc.close();
         return baos.toByteArray();
     }
 }

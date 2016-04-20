@@ -15,6 +15,7 @@ import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfChoiceFormField;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.kernel.PdfException;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
@@ -48,9 +49,7 @@ public class ComboBoxItems extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc, new PageSize(612, 792));
 
         Table table = new Table(2);
@@ -58,7 +57,7 @@ public class ComboBoxItems extends GenericTest {
         // Add rows with selectors
         String[] options = {"Choose first option", "Choose second option", "Choose third option"};
         String[] exports = {"option1", "option2", "option3"};
-        table.addCell(new Cell().add(new Paragraph("Combobox:")));
+        table.addCell(new Cell().add("Combobox:"));
         cell = new Cell();
         cell.setNextRenderer(new SelectCellRenderer(cell, "Choose first option", exports, options));
         cell.setHeight(20);
@@ -83,12 +82,11 @@ public class ComboBoxItems extends GenericTest {
 
         @Override
         public void draw(DrawContext drawContext) {
-            PdfFont font = null;
+            PdfFont font;
             try {
                 font = PdfFontFactory.createFont(FontConstants.HELVETICA);
-
             } catch (IOException e) {
-                // should do smth but in this example we'll leave catching
+                throw new PdfException(e);
             }
             String[][] optionsArray = new String[options.length][];
             for (int i = 0; i < options.length; i++) {
@@ -96,15 +94,15 @@ public class ComboBoxItems extends GenericTest {
                 optionsArray[i][0] = exports[i];
                 optionsArray[i][1] = options[i];
             }
+            PdfAcroForm form = PdfAcroForm.getAcroForm(drawContext.getDocument(), true);
             PdfChoiceFormField choice = PdfFormField.createComboBox(drawContext.getDocument(), getOccupiedAreaBBox(),
                     name, name, optionsArray);
-            PdfAcroForm form = PdfAcroForm.getAcroForm(drawContext.getDocument(), true);
             choice.setFont(font);
-            form.addField(choice);
             choice.getWidgets().get(0).setBorderStyle(PdfAnnotation.STYLE_BEVELED);
             choice.setVisibility(PdfFormField.VISIBLE_BUT_DOES_NOT_PRINT);
             choice.setBorderColor(Color.GRAY);
             choice.setJustification(PdfFormField.ALIGN_CENTER);
+            form.addField(choice);
         }
     }
 }

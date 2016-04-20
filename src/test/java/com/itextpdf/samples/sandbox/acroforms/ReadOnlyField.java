@@ -40,7 +40,7 @@ public class ReadOnlyField extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(new RandomAccessSourceFactory().createSource(createForm()),
-                null, null, null, null, null), new PdfWriter(new FileOutputStream(DEST)));
+                null, null, null, null, null), new PdfWriter(DEST));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         form.getField("text").setReadOnly(true).setValue("A B C D E F G H I J K L M N O P Q R S T U V W X Y Z");
         pdfDoc.close();
@@ -48,14 +48,15 @@ public class ReadOnlyField extends GenericTest {
 
     public byte[] createForm() throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        PdfWriter writer = new PdfWriter(baos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(baos));
+
         Rectangle rect = new Rectangle(36, 770, 104, 36);
         PdfTextFormField tf = PdfFormField.createText(pdfDoc, rect, "text", "text", PdfFontFactory.createFont(), 20);
         tf.setMultiline(true);
+
         PdfAcroForm.getAcroForm(pdfDoc, true).addField(tf);
-        doc.close();
+
+        pdfDoc.close();
         return baos.toByteArray();
     }
 }

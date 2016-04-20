@@ -26,8 +26,8 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class FlattenSignature extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/input_signed.pdf";
     public static final String DEST = "./target/test/resources/sandbox/acroforms/flatten_signature.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/input_signed.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -37,8 +37,7 @@ public class FlattenSignature extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(
-                new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         form.flattenFields();
         pdfDoc.close();
