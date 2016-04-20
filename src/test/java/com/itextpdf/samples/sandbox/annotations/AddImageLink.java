@@ -35,9 +35,9 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class AddImageLink extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/primes.pdf";
-    public static final String IMG = "./src/test/resources/img/info.png";
     public static final String DEST = "./target/test/resources/sandbox/annotations/add_image_link.pdf";
+    public static final String IMG = "./src/test/resources/img/info.png";
+    public static final String SRC = "./src/test/resources/pdfs/primes.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -47,26 +47,26 @@ public class AddImageLink extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)),
-                new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
 
         Image img = ImageFactory.getImage(IMG);
         float x = 10;
         float y = 650;
         float w = img.getWidth();
         float h = img.getHeight();
-        new PdfCanvas(pdfDoc.getPage(1).newContentStreamAfter(), pdfDoc.getPage(1).getResources(), pdfDoc)
+
+        new PdfCanvas(pdfDoc.getFirstPage().newContentStreamAfter(), pdfDoc.getFirstPage().getResources(), pdfDoc)
                 .addImage(img, x, y, false);
         Rectangle linkLocation = new Rectangle(x, y, w, h);
 
         PdfArray array = new PdfArray();
-        array.add(pdfDoc.getPage(pdfDoc.getNumberOfPages()).getPdfObject());
+        array.add(pdfDoc.getLastPage().getPdfObject());
         array.add(PdfName.Fit);
         PdfDestination destination = PdfDestination.makeDestination(array);
         PdfAnnotation annotation = new PdfLinkAnnotation(linkLocation)
                 .setHighlightMode(PdfAnnotation.HIGHLIGHT_INVERT)
                 .setAction(PdfAction.createGoTo(destination)).setBorder(new PdfArray(new float[]{0, 0, 0}));
-        pdfDoc.getPage(1).addAnnotation(annotation);
+        pdfDoc.getFirstPage().addAnnotation(annotation);
 
         pdfDoc.close();
     }

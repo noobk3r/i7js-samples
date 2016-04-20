@@ -26,11 +26,11 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class AddEmbeddedFiles extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
-    public static final String DEST = "./target/test/resources/sandbox/annotations/add_embedded_files.pdf";
     public static final String[] ATTACHMENTS = {
             "hello", "world", "what", "is", "up"
     };
+    public static final String DEST = "./target/test/resources/sandbox/annotations/add_embedded_files.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -40,8 +40,7 @@ public class AddEmbeddedFiles extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)),
-                new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
         for (String s : ATTACHMENTS) {
             PdfFileSpec spec = PdfFileSpec.createEmbeddedFileSpec(pdfDoc,
                     String.format("Some test: %s", s).getBytes(), null, String.format("%s.txt", s), null, null, null, true);

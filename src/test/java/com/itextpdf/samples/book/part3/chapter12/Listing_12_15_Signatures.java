@@ -16,46 +16,20 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.SignatureTest;
-import com.itextpdf.signatures.BouncyCastleDigest;
-import com.itextpdf.signatures.CertificateInfo;
-import com.itextpdf.signatures.CertificateVerification;
-import com.itextpdf.signatures.ExternalDigest;
-import com.itextpdf.signatures.ExternalSignature;
-import com.itextpdf.signatures.PdfPKCS7;
-import com.itextpdf.signatures.PdfSignatureAppearance;
-import com.itextpdf.signatures.PdfSigner;
-import com.itextpdf.signatures.PrivateKeySignature;
-import com.itextpdf.signatures.SignatureUtil;
-import com.itextpdf.signatures.VerificationException;
+import com.itextpdf.signatures.*;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintWriter;
-import java.security.GeneralSecurityException;
-import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.PrivateKey;
-import java.security.Security;
+import java.io.*;
+import java.security.*;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Properties;
-import java.util.Set;
+import java.util.*;
 
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
 @Category(SampleTest.class)
@@ -217,29 +191,12 @@ public class Listing_12_15_Signatures extends SignatureTest {
         String[] errors = new String[RESULT.length];
         boolean error = false;
 
-        HashMap<Integer, List<Rectangle>> ignoredAreas = new HashMap<Integer, List<Rectangle>>() {
-            {
-                put(1, Arrays.asList(new Rectangle(240, 632, 150, 150), new Rectangle(72, 632, 150, 150)));
-            }
-        };
-
-        // TODO Tests fail visually, although we defined the ignored area correctly
-        Set<String> expErrors = new HashSet<>();
-        expErrors.add("\n./target/test/resources/book/part3/chapter12/Listing_12_15_Signatures_signature_1.pdf:\n" +
-                "File ./target/test/resources/book/part3/chapter12/ignored_areas_Listing_12_15_Signatures_signature_1.pdf differs on page [1].\n");
-        expErrors.add("\n./target/test/resources/book/part3/chapter12/Listing_12_15_Signatures_signature_2.pdf:\n" +
-                "File ./target/test/resources/book/part3/chapter12/ignored_areas_Listing_12_15_Signatures_signature_2.pdf differs on page [1].\n");
-        expErrors.add("\n./target/test/resources/book/part3/chapter12/Listing_12_15_Signatures_revision_1.pdf:\n" +
-                "File ./target/test/resources/book/part3/chapter12/ignored_areas_Listing_12_15_Signatures_revision_1.pdf differs on page [1].\n");
+        // Compare the documents only in signature data
         for (int i = 0; i < RESULT.length; i++) {
-            String fileErrors = checkForErrors(RESULT[i], CMP_RESULT[i], "./target/test/resources/book/part3/chapter12/", ignoredAreas);
-            if (fileErrors != null) {
-                if (expErrors.contains(fileErrors)) {  //fileErrors.equals(expectedErrorMessage)) {
-                    continue;
-                } else {
-                    errors[i] = fileErrors;
-                    error = true;
-                }
+            compareSignatures(RESULT[i], CMP_RESULT[i]);
+            if (getErrorMessage() != null) {
+                errors[i] = getErrorMessage();
+                error = true;
             }
         }
 

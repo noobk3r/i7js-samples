@@ -162,7 +162,7 @@ public class SignatureTest {
         reader.close();
     }
 
-    public void verifySignatures(SignatureUtil signUtil, List<String> names) throws IOException, GeneralSecurityException {
+    private void verifySignatures(SignatureUtil signUtil, List<String> names) throws IOException, GeneralSecurityException {
         for (String name : names) {
             PdfPKCS7 pkcs7 = signUtil.verifySignature(name);
 
@@ -235,7 +235,7 @@ public class SignatureTest {
         //if exception was not thrown document is not revoked or it couldn't be verified
     }
 
-    private void compareSignatures(String outFile, String cmpFile) throws IOException {
+    protected void compareSignatures(String outFile, String cmpFile) throws IOException {
         SignedDocumentInfo outInfo = collectInfo(outFile);
         SignedDocumentInfo cmpInfo = collectInfo(cmpFile);
 
@@ -539,4 +539,7 @@ public class SignatureTest {
         }
     }
 
+    protected String getErrorMessage() {
+        return errorMessage;
+    }
 }

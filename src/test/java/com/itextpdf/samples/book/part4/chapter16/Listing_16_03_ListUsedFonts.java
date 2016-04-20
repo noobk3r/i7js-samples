@@ -20,28 +20,42 @@ import java.io.PrintWriter;
 import java.util.Set;
 import java.util.TreeSet;
 
+import org.junit.Assert;
 import org.junit.Ignore;
+import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
-public class Listing_16_03_ListUsedFonts extends GenericTest {
+public class Listing_16_03_ListUsedFonts {
     public static final String DEST = "./target/test/resources/book/part4/chapter16/Listing_16_03_ListUsedFonts.pdf";
     public static final String RESULT = "./target/test/resources/book/part4/chapter16/Listing_16_03_ListUsedFonts.txt";
-    // Note that currently Listing_11_01_FontTypes is labeled with TODO
     public static final String FONT_TYPES = "./src/test/resources/book/part3/chapter11/cmp_Listing_11_01_FontTypes.pdf";
+    public static final String CMP_RESULT = "ArialMT subset (HMHOIF)\n" +
+            "ArialMT subset (HRQGHL)\n" +
+            "CMR10\n" +
+            "Helvetica nofontdescriptor\n" +
+            "KozMinPro-Regular-UniJIS-UCS2-H nofontdescriptor\n" +
+            "MS-Gothic subset (GKOUJJ)\n" +
+            "Puritan2 (Type1) embedded\n";
 
     public static void main(String args[]) throws Exception {
-        new Listing_16_03_ListUsedFonts().manipulatePdf(DEST);
+        new Listing_16_03_ListUsedFonts().manipulatePdf();
     }
 
-    public void manipulatePdf(String dest) throws Exception {
+    @Test
+    public void manipulatePdf() throws Exception {
         Set<String> set = listFonts(FONT_TYPES);
+        StringBuffer buffer = new StringBuffer();
+        for (String fontName : set) {
+            buffer.append(fontName+"\n");
+        }
+
         PrintWriter out = new PrintWriter(new FileOutputStream(RESULT));
-        for (String fontname : set)
-            out.println(fontname);
+        out.print(buffer.toString());
         out.flush();
         out.close();
+
+        Assert.assertEquals(CMP_RESULT, buffer.toString());
     }
 
     /**

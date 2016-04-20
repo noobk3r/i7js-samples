@@ -41,7 +41,7 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
-@Ignore
+@Ignore("Put property file with valid data")
 @Category(SampleTest.class)
 public class Listing_12_21_TimestampOCSP extends SignatureTest {
     public static String SRC = "./src/test/resources/book/part3/chapter12/cmp_Listing_12_15_Signatures_hello.pdf";
@@ -97,7 +97,6 @@ public class Listing_12_21_TimestampOCSP extends SignatureTest {
         ExternalSignature es = new PrivateKeySignature(pk, "SHA-256", "BC");
         // If we add a time stamp:
         TSAClient tsc = null;
-        // TODO Put right properties file
         if (withTS) {
             String tsa_url    = properties.getProperty("TSA");
             String tsa_login  = properties.getProperty("TSA_LOGIN");

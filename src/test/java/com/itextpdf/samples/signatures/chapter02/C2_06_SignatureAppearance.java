@@ -18,7 +18,6 @@ import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.font.PdfFontFactory;
-import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.layout.Canvas;
@@ -27,14 +26,11 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.licensekey.LicenseKey;
 import com.itextpdf.samples.SignatureTest;
-import com.itextpdf.signatures.BouncyCastleDigest;
-import com.itextpdf.signatures.DigestAlgorithms;
-import com.itextpdf.signatures.ExternalDigest;
-import com.itextpdf.signatures.ExternalSignature;
-import com.itextpdf.signatures.PdfSignatureAppearance;
-import com.itextpdf.signatures.PdfSigner;
-import com.itextpdf.signatures.PrivateKeySignature;
+import com.itextpdf.signatures.*;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -45,13 +41,7 @@ import java.security.KeyStore;
 import java.security.PrivateKey;
 import java.security.Security;
 import java.security.cert.Certificate;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
 
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
 @Category(SampleTest.class)
@@ -199,28 +189,22 @@ public class C2_06_SignatureAppearance extends SignatureTest {
         String[] errors = new String[resultFiles.length];
         boolean error = false;
 
-        HashMap<Integer, List<Rectangle>> ignoredAreas = new HashMap<Integer, List<Rectangle>>() {
-            {
-                put(1, Arrays.asList(new Rectangle(46, 472, 287, 255)));
-            }
-        };
-
-        // TODO signature_appearance4.pdf fails visually, although we defined the ignored area correctly
-        String expectedErrorMessage = "\n./target/test/resources/signatures/chapter02/signature_appearance4.pdf:\n" +
-                "File ./target/test/resources/signatures/chapter02/signature_appearance4.pdf differs on page [1].\n";
-
-        for (int i = 0; i < resultFiles.length; i++) {
+        for (int i = 0; i < resultFiles.length - 1; i++) {
             String resultFile = resultFiles[i];
             String fileErrors = checkForErrors(destPath + resultFile, comparePath + "cmp_" + resultFile, destPath, null);
 
             if (fileErrors != null) {
-                if (i == 3 && fileErrors.equals(expectedErrorMessage)) {
-                    continue;
-                } else {
-                    errors[i] = fileErrors;
-                    error = true;
-                }
+
+                errors[i] = fileErrors;
+                error = true;
             }
+        }
+
+        // Compare the last documents only in signature data
+        compareSignatures(destPath + resultFiles[3], comparePath + "cmp_" + resultFiles[3]);
+        if (null != getErrorMessage()) {
+            errors[3] = getErrorMessage();
+            error = true;
         }
 
         if (error) {

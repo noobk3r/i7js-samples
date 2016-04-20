@@ -37,7 +37,7 @@ import java.util.Properties;
 
 import static org.junit.Assert.fail;
 
-@Ignore
+@Ignore("Put property file with valid data")
 @Category(SampleTest.class)
 public class C3_12_SignWithEstimatedSize extends C3_01_SignWithCAcert {
     public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
@@ -49,7 +49,6 @@ public class C3_12_SignWithEstimatedSize extends C3_01_SignWithCAcert {
         properties.load(new FileInputStream("./src/test/resources/encryption/signkey.properties"));
         String path = properties.getProperty("PRIVATE");
         char[] pass = properties.getProperty("PASSWORD").toCharArray();
-        // TODO Put right properties file
         String tsaUrl = properties.getProperty("TSAURL");
         String tsaUser = properties.getProperty("TSAUSERNAME");
         String tsaPass = properties.getProperty("TSAPASSWORD");

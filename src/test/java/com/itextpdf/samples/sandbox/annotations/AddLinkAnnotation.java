@@ -28,8 +28,8 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class AddLinkAnnotation extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/primes.pdf";
     public static final String DEST = "./target/test/resources/sandbox/annotations/add_link_annotation.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/primes.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -39,9 +39,8 @@ public class AddLinkAnnotation extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)),
-                new PdfWriter(new FileOutputStream(DEST)));
-        Rectangle linkLocation = new Rectangle(523, 770, 559 - 523, 806 - 770);
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
+        Rectangle linkLocation = new Rectangle(523, 770, 36, 36);
         int[] borders = {0, 0, 1};
         PdfArray array = new PdfArray();
         array.add(pdfDoc.getPage(3).getPdfObject());
@@ -50,9 +49,8 @@ public class AddLinkAnnotation extends GenericTest {
         PdfAnnotation annotation = new PdfLinkAnnotation(linkLocation)
                 .setHighlightMode(PdfAnnotation.HIGHLIGHT_INVERT)
                 .setAction(PdfAction.createGoTo(destination))
-                .setBorder(new PdfArray(borders))
-                .setColor(new PdfArray(new float[]{0, 0, 0}));
-        pdfDoc.getPage(1).addAnnotation(annotation);
+                .setBorder(new PdfArray(borders));
+        pdfDoc.getFirstPage().addAnnotation(annotation);
         pdfDoc.close();
     }
 }

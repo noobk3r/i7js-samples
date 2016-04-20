@@ -34,8 +34,8 @@ import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class AddInReplyTo extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/hello_sticky_note.pdf";
     public static final String DEST = "./target/test/resources/sandbox/annotations/add_in_reply_to.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/hello_sticky_note.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -45,20 +45,18 @@ public class AddInReplyTo extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)),
-                new PdfWriter(new FileOutputStream(DEST)));
-        PdfPage page = pdfDoc.getPage(1);
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
+        PdfPage page = pdfDoc.getFirstPage();
         List<PdfAnnotation> annots = page.getAnnotations();
         PdfDictionary sticky = annots.get(0).getPdfObject();
         Rectangle stickyRectangle = sticky.getAsArray(PdfName.Rect).toRectangle();
-
         PdfAnnotation replySticky = new PdfTextAnnotation(stickyRectangle)
                 .setIconName(new PdfName("Comment"))
                 .setInReplyTo(annots.get(0))
                 .setText(new PdfString("Reply"))
                 .setContents("Hello PDF")
                 .setOpen(true);
-        pdfDoc.getPage(1).addAnnotation(replySticky);
+        pdfDoc.getFirstPage().addAnnotation(replySticky);
         pdfDoc.close();
     }
 }
