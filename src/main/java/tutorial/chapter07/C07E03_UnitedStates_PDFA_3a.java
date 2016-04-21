@@ -43,6 +43,7 @@ public class C07E03_UnitedStates_PDFA_3a {
             new PdfOutputIntent("Custom", "", "http://www.color.org",
                     "sRGB IEC61966-2.1", new FileInputStream(INTENT)));
         Document document = new Document(pdf, PageSize.A4.rotate());
+        document.setMargins(20, 20, 20, 20);
 
         //Setting some required parameters
         pdf.setTagged();
