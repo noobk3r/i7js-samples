@@ -21,7 +21,7 @@ public class C01E03_QuickBrownFox {
     public static final String DOG = "src/main/resources/img/dog.bmp";
     public static final String FOX = "src/main/resources/img/fox.bmp";
         
-    public static final String DEST = "results/chapter01/quick_brown_fox_1.pdf";
+    public static final String DEST = "results/chapter01/quick_brown_fox.pdf";
     
     public static void main(String args[]) throws IOException {
         File file = new File(DEST);
@@ -43,7 +43,7 @@ public class C01E03_QuickBrownFox {
         // Compose Paragraph
         Image fox = new Image(ImageFactory.getImage(FOX));
         Image dog = new Image(ImageFactory.getImage(DOG));
-        Paragraph p = new Paragraph("Quick brown ")
+        Paragraph p = new Paragraph("The quick brown ")
                 .add(fox)
                 .add(" jumps over the lazy ")
                 .add(dog);
