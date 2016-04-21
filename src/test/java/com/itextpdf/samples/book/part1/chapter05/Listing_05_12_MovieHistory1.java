@@ -174,7 +174,7 @@ public class Listing_05_12_MovieHistory1 extends GenericTest {
 
         PdfDocument resultDoc = new PdfDocument(new PdfWriter(DEST));
         resultDoc.initializeOutlines();
-        Set<Integer> pages = new LinkedHashSet<>();
+        List<Integer> pages = new ArrayList<>();
         for (int i : order) {
             pages.add(i);
         }

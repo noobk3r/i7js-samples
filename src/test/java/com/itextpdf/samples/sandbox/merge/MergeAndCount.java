@@ -13,6 +13,7 @@ package com.itextpdf.samples.sandbox.merge;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.utils.PageRange;
 import com.itextpdf.kernel.utils.PdfSplitter;
 import com.itextpdf.test.annotations.type.SampleTest;
 

@@ -29,8 +29,8 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Category(SampleTest.class)
 public class Listing_06_16_InsertPages extends GenericTest {
@@ -56,7 +56,7 @@ public class Listing_06_16_InsertPages extends GenericTest {
         resultDoc.initializeOutlines();
 
         PdfDocument srcDoc = new PdfDocument(new PdfReader(DEST_TEMP));
-        Set<Integer> pageNumbers = new LinkedHashSet<Integer>();
+        List<Integer> pageNumbers = new ArrayList<>();
         pageNumbers.add(srcDoc.getNumberOfPages()-1);
         pageNumbers.add(srcDoc.getNumberOfPages());
         for (int i = 1; i <= srcDoc.getNumberOfPages()-2; i++) {
