@@ -20,10 +20,8 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_11_19_FontFactory extends GenericTest {
     public static final String DEST
@@ -64,7 +62,7 @@ public class Listing_11_19_FontFactory extends GenericTest {
         }
         doc.add(new Paragraph("\n"));
 
-        PdfFont cmr10 = PdfFontFactory.createRegisteredFont("cmr10", FontEncoding.FONT_SPECIFIC);
+        PdfFont cmr10 = PdfFontFactory.createRegisteredFont("cmr10", FontEncoding.FONT_SPECIFIC, true);
         doc.add(new Paragraph("Computer Modern").setFont(cmr10));
         doc.add(new Paragraph("\n"));
 
