@@ -65,7 +65,7 @@ public class FontTest extends GenericTest {
         System.out.println(fontname);
         PdfFont font = null;
         try {
-            font = PdfFontFactory.createRegisteredFont(fontname, "Identity-H", true, FontConstants.UNDEFINED, false);
+            font = PdfFontFactory.createRegisteredFont(fontname, "Identity-H", true, false);
         } catch (Exception e) {
             doc.add(new Paragraph(
                     String.format("The font %s doesn't have unicode support: %s", fontname, e.getMessage())));
