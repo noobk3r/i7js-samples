@@ -13,7 +13,7 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.*;
 
 import com.itextpdf.pdfa.PdfADocument;
-import com.itextpdf.pdfa.PdfAConformanceLevel;
+import com.itextpdf.kernel.pdf.PdfAConformanceLevel;
 
 import java.io.File;
 import java.io.FileInputStream;
