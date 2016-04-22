@@ -22,7 +22,7 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
-import com.itextpdf.pdfa.PdfAConformanceLevel;
+import com.itextpdf.kernel.pdf.PdfAConformanceLevel;
 import com.itextpdf.pdfa.PdfADocument;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.IntegrationTest;

@@ -10,7 +10,7 @@ package com.itextpdf.samples.book.part4.chapter13;
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
-import com.itextpdf.pdfa.PdfAConformanceLevel;
+import com.itextpdf.kernel.pdf.PdfAConformanceLevel;
 import com.itextpdf.kernel.pdf.PdfOutputIntent;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;

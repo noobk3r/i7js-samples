@@ -16,7 +16,7 @@ import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
-import com.itextpdf.pdfa.PdfAConformanceLevel;
+import com.itextpdf.kernel.pdf.PdfAConformanceLevel;
 import com.itextpdf.kernel.pdf.PdfDocumentInfo;
 import com.itextpdf.kernel.pdf.PdfOutputIntent;
 import com.itextpdf.kernel.pdf.PdfString;
