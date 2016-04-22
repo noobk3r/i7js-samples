@@ -26,6 +26,8 @@ import org.junit.experimental.categories.Category;
 public class Listing_11_19_FontFactory extends GenericTest {
     public static final String DEST
             = "./target/test/resources/book/part3/chapter11/Listing_11_19_FontFactory.pdf";
+    public static final String FONT_DIR
+            = "./src/test/resources/book/part3/chapter11/font/";
 
     public static void main(String[] args) throws Exception {
         new Listing_11_19_FontFactory().manipulatePdf(DEST);
@@ -41,7 +43,7 @@ public class Listing_11_19_FontFactory extends GenericTest {
         doc.add(new Paragraph("Times-Roman, Bold").setFont(fontBold));
         doc.add(new Paragraph("\n"));
 
-        FontFactory.register("c:/windows/fonts/GARABD.TTF", "my_bold_font");
+        FontFactory.register(FONT_DIR + "EBGaramond08-Regular.ttf", "my_bold_font");
         PdfFont myBoldFont = PdfFontFactory.createRegisteredFont("my_bold_font");
         doc.add(new Paragraph(font.getFontProgram().getFontNames().getFontName()).setFont(myBoldFont));
         String[][] name = myBoldFont.getFontProgram().getFontNames().getFullName();
@@ -50,13 +52,13 @@ public class Listing_11_19_FontFactory extends GenericTest {
                     + "; " + name[i][1] + "; " + name[i][2] + ")"));
         }
 
-        PdfFont myBoldFont2 = PdfFontFactory.createRegisteredFont("Garamond Vet");
+        PdfFont myBoldFont2 = PdfFontFactory.createRegisteredFont("EB Garamond 08 Regular");
         doc.add(new Paragraph("Garamond Vet").setFont(myBoldFont2));
         doc.add(new Paragraph("\n"));
 
         doc.add(new Paragraph("Registered fonts:"));
         // "./src/test/resources/font" include so many fonts that we decided to use the other directory
-        FontFactory.registerDirectory("./src/test/resources/book/part3/chapter11/font/");
+        FontFactory.registerDirectory(FONT_DIR);
         for (String f : FontFactory.getRegisteredFonts()) {
             doc.add(new Paragraph(f).setFont(PdfFontFactory.createRegisteredFont(f, "", true)));
         }
