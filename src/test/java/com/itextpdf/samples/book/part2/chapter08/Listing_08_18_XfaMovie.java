@@ -12,13 +12,11 @@ import com.itextpdf.forms.xfa.XfaForm;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.utils.CompareTool;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.PrintStream;
+import java.io.*;
 import java.util.Set;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
@@ -28,6 +26,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 import org.w3c.dom.Document;
@@ -35,7 +34,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_08_18_XfaMovie extends GenericTest {
     /** The original PDF. */
@@ -53,14 +51,18 @@ public class Listing_08_18_XfaMovie extends GenericTest {
     /** The XML data taken from an XFA form that was filled out using iText. */
     public static final String RESULTDATA = "./target/test/resources/book/part2/chapter08/movie.xml";
     /** The resulting PDF. */
-    public static final String RESULT1 = "./target/test/resources/book/part2/chapter08/xfa_filled_1.pdf";
-    /** The resulting PDF. */
-    public static final String RESULT2 = "./target/test/resources/book/part2/chapter08/xfa_filled_2.pdf";
-    /** The resulting PDF. */
-    public static final String RESULT3 = "./target/test/resources/book/part2/chapter08/xfa_filled_3.pdf";
-    // for GenericTest usage only; we will check all three pdfs
-    public static final String DEST = RESULT3;
-
+    public static final String[] RESULT = {
+            "./target/test/resources/book/part2/chapter08/Listing_08_18_XfaMovie_xfa_filled_1.pdf",
+            "./target/test/resources/book/part2/chapter08/Listing_08_18_XfaMovie_xfa_filled_2.pdf",
+            "./target/test/resources/book/part2/chapter08/Listing_08_18_XfaMovie_xfa_filled_3.pdf"
+    };
+    /** PDFs to compare with. */
+    public static final String[] CMP_RESULT = {
+            "./src/test/resources/book/part2/chapter08/cmp_Listing_08_18_XfaMovie_xfa_filled_1.pdf",
+            "./src/test/resources/book/part2/chapter08/cmp_Listing_08_18_XfaMovie_xfa_filled_2.pdf",
+            "./src/test/resources/book/part2/chapter08/cmp_Listing_08_18_XfaMovie_xfa_filled_3.pdf"
+    };
+    
     /**
      * Checks if a PDF containing an interactive form uses
      * AcroForm technology, XFA technology, or both.
@@ -71,8 +73,7 @@ public class Listing_08_18_XfaMovie extends GenericTest {
      */
     public void readFieldnames(String src, String dest) throws IOException {
         PrintStream out = new PrintStream(new FileOutputStream(dest));
-        PdfReader reader = new PdfReader(src);
-        PdfDocument pdfDoc = new PdfDocument(reader);
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(src));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         XfaForm xfa = form.getXfaForm();
         out.println(xfa.isXfaPresent() ? "XFA form" : "AcroForm");
@@ -95,8 +96,7 @@ public class Listing_08_18_XfaMovie extends GenericTest {
     public void readXfa(String src, String dest)
             throws IOException, TransformerException {
         FileOutputStream os = new FileOutputStream(dest);
-        PdfReader reader = new PdfReader(src);
-        PdfDocument pdfDoc = new PdfDocument(reader);
+        PdfDocument pdfDoc = new PdfDocument( new PdfReader(src));
         XfaForm xfa = new XfaForm(pdfDoc);
         Document doc = xfa.getDomDocument();
         Transformer tf = TransformerFactory.newInstance().newTransformer();
@@ -114,8 +114,7 @@ public class Listing_08_18_XfaMovie extends GenericTest {
      * @throws IOException
      */
     public void fillData1(String src, String dest) throws IOException {
-        PdfReader reader = new PdfReader(src);
-        PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(dest));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         form.getField("movies[0].movie[0].imdb[0]").setValue("1075110");
         form.getField("movies[0].movie[0].duration[0]").setValue("108");
@@ -135,8 +134,7 @@ public class Listing_08_18_XfaMovie extends GenericTest {
      */
     public void fillData2(String src, String xml, String dest)
             throws IOException, SAXException, ParserConfigurationException {
-        PdfReader reader = new PdfReader(src);
-        PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(dest));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
         XfaForm xfa = new XfaForm(new FileInputStream(xml));
         xfa.write(pdfDoc);
         pdfDoc.close();
@@ -152,8 +150,7 @@ public class Listing_08_18_XfaMovie extends GenericTest {
     public void readData(String src, String dest)
             throws IOException, TransformerException {
         FileOutputStream os = new FileOutputStream(dest);
-        PdfReader reader = new PdfReader(src);
-        PdfDocument pdfDoc = new PdfDocument(reader);
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(src));
         XfaForm xfa = new XfaForm(pdfDoc);
         Node node = xfa.getDatasetsNode();
         NodeList list = node.getChildNodes();
@@ -184,8 +181,7 @@ public class Listing_08_18_XfaMovie extends GenericTest {
      * @throws IOException
      */
     public void fillData3(String src, String dest) throws IOException {
-        PdfReader reader = new PdfReader(src);
-        PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(dest));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         form.removeXfaForm();
         form.getField("movies[0].movie[0].imdb[0]").setValue("1075110");
@@ -197,22 +193,45 @@ public class Listing_08_18_XfaMovie extends GenericTest {
     }
 
     public static void main(String[] args) throws Exception {
-        new Listing_08_18_XfaMovie().manipulatePdf(DEST);
+        new Listing_08_18_XfaMovie().manipulatePdf(RESULT[0]);
     }
 
     protected void manipulatePdf(String dest) throws Exception {
         readFieldnames(RESOURCE, RESULTTXT1);
         readXfa(RESOURCE, RESULTXML);
-        fillData1(RESOURCE, RESULT1);
-        readXfa(RESULT1, RESULTXMLFILLED);
-        fillData2(RESOURCE, RESOURCEXFA, RESULT2);
-        readData(RESULT2, RESULTDATA);
-        fillData3(RESOURCE, RESULT3);
-        readFieldnames(RESULT3, RESULTTXT2);
+        fillData1(RESOURCE, RESULT[0]);
+        readXfa(RESULT[0], RESULTXMLFILLED);
+        fillData2(RESOURCE, RESOURCEXFA, RESULT[1]);
+        readData(RESULT[1], RESULTDATA);
+        fillData3(RESOURCE, RESULT[2]);
+        readFieldnames(RESULT[2], RESULTTXT2);
     }
 
     @Override
     protected void comparePdf(String dest, String cmp) throws Exception {
-        super.comparePdf(dest, cmp);
+        CompareTool compareTool = new CompareTool();
+        String outPath;
+        for (int i = 0; i < RESULT.length; i++) {
+            outPath = new File(RESULT[i]).getParent();
+            if (compareXml) {
+                if (!compareTool.compareXmls(RESULT[i], CMP_RESULT[i])) {
+                    addError("The XML structures are different.");
+                }
+            } else {
+                if (compareRenders) {
+                    addError(compareTool.compareVisually(RESULT[i], CMP_RESULT[i], outPath, differenceImagePrefix));
+                    addError(compareTool.compareLinkAnnotations(dest, cmp));
+                } else {
+                    addError(compareTool.compareByContent(RESULT[i], CMP_RESULT[i], outPath, differenceImagePrefix));
+                }
+                addError(compareTool.compareDocumentInfo(RESULT[i], CMP_RESULT[i]));
+            }
+        }
+        if (errorMessage != null) Assert.fail(errorMessage);
+    }
+    
+    @Override
+    protected String getDest() {
+        return RESULT[0];
     }
 }

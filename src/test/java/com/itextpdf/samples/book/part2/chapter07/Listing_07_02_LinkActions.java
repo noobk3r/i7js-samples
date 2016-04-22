@@ -122,7 +122,7 @@ public class Listing_07_02_LinkActions extends GenericTest {
      * @param dest The path to the XML file
      * @throws IOException
      */
-    public void createXml(String src, String dest) throws IOException, ParserConfigurationException, TransformerException {
+    public static void createXml(String src, String dest) throws IOException, ParserConfigurationException, TransformerException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src));
 
         DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();

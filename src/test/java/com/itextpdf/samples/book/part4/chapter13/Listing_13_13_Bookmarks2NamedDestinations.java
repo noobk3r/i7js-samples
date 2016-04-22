@@ -11,54 +11,42 @@ import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.*;
-import com.itextpdf.kernel.pdf.navigation.PdfDestination;
+import com.itextpdf.kernel.pdf.navigation.PdfExplicitDestination;
+import com.itextpdf.kernel.xmp.XMPException;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Div;
-import com.itextpdf.samples.book.part2.chapter07.Listing_07_02_LinkActions;
-import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.kernel.xmp.XMPException;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.samples.book.part2.chapter07.Listing_07_02_LinkActions;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.MovieComparator;
 import com.lowagie.filmfestival.PojoFactory;
-
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.Set;
-import java.util.TreeSet;
-
 import com.lowagie.filmfestival.PojoToElementFactory;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Set;
+import java.util.TreeSet;
 
 @Ignore
 @Category(SampleTest.class)
 public class Listing_13_13_Bookmarks2NamedDestinations extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part4/chapter13/Listing_13_13_Bookmarks2NamedDestinations.pdf";
-    public static final String LAUNCH_ACTIONS = "./src/test/resources/book/part2/chapter07/cmp_Listing_07_10_LaunchAction.pdf";
+    public static final String DEST = "./target/test/resources/book/part4/chapter13/Listing_13_13_Bookmarks2NamedDestinations_named_destinations.pdf";
     public static final String RESULT1 = "./target/test/resources/book/part4/chapter13/Listing_13_13_Bookmarks2NamedDestinations.pdf";
     public static final String RESULT2 = "./target/test/resources/book/part4/chapter13/Listing_13_13_Bookmarks2NamedDestinations_named_destinations.pdf";
     public static final String RESULT3 = "./target/test/resources/book/part4/chapter13/Listing_13_13_Bookmarks2NamedDestinations_named_destinations.xml";
     public static final String[] EPOCH =
             {"Forties", "Fifties", "Sixties", "Seventies", "Eighties",
                     "Nineties", "Twenty-first Century"};
-
-    /** The fonts for the title. */
-//    public static final Font[] FONT = new Font[4];
-//    static {
-//        FONT[0] = new Font(FontFamily.HELVETICA, 24);
-//        FONT[1] = new Font(FontFamily.HELVETICA, 18);
-//        FONT[2] = new Font(FontFamily.HELVETICA, 14);
-//        FONT[3] = new Font(FontFamily.HELVETICA, 12, Font.BOLD);
-//    }
 
     public static void main(String args[]) throws IOException, SQLException, XMPException, TransformerException, ParserConfigurationException {
         new Listing_13_13_Bookmarks2NamedDestinations().manipulatePdf(DEST);
@@ -96,7 +84,6 @@ public class Listing_13_13_Bookmarks2NamedDestinations extends GenericTest {
             if (epoch < (movie.getYear() - 1940) / 10) {
                 epoch = (movie.getYear() - 1940) / 10;
                 if (null != firstLevelParagraph) {
-                    doc.add(firstLevelParagraph);
                     doc.add(new AreaBreak());
                 }
                 // chapter
@@ -104,9 +91,10 @@ public class Listing_13_13_Bookmarks2NamedDestinations extends GenericTest {
                 secondLevelOrder = 0;
                 firstLevelTitle = firstLevelOrder + " " + EPOCH[epoch];
                 firstLevelParagraph = new Div().add(new Paragraph(firstLevelTitle).setFont(font).setFontSize(24).setBold());
-                firstLevelParagraph.setProperty(Property.DESTINATION, firstLevelTitle);
+                doc.add(firstLevelParagraph);
                 firstLevel = rootOutLine.addOutline(firstLevelTitle);
-                firstLevel.addDestination(PdfDestination.makeDestination(new PdfString(firstLevelTitle)));
+                firstLevel.addDestination(PdfExplicitDestination.createFit(pdfDoc.getLastPage()));
+
             }
             // switch to a new year
             if (currentYear < movie.getYear()) {
@@ -117,15 +105,11 @@ public class Listing_13_13_Bookmarks2NamedDestinations extends GenericTest {
                 secondLevelTitle = firstLevelOrder + ". " + secondLevelOrder + " " +
                         String.format("The year %d", movie.getYear());
                 secondLevelParagraph = new Div().add(new Paragraph(secondLevelTitle).setFont(font).setFontSize(18));
-                secondLevelParagraph.setProperty(Property.DESTINATION, secondLevelTitle);
                 secondLevel = firstLevel.addOutline(secondLevelTitle);
-                secondLevel.addDestination(PdfDestination.makeDestination(new PdfString(secondLevelTitle)));
-
+                secondLevel.addDestination(PdfExplicitDestination.createFit(pdfDoc.getLastPage()));
                 secondLevelParagraph.add(new Paragraph(
                         String.format("Movies from the year %d:", movie.getYear())).setMarginLeft(10));
-
-                firstLevelParagraph.add(secondLevelParagraph);
-
+                doc.add(secondLevelParagraph);
             }
             // subsection
             thirdLevelOrder++;
@@ -137,15 +121,10 @@ public class Listing_13_13_Bookmarks2NamedDestinations extends GenericTest {
             thirdLevelParagraph.add(PojoToElementFactory.getDirectorList(movie).setMarginLeft(20));
             thirdLevelParagraph.add(new Paragraph("Countries:").setFont(bold).setMarginLeft(20));
             thirdLevelParagraph.add(PojoToElementFactory.getCountryList(movie).setMarginLeft(20));
-
-            secondLevelParagraph.add(thirdLevelParagraph);
+            doc.add(thirdLevelParagraph);
         }
-        doc.add(firstLevelParagraph);
 
         doc.close();
-
-
-
         connection.close();
     }
 
@@ -161,7 +140,6 @@ public class Listing_13_13_Bookmarks2NamedDestinations extends GenericTest {
         if (dests.size() == 0) {
             return;
         }
-        // TODO Think
         PdfIndirectReference ref = dests.makeIndirect(pdfDoc).getIndirectReference();
         PdfDictionary nametree = new PdfDictionary();
         nametree.put(PdfName.Names, ref);
@@ -184,6 +162,6 @@ public class Listing_13_13_Bookmarks2NamedDestinations extends GenericTest {
     protected void manipulatePdf(String dest) throws IOException, SQLException, XMPException, TransformerException, ParserConfigurationException {
         createPdf(RESULT1);
         changePdf(RESULT1, RESULT2);
-        new Listing_07_02_LinkActions().createXml(RESULT2, RESULT3);
+        Listing_07_02_LinkActions.createXml(RESULT2, RESULT3);
     }
 }

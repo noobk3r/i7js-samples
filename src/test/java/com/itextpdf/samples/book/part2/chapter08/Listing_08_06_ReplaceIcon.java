@@ -8,6 +8,7 @@
 package com.itextpdf.samples.book.part2.chapter08;
 
 import com.itextpdf.io.image.Image;
+import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.*;
@@ -62,11 +63,10 @@ public class Listing_08_06_ReplaceIcon extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src),new PdfWriter(dest));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         Document doc = new Document(pdfDoc);
-//        CustomButton ad = new CustomButton((PdfButtonFormField) form.getField("advertisement"));
-//        ad.setImage(ImageFactory.getImage(RESOURCE));
-        ((PdfButtonFormField) form.getField("advertisement")).setImage(RESOURCE);
-//        form.removeField("advertisement");
-//        doc.add(new Paragraph().add(ad));
+        CustomButton ad = new CustomButton((PdfButtonFormField) form.getField("advertisement"));
+        ad.setImage(ImageFactory.getImage(RESOURCE));
+        form.removeField("advertisement");
+        doc.add(new Paragraph().add(ad));
         pdfDoc.close();
     }
 
@@ -75,7 +75,8 @@ public class Listing_08_06_ReplaceIcon extends GenericTest {
         manipulatePdf2(ADVERTISEMENT, DEST);
     }
 
-    private class CustomButton extends AbstractElement<CustomButton> implements ILeafElement<CustomButton>, IElement<CustomButton>, IAccessibleElement {
+
+    class CustomButton extends AbstractElement<CustomButton> implements ILeafElement<CustomButton>, IElement<CustomButton>, IAccessibleElement {
 
         protected PdfName role = PdfName.Figure;
         protected PdfButtonFormField button;

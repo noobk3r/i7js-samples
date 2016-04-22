@@ -37,8 +37,7 @@ import org.junit.experimental.categories.Category;
  * you import the private key stored in test.p12 in your certificate store.
  * The password for the p12 file is kspass.
  */
-// TODO We have to ignore these sample due to special security jars needed to be replaced on the server
-// Note that there is no problem in the sample and feel free to use its snippets
+// TODO DEVSIX-576
 @Ignore
 @Category(SampleTest.class)
 public class EncryptWithCertificate extends GenericTest {
