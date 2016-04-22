@@ -7,7 +7,6 @@ import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.utils.PdfMerger;
 import com.itextpdf.kernel.xmp.XMPException;
 import com.itextpdf.pdfa.PdfADocument;
-import com.itextpdf.pdfa.PdfAConformanceLevel;
 
 import java.io.File;
 import java.io.FileInputStream;
