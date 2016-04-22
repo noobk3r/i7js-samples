@@ -7,9 +7,12 @@
 
 package com.itextpdf.samples.book.part3.chapter12;
 
+import com.itextpdf.kernel.pdf.EncryptionConstants;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.ReaderProperties;
+import com.itextpdf.kernel.pdf.WriterProperties;
 import com.itextpdf.kernel.utils.CompareTool;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
@@ -45,8 +48,8 @@ public class Listing_12_09_EncryptionPdf extends GenericTest {
     }
 
     public void createPdf(String dest) throws FileNotFoundException {
-        PdfWriter writer = new PdfWriter(dest);
-        writer.setEncryption(USER, OWNER, PdfWriter.ALLOW_PRINTING, PdfWriter.STANDARD_ENCRYPTION_128);
+        PdfWriter writer = new PdfWriter(dest, new WriterProperties()
+                .setStandardEncryption(USER, OWNER, EncryptionConstants.ALLOW_PRINTING, EncryptionConstants.STANDARD_ENCRYPTION_128));
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
         doc.add(new Paragraph("Hello World"));
@@ -54,16 +57,17 @@ public class Listing_12_09_EncryptionPdf extends GenericTest {
     }
 
     public void decryptPdf(String src, String dest) throws IOException {
-        PdfReader reader = new PdfReader(src, OWNER);
+        PdfReader reader = new PdfReader(src, new ReaderProperties().setPassword(OWNER));
         PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(dest));
         pdfDoc.close();
         reader.close();
     }
 
     public void encryptPdf(String src, String dest) throws IOException {
-        PdfWriter writer = new PdfWriter(dest);
-        writer.setEncryption(USER, OWNER,
-                PdfWriter.ALLOW_PRINTING, PdfWriter.ENCRYPTION_AES_128 | PdfWriter.DO_NOT_ENCRYPT_METADATA);
+        PdfWriter writer = new PdfWriter(dest, new WriterProperties()
+                .setStandardEncryption(USER, OWNER,
+                        EncryptionConstants.ALLOW_PRINTING,
+                        EncryptionConstants.ENCRYPTION_AES_128 | EncryptionConstants.DO_NOT_ENCRYPT_METADATA));
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), writer);
         pdfDoc.close();
         writer.close();

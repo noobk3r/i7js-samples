@@ -14,6 +14,7 @@ package com.itextpdf.samples.sandbox.security;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.ReaderProperties;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -36,7 +37,7 @@ public class DecryptPdf extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfReader reader = new PdfReader(SRC, "World".getBytes());
+        PdfReader reader = new PdfReader(SRC, new ReaderProperties().setPassword("World".getBytes()));
         PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(DEST));
         System.out.println(new String(reader.computeUserPassword()));
         pdfDoc.close();

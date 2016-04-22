@@ -16,6 +16,7 @@ import com.itextpdf.io.source.RandomAccessSourceFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.ReaderProperties;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfFormField;
@@ -23,8 +24,6 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Map;
 
@@ -76,7 +75,7 @@ public class FillFormFieldOrder extends GenericTest {
 
     public void go2(byte[] src) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(new RandomAccessSourceFactory().createSource(src),
-                null, null, null, null, null), new PdfWriter(DEST));
+                new ReaderProperties()), new PdfWriter(DEST));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
 
         Map<String, PdfFormField> fields = form.getFormFields();

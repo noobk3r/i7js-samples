@@ -13,6 +13,7 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfVersion;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.WriterProperties;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.layer.PdfLayer;
 import com.itextpdf.kernel.pdf.layer.PdfLayerMembership;
@@ -36,10 +37,10 @@ public class Listing_15_06_LayerMembershipExample1 extends GenericTest {
     public void manipulatePdf(String dest) throws IOException {
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
+        PdfWriter writer = new PdfWriter(fos, new WriterProperties().setPdfVersion(PdfVersion.PDF_1_5));
 
         //Initialize document
-        PdfDocument pdfDoc = new PdfDocument(writer, PdfVersion.PDF_1_5);
+        PdfDocument pdfDoc = new PdfDocument(writer);
 
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage())
                 .setFontAndSize(PdfFontFactory.createFont(FontConstants.HELVETICA), 18);

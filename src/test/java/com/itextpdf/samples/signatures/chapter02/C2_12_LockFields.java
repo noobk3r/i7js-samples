@@ -22,6 +22,7 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.StampingProperties;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Cell;
@@ -140,7 +141,7 @@ public class C2_12_LockFields extends SignatureTest {
     }
 
     public void fillOut(String src, String dest, String name, String value) throws IOException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest), true);
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest), new StampingProperties().useAppendMode());
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         form.getField(name).setValue(value);
         pdfDoc.close();

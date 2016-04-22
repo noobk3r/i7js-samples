@@ -107,7 +107,7 @@ public class MergeWithToc2 extends GenericTest {
 
         PdfDocument resultDoc = new PdfDocument(new PdfWriter(dest));
         PdfDocument srcDoc = new PdfDocument(new PdfReader(
-                new RandomAccessSourceFactory().createSource(baos.toByteArray()), null, null, null, null, null));
+                new RandomAccessSourceFactory().createSource(baos.toByteArray()), new ReaderProperties()));
         srcDoc.getOutlines(false);
         srcDoc.copyPagesTo(srcDoc.getNumberOfPages(), srcDoc.getNumberOfPages(), resultDoc);
         srcDoc.copyPagesTo(1, srcDoc.getNumberOfPages() - 1, resultDoc);

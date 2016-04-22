@@ -160,7 +160,7 @@ public class Listing_05_12_MovieHistory1 extends GenericTest {
         doc.close();
 
         PdfDocument srcDoc = new PdfDocument(new PdfReader(new RandomAccessSourceFactory().createSource(baos.toByteArray()),
-                null, null, null, null, null));
+                new ReaderProperties()));
 
         // get the total number of pages that needs to be reordered
         int total = srcDoc.getNumberOfPages();

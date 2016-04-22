@@ -10,6 +10,7 @@ package com.itextpdf.samples.book.part1.chapter01;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfVersion;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.WriterProperties;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
@@ -32,10 +33,10 @@ public class Listing_01_10_HelloWorldVersion_1_7 extends GenericTest {
     public void manipulatePdf(String dest) throws IOException {
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
+        PdfWriter writer = new PdfWriter(fos, new WriterProperties().setPdfVersion(PdfVersion.PDF_1_7));
 
         //Initialize Pdf 1.7 document
-        PdfDocument pdfDoc = new PdfDocument(writer, PdfVersion.PDF_1_7);
+        PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
         //Add paragraph to the document

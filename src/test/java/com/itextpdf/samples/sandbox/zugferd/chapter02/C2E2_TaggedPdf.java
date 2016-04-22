@@ -18,6 +18,7 @@ import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfVersion;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.WriterProperties;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
@@ -45,7 +46,7 @@ public class C2E2_TaggedPdf extends GenericTest {
      */
     @Override
     protected void manipulatePdf(String dest) throws IOException, InterruptedException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest), PdfVersion.PDF_1_7);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest, new WriterProperties().setPdfVersion(PdfVersion.PDF_1_7)));
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
 
         //TAGGED PDF

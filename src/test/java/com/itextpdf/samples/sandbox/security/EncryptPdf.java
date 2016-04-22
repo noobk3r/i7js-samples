@@ -11,10 +11,12 @@
 */
 package com.itextpdf.samples.sandbox.security;
 
+import com.itextpdf.kernel.pdf.EncryptionConstants;
 import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfOutputStream;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.ReaderProperties;
+import com.itextpdf.kernel.pdf.WriterProperties;
 import com.itextpdf.kernel.utils.CompareTool;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -38,10 +40,10 @@ public class EncryptPdf extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfReader reader = new PdfReader(SRC, "World".getBytes());
-        PdfWriter writer = new PdfWriter(new FileOutputStream(DEST));
-        writer.setEncryption("Hello".getBytes(), "World".getBytes(), PdfOutputStream.ALLOW_PRINTING,
-                PdfOutputStream.ENCRYPTION_AES_128 | PdfOutputStream.DO_NOT_ENCRYPT_METADATA);
+        PdfReader reader = new PdfReader(SRC, new ReaderProperties().setPassword("World".getBytes()));
+        PdfWriter writer = new PdfWriter(new FileOutputStream(DEST), new WriterProperties()
+                .setStandardEncryption("Hello".getBytes(), "World".getBytes(), EncryptionConstants.ALLOW_PRINTING,
+                        EncryptionConstants.ENCRYPTION_AES_128 | EncryptionConstants.DO_NOT_ENCRYPT_METADATA));
         PdfDocument pdfDoc = new PdfDocument(reader, writer);
         pdfDoc.close();
     }

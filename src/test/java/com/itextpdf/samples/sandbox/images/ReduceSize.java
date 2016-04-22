@@ -20,6 +20,7 @@ import com.itextpdf.kernel.pdf.PdfObject;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfStream;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.WriterProperties;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -46,7 +47,7 @@ public class ReduceSize extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfWriter writer = new PdfWriter(DEST).setFullCompression(true);
+        PdfWriter writer = new PdfWriter(DEST, new WriterProperties().setFullCompressionMode(true));
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), writer);
         PdfObject object;
         PdfStream stream;

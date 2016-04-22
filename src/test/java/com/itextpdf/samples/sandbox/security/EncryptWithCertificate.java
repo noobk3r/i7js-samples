@@ -10,8 +10,10 @@
  */
 package com.itextpdf.samples.sandbox.security;
 
+import com.itextpdf.kernel.pdf.EncryptionConstants;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.WriterProperties;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
@@ -84,14 +86,13 @@ public class EncryptWithCertificate extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         Security.addProvider(new BouncyCastleProvider());
 
-        PdfWriter writer = new PdfWriter(new FileOutputStream(DEST));
-
         Certificate cert = getPublicCertificate(PUBLIC);
+        PdfWriter writer = new PdfWriter(new FileOutputStream(DEST), new WriterProperties()
+                .setPublicKeyEncryption(
+                        new Certificate[]{cert},
+                        new int[]{EncryptionConstants.ALLOW_PRINTING},
+                        EncryptionConstants.ENCRYPTION_AES_256));
 
-        writer.setEncryption(
-                new Certificate[]{cert},
-                new int[]{PdfWriter.ALLOW_PRINTING},
-                PdfWriter.ENCRYPTION_AES_256);
 
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);

@@ -60,7 +60,7 @@ public class Listing_08_29_ReaderEnabledForm extends GenericTest {
         PdfDocument pdfDoc;
         // preserve the reader enabling by creating a PDF in append mode (or not)
         if (preserve) {
-            pdfDoc = new PdfDocument(reader, new PdfWriter(dest), true);
+            pdfDoc = new PdfDocument(reader, new PdfWriter(dest), new StampingProperties().useAppendMode());
         } else {
             pdfDoc = new PdfDocument(reader, new PdfWriter(dest));
         }

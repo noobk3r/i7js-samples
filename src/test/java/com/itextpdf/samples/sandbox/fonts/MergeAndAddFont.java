@@ -119,7 +119,7 @@ public class MergeAndAddFont extends GenericTest {
         raf.close();
         // create a new stream for the font file
         PdfStream stream = new PdfStream(fontbytes);
-        stream.setCompressionLevel(PdfOutputStream.DEFAULT_COMPRESSION);
+        stream.setCompressionLevel(CompressionConstants.DEFAULT_COMPRESSION);
         stream.put(PdfName.Length1, new PdfNumber(fontbytes.length));
         // create a reader object
         PdfReader reader = new PdfReader(merged);

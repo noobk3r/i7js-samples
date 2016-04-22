@@ -20,6 +20,7 @@ import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfString;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.StampingProperties;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfTextAnnotation;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
@@ -89,7 +90,7 @@ public class C2_09_SignatureTypes extends SignatureTest {
 
     public void addText(String src, String dest) throws IOException {
         PdfReader reader = new PdfReader(src);
-        PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(dest), true);
+        PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(dest), new StampingProperties().useAppendMode());
         new Canvas(new PdfCanvas(pdfDoc.getFirstPage()), pdfDoc, pdfDoc.getFirstPage().getPageSize())
                 .showTextAligned("TOP SECRET", 36, 820, Property.TextAlignment.LEFT);
         pdfDoc.close();
@@ -97,7 +98,7 @@ public class C2_09_SignatureTypes extends SignatureTest {
 
     public void addAnnotation(String src, String dest) throws IOException {
         PdfReader reader = new PdfReader(src);
-        PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(dest), true);
+        PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(dest), new StampingProperties().useAppendMode());
         PdfAnnotation comment = new PdfTextAnnotation(new Rectangle(200, 800, 50, 20))
                 .setIconName(new PdfName("Comment"))
                 .setTitle(new PdfString("Finally Signed!"))

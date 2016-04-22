@@ -9,12 +9,12 @@ package com.itextpdf.samples.book.part4.chapter16;
 
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.pdf.CompressionConstants;
 import com.itextpdf.kernel.pdf.PdfDictionary;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfNumber;
 import com.itextpdf.kernel.pdf.PdfObject;
-import com.itextpdf.kernel.pdf.PdfOutputStream;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfStream;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -65,7 +65,7 @@ public class Listing_16_04_EmbedFontPostFacto extends GenericTest {
         raf.close();
         // create a new stream for the font file
         PdfStream stream = new PdfStream(fontfile);
-        stream.setCompressionLevel(PdfOutputStream.DEFAULT_COMPRESSION);
+        stream.setCompressionLevel(CompressionConstants.DEFAULT_COMPRESSION);
         stream.put(new PdfName("Length1"), new PdfNumber(fontfile.length));
         // create a reader object
         PdfReader reader = new PdfReader(src);

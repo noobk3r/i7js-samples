@@ -10,11 +10,12 @@ package com.itextpdf.samples.book.part3.chapter12;
 import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.pdf.CompressionConstants;
 import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfOutputStream;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfVersion;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.WriterProperties;
 import com.itextpdf.kernel.utils.CompareTool;
 import com.itextpdf.kernel.xmp.XMPException;
 import com.itextpdf.layout.Document;
@@ -69,21 +70,22 @@ public class Listing_12_06_HelloWorldCompression extends GenericTest {
     }
 
     public void createPdf(String dest, int compression) throws IOException, XMPException, SQLException {
-        PdfWriter writer = new PdfWriter(dest);
+        WriterProperties properties = new WriterProperties();
         switch (compression) {
             case -1:
-                writer.setCompressionLevel(PdfOutputStream.NO_COMPRESSION);
+                properties.setCompressionLevel(CompressionConstants.NO_COMPRESSION);
                 break;
             case 0:
-                writer.setCompressionLevel(PdfOutputStream.DEFAULT_COMPRESSION);
+                properties.setCompressionLevel(CompressionConstants.DEFAULT_COMPRESSION);
                 break;
             case 2:
-                writer.setCompressionLevel(PdfOutputStream.BEST_COMPRESSION);
+                properties.setCompressionLevel(CompressionConstants.BEST_COMPRESSION);
                 break;
             case 3:
-                writer.setFullCompression(true);
+                properties.setFullCompressionMode(true);
                 break;
         }
+        PdfWriter writer = new PdfWriter(dest, properties);
 
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
@@ -136,9 +138,11 @@ public class Listing_12_06_HelloWorldCompression extends GenericTest {
     }
 
     public void compressPdf(String src, String dest) throws IOException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest), PdfVersion.PDF_1_5);
+        PdfWriter writer = new PdfWriter(dest, new WriterProperties()
+                .setPdfVersion(PdfVersion.PDF_1_5)
+                .setFullCompressionMode(true));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), writer);
         //pdfDoc.getWriter().setCompressionLevel(PdfOutputStream.BEST_COMPRESSION);
-        pdfDoc.getWriter().setFullCompression(true);
         pdfDoc.close();
     }
 

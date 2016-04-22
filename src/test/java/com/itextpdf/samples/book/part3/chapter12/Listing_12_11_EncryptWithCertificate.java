@@ -8,9 +8,12 @@
 package com.itextpdf.samples.book.part3.chapter12;
 
 import com.itextpdf.io.source.RandomAccessSourceFactory;
+import com.itextpdf.kernel.pdf.EncryptionConstants;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.ReaderProperties;
+import com.itextpdf.kernel.pdf.WriterProperties;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
@@ -63,11 +66,10 @@ public class Listing_12_11_EncryptWithCertificate extends GenericTest {
     }
 
     public void createPdf(String dest) throws IOException, CertificateException {
-        PdfWriter writer = new PdfWriter(dest);
         Certificate cert1 = getPublicCertificate("./src/test/resources/encryption/foobar.cer");
         Certificate cert2 = getPublicCertificate(properties.getProperty("PUBLIC"));
-        writer.setEncryption(new Certificate[]{cert1, cert2},
-                new int[]{PdfWriter.ALLOW_PRINTING, PdfWriter.ALLOW_COPY}, PdfWriter.ENCRYPTION_AES_128);
+        PdfWriter writer = new PdfWriter(dest, new WriterProperties().setPublicKeyEncryption(new Certificate[]{cert1, cert2},
+                new int[]{EncryptionConstants.ALLOW_PRINTING, EncryptionConstants.ALLOW_COPY}, EncryptionConstants.ENCRYPTION_AES_128));
         Document doc = new Document(new PdfDocument(writer));
         doc.add(new Paragraph("Hello World!"));
         doc.close();
@@ -114,8 +116,10 @@ public class Listing_12_11_EncryptWithCertificate extends GenericTest {
      */
     public void decryptPdf(String src, String dest)
             throws IOException, GeneralSecurityException {
-        PdfReader reader = new PdfReader(new RandomAccessSourceFactory().createBestSource(src), null,
-                getPublicCertificate("./src/test/resources/encryption/foobar.cer"), getPrivateKey(), "BC", null);
+        ReaderProperties readerProperties = new ReaderProperties()
+                .setPublicKeySecurityParams(getPublicCertificate("./src/test/resources/encryption/foobar.cer"), getPrivateKey(), "BC", null);
+        PdfReader reader = new PdfReader(new RandomAccessSourceFactory().createBestSource(src),
+                readerProperties);
         PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(dest));
         pdfDoc.close();
         reader.close();
@@ -133,9 +137,9 @@ public class Listing_12_11_EncryptWithCertificate extends GenericTest {
             throws IOException, CertificateException {
         PdfReader reader = new PdfReader(src);
         Certificate cert = getPublicCertificate("./src/test/resources/encryption/foobar.cer");
-        PdfWriter writer = new PdfWriter(dest);
-        writer.setEncryption(new Certificate[]{cert},
-                new int[]{PdfWriter.ALLOW_PRINTING}, PdfWriter.ENCRYPTION_AES_128);
+        PdfWriter writer = new PdfWriter(dest, new WriterProperties()
+                .setPublicKeyEncryption(new Certificate[]{cert},
+                        new int[]{EncryptionConstants.ALLOW_PRINTING}, EncryptionConstants.ENCRYPTION_AES_128));
         PdfDocument pdfDoc = new PdfDocument(reader, writer);
         pdfDoc.close();
         reader.close();

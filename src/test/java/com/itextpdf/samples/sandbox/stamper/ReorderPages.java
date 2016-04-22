@@ -15,6 +15,7 @@ import com.itextpdf.io.source.RandomAccessSourceFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.ReaderProperties;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Paragraph;
@@ -51,8 +52,8 @@ public class ReorderPages extends GenericTest {
         }
         doc.close();
 
-        PdfDocument srcDoc = new PdfDocument(new PdfReader(new RandomAccessSourceFactory().createSource(baos.toByteArray()),
-                null, null, null, null, null));
+        PdfDocument srcDoc = new PdfDocument(new PdfReader(new RandomAccessSourceFactory().createSource(baos.toByteArray())
+                , new ReaderProperties()));
         PdfDocument resultDoc = new PdfDocument(new PdfWriter(dest));
         resultDoc.initializeOutlines();
 

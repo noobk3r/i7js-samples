@@ -19,16 +19,13 @@ import com.itextpdf.io.source.RandomAccessSourceFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.ReaderProperties;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
 
 @Category(SampleTest.class)
 public class MergeForms2 extends GenericTest {
@@ -48,7 +45,7 @@ public class MergeForms2 extends GenericTest {
         for (int i = 0; i < 3; ) {
             PdfDocument readerDoc = new PdfDocument(new PdfReader(
                     new RandomAccessSourceFactory().createSource(renameFields(SRC, ++i)),
-                    null, null, null, null, null));
+                    new ReaderProperties()));
             readerDoc.copyPagesTo(1, readerDoc.getNumberOfPages(), pdfDoc, new PdfPageFormCopier());
             readerDoc.close();
         }

@@ -14,6 +14,7 @@ import com.itextpdf.kernel.events.PdfDocumentEvent;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.ReaderProperties;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.layout.Document;
@@ -90,7 +91,7 @@ public class Listing_06_16_InsertPages extends GenericTest {
 
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
         PdfDocument srcDoc = new PdfDocument(new PdfReader(
-                new RandomAccessSourceFactory().createSource(stream.toByteArray()), null, null, null, null, null));
+                new RandomAccessSourceFactory().createSource(stream.toByteArray()), new ReaderProperties()));
         srcDoc.copyPagesTo(1, srcDoc.getNumberOfPages(), pdfDoc);
 
         pdfDoc.close();

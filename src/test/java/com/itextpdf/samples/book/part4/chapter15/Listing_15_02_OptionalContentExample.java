@@ -12,6 +12,7 @@ import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfVersion;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.WriterProperties;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.layer.PdfLayer;
 import com.itextpdf.samples.GenericTest;
@@ -36,10 +37,10 @@ public class Listing_15_02_OptionalContentExample extends GenericTest {
     public void manipulatePdf(String dest) throws IOException {
         //Initialize writer
         FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
+        PdfWriter writer = new PdfWriter(fos, new WriterProperties().setPdfVersion(PdfVersion.PDF_1_5));
 
         //Initialize document
-        PdfDocument pdfDoc = new PdfDocument(writer, PdfVersion.PDF_1_5);
+        PdfDocument pdfDoc = new PdfDocument(writer);
 
         // Working with layers and writing to canvas.
         PdfLayer nested = new PdfLayer("Nested layers", pdfDoc);
