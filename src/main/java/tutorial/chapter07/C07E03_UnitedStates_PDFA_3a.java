@@ -15,7 +15,7 @@ import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.pdfa.PdfADocument;
-import com.itextpdf.kernel.pdf.PdfAConformanceLevel;
+import com.itextpdf.pdfa.PdfAConformanceLevel;
 
 import java.io.*;
 import java.nio.file.Files;

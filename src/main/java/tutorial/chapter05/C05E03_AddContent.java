@@ -71,7 +71,7 @@ public class C05E03_AddContent {
                     .showText(String.valueOf(n))
                     .endText();
             //Draw watermark
-            Paragraph p = new Paragraph("CONFIDENTIALLY").setFontSize(60);
+            Paragraph p = new Paragraph("CONFIDENTIAL").setFontSize(60);
             canvas.saveState();
             PdfExtGState gs1 = new PdfExtGState().setFillOpacity(0.2f);
             canvas.setExtGState(gs1);

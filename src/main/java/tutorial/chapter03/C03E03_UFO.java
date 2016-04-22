@@ -127,7 +127,7 @@ public class C03E03_UFO {
                     .setProperty(Property.FONT_COLOR, Color.WHITE)
                     .setProperty(Property.FONT_SIZE, 60)
                     .setProperty(Property.FONT, helveticaBold)
-                    .showTextAligned(new Paragraph("CONFIDENTIALLY"), 298, 421, pdfDoc.getPageNumber(page),
+                    .showTextAligned(new Paragraph("CONFIDENTIAL"), 298, 421, pdfDoc.getPageNumber(page),
                             Property.TextAlignment.CENTER, Property.VerticalAlignment.MIDDLE, 45);
 
             canvas.release();
