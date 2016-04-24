@@ -13,7 +13,7 @@ import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.kernel.pdf.canvas.draw.DashedLine;
+import com.itextpdf.kernel.pdf.canvas.draw.DottedLine;
 import com.itextpdf.kernel.pdf.canvas.draw.SolidLine;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
@@ -57,8 +57,8 @@ public class Listing_02_21_DirectorOverview3 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD); // 12
-        normal = PdfFontFactory.createFont(FontConstants.HELVETICA); // 12
+        bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
+        normal = PdfFontFactory.createFont(FontConstants.HELVETICA);
 
         // Make the connection to the database
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
@@ -70,14 +70,10 @@ public class Listing_02_21_DirectorOverview3 extends GenericTest {
                         + "GROUP BY d.id, d.name, d.given_name ORDER BY c DESC");
         Director director;
         // creates line separators
-        LineSeparator UNDERLINE = new LineSeparator(new SolidLine(1));
-        // LineSeparator UNDERLINE = new LineSeparator(1, 100, null, Element.ALIGN_CENTER, -2);
-        // creates tabs
-        // TODO DEVSIX-459
-        // TODO DEVSIX-459
-        // Text tab1 = new Text(new VerticalPositionMark(), 200, true);
-        // Text tab2 = new Text(new VerticalPositionMark(), 350, true);
-        // Text tab3 = new Text(new DottedLineSeparator(), 450, true);
+        List<TabStop> tabStops = new ArrayList<>();
+        tabStops.add(new TabStop(200, Property.TabAlignment.LEFT));
+        tabStops.add(new TabStop(350, Property.TabAlignment.LEFT));
+        tabStops.add(new TabStop(450, Property.TabAlignment.LEFT, new DottedLine()));
         // loops over the directors
         while (rs.next()) {
             // creates a paragraph with the director name
@@ -96,7 +92,7 @@ public class Listing_02_21_DirectorOverview3 extends GenericTest {
             p.add(String.format("movies: %d", rs.getInt("c")));
             div.add(p);
             // adds a separator
-            div.add(UNDERLINE);
+            div.add(new LineSeparator(new SolidLine(1)));
             // adds the paragraph to the document
             doc.add(div);
             // gets all the movies of the current director
@@ -106,24 +102,27 @@ public class Listing_02_21_DirectorOverview3 extends GenericTest {
             // loop over the movies
             for (Movie movie : movies) {
                 // create a Paragraph with the movie title
-                p = new Paragraph(movie.getMovieTitle());
+                p = new Paragraph();
+                p.addTabStops(tabStops);
+
+                p.add(movie.getMovieTitle());
                 // insert a tab
-                // p.add(new Text(tab1));
-                // add the origina title
-                if (movie.getOriginalTitle() != null)
+                p.add(new Tab());
+                // add the original title
+                if (movie.getOriginalTitle() != null) {
                     p.add(new Text(movie.getOriginalTitle()));
+                }
                 // insert a tab
-                // p.add(new Text(tab2));
+                p.add(new Tab());
                 // add the run length of the movie
                 p.add(new Text(String.format("%d minutes", movie.getDuration())));
                 // insert a tab
-                // p.add(new Text(tab3));
+                p.add(new Tab());
                 // add the production year of the movie
                 p.add(new Text(String.valueOf(movie.getYear())));
                 // add the paragraph to the document
                 doc.add(p);
             }
-            doc.add(new Paragraph("\n"));
         }
         doc.close();
         stm.close();

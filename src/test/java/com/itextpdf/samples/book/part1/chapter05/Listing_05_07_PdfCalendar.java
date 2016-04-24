@@ -176,8 +176,8 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
         // a paragraph with the day
         Paragraph p = new Paragraph(text);
         // a separator
-        // TODO No DEVSIX-459 VerticalPositionMark
-        // p.add(new Text(new VerticalPositionMark()));
+        p.addTabStops(new TabStop(100, Property.TabAlignment.RIGHT));
+        p.add(new Tab());
         // and the number of the day
         p.add(new Text(String.format(locale, "%1$te", calendar)).setFont(normal).setFontSize(16));
         cell.add(p);

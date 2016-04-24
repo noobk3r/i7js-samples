@@ -193,8 +193,8 @@ public class Listing_04_21_PdfCalendar extends GenericTest {
         // a paragraph with the day
         Paragraph p = new Paragraph(text);
         // a separator
-        // TODO DEVSIX-459 No VerticalPositionMark
-        // p.add(new Text(new VerticalPositionMark()));
+        p.addTabStops(new TabStop(100, Property.TabAlignment.RIGHT));
+        p.add(new Tab());
         // and the number of the day
         p.add(new Text(String.format(locale, "%1$te", calendar)).setFont(normal).setFontSize(16));
         cell.add(p);
