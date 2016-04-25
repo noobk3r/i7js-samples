@@ -12,14 +12,13 @@ import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.draw.DottedLine;
 import com.itextpdf.layout.border.DottedBorder;
+import com.itextpdf.layout.element.*;
+import com.itextpdf.layout.element.List;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
-import com.itextpdf.layout.element.List;
-import com.itextpdf.layout.element.ListItem;
-import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.element.Text;
 import com.itextpdf.samples.GenericTest;
 
 import com.lowagie.database.DatabaseConnection;
@@ -31,8 +30,7 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
@@ -76,8 +74,8 @@ public class Listing_02_20_DirectorOverview2 extends GenericTest {
             for (Text text : PojoToElementFactory.getDirectorPhrase(director, bold, normal)) {
                 p.add(text);
             }
-
-            p.setBorderTop(new DottedBorder(1));
+            p.addTabStops(new TabStop(750, Property.TabAlignment.RIGHT, new DottedLine()));
+            p.add(new Tab());
             p.add(String.format("movies: %d", rs.getInt("c")));
             doc.add(p);
             // Creates a list
@@ -91,9 +89,20 @@ public class Listing_02_20_DirectorOverview2 extends GenericTest {
             // loops over the movies
             for (Movie movie : movies) {
                 // creates a list item with a movie title
-                movieitem = new ListItem(movie.getMovieTitle());
-
-                movieitem.add(new Paragraph().add(new Text(String.valueOf(movie.getYear()))));
+                Paragraph paragraphtoAdd = new Paragraph();
+                java.util.List<TabStop> tabStops = new ArrayList<>();
+                tabStops.add(new TabStop(750, Property.TabAlignment.RIGHT));
+                tabStops.add(new TabStop(850, Property.TabAlignment.RIGHT));
+                paragraphtoAdd.addTabStops(tabStops);
+                paragraphtoAdd.add(movie.getMovieTitle());
+                paragraphtoAdd.add(new Tab());
+                paragraphtoAdd.add(new Text(String.valueOf(movie.getYear())));
+                if (movie.getYear() > 1999) {
+                    Tab tab = new Tab();
+                    tab.setNextRenderer(new PositionedArrowTabRenderer(tab, doc, false));
+                    paragraphtoAdd.add(tab);
+                }
+                movieitem = new ListItem().add(paragraphtoAdd);
                 list.add(movieitem);
             }
             // add the list to the document

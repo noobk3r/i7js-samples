@@ -12,9 +12,11 @@ import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.tagging.PdfStructElem;
 import com.itextpdf.layout.Canvas;
+import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
 
@@ -27,18 +29,18 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class Listing_15_18_ContentParser extends DefaultHandler {
     protected StringBuffer buf = new StringBuffer();
-    protected PdfDocument pdfDoc;
+    protected Document doc;
     protected PdfCanvas canvas;
     protected List<PdfStructElem> elements;
     protected PdfStructElem current;
     protected PdfFont font;
+    protected PdfName role;
 
-    public Listing_15_18_ContentParser(PdfDocument pdfDoc, List<PdfStructElem> elements)
+    public Listing_15_18_ContentParser(Document doc, List<PdfStructElem> elements)
             throws IOException {
-        this.pdfDoc = pdfDoc;
-        canvas = new PdfCanvas(pdfDoc.addNewPage());
-        // column.setSimpleColumn(36, 36, 384, 569);
+        this.doc = doc;
         this.elements = elements;
+
         font = PdfFontFactory.createFont(/*"c:/windows/fonts/arial.ttf"*/"./src/test/resources/font/FreeSans.ttf",
                 PdfEncodings.WINANSI, true);
     }
@@ -55,23 +57,26 @@ public class Listing_15_18_ContentParser extends DefaultHandler {
 
     public void startElement(String uri, String localName, String qName,
                              Attributes attributes) throws SAXException {
-        if ("chapter".equals(qName)) return;
+        if ("chapter".equals(qName)) {
+            return;
+        }
         current = elements.get(0);
         elements.remove(0);
-        canvas.beginMarkedContent(current.getRole());
+        role = current.getRole();
     }
 
     public void endElement(String uri, String localName, String qName)
             throws SAXException {
-        if ("chapter".equals(qName)) return;
+        if ("chapter".equals(qName)) {
+            return;
+        }
         String s = buf.toString().trim();
         buf = new StringBuffer();
         if (s.length() > 0) {
             Paragraph p = new Paragraph(s).setFont(font);
+            p.setRole(role);
             p.setTextAlignment(Property.TextAlignment.JUSTIFIED);
-            Canvas canvasModel = new Canvas(canvas, pdfDoc, new Rectangle(36, 36, 384 - 36, 569 - 36));
-            canvasModel.add(p);
+            doc.add(p);
         }
-        canvas.endMarkedContent();
     }
 }

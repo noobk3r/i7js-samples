@@ -37,6 +37,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 @Ignore
+// TODO DEVSIX-584
 @Category(SampleTest.class)
 public class Listing_02_21_DirectorOverview3 extends GenericTest {
     public static final String DEST =

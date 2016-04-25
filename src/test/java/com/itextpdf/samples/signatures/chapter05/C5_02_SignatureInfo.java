@@ -39,140 +39,138 @@ import java.security.cert.X509Certificate;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-@Ignore
 @Category(SampleTest.class)
 public class C5_02_SignatureInfo extends C5_01_SignatureIntegrity {
-    // TODO Make resources from cmp files after revision
     public static final String EXAMPLE1 = "./src/test/resources/pdfs/step_4_signed_by_alice_bob_carol_and_dave.pdf";
-    // public static final String EXAMPLE2 = "results/chapter3/hello_cacert_ocsp_ts.pdf"; // TODO Uncomment after C3_09_SignWithTSA revision
-    // public static final String EXAMPLE3 = "results/chapter3/hello_token.pdf"; // TODO Uncomment after C3_11_SignWithToken revision
+    // public static final String EXAMPLE2 = "results/chapter3/hello_cacert_ocsp_ts.pdf";
+    // public static final String EXAMPLE3 = "results/chapter3/hello_token.pdf";
     public static final String EXAMPLE4 = "./src/test/resources/pdfs/hello_signed4.pdf";
-    // public static final String EXAMPLE5 = "results/chapter4/hello_smartcard_Signature.pdf"; // TODO Uncomment after C4_03_SignWithPKCS11SC revision
+    // public static final String EXAMPLE5 = "results/chapter4/hello_smartcard_Signature.pdf";
     public static final String EXAMPLE6 = "./src/test/resources/pdfs/field_metadata.pdf";
 
-    public static final  String expectedOutput = "===== sig1 =====\r\n" +
-            "\r\n" +
-            "Field on page 1; llx: 36.0, lly: 728.02, urx: 559.0; ury: 779.02\r\n" +
-            "Signature covers whole document: false\r\n" +
-            "Document revision: 1 of 4\r\n" +
-            "Integrity check OK? true\r\n" +
-            "Digest algorithm: SHA256\r\n" +
-            "Encryption algorithm: RSA\r\n" +
-            "Filter subtype: /adbe.pkcs7.detached\r\n" +
-            "Name of the signer: Alice Specimen\r\n" +
-            "Signed on: 2016-02-23 11:55:01.00\r\n" +
-            "Location: \r\n" +
-            "Reason: \r\n" +
-            "Contact info: \r\n" +
-            "Signature type: certification\r\n" +
-            "Filling out fields allowed: true\r\n" +
-            "Adding annotations allowed: false\r\n" +
-            "===== sig2 =====\r\n" +
-            "\r\n" +
-            "\r\n" +
-            "\r\n" +
-            "Field on page 1; llx: 36.0, lly: 629.04, urx: 559.0; ury: 680.04\r\n" +
-            "Signature covers whole document: false\r\n" +
-            "Document revision: 2 of 4\r\n" +
-            "Integrity check OK? true\r\n" +
-            "Digest algorithm: SHA256\r\n" +
-            "Encryption algorithm: RSA\r\n" +
-            "Filter subtype: /adbe.pkcs7.detached\r\n" +
-            "Name of the signer: Bob Specimen\r\n" +
-            "Signed on: 2016-02-23 11:55:02.00\r\n" +
-            "Location: \r\n" +
-            "Reason: \r\n" +
-            "Contact info: \r\n" +
-            "Signature type: approval\r\n" +
-            "Filling out fields allowed: true\r\n" +
-            "Adding annotations allowed: false\r\n" +
-            "Lock: /Include[sig1 approved_bob sig2 ]\r\n" +
-            "===== sig3 =====\r\n" +
-            "\r\n" +
-            "\r\n" +
-            "\r\n" +
-            "\r\n" +
-            "\r\n" +
-            "Field on page 1; llx: 36.0, lly: 530.05, urx: 559.0; ury: 581.05\r\n" +
-            "Signature covers whole document: false\r\n" +
-            "Document revision: 3 of 4\r\n" +
-            "Integrity check OK? true\r\n" +
-            "Digest algorithm: SHA256\r\n" +
-            "Encryption algorithm: RSA\r\n" +
-            "Filter subtype: /adbe.pkcs7.detached\r\n" +
-            "Name of the signer: Carol Specimen\r\n" +
-            "Signed on: 2016-02-23 11:55:02.00\r\n" +
-            "Location: \r\n" +
-            "Reason: \r\n" +
-            "Contact info: \r\n" +
-            "Signature type: approval\r\n" +
-            "Filling out fields allowed: true\r\n" +
-            "Adding annotations allowed: false\r\n" +
-            "Lock: /Include[sig1 approved_bob sig2 ]\r\n" +
-            "Lock: /Exclude[approved_dave sig4 ]\r\n" +
-            "===== sig4 =====\r\n" +
-            "\r\n" +
-            "\r\n" +
-            "\r\n" +
-            "\r\n" +
-            "\r\n" +
-            "\r\n" +
-            "\r\n" +
-            "Field on page 1; llx: 36.0, lly: 431.07, urx: 559.0; ury: 482.07\r\n" +
-            "Signature covers whole document: true\r\n" +
-            "Document revision: 4 of 4\r\n" +
-            "Integrity check OK? true\r\n" +
-            "Digest algorithm: SHA256\r\n" +
-            "Encryption algorithm: RSA\r\n" +
-            "Filter subtype: /adbe.pkcs7.detached\r\n" +
-            "Name of the signer: Dave Specimen\r\n" +
-            "Signed on: 2016-02-23 11:55:02.00\r\n" +
-            "Location: \r\n" +
-            "Reason: \r\n" +
-            "Contact info: \r\n" +
-            "Signature type: approval\r\n" +
-            "Filling out fields allowed: false\r\n" +
-            "Adding annotations allowed: false\r\n" +
-            "Lock: /Include[sig1 approved_bob sig2 ]\r\n" +
-            "Lock: /Exclude[approved_dave sig4 ]\r\n" +
-            "\r\n" +
-            "===== sig =====\r\n" +
-            "\r\n" +
-            "Field on page 1; llx: 36.0, lly: 648.0, urx: 236.0; ury: 748.0\r\n" +
-            "Signature covers whole document: true\r\n" +
-            "Document revision: 1 of 1\r\n" +
-            "Integrity check OK? true\r\n" +
-            "Digest algorithm: RIPEMD160\r\n" +
-            "Encryption algorithm: RSA\r\n" +
-            "Filter subtype: /ETSI.CAdES.detached\r\n" +
-            "Name of the signer: Bruno Specimen\r\n" +
-            "Signed on: 2016-02-23 12:24:30.00\r\n" +
-            "Location: Ghent\r\n" +
-            "Reason: Test 4\r\n" +
-            "Contact info: \r\n" +
-            "Signature type: approval\r\n" +
-            "Filling out fields allowed: true\r\n" +
-            "Adding annotations allowed: true\r\n" +
-            "\r\n" +
-            "===== Signature1 =====\r\n" +
-            "\r\n" +
-            "Field on page 1; llx: 46.0674, lly: 472.172, urx: 332.563; ury: 726.831\r\n" +
-            "Signature covers whole document: true\r\n" +
-            "Document revision: 1 of 1\r\n" +
-            "Integrity check OK? true\r\n" +
-            "Digest algorithm: SHA256\r\n" +
-            "Encryption algorithm: RSA\r\n" +
-            "Filter subtype: /adbe.pkcs7.detached\r\n" +
-            "Name of the signer: Bruno Specimen\r\n" +
-            "Alternative name of the signer: Bruno L. Specimen\r\n" +
-            "Signed on: 2016-02-23 12:22:40.00\r\n" +
-            "Location: Ghent\r\n" +
-            "Reason: Test metadata\r\n" +
-            "Contact info: 555 123 456\r\n" +
-            "Signature type: approval\r\n" +
-            "Filling out fields allowed: true\r\n" +
-            "Adding annotations allowed: true\r\n" +
-            "\r\n"; 
+    public static final  String expectedOutput = "===== sig1 =====\n" +
+            "\n" +
+            "Field on page 1; llx: 36.0, lly: 728.02, urx: 559.0; ury: 779.02\n" +
+            "Signature covers whole document: false\n" +
+            "Document revision: 1 of 4\n" +
+            "Integrity check OK? true\n" +
+            "Digest algorithm: SHA256\n" +
+            "Encryption algorithm: RSA\n" +
+            "Filter subtype: /adbe.pkcs7.detached\n" +
+            "Name of the signer: Alice Specimen\n" +
+            "Signed on: 2016-02-23 11:55:01.00\n" +
+            "Location: \n" +
+            "Reason: \n" +
+            "Contact info: \n" +
+            "Signature type: certification\n" +
+            "Filling out fields allowed: true\n" +
+            "Adding annotations allowed: false\n" +
+            "===== sig2 =====\n" +
+            "\n" +
+            "\n" +
+            "\n" +
+            "Field on page 1; llx: 36.0, lly: 629.04, urx: 559.0; ury: 680.04\n" +
+            "Signature covers whole document: false\n" +
+            "Document revision: 2 of 4\n" +
+            "Integrity check OK? true\n" +
+            "Digest algorithm: SHA256\n" +
+            "Encryption algorithm: RSA\n" +
+            "Filter subtype: /adbe.pkcs7.detached\n" +
+            "Name of the signer: Bob Specimen\n" +
+            "Signed on: 2016-02-23 11:55:02.00\n" +
+            "Location: \n" +
+            "Reason: \n" +
+            "Contact info: \n" +
+            "Signature type: approval\n" +
+            "Filling out fields allowed: true\n" +
+            "Adding annotations allowed: false\n" +
+            "Lock: /Include[sig1 approved_bob sig2 ]\n" +
+            "===== sig3 =====\n" +
+            "\n" +
+            "\n" +
+            "\n" +
+            "\n" +
+            "\n" +
+            "Field on page 1; llx: 36.0, lly: 530.05, urx: 559.0; ury: 581.05\n" +
+            "Signature covers whole document: false\n" +
+            "Document revision: 3 of 4\n" +
+            "Integrity check OK? true\n" +
+            "Digest algorithm: SHA256\n" +
+            "Encryption algorithm: RSA\n" +
+            "Filter subtype: /adbe.pkcs7.detached\n" +
+            "Name of the signer: Carol Specimen\n" +
+            "Signed on: 2016-02-23 11:55:02.00\n" +
+            "Location: \n" +
+            "Reason: \n" +
+            "Contact info: \n" +
+            "Signature type: approval\n" +
+            "Filling out fields allowed: true\n" +
+            "Adding annotations allowed: false\n" +
+            "Lock: /Include[sig1 approved_bob sig2 ]\n" +
+            "Lock: /Exclude[approved_dave sig4 ]\n" +
+            "===== sig4 =====\n" +
+            "\n" +
+            "\n" +
+            "\n" +
+            "\n" +
+            "\n" +
+            "\n" +
+            "\n" +
+            "Field on page 1; llx: 36.0, lly: 431.07, urx: 559.0; ury: 482.07\n" +
+            "Signature covers whole document: true\n" +
+            "Document revision: 4 of 4\n" +
+            "Integrity check OK? true\n" +
+            "Digest algorithm: SHA256\n" +
+            "Encryption algorithm: RSA\n" +
+            "Filter subtype: /adbe.pkcs7.detached\n" +
+            "Name of the signer: Dave Specimen\n" +
+            "Signed on: 2016-02-23 11:55:02.00\n" +
+            "Location: \n" +
+            "Reason: \n" +
+            "Contact info: \n" +
+            "Signature type: approval\n" +
+            "Filling out fields allowed: false\n" +
+            "Adding annotations allowed: false\n" +
+            "Lock: /Include[sig1 approved_bob sig2 ]\n" +
+            "Lock: /Exclude[approved_dave sig4 ]\n" +
+            "\n" +
+            "===== sig =====\n" +
+            "\n" +
+            "Field on page 1; llx: 36.0, lly: 648.0, urx: 236.0; ury: 748.0\n" +
+            "Signature covers whole document: true\n" +
+            "Document revision: 1 of 1\n" +
+            "Integrity check OK? true\n" +
+            "Digest algorithm: RIPEMD160\n" +
+            "Encryption algorithm: RSA\n" +
+            "Filter subtype: /ETSI.CAdES.detached\n" +
+            "Name of the signer: Bruno Specimen\n" +
+            "Signed on: 2016-02-23 12:24:30.00\n" +
+            "Location: Ghent\n" +
+            "Reason: Test 4\n" +
+            "Contact info: \n" +
+            "Signature type: approval\n" +
+            "Filling out fields allowed: true\n" +
+            "Adding annotations allowed: true\n" +
+            "\n" +
+            "===== Signature1 =====\n" +
+            "\n" +
+            "Field on page 1; llx: 46.0674, lly: 472.172, urx: 332.563; ury: 726.831\n" +
+            "Signature covers whole document: true\n" +
+            "Document revision: 1 of 1\n" +
+            "Integrity check OK? true\n" +
+            "Digest algorithm: SHA256\n" +
+            "Encryption algorithm: RSA\n" +
+            "Filter subtype: /adbe.pkcs7.detached\n" +
+            "Name of the signer: Bruno Specimen\n" +
+            "Alternative name of the signer: Bruno L. Specimen\n" +
+            "Signed on: 2016-02-23 12:22:40.00\n" +
+            "Location: Ghent\n" +
+            "Reason: Test metadata\n" +
+            "Contact info: 555 123 456\n" +
+            "Signature type: approval\n" +
+            "Filling out fields allowed: true\n" +
+            "Adding annotations allowed: true\n" +
+            "\n"; 
 
     public SignaturePermissions inspectSignature(PdfDocument pdfDoc, SignatureUtil signUtil, PdfAcroForm form, String name, SignaturePermissions perms) throws GeneralSecurityException, IOException {
         if (form.getField(name).getWidgets() != null && form.getField(name).getWidgets().size() > 0) {

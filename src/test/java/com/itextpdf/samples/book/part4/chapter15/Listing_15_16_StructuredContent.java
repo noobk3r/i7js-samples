@@ -13,6 +13,7 @@ import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.tagging.PdfStructElem;
 import com.itextpdf.kernel.pdf.tagging.PdfStructTreeRoot;
+import com.itextpdf.layout.Document;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
 
@@ -31,7 +32,6 @@ import org.junit.experimental.categories.Category;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_15_16_StructuredContent extends GenericTest {
     public static final String DEST
@@ -50,6 +50,7 @@ public class Listing_15_16_StructuredContent extends GenericTest {
 
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(writer);
+        Document doc = new Document(pdfDoc);
         pdfDoc.setDefaultPageSize(PageSize.A5);
         pdfDoc.setTagged();
         PdfStructTreeRoot root = pdfDoc.getStructTreeRoot();
@@ -64,7 +65,7 @@ public class Listing_15_16_StructuredContent extends GenericTest {
                 new Listing_15_17_StructureParser(pdfDoc, top, elements));
         parser.parse(
                 new InputSource(new FileInputStream(RESOURCE)),
-                new Listing_15_18_ContentParser(pdfDoc, elements));
+                new Listing_15_18_ContentParser(doc, elements));
         pdfDoc.close();
     }
 }

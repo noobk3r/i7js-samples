@@ -24,12 +24,21 @@ import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.kernel.pdf.tagutils.AccessibilityProperties;
+import com.itextpdf.kernel.pdf.tagutils.IAccessibleElement;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
+import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
+import com.itextpdf.kernel.pdf.xobject.PdfXObject;
 import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
-import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.element.Text;
+import com.itextpdf.layout.element.*;
+import com.itextpdf.layout.layout.LayoutArea;
+import com.itextpdf.layout.layout.LayoutContext;
+import com.itextpdf.layout.layout.LayoutResult;
+import com.itextpdf.layout.renderer.AbstractRenderer;
+import com.itextpdf.layout.renderer.DrawContext;
+import com.itextpdf.layout.renderer.IRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
@@ -48,32 +57,14 @@ import java.io.IOException;
 public class Listing_08_16_MovieAds extends GenericTest {
     public static final String DEST
             = "./target/test/resources/book/part2/chapter08/Listing_08_16_MovieAds.pdf";
-    /**
-     * The resulting PDF: a small template for an individual ad.
-     */
     public static final String TEMPLATE
             = "./target/test/resources/book/part2/chapter08/Listing_08_16_MovieAds_template.pdf";
-    /**
-     * The source PDF file: the template for the complete ad.
-     */
     public static final String RESOURCE
             = "./src/test/resources/pdfs/movie_overview.pdf";
-    /**
-     * Path to the movie posters
-     */
     public static final String IMAGE
             = "./src/test/resources/img/posters/%s.jpg";
-    /**
-     * Field name for the poster
-     */
     public static final String POSTER = "poster";
-    /**
-     * Field name for the text
-     */
     public static final String TEXT = "text";
-    /**
-     * Field name for the year
-     */
     public static final String YEAR = "year";
 
     public static void main(String[] args) throws Exception {
@@ -85,43 +76,46 @@ public class Listing_08_16_MovieAds extends GenericTest {
     }
 
     /**
-     * Create a small template that will be used for an individual ad.
+     * Create a small formXObject that will be used for an individual ad.
      *
      * @param filename the filename of the add
      * @throws IOException
      */
     public void createTemplate(String filename) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(filename));
-        Document doc = new Document(pdfDoc, new PageSize(millimetersToPoints(35), millimetersToPoints(50)));
+        pdfDoc.setDefaultPageSize(new PageSize(millimetersToPoints(35), millimetersToPoints(50)));
         pdfDoc.addNewPage();
         pdfDoc.getCatalog().setPageLayout(PdfName.SinglePage);
+
+        PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
 
         PdfButtonFormField poster = PdfFormField.createPushButton(pdfDoc, new Rectangle(millimetersToPoints(0),
                 millimetersToPoints(25), millimetersToPoints(35) - millimetersToPoints(0),
                 millimetersToPoints(50) - millimetersToPoints(25)), POSTER, "");
         poster.setBackgroundColor(new DeviceGray(0.4f));
-        PdfAcroForm.getAcroForm(pdfDoc, true).addField(poster);
-        // pdfDoc.getFirstPage().addAnnotation(poster.getWidgets().get(0));
+        form.addField(poster);
+
         PdfTextFormField movie = PdfFormField.createText(pdfDoc, new Rectangle(millimetersToPoints(0),
                 millimetersToPoints(7), millimetersToPoints(35) - millimetersToPoints(0),
                 millimetersToPoints(25) - millimetersToPoints(7)), TEXT, "");
         movie.setMultiline(true);
-        PdfAcroForm.getAcroForm(pdfDoc, true).addField(movie);
+        form.addField(movie);
+
         PdfTextFormField screening = PdfFormField.createText(pdfDoc, new Rectangle(millimetersToPoints(0),
                 millimetersToPoints(0), millimetersToPoints(35) - millimetersToPoints(0),
                 millimetersToPoints(7) - millimetersToPoints(0)), YEAR, "");
         screening.setJustification(PdfFormField.ALIGN_CENTER);
         screening.setBackgroundColor(new DeviceGray(0.4f));
         screening.setColor(Color.LIGHT_GRAY);
-        PdfAcroForm.getAcroForm(pdfDoc, true).addField(screening);
+        form.addField(screening);
 
         pdfDoc.close();
     }
 
     /**
-     * Fill out the small template with information about the movie.
+     * Fill out the small formXObject with information about the movie.
      *
-     * @param filename the template for an individual ad
+     * @param filename the formXObject for an individual ad
      * @param movie    the movie that needs to be in the ad
      * @return a byte[] containing an individual ad
      * @throws IOException
@@ -145,10 +139,10 @@ public class Listing_08_16_MovieAds extends GenericTest {
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());
         Rectangle rect = form.getField(TEXT).getWidgets().get(0).getRectangle().toRectangle();
         float size = 100;
-        while (!addParagraph(pdfDoc, createMovieParagraph(pdfDoc, movie, size), canvas, rect) && size > 6) {
+        while (!addParagraph(pdfDoc, createMovieParagraph(movie, size), canvas, rect) && size > 6) {
             size -= 0.2;
         }
-        addParagraph(pdfDoc, createMovieParagraph(pdfDoc, movie, size), canvas, rect);
+        addParagraph(pdfDoc, createMovieParagraph(movie, size), canvas, rect);
         // fill out the year and change the background color
         form.getField(YEAR).setBackgroundColor(color);
         form.getField(YEAR).setValue(String.valueOf(movie.getYear()));
@@ -186,7 +180,7 @@ public class Listing_08_16_MovieAds extends GenericTest {
      * @param fontsize the font size
      * @return a Paragraph object
      */
-    public Paragraph createMovieParagraph(PdfDocument pdfDoc, Movie movie, float fontsize) {
+    public Paragraph createMovieParagraph(Movie movie, float fontsize) {
         PdfFont normal = null;
         PdfFont bold = null;
         PdfFont italic = null;
@@ -231,7 +225,7 @@ public class Listing_08_16_MovieAds extends GenericTest {
                 baos = new ByteArrayOutputStream();
                 stamper = new PdfDocument(new PdfReader(RESOURCE), new PdfWriter(baos));
                 form = PdfAcroForm.getAcroForm(stamper, true);
-                //form.flattenFields();
+                // form.flattenFields();
             }
             count++;
             PdfReader ad = new PdfReader(new ByteArrayInputStream(fillTemplate(TEMPLATE, movie)));
@@ -239,11 +233,16 @@ public class Listing_08_16_MovieAds extends GenericTest {
             PdfPage curPage = srcDoc.getFirstPage();
             PdfFormXObject xObject = curPage.copyAsFormXObject(stamper);
             PdfButtonFormField bt = (PdfButtonFormField) form.getField("movie_" + count);
-            bt.setImageAsForm(xObject);
-            // TODO No setLayout & setProportionalIcon & setTemplate on PdfFormField
+
+            CustomButton button = new CustomButton(bt);
+            button.setFormXObject(xObject);
+
+            // Listing_08_06_ReplaceIcon.CustomButton button = new Listing_08_06_ReplaceIcon.CustomButton(bt);
+
+            // TODO No setLayout & setProportionalIcon & setFormXObject on PdfFormField
             // bt.setLayout(PushbuttonField.LAYOUT_ICON_ONLY);
             // bt.setProportionalIcon(true);
-            // bt.setTemplate(page);
+            // bt.setFormXObject(page);
             //form = PdfAcroForm.getAcroForm(stamper, true);
             //form.removeField("movie_" + count);
             //form.addField(bt);
@@ -265,4 +264,173 @@ public class Listing_08_16_MovieAds extends GenericTest {
         // close the database connection
         connection.close();
     }
+
+    class CustomButton extends AbstractElement<Listing_08_06_ReplaceIcon.CustomButton> implements ILeafElement<Listing_08_06_ReplaceIcon.CustomButton>, IElement<Listing_08_06_ReplaceIcon.CustomButton>, IAccessibleElement {
+
+        protected PdfName role = PdfName.Figure;
+        protected PdfButtonFormField button;
+        protected String caption;
+        protected com.itextpdf.io.image.Image image;
+        protected PdfFormXObject formXObject;
+
+        protected Rectangle rect;
+        protected Color borderColor = Color.BLACK;
+        protected Color buttonBackgroundColor = Color.WHITE;
+
+        public CustomButton(PdfButtonFormField button) {
+            this.button = button;
+        }
+
+        public PdfFormXObject getFormXObject() {
+            return formXObject;
+        }
+
+        public void setFormXObject(PdfFormXObject formXObject) {
+            this.formXObject = formXObject;
+        }
+
+        @Override
+        protected IRenderer makeNewRenderer() {
+            return new CustomButtonRenderer(this);
+        }
+
+        @Override
+        public PdfName getRole() {
+            return role;
+        }
+
+        @Override
+        public void setRole(PdfName role) {
+            this.role = role;
+        }
+
+        @Override
+        public AccessibilityProperties getAccessibilityProperties() {
+            return null;
+        }
+
+        public PdfButtonFormField getButton() {
+            return button;
+        }
+
+        public String getCaption() {
+            return caption == null ? "" : caption;
+        }
+
+        public void setImage(com.itextpdf.io.image.Image image) {
+            this.image = image;
+        }
+
+        public com.itextpdf.io.image.Image getImage() {
+            return image;
+        }
+
+        public Color getBorderColor() {
+            return borderColor;
+        }
+
+        public void setBorderColor(Color borderColor) {
+            this.borderColor = borderColor;
+        }
+
+        public void setButtonBackgroundColor(Color buttonBackgroundColor) {
+            this.buttonBackgroundColor = buttonBackgroundColor;
+        }
+    }
+
+    class CustomButtonRenderer extends AbstractRenderer {
+
+        public CustomButtonRenderer(CustomButton button) {
+            super(button);
+        }
+
+        @Override
+        public LayoutResult layout(LayoutContext layoutContext) {
+            LayoutArea area = layoutContext.getArea().clone();
+            Rectangle layoutBox = area.getBBox();
+            applyMargins(layoutBox, false);
+            Listing_08_06_ReplaceIcon.CustomButton modelButton = (Listing_08_06_ReplaceIcon.CustomButton) modelElement;
+            occupiedArea = new LayoutArea(area.getPageNumber(), new Rectangle(modelButton.button.getWidgets().get(0).getRectangle().toRectangle()));
+            PdfButtonFormField button = ((Listing_08_06_ReplaceIcon.CustomButton) getModelElement()).getButton();
+            button.getWidgets().get(0).setRectangle(new PdfArray(occupiedArea.getBBox()));
+
+            return new LayoutResult(LayoutResult.FULL, occupiedArea, null, null);
+        }
+
+        @Override
+        public void draw(DrawContext drawContext) {
+            CustomButton modelButton = (CustomButton) modelElement;
+            Rectangle rect = modelButton.button.getWidgets().get(0).getRectangle().toRectangle();
+            occupiedArea.setBBox(rect);
+
+            super.draw(drawContext);
+            float width = occupiedArea.getBBox().getWidth();
+            float height = occupiedArea.getBBox().getHeight();
+
+            PdfStream str = new PdfStream();
+            PdfCanvas canvas = new PdfCanvas(str, new PdfResources(), drawContext.getDocument());
+            PdfFormXObject xObject = new PdfFormXObject(new Rectangle(0, 0, width, height));
+
+            canvas.
+                    saveState().
+                    setStrokeColor(modelButton.getBorderColor()).
+                    setLineWidth(1).
+                    rectangle(0, 0, occupiedArea.getBBox().getWidth(), occupiedArea.getBBox().getHeight()).
+                    stroke().
+                    setFillColor(modelButton.buttonBackgroundColor).
+                    rectangle(0.5f, 0.5f, occupiedArea.getBBox().getWidth() - 1, occupiedArea.getBBox().getHeight() - 1).
+                    fill().
+                    restoreState();
+
+            Paragraph paragraph = new Paragraph(modelButton.getCaption()).setFontSize(10).setMargin(0).setMultipliedLeading(1);
+
+            new Canvas(canvas, drawContext.getDocument(), new Rectangle(0, 0, width, height)).
+                    showTextAligned(paragraph, 1, 1, Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM);
+
+            if (null == modelButton.getFormXObject()) {
+                PdfImageXObject imageXObject = new PdfImageXObject(modelButton.getImage());
+                float imageWidth = imageXObject.getWidth();
+                if (imageXObject.getWidth() > rect.getWidth()) {
+                    imageWidth = rect.getWidth();
+                } else if (imageXObject.getHeight() > rect.getHeight()) {
+                    imageWidth = imageWidth * (rect.getHeight() / imageXObject.getHeight());
+                }
+
+                canvas.addXObject(imageXObject, 0.5f, 0.5f, imageWidth - 1);
+
+
+                PdfButtonFormField button = modelButton.getButton();
+                button.getWidgets().get(0).setNormalAppearance(xObject.getPdfObject());
+                xObject.getPdfObject().getOutputStream().writeBytes(str.getBytes());
+                xObject.getResources().addImage(imageXObject);
+
+                PdfAcroForm.getAcroForm(drawContext.getDocument(), true).addField(button, drawContext.getDocument().getPage(1));
+            } else {
+                PdfXObject formXObject = modelButton.getFormXObject();
+                float imageWidth = formXObject.getWidth();
+                if (formXObject.getWidth() > rect.getWidth()) {
+                    imageWidth = rect.getWidth();
+                } else if (formXObject.getHeight() > rect.getHeight()) {
+                    imageWidth = imageWidth * (rect.getHeight() / formXObject.getHeight());
+                }
+
+                canvas.addXObject(formXObject, 0.5f, 0.5f, imageWidth - 1);
+
+
+                PdfButtonFormField button = modelButton.getButton();
+                button.getWidgets().get(0).setNormalAppearance(xObject.getPdfObject());
+                xObject.getPdfObject().getOutputStream().writeBytes(str.getBytes());
+                xObject.getResources().addImage(formXObject.getPdfObject());
+
+                PdfAcroForm.getAcroForm(drawContext.getDocument(), true).addField(button, drawContext.getDocument().getPage(1));
+
+            }
+        }
+
+        @Override
+        public IRenderer getNextRenderer() {
+            return null;
+        }
+    }
+
 }

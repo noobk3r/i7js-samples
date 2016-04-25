@@ -65,7 +65,6 @@ public class Listing_02_22_MovieLinks1 extends GenericTest {
         while (rs.next()) {
             Paragraph anchor = new Paragraph(rs.getString("country"));
             anchor.setFont(bold);
-            // TODO Revise Table 3.33
             anchor.setProperty(Property.DESTINATION, rs.getString("country_id"));
 
             doc.add(anchor);
