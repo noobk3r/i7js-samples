@@ -23,6 +23,7 @@ import com.itextpdf.samples.GenericTest;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
+@Ignore
 @Category(SampleTest.class)
 public class Listing_11_19_FontFactory extends GenericTest {
     public static final String DEST
