@@ -57,7 +57,7 @@ public class C3_07_SignWithOCSP extends C3_01_SignWithCAcert {
         String alias = ks.aliases().nextElement();
         PrivateKey pk = (PrivateKey) ks.getKey(alias, pass);
         Certificate[] chain = ks.getCertificateChain(alias);
-        IOcspClient ocspClient = new OcspClientBouncyCastle();
+        IOcspClient ocspClient = new OcspClientBouncyCastle(null);
         C3_07_SignWithOCSP app = new C3_07_SignWithOCSP();
         app.sign(SRC, DEST, chain, pk, DigestAlgorithms.SHA256, provider.getName(), PdfSigner.CryptoStandard.CMS, "Test", "Ghent",
                 null, ocspClient, null, 0);

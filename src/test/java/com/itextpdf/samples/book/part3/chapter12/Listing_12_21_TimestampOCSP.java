@@ -106,7 +106,7 @@ public class Listing_12_21_TimestampOCSP extends SignatureTest {
         // If we use OCSP:
         IOcspClient ocsp = null;
         if (withOCSP) {
-            ocsp = new OcspClientBouncyCastle();
+            ocsp = new OcspClientBouncyCastle(null);
         }
         IExternalDigest digest = new BouncyCastleDigest();
         signer.signDetached(digest, es, chain, null, ocsp, tsc, 0, PdfSigner.CryptoStandard.CMS);

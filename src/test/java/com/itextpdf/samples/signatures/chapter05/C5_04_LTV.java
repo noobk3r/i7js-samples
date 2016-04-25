@@ -61,7 +61,7 @@ public class C5_04_LTV extends SignatureTest {
         String tsaPass = properties.getProperty("TSAPASSWORD");
         C5_04_LTV app = new C5_04_LTV();
         ITSAClient tsa = new TSAClientBouncyCastle(tsaUrl, tsaUser, tsaPass, 6500, "SHA512");
-        IOcspClient ocsp = new OcspClientBouncyCastle();
+        IOcspClient ocsp = new OcspClientBouncyCastle(null);
 //        app.addLtv(EXAMPLE1, String.format(DEST, 1), ocsp, new CrlClientOnline(), tsa);
         System.out.println();
 //        app.addLtv(EXAMPLE2, String.format(DEST, 2), ocsp, new CrlClientOnline(), tsa);

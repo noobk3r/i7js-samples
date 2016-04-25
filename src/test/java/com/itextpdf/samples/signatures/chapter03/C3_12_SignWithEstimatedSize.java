@@ -60,7 +60,7 @@ public class C3_12_SignWithEstimatedSize extends C3_01_SignWithCAcert {
         String alias = ks.aliases().nextElement();
         PrivateKey pk = (PrivateKey) ks.getKey(alias, pass);
         Certificate[] chain = ks.getCertificateChain(alias);
-        IOcspClient ocspClient = new OcspClientBouncyCastle();
+        IOcspClient ocspClient = new OcspClientBouncyCastle(null);
         ITSAClient tsaClient = new TSAClientBouncyCastle(tsaUrl, tsaUser, tsaPass);
         C3_12_SignWithEstimatedSize app = new C3_12_SignWithEstimatedSize();
         boolean succeeded = false;

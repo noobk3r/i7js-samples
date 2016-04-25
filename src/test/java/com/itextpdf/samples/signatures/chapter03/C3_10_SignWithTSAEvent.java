@@ -61,7 +61,7 @@ public class C3_10_SignWithTSAEvent extends C3_01_SignWithCAcert {
         String alias = ks.aliases().nextElement();
         PrivateKey pk = (PrivateKey) ks.getKey(alias, pass);
         Certificate[] chain = ks.getCertificateChain(alias);
-        IOcspClient ocspClient = new OcspClientBouncyCastle();
+        IOcspClient ocspClient = new OcspClientBouncyCastle(null);
         TSAClientBouncyCastle tsaClient = new TSAClientBouncyCastle(tsaUrl, tsaUser, tsaPass);
         tsaClient.setTSAInfo(new ITSAInfoBouncyCastle() {
             public void inspectTimeStampTokenInfo(TimeStampTokenInfo info) {

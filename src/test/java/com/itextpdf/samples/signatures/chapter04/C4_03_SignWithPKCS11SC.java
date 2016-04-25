@@ -71,7 +71,7 @@ public class C4_03_SignWithPKCS11SC extends C4_02_SignWithPKCS11USB {
     public static void smartcardsign(String provider, KeyStore ks, String alias) throws GeneralSecurityException, IOException {
         PrivateKey pk = (PrivateKey) ks.getKey(alias, null);
         Certificate[] chain = ks.getCertificateChain(alias);
-        IOcspClient ocspClient = new OcspClientBouncyCastle();
+        IOcspClient ocspClient = new OcspClientBouncyCastle(null);
         List<ICrlClient> crlList = new ArrayList<ICrlClient>();
         crlList.add(new CrlClientOnline(chain));
         C4_03_SignWithPKCS11SC app = new C4_03_SignWithPKCS11SC();
