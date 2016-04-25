@@ -16,7 +16,7 @@ package com.itextpdf.samples.signatures.chapter03;
 
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.signatures.DigestAlgorithms;
-import com.itextpdf.signatures.OcspClient;
+import com.itextpdf.signatures.IOcspClient;
 import com.itextpdf.signatures.OcspClientBouncyCastle;
 import com.itextpdf.signatures.PdfSigner;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -57,7 +57,7 @@ public class C3_07_SignWithOCSP extends C3_01_SignWithCAcert {
         String alias = ks.aliases().nextElement();
         PrivateKey pk = (PrivateKey) ks.getKey(alias, pass);
         Certificate[] chain = ks.getCertificateChain(alias);
-        OcspClient ocspClient = new OcspClientBouncyCastle();
+        IOcspClient ocspClient = new OcspClientBouncyCastle();
         C3_07_SignWithOCSP app = new C3_07_SignWithOCSP();
         app.sign(SRC, DEST, chain, pk, DigestAlgorithms.SHA256, provider.getName(), PdfSigner.CryptoStandard.CMS, "Test", "Ghent",
                 null, ocspClient, null, 0);

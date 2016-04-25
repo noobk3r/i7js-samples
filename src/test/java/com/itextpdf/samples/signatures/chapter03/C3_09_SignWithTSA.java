@@ -15,10 +15,10 @@
 package com.itextpdf.samples.signatures.chapter03;
 
 import com.itextpdf.signatures.DigestAlgorithms;
-import com.itextpdf.signatures.OcspClient;
+import com.itextpdf.signatures.IOcspClient;
 import com.itextpdf.signatures.OcspClientBouncyCastle;
 import com.itextpdf.signatures.PdfSigner;
-import com.itextpdf.signatures.TSAClient;
+import com.itextpdf.signatures.ITSAClient;
 import com.itextpdf.signatures.TSAClientBouncyCastle;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -61,8 +61,8 @@ public class C3_09_SignWithTSA extends C3_01_SignWithCAcert {
         String alias = ks.aliases().nextElement();
         PrivateKey pk = (PrivateKey) ks.getKey(alias, pass);
         Certificate[] chain = ks.getCertificateChain(alias);
-        OcspClient ocspClient = new OcspClientBouncyCastle();
-        TSAClient tsaClient = new TSAClientBouncyCastle(tsaUrl, tsaUser, tsaPass);
+        IOcspClient ocspClient = new OcspClientBouncyCastle();
+        ITSAClient tsaClient = new TSAClientBouncyCastle(tsaUrl, tsaUser, tsaPass);
         C3_09_SignWithTSA app = new C3_09_SignWithTSA();
         app.sign(SRC, DEST, chain, pk, DigestAlgorithms.SHA256, provider.getName(), PdfSigner.CryptoStandard.CMS, "Test", "Ghent",
                 null, ocspClient, tsaClient, 0);

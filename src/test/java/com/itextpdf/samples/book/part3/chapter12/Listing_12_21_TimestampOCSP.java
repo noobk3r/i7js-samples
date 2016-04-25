@@ -11,14 +11,14 @@ import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.samples.SignatureTest;
 import com.itextpdf.signatures.BouncyCastleDigest;
-import com.itextpdf.signatures.ExternalDigest;
-import com.itextpdf.signatures.ExternalSignature;
-import com.itextpdf.signatures.OcspClient;
+import com.itextpdf.signatures.IExternalDigest;
+import com.itextpdf.signatures.IExternalSignature;
+import com.itextpdf.signatures.IOcspClient;
 import com.itextpdf.signatures.OcspClientBouncyCastle;
 import com.itextpdf.signatures.PdfSignatureAppearance;
 import com.itextpdf.signatures.PdfSigner;
 import com.itextpdf.signatures.PrivateKeySignature;
-import com.itextpdf.signatures.TSAClient;
+import com.itextpdf.signatures.ITSAClient;
 import com.itextpdf.signatures.TSAClientBouncyCastle;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -94,9 +94,9 @@ public class Listing_12_21_TimestampOCSP extends SignatureTest {
         signer.setFieldName("Signature");
         // preserve some space for the contents
         // digital signature
-        ExternalSignature es = new PrivateKeySignature(pk, "SHA-256", "BC");
+        IExternalSignature es = new PrivateKeySignature(pk, "SHA-256", "BC");
         // If we add a time stamp:
-        TSAClient tsc = null;
+        ITSAClient tsc = null;
         if (withTS) {
             String tsa_url    = properties.getProperty("TSA");
             String tsa_login  = properties.getProperty("TSA_LOGIN");
@@ -104,11 +104,11 @@ public class Listing_12_21_TimestampOCSP extends SignatureTest {
             tsc = new TSAClientBouncyCastle(tsa_url, tsa_login, tsa_passw);
         }
         // If we use OCSP:
-        OcspClient ocsp = null;
+        IOcspClient ocsp = null;
         if (withOCSP) {
             ocsp = new OcspClientBouncyCastle();
         }
-        ExternalDigest digest = new BouncyCastleDigest();
+        IExternalDigest digest = new BouncyCastleDigest();
         signer.signDetached(digest, es, chain, null, ocsp, tsc, 0, PdfSigner.CryptoStandard.CMS);
     }
 

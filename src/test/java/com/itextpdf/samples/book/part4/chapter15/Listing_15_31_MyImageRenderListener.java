@@ -9,8 +9,8 @@ package com.itextpdf.samples.book.part4.chapter15;
 
 
 import com.itextpdf.io.image.ImageFactory;
-import com.itextpdf.kernel.pdf.canvas.parser.data.EventData;
-import com.itextpdf.kernel.pdf.canvas.parser.listener.EventListener;
+import com.itextpdf.kernel.pdf.canvas.parser.data.IEventData;
+import com.itextpdf.kernel.pdf.canvas.parser.listener.IEventListener;
 import com.itextpdf.kernel.pdf.canvas.parser.EventType;
 import com.itextpdf.kernel.pdf.canvas.parser.data.ImageRenderInfo;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.util.Set;
 
 
-public class Listing_15_31_MyImageRenderListener implements EventListener {
+public class Listing_15_31_MyImageRenderListener implements IEventListener {
 
     protected String path;
 
@@ -32,7 +32,7 @@ public class Listing_15_31_MyImageRenderListener implements EventListener {
         this.path = path;
     }
 
-    public void eventOccurred(EventData data, EventType type) {
+    public void eventOccurred(IEventData data, EventType type) {
         switch (type) {
             case RENDER_IMAGE:
                 try {

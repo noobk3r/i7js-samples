@@ -20,17 +20,17 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.samples.SignatureTest;
 import com.itextpdf.signatures.BouncyCastleDigest;
 import com.itextpdf.signatures.CertificateUtil;
-import com.itextpdf.signatures.CrlClient;
+import com.itextpdf.signatures.ICrlClient;
 import com.itextpdf.signatures.CrlClientOnline;
 import com.itextpdf.signatures.DigestAlgorithms;
-import com.itextpdf.signatures.ExternalDigest;
-import com.itextpdf.signatures.ExternalSignature;
-import com.itextpdf.signatures.OcspClient;
+import com.itextpdf.signatures.IExternalDigest;
+import com.itextpdf.signatures.IExternalSignature;
+import com.itextpdf.signatures.IOcspClient;
 import com.itextpdf.signatures.OcspClientBouncyCastle;
 import com.itextpdf.signatures.PdfSignatureAppearance;
 import com.itextpdf.signatures.PdfSigner;
 import com.itextpdf.signatures.PrivateKeySignature;
-import com.itextpdf.signatures.TSAClient;
+import com.itextpdf.signatures.ITSAClient;
 import com.itextpdf.signatures.TSAClientBouncyCastle;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -66,9 +66,9 @@ public class C4_01_SignWithPKCS11HSM extends SignatureTest {
                      Certificate[] chain, PrivateKey pk,
                      String digestAlgorithm, String provider, PdfSigner.CryptoStandard subfilter,
                      String reason, String location,
-                     Collection<CrlClient> crlList,
-                     OcspClient ocspClient,
-                     TSAClient tsaClient,
+                     Collection<ICrlClient> crlList,
+                     IOcspClient ocspClient,
+                     ITSAClient tsaClient,
                      int estimatedSize)
             throws GeneralSecurityException, IOException {
         // Creating the reader and the signer
@@ -85,8 +85,8 @@ public class C4_01_SignWithPKCS11HSM extends SignatureTest {
                 .setPageNumber(1);
         signer.setFieldName("sig");
         // Creating the signature
-        ExternalSignature pks = new PrivateKeySignature(pk, digestAlgorithm, provider);
-        ExternalDigest digest = new BouncyCastleDigest();
+        IExternalSignature pks = new PrivateKeySignature(pk, digestAlgorithm, provider);
+        IExternalDigest digest = new BouncyCastleDigest();
         signer.signDetached(digest, pks, chain, crlList, ocspClient, tsaClient, estimatedSize, subfilter);
     }
 
@@ -107,8 +107,8 @@ public class C4_01_SignWithPKCS11HSM extends SignatureTest {
         String alias = ks.aliases().nextElement();
         PrivateKey pk = (PrivateKey) ks.getKey(alias, pass);
         Certificate[] chain = ks.getCertificateChain(alias);
-        OcspClient ocspClient = new OcspClientBouncyCastle();
-        TSAClient tsaClient = null;
+        IOcspClient ocspClient = new OcspClientBouncyCastle();
+        ITSAClient tsaClient = null;
         for (int i = 0; i < chain.length; i++) {
             X509Certificate cert = (X509Certificate) chain[i];
             String tsaUrl = CertificateUtil.getTSAURL(cert);
@@ -117,7 +117,7 @@ public class C4_01_SignWithPKCS11HSM extends SignatureTest {
                 break;
             }
         }
-        List<CrlClient> crlList = new ArrayList<CrlClient>();
+        List<ICrlClient> crlList = new ArrayList<ICrlClient>();
         crlList.add(new CrlClientOnline(chain));
         C4_01_SignWithPKCS11HSM app = new C4_01_SignWithPKCS11HSM();
         app.sign(SRC, DEST, chain, pk, DigestAlgorithms.SHA256, providerPKCS11.getName(), PdfSigner.CryptoStandard.CMS,

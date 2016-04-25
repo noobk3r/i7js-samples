@@ -15,7 +15,7 @@ import com.itextpdf.samples.SignatureTest;
 import com.itextpdf.signatures.BouncyCastleDigest;
 import com.itextpdf.signatures.DigestAlgorithms;
 import com.itextpdf.signatures.ExternalBlankSignatureContainer;
-import com.itextpdf.signatures.ExternalSignatureContainer;
+import com.itextpdf.signatures.IExternalSignatureContainer;
 import com.itextpdf.signatures.PdfPKCS7;
 import com.itextpdf.signatures.PdfSignatureAppearance;
 import com.itextpdf.signatures.PdfSigner;
@@ -51,7 +51,7 @@ public class C4_09_DeferredSigning extends SignatureTest {
     public static final String DEST = "./target/test/resources/signatures/chapter04/hello_sig_ok.pdf";
 
 
-    class MyExternalSignatureContainer implements ExternalSignatureContainer {
+    class MyExternalSignatureContainer implements IExternalSignatureContainer {
 
         protected PrivateKey pk;
         protected Certificate[] chain;
@@ -92,7 +92,7 @@ public class C4_09_DeferredSigning extends SignatureTest {
                 .setPageNumber(1);
         signer.setFieldName(fieldname);
         appearance.setCertificate(chain[0]);
-        ExternalSignatureContainer external = new ExternalBlankSignatureContainer(PdfName.Adobe_PPKLite, PdfName.Adbe_pkcs7_detached);
+        IExternalSignatureContainer external = new ExternalBlankSignatureContainer(PdfName.Adobe_PPKLite, PdfName.Adbe_pkcs7_detached);
         signer.signExternalContainer(external, 8192);
     }
 
@@ -100,7 +100,7 @@ public class C4_09_DeferredSigning extends SignatureTest {
         PdfReader reader = new PdfReader(src);
         FileOutputStream os = new FileOutputStream(dest);
         PdfSigner signer = new PdfSigner(reader, os, false);
-        ExternalSignatureContainer external = new MyExternalSignatureContainer(pk, chain);
+        IExternalSignatureContainer external = new MyExternalSignatureContainer(pk, chain);
         signer.signDeferred(signer.getDocument(), fieldname, os, external);
     }
 

@@ -15,11 +15,11 @@
 package com.itextpdf.samples.signatures.chapter03;
 
 import com.itextpdf.signatures.DigestAlgorithms;
-import com.itextpdf.signatures.OcspClient;
+import com.itextpdf.signatures.IOcspClient;
 import com.itextpdf.signatures.OcspClientBouncyCastle;
 import com.itextpdf.signatures.PdfSigner;
 import com.itextpdf.signatures.TSAClientBouncyCastle;
-import com.itextpdf.signatures.TSAInfoBouncyCastle;
+import com.itextpdf.signatures.ITSAInfoBouncyCastle;
 import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
@@ -61,9 +61,9 @@ public class C3_10_SignWithTSAEvent extends C3_01_SignWithCAcert {
         String alias = ks.aliases().nextElement();
         PrivateKey pk = (PrivateKey) ks.getKey(alias, pass);
         Certificate[] chain = ks.getCertificateChain(alias);
-        OcspClient ocspClient = new OcspClientBouncyCastle();
+        IOcspClient ocspClient = new OcspClientBouncyCastle();
         TSAClientBouncyCastle tsaClient = new TSAClientBouncyCastle(tsaUrl, tsaUser, tsaPass);
-        tsaClient.setTSAInfo(new TSAInfoBouncyCastle() {
+        tsaClient.setTSAInfo(new ITSAInfoBouncyCastle() {
             public void inspectTimeStampTokenInfo(TimeStampTokenInfo info) {
                 System.out.println(info.getGenTime());
             }

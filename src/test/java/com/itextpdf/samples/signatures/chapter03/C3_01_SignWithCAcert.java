@@ -18,15 +18,15 @@ import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.samples.SignatureTest;
 import com.itextpdf.signatures.BouncyCastleDigest;
-import com.itextpdf.signatures.CrlClient;
+import com.itextpdf.signatures.ICrlClient;
 import com.itextpdf.signatures.DigestAlgorithms;
-import com.itextpdf.signatures.ExternalDigest;
-import com.itextpdf.signatures.ExternalSignature;
-import com.itextpdf.signatures.OcspClient;
+import com.itextpdf.signatures.IExternalDigest;
+import com.itextpdf.signatures.IExternalSignature;
+import com.itextpdf.signatures.IOcspClient;
 import com.itextpdf.signatures.PdfSignatureAppearance;
 import com.itextpdf.signatures.PdfSigner;
 import com.itextpdf.signatures.PrivateKeySignature;
-import com.itextpdf.signatures.TSAClient;
+import com.itextpdf.signatures.ITSAClient;
 import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
@@ -58,9 +58,9 @@ public class C3_01_SignWithCAcert extends SignatureTest {
                      Certificate[] chain, PrivateKey pk,
                      String digestAlgorithm, String provider, PdfSigner.CryptoStandard subfilter,
                      String reason, String location,
-                     Collection<CrlClient> crlList,
-                     OcspClient ocspClient,
-                     TSAClient tsaClient,
+                     Collection<ICrlClient> crlList,
+                     IOcspClient ocspClient,
+                     ITSAClient tsaClient,
                      int estimatedSize)
             throws GeneralSecurityException, IOException {
         // Creating the reader and the signer
@@ -77,8 +77,8 @@ public class C3_01_SignWithCAcert extends SignatureTest {
                 .setPageNumber(1);
         signer.setFieldName("sig");
         // Creating the signature
-        ExternalSignature pks = new PrivateKeySignature(pk, digestAlgorithm, provider);
-        ExternalDigest digest = new BouncyCastleDigest();
+        IExternalSignature pks = new PrivateKeySignature(pk, digestAlgorithm, provider);
+        IExternalDigest digest = new BouncyCastleDigest();
         signer.signDetached(digest, pks, chain, crlList, ocspClient, tsaClient, estimatedSize, subfilter);
     }
 

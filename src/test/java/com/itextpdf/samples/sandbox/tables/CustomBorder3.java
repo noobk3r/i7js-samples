@@ -44,9 +44,9 @@ public class CustomBorder3 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document document = new Document(pdfDoc);
 
-        LineDash solid = new Solid();
-        LineDash dotted = new Dotted();
-        LineDash dashed = new Dashed();
+        ILineDash solid = new Solid();
+        ILineDash dotted = new Dotted();
+        ILineDash dashed = new Dashed();
 
         Table table;
         Cell cell;
@@ -56,22 +56,22 @@ public class CustomBorder3 extends GenericTest {
         cell = new Cell().add("dotted left border");
         cell.setBorder(Border.NO_BORDER);
         cell.setNextRenderer(new CustomBorder3Renderer(cell,
-                new LineDash[]{null, dotted, null, null}));
+                new ILineDash[]{null, dotted, null, null}));
         table.addCell(cell);
         cell = new Cell().add("solid right border");
         cell.setBorder(Border.NO_BORDER);
         cell.setNextRenderer(new CustomBorder3Renderer(cell,
-                new LineDash[]{null, null, null, solid}));
+                new ILineDash[]{null, null, null, solid}));
         table.addCell(cell);
         cell = new Cell().add("dashed top border");
         cell.setBorder(Border.NO_BORDER);
         cell.setNextRenderer(new CustomBorder3Renderer(cell,
-                new LineDash[]{dashed, null, null, null}));
+                new ILineDash[]{dashed, null, null, null}));
         table.addCell(cell);
         cell = new Cell().add("bottom border");
         cell.setBorder(Border.NO_BORDER);
         cell.setNextRenderer(new CustomBorder3Renderer(cell,
-                new LineDash[]{null, null, solid, null}));
+                new ILineDash[]{null, null, solid, null}));
         table.addCell(cell);
         document.add(table);
 
@@ -80,12 +80,12 @@ public class CustomBorder3 extends GenericTest {
         cell = new Cell().add("dotted left and solid top border");
         cell.setBorder(Border.NO_BORDER);
         cell.setNextRenderer(new CustomBorder3Renderer(cell,
-                new LineDash[]{solid, dotted, null, null}));
+                new ILineDash[]{solid, dotted, null, null}));
         table.addCell(cell);
         cell = new Cell().add("dashed right and dashed bottom border");
         cell.setBorder(Border.NO_BORDER);
         cell.setNextRenderer(new CustomBorder3Renderer(cell,
-                new LineDash[]{null, null, dashed, dashed}));
+                new ILineDash[]{null, null, dashed, dashed}));
         table.addCell(cell);
         cell = new Cell().add("no border");
         cell.setBorder(Border.NO_BORDER);
@@ -93,25 +93,25 @@ public class CustomBorder3 extends GenericTest {
         cell = new Cell().add("full solid border");
         cell.setBorder(Border.NO_BORDER);
         cell.setNextRenderer(new CustomBorder3Renderer(cell,
-                new LineDash[]{solid, solid, solid, solid}));
+                new ILineDash[]{solid, solid, solid, solid}));
         table.addCell(cell);
         document.add(table);
         document.close();
     }
 
 
-    interface LineDash {
-        public void applyLineDash(PdfCanvas canvas);
+    interface ILineDash {
+        void applyLineDash(PdfCanvas canvas);
     }
 
 
-    class Solid implements LineDash {
+    class Solid implements ILineDash {
         public void applyLineDash(PdfCanvas canvas) {
         }
     }
 
 
-    class Dotted implements LineDash {
+    class Dotted implements ILineDash {
         public void applyLineDash(PdfCanvas canvas) {
             canvas.setLineCapStyle(PdfCanvasConstants.LineCapStyle.ROUND);
             canvas.setLineDash(0, 4, 2);
@@ -119,7 +119,7 @@ public class CustomBorder3 extends GenericTest {
     }
 
 
-    class Dashed implements LineDash {
+    class Dashed implements ILineDash {
         public void applyLineDash(PdfCanvas canvas) {
             canvas.setLineDash(3, 3);
         }
@@ -127,11 +127,11 @@ public class CustomBorder3 extends GenericTest {
 
 
     class CustomBorder3Renderer extends CellRenderer {
-        LineDash[] borders;
+        ILineDash[] borders;
 
-        public CustomBorder3Renderer(Cell modelElement, LineDash[] borders) {
+        public CustomBorder3Renderer(Cell modelElement, ILineDash[] borders) {
             super(modelElement);
-            this.borders = new LineDash[borders.length];
+            this.borders = new ILineDash[borders.length];
             for (int i = 0; i < this.borders.length; i++) {
                 this.borders[i] = borders[i];
             }

@@ -13,9 +13,9 @@ package com.itextpdf.samples.sandbox.zugferd.data;
 import com.itextpdf.samples.sandbox.zugferd.pojo.Customer;
 import com.itextpdf.samples.sandbox.zugferd.pojo.Invoice;
 import com.itextpdf.samples.sandbox.zugferd.pojo.Item;
-import com.itextpdf.zugferd.profiles.BasicProfile;
+import com.itextpdf.zugferd.profiles.IBasicProfile;
 import com.itextpdf.zugferd.profiles.BasicProfileImp;
-import com.itextpdf.zugferd.profiles.ComfortProfile;
+import com.itextpdf.zugferd.profiles.IComfortProfile;
 import com.itextpdf.zugferd.profiles.ComfortProfileImp;
 import com.itextpdf.zugferd.validation.basic.DateFormatCode;
 import com.itextpdf.zugferd.validation.basic.DocumentTypeCode;
@@ -37,14 +37,14 @@ public class InvoiceData {
     public InvoiceData() {
     }
     
-    public BasicProfile createBasicProfileData(Invoice invoice) {
+    public IBasicProfile createBasicProfileData(Invoice invoice) {
         BasicProfileImp profileImp = new BasicProfileImp();
         importData(profileImp, invoice);
         importBasicData(profileImp, invoice);
         return profileImp;
     }
     
-    public ComfortProfile createComfortProfileData(Invoice invoice) {
+    public IComfortProfile createComfortProfileData(Invoice invoice) {
         ComfortProfileImp profileImp = new ComfortProfileImp();
         importData(profileImp, invoice);
         importComfortData(profileImp, invoice);

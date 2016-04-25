@@ -21,7 +21,7 @@ import com.itextpdf.kernel.pdf.PdfString;
 import com.itextpdf.samples.SignatureTest;
 import com.itextpdf.signatures.BouncyCastleDigest;
 import com.itextpdf.signatures.DigestAlgorithms;
-import com.itextpdf.signatures.ExternalDigest;
+import com.itextpdf.signatures.IExternalDigest;
 import com.itextpdf.signatures.PdfSignature;
 import com.itextpdf.signatures.PdfSignatureAppearance;
 import com.itextpdf.signatures.PdfSigner;
@@ -75,7 +75,7 @@ public class C2_08_SignatureMetadata extends SignatureTest {
         // Notice that this option is no more public due to its riskiness
         // appearance.setSignDate(signDate);
         signer.setSignatureEvent(
-                new PdfSigner.SignatureEvent() {
+                new PdfSigner.ISignatureEvent() {
                     @Override
                     public void getSignatureDictionary(PdfSignature sig) {
                         sig.put(PdfName.Name, new PdfString(fullName));
@@ -84,7 +84,7 @@ public class C2_08_SignatureMetadata extends SignatureTest {
         );
         // Creating the signature
         PrivateKeySignature pks = new PrivateKeySignature(pk, digestAlgorithm, provider);
-        ExternalDigest digest = new BouncyCastleDigest();
+        IExternalDigest digest = new BouncyCastleDigest();
         signer.signDetached(digest, pks, chain, null, null, null, 0, subfilter);
     }
 

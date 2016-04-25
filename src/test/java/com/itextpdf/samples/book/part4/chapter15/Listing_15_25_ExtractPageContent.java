@@ -9,7 +9,7 @@ package com.itextpdf.samples.book.part4.chapter15;
 
 import com.itextpdf.kernel.pdf.canvas.parser.PdfCanvasProcessor;
 import com.itextpdf.kernel.pdf.canvas.parser.listener.SimpleTextExtractionStrategy;
-import com.itextpdf.kernel.pdf.canvas.parser.listener.TextExtractionStrategy;
+import com.itextpdf.kernel.pdf.canvas.parser.listener.ITextExtractionStrategy;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -43,7 +43,7 @@ public class Listing_15_25_ExtractPageContent {
     public void parsePdf(String src, String txt) throws IOException {
         PrintWriter out = new PrintWriter(new FileOutputStream(txt));
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src));
-        TextExtractionStrategy strategy = new SimpleTextExtractionStrategy();
+        ITextExtractionStrategy strategy = new SimpleTextExtractionStrategy();
         PdfCanvasProcessor parser = new PdfCanvasProcessor(strategy);
         for (int i = 1; i <= pdfDoc.getNumberOfPages(); i++) {
             parser.processPageContent(pdfDoc.getPage(i));

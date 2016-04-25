@@ -15,7 +15,7 @@
 package com.itextpdf.samples.signatures.chapter03;
 
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.signatures.CrlClient;
+import com.itextpdf.signatures.ICrlClient;
 import com.itextpdf.signatures.CrlClientOffline;
 import com.itextpdf.signatures.DigestAlgorithms;
 import com.itextpdf.signatures.PdfSigner;
@@ -66,14 +66,14 @@ public class C3_05_SignWithCRLOffline extends C3_01_SignWithCAcert {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         byte[] buf = new byte[1024];
         while (is.read(buf) != -1) baos.write(buf);
-        CrlClient crlClient = new CrlClientOffline(baos.toByteArray());
+        ICrlClient crlClient = new CrlClientOffline(baos.toByteArray());
 
         CertificateFactory cf = CertificateFactory.getInstance("X.509");
         X509CRL crl = (X509CRL) cf.generateCRL(new FileInputStream(CRLURL));
         System.out.println("CRL valid until: " + crl.getNextUpdate());
         System.out.println("Certificate revoked: " + crl.isRevoked(chain[0]));
 
-        List<CrlClient> crlList = new ArrayList<CrlClient>();
+        List<ICrlClient> crlList = new ArrayList<ICrlClient>();
         crlList.add(crlClient);
         C3_05_SignWithCRLOffline app = new C3_05_SignWithCRLOffline();
         app.sign(SRC, DEST, chain, pk, DigestAlgorithms.SHA256, provider.getName(), PdfSigner.CryptoStandard.CMS, "Test", "Ghent",

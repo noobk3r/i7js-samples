@@ -10,9 +10,7 @@ package com.itextpdf.samples.sandbox.tables;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.draw.DottedLine;
-import com.itextpdf.kernel.pdf.canvas.draw.LineDrawer;
-import com.itextpdf.kernel.pdf.canvas.draw.SolidLine;
-import com.itextpdf.layout.element.LineSeparator;
+import com.itextpdf.kernel.pdf.canvas.draw.ILineDrawer;
 import com.itextpdf.layout.element.Tab;
 import com.itextpdf.layout.element.TabStop;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -21,13 +19,11 @@ import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
-import com.itextpdf.layout.element.Text;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 
@@ -50,7 +46,7 @@ public class DottedLineLeader extends GenericTest {
 
         Table table = new Table(new float[]{1, 3, 1});
         table.setWidthPercent(50);
-        LineDrawer leader = new DottedLine(1.5f, 6);
+        ILineDrawer leader = new DottedLine(1.5f, 6);
 
         Paragraph p;
         table.addCell(getCell(new Paragraph("fig 1"), Property.VerticalAlignment.TOP));

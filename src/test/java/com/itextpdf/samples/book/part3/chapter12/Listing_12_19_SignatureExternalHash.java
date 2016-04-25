@@ -11,8 +11,8 @@ import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.samples.SignatureTest;
 import com.itextpdf.signatures.BouncyCastleDigest;
-import com.itextpdf.signatures.ExternalDigest;
-import com.itextpdf.signatures.ExternalSignature;
+import com.itextpdf.signatures.IExternalDigest;
+import com.itextpdf.signatures.IExternalSignature;
 import com.itextpdf.signatures.PdfSignatureAppearance;
 import com.itextpdf.signatures.PdfSigner;
 import com.itextpdf.signatures.PrivateKeySignature;
@@ -78,8 +78,8 @@ public class Listing_12_19_SignatureExternalHash extends SignatureTest {
         signer.setFieldName("sig");
 
         // digital signature
-        ExternalSignature es = new PrivateKeySignature(pk, "SHA-256", "BC");
-        ExternalDigest digest = new BouncyCastleDigest();
+        IExternalSignature es = new PrivateKeySignature(pk, "SHA-256", "BC");
+        IExternalDigest digest = new BouncyCastleDigest();
         signer.signDetached(digest, es, chain, null, null, null, 0, PdfSigner.CryptoStandard.CMS);
     }
 

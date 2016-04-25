@@ -13,11 +13,9 @@ import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.kernel.pdf.canvas.draw.LineDrawer;
+import com.itextpdf.kernel.pdf.canvas.draw.ILineDrawer;
 import com.itextpdf.kernel.pdf.canvas.draw.SolidLine;
-import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.element.LineSeparator;
-import com.itextpdf.layout.element.TabStop;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Property;
@@ -30,7 +28,6 @@ import com.itextpdf.samples.GenericTest;
 import java.io.File;
 import java.io.FileOutputStream;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 
@@ -52,7 +49,7 @@ public class TableSplitTest extends GenericTest {
         Document doc = new Document(pdfDoc, new PageSize(595, 842));
         doc.setMargins(55, 15, 35, 15);
 
-        LineDrawer line = new SolidLine(2);
+        ILineDrawer line = new SolidLine(2);
         line.setColor(Color.LIGHT_GRAY);
         LineSeparator tableEndSeparator = new LineSeparator(line);
 

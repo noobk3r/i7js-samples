@@ -15,10 +15,10 @@
 package com.itextpdf.samples.signatures.chapter04;
 
 import sun.security.pkcs11.SunPKCS11;
-import com.itextpdf.signatures.CrlClient;
+import com.itextpdf.signatures.ICrlClient;
 import com.itextpdf.signatures.CrlClientOnline;
 import com.itextpdf.signatures.DigestAlgorithms;
-import com.itextpdf.signatures.OcspClient;
+import com.itextpdf.signatures.IOcspClient;
 import com.itextpdf.signatures.OcspClientBouncyCastle;
 import com.itextpdf.signatures.PdfSigner;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -71,8 +71,8 @@ public class C4_03_SignWithPKCS11SC extends C4_02_SignWithPKCS11USB {
     public static void smartcardsign(String provider, KeyStore ks, String alias) throws GeneralSecurityException, IOException {
         PrivateKey pk = (PrivateKey) ks.getKey(alias, null);
         Certificate[] chain = ks.getCertificateChain(alias);
-        OcspClient ocspClient = new OcspClientBouncyCastle();
-        List<CrlClient> crlList = new ArrayList<CrlClient>();
+        IOcspClient ocspClient = new OcspClientBouncyCastle();
+        List<ICrlClient> crlList = new ArrayList<ICrlClient>();
         crlList.add(new CrlClientOnline(chain));
         C4_03_SignWithPKCS11SC app = new C4_03_SignWithPKCS11SC();
         app.sign(SRC, String.format(DEST, alias), chain, pk, DigestAlgorithms.SHA256, provider, PdfSigner.CryptoStandard.CMS,

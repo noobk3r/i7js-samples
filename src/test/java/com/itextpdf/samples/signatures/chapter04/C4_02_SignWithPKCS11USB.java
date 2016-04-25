@@ -20,13 +20,13 @@ import sun.security.pkcs11.wrapper.CK_TOKEN_INFO;
 import sun.security.pkcs11.wrapper.PKCS11;
 import sun.security.pkcs11.wrapper.PKCS11Exception;
 import com.itextpdf.signatures.CertificateUtil;
-import com.itextpdf.signatures.CrlClient;
+import com.itextpdf.signatures.ICrlClient;
 import com.itextpdf.signatures.CrlClientOnline;
 import com.itextpdf.signatures.DigestAlgorithms;
-import com.itextpdf.signatures.OcspClient;
+import com.itextpdf.signatures.IOcspClient;
 import com.itextpdf.signatures.OcspClientBouncyCastle;
 import com.itextpdf.signatures.PdfSigner;
-import com.itextpdf.signatures.TSAClient;
+import com.itextpdf.signatures.ITSAClient;
 import com.itextpdf.signatures.TSAClientBouncyCastle;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -78,8 +78,8 @@ public class C4_02_SignWithPKCS11USB extends C4_01_SignWithPKCS11HSM {
         String alias = ks.aliases().nextElement();
         PrivateKey pk = (PrivateKey) ks.getKey(alias, pass);
         Certificate[] chain = ks.getCertificateChain(alias);
-        OcspClient ocspClient = new OcspClientBouncyCastle();
-        TSAClient tsaClient = null;
+        IOcspClient ocspClient = new OcspClientBouncyCastle();
+        ITSAClient tsaClient = null;
         for (int i = 0; i < chain.length; i++) {
             X509Certificate cert = (X509Certificate) chain[i];
             String tsaUrl = CertificateUtil.getTSAURL(cert);
@@ -88,7 +88,7 @@ public class C4_02_SignWithPKCS11USB extends C4_01_SignWithPKCS11HSM {
                 break;
             }
         }
-        List<CrlClient> crlList = new ArrayList<CrlClient>();
+        List<ICrlClient> crlList = new ArrayList<ICrlClient>();
         crlList.add(new CrlClientOnline(chain));
         C4_02_SignWithPKCS11USB app = new C4_02_SignWithPKCS11USB();
         app.sign(SRC, DEST, chain, pk, DigestAlgorithms.SHA256, providerPKCS11.getName(), PdfSigner.CryptoStandard.CMS,

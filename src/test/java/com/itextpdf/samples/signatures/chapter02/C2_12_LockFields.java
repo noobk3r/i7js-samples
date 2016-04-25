@@ -114,7 +114,7 @@ public class C2_12_LockFields extends SignatureTest {
         PdfAcroForm form = PdfAcroForm.getAcroForm(signer.getDocument(), true);
         form.getField(name).setReadOnly(true);
         PrivateKeySignature pks = new PrivateKeySignature(pk, DigestAlgorithms.SHA256, "BC");
-        ExternalDigest digest = new BouncyCastleDigest();
+        IExternalDigest digest = new BouncyCastleDigest();
         signer.signDetached(digest, pks, chain, null, null, null, 0, PdfSigner.CryptoStandard.CMS);
     }
 
@@ -136,7 +136,7 @@ public class C2_12_LockFields extends SignatureTest {
         signer.setFieldName(name);
         // Creating the signature
         PrivateKeySignature pks = new PrivateKeySignature(pk, DigestAlgorithms.SHA256, "BC");
-        ExternalDigest digest = new BouncyCastleDigest();
+        IExternalDigest digest = new BouncyCastleDigest();
         signer.signDetached(digest, pks, chain, null, null, null, 0, PdfSigner.CryptoStandard.CMS);
     }
 
@@ -161,7 +161,7 @@ public class C2_12_LockFields extends SignatureTest {
         signer.setFieldName(name);
         // Creating the signature
         PrivateKeySignature pks = new PrivateKeySignature(pk, DigestAlgorithms.SHA256, "BC");
-        ExternalDigest digest = new BouncyCastleDigest();
+        IExternalDigest digest = new BouncyCastleDigest();
         signer.signDetached(digest, pks, chain, null, null, null, 0, PdfSigner.CryptoStandard.CMS);
     }
 

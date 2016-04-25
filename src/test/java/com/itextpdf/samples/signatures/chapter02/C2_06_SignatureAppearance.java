@@ -70,8 +70,8 @@ public class C2_06_SignatureAppearance extends SignatureTest {
         appearance.setLayer2Text("This document was signed by Bruno Specimen");
         appearance.setLayer2Font(PdfFontFactory.createFont(FontConstants.TIMES_ROMAN));
         // Creating the signature
-        ExternalSignature pks = new PrivateKeySignature(pk, digestAlgorithm, provider);
-        ExternalDigest digest = new BouncyCastleDigest();
+        IExternalSignature pks = new PrivateKeySignature(pk, digestAlgorithm, provider);
+        IExternalDigest digest = new BouncyCastleDigest();
         signer.signDetached(digest, pks, chain, null, null, null, 0, subfilter);
     }
 
@@ -99,7 +99,7 @@ public class C2_06_SignatureAppearance extends SignatureTest {
         new Canvas(n2, signer.getDocument()).add(new Paragraph(text).setTextAlignment(Property.TextAlignment.RIGHT));
         // Creating the signature
         PrivateKeySignature pks = new PrivateKeySignature(pk, digestAlgorithm, provider);
-        ExternalDigest digest = new BouncyCastleDigest();
+        IExternalDigest digest = new BouncyCastleDigest();
         signer.signDetached(digest, pks, chain, null, null, null, 0, subfilter);
     }
 
@@ -123,7 +123,7 @@ public class C2_06_SignatureAppearance extends SignatureTest {
         appearance.setImageScale(1);
         // Creating the signature
         PrivateKeySignature pks = new PrivateKeySignature(pk, digestAlgorithm, provider);
-        ExternalDigest digest = new BouncyCastleDigest();
+        IExternalDigest digest = new BouncyCastleDigest();
         signer.signDetached(digest, pks, chain, null, null, null, 0, subfilter);
     }
 
@@ -146,7 +146,7 @@ public class C2_06_SignatureAppearance extends SignatureTest {
         appearance.setImageScale(-1);
         // Creating the signature
         PrivateKeySignature pks = new PrivateKeySignature(pk, digestAlgorithm, provider);
-        ExternalDigest digest = new BouncyCastleDigest();
+        IExternalDigest digest = new BouncyCastleDigest();
         signer.signDetached(digest, pks, chain, null, null, null, 0, subfilter);
     }
 

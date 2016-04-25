@@ -20,8 +20,8 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.samples.SignatureTest;
 import com.itextpdf.signatures.BouncyCastleDigest;
 import com.itextpdf.signatures.DigestAlgorithms;
-import com.itextpdf.signatures.ExternalDigest;
-import com.itextpdf.signatures.ExternalSignature;
+import com.itextpdf.signatures.IExternalDigest;
+import com.itextpdf.signatures.IExternalSignature;
 import com.itextpdf.signatures.PdfSignatureAppearance;
 import com.itextpdf.signatures.PdfSigner;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -53,7 +53,7 @@ public class C4_07_ClientServerSigning extends SignatureTest {
     public static final String DEST = "./target/test/resources/signatures/chapter04/hello_server.pdf";
     public static final String CERT = "http://demo.itextsupport.com/SigningApp/itextpdf.cer";
 
-    public class ServerSignature implements ExternalSignature {
+    public class ServerSignature implements IExternalSignature {
         public static final String SIGN = "http://demo.itextsupport.com/SigningApp/signbytes";
 
         public String getHashAlgorithm() {
@@ -109,8 +109,8 @@ public class C4_07_ClientServerSigning extends SignatureTest {
                 .setPageNumber(1);
         signer.setFieldName("sig");
         // Creating the signature
-        ExternalDigest digest = new BouncyCastleDigest();
-        ExternalSignature signature = new ServerSignature();
+        IExternalDigest digest = new BouncyCastleDigest();
+        IExternalSignature signature = new ServerSignature();
         signer.signDetached(digest, signature, chain, null, null, null, 0, subfilter);
     }
 

@@ -7,22 +7,22 @@
 
 package com.itextpdf.samples.book.part4.chapter15;
 
-import com.itextpdf.kernel.pdf.canvas.parser.data.EventData;
-import com.itextpdf.kernel.pdf.canvas.parser.listener.EventListener;
+import com.itextpdf.kernel.pdf.canvas.parser.data.IEventData;
+import com.itextpdf.kernel.pdf.canvas.parser.listener.IEventListener;
 import com.itextpdf.kernel.pdf.canvas.parser.EventType;
 import com.itextpdf.kernel.pdf.canvas.parser.data.TextRenderInfo;
 
 import java.io.PrintWriter;
 import java.util.Set;
 
-public class Listing_15_24_MyTextRenderListener implements EventListener {
+public class Listing_15_24_MyTextRenderListener implements IEventListener {
     protected PrintWriter out;
 
     public Listing_15_24_MyTextRenderListener(PrintWriter out) {
         this.out = out;
     }
 
-    public void eventOccurred(EventData data, EventType type) {
+    public void eventOccurred(IEventData data, EventType type) {
         switch (type) {
             case BEGIN_TEXT:
                 out.print("<");

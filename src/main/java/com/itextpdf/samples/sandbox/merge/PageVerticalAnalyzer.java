@@ -6,8 +6,8 @@ import com.itextpdf.kernel.geom.Path;
 import com.itextpdf.kernel.geom.Point;
 import com.itextpdf.kernel.geom.Subpath;
 import com.itextpdf.kernel.geom.Vector;
-import com.itextpdf.kernel.pdf.canvas.parser.data.EventData;
-import com.itextpdf.kernel.pdf.canvas.parser.listener.EventListener;
+import com.itextpdf.kernel.pdf.canvas.parser.data.IEventData;
+import com.itextpdf.kernel.pdf.canvas.parser.listener.IEventListener;
 import com.itextpdf.kernel.pdf.canvas.parser.EventType;
 import com.itextpdf.kernel.pdf.canvas.parser.data.ImageRenderInfo;
 import com.itextpdf.kernel.pdf.canvas.parser.data.PathRenderInfo;
@@ -20,13 +20,13 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * This rendering {@link EventListener} looks for vertical <em>sections of use</em> on a page.
+ * This rendering {@link IEventListener} looks for vertical <em>sections of use</em> on a page.
  * After parsing a page it share a list of floats which contains the border y coordinates
  * between used (drawn onto) and unused vertical sections.
  *
  * @author mkl
  */
-public class PageVerticalAnalyzer implements EventListener {
+public class PageVerticalAnalyzer implements IEventListener {
 
     final Set<EventType> supportedEvents;
     final List<Float> verticalFlips = new ArrayList<>();
@@ -46,7 +46,7 @@ public class PageVerticalAnalyzer implements EventListener {
     // EventListener implementation
     // 
     @Override
-    public void eventOccurred(EventData data, EventType type) {
+    public void eventOccurred(IEventData data, EventType type) {
         switch (type) {
             case RENDER_IMAGE: {
                 ImageRenderInfo renderInfo = (ImageRenderInfo) data;

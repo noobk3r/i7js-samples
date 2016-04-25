@@ -13,7 +13,7 @@ import com.itextpdf.samples.sandbox.zugferd.pojo.PojoFactory;
 import com.itextpdf.zugferd.InvoiceDOM;
 import com.itextpdf.zugferd.exceptions.DataIncompleteException;
 import com.itextpdf.zugferd.exceptions.InvalidCodeException;
-import com.itextpdf.zugferd.profiles.ComfortProfile;
+import com.itextpdf.zugferd.profiles.IComfortProfile;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -52,7 +52,7 @@ public class HtmlInvoicesComfort {
     }
     
     public void createHtml(Invoice invoice, Writer writer) throws IOException, ParserConfigurationException, SAXException, DataIncompleteException, InvalidCodeException, TransformerException {
-        ComfortProfile comfort = new InvoiceData().createComfortProfileData(invoice);
+        IComfortProfile comfort = new InvoiceData().createComfortProfileData(invoice);
         InvoiceDOM dom = new InvoiceDOM(comfort);
         StreamSource xml = new StreamSource(new ByteArrayInputStream(dom.toXML()));
         StreamSource xsl = new StreamSource(new File(XSL));

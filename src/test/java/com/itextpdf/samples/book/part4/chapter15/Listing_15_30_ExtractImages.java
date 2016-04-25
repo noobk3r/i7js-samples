@@ -8,7 +8,7 @@
 package com.itextpdf.samples.book.part4.chapter15;
 
 import com.itextpdf.io.source.ByteArrayOutputStream;
-import com.itextpdf.kernel.pdf.canvas.parser.listener.EventListener;
+import com.itextpdf.kernel.pdf.canvas.parser.listener.IEventListener;
 import com.itextpdf.kernel.pdf.canvas.parser.PdfCanvasProcessor;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
@@ -34,7 +34,7 @@ public class Listing_15_30_ExtractImages {
     @Test
     public void manipulatePdf() throws IOException, SQLException, ParserConfigurationException, SAXException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(IMAGE_TYPES), new PdfWriter(new ByteArrayOutputStream()));
-        EventListener listener = new Listing_15_31_MyImageRenderListener(DEST);
+        IEventListener listener = new Listing_15_31_MyImageRenderListener(DEST);
         PdfCanvasProcessor parser = new PdfCanvasProcessor(listener);
         for (int i = 1; i <= pdfDoc.getNumberOfPages(); i++) {
             parser.processPageContent(pdfDoc.getPage(i));

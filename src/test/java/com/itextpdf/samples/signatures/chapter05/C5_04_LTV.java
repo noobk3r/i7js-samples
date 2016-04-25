@@ -16,16 +16,16 @@ package com.itextpdf.samples.signatures.chapter05;
 
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.samples.SignatureTest;
-import com.itextpdf.signatures.CrlClient;
+import com.itextpdf.signatures.ICrlClient;
 import com.itextpdf.signatures.CrlClientOnline;
 import com.itextpdf.signatures.LtvVerification;
-import com.itextpdf.signatures.OcspClient;
+import com.itextpdf.signatures.IOcspClient;
 import com.itextpdf.signatures.OcspClientBouncyCastle;
 import com.itextpdf.signatures.PdfPKCS7;
 import com.itextpdf.signatures.PdfSignatureAppearance;
 import com.itextpdf.signatures.PdfSigner;
 import com.itextpdf.signatures.SignatureUtil;
-import com.itextpdf.signatures.TSAClient;
+import com.itextpdf.signatures.ITSAClient;
 import com.itextpdf.signatures.TSAClientBouncyCastle;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -60,8 +60,8 @@ public class C5_04_LTV extends SignatureTest {
         String tsaUser = properties.getProperty("TSAUSERNAME");
         String tsaPass = properties.getProperty("TSAPASSWORD");
         C5_04_LTV app = new C5_04_LTV();
-        TSAClient tsa = new TSAClientBouncyCastle(tsaUrl, tsaUser, tsaPass, 6500, "SHA512");
-        OcspClient ocsp = new OcspClientBouncyCastle();
+        ITSAClient tsa = new TSAClientBouncyCastle(tsaUrl, tsaUser, tsaPass, 6500, "SHA512");
+        IOcspClient ocsp = new OcspClientBouncyCastle();
 //        app.addLtv(EXAMPLE1, String.format(DEST, 1), ocsp, new CrlClientOnline(), tsa);
         System.out.println();
 //        app.addLtv(EXAMPLE2, String.format(DEST, 2), ocsp, new CrlClientOnline(), tsa);
@@ -71,7 +71,7 @@ public class C5_04_LTV extends SignatureTest {
         app.addLtv(String.format(DEST, 1), String.format(DEST, 4), null, new CrlClientOnline(), tsa);
     }
 
-    public void addLtv(String src, String dest, OcspClient ocsp, CrlClient crl, TSAClient tsa) throws IOException, GeneralSecurityException {
+    public void addLtv(String src, String dest, IOcspClient ocsp, ICrlClient crl, ITSAClient tsa) throws IOException, GeneralSecurityException {
         PdfReader reader = new PdfReader(src);
         PdfSigner signer = new PdfSigner(reader, new FileOutputStream(dest), true);
         // TODO No verification field either in PdfDocument or in PdfSigner

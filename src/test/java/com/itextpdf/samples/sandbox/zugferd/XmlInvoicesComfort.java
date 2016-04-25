@@ -13,7 +13,7 @@ import com.itextpdf.samples.sandbox.zugferd.pojo.PojoFactory;
 import com.itextpdf.zugferd.InvoiceDOM;
 import com.itextpdf.zugferd.exceptions.DataIncompleteException;
 import com.itextpdf.zugferd.exceptions.InvalidCodeException;
-import com.itextpdf.zugferd.profiles.BasicProfile;
+import com.itextpdf.zugferd.profiles.IBasicProfile;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -38,7 +38,7 @@ public class XmlInvoicesComfort {
         PojoFactory factory = PojoFactory.getInstance();
         List<Invoice> invoices = factory.getInvoices();
         InvoiceData invoiceData = new InvoiceData();
-        BasicProfile comfort;
+        IBasicProfile comfort;
         InvoiceDOM dom;
         for (Invoice invoice : invoices) {
             comfort = invoiceData.createComfortProfileData(invoice);

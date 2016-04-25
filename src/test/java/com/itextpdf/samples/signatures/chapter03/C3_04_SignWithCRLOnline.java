@@ -17,7 +17,7 @@ package com.itextpdf.samples.signatures.chapter03;
 import static org.junit.Assert.fail;
 
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.signatures.CrlClient;
+import com.itextpdf.signatures.ICrlClient;
 import com.itextpdf.signatures.CrlClientOnline;
 import com.itextpdf.signatures.DigestAlgorithms;
 import com.itextpdf.signatures.PdfSigner;
@@ -61,8 +61,8 @@ public class C3_04_SignWithCRLOnline extends C3_01_SignWithCAcert {
         String alias = ks.aliases().nextElement();
         PrivateKey pk = (PrivateKey) ks.getKey(alias, pass);
         Certificate[] chain = ks.getCertificateChain(alias);
-        CrlClient crlClient = new CrlClientOnline("https://crl.cacert.org/revoke.crl");
-        List<CrlClient> crlList = new ArrayList<CrlClient>();
+        ICrlClient crlClient = new CrlClientOnline("https://crl.cacert.org/revoke.crl");
+        List<ICrlClient> crlList = new ArrayList<ICrlClient>();
         crlList.add(crlClient);
         C3_04_SignWithCRLOnline app = new C3_04_SignWithCRLOnline();
         app.sign(SRC, DEST, chain, pk, DigestAlgorithms.SHA256, provider.getName(), PdfSigner.CryptoStandard.CMS, "Test", "Ghent",

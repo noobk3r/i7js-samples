@@ -87,8 +87,8 @@ public class Listing_12_15_Signatures extends SignatureTest {
         appearance.setPageNumber(1);
         signer.setFieldName("first");
         // digital signature
-        ExternalSignature es = new PrivateKeySignature(pk, "SHA-256", "BC");
-        ExternalDigest digest = new BouncyCastleDigest();
+        IExternalSignature es = new PrivateKeySignature(pk, "SHA-256", "BC");
+        IExternalDigest digest = new BouncyCastleDigest();
         signer.signDetached(digest, es, chain, null, null, null, 0, PdfSigner.CryptoStandard.CMS);
     }
 
@@ -113,8 +113,8 @@ public class Listing_12_15_Signatures extends SignatureTest {
         appearance.setPageNumber(1);
         signer.setFieldName("second");
         // digital signature
-        ExternalSignature es = new PrivateKeySignature(pk, "SHA-256", "BC");
-        ExternalDigest digest = new BouncyCastleDigest();
+        IExternalSignature es = new PrivateKeySignature(pk, "SHA-256", "BC");
+        IExternalDigest digest = new BouncyCastleDigest();
         signer.signDetached(digest, es, chain, null, null, null, 0, PdfSigner.CryptoStandard.CMS);
     }
 

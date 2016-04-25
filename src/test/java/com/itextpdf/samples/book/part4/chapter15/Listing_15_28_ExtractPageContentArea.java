@@ -9,11 +9,11 @@ package com.itextpdf.samples.book.part4.chapter15;
 
 import com.itextpdf.io.source.ByteArrayOutputStream;
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.pdf.canvas.parser.filter.EventFilter;
+import com.itextpdf.kernel.pdf.canvas.parser.filter.IEventFilter;
 import com.itextpdf.kernel.pdf.canvas.parser.listener.FilteredTextEventListener;
 import com.itextpdf.kernel.pdf.canvas.parser.listener.LocationTextExtractionStrategy;
 import com.itextpdf.kernel.pdf.canvas.parser.PdfTextExtractor;
-import com.itextpdf.kernel.pdf.canvas.parser.listener.TextExtractionStrategy;
+import com.itextpdf.kernel.pdf.canvas.parser.listener.ITextExtractionStrategy;
 import com.itextpdf.kernel.pdf.canvas.parser.filter.TextRegionEventFilter;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
@@ -50,8 +50,8 @@ public class Listing_15_28_ExtractPageContentArea {
         PrintWriter out = new PrintWriter(new FileOutputStream(txt));
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(new ByteArrayOutputStream()));
         Rectangle rect = new Rectangle(70, 80, 420, 500);
-        EventFilter filter = new TextRegionEventFilter(rect);
-        TextExtractionStrategy strategy;
+        IEventFilter filter = new TextRegionEventFilter(rect);
+        ITextExtractionStrategy strategy;
         for (int i = 1; i <= pdfDoc.getNumberOfPages(); i++) {
              strategy = new FilteredTextEventListener(new LocationTextExtractionStrategy(), filter);
              out.println(PdfTextExtractor.getTextFromPage(pdfDoc.getPage(i), strategy));

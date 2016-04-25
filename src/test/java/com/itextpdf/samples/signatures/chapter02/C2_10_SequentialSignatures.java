@@ -111,8 +111,8 @@ public class C2_10_SequentialSignatures extends SignatureTest {
         signer.setFieldName(name);
         signer.setCertificationLevel(level);
         // Creating the signature
-        ExternalSignature pks = new PrivateKeySignature(pk, "SHA-256", "BC");
-        ExternalDigest digest = new BouncyCastleDigest();
+        IExternalSignature pks = new PrivateKeySignature(pk, "SHA-256", "BC");
+        IExternalDigest digest = new BouncyCastleDigest();
         signer.signDetached(digest, pks, chain, null, null, null, 0, PdfSigner.CryptoStandard.CMS);
     }
 

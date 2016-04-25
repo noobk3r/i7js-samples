@@ -13,7 +13,7 @@ import com.itextpdf.io.source.PdfTokenizer;
 import com.itextpdf.io.source.RandomAccessFileOrArray;
 import com.itextpdf.io.source.RandomAccessSourceFactory;
 import com.itextpdf.kernel.font.PdfFontFactory;
-import com.itextpdf.kernel.pdf.canvas.parser.listener.EventListener;
+import com.itextpdf.kernel.pdf.canvas.parser.listener.IEventListener;
 import com.itextpdf.kernel.pdf.canvas.parser.PdfCanvasProcessor;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
@@ -102,7 +102,7 @@ public class Listing_15_20_ParsingHelloWorld extends GenericTest {
     public void extractText(String src, String dest) throws IOException {
         PrintWriter out = new PrintWriter(new FileOutputStream(dest));
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src));
-        EventListener listener = new Listing_15_24_MyTextRenderListener(out);
+        IEventListener listener = new Listing_15_24_MyTextRenderListener(out);
         PdfCanvasProcessor processor = new PdfCanvasProcessor(listener);
         processor.processPageContent(pdfDoc.getFirstPage());
         out.flush();

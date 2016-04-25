@@ -15,7 +15,7 @@ import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.kernel.pdf.canvas.draw.LineDrawer;
+import com.itextpdf.kernel.pdf.canvas.draw.ILineDrawer;
 import com.itextpdf.kernel.pdf.canvas.draw.SolidLine;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.LineSeparator;
@@ -59,7 +59,7 @@ public class Listing_11_01_FontTypes extends GenericTest {
             doc.add(new Paragraph(String.format("Font file: %s with encoding %s", FONTS[i][0], FONTS[i][1])));
             doc.add(new Paragraph(String.format("iText class: %s", font.getClass().getName())));
             doc.add(new Paragraph(TEXT).setFont(font).setFontSize(12));
-            LineDrawer line = new SolidLine(0.5f);
+            ILineDrawer line = new SolidLine(0.5f);
             doc.add(new LineSeparator(line));
         }
         doc.close();

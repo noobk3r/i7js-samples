@@ -132,8 +132,8 @@ public class Listing_12_13_SignatureField extends SignatureTest {
             signer.setCertificationLevel(PdfSigner.CERTIFIED_NO_CHANGES_ALLOWED);
         }
         // signature
-        ExternalSignature es = new PrivateKeySignature(pk, "SHA-256", "BC");
-        ExternalDigest digest = new BouncyCastleDigest();
+        IExternalSignature es = new PrivateKeySignature(pk, "SHA-256", "BC");
+        IExternalDigest digest = new BouncyCastleDigest();
         signer.signDetached(digest, es, chain, null, null, null, 0, PdfSigner.CryptoStandard.CMS);
     }
 

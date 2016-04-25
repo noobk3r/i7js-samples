@@ -34,7 +34,7 @@ import com.itextpdf.zugferd.ZugferdDocument;
 import com.itextpdf.zugferd.ZugferdXMPUtil;
 import com.itextpdf.zugferd.exceptions.DataIncompleteException;
 import com.itextpdf.zugferd.exceptions.InvalidCodeException;
-import com.itextpdf.zugferd.profiles.BasicProfile;
+import com.itextpdf.zugferd.profiles.IBasicProfile;
 import org.junit.experimental.categories.Category;
 import org.xml.sax.SAXException;
 
@@ -94,7 +94,7 @@ public class PdfInvoicesBasic extends GenericTest {
 
         String dest = String.format(DEST_PATTERN, invoice.getId());
         InvoiceData invoiceData = new InvoiceData();
-        BasicProfile basic = invoiceData.createBasicProfileData(invoice);
+        IBasicProfile basic = invoiceData.createBasicProfileData(invoice);
 
         FileInputStream is = new FileInputStream(ICC);
         ZugferdDocument pdfDoc = new ZugferdDocument(new PdfWriter(dest),
