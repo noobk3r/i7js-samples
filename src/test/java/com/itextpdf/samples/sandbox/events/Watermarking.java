@@ -105,9 +105,9 @@ public class Watermarking extends GenericTest {
             }
             PdfCanvas canvas = new PdfCanvas(page.newContentStreamBefore(), page.getResources(), pdfDoc);
             new Canvas(canvas, pdfDoc, page.getPageSize())
-                    .setProperty(Property.FONT_COLOR, Color.LIGHT_GRAY)
-                    .setProperty(Property.FONT_SIZE, 60)
-                    .setProperty(Property.FONT, font)
+                    .setFontColor(Color.LIGHT_GRAY)
+                    .setFontSize(60)
+                    .setFont(font)
                     .showTextAligned(new Paragraph("WATERMARK"), 298, 421, pdfDoc.getPageNumber(page),
                             Property.TextAlignment.CENTER, Property.VerticalAlignment.MIDDLE, 45);
         }

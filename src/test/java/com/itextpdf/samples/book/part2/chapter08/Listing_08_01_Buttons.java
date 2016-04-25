@@ -191,7 +191,7 @@ public class Listing_08_01_Buttons extends GenericTest {
         reader.close();
     }
 
-    private class Button extends AbstractElement<Button> implements ILeafElement<Button>, IElement<Button>, IAccessibleElement {
+    private class Button extends AbstractElement<Button> implements ILeafElement, IAccessibleElement {
 
         protected PdfName role = PdfName.Figure;
         protected PdfButtonFormField button;

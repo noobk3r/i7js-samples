@@ -99,7 +99,7 @@ public class Listing_07_27_Advertisement extends GenericTest {
         pdfDoc.close();
     }
 
-    private class CustomButton extends AbstractElement<CustomButton> implements ILeafElement<CustomButton>, IElement<CustomButton>, IAccessibleElement {
+    private class CustomButton extends AbstractElement<CustomButton> implements ILeafElement, IAccessibleElement {
 
         protected PdfName role = PdfName.Figure;
         protected PdfButtonFormField button;

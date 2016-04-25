@@ -125,9 +125,9 @@ public class Listing_05_21_MovieCountries2 extends Listing_05_20_MovieCountries1
             PdfCanvas canvas =
                     new PdfCanvas(page.newContentStreamBefore(), page.getResources(), docEvent.getDocument());
             new Canvas(canvas, docEvent.getDocument(), docEvent.getDocument().getLastPage().getPageSize())
-                    .setProperty(Property.FONT_COLOR, new DeviceGray(0.75f))
-                    .setProperty(Property.FONT_SIZE, 52)
-                    .setProperty(Property.FONT, font)
+                    .setFontColor(new DeviceGray(0.75f))
+                    .setFontSize(52)
+                    .setFont(font)
                     .showTextAligned(new Paragraph("FOOBAR FILM FESTIVAL"), 297.5f, 421,
                             docEvent.getDocument().getNumberOfPages(), Property.TextAlignment.CENTER,
                             Property.VerticalAlignment.MIDDLE, 45);

@@ -76,7 +76,7 @@ public class Listing_08_06_ReplaceIcon extends GenericTest {
     }
 
 
-    class CustomButton extends AbstractElement<CustomButton> implements ILeafElement<CustomButton>, IElement<CustomButton>, IAccessibleElement {
+    class CustomButton extends AbstractElement<CustomButton> implements ILeafElement, IAccessibleElement {
 
         protected PdfName role = PdfName.Figure;
         protected PdfButtonFormField button;

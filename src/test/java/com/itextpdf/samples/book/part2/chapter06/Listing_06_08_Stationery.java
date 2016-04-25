@@ -134,9 +134,9 @@ public class Listing_06_08_Stationery extends GenericTest {
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getLastPage().newContentStreamBefore(),
                 pdfDoc.getLastPage().getResources(), pdfDoc);
         new Canvas(canvas, pdfDoc, pdfDoc.getLastPage().getPageSize())
-                .setProperty(Property.FONT_COLOR, new DeviceGray(0.75f))
-                .setProperty(Property.FONT_SIZE, 52)
-                .setProperty(Property.FONT, font)
+                .setFontColor(new DeviceGray(0.75f))
+                .setFontSize(52)
+                .setFont(font)
                 .showTextAligned(new Paragraph("FOOBAR FILM FESTIVAL"), 297.5f, 421, pdfDoc.getNumberOfPages(),
                         Property.TextAlignment.CENTER, Property.VerticalAlignment.MIDDLE, (float)Math.PI / 4);
         doc.close();
