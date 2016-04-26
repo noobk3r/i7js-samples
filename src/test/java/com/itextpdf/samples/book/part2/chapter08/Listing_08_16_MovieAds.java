@@ -12,6 +12,7 @@ import com.itextpdf.forms.fields.PdfButtonFormField;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.forms.fields.PdfTextFormField;
 import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.source.ByteArrayOutputStream;
 import com.itextpdf.kernel.PdfException;
 import com.itextpdf.kernel.color.Color;
@@ -270,7 +271,7 @@ public class Listing_08_16_MovieAds extends GenericTest {
         protected PdfName role = PdfName.Figure;
         protected PdfButtonFormField button;
         protected String caption;
-        protected com.itextpdf.io.image.Image image;
+        protected ImageData image;
         protected PdfFormXObject formXObject;
 
         protected Rectangle rect;
@@ -317,11 +318,11 @@ public class Listing_08_16_MovieAds extends GenericTest {
             return caption == null ? "" : caption;
         }
 
-        public void setImage(com.itextpdf.io.image.Image image) {
+        public void setImage(ImageData image) {
             this.image = image;
         }
 
-        public com.itextpdf.io.image.Image getImage() {
+        public ImageData getImage() {
             return image;
         }
 

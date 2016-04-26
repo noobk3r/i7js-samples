@@ -9,7 +9,7 @@ package com.itextpdf.samples.book.part4.chapter15;
 
 import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.io.font.PdfEncodings;
-import com.itextpdf.io.image.Image;
+import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
@@ -83,7 +83,7 @@ public class Listing_15_13_ReadOutLoud extends GenericTest {
         span.setLang(new PdfString("en-us"));
         span.setAlt(new PdfString("2001: A Space Odyssey"));
         canvas.openTag(new CanvasTag(span.addKid(new PdfMcrDictionary(page, span))));
-        Image img = ImageFactory.getImage(RESOURCE);
+        ImageData img = ImageFactory.getImage(RESOURCE);
         canvas.addImage(img, 36, 640, 100, false, false);
         canvas.closeTag();
 

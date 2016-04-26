@@ -14,7 +14,7 @@
  */
 package com.itextpdf.samples.signatures.chapter02;
 
-import com.itextpdf.io.image.Image;
+import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfReader;
@@ -59,7 +59,7 @@ public class C2_07_SignatureAppearances extends SignatureTest {
                      String digestAlgorithm, String provider,
                      PdfSigner.CryptoStandard subfilter,
                      String reason, String location, PdfSignatureAppearance.RenderingMode renderingMode,
-                     Image image)
+                     ImageData image)
             throws GeneralSecurityException, IOException {
         // Creating the reader and the signer
         PdfReader reader = new PdfReader(src);
@@ -87,7 +87,7 @@ public class C2_07_SignatureAppearances extends SignatureTest {
         String alias = ks.aliases().nextElement();
         PrivateKey pk = (PrivateKey) ks.getKey(alias, PASSWORD);
         Certificate[] chain = ks.getCertificateChain(alias);
-        Image image = ImageFactory.getImage(IMG);
+        ImageData image = ImageFactory.getImage(IMG);
         C2_07_SignatureAppearances app = new C2_07_SignatureAppearances();
         app.sign(SRC, "Signature1", String.format(DEST, 1), chain, pk,
                 DigestAlgorithms.SHA256, provider.getName(), PdfSigner.CryptoStandard.CMS,

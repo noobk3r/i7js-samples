@@ -7,7 +7,7 @@
 
 package com.itextpdf.samples.book.part4.chapter15;
 
-import com.itextpdf.io.image.Image;
+import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.pdf.PdfArray;
 import com.itextpdf.kernel.pdf.PdfDictionary;
@@ -117,7 +117,7 @@ public class Listing_15_11_ObjectData extends GenericTest {
         }
 
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
-        Image img;
+        ImageData img;
         float x = 11.5f;
         float y = 769.7f;
         for (Map.Entry<Movie, Integer> entry : map.entrySet()) {

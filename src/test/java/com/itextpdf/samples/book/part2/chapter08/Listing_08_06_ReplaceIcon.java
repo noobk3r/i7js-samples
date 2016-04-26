@@ -7,7 +7,7 @@
 
 package com.itextpdf.samples.book.part2.chapter08;
 
-import com.itextpdf.io.image.Image;
+import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.geom.Rectangle;
@@ -82,7 +82,7 @@ public class Listing_08_06_ReplaceIcon extends GenericTest {
         protected PdfName role = PdfName.Figure;
         protected PdfButtonFormField button;
         protected String caption;
-        protected Image image;
+        protected ImageData image;
         protected Rectangle rect;
         protected Color borderColor = Color.BLACK;
         protected Color buttonBackgroundColor = Color.WHITE;
@@ -119,11 +119,11 @@ public class Listing_08_06_ReplaceIcon extends GenericTest {
             return caption == null ? "" : caption;
         }
 
-        public void setImage(Image image) {
+        public void setImage(ImageData image) {
             this.image = image;
         }
 
-        public Image getImage() {
+        public ImageData getImage() {
             return image;
         }
 

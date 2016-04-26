@@ -12,7 +12,7 @@
 package com.itextpdf.samples.sandbox.annotations;
 
 import com.itextpdf.io.image.ImageFactory;
-import com.itextpdf.kernel.pdf.canvas.wmf.WmfImage;
+import com.itextpdf.kernel.pdf.canvas.wmf.WmfImageData;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
@@ -52,7 +52,7 @@ public class AddLinkImages extends GenericTest {
         p.add(createImage(INFO, "http://itextpdf.com/", pdfDoc));
         p.add(createImage(DOG, "http://pages.itextpdf.com/ebook-stackoverflow-questions.html", pdfDoc));
         p.add(createImage(FOX, "http://stackoverflow.com/q/29388313/1622493", pdfDoc));
-        p.add(new Image(new PdfFormXObject(new WmfImage(BUTTERFLY), pdfDoc)).
+        p.add(new Image(new PdfFormXObject(new WmfImageData(BUTTERFLY), pdfDoc)).
                 setProperty(Property.ACTION, PdfAction.createURI("http://stackoverflow.com/questions/tagged/itext*")));
         doc.add(p);
         pdfDoc.close();

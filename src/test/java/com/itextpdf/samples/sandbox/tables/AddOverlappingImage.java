@@ -7,7 +7,7 @@
 
 package com.itextpdf.samples.sandbox.tables;
 
-import com.itextpdf.io.image.Image;
+import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -60,14 +60,14 @@ public class AddOverlappingImage extends GenericTest {
 
 
     private class OverlappingImageTableRenderer extends TableRenderer {
-        private Image image;
+        private ImageData image;
 
-        public OverlappingImageTableRenderer(Table modelElement, Table.RowRange rowRange, Image img) {
+        public OverlappingImageTableRenderer(Table modelElement, Table.RowRange rowRange, ImageData img) {
             super(modelElement, rowRange);
             this.image = img;
         }
 
-        public OverlappingImageTableRenderer(Table modelElement, Image img) {
+        public OverlappingImageTableRenderer(Table modelElement, ImageData img) {
             super(modelElement);
             this.image = img;
         }

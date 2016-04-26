@@ -8,8 +8,8 @@
 package com.itextpdf.samples.book.part3.chapter10;
 
 import com.itextpdf.io.image.ImageFactory;
-import com.itextpdf.io.image.Jbig2Image;
-import com.itextpdf.io.image.TiffImage;
+import com.itextpdf.io.image.Jbig2ImageData;
+import com.itextpdf.io.image.TiffImageData;
 import com.itextpdf.io.source.RandomAccessFileOrArray;
 import com.itextpdf.io.source.RandomAccessSourceFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -63,7 +63,7 @@ public class Listing_10_14_PagedImages extends GenericTest {
     public static void addTif(Document document, String path) throws IOException {
         RandomAccessFileOrArray ra = new RandomAccessFileOrArray(
                 new RandomAccessSourceFactory().createSource(new File(path).toURI().toURL()));
-        int n = TiffImage.getNumberOfPages(ra);
+        int n = TiffImageData.getNumberOfPages(ra);
         Image img;
         for (int i = 1; i <= n; i++) {
             img = new Image(ImageFactory.getTiffImage(new File(path).toURI().toURL(), false, i, true));
@@ -82,7 +82,7 @@ public class Listing_10_14_PagedImages extends GenericTest {
     public static void addJBIG2(Document document, String path) throws IOException {
         RandomAccessFileOrArray ra = new RandomAccessFileOrArray(
                 new RandomAccessSourceFactory().createSource(new File(path).toURI().toURL()));
-        int n = Jbig2Image.getNumberOfPages(ra);
+        int n = Jbig2ImageData.getNumberOfPages(ra);
         Image img;
         for (int i = 1; i <= n; i++) {
             img = new Image(ImageFactory.getJbig2Image(new File(path).toURI().toURL(), i));
