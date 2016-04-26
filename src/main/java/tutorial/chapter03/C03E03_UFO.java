@@ -18,11 +18,13 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.Property;
 import com.itextpdf.layout.border.SolidBorder;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -64,7 +66,7 @@ public class C03E03_UFO {
         Document document = new Document(pdf);
 
         Paragraph p = new Paragraph("List of reported UFO sightings in 20th century")
-                .setTextAlignment(Property.TextAlignment.CENTER).setFont(helveticaBold).setFontSize(14);
+                .setTextAlignment(TextAlignment.CENTER).setFont(helveticaBold).setFontSize(14);
         document.add(p);
 
         Table table = new Table(new float[]{3, 5, 7, 4});
@@ -128,7 +130,7 @@ public class C03E03_UFO {
                     .setProperty(Property.FONT_SIZE, 60)
                     .setProperty(Property.FONT, helveticaBold)
                     .showTextAligned(new Paragraph("CONFIDENTIAL"), 298, 421, pdfDoc.getPageNumber(page),
-                            Property.TextAlignment.CENTER, Property.VerticalAlignment.MIDDLE, 45);
+                            TextAlignment.CENTER, VerticalAlignment.MIDDLE, 45);
 
             canvas.release();
         }

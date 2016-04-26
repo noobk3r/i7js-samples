@@ -9,8 +9,9 @@ import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfTextMarkupAnnotation;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -43,8 +44,8 @@ public class C04E01_04_TextMarkupAnnotation {
         Document document = new Document(pdf);
 
         Paragraph p = new Paragraph("The example of text markup annotation.");
-        document.showTextAligned(p, 20, 795, 1, Property.TextAlignment.LEFT,
-                Property.VerticalAlignment.MIDDLE, 0);
+        document.showTextAligned(p, 20, 795, 1, TextAlignment.LEFT,
+                VerticalAlignment.MIDDLE, 0);
 
         //Create text markup annotation
         PdfAnnotation ann = PdfTextMarkupAnnotation.createHighLight(new Rectangle(105, 790, 64, 10),

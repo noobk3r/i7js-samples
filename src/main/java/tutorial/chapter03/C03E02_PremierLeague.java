@@ -14,11 +14,12 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.layout.border.SolidBorder;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 
@@ -61,8 +62,8 @@ public class C03E02_PremierLeague {
         PdfFont bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
         Table table = new Table(new float[]{1.5f, 7, 2, 2, 2, 2, 3, 4, 4, 2});
         table.setWidthPercent(100)
-                .setTextAlignment(Property.TextAlignment.CENTER)
-                .setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
+                .setTextAlignment(TextAlignment.CENTER)
+                .setHorizontalAlignment(HorizontalAlignment.CENTER);
 
         BufferedReader br = new BufferedReader(new FileReader(DATA));
         String line = br.readLine();

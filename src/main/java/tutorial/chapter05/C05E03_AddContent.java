@@ -14,8 +14,9 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.extgstate.PdfExtGState;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 
 import java.io.File;
 import java.io.IOException;
@@ -78,7 +79,7 @@ public class C05E03_AddContent {
             document.showTextAligned(p,
                     pageSize.getWidth() / 2, pageSize.getHeight() / 2,
                     pdfDoc.getPageNumber(page),
-                    Property.TextAlignment.CENTER, Property.VerticalAlignment.MIDDLE, 45);
+                    TextAlignment.CENTER, VerticalAlignment.MIDDLE, 45);
             canvas.restoreState();
         }
 

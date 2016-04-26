@@ -10,7 +10,7 @@ import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.filespec.PdfFileSpec;
 import com.itextpdf.kernel.xmp.XMPException;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
@@ -91,9 +91,9 @@ public class C07E03_UnitedStates_PDFA_3a {
         StringTokenizer tokenizer = new StringTokenizer(line, ";");
         while (tokenizer.hasMoreTokens()) {
             if (isHeader) {
-                table.addHeaderCell(new Cell().setHorizontalAlignment(Property.HorizontalAlignment.CENTER).add(new Paragraph(tokenizer.nextToken()).setHorizontalAlignment(Property.HorizontalAlignment.CENTER).setFont(font)));
+                table.addHeaderCell(new Cell().setHorizontalAlignment(HorizontalAlignment.CENTER).add(new Paragraph(tokenizer.nextToken()).setHorizontalAlignment(HorizontalAlignment.CENTER).setFont(font)));
             } else {
-                table.addCell(new Cell().setHorizontalAlignment(Property.HorizontalAlignment.CENTER).add(new Paragraph(tokenizer.nextToken()).setHorizontalAlignment(Property.HorizontalAlignment.CENTER).setFont(font)));
+                table.addCell(new Cell().setHorizontalAlignment(HorizontalAlignment.CENTER).add(new Paragraph(tokenizer.nextToken()).setHorizontalAlignment(HorizontalAlignment.CENTER).setFont(font)));
             }
         }
     }

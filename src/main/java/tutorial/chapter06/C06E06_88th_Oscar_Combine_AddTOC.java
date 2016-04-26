@@ -8,11 +8,13 @@ import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.canvas.draw.DottedLine;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.Property;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Tab;
 import com.itextpdf.layout.element.TabStop;
 import com.itextpdf.layout.element.Text;
+import com.itextpdf.layout.property.TabAlignment;
+import com.itextpdf.layout.property.TextAlignment;
 
 import java.io.File;
 import java.io.IOException;
@@ -49,7 +51,7 @@ public class C06E06_88th_Oscar_Combine_AddTOC {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document document = new Document(pdfDoc);
         document.add(new Paragraph(new Text("The Revenant nominations list"))
-            .setTextAlignment(Property.TextAlignment.CENTER));
+            .setTextAlignment(TextAlignment.CENTER));
 
         PdfDocument firstSourcePdf = new PdfDocument(new PdfReader(SRC1));
         for (Map.Entry<String, Integer> entry : TheRevenantNominations.entrySet()) {
@@ -75,7 +77,7 @@ public class C06E06_88th_Oscar_Combine_AddTOC {
 
             //Add TOC line with bookmark
             Paragraph p = new Paragraph();
-            p.addTabStops(new TabStop(540, Property.TabAlignment.RIGHT, new DottedLine()));
+            p.addTabStops(new TabStop(540, TabAlignment.RIGHT, new DottedLine()));
             p.add(entry.getKey());
             p.add(new Tab());
             p.add(String.valueOf(pdfDoc.getNumberOfPages() - 1));
@@ -100,7 +102,7 @@ public class C06E06_88th_Oscar_Combine_AddTOC {
 
         //Add TOC line with bookmark
         Paragraph p = new Paragraph();
-        p.addTabStops(new TabStop(540, Property.TabAlignment.RIGHT, new DottedLine()));
+        p.addTabStops(new TabStop(540, TabAlignment.RIGHT, new DottedLine()));
         p.add("Oscars\u00ae 2016 Movie Checklist");
         p.add(new Tab());
         p.add(String.valueOf(pdfDoc.getNumberOfPages() - 1));

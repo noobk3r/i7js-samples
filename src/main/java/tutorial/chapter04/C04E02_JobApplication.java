@@ -13,8 +13,8 @@ import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.property.TextAlignment;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -58,7 +58,7 @@ public class C04E02_JobApplication {
     public static PdfAcroForm addAcroForm(Document doc) {
 
         Paragraph title = new Paragraph("Application for employment")
-                .setTextAlignment(Property.TextAlignment.CENTER)
+                .setTextAlignment(TextAlignment.CENTER)
                 .setFontSize(16);
         doc.add(title);
         doc.add(new Paragraph("Full name:").setFontSize(12));
