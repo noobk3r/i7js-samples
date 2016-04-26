@@ -15,7 +15,6 @@ import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Image;
@@ -23,6 +22,7 @@ import com.itextpdf.layout.element.ListItem;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.element.Text;
+import com.itextpdf.layout.property.VerticalAlignment;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
@@ -123,7 +123,7 @@ public class Listing_09_16_HtmlMovies2 extends Listing_09_15_HtmlMovies1 {
             paragraph = new Paragraph().setFont(font);
             list = new com.itextpdf.layout.element.List();
             listItem = new ListItem();
-            cell = new Cell().setBorder(Border.NO_BORDER).setVerticalAlignment(Property.VerticalAlignment.MIDDLE);
+            cell = new Cell().setBorder(Border.NO_BORDER).setVerticalAlignment(VerticalAlignment.MIDDLE);
             table = new Table(2).setBorder(Border.NO_BORDER);
             isItalic = false;
         }
@@ -187,7 +187,7 @@ public class Listing_09_16_HtmlMovies2 extends Listing_09_15_HtmlMovies1 {
                 table = new Table(2).setBorder(Border.NO_BORDER);
             } else if ("td".equals(qName)) {
                 table.addCell(cell);
-                cell = new Cell().setBorder(Border.NO_BORDER).setVerticalAlignment(Property.VerticalAlignment.MIDDLE);
+                cell = new Cell().setBorder(Border.NO_BORDER).setVerticalAlignment(VerticalAlignment.MIDDLE);
             } else if ("img".equals(qName)) {
                 cell.add(img);
             }

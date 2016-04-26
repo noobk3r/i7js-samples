@@ -13,14 +13,13 @@ package com.itextpdf.samples.sandbox.annotations;
 
 import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.pdf.canvas.wmf.WmfImage;
-import com.itextpdf.kernel.pdf.canvas.wmf.WmfImageHelper;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.Property;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;

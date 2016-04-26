@@ -16,7 +16,7 @@ import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.layout.border.SolidBorder;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Cell;
@@ -46,7 +46,7 @@ public class RightCornerTable extends GenericTest {
         doc.setMargins(0, 0, 0, 0);
 
         Table table = new Table(1);
-        table.setHorizontalAlignment(Property.HorizontalAlignment.RIGHT);
+        table.setHorizontalAlignment(HorizontalAlignment.RIGHT);
         table.setWidth(90);
         Cell cell = new Cell().add(new Paragraph(" Date").setFontColor(Color.WHITE));
         cell.setBackgroundColor(Color.BLACK);

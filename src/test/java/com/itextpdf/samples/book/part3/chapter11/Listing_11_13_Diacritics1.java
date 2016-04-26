@@ -15,7 +15,7 @@ import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.layout.border.SolidBorder;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
@@ -50,7 +50,7 @@ public class Listing_11_13_Diacritics1 extends GenericTest {
         Image img = new Image(ImageFactory.getImage(POSTER));
         img.scale(0.5f, 0.5f);
         img.setBorder(new SolidBorder(Color.LIGHT_GRAY, 18f));
-        img.setHorizontalAlignment(Property.HorizontalAlignment.LEFT);
+        img.setHorizontalAlignment(HorizontalAlignment.LEFT);
         doc.add(img);
         doc.add(new Paragraph(
                 "Movie title: Tears of the Black Tiger (Thailand)"));

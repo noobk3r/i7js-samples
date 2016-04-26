@@ -17,11 +17,12 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.Property;
 import com.itextpdf.layout.Style;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
@@ -78,11 +79,11 @@ public class Listing_05_03_RunLengthEvent extends GenericTest {
                 .add(day.toString())
                 .setPadding(3)
                 .setBackgroundColor(Color.RED)
-                .setTextAlignment(Property.TextAlignment.CENTER));
+                .setTextAlignment(TextAlignment.CENTER));
         Style style = new Style();
         style
                 .setBackgroundColor(Color.YELLOW)
-                .setTextAlignment(Property.TextAlignment.LEFT)
+                .setTextAlignment(TextAlignment.LEFT)
                 .setProperty(Property.PADDING_LEFT, 3)
                 .setProperty(Property.PADDING_RIGHT, 3)
                 .setProperty(Property.PADDING_TOP, 3)

@@ -13,10 +13,11 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Canvas;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.border.SolidBorder;
 import com.itextpdf.layout.element.Div;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -42,17 +43,17 @@ public class Listing_14_02_PathConstructionAndPainting extends GenericTest {
         createSquares(canvas, 50, 720, 80, 20);
         new Canvas(canvas, pdfDoc, pdfDoc.getDefaultPageSize()).showTextAligned(
                 new Paragraph("Methods moveTo(), lineTo(), stroke(), closePathStroke(), fill(), and closePathFill()"),
-                50, 700, 1, Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
+                50, 700, 1, TextAlignment.LEFT, VerticalAlignment.BOTTOM, 0);
         // draw Bezier curves
         createBezierCurves(canvas, 70, 600, 80, 670, 140, 690, 160, 630, 160);
         new Canvas(canvas, pdfDoc, pdfDoc.getDefaultPageSize()).showTextAligned(
                 new Paragraph("Different curveTo() methods, followed by stroke()"),
-                50, 580, 1, Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
+                50, 580, 1, TextAlignment.LEFT, VerticalAlignment.BOTTOM, 0);
         // draw stars and circles
         createStarsAndCircles(canvas, 50, 470, 40, 20);
         new Canvas(canvas, pdfDoc, pdfDoc.getDefaultPageSize()).showTextAligned(
                 new Paragraph("Methods fill(), eoFill(), newPath(), fillStroke(), and eoFillStroke()"),
-                50, 450, 1, Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
+                50, 450, 1, TextAlignment.LEFT, VerticalAlignment.BOTTOM, 0);
         // draw different shapes using convenience methods
         canvas
                 .saveState()
@@ -75,7 +76,7 @@ public class Listing_14_02_PathConstructionAndPainting extends GenericTest {
         new Canvas(canvas, pdfDoc, pdfDoc.getDefaultPageSize()).add(div);
         new Canvas(canvas, pdfDoc, pdfDoc.getDefaultPageSize()).showTextAligned(
                 new Paragraph("Convenience methods"),
-                50, 250, 1, Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
+                50, 250, 1, TextAlignment.LEFT, VerticalAlignment.BOTTOM, 0);
         pdfDoc.close();
     }
 

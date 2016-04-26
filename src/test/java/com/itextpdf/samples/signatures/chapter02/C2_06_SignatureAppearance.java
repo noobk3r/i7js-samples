@@ -21,9 +21,10 @@ import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.layout.Canvas;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.BaseDirection;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.licensekey.LicenseKey;
 import com.itextpdf.samples.SignatureTest;
 import com.itextpdf.signatures.*;
@@ -95,8 +96,8 @@ public class C2_06_SignatureAppearance extends SignatureTest {
         Text text = new Text("\u0644\u0648\u0631\u0627\u0646\u0633 \u0627\u0644\u0639\u0631\u0628");
         text.setFont(PdfFontFactory.createFont(/*"C:/windows/fonts/arialuni.ttf"*/
                 "./src/test/resources/font/NotoNaskhArabic-Regular.ttf", PdfEncodings.IDENTITY_H, true));
-        text.setBaseDirection(Property.BaseDirection.RIGHT_TO_LEFT);
-        new Canvas(n2, signer.getDocument()).add(new Paragraph(text).setTextAlignment(Property.TextAlignment.RIGHT));
+        text.setBaseDirection(BaseDirection.RIGHT_TO_LEFT);
+        new Canvas(n2, signer.getDocument()).add(new Paragraph(text).setTextAlignment(TextAlignment.RIGHT));
         // Creating the signature
         PrivateKeySignature pks = new PrivateKeySignature(pk, digestAlgorithm, provider);
         IExternalDigest digest = new BouncyCastleDigest();

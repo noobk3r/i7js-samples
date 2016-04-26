@@ -17,9 +17,10 @@ import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.Property;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
@@ -115,26 +116,26 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
         x = (OFFSET_LEFT + OFFSET_LOCATION) / 2;
         y = OFFSET_BOTTOM + HEIGHT + 24;
         doc.add(new Paragraph("FOOBAR FILM FESTIVAL").setFontSize(18)
-                .setFixedPosition(x, y, WIDTH).setTextAlignment(Property.TextAlignment.CENTER));
+                .setFixedPosition(x, y, WIDTH).setTextAlignment(TextAlignment.CENTER));
 
         x = OFFSET_LOCATION + WIDTH_LOCATION / 2f - 3;
         y = OFFSET_BOTTOM;
         doc.add(new Paragraph("The Majestic").setFontSize(18)
                 .setFixedPosition(x, y, HEIGHT_LOCATION * 2)
                 .setRotationAngle(Math.PI / 2)
-                .setTextAlignment(Property.TextAlignment.CENTER));
+                .setTextAlignment(TextAlignment.CENTER));
 
         y = OFFSET_BOTTOM + HEIGHT_LOCATION * 2;
         doc.add(new Paragraph("Googolplex").setFontSize(18)
                 .setFixedPosition(x, y, HEIGHT_LOCATION * 4)
                 .setRotationAngle(Math.PI / 2)
-                .setTextAlignment(Property.TextAlignment.CENTER));
+                .setTextAlignment(TextAlignment.CENTER));
 
         y = OFFSET_BOTTOM + HEIGHT_LOCATION * 6f;
         doc.add(new Paragraph("Cinema Paradiso").setFontSize(18)
                 .setFixedPosition(x, y, HEIGHT_LOCATION * 3)
                 .setRotationAngle(Math.PI / 2)
-                .setTextAlignment(Property.TextAlignment.CENTER));
+                .setTextAlignment(TextAlignment.CENTER));
 
         x = OFFSET_LOCATION + WIDTH_LOCATION - 6;
         for (int i = 0; i < LOCATIONS; i++) {
@@ -142,14 +143,14 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
             doc.add(new Paragraph(locations.get(i)).setFontSize(12)
                     .setFixedPosition(x, y, HEIGHT_LOCATION)
                     .setRotationAngle(Math.PI / 2)
-                    .setTextAlignment(Property.TextAlignment.CENTER));
+                    .setTextAlignment(TextAlignment.CENTER));
         }
 
         y = OFFSET_BOTTOM + HEIGHT;
         for (int i = 0; i < TIMESLOTS; i++) {
             x = OFFSET_LEFT + (i * WIDTH_TIMESLOT);
             doc.add(new Paragraph(TIME[i]).setFontSize(6)
-                    .setFixedPosition(x, y, 100).setTextAlignment(Property.TextAlignment.LEFT)
+                    .setFixedPosition(x, y, 100).setTextAlignment(TextAlignment.LEFT)
                     .setRotationAngle(Math.PI / 4));
         }
     }
@@ -172,7 +173,7 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
                 setFontSize(18).
                 setFixedPosition(d, x, y, 100).
                 setWidth(WIDTH).
-                setTextAlignment(Property.TextAlignment.RIGHT);
+                setTextAlignment(TextAlignment.RIGHT);
 
         doc.add(p1).add(p2);
     }
@@ -187,7 +188,7 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
             Paragraph p = new Paragraph().add(press).
                     setFixedPosition(rect.getX(), rect.getY(), rect.getWidth()).
                     setHeight(rect.getHeight()).
-                    setTextAlignment(Property.TextAlignment.CENTER);
+                    setTextAlignment(TextAlignment.CENTER);
             doc.add(p);
         }
     }

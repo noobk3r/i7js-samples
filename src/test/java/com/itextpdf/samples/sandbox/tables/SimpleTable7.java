@@ -13,9 +13,10 @@ import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.property.HorizontalAlignment;
+import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
@@ -61,10 +62,10 @@ public class SimpleTable7 extends GenericTest {
         doc.add(importantNotice);
 
         Table table = new Table(10).
-                setWidth(Property.UnitValue.createPercentValue(80));
+                setWidth(UnitValue.createPercentValue(80));
         Cell cell = new Cell(1, 3).add(docTitle);
         cell.setBorder(Border.NO_BORDER);
-        cell.setHorizontalAlignment(Property.HorizontalAlignment.LEFT);
+        cell.setHorizontalAlignment(HorizontalAlignment.LEFT);
         table.addCell(cell);
 
         Cell cellCaveat = new Cell(1, 2).add(subTitle);
@@ -75,16 +76,16 @@ public class SimpleTable7 extends GenericTest {
         cellImportantNote.setBorder(Border.NO_BORDER);
         table.addCell(cellImportantNote);
 
-        doc.add(table.setHorizontalAlignment(Property.HorizontalAlignment.CENTER));
+        doc.add(table.setHorizontalAlignment(HorizontalAlignment.CENTER));
         doc.add(new Paragraph("This is the same table, created differently").
                 setFont(subtitleFont).setFontSize(9).setMarginBottom(10));
 
         table = new Table(new float[]{3, 2, 5}).
-                setWidth(Property.UnitValue.createPercentValue(80));
+                setWidth(UnitValue.createPercentValue(80));
         table.addCell(new Cell().add(docTitle).setBorder(Border.NO_BORDER));
         table.addCell(new Cell().add(subTitle).setBorder(Border.NO_BORDER));
         table.addCell(new Cell().add(importantNotice).setBorder(Border.NO_BORDER));
-        doc.add(table.setHorizontalAlignment(Property.HorizontalAlignment.CENTER));
+        doc.add(table.setHorizontalAlignment(HorizontalAlignment.CENTER));
 
         doc.close();
     }

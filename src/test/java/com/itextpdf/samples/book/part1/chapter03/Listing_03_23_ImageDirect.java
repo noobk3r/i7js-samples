@@ -14,9 +14,9 @@ import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 
@@ -47,7 +47,7 @@ public class Listing_03_23_ImageDirect extends GenericTest {
         Document doc = new Document(pdfDoc, new PageSize(postcard.getWidth(), postcard.getHeight()));
         doc.setMargins(30, 30, 30, 30);
 
-        Paragraph p = new Paragraph("Foobar Film Festival").setFontSize(22).setTextAlignment(Property.TextAlignment.CENTER);
+        Paragraph p = new Paragraph("Foobar Film Festival").setFontSize(22).setTextAlignment(TextAlignment.CENTER);
         doc.add(p);
 
         PdfImageXObject img = new PdfImageXObject(ImageFactory.getImage(RESOURCE));

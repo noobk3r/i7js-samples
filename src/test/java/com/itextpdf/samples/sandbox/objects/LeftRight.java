@@ -14,12 +14,13 @@ package com.itextpdf.samples.sandbox.objects;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Tab;
 import com.itextpdf.layout.element.TabStop;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.TabAlignment;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -45,19 +46,19 @@ public class LeftRight extends GenericTest {
 
         Paragraph p = new Paragraph("Text to the left");
         p.add(new Tab());
-        p.addTabStops(new TabStop(1000, Property.TabAlignment.RIGHT));
+        p.addTabStops(new TabStop(1000, TabAlignment.RIGHT));
         p.add("Text to the right");
         doc.add(p);
         Table table = new Table(3);
-        table.addCell(getCell("Text to the left", Property.TextAlignment.LEFT));
-        table.addCell(getCell("Text in the middle", Property.TextAlignment.CENTER));
-        table.addCell(getCell("Text to the right", Property.TextAlignment.RIGHT));
+        table.addCell(getCell("Text to the left", TextAlignment.LEFT));
+        table.addCell(getCell("Text in the middle", TextAlignment.CENTER));
+        table.addCell(getCell("Text to the right", TextAlignment.RIGHT));
         doc.add(table);
 
         doc.close();
     }
 
-    public Cell getCell(String text, Property.TextAlignment alignment) {
+    public Cell getCell(String text, TextAlignment alignment) {
         Cell cell = new Cell().add(new Paragraph(text));
         cell.setPadding(0);
         cell.setTextAlignment(alignment);

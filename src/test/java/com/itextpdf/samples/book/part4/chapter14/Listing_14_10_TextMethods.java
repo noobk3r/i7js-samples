@@ -14,7 +14,8 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Canvas;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.licensekey.LicenseKey;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -56,15 +57,15 @@ public class Listing_14_10_TextMethods extends GenericTest {
                 .setTextMatrix(50, 800)
                 .showText(text);
         Canvas canvasModel = new Canvas(canvas, pdfDoc, pdfDoc.getDefaultPageSize());
-        canvasModel.showTextAligned(text + " Center", 150, 760, Property.TextAlignment.CENTER);
-        canvasModel.showTextAligned(text + " Right", 150, 700, Property.TextAlignment.RIGHT);
-        canvasModel.showTextAligned(text + " Left", 150, 640, Property.TextAlignment.LEFT);
+        canvasModel.showTextAligned(text + " Center", 150, 760, TextAlignment.CENTER);
+        canvasModel.showTextAligned(text + " Right", 150, 700, TextAlignment.RIGHT);
+        canvasModel.showTextAligned(text + " Left", 150, 640, TextAlignment.LEFT);
         canvasModel.showTextAlignedKerned(text + " Left", 150, 628,
-                Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
+                TextAlignment.LEFT, VerticalAlignment.BOTTOM, 0);
         canvas.setTextMatrix(0, 1, -1, 0, 300, 600);
         canvas.showText("Position 300,600, rotated 90 degrees.");
         for (int i = 0; i < 360; i += 30) {
-            canvasModel.showTextAligned(text, 400, 700, Property.TextAlignment.LEFT, (float) (i * Math.PI / 180));
+            canvasModel.showTextAligned(text, 400, 700, TextAlignment.LEFT, (float) (i * Math.PI / 180));
         }
         canvas.endText();
 

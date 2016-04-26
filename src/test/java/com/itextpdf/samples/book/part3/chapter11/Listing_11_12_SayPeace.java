@@ -15,10 +15,11 @@ import com.itextpdf.kernel.color.DeviceGray;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.property.BaseDirection;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.licensekey.LicenseKey;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
@@ -108,8 +109,8 @@ public class Listing_11_12_SayPeace extends GenericTest {
                 cell = new Cell();
                 cell.setBorder(Border.NO_BORDER);
                 if ("RTL".equals(attributes.getValue("direction"))) {
-                    cell.setBaseDirection(Property.BaseDirection.RIGHT_TO_LEFT).
-                            setTextAlignment(Property.TextAlignment.RIGHT).
+                    cell.setBaseDirection(BaseDirection.RIGHT_TO_LEFT).
+                            setTextAlignment(TextAlignment.RIGHT).
                             setFont(f);
                 } else {
                     cell.setFont(f);

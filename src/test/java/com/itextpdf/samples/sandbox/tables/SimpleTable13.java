@@ -14,10 +14,10 @@ package com.itextpdf.samples.sandbox.tables;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -47,7 +47,7 @@ public class SimpleTable13 extends GenericTest {
 
         Table table = new Table(new float[]{5, 1});
         table.setWidthPercent(50);
-        table.setTextAlignment(Property.TextAlignment.LEFT);
+        table.setTextAlignment(TextAlignment.LEFT);
         table.addCell(new Cell().add("Name: " + DATA[0][0]).setBorder(Border.NO_BORDER));
         table.addCell(new Cell().add(DATA[0][1]).setBorder(Border.NO_BORDER));
         table.addCell(new Cell().add("Surname: " + DATA[1][0]).setBorder(Border.NO_BORDER));

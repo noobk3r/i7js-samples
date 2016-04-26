@@ -24,7 +24,6 @@ import com.itextpdf.kernel.pdf.tagutils.IAccessibleElement;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
 import com.itextpdf.layout.Canvas;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.AbstractElement;
 import com.itextpdf.layout.element.IElement;
 import com.itextpdf.layout.element.ILeafElement;
@@ -32,6 +31,8 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.layout.LayoutArea;
 import com.itextpdf.layout.layout.LayoutContext;
 import com.itextpdf.layout.layout.LayoutResult;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.layout.renderer.AbstractRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.IRenderer;
@@ -305,7 +306,7 @@ public class Listing_08_01_Buttons extends GenericTest {
             Paragraph paragraph = new Paragraph(modelButton.getCaption()).setFontSize(10).setMargin(0).setMultipliedLeading(1);
 
             new Canvas(canvas, drawContext.getDocument(), new Rectangle(0, 0, width, height)).
-                    showTextAligned(paragraph, 20, 3, Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM);
+                    showTextAligned(paragraph, 20, 3, TextAlignment.LEFT, VerticalAlignment.BOTTOM);
 
             Image image = modelButton.getImage();
             if (image != null) {

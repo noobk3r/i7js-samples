@@ -15,10 +15,10 @@ import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -53,7 +53,7 @@ public class ColumnWidthExample extends GenericTest {
                 setFontSize(13).
                 setFontColor(DeviceGray.WHITE).
                 setBackgroundColor(DeviceGray.BLACK).
-                setTextAlignment(Property.TextAlignment.CENTER);
+                setTextAlignment(TextAlignment.CENTER);
         table.addHeaderCell(cell);
         for (int i = 0; i < 2; i++) {
             Cell[] headerFooter = new Cell[] {
@@ -70,9 +70,9 @@ public class ColumnWidthExample extends GenericTest {
             }
         }
         for (int counter = 1; counter < 101; counter++) {
-            table.addCell(new Cell().setTextAlignment(Property.TextAlignment.CENTER).add(String.valueOf(counter)));
-            table.addCell(new Cell().setTextAlignment(Property.TextAlignment.CENTER).add("key " + counter));
-            table.addCell(new Cell().setTextAlignment(Property.TextAlignment.CENTER).add("value " + counter));
+            table.addCell(new Cell().setTextAlignment(TextAlignment.CENTER).add(String.valueOf(counter)));
+            table.addCell(new Cell().setTextAlignment(TextAlignment.CENTER).add("key " + counter));
+            table.addCell(new Cell().setTextAlignment(TextAlignment.CENTER).add("value " + counter));
         }
         doc.add(table);
         doc.close();

@@ -17,8 +17,8 @@ import com.itextpdf.kernel.pdf.extgstate.PdfExtGState;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.kernel.pdf.xobject.PdfTransparencyGroup;
 import com.itextpdf.layout.Canvas;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -82,21 +82,21 @@ public class Listing_10_06_Transparency1 extends GenericTest {
             // ColumnText ct = new ColumnText(canvas);
             Paragraph p = new Paragraph("Ungrouped objects\nObject opacity = 1.0");
             new Canvas(canvas, pdfDoc, new Rectangle(gap, 0, 200, 500))
-                    .add(p.setTextAlignment(Property.TextAlignment.CENTER).setFontSize(18));
+                    .add(p.setTextAlignment(TextAlignment.CENTER).setFontSize(18));
 
             p = new Paragraph("Ungrouped objects\nObject opacity = 0.5");
             new Canvas(canvas, pdfDoc, new Rectangle(200 + 2 * gap, 0, 200, 500))
-                    .add(p.setTextAlignment(Property.TextAlignment.CENTER).setFontSize(18));
+                    .add(p.setTextAlignment(TextAlignment.CENTER).setFontSize(18));
 
             p = new Paragraph(
                     "Transparency group\nObject opacity = 1.0\nGroup opacity = 0.5\nBlend mode = Normal");
             new Canvas(canvas, pdfDoc, new Rectangle(gap, 0, 200, 500 - 200 - gap))
-                    .add(p.setTextAlignment(Property.TextAlignment.CENTER).setFontSize(18));
+                    .add(p.setTextAlignment(TextAlignment.CENTER).setFontSize(18));
 
             p = new Paragraph(
                     "Transparency group\nObject opacity = 0.5\nGroup opacity = 1.0\nBlend mode = HardLight");
             new Canvas(canvas, pdfDoc, new Rectangle(200 + 2 * gap, 0, 200, 500 - 200 - gap))
-                    .add(p.setTextAlignment(Property.TextAlignment.CENTER).setFontSize(18));
+                    .add(p.setTextAlignment(TextAlignment.CENTER).setFontSize(18));
 
             pdfDoc.close();
         } catch (IOException ioe) {

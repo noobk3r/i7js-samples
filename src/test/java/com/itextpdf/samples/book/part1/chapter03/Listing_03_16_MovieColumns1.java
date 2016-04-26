@@ -16,10 +16,11 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.draw.SolidLine;
 import com.itextpdf.layout.ColumnDocumentRenderer;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.Property;
 import com.itextpdf.layout.element.LineSeparator;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
@@ -75,7 +76,7 @@ public class Listing_03_16_MovieColumns1 extends GenericTest {
 
     public Paragraph createMovieInformation(Movie movie) {
         Paragraph p = new Paragraph().
-                setTextAlignment(Property.TextAlignment.JUSTIFIED).
+                setTextAlignment(TextAlignment.JUSTIFIED).
                 setPaddingLeft(27).
                 setFirstLineIndent(-27).
                 setMultipliedLeading(1.2f);

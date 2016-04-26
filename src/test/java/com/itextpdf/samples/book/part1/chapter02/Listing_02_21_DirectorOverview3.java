@@ -16,8 +16,8 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.draw.DottedLine;
 import com.itextpdf.kernel.pdf.canvas.draw.SolidLine;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.*;
+import com.itextpdf.layout.property.TabAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
@@ -72,9 +72,9 @@ public class Listing_02_21_DirectorOverview3 extends GenericTest {
         Director director;
         // creates line separators
         List<TabStop> tabStops = new ArrayList<>();
-        tabStops.add(new TabStop(200, Property.TabAlignment.LEFT));
-        tabStops.add(new TabStop(350, Property.TabAlignment.LEFT));
-        tabStops.add(new TabStop(450, Property.TabAlignment.LEFT, new DottedLine()));
+        tabStops.add(new TabStop(200, TabAlignment.LEFT));
+        tabStops.add(new TabStop(350, TabAlignment.LEFT));
+        tabStops.add(new TabStop(450, TabAlignment.LEFT, new DottedLine()));
         // loops over the directors
         while (rs.next()) {
             // creates a paragraph with the director name
@@ -87,7 +87,7 @@ public class Listing_02_21_DirectorOverview3 extends GenericTest {
             // adds a separator
             SolidLine line = new SolidLine(.5f);
             line.setColor(Color.BLUE);
-            p.addTabStops(new TabStop(1000, Property.TabAlignment.RIGHT, line));
+            p.addTabStops(new TabStop(1000, TabAlignment.RIGHT, line));
             p.add(new Tab());
             // adds more info about the director
             p.add(String.format("movies: %d", rs.getInt("c")));

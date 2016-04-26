@@ -7,9 +7,9 @@
 
 package com.itextpdf.samples.book.part1.chapter02;
 
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Div;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.property.TextAlignment;
 
 public class StarSeparator extends Div {
 
@@ -19,7 +19,7 @@ public class StarSeparator extends Div {
         Paragraph[] content = {new Paragraph("*"), new Paragraph("*  *")};
         for (Paragraph p : content) {
             p.setFontSize(10).
-                    setTextAlignment(Property.TextAlignment.CENTER).
+                    setTextAlignment(TextAlignment.CENTER).
                     setMargins(0, 0, 0, 0);
             add(p);
         }

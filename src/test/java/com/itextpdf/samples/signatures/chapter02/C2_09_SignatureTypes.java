@@ -25,7 +25,7 @@ import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfTextAnnotation;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Canvas;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.samples.SignatureTest;
 import com.itextpdf.signatures.BouncyCastleDigest;
 import com.itextpdf.signatures.DigestAlgorithms;
@@ -92,7 +92,7 @@ public class C2_09_SignatureTypes extends SignatureTest {
         PdfReader reader = new PdfReader(src);
         PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(dest), new StampingProperties().useAppendMode());
         new Canvas(new PdfCanvas(pdfDoc.getFirstPage()), pdfDoc, pdfDoc.getFirstPage().getPageSize())
-                .showTextAligned("TOP SECRET", 36, 820, Property.TextAlignment.LEFT);
+                .showTextAligned("TOP SECRET", 36, 820, TextAlignment.LEFT);
         pdfDoc.close();
     }
 

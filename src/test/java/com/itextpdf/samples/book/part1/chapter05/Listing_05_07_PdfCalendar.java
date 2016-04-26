@@ -18,9 +18,12 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.element.*;
+import com.itextpdf.layout.property.TabAlignment;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.TableRenderer;
@@ -128,13 +131,13 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
                 .setFontColor(new DeviceCmyk(cmykGray[0], cmykGray[1], cmykGray[2], cmykGray[3]))
                 .setFontSize(8);
         doc.showTextAligned(p, 5, 5, calendar.get(Calendar.MONTH) + 1,
-                Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
+                TextAlignment.LEFT, VerticalAlignment.BOTTOM, 0);
         p = new Paragraph("Calendar generated using iText - example for the book iText in Action 2nd Edition")
                 .setFont(normal)
                 .setFontColor(new DeviceCmyk(cmykGray[0], cmykGray[1], cmykGray[2], cmykGray[3]))
                 .setFontSize(8);
         doc.showTextAligned(p, 837, 5, calendar.get(Calendar.MONTH) + 1,
-                Property.TextAlignment.RIGHT, Property.VerticalAlignment.BOTTOM, 0);
+                TextAlignment.RIGHT, VerticalAlignment.BOTTOM, 0);
     }
 
     /**
@@ -148,7 +151,7 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
         Cell cell = new Cell(1, 7);
         cell.setNextRenderer(new RoundedCellRenderer(cell, cmykYellow, false));
         Paragraph p = new Paragraph(String.format(locale, "%1$tB %1$tY", calendar)).setFont(bold).setFontSize(14);
-        p.setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
+        p.setHorizontalAlignment(HorizontalAlignment.CENTER);
         cell.add(p);
         return cell;
     }
@@ -176,7 +179,7 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
         // a paragraph with the day
         Paragraph p = new Paragraph(text);
         // a separator
-        p.addTabStops(new TabStop(100, Property.TabAlignment.RIGHT));
+        p.addTabStops(new TabStop(100, TabAlignment.RIGHT));
         p.add(new Tab());
         // and the number of the day
         p.add(new Text(String.format(locale, "%1$te", calendar)).setFont(normal).setFontSize(16));

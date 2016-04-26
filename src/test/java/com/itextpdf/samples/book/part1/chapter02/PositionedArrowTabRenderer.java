@@ -15,9 +15,10 @@ import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Tab;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.TabRenderer;
 
@@ -47,10 +48,10 @@ public class PositionedArrowTabRenderer extends TabRenderer {
         p.setFont(zapfdingbats);
         if (isLeft) {
             new Canvas(drawContext.getCanvas(), drawContext.getDocument(), rect)
-                    .showTextAligned(p, pageSize.getLeft()-15, rect.getBottom()+8, Property.TextAlignment.CENTER, Property.VerticalAlignment.MIDDLE);
+                    .showTextAligned(p, pageSize.getLeft()-15, rect.getBottom()+8, TextAlignment.CENTER, VerticalAlignment.MIDDLE);
         } else {
             new Canvas(drawContext.getCanvas(), drawContext.getDocument(), rect)
-                    .showTextAligned(p, pageSize.getRight()+15, rect.getBottom()+8, drawContext.getDocument().getNumberOfPages(), Property.TextAlignment.CENTER, Property.VerticalAlignment.MIDDLE, (float) Math.PI);
+                    .showTextAligned(p, pageSize.getRight()+15, rect.getBottom()+8, drawContext.getDocument().getNumberOfPages(), TextAlignment.CENTER, VerticalAlignment.MIDDLE, (float) Math.PI);
         }
     }
 }

@@ -11,7 +11,7 @@ import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -49,19 +49,19 @@ public class NestedTablesAligned extends GenericTest {
     private void buildNestedTables(Table outerTable) {
         Table innerTable1 = new Table(1);
         innerTable1.setWidth(100f);
-        innerTable1.setHorizontalAlignment(Property.HorizontalAlignment.LEFT);
+        innerTable1.setHorizontalAlignment(HorizontalAlignment.LEFT);
         innerTable1.addCell("Cell 1");
         innerTable1.addCell("Cell 2");
         outerTable.addCell(innerTable1); // add(new Paragraph(innerTable))
         Table innerTable2 = new Table(2);
         innerTable2.setWidth(100f);
-        innerTable2.setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
+        innerTable2.setHorizontalAlignment(HorizontalAlignment.CENTER);
         innerTable2.addCell("Cell 3");
         innerTable2.addCell("Cell 4");
         outerTable.addCell(innerTable2);
         Table innerTable3 = new Table(2);
         innerTable3.setWidth(100f);
-        innerTable3.setHorizontalAlignment(Property.HorizontalAlignment.RIGHT);
+        innerTable3.setHorizontalAlignment(HorizontalAlignment.RIGHT);
         innerTable3.addCell("Cell 5");
         innerTable3.addCell("Cell 6");
         outerTable.addCell(innerTable3);

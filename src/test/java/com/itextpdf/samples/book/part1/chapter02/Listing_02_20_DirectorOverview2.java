@@ -13,12 +13,12 @@ import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.draw.DottedLine;
-import com.itextpdf.layout.border.DottedBorder;
 import com.itextpdf.layout.element.*;
 import com.itextpdf.layout.element.List;
+import com.itextpdf.layout.property.ListNumberingType;
+import com.itextpdf.layout.property.TabAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.samples.GenericTest;
 
 import com.lowagie.database.DatabaseConnection;
@@ -32,7 +32,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.*;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 
@@ -74,12 +73,12 @@ public class Listing_02_20_DirectorOverview2 extends GenericTest {
             for (Text text : PojoToElementFactory.getDirectorPhrase(director, bold, normal)) {
                 p.add(text);
             }
-            p.addTabStops(new TabStop(750, Property.TabAlignment.RIGHT, new DottedLine()));
+            p.addTabStops(new TabStop(750, TabAlignment.RIGHT, new DottedLine()));
             p.add(new Tab());
             p.add(String.format("movies: %d", rs.getInt("c")));
             doc.add(p);
             // Creates a list
-            List list = new List(Property.ListNumberingType.DECIMAL);
+            List list = new List(ListNumberingType.DECIMAL);
             list.setMarginLeft(36);
             list.setMarginRight(36);
             // Gets the movies of the current director
@@ -91,8 +90,8 @@ public class Listing_02_20_DirectorOverview2 extends GenericTest {
                 // creates a list item with a movie title
                 Paragraph paragraphtoAdd = new Paragraph();
                 java.util.List<TabStop> tabStops = new ArrayList<>();
-                tabStops.add(new TabStop(750, Property.TabAlignment.RIGHT));
-                tabStops.add(new TabStop(850, Property.TabAlignment.RIGHT));
+                tabStops.add(new TabStop(750, TabAlignment.RIGHT));
+                tabStops.add(new TabStop(850, TabAlignment.RIGHT));
                 paragraphtoAdd.addTabStops(tabStops);
                 paragraphtoAdd.add(movie.getMovieTitle());
                 paragraphtoAdd.add(new Tab());

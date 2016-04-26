@@ -17,11 +17,13 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.Leading;
+import com.itextpdf.layout.property.Property;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DocumentRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
@@ -111,37 +113,37 @@ public class PositionContentInCell extends GenericTest {
             drawContext.getCanvas().stroke();
 
             Paragraph p = new Paragraph(content);
-            Property.Leading leading = p.getDefaultProperty(Property.LEADING);
+            Leading leading = p.getDefaultProperty(Property.LEADING);
             Float defaultFontSize = new DocumentRenderer(new Document(drawContext.getDocument())).getPropertyAsFloat(Property.FONT_SIZE);
 
             float x;
             float y;
-            Property.TextAlignment alignment;
+            TextAlignment alignment;
             switch (position) {
                 case TOP_LEFT:
                     x = getOccupiedAreaBBox().getLeft() + 3;
                     y = getOccupiedAreaBBox().getTop() - defaultFontSize*leading.getValue();
-                    alignment = Property.TextAlignment.LEFT;
+                    alignment = TextAlignment.LEFT;
                     break;
                 case TOP_RIGHT:
                     x = getOccupiedAreaBBox().getRight() - 3;
                     y = getOccupiedAreaBBox().getTop() - defaultFontSize*leading.getValue();
-                    alignment = Property.TextAlignment.RIGHT;
+                    alignment = TextAlignment.RIGHT;
                     break;
                 case BOTTOM_LEFT:
                     x = getOccupiedAreaBBox().getLeft() + 3;
                     y = getOccupiedAreaBBox().getBottom() + 3;
-                    alignment = Property.TextAlignment.LEFT;
+                    alignment = TextAlignment.LEFT;
                     break;
                 case BOTTOM_RIGHT:
                     x = getOccupiedAreaBBox().getRight() - 3;
                     y = getOccupiedAreaBBox().getBottom() + 3;
-                    alignment = Property.TextAlignment.RIGHT;
+                    alignment = TextAlignment.RIGHT;
                     break;
                 default:
                     x = 0;
                     y = 0;
-                    alignment = Property.TextAlignment.CENTER;
+                    alignment = TextAlignment.CENTER;
             }
             new Canvas(drawContext.getCanvas(), drawContext.getDocument(), getOccupiedAreaBBox()).showTextAligned(p, x, y, alignment);
         }

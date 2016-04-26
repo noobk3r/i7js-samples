@@ -16,9 +16,10 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.draw.ILineDrawer;
 import com.itextpdf.kernel.pdf.canvas.draw.SolidLine;
 import com.itextpdf.layout.element.LineSeparator;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.border.SolidBorder;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
@@ -67,8 +68,8 @@ public class TableSplitTest extends GenericTest {
             Cell headerCell = new Cell().add(new Paragraph(columnHeader).setFont(
                     PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD))
                     .setFontSize(10));
-            headerCell.setTextAlignment(Property.TextAlignment.CENTER);
-            headerCell.setVerticalAlignment(Property.VerticalAlignment.MIDDLE);
+            headerCell.setTextAlignment(TextAlignment.CENTER);
+            headerCell.setVerticalAlignment(VerticalAlignment.MIDDLE);
             headerCell.setBorder(new SolidBorder(Color.LIGHT_GRAY, 1));
             headerCell.setPadding(8);
             table.addHeaderCell(headerCell);
@@ -107,8 +108,8 @@ public class TableSplitTest extends GenericTest {
                 Cell headerCell = new Cell().add(new Paragraph(columnHeader).setFont(
                         PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD))
                         .setFontSize(10));
-                headerCell.setTextAlignment(Property.TextAlignment.CENTER);
-                headerCell.setVerticalAlignment(Property.VerticalAlignment.MIDDLE);
+                headerCell.setTextAlignment(TextAlignment.CENTER);
+                headerCell.setVerticalAlignment(VerticalAlignment.MIDDLE);
                 headerCell.setBorder(new SolidBorder(Color.LIGHT_GRAY, 1));
                 headerCell.setPaddingLeft(8);
                 headerCell.setPaddingTop(8);

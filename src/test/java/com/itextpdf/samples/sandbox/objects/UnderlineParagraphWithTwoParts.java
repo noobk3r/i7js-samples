@@ -18,12 +18,12 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.draw.SolidLine;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.LineSeparator;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Tab;
 import com.itextpdf.layout.element.TabStop;
 import com.itextpdf.layout.element.Text;
+import com.itextpdf.layout.property.TabAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -99,7 +99,7 @@ public class UnderlineParagraphWithTwoParts extends GenericTest {
         Text chunk2 = new Text(string2).setFont(font).setFontSize(fontSize);
         Paragraph p = new Paragraph();
         p.add(chunk1);
-        p.addTabStops(new TabStop(1000, Property.TabAlignment.RIGHT));
+        p.addTabStops(new TabStop(1000, TabAlignment.RIGHT));
         p.add(new Tab());
         p.add(chunk2);
         doc.add(p);

@@ -20,10 +20,12 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.Property;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Paragraph;
 import com.lowagie.database.DatabaseConnection;
@@ -129,8 +131,8 @@ public class Listing_05_21_MovieCountries2 extends Listing_05_20_MovieCountries1
                     .setProperty(Property.FONT_SIZE, 52)
                     .setProperty(Property.FONT, font)
                     .showTextAligned(new Paragraph("FOOBAR FILM FESTIVAL"), 297.5f, 421,
-                            docEvent.getDocument().getNumberOfPages(), Property.TextAlignment.CENTER,
-                            Property.VerticalAlignment.MIDDLE, 45);
+                            docEvent.getDocument().getNumberOfPages(), TextAlignment.CENTER,
+                            VerticalAlignment.MIDDLE, 45);
         }
     }
 }

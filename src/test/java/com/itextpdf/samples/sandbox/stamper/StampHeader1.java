@@ -18,8 +18,9 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -50,7 +51,7 @@ public class StampHeader1 extends GenericTest {
             float x = pdfDoc.getPage(i).getPageSize().getWidth() / 2;
             float y = pdfDoc.getPage(i).getPageSize().getTop() - 20;
             doc.showTextAligned(header.setFontColor(Color.RED), x, y, i,
-                    Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
+                    TextAlignment.LEFT, VerticalAlignment.BOTTOM, 0);
         }
         doc.close();
     }

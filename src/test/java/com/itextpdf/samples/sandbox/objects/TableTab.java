@@ -14,10 +14,10 @@ package com.itextpdf.samples.sandbox.objects;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Tab;
 import com.itextpdf.layout.element.TabStop;
+import com.itextpdf.layout.property.TabAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -45,7 +45,7 @@ public class TableTab extends GenericTest {
 
     public Paragraph createParagraphWithTab(String key, String value1, String value2) {
         Paragraph p = new Paragraph();
-        p.addTabStops(new TabStop(200f, Property.TabAlignment.LEFT));
+        p.addTabStops(new TabStop(200f, TabAlignment.LEFT));
         p.add(key);
         p.add(value1);
         p.add(new Tab());

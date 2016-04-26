@@ -20,10 +20,13 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
+import com.itextpdf.layout.property.HorizontalAlignment;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.Property;
 import com.itextpdf.layout.Style;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Cell;
@@ -124,8 +127,8 @@ public class Listing_06_08_Stationery extends GenericTest {
 
         bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
 
-        Table table = new Table(1).setWidthPercent(80).setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
-        Style style = new Style().setTextAlignment(Property.TextAlignment.CENTER);
+        Table table = new Table(1).setWidthPercent(80).setHorizontalAlignment(HorizontalAlignment.CENTER);
+        Style style = new Style().setTextAlignment(TextAlignment.CENTER);
         table.addCell(new Cell()
                 .addStyle(style)
                 .add(new Paragraph("FOOBAR FILM FESTIVAL").setFont(bold)));
@@ -138,7 +141,7 @@ public class Listing_06_08_Stationery extends GenericTest {
                 .setProperty(Property.FONT_SIZE, 52)
                 .setProperty(Property.FONT, font)
                 .showTextAligned(new Paragraph("FOOBAR FILM FESTIVAL"), 297.5f, 421, pdfDoc.getNumberOfPages(),
-                        Property.TextAlignment.CENTER, Property.VerticalAlignment.MIDDLE, (float)Math.PI / 4);
+                        TextAlignment.CENTER, VerticalAlignment.MIDDLE, (float)Math.PI / 4);
         doc.close();
     }
 

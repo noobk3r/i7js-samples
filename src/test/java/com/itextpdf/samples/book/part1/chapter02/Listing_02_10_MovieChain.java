@@ -10,9 +10,9 @@ package com.itextpdf.samples.book.part1.chapter02;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
@@ -67,7 +67,7 @@ public class Listing_02_10_MovieChain extends GenericTest {
         // wrap the chunk in a paragraph and add it to the document
         Paragraph paragraph = new Paragraph("A:\u00a0");
         paragraph.add(chunk1);
-        paragraph.setTextAlignment(Property.TextAlignment.JUSTIFIED);
+        paragraph.setTextAlignment(TextAlignment.JUSTIFIED);
         doc.add(paragraph);
 
         // define the pipe character as split character
@@ -75,7 +75,7 @@ public class Listing_02_10_MovieChain extends GenericTest {
         // wrap the chunk in a second paragraph and add it
         paragraph = new Paragraph("B:\u00a0");
         paragraph.add(chunk1);
-        paragraph.setTextAlignment(Property.TextAlignment.JUSTIFIED);
+        paragraph.setTextAlignment(TextAlignment.JUSTIFIED);
         doc.add(paragraph);
 
         // create a new StringBuffer with movie titles
@@ -89,7 +89,7 @@ public class Listing_02_10_MovieChain extends GenericTest {
         // wrap the chunk in a paragraph and add it to the document
         paragraph = new Paragraph("C:\u00a0");
         paragraph.add(chunk2);
-        paragraph.setTextAlignment(Property.TextAlignment.JUSTIFIED);
+        paragraph.setTextAlignment(TextAlignment.JUSTIFIED);
         doc.add(paragraph);
 
         // go to a new page
@@ -99,7 +99,7 @@ public class Listing_02_10_MovieChain extends GenericTest {
         // wrap the second chunk in a second paragraph and add it
         paragraph = new Paragraph("D:\u00a0");
         paragraph.add(chunk2);
-        paragraph.setTextAlignment(Property.TextAlignment.JUSTIFIED);
+        paragraph.setTextAlignment(TextAlignment.JUSTIFIED);
         doc.add(paragraph);
 
         // go to a new page
@@ -108,7 +108,7 @@ public class Listing_02_10_MovieChain extends GenericTest {
         // wrap the second chunk in a third paragraph and add it
         paragraph = new Paragraph("E:\u00a0");
         paragraph.add(chunk2);
-        paragraph.setTextAlignment(Property.TextAlignment.JUSTIFIED);
+        paragraph.setTextAlignment(TextAlignment.JUSTIFIED);
         paragraph.setSpacingRatio(1);
         doc.add(paragraph);
 

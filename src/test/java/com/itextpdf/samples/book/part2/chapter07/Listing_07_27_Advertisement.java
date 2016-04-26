@@ -22,11 +22,12 @@ import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
 import com.itextpdf.kernel.pdf.xobject.PdfXObject;
 import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.*;
 import com.itextpdf.layout.layout.LayoutArea;
 import com.itextpdf.layout.layout.LayoutContext;
 import com.itextpdf.layout.layout.LayoutResult;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.layout.renderer.AbstractRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.IRenderer;
@@ -222,7 +223,7 @@ public class Listing_07_27_Advertisement extends GenericTest {
             Paragraph paragraph = new Paragraph(modelButton.getCaption()).setFontSize(modelButton.getFontSize()).setMargin(0).setMultipliedLeading(1);
 
             new Canvas(canvas, drawContext.getDocument(), new Rectangle(0, 0, width, height)).
-                    showTextAligned(paragraph, 1, 1, Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM);
+                    showTextAligned(paragraph, 1, 1, TextAlignment.LEFT, VerticalAlignment.BOTTOM);
 
             PdfXObject obj = modelButton.getImage();
             float imageWidth = obj.getWidth();

@@ -13,9 +13,9 @@ import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Image;
@@ -78,14 +78,14 @@ public class Listing_04_14_MovieCompositeMode extends GenericTest {
             cell = new Cell();
             // a cell with paragraphs and lists
             Paragraph p = new Paragraph(movie.getTitle()).setFont(bold);
-            p.setTextAlignment(Property.TextAlignment.CENTER);
+            p.setTextAlignment(TextAlignment.CENTER);
             p.setMarginTop(5);
             p.setMarginBottom(5);
             cell.add(p);
             cell.setBorder(Border.NO_BORDER);
             if (movie.getOriginalTitle() != null) {
                 p = new Paragraph(movie.getOriginalTitle()).setFont(italic);
-                p.setTextAlignment(Property.TextAlignment.RIGHT);
+                p.setTextAlignment(TextAlignment.RIGHT);
                 cell.add(p);
             }
             list = PojoToElementFactory.getDirectorList(movie);

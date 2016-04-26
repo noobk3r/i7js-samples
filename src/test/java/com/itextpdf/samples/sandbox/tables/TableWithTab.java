@@ -10,17 +10,16 @@ package com.itextpdf.samples.sandbox.tables;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Tab;
 import com.itextpdf.layout.element.TabStop;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.TabAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 
@@ -42,7 +41,7 @@ public class TableWithTab extends GenericTest {
         Table table = new Table(1);
         Paragraph p = new Paragraph();
         p.add("Left");
-        p.addTabStops(new TabStop(1000, Property.TabAlignment.RIGHT));
+        p.addTabStops(new TabStop(1000, TabAlignment.RIGHT));
         p.add(new Tab());
         p.add("Right");
         table.addCell(p);

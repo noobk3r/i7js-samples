@@ -11,8 +11,9 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -38,7 +39,7 @@ public class StampPageXofY extends GenericTest {
         int n = pdfDoc.getNumberOfPages();
         for (int i = 1; i <= n; i++) {
             doc.showTextAligned(new Paragraph(String.format("page %s of %s", i, n)),
-                    559, 806, i, Property.TextAlignment.RIGHT, Property.VerticalAlignment.TOP, 0);
+                    559, 806, i, TextAlignment.RIGHT, VerticalAlignment.TOP, 0);
         }
         doc.close();
     }

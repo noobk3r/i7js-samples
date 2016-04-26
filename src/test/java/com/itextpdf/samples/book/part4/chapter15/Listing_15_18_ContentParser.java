@@ -8,17 +8,14 @@
 package com.itextpdf.samples.book.part4.chapter15;
 
 import com.itextpdf.io.font.PdfEncodings;
-import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
-import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.tagging.PdfStructElem;
-import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.property.TextAlignment;
 
 import java.io.IOException;
 import java.util.List;
@@ -75,7 +72,7 @@ public class Listing_15_18_ContentParser extends DefaultHandler {
         if (s.length() > 0) {
             Paragraph p = new Paragraph(s).setFont(font);
             p.setRole(role);
-            p.setTextAlignment(Property.TextAlignment.JUSTIFIED);
+            p.setTextAlignment(TextAlignment.JUSTIFIED);
             doc.add(p);
         }
     }

@@ -17,9 +17,9 @@ import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.element.*;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
@@ -84,7 +84,7 @@ public class Listing_04_17_NestedTables extends GenericTest {
         // add the cell with the date
         Cell cell = new Cell().add(new Paragraph(day.toString()).setFontColor(Color.WHITE));
         cell.setBackgroundColor(Color.BLACK);
-        cell.setTextAlignment(Property.TextAlignment.CENTER);
+        cell.setTextAlignment(TextAlignment.CENTER);
         table.addCell(cell);
         // add the movies as nested tables
         List<Screening> screenings = PojoFactory.getScreenings(connection, day);
@@ -140,7 +140,7 @@ public class Listing_04_17_NestedTables extends GenericTest {
         cell.setBackgroundColor(Color.WHITE);
         String s = String.format("%s \u2013 %2$tH:%2$tM",
                 screening.getLocation(), screening.getTime().getTime());
-        cell.add(new Paragraph(s).setTextAlignment(Property.TextAlignment.CENTER));
+        cell.add(new Paragraph(s).setTextAlignment(TextAlignment.CENTER));
         table.addCell(cell);
         // cell 2: English and original title 
         Movie movie = screening.getMovie();
@@ -159,7 +159,7 @@ public class Listing_04_17_NestedTables extends GenericTest {
         cell.setBorder(Border.NO_BORDER);
         cell.setBackgroundColor(Color.WHITE);
         p = new Paragraph(String.format("%d'", movie.getDuration()));
-        p.setTextAlignment(Property.TextAlignment.CENTER);
+        p.setTextAlignment(TextAlignment.CENTER);
         cell.add(p);
         table.addCell(cell);
         return table;

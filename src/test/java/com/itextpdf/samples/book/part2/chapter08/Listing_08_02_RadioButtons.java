@@ -15,12 +15,13 @@ import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfButtonFormField;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 
@@ -52,7 +53,7 @@ public class Listing_08_02_RadioButtons extends GenericTest {
             radio = PdfFormField.createRadioButton(pdfDoc, rect, radioGroup, LANGUAGES[page - 1]);
             radio.setPage(page);
             doc.showTextAligned(new Paragraph(LANGUAGES[page - 1]).setFont(font).setFontSize(18),
-                    70, 790, page, Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
+                    70, 790, page, TextAlignment.LEFT, VerticalAlignment.BOTTOM, 0);
             radio.getWidgets().get(0).setColor(new DeviceGray(0.8f).getColorValue());
         }
         PdfAcroForm.getAcroForm(pdfDoc, true).addField(radioGroup);

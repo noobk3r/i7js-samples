@@ -15,7 +15,7 @@ import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Image;
@@ -132,14 +132,14 @@ public class Listing_04_20_MemoryTests extends GenericTest {
             // add movie information
             cell = new Cell();
             Paragraph p = new Paragraph(movie.getTitle()).setFont(bold);
-            p.setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
+            p.setHorizontalAlignment(HorizontalAlignment.CENTER);
             p.setMarginTop(5);
             p.setMarginBottom(5);
             cell.add(p);
             cell.setBorder(Border.NO_BORDER);
             if (movie.getOriginalTitle() != null) {
                 p = new Paragraph(movie.getOriginalTitle()).setFont(italic);
-                p.setHorizontalAlignment(Property.HorizontalAlignment.RIGHT);
+                p.setHorizontalAlignment(HorizontalAlignment.RIGHT);
                 cell.add(p);
             }
             list = PojoToElementFactory.getDirectorList(movie);

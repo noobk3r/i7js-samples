@@ -7,8 +7,8 @@
 
 package com.itextpdf.samples.book.part1.chapter03;
 
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
 
 import com.lowagie.filmfestival.Movie;
@@ -30,6 +30,6 @@ public class Listing_03_18_MovieColumns3 extends Listing_03_16_MovieColumns1 {
                 setKeepTogether(true).
                 setPaddingLeft(0).
                 setFirstLineIndent(0).
-                setTextAlignment(Property.TextAlignment.LEFT);
+                setTextAlignment(TextAlignment.LEFT);
     }
 }

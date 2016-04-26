@@ -18,9 +18,10 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Link;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
@@ -53,7 +54,7 @@ public class AddLinkAnnotation2 extends GenericTest {
         Paragraph p = new Paragraph("Download ").add(link.setFont(bold)).add(" and discover more than 200 questions and answers.");
 
         new Document(pdfDoc).showTextAligned(p.setWidth(500), 36, 700, 1,
-                Property.TextAlignment.LEFT, Property.VerticalAlignment.MIDDLE, 0);
+                TextAlignment.LEFT, VerticalAlignment.MIDDLE, 0);
         pdfDoc.close();
     }
 }

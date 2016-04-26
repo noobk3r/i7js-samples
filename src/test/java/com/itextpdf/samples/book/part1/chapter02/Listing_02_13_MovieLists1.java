@@ -12,9 +12,9 @@ import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.property.ListNumberingType;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.List;
 import com.itextpdf.layout.element.ListItem;
 import com.itextpdf.samples.GenericTest;
@@ -62,14 +62,14 @@ public class Listing_02_13_MovieLists1 extends GenericTest {
                         + "WHERE c.id = mc.country_id "
                         + "GROUP BY mc.country_id, country ORDER BY c DESC");
         // Create a new list
-        List list = new List(Property.ListNumberingType.DECIMAL);
+        List list = new List(ListNumberingType.DECIMAL);
         // loop over the countries
         while (rs.next()) {
             // create a list item for the country
             ListItem item = new ListItem(String.format("%s: %d movies", rs.getString("country"), rs.getInt("c")));
             item.setFont(boldItalic);
             // create a movie list for each country
-            List movielist = new List(Property.ListNumberingType.ENGLISH_LOWER);
+            List movielist = new List(ListNumberingType.ENGLISH_LOWER);
             for(Movie movie : PojoFactory.getMovies(connection, rs.getString("country_id"))) {
                 ListItem movieitem = new ListItem(movie.getMovieTitle());
                 List directorlist = new List();

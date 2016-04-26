@@ -17,7 +17,7 @@ import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.BaseDirection;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.licensekey.LicenseKey;
@@ -56,7 +56,7 @@ public class ArabicExample extends GenericTest {
         p.add(new Text(": 50.00 USD"));
         doc.add(p);
 
-        p = new Paragraph("This is correct manual property: ").setBaseDirection(Property.BaseDirection.LEFT_TO_RIGHT).setFontScript(Character.UnicodeScript.ARABIC);
+        p = new Paragraph("This is correct manual property: ").setBaseDirection(BaseDirection.LEFT_TO_RIGHT).setFontScript(Character.UnicodeScript.ARABIC);
         p.add(new Text(ARABIC).setFont(f));
         p.add(new Text(": 50.00"));
         doc.add(p);

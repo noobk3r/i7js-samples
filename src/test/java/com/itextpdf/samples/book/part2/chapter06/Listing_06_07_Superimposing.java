@@ -20,7 +20,7 @@ import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvasConstants;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
@@ -101,7 +101,7 @@ public class Listing_06_07_Superimposing extends GenericTest {
         Paragraph p = new Paragraph("Foobar Film Festival")
                 .setFont(PdfFontFactory.createFont(FontConstants.HELVETICA))
                 .setFontSize(22)
-                .setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
+                .setHorizontalAlignment(HorizontalAlignment.CENTER);
         doc.add(p);
         doc.add(new AreaBreak());
 

@@ -24,10 +24,12 @@ import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.Property;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
@@ -109,7 +111,7 @@ public class Watermarking extends GenericTest {
                     .setProperty(Property.FONT_SIZE, 60)
                     .setProperty(Property.FONT, font)
                     .showTextAligned(new Paragraph("WATERMARK"), 298, 421, pdfDoc.getPageNumber(page),
-                            Property.TextAlignment.CENTER, Property.VerticalAlignment.MIDDLE, 45);
+                            TextAlignment.CENTER, VerticalAlignment.MIDDLE, 45);
         }
     }
 }

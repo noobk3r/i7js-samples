@@ -11,9 +11,11 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.element.Tab;
 import com.itextpdf.layout.element.TabStop;
+import com.itextpdf.layout.property.HorizontalAlignment;
+import com.itextpdf.layout.property.TabAlignment;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.border.SolidBorder;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
@@ -24,7 +26,6 @@ import com.itextpdf.samples.GenericTest;
 import java.io.File;
 import java.io.FileOutputStream;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 
@@ -49,7 +50,7 @@ public class CellWithGlue extends GenericTest {
         Cell cell;
 
         table = new Table(2);
-        table.setHorizontalAlignment(Property.HorizontalAlignment.LEFT);
+        table.setHorizontalAlignment(HorizontalAlignment.LEFT);
         table.setWidthPercent(60);
         table.setMarginBottom(20);
         cell = new Cell().add(new Paragraph("Received Rs (in Words):"));
@@ -59,7 +60,7 @@ public class CellWithGlue extends GenericTest {
         cell.setBorderBottom(new SolidBorder(1));
         table.addCell(cell);
         cell = new Cell().add(new Paragraph("Priceless"));
-        cell.setTextAlignment(Property.TextAlignment.RIGHT);
+        cell.setTextAlignment(TextAlignment.RIGHT);
         cell.setBorder(null);
         cell.setBorderRight(new SolidBorder(1));
         cell.setBorderTop(new SolidBorder(1));
@@ -71,11 +72,11 @@ public class CellWithGlue extends GenericTest {
         doc.add(table);
 
         table = new Table(1);
-        table.setHorizontalAlignment(Property.HorizontalAlignment.LEFT);
+        table.setHorizontalAlignment(HorizontalAlignment.LEFT);
         table.setWidthPercent(50);
         Paragraph p = new Paragraph();
         p.add(new Text("Received Rs (In Words):"));
-        p.addTabStops(new TabStop(1000, Property.TabAlignment.RIGHT));
+        p.addTabStops(new TabStop(1000, TabAlignment.RIGHT));
         p.add(new Tab());
         p.add(new Text("Priceless"));
         table.addCell(new Cell().add(p));

@@ -30,12 +30,12 @@ import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
 import com.itextpdf.kernel.pdf.xobject.PdfXObject;
 import com.itextpdf.layout.Canvas;
-import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.*;
 import com.itextpdf.layout.layout.LayoutArea;
 import com.itextpdf.layout.layout.LayoutContext;
 import com.itextpdf.layout.layout.LayoutResult;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.layout.renderer.AbstractRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.IRenderer;
@@ -193,7 +193,7 @@ public class Listing_08_16_MovieAds extends GenericTest {
         }
 
         Paragraph p = new Paragraph().setFixedLeading(fontsize * 1.2f);
-        p.setFont(normal).setFontSize(fontsize).setTextAlignment(Property.TextAlignment.JUSTIFIED);
+        p.setFont(normal).setFontSize(fontsize).setTextAlignment(TextAlignment.JUSTIFIED);
         p.add(new Text(movie.getMovieTitle()).setFont(bold));
         if (movie.getOriginalTitle() != null) {
             p.add(" ");
@@ -385,7 +385,7 @@ public class Listing_08_16_MovieAds extends GenericTest {
             Paragraph paragraph = new Paragraph(modelButton.getCaption()).setFontSize(10).setMargin(0).setMultipliedLeading(1);
 
             new Canvas(canvas, drawContext.getDocument(), new Rectangle(0, 0, width, height)).
-                    showTextAligned(paragraph, 1, 1, Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM);
+                    showTextAligned(paragraph, 1, 1, TextAlignment.LEFT, VerticalAlignment.BOTTOM);
 
             if (null == modelButton.getFormXObject()) {
                 PdfImageXObject imageXObject = new PdfImageXObject(modelButton.getImage());

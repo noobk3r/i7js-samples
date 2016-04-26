@@ -15,9 +15,9 @@ package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.*;
 import com.itextpdf.samples.GenericTest;
 
@@ -43,7 +43,7 @@ public class ListWithLabel extends GenericTest {
 
         Table table = new Table(new float[]{1, 10});
         table.setWidth(200);
-        table.setHorizontalAlignment(Property.HorizontalAlignment.LEFT);
+        table.setHorizontalAlignment(HorizontalAlignment.LEFT);
         Cell cell;
         cell = new Cell();
         cell.setBorder(null);

@@ -22,11 +22,12 @@ import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.canvas.draw.DashedLine;
 import com.itextpdf.kernel.pdf.navigation.PdfDestination;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.Property;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Tab;
 import com.itextpdf.layout.element.TabStop;
 import com.itextpdf.layout.element.Text;
+import com.itextpdf.layout.property.TabAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.Ignore;
@@ -91,7 +92,7 @@ public class MergeWithToc2 extends GenericTest {
         float y = 770;
         for (Map.Entry<Integer, String> entry : toc.entrySet()) {
             Paragraph p = new Paragraph();
-            p.addTabStops(new TabStop(500, Property.TabAlignment.LEFT, new DashedLine()));
+            p.addTabStops(new TabStop(500, TabAlignment.LEFT, new DashedLine()));
             p.add(entry.getValue());
             p.add(new Tab());
             p.add(String.valueOf(entry.getKey()));

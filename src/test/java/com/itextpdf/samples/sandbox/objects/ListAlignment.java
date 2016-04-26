@@ -13,9 +13,9 @@ package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.List;
 import com.itextpdf.layout.element.ListItem;
 import com.itextpdf.samples.GenericTest;
@@ -48,7 +48,7 @@ public class ListAlignment extends GenericTest {
         }
         List list = new List();
         ListItem item = new ListItem(text);
-        item.setTextAlignment(Property.TextAlignment.JUSTIFIED);
+        item.setTextAlignment(TextAlignment.JUSTIFIED);
         list.add(item);
 
         text = "a b c align ";
@@ -56,7 +56,7 @@ public class ListAlignment extends GenericTest {
             text = text + text;
         }
         item = new ListItem(text);
-        item.setTextAlignment(Property.TextAlignment.JUSTIFIED);
+        item.setTextAlignment(TextAlignment.JUSTIFIED);
         list.add(item);
 
         text = "supercalifragilisticexpialidociousss ";
@@ -64,7 +64,7 @@ public class ListAlignment extends GenericTest {
             text = text + text;
         }
         item = new ListItem(text);
-        item.setTextAlignment(Property.TextAlignment.JUSTIFIED);
+        item.setTextAlignment(TextAlignment.JUSTIFIED);
         list.add(item);
         doc.add(list);
 

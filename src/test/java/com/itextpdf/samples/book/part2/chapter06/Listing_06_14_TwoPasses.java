@@ -18,10 +18,10 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Style;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.border.SolidBorder;
 import com.itextpdf.layout.element.AreaBreak;
@@ -74,7 +74,7 @@ public class Listing_06_14_TwoPasses extends GenericTest {
         Style style = new Style()
                 .setBorder(Border.NO_BORDER)
                 .setHeight(20)
-                .setTextAlignment(Property.TextAlignment.RIGHT)
+                .setTextAlignment(TextAlignment.RIGHT)
                 .setBorderBottom(new SolidBorder(1));
         table.setBorder(Border.NO_BORDER);
         table.addCell(new Cell()
