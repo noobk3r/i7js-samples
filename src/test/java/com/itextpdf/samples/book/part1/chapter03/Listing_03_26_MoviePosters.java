@@ -109,7 +109,7 @@ public class Listing_03_26_MoviePosters extends GenericTest {
 
         Document document = new Document(pdfDoc);
 
-        com.itextpdf.layout.element.Image image = new com.itextpdf.layout.element.Image(xObj, 0, 480).setProperty(Property.PAGE_NUMBER, 3);
+        com.itextpdf.layout.element.Image image = new com.itextpdf.layout.element.Image(xObj, 0, 480).setPageNumber(3);
         document.add(image);
 
         image.setRotationAngle(Math.PI / 6).

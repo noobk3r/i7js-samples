@@ -266,7 +266,7 @@ public class Listing_08_16_MovieAds extends GenericTest {
         connection.close();
     }
 
-    class CustomButton extends AbstractElement<Listing_08_06_ReplaceIcon.CustomButton> implements ILeafElement<Listing_08_06_ReplaceIcon.CustomButton>, IElement<Listing_08_06_ReplaceIcon.CustomButton>, IAccessibleElement {
+    class CustomButton extends AbstractElement<Listing_08_06_ReplaceIcon.CustomButton> implements ILeafElement, IAccessibleElement {
 
         protected PdfName role = PdfName.Figure;
         protected PdfButtonFormField button;
