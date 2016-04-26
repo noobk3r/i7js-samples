@@ -94,10 +94,10 @@ public class NestedTables3 extends GenericTest {
 
         @Override
         protected TableRenderer[] split(int row) {
-            InnerTableRenderer splitRenderer = createSplitRenderer(
+            InnerTableRenderer splitRenderer = (InnerTableRenderer) createSplitRenderer(
                     new Table.RowRange(rowRange.getStartRow(), rowRange.getStartRow() + row));
             splitRenderer.rows = rows.subList(0, row);
-            InnerTableRenderer overflowRenderer = createOverflowRenderer(
+            InnerTableRenderer overflowRenderer = (InnerTableRenderer) createOverflowRenderer(
                     new Table.RowRange(rowRange.getStartRow() + row,rowRange.getFinishRow()));
             overflowRenderer.rows = rows.subList(row, rows.size());
             splitRenderer.occupiedArea = occupiedArea;

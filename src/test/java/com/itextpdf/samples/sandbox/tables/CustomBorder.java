@@ -128,10 +128,10 @@ class CustomBorderTableRenderer extends TableRenderer {
                 }
             }
         }
-        CustomBorderTableRenderer splitRenderer = createSplitRenderer(
+        CustomBorderTableRenderer splitRenderer = (CustomBorderTableRenderer) createSplitRenderer(
                 new Table.RowRange(rowRange.getStartRow(), rowRange.getStartRow() + row));
         splitRenderer.rows = rows.subList(0, row);
-        CustomBorderTableRenderer overflowRenderer = createOverflowRenderer(
+        CustomBorderTableRenderer overflowRenderer = (CustomBorderTableRenderer) createOverflowRenderer(
                 new Table.RowRange(rowRange.getStartRow() + row, rowRange.getFinishRow()));
         overflowRenderer.rows = rows.subList(row, rows.size());
         splitRenderer.occupiedArea = occupiedArea;

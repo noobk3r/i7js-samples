@@ -61,9 +61,7 @@ public class TableHeader extends GenericTest {
         doc.add(new AreaBreak());
         doc.add(new Paragraph("Hello World!"));
         doc.close();
-
     }
-
 
     public class TableHeaderEventHandler implements IEventHandler {
         protected Table table;
@@ -77,7 +75,7 @@ public class TableHeader extends GenericTest {
             table.addCell("Header row 1");
             table.addCell("Header row 2");
             table.addCell("Header row 3");
-            TableRenderer renderer = table.createRendererSubTree();
+            TableRenderer renderer = (TableRenderer) table.createRendererSubTree();
             renderer.setParent(new Document(new PdfDocument(new PdfWriter(new ByteArrayOutputStream()))).getRenderer());
             tableHeight = renderer.layout(new LayoutContext(new LayoutArea(0, PageSize.A4))).getOccupiedArea().getBBox().getHeight();
         }

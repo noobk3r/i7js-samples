@@ -67,16 +67,16 @@ public class RepeatLastRows extends GenericTest {
 
         @Override
         protected TableRenderer[] split(int row) {
-            RepeatTableRenderer splitRenderer = createSplitRenderer(
+            RepeatTableRenderer splitRenderer = (RepeatTableRenderer) createSplitRenderer(
                     new Table.RowRange(rowRange.getStartRow(), rowRange.getStartRow() + row));
             splitRenderer.rows = rows.subList(0, row);
             RepeatTableRenderer overflowRenderer;
             if (rows.size() - row > 5) {
-                overflowRenderer = createOverflowRenderer(
+                overflowRenderer = (RepeatTableRenderer) createOverflowRenderer(
                         new Table.RowRange(rowRange.getStartRow() + row, rowRange.getFinishRow()));
                 overflowRenderer.rows = rows.subList(row, rows.size());
             } else {
-                overflowRenderer = createOverflowRenderer(
+                overflowRenderer = (RepeatTableRenderer) createOverflowRenderer(
                         new Table.RowRange(rowRange.getFinishRow() - 5, rowRange.getFinishRow()));
                 overflowRenderer.rows = rows.subList(rows.size() - 5, rows.size());
             }

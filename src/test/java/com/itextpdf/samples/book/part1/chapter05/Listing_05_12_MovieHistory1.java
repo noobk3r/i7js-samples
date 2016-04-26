@@ -12,7 +12,12 @@ import com.itextpdf.io.source.RandomAccessSourceFactory;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.pdf.*;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfOutline;
+import com.itextpdf.kernel.pdf.PdfReader;
+import com.itextpdf.kernel.pdf.PdfString;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.ReaderProperties;
 import com.itextpdf.kernel.pdf.navigation.PdfDestination;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.property.Property;
@@ -20,6 +25,7 @@ import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.BlockElement;
 import com.itextpdf.layout.element.Div;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.renderer.AbstractRenderer;
 import com.itextpdf.layout.renderer.BlockRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
@@ -35,7 +41,10 @@ import org.junit.experimental.categories.Category;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 @Category(SampleTest.class)
 public class Listing_05_12_MovieHistory1 extends GenericTest {
@@ -219,7 +228,7 @@ public class Listing_05_12_MovieHistory1 extends GenericTest {
         }
 
         @Override
-        protected SectionRenderer createSplitRenderer(int layoutResult) {
+        protected AbstractRenderer createSplitRenderer(int layoutResult) {
             SectionRenderer splitRenderer = getNextRenderer();
             splitRenderer.parent = parent;
             splitRenderer.modelElement = modelElement;
@@ -230,7 +239,7 @@ public class Listing_05_12_MovieHistory1 extends GenericTest {
             return splitRenderer;
         }
 
-        protected BlockRenderer createOverflowRenderer(int layoutResult) {
+        protected AbstractRenderer createOverflowRenderer(int layoutResult) {
             SectionRenderer overflowRenderer = getNextRenderer();
             overflowRenderer.parent = parent;
             overflowRenderer.modelElement = modelElement;
