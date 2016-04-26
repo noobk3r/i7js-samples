@@ -19,9 +19,10 @@ import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.navigation.PdfExplicitDestination;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Link;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.Ignore;
@@ -51,8 +52,8 @@ public class AddLinkAnnotation5 extends GenericTest {
 
         Paragraph p = new Paragraph(link).setWidth(240);
         // TODO DEVSIX-549
-        new Document(pdfDoc).showTextAligned(p, 320, 695, 1, Property.TextAlignment.LEFT,
-                Property.VerticalAlignment.TOP, 0);
+        new Document(pdfDoc).showTextAligned(p, 320, 695, 1, TextAlignment.LEFT,
+                VerticalAlignment.TOP, 0);
         pdfDoc.close();
     }
 }

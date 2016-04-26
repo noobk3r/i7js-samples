@@ -17,11 +17,11 @@ import com.itextpdf.kernel.xmp.XMPException;
 import com.itextpdf.kernel.xmp.XMPMeta;
 import com.itextpdf.kernel.xmp.XMPMetaFactory;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.samples.sandbox.zugferd.data.InvoiceData;
 import com.itextpdf.samples.sandbox.zugferd.pojo.Invoice;
@@ -109,10 +109,10 @@ public class PdfInvoicesBasic extends GenericTest {
         // header
         Paragraph p;
         p = new Paragraph(basic.getName() + " " + basic.getId()).setFont(font).setFontSize(14);
-        p.setTextAlignment(Property.TextAlignment.RIGHT);
+        p.setTextAlignment(TextAlignment.RIGHT);
         document.add(p);
         p = new Paragraph(convertDate(basic.getDateTime(), "MMM dd, yyyy")).setFont(font).setFontSize(12);
-        p.setTextAlignment(Property.TextAlignment.RIGHT);
+        p.setTextAlignment(TextAlignment.RIGHT);
         document.add(p);
 
         // Address seller / buyer
@@ -147,23 +147,23 @@ public class PdfInvoicesBasic extends GenericTest {
         table.setWidthPercent(100);
         table.setMarginTop(10);
         table.setMarginBottom(10);
-        table.addCell(getCell("Item:", Property.TextAlignment.LEFT, fontb, 12));
-        table.addCell(getCell("Price:", Property.TextAlignment.LEFT, fontb, 12));
-        table.addCell(getCell("Qty:", Property.TextAlignment.LEFT, fontb, 12));
-        table.addCell(getCell("Subtotal:", Property.TextAlignment.LEFT, fontb, 12));
-        table.addCell(getCell("VAT:", Property.TextAlignment.LEFT, fontb, 12));
-        table.addCell(getCell("Total:", Property.TextAlignment.LEFT, fontb, 12));
+        table.addCell(getCell("Item:", TextAlignment.LEFT, fontb, 12));
+        table.addCell(getCell("Price:", TextAlignment.LEFT, fontb, 12));
+        table.addCell(getCell("Qty:", TextAlignment.LEFT, fontb, 12));
+        table.addCell(getCell("Subtotal:", TextAlignment.LEFT, fontb, 12));
+        table.addCell(getCell("VAT:", TextAlignment.LEFT, fontb, 12));
+        table.addCell(getCell("Total:", TextAlignment.LEFT, fontb, 12));
         Product product;
         for (Item item : invoice.getItems()) {
             product = item.getProduct();
-            table.addCell(getCell(product.getName(), Property.TextAlignment.LEFT, font, 12));
-            table.addCell(getCell(InvoiceData.format2dec(InvoiceData.round(product.getPrice())), Property.TextAlignment.RIGHT, font, 12));
-            table.addCell(getCell(String.valueOf(item.getQuantity()), Property.TextAlignment.RIGHT, font, 12));
-            table.addCell(getCell(InvoiceData.format2dec(InvoiceData.round(item.getCost())), Property.TextAlignment.RIGHT, font, 12));
-            table.addCell(getCell(InvoiceData.format2dec(InvoiceData.round(product.getVat())), Property.TextAlignment.RIGHT, font, 12));
+            table.addCell(getCell(product.getName(), TextAlignment.LEFT, font, 12));
+            table.addCell(getCell(InvoiceData.format2dec(InvoiceData.round(product.getPrice())), TextAlignment.RIGHT, font, 12));
+            table.addCell(getCell(String.valueOf(item.getQuantity()), TextAlignment.RIGHT, font, 12));
+            table.addCell(getCell(InvoiceData.format2dec(InvoiceData.round(item.getCost())), TextAlignment.RIGHT, font, 12));
+            table.addCell(getCell(InvoiceData.format2dec(InvoiceData.round(product.getVat())), TextAlignment.RIGHT, font, 12));
             table.addCell(getCell(
                     InvoiceData.format2dec(InvoiceData.round(item.getCost() + ((item.getCost() * product.getVat()) / 100))),
-                    Property.TextAlignment.RIGHT, font, 12));
+                    TextAlignment.RIGHT, font, 12));
         }
         document.add(table);
 
@@ -230,33 +230,33 @@ public class PdfInvoicesBasic extends GenericTest {
                                 String[] type, String[] percentage, String base[], String tax[], String currency[]) {
         Table table = new Table(new float[]{1, 1, 3, 3, 3, 1});
         table.setWidthPercent(100);
-        table.addCell(getCell("TAX", Property.TextAlignment.LEFT, fontb, 12));
-        table.addCell(getCell("%", Property.TextAlignment.RIGHT, fontb, 12));
-        table.addCell(getCell("Base amount:", Property.TextAlignment.LEFT, fontb, 12));
-        table.addCell(getCell("Tax amount:", Property.TextAlignment.LEFT, fontb, 12));
-        table.addCell(getCell("Total:", Property.TextAlignment.LEFT, fontb, 12));
-        table.addCell(getCell("", Property.TextAlignment.LEFT, fontb, 12));
+        table.addCell(getCell("TAX", TextAlignment.LEFT, fontb, 12));
+        table.addCell(getCell("%", TextAlignment.RIGHT, fontb, 12));
+        table.addCell(getCell("Base amount:", TextAlignment.LEFT, fontb, 12));
+        table.addCell(getCell("Tax amount:", TextAlignment.LEFT, fontb, 12));
+        table.addCell(getCell("Total:", TextAlignment.LEFT, fontb, 12));
+        table.addCell(getCell("", TextAlignment.LEFT, fontb, 12));
         int n = type.length;
         for (int i = 0; i < n; i++) {
-            table.addCell(getCell(type[i], Property.TextAlignment.RIGHT, font, 12));
-            table.addCell(getCell(percentage[i], Property.TextAlignment.RIGHT, font, 12));
-            table.addCell(getCell(base[i], Property.TextAlignment.RIGHT, font, 12));
-            table.addCell(getCell(tax[i], Property.TextAlignment.RIGHT, font, 12));
+            table.addCell(getCell(type[i], TextAlignment.RIGHT, font, 12));
+            table.addCell(getCell(percentage[i], TextAlignment.RIGHT, font, 12));
+            table.addCell(getCell(base[i], TextAlignment.RIGHT, font, 12));
+            table.addCell(getCell(tax[i], TextAlignment.RIGHT, font, 12));
             double total = Double.parseDouble(base[i]) + Double.parseDouble(tax[i]);
-            table.addCell(getCell(InvoiceData.format2dec(InvoiceData.round(total)), Property.TextAlignment.RIGHT, font, 12));
-            table.addCell(getCell(currency[i], Property.TextAlignment.LEFT, font, 12));
+            table.addCell(getCell(InvoiceData.format2dec(InvoiceData.round(total)), TextAlignment.RIGHT, font, 12));
+            table.addCell(getCell(currency[i], TextAlignment.LEFT, font, 12));
         }
-        Cell cell = getCell(1, 2, "", Property.TextAlignment.LEFT, font, 12);
+        Cell cell = getCell(1, 2, "", TextAlignment.LEFT, font, 12);
         cell.setBorder(Border.NO_BORDER);
         table.addCell(cell);
-        table.addCell(getCell(tBase, Property.TextAlignment.RIGHT, fontb, 12));
-        table.addCell(getCell(tTax, Property.TextAlignment.RIGHT, fontb, 12));
-        table.addCell(getCell(tTotal, Property.TextAlignment.RIGHT, fontb, 12));
-        table.addCell(getCell(tCurrency, Property.TextAlignment.LEFT, fontb, 12));
+        table.addCell(getCell(tBase, TextAlignment.RIGHT, fontb, 12));
+        table.addCell(getCell(tTax, TextAlignment.RIGHT, fontb, 12));
+        table.addCell(getCell(tTotal, TextAlignment.RIGHT, fontb, 12));
+        table.addCell(getCell(tCurrency, TextAlignment.LEFT, fontb, 12));
         return table;
     }
 
-    public Cell getCell(int rowspan, int colspan, String value, Property.TextAlignment alignment, PdfFont font, int fontSize) {
+    public Cell getCell(int rowspan, int colspan, String value, TextAlignment alignment, PdfFont font, int fontSize) {
         Cell cell = new Cell(rowspan, colspan);
         Paragraph p = new Paragraph(value).setFont(font).setFontSize(fontSize);
         p.setTextAlignment(alignment);
@@ -264,7 +264,7 @@ public class PdfInvoicesBasic extends GenericTest {
         return cell;
     }
 
-    public Cell getCell(String value, Property.TextAlignment alignment, PdfFont font, int fontSize) {
+    public Cell getCell(String value, TextAlignment alignment, PdfFont font, int fontSize) {
         return getCell(1, 1, value, alignment, font, fontSize);
     }
 

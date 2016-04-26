@@ -12,10 +12,11 @@ import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
@@ -51,35 +52,35 @@ public class Listing_04_15_XMen extends GenericTest {
         // first movie
         table.addCell(new Cell()
                 .add("X-Men")
-                .setHorizontalAlignment(Property.HorizontalAlignment.CENTER)
-                .setVerticalAlignment(Property.VerticalAlignment.TOP));
+                .setHorizontalAlignment(HorizontalAlignment.CENTER)
+                .setVerticalAlignment(VerticalAlignment.TOP));
         // we wrap the image in a Cell
         Cell cell = new Cell()
                 .add(img[0])
-                .setHorizontalAlignment(Property.HorizontalAlignment.CENTER)
-                .setVerticalAlignment(Property.VerticalAlignment.TOP);
+                .setHorizontalAlignment(HorizontalAlignment.CENTER)
+                .setVerticalAlignment(VerticalAlignment.TOP);
         table.addCell(cell);
         // second movie
         table.addCell(new Cell()
                 .add("X2")
-                .setHorizontalAlignment(Property.HorizontalAlignment.CENTER)
-                .setVerticalAlignment(Property.VerticalAlignment.MIDDLE));
+                .setHorizontalAlignment(HorizontalAlignment.CENTER)
+                .setVerticalAlignment(VerticalAlignment.MIDDLE));
         // we wrap the image in a Cell and let iText scale it
         cell = new Cell()
                 .add(img[1].setAutoScale(true))
-                .setHorizontalAlignment(Property.HorizontalAlignment.CENTER)
-                .setVerticalAlignment(Property.VerticalAlignment.MIDDLE);
+                .setHorizontalAlignment(HorizontalAlignment.CENTER)
+                .setVerticalAlignment(VerticalAlignment.MIDDLE);
         table.addCell(cell);
         // third movie
         table.addCell(new Cell()
                 .add("X-Men: The Last Stand")
-                .setHorizontalAlignment(Property.HorizontalAlignment.CENTER)
-                .setVerticalAlignment(Property.VerticalAlignment.BOTTOM));
+                .setHorizontalAlignment(HorizontalAlignment.CENTER)
+                .setVerticalAlignment(VerticalAlignment.BOTTOM));
         // we add the image with addCell()
         table.addCell(new Cell()
                 .add(img[2])
-                .setHorizontalAlignment(Property.HorizontalAlignment.CENTER)
-                .setVerticalAlignment(Property.VerticalAlignment.BOTTOM));
+                .setHorizontalAlignment(HorizontalAlignment.CENTER)
+                .setVerticalAlignment(VerticalAlignment.BOTTOM));
         // fourth movie
         table.addCell(new Cell()
                 .add("Superman Returns"));
@@ -88,8 +89,8 @@ public class Listing_04_15_XMen extends GenericTest {
         img[3].setWidthPercent(50);
         cell
                 .add(img[3])
-                .setHorizontalAlignment(Property.HorizontalAlignment.CENTER)
-                .setVerticalAlignment(Property.VerticalAlignment.BOTTOM);
+                .setHorizontalAlignment(HorizontalAlignment.CENTER)
+                .setVerticalAlignment(VerticalAlignment.BOTTOM);
         table.addCell(cell);
         doc.add(table);
 

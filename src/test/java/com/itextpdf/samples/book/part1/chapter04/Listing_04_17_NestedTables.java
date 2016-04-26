@@ -8,6 +8,7 @@
 package com.itextpdf.samples.book.part1.chapter04;
 
 import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.color.DeviceRgb;
@@ -17,9 +18,9 @@ import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.element.*;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
@@ -46,7 +47,7 @@ public class Listing_04_17_NestedTables extends GenericTest {
             "./target/test/resources/book/part1/chapter04/Listing_04_17_NestedTables.pdf";
     public static final String RESOURCE = "./src/test/resources/img/posters/%s.jpg";
 
-    public Map<String, com.itextpdf.io.image.Image> images = new HashMap<>();
+    public Map<String, ImageData> images = new HashMap<>();
 
     protected PdfFont bold;
 
@@ -84,7 +85,7 @@ public class Listing_04_17_NestedTables extends GenericTest {
         // add the cell with the date
         Cell cell = new Cell().add(new Paragraph(day.toString()).setFontColor(Color.WHITE));
         cell.setBackgroundColor(Color.BLACK);
-        cell.setTextAlignment(Property.TextAlignment.CENTER);
+        cell.setTextAlignment(TextAlignment.CENTER);
         table.addCell(cell);
         // add the movies as nested tables
         List<Screening> screenings = PojoFactory.getScreenings(connection, day);
@@ -140,7 +141,7 @@ public class Listing_04_17_NestedTables extends GenericTest {
         cell.setBackgroundColor(Color.WHITE);
         String s = String.format("%s \u2013 %2$tH:%2$tM",
                 screening.getLocation(), screening.getTime().getTime());
-        cell.add(new Paragraph(s).setTextAlignment(Property.TextAlignment.CENTER));
+        cell.add(new Paragraph(s).setTextAlignment(TextAlignment.CENTER));
         table.addCell(cell);
         // cell 2: English and original title 
         Movie movie = screening.getMovie();
@@ -159,14 +160,14 @@ public class Listing_04_17_NestedTables extends GenericTest {
         cell.setBorder(Border.NO_BORDER);
         cell.setBackgroundColor(Color.WHITE);
         p = new Paragraph(String.format("%d'", movie.getDuration()));
-        p.setTextAlignment(Property.TextAlignment.CENTER);
+        p.setTextAlignment(TextAlignment.CENTER);
         cell.add(p);
         table.addCell(cell);
         return table;
     }
 
     public Image getImage(String imdb) throws MalformedURLException {
-        com.itextpdf.io.image.Image img = images.get(imdb);
+        ImageData img = images.get(imdb);
         if (img == null) {
             img = ImageFactory.getImage(String.format(RESOURCE, imdb));
             images.put(imdb, img);

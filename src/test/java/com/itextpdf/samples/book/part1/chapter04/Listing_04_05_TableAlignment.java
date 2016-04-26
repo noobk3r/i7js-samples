@@ -9,9 +9,9 @@ package com.itextpdf.samples.book.part1.chapter04;
 
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.samples.GenericTest;
@@ -38,11 +38,11 @@ public class Listing_04_05_TableAlignment extends GenericTest {
 
         Table table = createFirstTable();
         table.setWidthPercent(50);
-        table.setHorizontalAlignment(Property.HorizontalAlignment.LEFT);
+        table.setHorizontalAlignment(HorizontalAlignment.LEFT);
         doc.add(table);
-        table.setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
+        table.setHorizontalAlignment(HorizontalAlignment.CENTER);
         doc.add(table);
-        table.setHorizontalAlignment(Property.HorizontalAlignment.RIGHT);
+        table.setHorizontalAlignment(HorizontalAlignment.RIGHT);
         doc.add(table);
 
         doc.close();

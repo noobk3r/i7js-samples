@@ -25,7 +25,7 @@ import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfTextAnnotation;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Canvas;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.samples.SignatureTest;
 import com.itextpdf.signatures.BouncyCastleDigest;
 import com.itextpdf.signatures.DigestAlgorithms;
@@ -92,7 +92,7 @@ public class C2_09_SignatureTypes extends SignatureTest {
         PdfReader reader = new PdfReader(src);
         PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(dest), new StampingProperties().useAppendMode());
         new Canvas(new PdfCanvas(pdfDoc.getFirstPage()), pdfDoc, pdfDoc.getFirstPage().getPageSize())
-                .showTextAligned("TOP SECRET", 36, 820, Property.TextAlignment.LEFT);
+                .showTextAligned("TOP SECRET", 36, 820, TextAlignment.LEFT);
         pdfDoc.close();
     }
 
@@ -154,6 +154,7 @@ public class C2_09_SignatureTypes extends SignatureTest {
         PrivateKey pk = (PrivateKey) ks.getKey(alias, PASSWORD);
         Certificate[] chain = ks.getCertificateChain(alias);
         C2_09_SignatureTypes app = new C2_09_SignatureTypes();
+        // TODO DEVSIX-488
         app.sign(SRC, String.format(DEST, 1), chain, pk, DigestAlgorithms.SHA256, provider.getName(), PdfSigner.CryptoStandard.CMS, PdfSigner.NOT_CERTIFIED, "Test 1", "Ghent");
         app.sign(SRC, String.format(DEST, 2), chain, pk, DigestAlgorithms.SHA256, provider.getName(), PdfSigner.CryptoStandard.CMS, PdfSigner.CERTIFIED_FORM_FILLING_AND_ANNOTATIONS, "Test 1", "Ghent");
         app.sign(SRC, String.format(DEST, 3), chain, pk, DigestAlgorithms.SHA256, provider.getName(), PdfSigner.CryptoStandard.CMS, PdfSigner.CERTIFIED_FORM_FILLING, "Test 1", "Ghent");
@@ -178,7 +179,7 @@ public class C2_09_SignatureTypes extends SignatureTest {
 
         String[] resultFiles =
                 new String[]{"hello_level_1.pdf", "hello_level_2.pdf", "hello_level_3.pdf", "hello_level_4.pdf",
-                        "hello_level_1_annotated_wrong.pdf", "hello_level_2_annotated.pdf", "hello_level_3_annotated.pdf", "hello_level_4_annotated.pdf",
+                        "hello_level_2_annotated.pdf", "hello_level_3_annotated.pdf", "hello_level_4_annotated.pdf",
                         "hello_level_1_text.pdf", // this document's signature is not broken, that's why verifier doesn't show any errors;
                         // this document is invalid from certificate point of view, which is not checked by itext
                         "hello_level_1_double.pdf", "hello_level_2_double.pdf", "hello_level_3_double.pdf", "hello_level_4_double.pdf"};

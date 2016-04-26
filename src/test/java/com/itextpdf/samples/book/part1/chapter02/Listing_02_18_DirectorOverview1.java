@@ -8,25 +8,18 @@
 package com.itextpdf.samples.book.part1.chapter02;
 
 import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
-import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.draw.SolidLine;
-import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.*;
-import com.itextpdf.layout.renderer.DrawContext;
-import com.itextpdf.layout.renderer.TextRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.*;
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 import java.io.FileOutputStream;
@@ -37,7 +30,6 @@ import java.sql.Statement;
 import java.util.Set;
 import java.util.TreeSet;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_02_18_DirectorOverview1 extends GenericTest {
     public static final String DEST =
@@ -69,11 +61,6 @@ public class Listing_02_18_DirectorOverview1 extends GenericTest {
                         + "WHERE d.id = md.director_id "
                         + "GROUP BY d.id, d.name, d.given_name ORDER BY name");
         Director director;
-        // creating separators
-
-        // LineSeparator line = new LineSeparator(1, 100, null, Element.ALIGN_CENTER, -2);
-
-
         // looping over the directors
         while (rs.next()) {
             // get the director object and use it in a Paragraph
@@ -86,13 +73,8 @@ public class Listing_02_18_DirectorOverview1 extends GenericTest {
             if (rs.getInt("c") > 2) {
                 // add the paragraph with the arrow to the document
                 Tab tab = new Tab();
-                p.addTabStops(new TabStop(1000, Property.TabAlignment.RIGHT));
+                tab.setNextRenderer(new PositionedArrowTabRenderer(tab, doc, true));
                 p.add(tab);
-                Text text = new Text("");
-                text.setNextRenderer(new ArrowTextRenderer(text, true));
-                text.setProperty(Property.ROTATION_ANGLE, Math.PI);
-                p.add(text);
-
             }
             doc.add(new LineSeparator(new SolidLine(1)));
             doc.add(p);
@@ -108,12 +90,8 @@ public class Listing_02_18_DirectorOverview1 extends GenericTest {
                 p.add(new Text(String.valueOf(movie.getYear())));
                 if (movie.getYear() > 1999) {
                     Tab tab = new Tab();
-                    p.addTabStops(new TabStop(1000, Property.TabAlignment.RIGHT));
+                    tab.setNextRenderer(new PositionedArrowTabRenderer(tab, doc, false));
                     p.add(tab);
-                    Text text = new Text("");
-
-                    text.setNextRenderer(new ArrowTextRenderer(text, false));
-                    p.add(text);
                 }
                 doc.add(p);
             }
@@ -123,36 +101,5 @@ public class Listing_02_18_DirectorOverview1 extends GenericTest {
         doc.close();
         stm.close();
         connection.close();
-    }
-
-    class ArrowTextRenderer extends TextRenderer {
-        protected boolean isLeft;
-        protected PdfFont zapfdingbats;
-
-        public ArrowTextRenderer(Text textElement, boolean isLeft) {
-            super(textElement);
-            this.isLeft = isLeft;
-            try {
-                zapfdingbats = PdfFontFactory.createFont(FontConstants.ZAPFDINGBATS, PdfEncodings.WINANSI, false);
-            } catch (IOException ioe) {
-                zapfdingbats = null;
-            }
-        }
-
-        @Override
-        public void draw(DrawContext drawContext) {
-            Rectangle rect = getOccupiedAreaBBox();
-
-            Paragraph p =new Paragraph(new String(new char[]{220}));
-            p.setFont(zapfdingbats);
-            if (isLeft) {
-                new Canvas(drawContext.getCanvas(), drawContext.getDocument(), getOccupiedAreaBBox())
-                        .showTextAligned(p, rect.getLeft(), rect.getBottom()+8, drawContext.getDocument().getNumberOfPages(), Property.TextAlignment.CENTER, Property.VerticalAlignment.MIDDLE, 0);
-            } else {
-                new Canvas(drawContext.getCanvas(), drawContext.getDocument(), getOccupiedAreaBBox())
-                        .showTextAligned(p, rect.getLeft(), rect.getBottom()+8, drawContext.getDocument().getNumberOfPages(), Property.TextAlignment.CENTER, Property.VerticalAlignment.MIDDLE, (float) Math.PI);
-            }
-        }
-
     }
 }

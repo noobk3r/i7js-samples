@@ -13,9 +13,9 @@ import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Table;
@@ -79,48 +79,48 @@ public class Listing_05_01_AlternatingBackground extends GenericTest {
                 .add(day.toString())
                 .setPadding(3)
                 .setBackgroundColor(Color.RED)
-                .setTextAlignment(Property.TextAlignment.CENTER));
+                .setTextAlignment(TextAlignment.CENTER));
 
         table.addHeaderCell(new Cell()
                 .add("Location")
                 .setBackgroundColor(Color.ORANGE)
-                .setTextAlignment(Property.TextAlignment.LEFT));
+                .setTextAlignment(TextAlignment.LEFT));
         table.addHeaderCell(new Cell()
                 .add("Time")
                 .setBackgroundColor(Color.ORANGE)
-                .setTextAlignment(Property.TextAlignment.LEFT));
+                .setTextAlignment(TextAlignment.LEFT));
         table.addHeaderCell(new Cell()
                 .add("Run Length")
                 .setBackgroundColor(Color.ORANGE)
-                .setTextAlignment(Property.TextAlignment.LEFT));
+                .setTextAlignment(TextAlignment.LEFT));
         table.addHeaderCell(new Cell()
                 .add("Title")
                 .setBackgroundColor(Color.ORANGE)
-                .setTextAlignment(Property.TextAlignment.LEFT));
+                .setTextAlignment(TextAlignment.LEFT));
         table.addHeaderCell(new Cell()
                 .add("Year")
                 .setBackgroundColor(Color.ORANGE)
-                .setTextAlignment(Property.TextAlignment.LEFT));
+                .setTextAlignment(TextAlignment.LEFT));
         table.addFooterCell(new Cell()
                 .add("Location")
                 .setBackgroundColor(Color.ORANGE)
-                .setTextAlignment(Property.TextAlignment.LEFT));
+                .setTextAlignment(TextAlignment.LEFT));
         table.addFooterCell(new Cell()
                 .add("Time")
                 .setBackgroundColor(Color.ORANGE)
-                .setTextAlignment(Property.TextAlignment.LEFT));
+                .setTextAlignment(TextAlignment.LEFT));
         table.addFooterCell(new Cell()
                 .add("Run Length")
                 .setBackgroundColor(Color.ORANGE)
-                .setTextAlignment(Property.TextAlignment.LEFT));
+                .setTextAlignment(TextAlignment.LEFT));
         table.addFooterCell(new Cell()
                 .add("Title")
                 .setBackgroundColor(Color.ORANGE)
-                .setTextAlignment(Property.TextAlignment.LEFT));
+                .setTextAlignment(TextAlignment.LEFT));
         table.addFooterCell(new Cell()
                 .add("Year")
                 .setBackgroundColor(Color.ORANGE)
-                .setTextAlignment(Property.TextAlignment.LEFT));
+                .setTextAlignment(TextAlignment.LEFT));
         List<Screening> screenings = PojoFactory.getScreenings(connection, day);
         Movie movie;
         for (Screening screening : screenings) {

@@ -9,12 +9,11 @@ package com.itextpdf.samples.book.part1.chapter02;
 
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.property.ListNumberingType;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.List;
 import com.itextpdf.layout.element.ListItem;
-import com.itextpdf.layout.element.Text;
 import com.itextpdf.samples.GenericTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
@@ -28,7 +27,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
@@ -66,10 +64,10 @@ public class Listing_02_14_MovieLists2 extends GenericTest {
                     String.format("%s: %d movies", rs.getString("country"), rs.getInt("c")));
             item.setListSymbol(rs.getString("country_id"));
             // Create a list for the movies produced in the current country
-            List movielist = new List(Property.ListNumberingType.ENGLISH_LOWER);
+            List movielist = new List(ListNumberingType.ENGLISH_LOWER);
             for (Movie movie : PojoFactory.getMovies(connection, rs.getString("country_id"))) {
                 ListItem movieitem = new ListItem(movie.getMovieTitle());
-                List directorlist = new List(Property.ListNumberingType.DECIMAL);
+                List directorlist = new List(ListNumberingType.DECIMAL);
                 directorlist.setPreSymbolText("Director ");
                 directorlist.setPostSymbolText(": ");
                 for (Director director : movie.getDirectors()) {

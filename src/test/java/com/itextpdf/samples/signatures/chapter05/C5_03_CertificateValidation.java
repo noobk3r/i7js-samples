@@ -37,40 +37,38 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-@Ignore
 @Category(SampleTest.class)
 public class C5_03_CertificateValidation extends C5_01_SignatureIntegrity {
-    // TODO Make resources from cmp files after revision
     public static final String ADOBE = "./src/test/resources/encryption/adobeRootCA.cer";
     public static final String CACERT = "./src/test/resources/encryption/CACertSigningAuthority.crt";
     public static final String BRUNO = "./src/test/resources/encryption/bruno.crt";
 
-    // public static final String EXAMPLE1 = "results/chapter3/hello_cacert_ocsp_ts.pdf"; // TODO Uncomment after C3_09_SignWithTSA revision
-    // public static final String EXAMPLE2 = "results/chapter3/hello_token.pdf"; // TODO Uncomment after C3_11_SignWithToken revision
+    // public static final String EXAMPLE1 = "results/chapter3/hello_cacert_ocsp_ts.pdf";
+    // public static final String EXAMPLE2 = "results/chapter3/hello_token.pdf";
     public static final String EXAMPLE3 = "./src/test/resources/pdfs/hello_signed1.pdf";
-    // public static final String EXAMPLE4 = "results/chapter4/hello_smartcard_Signature.pdf"; // TODO Uncomment after C4_03_SignWithPKCS11SC revision
+    // public static final String EXAMPLE4 = "results/chapter4/hello_smartcard_Signature.pdf";
 
-    public static final  String expectedOutput = "===== sig =====\r\n" +
-            "Signature covers whole document: true\r\n" +
-            "Document revision: 1 of 1\r\n" +
-            "Integrity check OK? true\r\n" +
-            "Certificates verified against the KeyStore\r\n" +
-            "=== Certificate 0 ===\r\n" +
-            "Issuer: C=BE,ST=OVL,L=Ghent,O=iText Software,OU=IT,CN=Bruno Specimen\r\n" +
-            "Subject: C=BE,ST=OVL,L=Ghent,O=iText Software,OU=IT,CN=Bruno Specimen\r\n" +
-            "Valid from: 2016-02-15 \r\n" +
-            "Valid to: 2016-05-15 \r\n" +
-            "The certificate was valid at the time of signing.\r\n" +
-            "The certificate is still valid.\r\n" +
-            "=== Checking validity of the document at the time of signing ===\r\n" +
-            " [main] INFO  com.itextpdf.signatures.OCSPVerifier - Valid OCSPs found: 0\r\n" +
-            " [main] INFO  com.itextpdf.signatures.CRLVerifier - Valid CRLs found: 0\r\n" +
-            "The signing certificate couldn't be verified\r\n" +
-            "=== Checking validity of the document today ===\r\n" +
-            " [main] INFO  com.itextpdf.signatures.OCSPVerifier - Valid OCSPs found: 0\r\n" +
-            " [main] INFO  com.itextpdf.signatures.CRLVerifier - Valid CRLs found: 0\r\n" +
-            "The signing certificate couldn't be verified\r\n" +
-            "\r\n";
+    public static final  String expectedOutput = "===== sig =====\n" +
+            "Signature covers whole document: true\n" +
+            "Document revision: 1 of 1\n" +
+            "Integrity check OK? true\n" +
+            "Certificates verified against the KeyStore\n" +
+            "=== Certificate 0 ===\n" +
+            "Issuer: C=BE,ST=OVL,L=Ghent,O=iText Software,OU=IT,CN=Bruno Specimen\n" +
+            "Subject: C=BE,ST=OVL,L=Ghent,O=iText Software,OU=IT,CN=Bruno Specimen\n" +
+            "Valid from: 2016-02-15 14:58:18.00\n" +
+            "Valid to: 2016-05-15 14:58:18.00\n" +
+            "The certificate was valid at the time of signing.\n" +
+            "The certificate is still valid.\n" +
+            "=== Checking validity of the document at the time of signing ===\n" +
+            " [main] INFO  com.itextpdf.signatures.OCSPVerifier - Valid OCSPs found: 0\n" +
+            " [main] INFO  com.itextpdf.signatures.CRLVerifier - Valid CRLs found: 0\n" +
+            "The signing certificate couldn't be verified\n" +
+            "=== Checking validity of the document today ===\n" +
+            " [main] INFO  com.itextpdf.signatures.OCSPVerifier - Valid OCSPs found: 0\n" +
+            " [main] INFO  com.itextpdf.signatures.CRLVerifier - Valid CRLs found: 0\n" +
+            "The signing certificate couldn't be verified\n" +
+            "\n";
 
     KeyStore ks;
 

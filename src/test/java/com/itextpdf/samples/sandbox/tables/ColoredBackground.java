@@ -13,9 +13,9 @@ import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
@@ -52,7 +52,7 @@ public class ColoredBackground extends GenericTest {
             cell = new Cell().add(new Paragraph("hi").setFont(font).setFontSize(12).setFontColor(Color.WHITE));
             cell.setBackgroundColor(Color.BLUE);
             cell.setBorder(Border.NO_BORDER);
-            cell.setTextAlignment(Property.TextAlignment.CENTER);
+            cell.setTextAlignment(TextAlignment.CENTER);
             table.addCell(cell);
         }
         doc.add(table);

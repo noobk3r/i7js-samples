@@ -11,7 +11,7 @@
  */
 package com.itextpdf.samples.sandbox.stamper;
 
-import com.itextpdf.io.image.Image;
+import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.geom.AffineTransform;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -40,7 +40,7 @@ public class AddImageAffineTransform extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(dest));
-        Image image = ImageFactory.getImage(IMG);
+        ImageData image = ImageFactory.getImage(IMG);
         com.itextpdf.layout.element.Image imageModel = new com.itextpdf.layout.element.Image(image);
         AffineTransform at = AffineTransform.getTranslateInstance(36, 300);
         at.concatenate(AffineTransform.getScaleInstance(imageModel.getImageScaledWidth(),

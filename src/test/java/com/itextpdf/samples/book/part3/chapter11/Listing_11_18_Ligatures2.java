@@ -13,9 +13,10 @@ import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.BaseDirection;
 import com.itextpdf.layout.Style;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.licensekey.LicenseKey;
 import com.itextpdf.samples.GenericTest;
 
@@ -62,7 +63,7 @@ public class Listing_11_18_Ligatures2 extends GenericTest {
         document.add(new Paragraph("directed by David Lean"));
         document.add(new Paragraph("Autodetect: " + MOVIE).setFont(bf).setFontSize(20));
 
-        Style arabic = new Style().setTextAlignment(Property.TextAlignment.RIGHT).setBaseDirection(Property.BaseDirection.RIGHT_TO_LEFT).
+        Style arabic = new Style().setTextAlignment(TextAlignment.RIGHT).setBaseDirection(BaseDirection.RIGHT_TO_LEFT).
                 setFontSize(20).setFont(bf);
 
         document.add(new Paragraph("Wrong: " + MOVIE_WITH_SPACES).addStyle(arabic));

@@ -7,7 +7,7 @@
 
 package com.itextpdf.samples.book.part3.chapter10;
 
-import com.itextpdf.io.image.Image;
+import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
@@ -37,7 +37,7 @@ public class Listing_10_18_ImageMask extends GenericTest {
         byte circledata[] = {(byte) 0x3c, (byte) 0x7e, (byte) 0xff,
                 (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0x7e,
                 (byte) 0x3c};
-        Image mask = ImageFactory.getImage(8, 8, 1, 1, circledata, null);
+        ImageData mask = ImageFactory.getImage(8, 8, 1, 1, circledata, null);
         mask.makeMask();
         mask.setInverted(true);
         createPdf(RESULT1, mask);
@@ -51,10 +51,10 @@ public class Listing_10_18_ImageMask extends GenericTest {
         concatenateResults(DEST, new String[]{RESULT1, RESULT2});
     }
 
-    public void createPdf(String filename, Image mask) throws IOException {
+    public void createPdf(String filename, ImageData mask) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(filename));
         Document doc = new Document(pdfDoc);
-        Image img = ImageFactory.getImage(RESOURCE);
+        ImageData img = ImageFactory.getImage(RESOURCE);
         img.setImageMask(mask);
         doc.add(new com.itextpdf.layout.element.Image(img));
         doc.close();

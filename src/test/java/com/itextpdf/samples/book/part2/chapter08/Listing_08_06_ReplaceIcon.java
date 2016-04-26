@@ -7,7 +7,7 @@
 
 package com.itextpdf.samples.book.part2.chapter08;
 
-import com.itextpdf.io.image.Image;
+import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.geom.Rectangle;
@@ -19,7 +19,6 @@ import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
 import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.AbstractElement;
 import com.itextpdf.layout.element.IElement;
 import com.itextpdf.layout.element.ILeafElement;
@@ -27,6 +26,8 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.layout.LayoutArea;
 import com.itextpdf.layout.layout.LayoutContext;
 import com.itextpdf.layout.layout.LayoutResult;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.layout.renderer.AbstractRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.IRenderer;
@@ -81,7 +82,7 @@ public class Listing_08_06_ReplaceIcon extends GenericTest {
         protected PdfName role = PdfName.Figure;
         protected PdfButtonFormField button;
         protected String caption;
-        protected Image image;
+        protected ImageData image;
         protected Rectangle rect;
         protected Color borderColor = Color.BLACK;
         protected Color buttonBackgroundColor = Color.WHITE;
@@ -118,11 +119,11 @@ public class Listing_08_06_ReplaceIcon extends GenericTest {
             return caption == null ? "" : caption;
         }
 
-        public void setImage(Image image) {
+        public void setImage(ImageData image) {
             this.image = image;
         }
 
-        public Image getImage() {
+        public ImageData getImage() {
             return image;
         }
 
@@ -186,7 +187,7 @@ public class Listing_08_06_ReplaceIcon extends GenericTest {
             Paragraph paragraph = new Paragraph(modelButton.getCaption()).setFontSize(10).setMargin(0).setMultipliedLeading(1);
 
             new Canvas(canvas, drawContext.getDocument(), new Rectangle(0, 0, width, height)).
-                    showTextAligned(paragraph, 1, 1, Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM);
+                    showTextAligned(paragraph, 1, 1, TextAlignment.LEFT, VerticalAlignment.BOTTOM);
 
             PdfImageXObject imageXObject = new PdfImageXObject(modelButton.getImage());
             float imageWidth = imageXObject.getWidth();

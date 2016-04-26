@@ -12,7 +12,7 @@ import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.Property;
 import com.itextpdf.layout.Style;
 import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.border.SolidBorder;

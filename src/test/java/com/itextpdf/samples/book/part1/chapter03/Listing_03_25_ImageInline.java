@@ -9,7 +9,7 @@ package com.itextpdf.samples.book.part1.chapter03;
 
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.io.image.Image;
+import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -42,7 +42,7 @@ public class Listing_03_25_ImageInline extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Rectangle postcard = new Rectangle(283, 416);
 
-        Image image = ImageFactory.getImage(RESOURCE);
+        ImageData image = ImageFactory.getImage(RESOURCE);
         new PdfCanvas(pdfDoc.addNewPage(new PageSize(postcard))).
                 addImage(image, (postcard.getWidth() - image.getWidth()) / 2, (postcard.getHeight() - image.getHeight()) / 2, true);
 

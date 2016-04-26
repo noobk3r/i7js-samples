@@ -20,9 +20,10 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Link;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.Ignore;
@@ -55,8 +56,8 @@ public class AddLinkAnnotation3 extends GenericTest {
         p.add(link);
         p.add(" and discover \nmore than 200 questions and answers.");
         // TODO DEVSIX-549
-        new Document(pdfDoc).showTextAligned(p, 30, 600, 1, Property.TextAlignment.LEFT,
-                Property.VerticalAlignment.TOP, 0);//(float) Math.PI / 6);
+        new Document(pdfDoc).showTextAligned(p, 30, 600, 1, TextAlignment.LEFT,
+                VerticalAlignment.TOP, 0);//(float) Math.PI / 6);
         pdfDoc.close();
     }
 }

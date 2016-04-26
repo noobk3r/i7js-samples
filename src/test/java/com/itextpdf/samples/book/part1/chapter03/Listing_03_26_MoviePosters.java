@@ -8,7 +8,7 @@
 package com.itextpdf.samples.book.part1.chapter03;
 
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.io.image.Image;
+import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.color.DeviceGray;
@@ -19,7 +19,7 @@ import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.Property;
 import com.itextpdf.samples.GenericTest;
 
 import com.lowagie.database.DatabaseConnection;
@@ -91,7 +91,7 @@ public class Listing_03_26_MoviePosters extends GenericTest {
         float x = 11.5f;
         float y = 769.7f;
         for (Movie movie : movies) {
-            Image image = ImageFactory.getImage(String.format(RESOURCE, movie.getImdb()));
+            ImageData image = ImageFactory.getImage(String.format(RESOURCE, movie.getImdb()));
             PdfImageXObject img = new PdfImageXObject(image);
             float scaleY = 60 / img.getHeight();
             canvas.addImage(image, img.getWidth() * scaleY, 0, 0, 60, x + (45 - image.getWidth() * scaleY) / 2, y, false);

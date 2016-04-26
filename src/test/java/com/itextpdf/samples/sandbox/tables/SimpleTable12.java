@@ -13,9 +13,9 @@ import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.border.SolidBorder;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
@@ -55,7 +55,7 @@ public class SimpleTable12 extends GenericTest {
         if (1 == (border & 1)) {
             cell.setBorderTop(new SolidBorder(1));
         }
-        cell.setTextAlignment(Property.TextAlignment.CENTER);
+        cell.setTextAlignment(TextAlignment.CENTER);
         return cell;
     }
 

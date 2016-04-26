@@ -37,7 +37,9 @@ public class Listing_15_17_StructureParser extends DefaultHandler {
      */
     public void startElement(String uri, String localName, String qName,
                              Attributes attributes) throws SAXException {
-        if ("chapter".equals(qName)) return;
+        if ("chapter".equals(qName)) {
+            return;
+        }
         elements.add(top.addKid(new PdfStructElem(pdfDoc, new PdfName(qName))));
     }
 }

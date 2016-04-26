@@ -18,9 +18,10 @@ import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvasConstants;
 import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -109,11 +110,11 @@ public class Listing_03_07_FoobarFilmFestival extends GenericTest {
         // Adding text with Canvas.showTextAligned()
         canvas.setFontAndSize(helvetica, 12);
         new Canvas(canvas, pdfDoc, pdfDoc.getFirstPage().getPageSize())
-                .showTextAligned(foobar, 400, 788, Property.TextAlignment.LEFT)
-                .showTextAligned(foobar, 400, 752, Property.TextAlignment.RIGHT)
-                .showTextAligned(foobar, 400, 716, Property.TextAlignment.CENTER)
-                .showTextAligned(foobar, 400, 680, Property.TextAlignment.CENTER, (float) Math.toRadians(30))
-                .showTextAligned(foobar, 400, 644, Property.TextAlignment.LEFT);
+                .showTextAligned(foobar, 400, 788, TextAlignment.LEFT)
+                .showTextAligned(foobar, 400, 752, TextAlignment.RIGHT)
+                .showTextAligned(foobar, 400, 716, TextAlignment.CENTER)
+                .showTextAligned(foobar, 400, 680, TextAlignment.CENTER, (float) Math.toRadians(30))
+                .showTextAligned(foobar, 400, 644, TextAlignment.LEFT);
 
         // More lines to see where the text is added
         canvas
@@ -137,38 +138,38 @@ public class Listing_03_07_FoobarFilmFestival extends GenericTest {
                 .restoreState();
         // Adding text with Document.showTextAligned() ColumnText.showTextAligned()
         Paragraph phrase = new Paragraph(foobar).setFont(freeSans);
-        doc.showTextAligned(phrase, 200, 572, 1, Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
-        doc.showTextAligned(phrase, 200, 536, 1, Property.TextAlignment.RIGHT, Property.VerticalAlignment.BOTTOM, 0);
-        doc.showTextAligned(phrase, 200, 500, 1, Property.TextAlignment.CENTER, Property.VerticalAlignment.BOTTOM, 0);
-        doc.showTextAligned(phrase, 200, 464, 1, Property.TextAlignment.CENTER, Property.VerticalAlignment.BOTTOM, (float) Math.toRadians(30));
-        doc.showTextAligned(phrase, 200, 428, 1, Property.TextAlignment.CENTER, Property.VerticalAlignment.BOTTOM, (float) Math.toRadians(-30));
+        doc.showTextAligned(phrase, 200, 572, 1, TextAlignment.LEFT, VerticalAlignment.BOTTOM, 0);
+        doc.showTextAligned(phrase, 200, 536, 1, TextAlignment.RIGHT, VerticalAlignment.BOTTOM, 0);
+        doc.showTextAligned(phrase, 200, 500, 1, TextAlignment.CENTER, VerticalAlignment.BOTTOM, 0);
+        doc.showTextAligned(phrase, 200, 464, 1, TextAlignment.CENTER, VerticalAlignment.BOTTOM, (float) Math.toRadians(30));
+        doc.showTextAligned(phrase, 200, 428, 1, TextAlignment.CENTER, VerticalAlignment.BOTTOM, (float) Math.toRadians(-30));
         // Chunk attributes
         c = new Text(foobar).setFont(freeSans);
         c.setHorizontalScaling(0.5f);
         phrase = new Paragraph(c);
-        doc.showTextAligned(phrase, 400, 572, 1, Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
+        doc.showTextAligned(phrase, 400, 572, 1, TextAlignment.LEFT, VerticalAlignment.BOTTOM, 0);
         c = new Text(foobar).setFont(freeSans);
 
         c.setSkew(15, 15);
         phrase = new Paragraph(c);
-        doc.showTextAligned(phrase, 400, 536, 1, Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
-        doc.showTextAligned(phrase, 400, 536, 1, Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
+        doc.showTextAligned(phrase, 400, 536, 1, TextAlignment.LEFT, VerticalAlignment.BOTTOM, 0);
+        doc.showTextAligned(phrase, 400, 536, 1, TextAlignment.LEFT, VerticalAlignment.BOTTOM, 0);
         c = new Text(foobar).setFont(freeSans);
 
         c.setSkew(0, 25);
         phrase = new Paragraph(c);
-        doc.showTextAligned(phrase, 400, 500, 1, Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
+        doc.showTextAligned(phrase, 400, 500, 1, TextAlignment.LEFT, VerticalAlignment.BOTTOM, 0);
         c = new Text(foobar).setFont(freeSans);
         c.setTextRenderingMode(PdfCanvasConstants.TextRenderingMode.STROKE)
                 .setStrokeWidth(0.1f)
                 .setStrokeColor(Color.RED);
         phrase = new Paragraph(c);
-        doc.showTextAligned(phrase, 400, 464, 1, Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
+        doc.showTextAligned(phrase, 400, 464, 1, TextAlignment.LEFT, VerticalAlignment.BOTTOM, 0);
         c = new Text(foobar).setFont(freeSans);
         c.setTextRenderingMode(PdfCanvasConstants.TextRenderingMode.FILL_STROKE).
                 setStrokeWidth(1);
         phrase = new Paragraph(c);
-        doc.showTextAligned(phrase, 400, 428, 1, Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
+        doc.showTextAligned(phrase, 400, 428, 1, TextAlignment.LEFT, VerticalAlignment.BOTTOM, 0);
 
         doc.close();
     }

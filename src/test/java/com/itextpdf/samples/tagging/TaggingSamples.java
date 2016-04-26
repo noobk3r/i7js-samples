@@ -18,12 +18,14 @@ import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.tagutils.TagTreePointer;
 import com.itextpdf.kernel.utils.CompareTool;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.AreaBreakType;
+import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.element.Text;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.test.ExtendedITextTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import java.io.IOException;
@@ -106,8 +108,8 @@ public class TaggingSamples extends ExtendedITextTest {
 
         Table table = new Table(2);
         table.setWidth(350)
-                .setHorizontalAlignment(Property.HorizontalAlignment.CENTER)
-                .setTextAlignment(Property.TextAlignment.CENTER);
+                .setHorizontalAlignment(HorizontalAlignment.CENTER)
+                .setTextAlignment(TextAlignment.CENTER);
         table.addHeaderCell(new Paragraph("Nominations").setBold());
         table.addHeaderCell(new Paragraph("Film").setBold());
         table.addCell("12").addCell("The Revenant");
@@ -133,8 +135,8 @@ public class TaggingSamples extends ExtendedITextTest {
 
         table = new Table(2);
         table.setWidth(350)
-                .setHorizontalAlignment(Property.HorizontalAlignment.CENTER)
-                .setTextAlignment(Property.TextAlignment.CENTER);
+                .setHorizontalAlignment(HorizontalAlignment.CENTER)
+                .setTextAlignment(TextAlignment.CENTER);
         table.addHeaderCell(new Paragraph("Awards").setBold());
         table.addHeaderCell(new Paragraph("Film").setBold());
         table.addCell("6").addCell("Mad Max: Fury Road");
@@ -146,7 +148,7 @@ public class TaggingSamples extends ExtendedITextTest {
         // But be aware that if you set null to the role of the tag which immediate kids are page content items,
         // then this content won't be tagged at all (for example if you set role to null for Text element, then the
         // text on the page won't be tagged too).
-        Paragraph caption = new Paragraph().setTextAlignment(Property.TextAlignment.CENTER);
+        Paragraph caption = new Paragraph().setTextAlignment(TextAlignment.CENTER);
         caption.setRole(null);
         Text captionText = new Text("Table 2, winners");
         captionText.setRole(PdfName.Caption);
@@ -225,7 +227,7 @@ public class TaggingSamples extends ExtendedITextTest {
         PdfDocument pdfDocument = new PdfDocument(reader, writer);
         Document document = new Document(pdfDocument);
 
-        document.add(new AreaBreak(Property.AreaBreakType.LAST_PAGE));
+        document.add(new AreaBreak(AreaBreakType.LAST_PAGE));
 
         Table table = new Table(2);
         table.addCell(new Cell().add("Created as a sample document.").setBorder(null));

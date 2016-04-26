@@ -11,7 +11,7 @@
  */
 package com.itextpdf.samples.sandbox.tables;
 
-import com.itextpdf.io.image.Image;
+import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -49,7 +49,7 @@ public class TiledBackgroundColor2 extends GenericTest {
         Table table = new Table(2);
         table.addCell("Behold a cell with an image pattern:");
         Cell cell = new Cell();
-        Image img = ImageFactory.getImage(IMG);
+        ImageData img = ImageFactory.getImage(IMG);
         cell.setNextRenderer(new TiledImageBackgroundRenderer(cell, img));
         cell.setHeight(60);
         table.addCell(cell);
@@ -59,9 +59,9 @@ public class TiledBackgroundColor2 extends GenericTest {
 
 
     class TiledImageBackgroundRenderer extends CellRenderer {
-        protected Image img;
+        protected ImageData img;
 
-        public TiledImageBackgroundRenderer(Cell modelElement, Image img) {
+        public TiledImageBackgroundRenderer(Cell modelElement, ImageData img) {
             super(modelElement);
             this.img = img;
         }

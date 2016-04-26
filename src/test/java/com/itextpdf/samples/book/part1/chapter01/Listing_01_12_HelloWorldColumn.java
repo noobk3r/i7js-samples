@@ -9,9 +9,9 @@ package com.itextpdf.samples.book.part1.chapter01;
 
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.samples.GenericTest;
 
 import java.io.FileNotFoundException;
@@ -37,7 +37,7 @@ public class Listing_01_12_HelloWorldColumn extends GenericTest {
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(writer);
 
-        new Document(pdfDoc).showTextAligned("Hello World", 36, 788, Property.TextAlignment.LEFT);
+        new Document(pdfDoc).showTextAligned("Hello World", 36, 788, TextAlignment.LEFT);
 
         //Close document
         pdfDoc.close();

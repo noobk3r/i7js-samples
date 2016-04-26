@@ -8,9 +8,9 @@
 package com.itextpdf.samples.book.part1.chapter03;
 
 import com.itextpdf.kernel.geom.Rectangle;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 
@@ -35,7 +35,7 @@ public class Listing_03_15_MovieCalendar extends Listing_03_11_MovieTextInfo {
         Paragraph p = new Paragraph().add(screening.getMovie().getMovieTitle()).
                 setFixedPosition(rect.getX(), rect.getY(), rect.getWidth()).
                 setHeight(rect.getHeight()).
-                setTextAlignment(Property.TextAlignment.CENTER);
+                setTextAlignment(TextAlignment.CENTER);
         doc.add(p);
     }
 }

@@ -22,6 +22,8 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfButtonFormField;
@@ -29,7 +31,6 @@ import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.forms.fields.PdfTextFormField;
 import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 
@@ -199,7 +200,7 @@ public class Listing_07_29_Calculator extends GenericTest {
                 .restoreState();
         Paragraph p = new Paragraph(btn).setFont(font).setFontSize(h / 2);
         new Canvas(xObject, pdfDoc).showTextAligned(p, w / 2, h / 4, 1,
-                Property.TextAlignment.CENTER, Property.VerticalAlignment.BOTTOM, 0);
+                TextAlignment.CENTER, VerticalAlignment.BOTTOM, 0);
         return xObject.getPdfObject();
     }
 

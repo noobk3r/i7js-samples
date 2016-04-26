@@ -16,9 +16,9 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.ColumnDocumentRenderer;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Div;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.samples.book.part1.chapter02.StarSeparator;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -78,12 +78,12 @@ public class Listing_03_20_ColumnMovies2 extends GenericTest {
 
         Div div = new Div().setKeepTogether(true);
         Paragraph p = new Paragraph(movie.getTitle()).setFont(bold).
-            setTextAlignment(Property.TextAlignment.CENTER).
+            setTextAlignment(TextAlignment.CENTER).
             setMargins(0, 0, 0, 0);
         div.add(p);
         if (movie.getOriginalTitle() != null) {
             p = new Paragraph(movie.getOriginalTitle()).setFont(italic).
-                    setTextAlignment(Property.TextAlignment.RIGHT).
+                    setTextAlignment(TextAlignment.RIGHT).
                     setMargins(0, 0, 0, 0);
             div.add(p);
         }
@@ -92,7 +92,7 @@ public class Listing_03_20_ColumnMovies2 extends GenericTest {
                 addAll(PojoToElementFactory.getYearPhrase(movie, bold, normal)).
                 add(" ").
                 addAll(PojoToElementFactory.getDurationPhrase(movie, bold, normal)).
-                setTextAlignment(Property.TextAlignment.JUSTIFIED_ALL);
+                setTextAlignment(TextAlignment.JUSTIFIED_ALL);
         div.add(p);
         div.add(new StarSeparator());
 

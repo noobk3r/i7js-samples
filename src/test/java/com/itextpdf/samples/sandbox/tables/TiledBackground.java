@@ -7,7 +7,7 @@
 
 package com.itextpdf.samples.sandbox.tables;
 
-import com.itextpdf.io.image.Image;
+import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.canvas.PdfPatternCanvas;
@@ -50,7 +50,7 @@ public class TiledBackground extends GenericTest {
 
         Table table = new Table(2);
         Cell cell = new Cell();
-        Image image = ImageFactory.getImage(IMG1);
+        ImageData image = ImageFactory.getImage(IMG1);
         cell.setNextRenderer(new TiledImageBackgroundCellRenderer(cell, image));
         cell.setHeight(770);
         table.addCell(cell);
@@ -66,9 +66,9 @@ public class TiledBackground extends GenericTest {
 
 
     private class TiledImageBackgroundCellRenderer extends CellRenderer {
-        protected Image img;
+        protected ImageData img;
 
-        public TiledImageBackgroundCellRenderer(Cell modelElement, Image img) {
+        public TiledImageBackgroundCellRenderer(Cell modelElement, ImageData img) {
             super(modelElement);
             this.img = img;
         }

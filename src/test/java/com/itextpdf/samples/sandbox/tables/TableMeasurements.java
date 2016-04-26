@@ -14,16 +14,15 @@ package com.itextpdf.samples.sandbox.tables;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 
@@ -62,7 +61,7 @@ public class TableMeasurements extends GenericTest {
         Cell cell = new Cell(1, cm);
         Paragraph p = new Paragraph(
                 String.format("%smm", 10 * cm)).setFontSize(8);
-        p.setTextAlignment(Property.TextAlignment.CENTER);
+        p.setTextAlignment(TextAlignment.CENTER);
         p.setMultipliedLeading(0.5f);
         p.setMarginTop(0);
         cell.add(p);

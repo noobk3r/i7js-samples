@@ -14,8 +14,8 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.WriterProperties;
 import com.itextpdf.kernel.utils.CompareTool;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.samples.book.part1.chapter02.Listing_02_07_MovieParagraphs1;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
@@ -66,7 +66,7 @@ public class Listing_13_06_PageLayoutExample extends Listing_02_07_MovieParagrap
         List<Movie> movies = PojoFactory.getMovies(connection);
         for (Movie movie : movies) {
             Paragraph p = createMovieInformation(movie);
-            p.setTextAlignment(Property.TextAlignment.JUSTIFIED);
+            p.setTextAlignment(TextAlignment.JUSTIFIED);
             p.setMarginLeft(18);
             p.setFirstLineIndent(-18);
             doc.add(p);

@@ -9,9 +9,9 @@ package com.itextpdf.samples.book.part1.chapter02;
 
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.property.ListNumberingType;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.List;
 import com.itextpdf.layout.element.ListItem;
 import com.itextpdf.samples.GenericTest;
@@ -53,20 +53,20 @@ public class Listing_02_15_MovieLists3 extends GenericTest {
                         + "WHERE c.id = mc.country_id "
                         + "GROUP BY mc.country_id, country ORDER BY c DESC");
         // Create a list for the countries
-        List list = new List(Property.ListNumberingType.ROMAN_UPPER);
+        List list = new List(ListNumberingType.ROMAN_UPPER);
         // Loop over the countries
         while (rs.next()) {
             // Create a list item for the country
             ListItem item = new ListItem(
                     String.format("%s: %d movies", rs.getString("country"), rs.getInt("c")));
             // Create a list for the movies
-            List movielist = new List(Property.ListNumberingType.GREEK_LOWER);
+            List movielist = new List(ListNumberingType.GREEK_LOWER);
             // Loop over the movies
             for (Movie movie :
                     PojoFactory.getMovies(connection, rs.getString("country_id"))) {
                 ListItem movieitem = new ListItem(movie.getMovieTitle());
                 // Create a list for the directors
-                List directorlist = new List(Property.ListNumberingType.ZAPF_DINGBATS_1);
+                List directorlist = new List(ListNumberingType.ZAPF_DINGBATS_1);
                 // Loop over the directors
                 for (Director director : movie.getDirectors()) {
                     directorlist.add(String.format("%s, %s",

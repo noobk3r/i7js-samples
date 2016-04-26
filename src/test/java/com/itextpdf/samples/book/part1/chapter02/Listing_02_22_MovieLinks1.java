@@ -14,7 +14,7 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.Property;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Link;
 import com.itextpdf.layout.element.Paragraph;
@@ -65,7 +65,6 @@ public class Listing_02_22_MovieLinks1 extends GenericTest {
         while (rs.next()) {
             Paragraph anchor = new Paragraph(rs.getString("country"));
             anchor.setFont(bold);
-            // TODO Revise Table 3.33
             anchor.setProperty(Property.DESTINATION, rs.getString("country_id"));
 
             doc.add(anchor);

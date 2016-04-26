@@ -13,7 +13,7 @@ import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.layout.Style;
 import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.element.Cell;
@@ -56,7 +56,7 @@ public class Listing_08_12_ChoiceFields extends GenericTest {
         space.setHeight(8);
         Table table = new Table(2);
         Style leftCellStyle = new Style().setBorder(Border.NO_BORDER)
-                .setHorizontalAlignment(Property.HorizontalAlignment.RIGHT);
+                .setHorizontalAlignment(HorizontalAlignment.RIGHT);
         table.addCell(new Cell().add(new Paragraph("Language of the movie:")).addStyle(leftCellStyle));
         cell = new Cell();
         cell.setHeight(20);
@@ -76,7 +76,7 @@ public class Listing_08_12_ChoiceFields extends GenericTest {
         table.addCell(space);
         table.addCell(new Cell().add(new Paragraph("Language of the director:"))
                 .setBorder(Border.NO_BORDER)
-                .setHorizontalAlignment(Property.HorizontalAlignment.RIGHT));
+                .setHorizontalAlignment(HorizontalAlignment.RIGHT));
         cell = new Cell();
         cell.setNextRenderer(new ChoiceCellRenderer(cell, 4));
         table.addCell(cell);

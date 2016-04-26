@@ -13,7 +13,7 @@ package com.itextpdf.samples.sandbox.stamper;
 import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.io.font.FontFactory;
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.io.image.Image;
+import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
@@ -23,8 +23,9 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.extgstate.PdfExtGState;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -52,7 +53,7 @@ public class TransparentWatermark3 extends GenericTest {
         PdfFont font = PdfFontFactory.createFont(FontFactory.createFont(FontConstants.HELVETICA));
         Paragraph p = new Paragraph("My watermark (text)").setFont(font).setFontSize(30);
         // image watermark
-        Image img = ImageFactory.getImage(IMG);
+        ImageData img = ImageFactory.getImage(IMG);
         //  Implement transformation matrix usage in order to scale image
         float w = img.getWidth();
         float h = img.getHeight();
@@ -72,7 +73,7 @@ public class TransparentWatermark3 extends GenericTest {
             over.saveState();
             over.setExtGState(gs1);
             if (i % 2 == 1)
-                doc.showTextAligned(p, x, y, i, Property.TextAlignment.CENTER, Property.VerticalAlignment.TOP, 0);
+                doc.showTextAligned(p, x, y, i, TextAlignment.CENTER, VerticalAlignment.TOP, 0);
             else
                 over.addImage(img, w, 0, 0, h, x - (w / 2), y - (h / 2), true);
             over.restoreState();

@@ -9,8 +9,9 @@ package com.itextpdf.samples.book.part3.chapter10;
 
 import com.itextpdf.barcodes.BarcodeEAN;
 import com.itextpdf.barcodes.BarcodePDF417;
+import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageFactory;
-import com.itextpdf.kernel.pdf.canvas.wmf.WmfImage;
+import com.itextpdf.kernel.pdf.canvas.wmf.WmfImageData;
 import com.itextpdf.kernel.pdf.canvas.wmf.WmfImageHelper;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -61,10 +62,10 @@ public class Listing_10_09_ImageTypes extends GenericTest {
         for (int i = 0; i < RESOURCES.length; i++) {
             if (String.format("src/test/resources/img/%s", RESOURCES[i]).contains(".wmf")) {
                 WmfImageHelper wmf
-                        = new WmfImageHelper(new WmfImage(String.format("src/test/resources/img/%s", RESOURCES[i])));
+                        = new WmfImageHelper(new WmfImageData(String.format("src/test/resources/img/%s", RESOURCES[i])));
                 img = new Image((PdfFormXObject) wmf.createPdfForm(pdfDoc));
             } else {
-                com.itextpdf.io.image.Image image
+                ImageData image
                         = ImageFactory.getImage(String.format("src/test/resources/img/%s", RESOURCES[i]));
                 img = new Image(new PdfImageXObject(image));
             }

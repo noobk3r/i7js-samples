@@ -27,8 +27,9 @@ import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
@@ -94,7 +95,7 @@ public class FillFlattenMerge3 extends GenericTest {
         Rectangle rect = positions.get(name);
         Paragraph p = new Paragraph(value).setFont(font).setFontSize(10);
         doc.showTextAligned(p, rect.getLeft() + 2, rect.getBottom() + 2, doc.getPdfDocument().getNumberOfPages(),
-                Property.TextAlignment.LEFT, Property.VerticalAlignment.BOTTOM, 0);
+                TextAlignment.LEFT, VerticalAlignment.BOTTOM, 0);
     }
 
 
@@ -115,7 +116,7 @@ public class FillFlattenMerge3 extends GenericTest {
                     .addXObject(background, 0, 0);
             // Add the page number
             new Canvas(canvas, pdfDoc, ((PdfDocumentEvent) event).getPage().getPageSize())
-                    .showTextAligned("page " + pageNum, 550, 800, Property.TextAlignment.RIGHT);
+                    .showTextAligned("page " + pageNum, 550, 800, TextAlignment.RIGHT);
         }
     }
 }

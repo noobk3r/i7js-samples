@@ -16,9 +16,9 @@ import com.itextpdf.kernel.color.DeviceRgb;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
@@ -54,7 +54,7 @@ public class Listing_03_01_FestivalOpening extends GenericTest {
 
         //Initialize paragraph, add it to document, add new page, add paragraph again
         Paragraph p = new Paragraph("Foobar Film Festival").
-                        setTextAlignment(Property.TextAlignment.CENTER).
+                        setTextAlignment(TextAlignment.CENTER).
                 setFont(PdfFontFactory.createFont(FontConstants.HELVETICA)).
                 setFontSize(22);
 

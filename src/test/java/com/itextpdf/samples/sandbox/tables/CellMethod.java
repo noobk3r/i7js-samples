@@ -12,9 +12,9 @@ import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
@@ -47,7 +47,7 @@ public class CellMethod extends GenericTest {
         }
         PdfFont f = getFontForThisLanguage(language);
         Cell cell = new Cell().add(new Paragraph(string).setFont(f));
-        cell.setHorizontalAlignment(Property.HorizontalAlignment.LEFT);
+        cell.setHorizontalAlignment(HorizontalAlignment.LEFT);
         if (size < 0) {
             size = -size;
             cell.setFontSize(size);

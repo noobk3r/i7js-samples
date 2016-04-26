@@ -11,10 +11,10 @@ import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.layout.LayoutArea;
 import com.itextpdf.layout.layout.LayoutResult;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.renderer.DocumentRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -62,7 +62,7 @@ public class Listing_01_08_HelloWorldMirroredMarginsTop extends GenericTest {
                         "the right margin 72pt (1 inch); " +
                         "the top margin 108pt (1.5 inch); " +
                         "the bottom margin 180pt (2.5 inch)."));
-        Paragraph paragraph = new Paragraph().setTextAlignment(Property.TextAlignment.JUSTIFIED);
+        Paragraph paragraph = new Paragraph().setTextAlignment(TextAlignment.JUSTIFIED);
         for (int i = 0; i < 60; i++) {
             paragraph.add("Hello World! Hello People! " +
                     "Hello Sky! Hello Sun! Hello Moon! Hello Stars!");

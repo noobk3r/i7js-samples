@@ -13,9 +13,9 @@ package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 
@@ -43,7 +43,7 @@ public class SpaceCharRatioExample extends GenericTest {
 
         Paragraph p = new Paragraph().
                 setSpacingRatio(1).
-                setTextAlignment(Property.TextAlignment.JUSTIFIED).
+                setTextAlignment(TextAlignment.JUSTIFIED).
                 setMarginLeft(20).
                 setMarginRight(20).
                 add("HelloWorld HelloWorld HelloWorld HelloWorld HelloWorld" +

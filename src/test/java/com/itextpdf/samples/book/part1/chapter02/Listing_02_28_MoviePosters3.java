@@ -14,9 +14,9 @@ import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.border.SolidBorder;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
@@ -60,7 +60,7 @@ public class Listing_02_28_MoviePosters3 extends GenericTest {
         for (Movie movie : movies) {
             // Create an image
             Image img = new Image(ImageFactory.getImage(String.format(RESOURCE, movie.getImdb())));
-            img.setHorizontalAlignment(Property.HorizontalAlignment.LEFT);
+            img.setHorizontalAlignment(HorizontalAlignment.LEFT);
 
             img.setBorder(new SolidBorder(Color.WHITE, 10));
             img.scaleToFit(1000, 72);

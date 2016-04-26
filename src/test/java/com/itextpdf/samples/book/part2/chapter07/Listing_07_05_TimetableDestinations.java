@@ -16,7 +16,6 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.navigation.PdfExplicitDestination;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.Style;
 import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.element.AreaBreak;
@@ -24,6 +23,7 @@ import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Link;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -78,7 +78,7 @@ public class Listing_07_05_TimetableDestinations extends GenericTest {
     public Table createNavigationTable(int pagenumber, int total) {
         Table table = new Table(4);
         table.setWidth(120);
-        Style style = new Style().setTextAlignment(Property.TextAlignment.CENTER).setBorder(Border.NO_BORDER);
+        Style style = new Style().setTextAlignment(TextAlignment.CENTER).setBorder(Border.NO_BORDER);
         Link first = new Link(String.valueOf((char) 220), actions.get(0));
         table.addCell(new Cell().add(new Paragraph(first)).addStyle(style));
         Link previous = new Link(String.valueOf((char) 172), actions.get(pagenumber - 2 < 0 ? 0 : pagenumber - 2));

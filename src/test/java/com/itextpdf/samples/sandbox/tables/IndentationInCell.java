@@ -9,9 +9,9 @@ package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
@@ -54,7 +54,7 @@ public class IndentationInCell extends GenericTest {
         cell = new Cell();
         cell.add(new Paragraph("TO:"));
         p = new Paragraph("name");
-        p.setTextAlignment(Property.TextAlignment.RIGHT);
+        p.setTextAlignment(TextAlignment.RIGHT);
         cell.add(p);
         table.addCell(cell);
         doc.add(table);

@@ -12,9 +12,10 @@ import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.property.HorizontalAlignment;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.samples.GenericTest;
@@ -68,7 +69,7 @@ public class Listing_02_08_MovieParagraphs2 extends GenericTest {
             for (Text text : PojoToElementFactory.getMovieTitlePhrase(movie, bold)) {
                 title.add(text);
             }
-            title.setHorizontalAlignment(Property.HorizontalAlignment.LEFT);
+            title.setHorizontalAlignment(HorizontalAlignment.LEFT);
             doc.add(title);
             // Add the original title next to it using a dirty hack
             if (movie.getOriginalTitle() != null) {
@@ -79,7 +80,7 @@ public class Listing_02_08_MovieParagraphs2 extends GenericTest {
                 for (Text text : PojoToElementFactory.getOriginalTitlePhrase(movie, italic, normal)) {
                     originalTitle.add(text);
                 }
-                originalTitle.setTextAlignment(Property.TextAlignment.RIGHT);
+                originalTitle.setTextAlignment(TextAlignment.RIGHT);
                 doc.add(originalTitle);
             }
             // Info about the director
@@ -104,7 +105,7 @@ public class Listing_02_08_MovieParagraphs2 extends GenericTest {
                 for (Text text : PojoToElementFactory.getCountryPhrase(pojo, normal)) {
                     country.add(text);
                 }
-                country.setTextAlignment(Property.TextAlignment.RIGHT);
+                country.setTextAlignment(TextAlignment.RIGHT);
                 country.setMarginRight(indent);
                 doc.add(country);
                 indent += 20;
@@ -114,7 +115,7 @@ public class Listing_02_08_MovieParagraphs2 extends GenericTest {
             for (Text text : createYearAndDuration(movie)) {
                 info.add(text);
             }
-            info.setTextAlignment(Property.TextAlignment.CENTER);
+            info.setTextAlignment(TextAlignment.CENTER);
             info.setMarginTop(36);
             doc.add(info);
         }

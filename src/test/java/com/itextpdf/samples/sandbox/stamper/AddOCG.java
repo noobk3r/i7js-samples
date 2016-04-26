@@ -17,7 +17,7 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.layer.PdfLayer;
 import com.itextpdf.layout.Canvas;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -54,15 +54,15 @@ public class AddOCG extends GenericTest {
         Canvas canvasModel;
         canvas.beginLayer(nested);
         canvasModel = new Canvas(canvas, pdfDoc, pdfDoc.getDefaultPageSize());
-        canvasModel.showTextAligned("nested layers", 50, 755, Property.TextAlignment.LEFT, 0);
+        canvasModel.showTextAligned("nested layers", 50, 755, TextAlignment.LEFT, 0);
         canvas.endLayer();
 
         canvas.beginLayer(nested_1);
-        canvasModel.showTextAligned("nested layers 1", 100, 800, Property.TextAlignment.LEFT, 0);
+        canvasModel.showTextAligned("nested layers 1", 100, 800, TextAlignment.LEFT, 0);
         canvas.endLayer();
 
         canvas.beginLayer(nested_2);
-        canvasModel.showTextAligned("nested layers 2", 100, 750, Property.TextAlignment.LEFT, 0);
+        canvasModel.showTextAligned("nested layers 2", 100, 750, TextAlignment.LEFT, 0);
         canvas.endLayer();
 
         PdfLayer group = PdfLayer.createTitle("Grouped layers", pdfDoc);
@@ -72,11 +72,11 @@ public class AddOCG extends GenericTest {
         group.addChild(layer2);
 
         canvas.beginLayer(layer1);
-        canvasModel.showTextAligned("layer 1 in the group", 50, 700, Property.TextAlignment.LEFT, 0);
+        canvasModel.showTextAligned("layer 1 in the group", 50, 700, TextAlignment.LEFT, 0);
         canvas.endLayer();
 
         canvas.beginLayer(layer2);
-        canvasModel.showTextAligned("layer 2 in the group", 50, 675, Property.TextAlignment.LEFT, 0);
+        canvasModel.showTextAligned("layer 2 in the group", 50, 675, TextAlignment.LEFT, 0);
         canvas.endLayer();
 
         PdfLayer radiogroup = PdfLayer.createTitle("Radio group", pdfDoc);
@@ -96,15 +96,15 @@ public class AddOCG extends GenericTest {
         PdfLayer.addOCGRadioGroup(pdfDoc, options);
 
         canvas.beginLayer(radio1);
-        canvasModel.showTextAligned("option 1", 50, 600, Property.TextAlignment.LEFT, 0);
+        canvasModel.showTextAligned("option 1", 50, 600, TextAlignment.LEFT, 0);
         canvas.endLayer();
 
         canvas.beginLayer(radio2);
-        canvasModel.showTextAligned("option 2", 50, 575, Property.TextAlignment.LEFT, 0);
+        canvasModel.showTextAligned("option 2", 50, 575, TextAlignment.LEFT, 0);
         canvas.endLayer();
 
         canvas.beginLayer(radio3);
-        canvasModel.showTextAligned("option 3", 50, 550, Property.TextAlignment.LEFT, 0);
+        canvasModel.showTextAligned("option 3", 50, 550, TextAlignment.LEFT, 0);
         canvas.endLayer();
 
         PdfLayer not_printed = new PdfLayer("not printed", pdfDoc);
@@ -112,7 +112,7 @@ public class AddOCG extends GenericTest {
         not_printed.setPrint("Print", false);
 
         canvas.beginLayer(not_printed);
-        canvasModel.showTextAligned("PRINT THIS PAGE", 300, 700, Property.TextAlignment.CENTER, (float) Math.toRadians(90));
+        canvasModel.showTextAligned("PRINT THIS PAGE", 300, 700, TextAlignment.CENTER, (float) Math.toRadians(90));
         canvas.endLayer();
 
         PdfLayer zoom = new PdfLayer("Zoom 0.75-1.25", pdfDoc);
@@ -120,7 +120,7 @@ public class AddOCG extends GenericTest {
         zoom.setZoom(0.75f, 1.25f);
 
         canvas.beginLayer(zoom);
-        canvasModel.showTextAligned("Only visible if the zoomfactor is between 75 and 125%", 30, 530, Property.TextAlignment.LEFT, (float) Math.toRadians(90));
+        canvasModel.showTextAligned("Only visible if the zoomfactor is between 75 and 125%", 30, 530, TextAlignment.LEFT, (float) Math.toRadians(90));
         canvas.endLayer();
 
         pdfDoc.close();

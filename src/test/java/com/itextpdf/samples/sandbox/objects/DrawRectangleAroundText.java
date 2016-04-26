@@ -16,9 +16,10 @@ import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.ParagraphRenderer;
@@ -55,12 +56,12 @@ public class DrawRectangleAroundText extends GenericTest {
                 + "lines (and we don't know in advance how many).");
         p.setWidth(250-120);
         doc.showTextAligned(p, 120, 780, 1,
-                Property.TextAlignment.LEFT, Property.VerticalAlignment.TOP, 0);
+                TextAlignment.LEFT, VerticalAlignment.TOP, 0);
         canvas.rectangle(120, 500, 130, 280);
         canvas.stroke();
         p.setNextRenderer(new BorderParagraphRenderer(p));
         doc.showTextAligned(p, 300, 780, 1,
-                Property.TextAlignment.LEFT, Property.VerticalAlignment.TOP, 0);
+                TextAlignment.LEFT, VerticalAlignment.TOP, 0);
         doc.close();
     }
 

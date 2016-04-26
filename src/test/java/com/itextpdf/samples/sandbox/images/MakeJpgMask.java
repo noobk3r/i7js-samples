@@ -12,7 +12,7 @@
 package com.itextpdf.samples.sandbox.images;
 
 import com.itextpdf.kernel.geom.PageSize;
-import com.itextpdf.io.image.Image;
+import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.io.source.ByteArrayOutputStream;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -41,7 +41,7 @@ public class MakeJpgMask extends GenericTest {
         new MakeJpgMask().manipulatePdf(DEST);
     }
 
-    public static Image makeBlackAndWhitePng(String image) throws IOException {
+    public static ImageData makeBlackAndWhitePng(String image) throws IOException {
         BufferedImage bi = ImageIO.read(new File(image));
         BufferedImage newBi = new BufferedImage(bi.getWidth(), bi.getHeight(), BufferedImage.TYPE_USHORT_GRAY);
         newBi.getGraphics().drawImage(bi, 0, 0, null);
@@ -57,8 +57,8 @@ public class MakeJpgMask extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc, PageSize.A4.rotate());
 
-        Image image = ImageFactory.getImage(IMAGE);
-        Image mask = makeBlackAndWhitePng(MASK);
+        ImageData image = ImageFactory.getImage(IMAGE);
+        ImageData mask = makeBlackAndWhitePng(MASK);
         mask.makeMask();
         image.setImageMask(mask);
         com.itextpdf.layout.element.Image img = new com.itextpdf.layout.element.Image(image);

@@ -16,9 +16,9 @@ import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
+import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.Style;
 import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.element.Cell;
@@ -54,7 +54,7 @@ public class Listing_07_01_NamedActions extends GenericTest {
             setFont(symbol).
             setFontSize(20);
         Style cellStyle = new Style().setBorder(Border.NO_BORDER)
-                .setHorizontalAlignment(Property.HorizontalAlignment.CENTER);
+                .setHorizontalAlignment(HorizontalAlignment.CENTER);
 
         PdfAction action = PdfAction.createNamed(PdfName.FirstPage);
         Link first = new Link(String.valueOf((char) 220), action);

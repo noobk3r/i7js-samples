@@ -25,8 +25,8 @@ import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.samples.SignatureTest;
 import com.itextpdf.signatures.DigestAlgorithms;
 import com.itextpdf.signatures.PdfSigner;
@@ -101,7 +101,7 @@ public class C2_04_CreateEmptyField extends SignatureTest {
                 .fillStroke()
                 .setFillColor(Color.BLUE);
         new Canvas(canvas, pdfDoc, rect).showTextAligned("SIGN HERE", 100, 50,
-                Property.TextAlignment.CENTER, (float) Math.toRadians(25));
+                TextAlignment.CENTER, (float) Math.toRadians(25));
         // TODO Acrobat does not render new appearance (Foxit however does)
         field.getWidgets().get(0).setNormalAppearance(xObject.getPdfObject());
         // Close the document

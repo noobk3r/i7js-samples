@@ -13,11 +13,11 @@ import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.border.SolidBorder;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -49,7 +49,7 @@ public class Listing_04_12_RotationAndColors extends GenericTest {
         // row 1, cell 1
         cell = new Cell().add("COLOR");
         cell.setRotationAngle(Math.toRadians(90));
-        cell.setVerticalAlignment(Property.VerticalAlignment.TOP);
+        cell.setVerticalAlignment(VerticalAlignment.TOP);
         table.addCell(cell);
         // row 1, cell 2
         cell = new Cell().add("red / no borders");
@@ -69,7 +69,7 @@ public class Listing_04_12_RotationAndColors extends GenericTest {
         // row 2, cell 1
         cell = new Cell().add("GRAY");
         cell.setRotationAngle(Math.toRadians(90));
-        cell.setVerticalAlignment(Property.VerticalAlignment.MIDDLE);
+        cell.setVerticalAlignment(VerticalAlignment.MIDDLE);
         table.addCell(cell);
         // row 2, cell 2
         cell = new Cell().add("0.6");
@@ -90,7 +90,7 @@ public class Listing_04_12_RotationAndColors extends GenericTest {
         // row 3, cell 1
         cell = new Cell().add("BORDERS");
         cell.setRotationAngle(Math.toRadians(90));
-        cell.setVerticalAlignment(Property.VerticalAlignment.BOTTOM);
+        cell.setVerticalAlignment(VerticalAlignment.BOTTOM);
         table.addCell(cell);
         // row 3, cell 2
         cell = new Cell().add("different borders");

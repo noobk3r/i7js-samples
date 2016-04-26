@@ -11,9 +11,9 @@ import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.color.DeviceRgb;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
@@ -47,7 +47,7 @@ public class FullPageTable extends GenericTest {
         table.setMarginBottom(0f);
         // first row
         Cell cell = new Cell(1, 10).add(new Paragraph("DateRange"));
-        cell.setTextAlignment(Property.TextAlignment.CENTER);
+        cell.setTextAlignment(TextAlignment.CENTER);
         cell.setPadding(5.0f);
         cell.setBackgroundColor(new DeviceRgb(140, 221, 8));
         table.addCell(cell);

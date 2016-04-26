@@ -17,7 +17,6 @@ import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.Style;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Cell;
@@ -25,6 +24,7 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.layout.LayoutArea;
 import com.itextpdf.layout.layout.LayoutResult;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.renderer.DocumentRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -93,9 +93,9 @@ public class Listing_04_23_ColumnTable extends GenericTest {
         Paragraph p = new Paragraph("Foobar Film Festival").addStyle(style);
         header.addCell(new Cell().add(p));
         p = new Paragraph(day.toString()).addStyle(style);
-        header.addCell(new Cell().add(p).setTextAlignment(Property.TextAlignment.CENTER));
+        header.addCell(new Cell().add(p).setTextAlignment(TextAlignment.CENTER));
         p = new Paragraph(String.format("page %d", page)).addStyle(style);
-        header.addCell(new Cell().add(p).setTextAlignment(Property.TextAlignment.RIGHT));
+        header.addCell(new Cell().add(p).setTextAlignment(TextAlignment.RIGHT));
         return header;
     }
 

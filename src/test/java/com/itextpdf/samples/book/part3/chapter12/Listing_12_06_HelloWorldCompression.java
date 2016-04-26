@@ -19,7 +19,7 @@ import com.itextpdf.kernel.pdf.WriterProperties;
 import com.itextpdf.kernel.utils.CompareTool;
 import com.itextpdf.kernel.xmp.XMPException;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.ListNumberingType;
 import com.itextpdf.layout.element.List;
 import com.itextpdf.layout.element.ListItem;
 import com.itextpdf.samples.GenericTest;
@@ -105,7 +105,7 @@ public class Listing_12_06_HelloWorldCompression extends GenericTest {
                         + "GROUP BY mc.country_id, country ORDER BY c DESC");
 
         // Create a new list
-        List list = new List(Property.ListNumberingType.DECIMAL);
+        List list = new List(ListNumberingType.DECIMAL);
         // loop over the countries
         while (rs.next()) {
             // create a list item for the country
@@ -114,7 +114,7 @@ public class Listing_12_06_HelloWorldCompression extends GenericTest {
                             rs.getString("country"), rs.getInt("c")));
             item.setFont(boldItalic);
             // create a movie list for each country
-            List movielist = new List(Property.ListNumberingType.ENGLISH_LOWER);
+            List movielist = new List(ListNumberingType.ENGLISH_LOWER);
             for (Movie movie :
                     PojoFactory.getMovies(connection, rs.getString("country_id"))) {
                 ListItem movieitem = new ListItem(movie.getMovieTitle());

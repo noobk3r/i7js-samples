@@ -12,9 +12,10 @@ import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
@@ -67,7 +68,7 @@ public class Listing_04_06_MovieTextMode extends GenericTest {
             table.setWidthPercent(100);
             Cell cell;
             cell = new Cell(1, 2).add(new Paragraph(movie.getTitle()).setFont(bold));
-            cell.setTextAlignment(Property.TextAlignment.CENTER);
+            cell.setTextAlignment(TextAlignment.CENTER);
             table.addCell(cell);
             if (movie.getOriginalTitle() != null) {
                 Paragraph p = new Paragraph();
@@ -75,12 +76,12 @@ public class Listing_04_06_MovieTextMode extends GenericTest {
                     p.add(text);
                 }
                 cell = new Cell(1, 2).add(p);
-                cell.setTextAlignment(Property.TextAlignment.RIGHT);
+                cell.setTextAlignment(TextAlignment.RIGHT);
                 table.addCell(cell);
             }
             List<Director> directors = movie.getDirectors();
             cell = new Cell(directors.size(), 1).add("Directors:");
-            cell.setVerticalAlignment(Property.VerticalAlignment.MIDDLE);
+            cell.setVerticalAlignment(VerticalAlignment.MIDDLE);
             table.addCell(cell);
             int count = 0;
             for (Director pojo : directors) {
@@ -93,20 +94,20 @@ public class Listing_04_06_MovieTextMode extends GenericTest {
                 table.addCell(cell);
             }
             table.addCell(new Cell().add("Year:")
-                    .setTextAlignment(Property.TextAlignment.RIGHT));
+                    .setTextAlignment(TextAlignment.RIGHT));
             table.addCell(new Cell().add(String.valueOf(movie.getYear()))
-                    .setTextAlignment(Property.TextAlignment.RIGHT));
+                    .setTextAlignment(TextAlignment.RIGHT));
             table.addCell(new Cell().add("Run length:")
-                    .setTextAlignment(Property.TextAlignment.RIGHT));
+                    .setTextAlignment(TextAlignment.RIGHT));
             table.addCell(new Cell().add(String.valueOf(movie.getDuration()))
-                    .setTextAlignment(Property.TextAlignment.RIGHT));
+                    .setTextAlignment(TextAlignment.RIGHT));
             List<Country> countries = movie.getCountries();
             cell = new Cell(countries.size(), 1).add("Countries:");
-            cell.setVerticalAlignment(Property.VerticalAlignment.BOTTOM);
+            cell.setVerticalAlignment(VerticalAlignment.BOTTOM);
             table.addCell(cell);
             for (Country country : countries) {
                 table.addCell(new Cell().add(country.getCountry())
-                        .setTextAlignment(Property.TextAlignment.CENTER));
+                        .setTextAlignment(TextAlignment.CENTER));
             }
             doc.add(table);
         }

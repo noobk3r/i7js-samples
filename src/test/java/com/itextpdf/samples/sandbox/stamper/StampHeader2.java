@@ -17,8 +17,9 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -50,7 +51,7 @@ public class StampHeader2 extends GenericTest {
             float y = pdfDoc.getPage(i).getPageSize().getTop() - 20;
 
             doc.showTextAligned(header, x, y, i,
-                    Property.TextAlignment.CENTER, Property.VerticalAlignment.BOTTOM, 0);
+                    TextAlignment.CENTER, VerticalAlignment.BOTTOM, 0);
         }
         doc.close();
     }

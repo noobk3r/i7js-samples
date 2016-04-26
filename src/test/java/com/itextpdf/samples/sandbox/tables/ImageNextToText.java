@@ -11,12 +11,13 @@ import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -47,8 +48,8 @@ public class ImageNextToText extends GenericTest {
     public static Cell createTextCell(String text) {
         Cell cell = new Cell();
         Paragraph p = new Paragraph(text);
-        p.setTextAlignment(Property.TextAlignment.RIGHT);
-        cell.add(p).setVerticalAlignment(Property.VerticalAlignment.BOTTOM);
+        p.setTextAlignment(TextAlignment.RIGHT);
+        cell.add(p).setVerticalAlignment(VerticalAlignment.BOTTOM);
         cell.setBorder(Border.NO_BORDER);
         return cell;
     }

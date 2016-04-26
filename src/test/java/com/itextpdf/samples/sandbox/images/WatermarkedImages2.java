@@ -17,11 +17,12 @@ import com.itextpdf.kernel.color.DeviceRgb;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
@@ -97,8 +98,8 @@ public class WatermarkedImages2 extends GenericTest {
                 (getOccupiedAreaBBox().getLeft() + getOccupiedAreaBBox().getRight()) / 2,
                 (getOccupiedAreaBBox().getTop() + getOccupiedAreaBBox().getBottom()) / 2,
                 occupiedArea.getPageNumber(),
-                Property.TextAlignment.CENTER,
-                Property.VerticalAlignment.MIDDLE,
+                TextAlignment.CENTER,
+                VerticalAlignment.MIDDLE,
                 (float)Math.PI / 180 * 30);
         }
     }

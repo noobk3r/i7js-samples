@@ -22,8 +22,9 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.extgstate.PdfExtGState;
 import com.itextpdf.layout.Canvas;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -51,14 +52,14 @@ public class TransparentWatermark extends GenericTest {
         Paragraph p = new Paragraph("This watermark is added UNDER the existing content")
                 .setFont(font).setFontSize(15);
         new Canvas(under, pdfDoc, pdfDoc.getDefaultPageSize())
-                .showTextAligned(p, 297, 550, 1, Property.TextAlignment.CENTER, Property.VerticalAlignment.TOP, 0);
+                .showTextAligned(p, 297, 550, 1, TextAlignment.CENTER, VerticalAlignment.TOP, 0);
         PdfCanvas over = new PdfCanvas(pdfDoc.getFirstPage());
         // Problems with the source file, need to set the right color
         over.setFillColor(Color.BLACK);
         p = new Paragraph("This watermark is added ON TOP OF the existing content")
                 .setFont(font).setFontSize(15);
         new Canvas(over, pdfDoc, pdfDoc.getDefaultPageSize())
-                .showTextAligned(p, 297, 500, 1, Property.TextAlignment.CENTER, Property.VerticalAlignment.TOP, 0);
+                .showTextAligned(p, 297, 500, 1, TextAlignment.CENTER, VerticalAlignment.TOP, 0);
         p = new Paragraph("This TRANSPARENT watermark is added ON TOP OF the existing content")
                 .setFont(font).setFontSize(15);
         over.saveState();
@@ -66,7 +67,7 @@ public class TransparentWatermark extends GenericTest {
         gs1.setFillOpacity(0.5f);
         over.setExtGState(gs1);
         new Canvas(over, pdfDoc, pdfDoc.getDefaultPageSize())
-                .showTextAligned(p, 297, 450, 1, Property.TextAlignment.CENTER, Property.VerticalAlignment.TOP, 0);
+                .showTextAligned(p, 297, 450, 1, TextAlignment.CENTER, VerticalAlignment.TOP, 0);
         over.restoreState();
         pdfDoc.close();
     }

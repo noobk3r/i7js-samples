@@ -33,16 +33,52 @@ import java.security.GeneralSecurityException;
 import java.security.Security;
 import java.util.List;
 
-@Ignore
 @Category(SampleTest.class)
 public class C5_01_SignatureIntegrity extends SignatureTest {
-    // TODO Change hello_level_1_annotated.pdf for hello_level_1_annotated_wrong.pdf after C2_09_signatureTypes revision
-    // TODO Make resources from cmp files after revision
     public static final String EXAMPLE1 = "./src/test/resources/pdfs/hello_level_1_annotated.pdf";
     public static final String EXAMPLE2 = "./src/test/resources/pdfs/step_4_signed_by_alice_bob_carol_and_dave.pdf";
     public static final String EXAMPLE3 = "./src/test/resources/pdfs/step_6_signed_by_dave_broken_by_chuck.pdf";
 
-    public static final String expectedOutput = "";
+    public static final String expectedOutput =
+            "===== sig =====\n" +
+            "Signature covers whole document: false\n" +
+            "Document revision: 1 of 2\n" +
+            "Integrity check OK? true\n" +
+            "\n" +
+            "===== sig1 =====\n" +
+            "Signature covers whole document: false\n" +
+            "Document revision: 1 of 4\n" +
+            "Integrity check OK? true\n" +
+            "===== sig2 =====\n" +
+            "Signature covers whole document: false\n" +
+            "Document revision: 2 of 4\n" +
+            "Integrity check OK? true\n" +
+            "===== sig3 =====\n" +
+            "Signature covers whole document: false\n" +
+            "Document revision: 3 of 4\n" +
+            "Integrity check OK? true\n" +
+            "===== sig4 =====\n" +
+            "Signature covers whole document: true\n" +
+            "Document revision: 4 of 4\n" +
+            "Integrity check OK? true\n" +
+            "\n" +
+            "===== sig1 =====\n" +
+            "Signature covers whole document: false\n" +
+            "Document revision: 1 of 5\n" +
+            "Integrity check OK? true\n" +
+            "===== sig2 =====\n" +
+            "Signature covers whole document: false\n" +
+            "Document revision: 2 of 5\n" +
+            "Integrity check OK? true\n" +
+            "===== sig3 =====\n" +
+            "Signature covers whole document: false\n" +
+            "Document revision: 3 of 5\n" +
+            "Integrity check OK? true\n" +
+            "===== sig4 =====\n" +
+            "Signature covers whole document: false\n" +
+            "Document revision: 4 of 5\n" +
+            "Integrity check OK? true\n" +
+            "\n";
 
     public PdfPKCS7 verifySignature(SignatureUtil signUtil, String name) throws GeneralSecurityException, IOException {
         System.out.println("Signature covers whole document: " + signUtil.signatureCoversWholeDocument(name));

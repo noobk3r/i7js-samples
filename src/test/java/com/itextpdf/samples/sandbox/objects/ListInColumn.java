@@ -17,7 +17,7 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.ColumnDocumentRenderer;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
+import com.itextpdf.layout.property.ListNumberingType;
 import com.itextpdf.layout.element.List;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -46,7 +46,7 @@ public class ListInColumn extends GenericTest {
         Document doc = new Document(pdfDoc);
         doc.setRenderer(new ColumnDocumentRenderer(doc, new Rectangle[] {new Rectangle(250, 400, 250, 406)}));
 
-        List list = new List(Property.ListNumberingType.DECIMAL);
+        List list = new List(ListNumberingType.DECIMAL);
         for (int i = 0; i < 10; i++) {
             list.add("This is a list item. It will be repeated a number of times. "
                     + "This is done only for test purposes. "

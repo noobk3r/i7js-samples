@@ -13,10 +13,10 @@ import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.property.BaseDirection;
 import com.itextpdf.licensekey.LicenseKey;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 
@@ -52,7 +52,7 @@ public class Listing_11_11_RightToLeftExample extends GenericTest {
         PdfFont font = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H, true);
         document.add(new Paragraph("Movie title: Nina's Tragedies"));
         document.add(new Paragraph("directed by Savi Gabizon"));
-        document.add(new Paragraph(MOVIE).setFont(font).setFontSize(14).setBaseDirection(Property.BaseDirection.RIGHT_TO_LEFT));
+        document.add(new Paragraph(MOVIE).setFont(font).setFontSize(14).setBaseDirection(BaseDirection.RIGHT_TO_LEFT));
 
         //Close document
         document.close();

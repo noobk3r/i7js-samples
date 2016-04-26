@@ -12,9 +12,9 @@ import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.property.ListNumberingType;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.List;
 import com.itextpdf.layout.element.ListItem;
 import com.itextpdf.layout.element.Text;
@@ -62,7 +62,7 @@ public class Listing_02_16_MovieLists4 extends GenericTest {
                         + "WHERE c.id = mc.country_id "
                         + "GROUP BY mc.country_id, country ORDER BY c DESC");
         // Create a list for the countries
-        List list = new List(Property.ListNumberingType.DECIMAL);
+        List list = new List(ListNumberingType.DECIMAL);
         list.setItemStartIndex(9);
         // Loop over the countries
         while (rs.next()) {

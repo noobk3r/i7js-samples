@@ -17,9 +17,9 @@ package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.property.TabAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.Property;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Tab;
 import com.itextpdf.layout.element.TabStop;
@@ -51,13 +51,13 @@ public class Tabs extends GenericTest {
         doc.add(p);
 
         p = new Paragraph();
-        p.addTabStops(new TabStop(56f, Property.TabAlignment.LEFT));
+        p.addTabStops(new TabStop(56f, TabAlignment.LEFT));
         p.add(new Tab());
         p.add("Hello World with tab.");
         doc.add(p);
 
         p = new Paragraph();
-        p.addTabStops(new TabStop(56f, Property.TabAlignment.LEFT));
+        p.addTabStops(new TabStop(56f, TabAlignment.LEFT));
         p.add(new Text("Hello World with"));
         p.add(new Tab());
         p.add(new Text("an inline tab."));
