@@ -73,7 +73,7 @@ public class C06E06_88th_Oscar_Combine_AddTOC {
             destinationArray.add(new PdfNumber(0));
             destinationArray.add(new PdfNumber(page.getMediaBox().getHeight()));
             destinationArray.add(new PdfNumber(1));
-            pdfDoc.addNameDestination(destinationKey, destinationArray);
+            pdfDoc.addNamedDestination(destinationKey, destinationArray);
 
             //Add TOC line with bookmark
             Paragraph p = new Paragraph();
@@ -98,7 +98,7 @@ public class C06E06_88th_Oscar_Combine_AddTOC {
         destinationArray.add(new PdfNumber(0));
         destinationArray.add(new PdfNumber(page.getMediaBox().getHeight()));
         destinationArray.add(new PdfNumber(1));
-        pdfDoc.addNameDestination("checklist", destinationArray);
+        pdfDoc.addNamedDestination("checklist", destinationArray);
 
         //Add TOC line with bookmark
         Paragraph p = new Paragraph();
