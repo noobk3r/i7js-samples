@@ -11,6 +11,7 @@ import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.color.DeviceCmyk;
 import com.itextpdf.kernel.color.DeviceGray;
 import com.itextpdf.kernel.color.DeviceRgb;
+import com.itextpdf.kernel.color.Separation;
 import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.colorspace.PdfColorSpace;
@@ -37,44 +38,44 @@ public class Listing_10_02_SeparationColor extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
 
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
-        PdfColorSpace rgbColorSpace = createRgbColorSpace(0.39216f, 0.58431f, 0.92941f);
-        PdfColorSpace grayColorSpace = createGrayColorSpace(.9f);
-        PdfColorSpace cmykColorSpace = createCmykColorSpace(.3f, .9f, .3f, .1f);
+        PdfSpecialCs.Separation rgbColorSpace = createRgbColorSpace(0.39216f, 0.58431f, 0.92941f);
+        PdfSpecialCs.Separation grayColorSpace = createGrayColorSpace(.9f);
+        PdfSpecialCs.Separation cmykColorSpace = createCmykColorSpace(.3f, .9f, .3f, .1f);
 
-        colorRectangle(canvas, new Color(grayColorSpace, new float[]{0.5f}), 36, 770, 36, 36);
-        colorRectangle(canvas, new Color(rgbColorSpace, new float[]{.1f}), 90, 770, 36, 36);
-        colorRectangle(canvas, new Color(rgbColorSpace, new float[]{.2f}), 144, 770, 36, 36);
-        colorRectangle(canvas, new Color(rgbColorSpace, new float[]{.3f}), 198, 770, 36, 36);
-        colorRectangle(canvas, new Color(rgbColorSpace, new float[]{.4f}), 252, 770, 36, 36);
-        colorRectangle(canvas, new Color(rgbColorSpace, new float[]{.5f}), 306, 770, 36, 36);
-        colorRectangle(canvas, new Color(rgbColorSpace, new float[]{.6f}), 360, 770, 36, 36);
-        colorRectangle(canvas, new Color(rgbColorSpace, new float[]{.7f}), 416, 770, 36, 36);
-        colorRectangle(canvas, new Color(cmykColorSpace, new float[]{.25f}), 470, 770, 36, 36);
+        colorRectangle(canvas, new Separation(grayColorSpace, 0.5f), 36, 770, 36, 36);
+        colorRectangle(canvas, new Separation(rgbColorSpace, .1f), 90, 770, 36, 36);
+        colorRectangle(canvas, new Separation(rgbColorSpace, .2f), 144, 770, 36, 36);
+        colorRectangle(canvas, new Separation(rgbColorSpace, .3f), 198, 770, 36, 36);
+        colorRectangle(canvas, new Separation(rgbColorSpace, .4f), 252, 770, 36, 36);
+        colorRectangle(canvas, new Separation(rgbColorSpace, .5f), 306, 770, 36, 36);
+        colorRectangle(canvas, new Separation(rgbColorSpace, .6f), 360, 770, 36, 36);
+        colorRectangle(canvas, new Separation(rgbColorSpace, .7f), 416, 770, 36, 36);
+        colorRectangle(canvas, new Separation(cmykColorSpace,.25f), 470, 770, 36, 36);
 
-        canvas.setFillColor(new Color(grayColorSpace, new float[]{0.5f}));
+        canvas.setFillColor(new Separation(grayColorSpace, 0.5f));
         canvas.rectangle(36, 716, 36, 36);
         canvas.fillStroke();
-        canvas.setFillColor(new Color(grayColorSpace, new float[]{0.9f}));
+        canvas.setFillColor(new Separation(grayColorSpace,0.9f));
         canvas.rectangle(90, 716, 36, 36);
         canvas.fillStroke();
-        canvas.setFillColor(new Color(rgbColorSpace, new float[]{0.5f}));
+        canvas.setFillColor(new Separation(rgbColorSpace, 0.5f));
         canvas.rectangle(144, 716, 36, 36);
         canvas.fillStroke();
-        canvas.setFillColor(new Color(rgbColorSpace, new float[]{0.9f}));
+        canvas.setFillColor(new Separation(rgbColorSpace, 0.9f));
         canvas.rectangle(198, 716, 36, 36);
         canvas.fillStroke();
-        canvas.setFillColor(new Color(cmykColorSpace, new float[]{0.5f}));
+        canvas.setFillColor(new Separation(cmykColorSpace, 0.5f));
         canvas.rectangle(252, 716, 36, 36);
         canvas.fillStroke();
-        canvas.setFillColor(new Color(cmykColorSpace, new float[]{0.9f}));
+        canvas.setFillColor(new Separation(cmykColorSpace, 0.9f));
         canvas.rectangle(306, 716, 36, 36);
         canvas.fillStroke();
-//
+
 //        // step 5
         pdfDoc.close();
     }
 
-    private PdfColorSpace createGrayColorSpace(float gray) {
+    private PdfSpecialCs.Separation createGrayColorSpace(float gray) {
         float[] c1 = new float[]{gray};
         float[] c0 = new float[]{1};
         PdfFunction f = new PdfFunction.Type2(new PdfArray(new float[]{0, 1}), null, new PdfArray(c0), new PdfArray(c1), new PdfNumber(1));
@@ -82,7 +83,7 @@ public class Listing_10_02_SeparationColor extends GenericTest {
         return cs;
     }
 
-    private PdfColorSpace createRgbColorSpace(float red, float green, float blue) {
+    private PdfSpecialCs.Separation createRgbColorSpace(float red, float green, float blue) {
         float[] c0 = new float[]{1, 1, 1};
         float[] c1 = new float[]{red, green, blue};
         PdfFunction f = new PdfFunction.Type2(new PdfArray(new float[]{0, 1}), null, new PdfArray(c0), new PdfArray(c1), new PdfNumber(1));
@@ -91,7 +92,7 @@ public class Listing_10_02_SeparationColor extends GenericTest {
         return cs;
     }
 
-    private PdfColorSpace createCmykColorSpace(float c, float m, float y, float k) {
+    private PdfSpecialCs.Separation createCmykColorSpace(float c, float m, float y, float k) {
         float[] c0 = new float[]{0, 0, 0, 0};
         float[] c1 = new float[]{c, m, y, k};
         PdfFunction f = new PdfFunction.Type2(new PdfArray(new float[]{0, 1}), null, new PdfArray(c0), new PdfArray(c1), new PdfNumber(1));

@@ -9,6 +9,7 @@ package com.itextpdf.samples.sandbox.stamper;
 
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.color.DeviceCmyk;
+import com.itextpdf.kernel.color.Separation;
 import com.itextpdf.kernel.pdf.PdfArray;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfNumber;
@@ -50,14 +51,14 @@ public class AddSpotColorShape extends GenericTest {
         canvas.arc(75, 75, 767, 520, 0, 360);
         canvas.eoClip();
         canvas.newPath();
-        canvas.setFillColor(new Color(createCmykColorSpace(0.8f, 0.3f, 0.3f, 0.1f), new float[]{0.4f}));
+        canvas.setFillColor(new Separation(createCmykColorSpace(0.8f, 0.3f, 0.3f, 0.1f), 0.4f));
         canvas.rectangle(0, 0, 842, 595);
         canvas.fill();
 
         pdfDoc.close();
     }
 
-    private PdfColorSpace createCmykColorSpace( float c, float m, float y, float k) {
+    private PdfSpecialCs.Separation createCmykColorSpace( float c, float m, float y, float k) {
         float[] c0 = new float[]{0, 0, 0, 0};
         float[] c1 = new float[]{c, m, y, k};
         PdfFunction f = new PdfFunction.Type2(new PdfArray(new float[]{0, 1}), null, new PdfArray(c0), new PdfArray(c1), new PdfNumber(1));
