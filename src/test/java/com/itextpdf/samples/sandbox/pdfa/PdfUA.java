@@ -55,8 +55,6 @@ public class PdfUA extends GenericTest {
         pdfDoc.getCatalog().setLang(new PdfString("en-US"));
         PdfDocumentInfo info = pdfDoc.getDocumentInfo();
         info.setTitle("English pangram");
-
-        pdfDoc.createXmpMetadata();
         //=====================
 
         Paragraph p = new Paragraph();

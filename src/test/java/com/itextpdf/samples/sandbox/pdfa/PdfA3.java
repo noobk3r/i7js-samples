@@ -60,7 +60,6 @@ public class PdfA3 extends GenericTest {
                 new PdfOutputIntent("Custom", "", "http://www.color.org", "sRGB IEC61966-2.1", is));
 
         Document document = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
-        pdfDoc.createXmpMetadata();
 
         PdfDictionary parameters = new PdfDictionary();
         parameters.put(PdfName.ModDate, new PdfDate().getPdfObject());

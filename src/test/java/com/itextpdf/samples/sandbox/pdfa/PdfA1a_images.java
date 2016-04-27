@@ -68,7 +68,6 @@ public class PdfA1a_images extends GenericTest {
                 .setCreator("My program using iText")
                 .addCreationDate();
         pdfDoc.setTagged();
-        pdfDoc.createXmpMetadata();
 
         Paragraph element = new Paragraph("Hello World").setFont(font).setFontSize(10);
         doc.add(element);

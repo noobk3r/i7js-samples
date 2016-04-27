@@ -11,8 +11,13 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfDocumentInfo;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.WriterProperties;
 import com.itextpdf.kernel.utils.CompareTool;
-import com.itextpdf.kernel.xmp.*;
+import com.itextpdf.kernel.xmp.PdfConst;
+import com.itextpdf.kernel.xmp.XMPConst;
+import com.itextpdf.kernel.xmp.XMPException;
+import com.itextpdf.kernel.xmp.XMPMeta;
+import com.itextpdf.kernel.xmp.XMPMetaFactory;
 import com.itextpdf.kernel.xmp.options.PropertyOptions;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
@@ -79,8 +84,7 @@ public class Listing_12_04_MetadataXmp extends GenericTest {
     }
 
     public void manipulatePdf(String src, String dest) throws IOException, XMPException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
-        pdfDoc.createXmpMetadata();
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest, new WriterProperties().addXmpMetadata()));
         pdfDoc.close();
     }
 

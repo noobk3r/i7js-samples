@@ -101,8 +101,7 @@ public class PdfInvoicesBasic extends GenericTest {
                 new PdfOutputIntent("Custom", "", "http://www.color.org", "sRGB IEC61966-2.1", is));
         Document document = new Document(pdfDoc, new PageSize(PageSize.A4));
 
-        pdfDoc.createXmpMetadata();
-        XMPMeta xmp = XMPMetaFactory.parseFromBuffer(pdfDoc.getXmpMetadata());
+        XMPMeta xmp = XMPMetaFactory.parseFromBuffer(pdfDoc.getXmpMetadata(true));
         xmp.setProperty(ZugferdXMPUtil.ZUGFERD_SCHEMA_NS, ZugferdXMPUtil.ZUGFERD_DOCUMENT_FILE_NAME, "ZUGFeRD-invoice.xml");
         pdfDoc.setXmpMetadata(xmp);
 

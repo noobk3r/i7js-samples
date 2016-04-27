@@ -68,7 +68,6 @@ public class C2E4_PdfA3a extends GenericTest {
             info = new PdfDocumentInfo(pdfDoc);
         }
         info.setTitle("Some title");
-        pdfDoc.createXmpMetadata();
         //=====================
 
 

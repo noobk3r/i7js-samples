@@ -57,8 +57,6 @@ public class C2E3_PdfA3b extends GenericTest {
         PdfADocument pdfDoc = new PdfADocument(new PdfWriter(dest), PdfAConformanceLevel.PDF_A_3B,
                 new PdfOutputIntent("Custom", "", "http://www.color.org", "sRGB IEC61966-2.1", is));
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
-        //Create XMP metadata
-        pdfDoc.createXmpMetadata();
         //===================
 
         Paragraph p = new Paragraph();
