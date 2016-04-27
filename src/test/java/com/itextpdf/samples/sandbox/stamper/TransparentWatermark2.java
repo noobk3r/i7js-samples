@@ -71,7 +71,7 @@ public class TransparentWatermark2 extends GenericTest {
         for (int i = 1; i <= n; i++) {
             PdfPage pdfPage = pdfDoc.getPage(i);
             pagesize = pdfPage.getPageSizeWithRotation();
-            pdfPage.setIgnoreContentRotation(false);
+            pdfPage.setIgnorePageRotationForContent(true);
 
             x = (pagesize.getLeft() + pagesize.getRight()) / 2;
             y = (pagesize.getTop() + pagesize.getBottom()) / 2;

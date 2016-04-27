@@ -47,7 +47,7 @@ public class StampHeader3 extends GenericTest {
         Document doc = new Document(pdfDoc);
         float x=0, y=0;
         for (int i = 1; i <= pdfDoc.getNumberOfPages(); i++) {
-            pdfDoc.getPage(i).setIgnoreContentRotation(false);
+            pdfDoc.getPage(i).setIgnorePageRotationForContent(true);
             System.out.println(pdfDoc.getPage(i).getRotation());
             if (pdfDoc.getPage(i).getRotation() % 180 == 0) {
                 x = pdfDoc.getPage(i).getPageSize().getWidth() / 2;

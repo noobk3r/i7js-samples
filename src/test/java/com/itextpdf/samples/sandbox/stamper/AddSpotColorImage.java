@@ -70,7 +70,7 @@ public class AddSpotColorImage extends GenericTest {
         imageXObject.makeIndirect(pdfDoc);
         // Now we add the image to the existing PDF document
         PdfPage pdfPage = pdfDoc.getFirstPage();
-        pdfPage.setIgnoreContentRotation(false);
+        pdfPage.setIgnorePageRotationForContent(true);
         PdfCanvas canvas = new PdfCanvas(pdfPage);
         canvas.addXObject(imageXObject, 100, 200, 100);
 
