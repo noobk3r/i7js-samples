@@ -11,7 +11,7 @@
  */
 package com.itextpdf.samples.sandbox.tables;
 
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
@@ -41,7 +41,7 @@ public class ImagesInChunkInCell extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
-        Image image = new Image(ImageFactory.getImage(IMG));
+        Image image = new Image(ImageDataFactory.create(IMG));
         Table table = new Table(new float[]{120});
         Paragraph listOfDots = new Paragraph();
         for (int i = 0; i < 40; i++) {

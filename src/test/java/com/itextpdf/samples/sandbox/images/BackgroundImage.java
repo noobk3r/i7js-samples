@@ -11,8 +11,8 @@
  */
 package com.itextpdf.samples.sandbox.images;
 
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.geom.PageSize;
-import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -45,7 +45,7 @@ public class BackgroundImage extends GenericTest {
         Document doc = new Document(pdfDoc, PageSize.A4.rotate());
 
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
-        canvas.addImage(ImageFactory.getImage(IMAGE), PageSize.A4.rotate(), false);
+        canvas.addImage(ImageDataFactory.create(IMAGE), PageSize.A4.rotate(), false);
         doc.add(new Paragraph("Berlin!"));
         doc.close();
     }

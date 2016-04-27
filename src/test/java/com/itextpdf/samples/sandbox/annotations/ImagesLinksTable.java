@@ -11,7 +11,7 @@
  */
 package com.itextpdf.samples.sandbox.annotations;
 
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
@@ -47,7 +47,7 @@ public class ImagesLinksTable extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
         Table table = new Table(3);
-        Image img = new Image(ImageFactory.getImage(IMG));
+        Image img = new Image(ImageDataFactory.create(IMG));
         Paragraph anchor = new Paragraph().add(img);
         anchor.setProperty(Property.ACTION, PdfAction.createURI("http://lowagie.com/"));
         table.addCell(anchor);
@@ -57,7 +57,7 @@ public class ImagesLinksTable extends GenericTest {
 
         // The second way (in itext5 example) to achieve the result is identical with the first one (in itext7)
 
-        Image img2 = new Image(ImageFactory.getImage(IMG));
+        Image img2 = new Image(ImageDataFactory.create(IMG));
         img2.setNextRenderer(new LinkImageRenderer(img2));
         table.addCell(img2);
 

@@ -42,7 +42,7 @@ public class AddSpotColorShape extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
         PdfPage pdfPage = pdfDoc.getFirstPage();
-        pdfPage.setIgnoreContentRotation(false);
+        pdfPage.setIgnorePageRotationForContent(true);
         PdfCanvas canvas = new PdfCanvas(pdfPage);
         canvas.arc(0, 0, 842, 595, 0, 360);
         canvas.arc(25, 25, 817, 570, 0, 360);

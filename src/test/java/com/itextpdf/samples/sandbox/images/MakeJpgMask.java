@@ -13,7 +13,7 @@ package com.itextpdf.samples.sandbox.images;
 
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.io.image.ImageData;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.io.source.ByteArrayOutputStream;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -47,7 +47,7 @@ public class MakeJpgMask extends GenericTest {
         newBi.getGraphics().drawImage(bi, 0, 0, null);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ImageIO.write(newBi, "png", baos);
-        return ImageFactory.getImage(baos.toByteArray());
+        return ImageDataFactory.create(baos.toByteArray());
     }
 
     @Override
@@ -57,7 +57,7 @@ public class MakeJpgMask extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc, PageSize.A4.rotate());
 
-        ImageData image = ImageFactory.getImage(IMAGE);
+        ImageData image = ImageDataFactory.create(IMAGE);
         ImageData mask = makeBlackAndWhitePng(MASK);
         mask.makeMask();
         image.setImageMask(mask);

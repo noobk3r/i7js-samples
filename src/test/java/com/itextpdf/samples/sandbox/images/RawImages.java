@@ -11,8 +11,8 @@
  */
 package com.itextpdf.samples.sandbox.images;
 
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.geom.PageSize;
-import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -42,35 +42,35 @@ public class RawImages extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc, PageSize.A4.rotate());
 
-        Image gray = new Image(ImageFactory.getImage(1, 1, 1, 8,
+        Image gray = new Image(ImageDataFactory.create(1, 1, 1, 8,
                 new byte[]{(byte) 0x80}, null));
         gray.scaleToFit(30, 30);
 
-        Image red = new Image(ImageFactory.getImage(1, 1, 3, 8,
+        Image red = new Image(ImageDataFactory.create(1, 1, 3, 8,
                 new byte[]{(byte) 255, (byte) 0, (byte) 0}, null));
         red.scaleToFit(30, 30);
 
-        Image green = new Image(ImageFactory.getImage(1, 1, 3, 8,
+        Image green = new Image(ImageDataFactory.create(1, 1, 3, 8,
                 new byte[]{(byte) 0, (byte) 255, (byte) 0}, null));
         green.scaleToFit(30, 30);
 
-        Image blue = new Image(ImageFactory.getImage(1, 1, 3, 8,
+        Image blue = new Image(ImageDataFactory.create(1, 1, 3, 8,
                 new byte[]{(byte) 0, (byte) 0, (byte) 255}, null));
         blue.scaleToFit(30, 30);
 
-        Image cyan = new Image(ImageFactory.getImage(1, 1, 4, 8,
+        Image cyan = new Image(ImageDataFactory.create(1, 1, 4, 8,
                 new byte[]{(byte) 255, (byte) 0, (byte) 0, (byte) 0}, null));
         cyan.scaleToFit(30, 30);
 
-        Image magenta = new Image(ImageFactory.getImage(1, 1, 4, 8,
+        Image magenta = new Image(ImageDataFactory.create(1, 1, 4, 8,
                 new byte[]{(byte) 0, (byte) 255, (byte) 0, (byte) 0}, null));
         magenta.scaleToFit(30, 30);
 
-        Image yellow = new Image(ImageFactory.getImage(1, 1, 4, 8,
+        Image yellow = new Image(ImageDataFactory.create(1, 1, 4, 8,
                 new byte[]{(byte) 0, (byte) 0, (byte) 255, (byte) 0}, null));
         yellow.scaleToFit(30, 30);
 
-        Image black = new Image(ImageFactory.getImage(1, 1, 4, 8,
+        Image black = new Image(ImageDataFactory.create(1, 1, 4, 8,
                 new byte[]{(byte) 0, (byte) 0, (byte) 0, (byte) 255}, null));
         black.scaleToFit(30, 30);
 

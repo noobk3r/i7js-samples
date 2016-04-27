@@ -12,7 +12,7 @@
 package com.itextpdf.samples.sandbox.annotations;
 
 import com.itextpdf.io.image.ImageData;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -50,7 +50,7 @@ public class FileAttachmentAnnot extends GenericTest {
                 .setContents("Click me");
 
         PdfFormXObject xObject = new PdfFormXObject(rect);
-        ImageData img = ImageFactory.getImage(IMG);
+        ImageData img = ImageDataFactory.create(IMG);
         com.itextpdf.layout.element.Image imgModel = new com.itextpdf.layout.element.Image(img);
         imgModel.scaleAbsolute(100, 100);
         imgModel.setFixedPosition(0, 0);

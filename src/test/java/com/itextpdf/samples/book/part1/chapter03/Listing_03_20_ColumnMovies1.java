@@ -8,7 +8,7 @@
 package com.itextpdf.samples.book.part1.chapter03;
 
 import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
@@ -68,7 +68,7 @@ public class Listing_03_20_ColumnMovies1 extends GenericTest {
 
         List<Movie> movies = PojoFactory.getMovies(connection);
         for (Movie movie : movies) {
-            PdfImageXObject imageXObject = new PdfImageXObject(ImageFactory.getImage(String.format(RESOURCE, movie.getImdb())));
+            PdfImageXObject imageXObject = new PdfImageXObject(ImageDataFactory.create(String.format(RESOURCE, movie.getImdb())));
             Image img = new Image(imageXObject).
                 scaleToFit(80, 1000);
             addContent(doc, movie, img);

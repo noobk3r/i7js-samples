@@ -9,9 +9,8 @@ package com.itextpdf.samples.book.part3.chapter10;
 
 import com.itextpdf.kernel.PdfException;
 import com.itextpdf.kernel.geom.PageSize;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.utils.CompareTool;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -19,16 +18,13 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.samples.GenericTest;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-import org.apache.batik.ext.awt.image.spi.ImageWriterParams;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 import javax.imageio.IIOImage;
@@ -85,7 +81,7 @@ public class Listing_10_13_CompressAwt extends GenericTest {
         } catch (Exception e) {
             throw new PdfException(e);
         }
-        Image img = new Image(ImageFactory.getImage(outputStream.toByteArray()));
+        Image img = new Image(ImageDataFactory.create(outputStream.toByteArray()));
         img.setFixedPosition(15, 15);
 
         doc.add(img);

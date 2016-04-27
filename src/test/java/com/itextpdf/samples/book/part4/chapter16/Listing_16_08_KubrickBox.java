@@ -9,7 +9,7 @@ package com.itextpdf.samples.book.part4.chapter16;
 
 import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.io.font.PdfEncodings;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfName;
@@ -55,7 +55,7 @@ public class Listing_16_08_KubrickBox extends GenericTest {
     public void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
-        Image img = new Image(ImageFactory.getImage(IMG_BOX));
+        Image img = new Image(ImageDataFactory.create(IMG_BOX));
         doc.add(img);
         List list = new List();
         list.setSymbolIndent(20);
@@ -96,7 +96,7 @@ public class Listing_16_08_KubrickBox extends GenericTest {
         doc.add(new Paragraph("\n"));
         Table table = new Table(WIDTHS);
         table.setWidthPercent(100);
-        table.addCell(new Image(ImageFactory.getImage(String.format(RESOURCE, movie.getImdb()))).setAutoScale(true));
+        table.addCell(new Image(ImageDataFactory.create(String.format(RESOURCE, movie.getImdb()))).setAutoScale(true));
         Cell cell = new Cell();
         cell.add(new Paragraph("Year: " + movie.getYear()));
         cell.add(new Paragraph("Duration: " + movie.getDuration()));

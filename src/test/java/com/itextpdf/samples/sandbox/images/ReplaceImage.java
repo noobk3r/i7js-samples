@@ -11,7 +11,7 @@
  */
 package com.itextpdf.samples.sandbox.images;
 
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.PdfDictionary;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfName;
@@ -19,7 +19,6 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfStream;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
-import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -30,7 +29,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
@@ -50,7 +48,7 @@ public class ReplaceImage extends GenericTest {
         newBi.getGraphics().drawImage(bi, 0, 0, null);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ImageIO.write(newBi, "png", baos);
-        return new Image(ImageFactory.getImage(baos.toByteArray()));
+        return new Image(ImageDataFactory.create(baos.toByteArray()));
     }
 
     public static void replaceStream(PdfStream orig, PdfStream stream) throws IOException {

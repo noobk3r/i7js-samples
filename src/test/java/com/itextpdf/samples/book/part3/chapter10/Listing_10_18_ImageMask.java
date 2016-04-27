@@ -8,7 +8,7 @@
 package com.itextpdf.samples.book.part3.chapter10;
 
 import com.itextpdf.io.image.ImageData;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -37,14 +37,14 @@ public class Listing_10_18_ImageMask extends GenericTest {
         byte circledata[] = {(byte) 0x3c, (byte) 0x7e, (byte) 0xff,
                 (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0x7e,
                 (byte) 0x3c};
-        ImageData mask = ImageFactory.getImage(8, 8, 1, 1, circledata, null);
+        ImageData mask = ImageDataFactory.create(8, 8, 1, 1, circledata, null);
         mask.makeMask();
         mask.setInverted(true);
         createPdf(RESULT1, mask);
         byte gradient[] = new byte[256];
         for (int i = 0; i < 256; i++)
             gradient[i] = (byte) i;
-        mask = ImageFactory.getImage(256, 1, 1, 8, gradient, null);
+        mask = ImageDataFactory.create(256, 1, 1, 8, gradient, null);
         mask.makeMask();
         createPdf(RESULT2, mask);
         // Create a file to compare via CompareTool
@@ -54,7 +54,7 @@ public class Listing_10_18_ImageMask extends GenericTest {
     public void createPdf(String filename, ImageData mask) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(filename));
         Document doc = new Document(pdfDoc);
-        ImageData img = ImageFactory.getImage(RESOURCE);
+        ImageData img = ImageDataFactory.create(RESOURCE);
         img.setImageMask(mask);
         doc.add(new com.itextpdf.layout.element.Image(img));
         doc.close();

@@ -7,7 +7,7 @@
 
 package com.itextpdf.samples.book.part1.chapter02;
 
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -50,7 +50,7 @@ public class Listing_02_27_MoviePosters2 extends GenericTest {
         for (Movie movie : movies) {
             doc.add(new Paragraph(movie.getMovieTitle()));
             // Add an image
-            doc.add(new Image(ImageFactory.getImage(String.format(RESOURCE, movie.getImdb()))));
+            doc.add(new Image(ImageDataFactory.create(String.format(RESOURCE, movie.getImdb()))));
         }
         doc.close();
     }

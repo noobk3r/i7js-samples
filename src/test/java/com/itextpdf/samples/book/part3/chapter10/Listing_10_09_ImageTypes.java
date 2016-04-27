@@ -10,7 +10,7 @@ package com.itextpdf.samples.book.part3.chapter10;
 import com.itextpdf.barcodes.BarcodeEAN;
 import com.itextpdf.barcodes.BarcodePDF417;
 import com.itextpdf.io.image.ImageData;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.canvas.wmf.WmfImageData;
 import com.itextpdf.kernel.pdf.canvas.wmf.WmfImageHelper;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -66,7 +66,7 @@ public class Listing_10_09_ImageTypes extends GenericTest {
                 img = new Image((PdfFormXObject) wmf.createPdfForm(pdfDoc));
             } else {
                 ImageData image
-                        = ImageFactory.getImage(String.format("src/test/resources/img/%s", RESOURCES[i]));
+                        = ImageDataFactory.create(String.format("src/test/resources/img/%s", RESOURCES[i]));
                 img = new Image(new PdfImageXObject(image));
             }
 
@@ -78,7 +78,7 @@ public class Listing_10_09_ImageTypes extends GenericTest {
         }
 
         java.awt.Image awtImage = Toolkit.getDefaultToolkit().createImage(RESOURCE);
-        img = new Image(new PdfImageXObject(ImageFactory.getImage(awtImage, null)));
+        img = new Image(new PdfImageXObject(ImageDataFactory.create(awtImage, null)));
         doc.add(new Paragraph(String.format("%s is an image of type %s", "java.awt.Image", img.getClass().getName())));
         doc.add(img);
 

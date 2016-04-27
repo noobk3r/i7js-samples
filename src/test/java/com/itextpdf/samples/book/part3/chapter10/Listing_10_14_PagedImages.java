@@ -7,7 +7,7 @@
 
 package com.itextpdf.samples.book.part3.chapter10;
 
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.io.image.Jbig2ImageData;
 import com.itextpdf.io.image.TiffImageData;
 import com.itextpdf.io.source.RandomAccessFileOrArray;
@@ -66,7 +66,7 @@ public class Listing_10_14_PagedImages extends GenericTest {
         int n = TiffImageData.getNumberOfPages(ra);
         Image img;
         for (int i = 1; i <= n; i++) {
-            img = new Image(ImageFactory.getTiffImage(new File(path).toURI().toURL(), false, i, true));
+            img = new Image(ImageDataFactory.createTiff(new File(path).toURI().toURL(), false, i, true));
             img.scaleToFit(523, 350);
             document.add(img);
         }
@@ -85,7 +85,7 @@ public class Listing_10_14_PagedImages extends GenericTest {
         int n = Jbig2ImageData.getNumberOfPages(ra);
         Image img;
         for (int i = 1; i <= n; i++) {
-            img = new Image(ImageFactory.getJbig2Image(new File(path).toURI().toURL(), i));
+            img = new Image(ImageDataFactory.createJbig2(new File(path).toURI().toURL(), i));
             img.scaleToFit(523, 350);
             document.add(img);
         }
@@ -102,7 +102,7 @@ public class Listing_10_14_PagedImages extends GenericTest {
         int n = 10;
         Image img;
         for (int i = 1; i <= n; i++) {
-            img = new Image(ImageFactory.getGifFrame(new File(path).toURI().toURL(), i));
+            img = new Image(ImageDataFactory.createGifFrame(new File(path).toURI().toURL(), i));
             document.add(img);
         }
     }

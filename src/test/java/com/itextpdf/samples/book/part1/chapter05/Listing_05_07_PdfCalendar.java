@@ -8,7 +8,7 @@
 package com.itextpdf.samples.book.part1.chapter05;
 
 import com.itextpdf.io.font.PdfEncodings;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.color.DeviceCmyk;
 import com.itextpdf.kernel.font.PdfFontFactory;
@@ -118,7 +118,7 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
 
     public void drawImageAndText(Calendar calendar, Document doc) throws IOException {
         // get the image
-        Image img = new Image(ImageFactory.getImage(String.format(RESOURCE, calendar)));
+        Image img = new Image(ImageDataFactory.create(String.format(RESOURCE, calendar)));
         img.scaleToFit(PageSize.A4.getHeight(), PageSize.A4.getWidth());
         img.setFixedPosition(
                 (PageSize.A4.getHeight() - img.getImageScaledWidth()) / 2,

@@ -8,7 +8,7 @@
 package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.io.image.ImageData;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -44,7 +44,7 @@ public class AddOverlappingImage extends GenericTest {
 
         Table table = new Table(5);
         table.setNextRenderer(new OverlappingImageTableRenderer(table, new Table.RowRange(0, 25),
-                ImageFactory.getImage("./src/test/resources/img/hero.jpg")));
+                ImageDataFactory.create("./src/test/resources/img/hero.jpg")));
         Cell cell;
         for (int r = 'A'; r <= 'Z'; r++) {
             for (int c = 1; c <= 5; c++) {

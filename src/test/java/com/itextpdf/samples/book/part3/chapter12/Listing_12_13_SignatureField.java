@@ -8,7 +8,7 @@ package com.itextpdf.samples.book.part3.chapter12;
 
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfFormField;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.*;
@@ -124,7 +124,7 @@ public class Listing_12_13_SignatureField extends SignatureTest {
         appearance.setReason("It's personal.");
         appearance.setLocation("Foobar");
         if (graphic) {
-            appearance.setSignatureGraphic(ImageFactory.getImage(RESOURCE));
+            appearance.setSignatureGraphic(ImageDataFactory.create(RESOURCE));
             appearance.setRenderingMode(PdfSignatureAppearance.RenderingMode.GRAPHIC);
         }
         if (certified) {

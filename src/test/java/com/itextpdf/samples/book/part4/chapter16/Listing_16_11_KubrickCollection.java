@@ -7,8 +7,8 @@
 
 package com.itextpdf.samples.book.part4.chapter16;
 
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.pdf.PdfArray;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfName;
@@ -79,7 +79,7 @@ public class Listing_16_11_KubrickCollection extends GenericTest {
 
         ByteArrayOutputStream txt = new ByteArrayOutputStream();
         PrintStream out = new PrintStream(txt);
-        Image img = new Image(ImageFactory.getImage(IMG_BOX));
+        Image img = new Image(ImageDataFactory.create(IMG_BOX));
         doc.add(img);
         List list = new List();
         list.setSymbolIndent(20);

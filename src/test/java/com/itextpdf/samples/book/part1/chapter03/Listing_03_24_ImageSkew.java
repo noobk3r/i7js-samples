@@ -9,7 +9,7 @@ package com.itextpdf.samples.book.part1.chapter03;
 
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.io.image.ImageData;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -40,7 +40,7 @@ public class Listing_03_24_ImageSkew extends GenericTest {
         //Initialize document and add page
         PdfDocument pdfDoc = new PdfDocument(writer);
 
-        ImageData img = ImageFactory.getImage(RESOURCE);
+        ImageData img = ImageDataFactory.create(RESOURCE);
         new PdfCanvas(pdfDoc.addNewPage(new PageSize(416, 283))).
                 addImage(img, img.getWidth(), 0, .35f * img.getHeight(),
                         .65f * img.getHeight(), 30, 30);

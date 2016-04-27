@@ -11,7 +11,7 @@
  */
 package com.itextpdf.samples.sandbox.images;
 
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -42,13 +42,13 @@ public class MultipleImages extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        Image image = new Image(ImageFactory.getImage(IMAGES[0]));
+        Image image = new Image(ImageDataFactory.create(IMAGES[0]));
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc, new PageSize(image.getImageWidth(), image.getImageHeight()));
         for (int i = 0; i < IMAGES.length; i++) {
-            image = new Image(ImageFactory.getImage(IMAGES[i]));
+            image = new Image(ImageDataFactory.create(IMAGES[i]));
             pdfDoc.addNewPage(new PageSize(image.getImageWidth(), image.getImageHeight()));
             // Notice that now it is not necessary to set image position,
             // because images are not overlapped while adding.

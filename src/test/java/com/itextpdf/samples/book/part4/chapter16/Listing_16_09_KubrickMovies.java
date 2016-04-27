@@ -9,7 +9,7 @@ package com.itextpdf.samples.book.part4.chapter16;
 
 import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.io.font.PdfEncodings;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfName;
@@ -145,7 +145,7 @@ public class Listing_16_09_KubrickMovies extends GenericTest {
         doc.add(p);
         doc.add(new Paragraph("\n"));
         Table table = new Table(WIDTHS);
-        table.addCell(new Cell().add(new Image(ImageFactory.getImage(String.format(RESOURCE, movie.getImdb())))
+        table.addCell(new Cell().add(new Image(ImageDataFactory.create(String.format(RESOURCE, movie.getImdb())))
                 .setAutoScale(true)));
         Cell cell = new Cell();
         cell.add(new Paragraph("Year: " + movie.getYear()));

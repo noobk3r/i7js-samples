@@ -8,7 +8,7 @@
 package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.color.DeviceGray;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
@@ -54,7 +54,7 @@ public class ImageBackground extends GenericTest {
         Paragraph p = new Paragraph("A cell with an image as background color.")
                 .setFont(font).setFontColor(DeviceGray.WHITE).setFontSize(12);
         cell.add(p);
-        Image img = new Image(ImageFactory.getImage(IMG));
+        Image img = new Image(ImageDataFactory.create(IMG));
         cell.setNextRenderer(new ImageBackgroundCellRenderer(cell, img));
         cell.setHeight(600 * img.getImageHeight() / img.getImageWidth());
         table.addCell(cell);

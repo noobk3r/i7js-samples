@@ -8,7 +8,7 @@
 package com.itextpdf.samples.book.part4.chapter15;
 
 
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.canvas.parser.data.IEventData;
 import com.itextpdf.kernel.pdf.canvas.parser.listener.IEventListener;
 import com.itextpdf.kernel.pdf.canvas.parser.EventType;
@@ -46,7 +46,7 @@ public class Listing_15_31_MyImageRenderListener implements IEventListener {
                     byte[] imageByte = null;
                     try {
                         imageByte = image.getImageBytes(true);
-                        switch (ImageFactory.getImage(imageByte).getOriginalType()) {
+                        switch (ImageDataFactory.create(imageByte).getOriginalType()) {
                             case JPEG:
                                 extension = "jpg";
                                 break;

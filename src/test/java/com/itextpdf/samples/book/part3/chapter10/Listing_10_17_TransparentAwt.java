@@ -7,9 +7,9 @@
 
 package com.itextpdf.samples.book.part3.chapter10;
 
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.color.DeviceGray;
@@ -50,17 +50,17 @@ public class Listing_10_17_TransparentAwt extends GenericTest {
 
         java.awt.Image awtImage = Toolkit.getDefaultToolkit().createImage(RESOURCE);
         doc.add(new Paragraph("Hitchcock in Red."));
-        Image img1 = new Image(ImageFactory.getImage(awtImage, null));
+        Image img1 = new Image(ImageDataFactory.create(awtImage, null));
         doc.add(img1);
         doc.add(new Paragraph("Hitchcock in Black and White."));
-        Image img2 = new Image(ImageFactory.getImage(awtImage, null, true));
+        Image img2 = new Image(ImageDataFactory.create(awtImage, null, true));
         doc.add(img2);
         doc.add(new AreaBreak());
         doc.add(new Paragraph("Hitchcock in Red and Yellow."));
-        Image img3 = new Image(ImageFactory.getImage(awtImage, new java.awt.Color(0xFF, 0xFF, 0x00)));
+        Image img3 = new Image(ImageDataFactory.create(awtImage, new java.awt.Color(0xFF, 0xFF, 0x00)));
         doc.add(img3);
         doc.add(new Paragraph("Hitchcock in Black and White."));
-        Image img4 = new Image(ImageFactory.getImage(awtImage, new java.awt.Color(0xFF, 0xFF, 0x00), true));
+        Image img4 = new Image(ImageDataFactory.create(awtImage, new java.awt.Color(0xFF, 0xFF, 0x00), true));
         doc.add(img4);
 
         doc.close();

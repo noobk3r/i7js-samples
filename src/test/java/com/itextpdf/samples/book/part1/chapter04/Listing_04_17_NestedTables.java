@@ -9,7 +9,7 @@ package com.itextpdf.samples.book.part1.chapter04;
 
 import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.io.image.ImageData;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.color.DeviceRgb;
 import com.itextpdf.kernel.color.WebColors;
@@ -169,7 +169,7 @@ public class Listing_04_17_NestedTables extends GenericTest {
     public Image getImage(String imdb) throws MalformedURLException {
         ImageData img = images.get(imdb);
         if (img == null) {
-            img = ImageFactory.getImage(String.format(RESOURCE, imdb));
+            img = ImageDataFactory.create(String.format(RESOURCE, imdb));
             images.put(imdb, img);
         }
         return new Image(img).scaleToFit(80, 72);

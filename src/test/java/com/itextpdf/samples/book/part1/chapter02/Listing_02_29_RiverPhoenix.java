@@ -8,7 +8,7 @@
 package com.itextpdf.samples.book.part1.chapter02;
 
 import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -63,8 +63,8 @@ public class Listing_02_29_RiverPhoenix extends GenericTest {
 
     public Paragraph createParagraph(String text, String imdb) throws MalformedURLException {
         Paragraph p = new Paragraph(text);
-        Image img = new Image(ImageFactory
-                .getImage(String.format("./src/test/resources/img/posters/%s.jpg", imdb)));
+        Image img = new Image(ImageDataFactory
+                .create(String.format("./src/test/resources/img/posters/%s.jpg", imdb)));
         img.scaleToFit(1000,72);
         img.setRotationAngle(Math.toRadians(-30));
         p.add(img);

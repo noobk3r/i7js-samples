@@ -8,7 +8,7 @@
 package com.itextpdf.samples.book.part3.chapter10;
 
 import com.itextpdf.io.image.ImageData;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.canvas.PdfPatternCanvas;
 import com.itextpdf.kernel.color.Color;
@@ -79,7 +79,7 @@ public class Listing_10_03_TilingPatternColor extends GenericTest {
         PdfPattern.Tiling line = new PdfPattern.Tiling(5, 10, false);
         new PdfPatternCanvas(line, pdfDoc).setLineWidth(1).moveTo(3, -1).lineTo(3, 11).stroke().release();
 
-        ImageData img = ImageFactory.getImage(IMG_SRC);
+        ImageData img = ImageDataFactory.create(IMG_SRC);
         PdfPattern.Tiling img_pattern = new PdfPattern.Tiling(20, 20, 20, 20);
         img_pattern.setMatrix(new PdfArray(new float[]{-0.5f, 0f, 0f, 0.5f, 0f, 0f}));
         new PdfPatternCanvas(img_pattern, pdfDoc).addImage(img, 0, 0, 20, false);

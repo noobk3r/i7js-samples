@@ -18,7 +18,7 @@
 package com.itextpdf.samples.sandbox.images;
 
 import com.itextpdf.kernel.geom.PageSize;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.CompressionConstants;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -51,7 +51,7 @@ public class FlateCompressJPEG1Pass extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc, PageSize.A4.rotate());
 
-        Image image = new Image(ImageFactory.getImage(IMAGE));
+        Image image = new Image(ImageDataFactory.create(IMAGE));
         image.getXObject().getPdfObject().setCompressionLevel(CompressionConstants.BEST_COMPRESSION);
         image.scaleToFit(PageSize.A4.rotate().getWidth(), PageSize.A4.rotate().getHeight());
         image.setFixedPosition(0, 0);

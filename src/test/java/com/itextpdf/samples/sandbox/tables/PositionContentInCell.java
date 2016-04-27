@@ -12,7 +12,7 @@
 
 package com.itextpdf.samples.sandbox.tables;
 
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Canvas;
@@ -67,13 +67,13 @@ public class PositionContentInCell extends GenericTest {
         // 3. Each cell has the same background image
         // 4. Add text in front of the image at specific position
         cell1.setNextRenderer(new ImageAndPositionRenderer(cell1,
-                new Image(ImageFactory.getImage(IMG)), "Top left", POSITION.TOP_LEFT));
+                new Image(ImageDataFactory.create(IMG)), "Top left", POSITION.TOP_LEFT));
         cell2.setNextRenderer(new ImageAndPositionRenderer(cell2,
-                new Image(ImageFactory.getImage(IMG)), "Top right", POSITION.TOP_RIGHT));
+                new Image(ImageDataFactory.create(IMG)), "Top right", POSITION.TOP_RIGHT));
         cell3.setNextRenderer(new ImageAndPositionRenderer(cell3,
-                new Image(ImageFactory.getImage(IMG)), "Bottom left", POSITION.BOTTOM_LEFT));
+                new Image(ImageDataFactory.create(IMG)), "Bottom left", POSITION.BOTTOM_LEFT));
         cell4.setNextRenderer(new ImageAndPositionRenderer(cell4,
-                new Image(ImageFactory.getImage(IMG)), "Bottom right", POSITION.BOTTOM_RIGHT));
+                new Image(ImageDataFactory.create(IMG)), "Bottom right", POSITION.BOTTOM_RIGHT));
         // Wrap it all up!
         table.addCell(cell1);
         table.addCell(cell2);

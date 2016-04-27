@@ -9,7 +9,7 @@ package com.itextpdf.samples.book.part1.chapter03;
 
 import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.kernel.geom.PageSize;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.color.DeviceRgb;
@@ -58,7 +58,7 @@ public class Listing_03_01_FestivalOpening extends GenericTest {
                 setFont(PdfFontFactory.createFont(FontConstants.HELVETICA)).
                 setFontSize(22);
 
-        PdfImageXObject imageXObject = new PdfImageXObject(ImageFactory.getImage(RESOURCE));
+        PdfImageXObject imageXObject = new PdfImageXObject(ImageDataFactory.create(RESOURCE));
         Image img = new Image(imageXObject);
         img.setFixedPosition((pageWidth - imageXObject.getWidth()) / 2, (pageHeight - imageXObject.getHeight()) / 2);
 

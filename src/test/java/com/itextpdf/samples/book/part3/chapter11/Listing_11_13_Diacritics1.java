@@ -8,7 +8,7 @@
 package com.itextpdf.samples.book.part3.chapter11;
 
 import com.itextpdf.io.font.PdfEncodings;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
@@ -47,7 +47,7 @@ public class Listing_11_13_Diacritics1 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
         PdfFont font;
-        Image img = new Image(ImageFactory.getImage(POSTER));
+        Image img = new Image(ImageDataFactory.create(POSTER));
         img.scale(0.5f, 0.5f);
         img.setBorder(new SolidBorder(Color.LIGHT_GRAY, 18f));
         img.setHorizontalAlignment(HorizontalAlignment.LEFT);

@@ -7,7 +7,7 @@
 
 package com.itextpdf.samples.book.part3.chapter10;
 
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -35,7 +35,7 @@ public class Listing_10_08_RawImage extends GenericTest {
         byte gradient[] = new byte[256];
         for (int i = 0; i < 256; i++)
             gradient[i] = (byte) i;
-        Image img1 = new Image(ImageFactory.getImage(256, 1, 1, 8, gradient, null));
+        Image img1 = new Image(ImageDataFactory.create(256, 1, 1, 8, gradient, null));
         img1.scaleAbsolute(256, 50);
         doc.add(img1);
         // Image in color space RGB
@@ -45,10 +45,10 @@ public class Listing_10_08_RawImage extends GenericTest {
             cgradient[i * 3 + 1] = (byte) (255 - i);
             cgradient[i * 3 + 2] = (byte) i;
         }
-        Image img2 = new Image(ImageFactory.getImage(256, 1, 3, 8, cgradient, null));
+        Image img2 = new Image(ImageDataFactory.create(256, 1, 3, 8, cgradient, null));
         img2.scaleAbsolute(256, 50);
         doc.add(img2);
-        Image img3 = new Image(ImageFactory.getImage(16, 16, 3, 8, cgradient, null));
+        Image img3 = new Image(ImageDataFactory.create(16, 16, 3, 8, cgradient, null));
         img3.scaleAbsolute(64, 64);
         doc.add(img3);
 

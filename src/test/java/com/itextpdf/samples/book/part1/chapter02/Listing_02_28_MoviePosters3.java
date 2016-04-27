@@ -8,7 +8,7 @@
 package com.itextpdf.samples.book.part1.chapter02;
 
 import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
@@ -59,7 +59,7 @@ public class Listing_02_28_MoviePosters3 extends GenericTest {
         List<Movie> movies = PojoFactory.getMovies(connection);
         for (Movie movie : movies) {
             // Create an image
-            Image img = new Image(ImageFactory.getImage(String.format(RESOURCE, movie.getImdb())));
+            Image img = new Image(ImageDataFactory.create(String.format(RESOURCE, movie.getImdb())));
             img.setHorizontalAlignment(HorizontalAlignment.LEFT);
 
             img.setBorder(new SolidBorder(Color.WHITE, 10));

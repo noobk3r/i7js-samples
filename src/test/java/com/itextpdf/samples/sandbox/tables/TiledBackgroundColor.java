@@ -12,7 +12,7 @@
 package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.io.image.ImageData;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.color.PatternColor;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -47,7 +47,7 @@ public class TiledBackgroundColor extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
-        ImageData img = ImageFactory.getImage(IMG);
+        ImageData img = ImageDataFactory.create(IMG);
         Image image = new Image(img);
         PdfPattern.Tiling img_pattern = new PdfPattern.Tiling(image.getImageScaledWidth(), image.getImageScaledHeight()); //.makeIndirect(pdfDoc);
         new PdfPatternCanvas(img_pattern, pdfDoc).addImage(img, 0, 0, false);

@@ -8,7 +8,7 @@
 package com.itextpdf.samples.book.part1.chapter04;
 
 import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -72,7 +72,7 @@ public class Listing_04_14_MovieCompositeMode extends GenericTest {
             table.setWidthPercent(100);
             table.setMarginTop(5);
             // a cell with an image
-            cell = new Cell().add(new Image(ImageFactory.getImage(String.format(RESOURCE, movie.getImdb()))).setAutoScaleWidth(true));
+            cell = new Cell().add(new Image(ImageDataFactory.create(String.format(RESOURCE, movie.getImdb()))).setAutoScaleWidth(true));
             cell.setBorder(Border.NO_BORDER);
             table.addCell(cell);
             cell = new Cell();

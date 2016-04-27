@@ -8,7 +8,7 @@
 package com.itextpdf.samples.book.part2.chapter07;
 
 import com.itextpdf.forms.PdfAcroForm;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.pdf.*;
@@ -74,7 +74,7 @@ public class Listing_07_27_Advertisement extends GenericTest {
         Rectangle rect = new Rectangle(400, 772, 145, 20);
 
         CustomButton button = new CustomButton("click", "Close this advertisement", pdfDoc, rect);
-        button.setImage(new PdfImageXObject(ImageFactory.getImage(IMAGE)));
+        button.setImage(new PdfImageXObject(ImageDataFactory.create(IMAGE)));
         button.setButtonBackgroundColor(Color.RED);
         button.setBorderColor(Color.RED);
         button.setFontSize(10);
