@@ -46,8 +46,6 @@ public class C07E02_QuickBrownFox_PDFA_1a {
 
         //Setting some required parameters
         pdf.setTagged();
-        //Create XMP meta data
-        pdf.createXmpMetadata();
 
         //Fonts need to be embedded
         PdfFont font = PdfFontFactory.createFont(FONT, PdfEncodings.WINANSI, true);

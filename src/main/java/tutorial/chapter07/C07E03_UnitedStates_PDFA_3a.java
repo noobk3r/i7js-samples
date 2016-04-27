@@ -51,8 +51,6 @@ public class C07E03_UnitedStates_PDFA_3a {
                 new PdfViewerPreferences().setDisplayDocTitle(true));
         PdfDocumentInfo info = pdf.getDocumentInfo();
         info.setTitle("iText7 PDF/A-3 example");
-        //Create XMP meta data
-        pdf.createXmpMetadata();
 
         //Add attachment
         PdfDictionary parameters = new PdfDictionary();

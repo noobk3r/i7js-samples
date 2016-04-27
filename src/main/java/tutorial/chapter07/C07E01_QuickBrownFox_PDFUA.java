@@ -12,6 +12,7 @@ import com.itextpdf.kernel.pdf.PdfDocumentInfo;
 import com.itextpdf.kernel.pdf.PdfString;
 import com.itextpdf.kernel.pdf.PdfViewerPreferences;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.WriterProperties;
 import com.itextpdf.kernel.xmp.XMPException;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Image;
@@ -35,7 +36,7 @@ public class C07E01_QuickBrownFox_PDFUA {
     }
     
     public void createPdf(String dest) throws IOException, XMPException {
-        PdfDocument pdf = new PdfDocument(new PdfWriter(dest));
+        PdfDocument pdf = new PdfDocument(new PdfWriter(dest, new WriterProperties().addXmpMetadata()));
         Document document = new Document(pdf);
 
         //Setting some required parameters
@@ -45,8 +46,6 @@ public class C07E01_QuickBrownFox_PDFUA {
                 new PdfViewerPreferences().setDisplayDocTitle(true));
         PdfDocumentInfo info = pdf.getDocumentInfo();
         info.setTitle("iText7 PDF/UA example");
-        //Create XMP meta data
-        pdf.createXmpMetadata();
 
         //Fonts need to be embedded
         PdfFont font = PdfFontFactory.createFont(FONT, PdfEncodings.WINANSI, true);

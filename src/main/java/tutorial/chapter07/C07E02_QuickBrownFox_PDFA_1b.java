@@ -44,9 +44,6 @@ public class C07E02_QuickBrownFox_PDFA_1b {
                     "sRGB IEC61966-2.1", new FileInputStream(INTENT)));
         Document document = new Document(pdf);
 
-        //Create XMP meta data
-        pdf.createXmpMetadata();
-
         //Fonts need to be embedded
         PdfFont font = PdfFontFactory.createFont(FONT, PdfEncodings.WINANSI, true);
         Paragraph p = new Paragraph();
