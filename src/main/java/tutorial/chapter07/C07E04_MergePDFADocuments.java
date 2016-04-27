@@ -39,8 +39,6 @@ public class C07E04_MergePDFADocuments {
                 new PdfViewerPreferences().setDisplayDocTitle(true));
         PdfDocumentInfo info = pdf.getDocumentInfo();
         info.setTitle("iText7 PDF/A-1a example");
-        //Create XMP meta data
-        pdf.createXmpMetadata();
 
         //Create PdfMerger instance
         PdfMerger merger = new PdfMerger(pdf);
