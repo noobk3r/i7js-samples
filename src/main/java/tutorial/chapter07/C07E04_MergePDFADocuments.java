@@ -44,12 +44,10 @@ public class C07E04_MergePDFADocuments {
         PdfMerger merger = new PdfMerger(pdf);
         //Add pages from the first document
         PdfDocument firstSourcePdf = new PdfDocument(new PdfReader(SRC1));
-        merger.addPages(firstSourcePdf, 1, firstSourcePdf.getNumberOfPages());
+        merger.merge(firstSourcePdf, 1, firstSourcePdf.getNumberOfPages());
         //Add pages from the second pdf document
         PdfDocument secondSourcePdf = new PdfDocument(new PdfReader(SRC2));
-        merger.addPages(secondSourcePdf, 1, secondSourcePdf.getNumberOfPages());
-        //Merge
-        merger.merge();
+        merger.merge(secondSourcePdf, 1, secondSourcePdf.getNumberOfPages());
 
         //Close the documents
         firstSourcePdf.close();

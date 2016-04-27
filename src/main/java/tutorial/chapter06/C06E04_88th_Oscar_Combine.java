@@ -27,14 +27,12 @@ public class C06E04_88th_Oscar_Combine {
 
         //Add pages from the first document
         PdfDocument firstSourcePdf = new PdfDocument(new PdfReader(SRC1));
-        merger.addPages(firstSourcePdf, 1, firstSourcePdf.getNumberOfPages());
+        merger.merge(firstSourcePdf, 1, firstSourcePdf.getNumberOfPages());
 
         //Add pages from the second pdf document
         PdfDocument secondSourcePdf = new PdfDocument(new PdfReader(SRC2));
-        merger.addPages(secondSourcePdf, 1, secondSourcePdf.getNumberOfPages());
+        merger.merge(secondSourcePdf, 1, secondSourcePdf.getNumberOfPages());
 
-        // merge and close
-        merger.merge();
         firstSourcePdf.close();
         secondSourcePdf.close();
         pdf.close();

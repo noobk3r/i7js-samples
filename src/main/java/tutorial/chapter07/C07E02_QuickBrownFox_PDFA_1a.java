@@ -3,7 +3,7 @@
  */
 package tutorial.chapter07;
 
-import com.itextpdf.io.font.PdfEncodings;
+import  com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;

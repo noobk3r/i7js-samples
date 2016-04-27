@@ -31,13 +31,11 @@ public class C06E05_88th_Oscar_CombineXofY {
 
         //Add pages from the first document
         PdfDocument firstSourcePdf = new PdfDocument(new PdfReader(SRC1));
-        merger.addPages(firstSourcePdf, Arrays.asList(1, 5, 7, 1));
+        merger.merge(firstSourcePdf, Arrays.asList(1, 5, 7, 1));
 
         //Add pages from the second pdf document
         PdfDocument secondSourcePdf = new PdfDocument(new PdfReader(SRC2));
-        merger.addPages(secondSourcePdf, Arrays.asList(1, 15));
-
-        merger.merge();
+        merger.merge(secondSourcePdf, Arrays.asList(1, 15));
 
         firstSourcePdf.close();
         secondSourcePdf.close();
