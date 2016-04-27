@@ -13,7 +13,6 @@ import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfNumber;
 import com.itextpdf.kernel.pdf.PdfObject;
 import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfString;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -108,7 +107,7 @@ public class Listing_07_02_LinkActions extends GenericTest {
         array.add(new PdfNumber(842));
         array.add(new PdfNumber(1));
 
-        pdfDoc.addNameDestination("top", array);
+        pdfDoc.addNamedDestination("top", array);
 
         //Close document
         doc.close();

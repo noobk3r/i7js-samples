@@ -113,7 +113,7 @@ public class AddNamedDestinations extends GenericTest {
             array.add(new PdfNumber(pdfDoc.getPage(i).getPageSize().getTop()));
             array.add(new PdfNumber(1));
             // Notice that the document has already destinations like "Prime+i"
-            pdfDoc.addNameDestination("prime" + i, array);
+            pdfDoc.addNamedDestination("prime" + i, array);
         }
         pdfDoc.close();
 
