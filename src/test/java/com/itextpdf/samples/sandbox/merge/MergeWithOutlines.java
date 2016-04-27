@@ -51,12 +51,13 @@ public class MergeWithOutlines extends GenericTest {
         PdfOutline rootOutline = pdfDoc.getOutlines(false);
         int page = 1;
         PdfDocument pdfDoc1 = new PdfDocument(new PdfReader(SRC1));
-        merger.addPages(pdfDoc1, 1, pdfDoc1.getNumberOfPages());
+        merger.merge(pdfDoc1, 1, pdfDoc1.getNumberOfPages());
+
         PdfDocument pdfDoc2 = new PdfDocument(new PdfReader(SRC2));
-        merger.addPages(pdfDoc2, 1, pdfDoc2.getNumberOfPages());
         PdfDocument pdfDoc3 = new PdfDocument(new PdfReader(SRC3));
-        merger.addPages(pdfDoc3, 1, pdfDoc3.getNumberOfPages());
-        merger.merge();
+        merger.setCloseSourceDocuments(true)
+                .merge(pdfDoc2, 1, pdfDoc2.getNumberOfPages())
+                .merge(pdfDoc3, 1, pdfDoc3.getNumberOfPages());
 
         PdfOutline helloWorld = rootOutline.addOutline("Hello World");
         helloWorld.addDestination(PdfExplicitDestination.createFit(pdfDoc.getPage(page)));
@@ -67,8 +68,6 @@ public class MergeWithOutlines extends GenericTest {
         PdfOutline link2 = rootOutline.addOutline("Link 2");
         link2.addDestination(PdfExplicitDestination.createFit(pdfDoc.getPage(page)));
         pdfDoc1.close();
-        pdfDoc2.close();
-        pdfDoc3.close();
         pdfDoc.close();
     }
 }

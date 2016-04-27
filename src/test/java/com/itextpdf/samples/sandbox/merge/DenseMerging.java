@@ -66,7 +66,7 @@
 //                try (InputStream resource = getClass().getResourceAsStream(resourceName);
 //                     PdfReader reader = new PdfReader(resource);
 //                     PdfDocument sourceDocument = new PdfDocument(reader)) {
-//                    pdfMerger.addPages(sourceDocument, 1, sourceDocument.getNumberOfPages());
+//                    pdfMerger.merge(sourceDocument, 1, sourceDocument.getNumberOfPages());
 //                }
 //            }
 //        }
@@ -101,7 +101,7 @@
 //            for (byte[] bytes : new byte[][]{docA, docB, docC, docD}) {
 //                try (PdfReader reader = new PdfReader(new ByteArrayInputStream(bytes));
 //                     PdfDocument sourceDocument = new PdfDocument(reader)) {
-//                    pdfMerger.addPages(sourceDocument, 1, sourceDocument.getNumberOfPages());
+//                    pdfMerger.merge(sourceDocument, 1, sourceDocument.getNumberOfPages());
 //                }
 //            }
 //        }
