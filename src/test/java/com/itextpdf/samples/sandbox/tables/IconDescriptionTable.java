@@ -7,7 +7,7 @@
 
 package com.itextpdf.samples.sandbox.tables;
 
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
@@ -41,7 +41,7 @@ public class IconDescriptionTable extends GenericTest {
 
         Table table = new Table(new float[]{1, 9});
         table.setWidthPercent(100);
-        Image img = new Image(ImageFactory.getImage(IMG));
+        Image img = new Image(ImageDataFactory.create(IMG));
         table.addCell(img.setAutoScale(true));
         table.addCell("A light bulb icon");
         doc.add(table);

@@ -8,7 +8,7 @@
 package com.itextpdf.samples.book.part1.chapter04;
 
 import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
@@ -125,7 +125,7 @@ public class Listing_04_20_MemoryTests extends GenericTest {
         for (Movie movie : movies) {
             table.setMarginTop(5);
             // add a movie poster
-            cell = new Cell().add(new Image(ImageFactory.getImage(String.format(RESOURCE, movie.getImdb()))).scaleToFit(100,200));
+            cell = new Cell().add(new Image(ImageDataFactory.create(String.format(RESOURCE, movie.getImdb()))).scaleToFit(100,200));
             cell.setBorder(Border.NO_BORDER);
             cell.setMargin(10);
             table.addCell(cell);

@@ -12,7 +12,7 @@ package com.itextpdf.samples.sandbox.stamper;
 
 import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.io.image.ImageData;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.Rectangle;
@@ -56,7 +56,7 @@ public class TransparentWatermark2 extends GenericTest {
         PdfFont font = PdfFontFactory.createFont(FontConstants.HELVETICA);
         Paragraph p = new Paragraph("My watermark (text)").setFont(font).setFontSize(30);
         // image watermark
-        ImageData img = ImageFactory.getImage(IMG);
+        ImageData img = ImageDataFactory.create(IMG);
         //  Implement transformation matrix usage in order to scale image
         float w = img.getWidth();
         float h = img.getHeight();

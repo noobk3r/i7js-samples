@@ -13,7 +13,7 @@ package com.itextpdf.samples.sandbox.pdfa;
 
 
 import com.itextpdf.io.font.PdfEncodings;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfAConformanceLevel;
@@ -72,7 +72,7 @@ public class PdfA1a_images extends GenericTest {
 
         Paragraph element = new Paragraph("Hello World").setFont(font).setFontSize(10);
         doc.add(element);
-        Image logoImage = new Image(ImageFactory.getImage(LOGO));
+        Image logoImage = new Image(ImageDataFactory.create(LOGO));
         logoImage.getAccessibilityProperties().setAlternateDescription("Logo");
         doc.add(logoImage);
         doc.close();

@@ -11,7 +11,7 @@
  */
 package com.itextpdf.samples.sandbox.annotations;
 
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.canvas.wmf.WmfImageData;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -59,7 +59,7 @@ public class AddLinkImages extends GenericTest {
     }
 
     public Image createImage(String src, String url, PdfDocument pdfDoc) throws MalformedURLException {
-        Image img = new Image(ImageFactory.getImage(src));
+        Image img = new Image(ImageDataFactory.create(src));
         img.setProperty(Property.ACTION, PdfAction.createURI(url));
         return img;
     }

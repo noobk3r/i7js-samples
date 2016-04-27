@@ -11,8 +11,8 @@
  */
 package com.itextpdf.samples.sandbox.images;
 
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.color.DeviceGray;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -65,7 +65,7 @@ public class WatermarkedImages3 extends GenericTest {
         for (int i = 0; i < 35; i++) {
             table.addCell(new Cell().add(new Paragraph("rahlrokks doesn't listen to what people tell him")));
         }
-        table.addCell(new Cell().add(getWatermarkedImage(doc, new Image(ImageFactory.getImage(IMAGE1)), "Bruno").setAutoScale(true)));
+        table.addCell(new Cell().add(getWatermarkedImage(doc, new Image(ImageDataFactory.create(IMAGE1)), "Bruno").setAutoScale(true)));
         doc.add(table);
         doc.showTextAligned("Bruno knows best", 260, 400, TextAlignment.CENTER, 45f * (float)Math.PI / 180f);
         doc.close();

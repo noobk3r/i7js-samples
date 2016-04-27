@@ -7,7 +7,7 @@
 
 package com.itextpdf.samples.sandbox.tables;
 
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
@@ -65,21 +65,21 @@ public class PositionContentInCell2 extends GenericTest {
         // 3. Each cell has the same background image
         // 4. Add text in front of the image at specific position
         cell1.setNextRenderer(new ImageAndPositionRenderer(cell1, 0, 1,
-                new Image(ImageFactory.getImage(IMG)), "Top left", TextAlignment.LEFT));
+                new Image(ImageDataFactory.create(IMG)), "Top left", TextAlignment.LEFT));
         cell2.setNextRenderer(new ImageAndPositionRenderer(cell2, 1, 1,
-                new Image(ImageFactory.getImage(IMG)), "Top right", TextAlignment.RIGHT));
+                new Image(ImageDataFactory.create(IMG)), "Top right", TextAlignment.RIGHT));
         cell3.setNextRenderer(new ImageAndPositionRenderer(cell3, 0.5f, 1,
-                new Image(ImageFactory.getImage(IMG)), "Top center", TextAlignment.CENTER));
+                new Image(ImageDataFactory.create(IMG)), "Top center", TextAlignment.CENTER));
         cell4.setNextRenderer(new ImageAndPositionRenderer(cell4, 0.5f, 0,
-                new Image(ImageFactory.getImage(IMG)), "Bottom center", TextAlignment.CENTER));
+                new Image(ImageDataFactory.create(IMG)), "Bottom center", TextAlignment.CENTER));
         cell5.setNextRenderer(new ImageAndPositionRenderer(cell5, 0.5f, 0.5f,
-                new Image(ImageFactory.getImage(IMG)), "Middle center", TextAlignment.CENTER));
+                new Image(ImageDataFactory.create(IMG)), "Middle center", TextAlignment.CENTER));
         cell6.setNextRenderer(new ImageAndPositionRenderer(cell6, 0.5f, 0.5f,
-                new Image(ImageFactory.getImage(IMG)), "Middle center", TextAlignment.CENTER));
+                new Image(ImageDataFactory.create(IMG)), "Middle center", TextAlignment.CENTER));
         cell7.setNextRenderer(new ImageAndPositionRenderer(cell7, 0, 0,
-                new Image(ImageFactory.getImage(IMG)), "Bottom left", TextAlignment.LEFT));
+                new Image(ImageDataFactory.create(IMG)), "Bottom left", TextAlignment.LEFT));
         cell8.setNextRenderer(new ImageAndPositionRenderer(cell8, 1, 0,
-                new Image(ImageFactory.getImage(IMG)), "Bottom right", TextAlignment.RIGHT));
+                new Image(ImageDataFactory.create(IMG)), "Bottom right", TextAlignment.RIGHT));
         // Wrap it all up!
         table.addCell(cell1);
         table.addCell(cell2);

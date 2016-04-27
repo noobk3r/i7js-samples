@@ -13,7 +13,7 @@ package com.itextpdf.samples.sandbox.annotations;
 
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.pdf.PdfArray;
 import com.itextpdf.kernel.pdf.PdfDictionary;
@@ -47,7 +47,7 @@ public class AddPointerAnnotation extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        Image img = new Image(ImageFactory.getImage(IMG));
+        Image img = new Image(ImageDataFactory.create(IMG));
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
         Document document = new Document(pdfDoc, new PageSize(img.getImageWidth(), img.getImageHeight()));
         img.setFixedPosition(0, 0);

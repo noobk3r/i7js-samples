@@ -10,7 +10,7 @@ package com.itextpdf.samples.book.part3.chapter10;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.io.image.ImageData;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.PdfDictionary;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -42,7 +42,7 @@ public class Listing_10_22_TransparentOverlay extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc, new PageSize(850, 600));
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
-        ImageData img = ImageFactory.getImage(RESOURCE);
+        ImageData img = ImageDataFactory.create(RESOURCE);
         com.itextpdf.layout.element.Image imgModel = new com.itextpdf.layout.element.Image(img);
         float w = imgModel.getImageScaledWidth();
         float h = imgModel.getImageScaledHeight();

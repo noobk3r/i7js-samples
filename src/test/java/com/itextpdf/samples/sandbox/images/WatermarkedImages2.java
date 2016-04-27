@@ -12,7 +12,7 @@
  */
 package com.itextpdf.samples.sandbox.images;
 
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.color.DeviceRgb;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -57,19 +57,19 @@ public class WatermarkedImages2 extends GenericTest {
         Table table = new Table(1);
         Cell cell;
 
-        cell = new Cell().add(new Image(ImageFactory.getImage(IMAGE1)).setAutoScaleWidth(true));
+        cell = new Cell().add(new Image(ImageDataFactory.create(IMAGE1)).setAutoScaleWidth(true));
         cell.setNextRenderer(new WatermarkedCellRenderer(cell, "Bruno"));
         table.addCell(cell);
 
-        cell = new Cell().add(new Image(ImageFactory.getImage(IMAGE2)).setAutoScaleWidth(true));
+        cell = new Cell().add(new Image(ImageDataFactory.create(IMAGE2)).setAutoScaleWidth(true));
         cell.setNextRenderer(new WatermarkedCellRenderer(cell, "Dog"));
         table.addCell(cell);
 
-        cell = new Cell().add(new Image(ImageFactory.getImage(IMAGE3)).setAutoScaleWidth(true));
+        cell = new Cell().add(new Image(ImageDataFactory.create(IMAGE3)).setAutoScaleWidth(true));
         cell.setNextRenderer(new WatermarkedCellRenderer(cell, "Fox"));
         table.addCell(cell);
 
-        cell = new Cell().add(new Image(ImageFactory.getImage(IMAGE4)).setAutoScale(true));
+        cell = new Cell().add(new Image(ImageDataFactory.create(IMAGE4)).setAutoScale(true));
         cell.setNextRenderer(new WatermarkedCellRenderer(cell, "Bruno and Ingeborg"));
         table.addCell(cell);
 

@@ -7,9 +7,9 @@
 
 package com.itextpdf.samples.book.part2.chapter07;
 
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.PdfArray;
@@ -81,7 +81,7 @@ public class Listing_07_22_MoviePosters1 extends GenericTest {
         Canvas canvas = new Canvas(pdfCanvas, pdfDoc, pdfDoc.getLastPage().getPageSize());
         PdfArray border = new PdfArray(new float[]{0, 0, 0});
         for (Movie movie : PojoFactory.getMovies(connection)) {
-            img = new Image(ImageFactory.getImage(String.format(RESOURCE, movie.getImdb())));
+            img = new Image(ImageDataFactory.create(String.format(RESOURCE, movie.getImdb())));
             img.scaleToFit(1000, 60);
             img.setFixedPosition(x + (45 - img.getImageScaledWidth()) / 2, y);
             linkAnnotation = new PdfLinkAnnotation(new Rectangle(x + (45 - img.getImageScaledWidth()) / 2, y,

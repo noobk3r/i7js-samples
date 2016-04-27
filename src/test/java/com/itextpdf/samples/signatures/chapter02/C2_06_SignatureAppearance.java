@@ -16,7 +16,7 @@ package com.itextpdf.samples.signatures.chapter02;
 
 import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.io.font.PdfEncodings;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
@@ -120,7 +120,7 @@ public class C2_06_SignatureAppearance extends SignatureTest {
         signer.setFieldName(name);
         // Custom text and background image
         appearance.setLayer2Text("This document was signed by Bruno Specimen");
-        appearance.setImage(ImageFactory.getImage(IMG));
+        appearance.setImage(ImageDataFactory.create(IMG));
         appearance.setImageScale(1);
         // Creating the signature
         PrivateKeySignature pks = new PrivateKeySignature(pk, digestAlgorithm, provider);
@@ -143,7 +143,7 @@ public class C2_06_SignatureAppearance extends SignatureTest {
         appearance.setReuseAppearance(false);
         signer.setFieldName(name);
         // Default text and scaled background image
-        appearance.setImage(ImageFactory.getImage(IMG));
+        appearance.setImage(ImageDataFactory.create(IMG));
         appearance.setImageScale(-1);
         // Creating the signature
         PrivateKeySignature pks = new PrivateKeySignature(pk, digestAlgorithm, provider);

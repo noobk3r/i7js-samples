@@ -8,7 +8,7 @@
 package com.itextpdf.samples.book.part2.chapter07;
 
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfReader;
@@ -69,7 +69,7 @@ public class Listing_07_28_MoviePosters2 extends GenericTest {
         float y = 769.7f;
         float llx, lly, urx, ury;
         for (Movie movie : movies) {
-            img = new Image(ImageFactory.getImage(String.format(Listing_07_22_MoviePosters1.RESOURCE,
+            img = new Image(ImageDataFactory.create(String.format(Listing_07_22_MoviePosters1.RESOURCE,
                     movie.getImdb())));
             img.scaleToFit(1000, 60);
             llx = x + (45 - img.getImageScaledWidth()) / 2;

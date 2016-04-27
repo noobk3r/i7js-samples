@@ -7,9 +7,9 @@
 
 package com.itextpdf.samples.book.part1.chapter03;
 
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -50,7 +50,7 @@ public class Listing_03_23_ImageDirect extends GenericTest {
         Paragraph p = new Paragraph("Foobar Film Festival").setFontSize(22).setTextAlignment(TextAlignment.CENTER);
         doc.add(p);
 
-        PdfImageXObject img = new PdfImageXObject(ImageFactory.getImage(RESOURCE));
+        PdfImageXObject img = new PdfImageXObject(ImageDataFactory.create(RESOURCE));
         new PdfCanvas(pdfDoc.getLastPage()).addXObject(img, (postcard.getWidth() - img.getWidth()) / 2, (postcard.getHeight() - img.getHeight()) / 2);
 
         //Close document

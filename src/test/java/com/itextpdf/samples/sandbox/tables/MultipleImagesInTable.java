@@ -11,7 +11,7 @@
  */
 package com.itextpdf.samples.sandbox.tables;
 
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
@@ -46,9 +46,9 @@ public class MultipleImagesInTable extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
 
-        Image img1 = new Image(ImageFactory.getImage(IMG1));
-        Image img2 = new Image(ImageFactory.getImage(IMG2));
-        Image img3 = new Image(ImageFactory.getImage(IMG3));
+        Image img1 = new Image(ImageDataFactory.create(IMG1));
+        Image img2 = new Image(ImageDataFactory.create(IMG2));
+        Image img3 = new Image(ImageDataFactory.create(IMG3));
 
         Table table = new Table(1);
         table.setWidthPercent(20);

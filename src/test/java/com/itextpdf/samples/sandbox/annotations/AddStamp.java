@@ -12,7 +12,7 @@
 package com.itextpdf.samples.sandbox.annotations;
 
 import com.itextpdf.io.image.ImageData;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfName;
@@ -44,7 +44,7 @@ public class AddStamp extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
 
-        ImageData img = ImageFactory.getImage(IMG);
+        ImageData img = ImageDataFactory.create(IMG);
         float w = img.getWidth();
         float h = img.getHeight();
         Rectangle location = new Rectangle(36, 770 - h, w, h);

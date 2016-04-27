@@ -9,7 +9,7 @@ package com.itextpdf.samples.book.part3.chapter10;
 
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.io.image.ImageData;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -36,7 +36,7 @@ public class Listing_10_20_TemplateClip extends GenericTest {
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
-        ImageData img = ImageFactory.getImage(RESOURCE);
+        ImageData img = ImageDataFactory.create(RESOURCE);
         com.itextpdf.layout.element.Image imgModel = new com.itextpdf.layout.element.Image(img);
         float w = imgModel.getImageScaledWidth();
         float h = imgModel.getImageScaledHeight();

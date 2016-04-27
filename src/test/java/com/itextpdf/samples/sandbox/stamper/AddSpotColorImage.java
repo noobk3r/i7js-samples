@@ -8,7 +8,7 @@
 package com.itextpdf.samples.sandbox.stamper;
 
 import com.itextpdf.io.image.ImageData;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.color.DeviceCmyk;
 import com.itextpdf.kernel.pdf.PdfArray;
 import com.itextpdf.kernel.pdf.PdfDictionary;
@@ -64,7 +64,7 @@ public class AddSpotColorImage extends GenericTest {
                 (byte) 0x3c};
 
         PdfArray colorspace = getSeparationColorspace(pdfDoc.getWriter(), new DeviceCmyk(0.8f, 0.3f, 0.3f, 0.1f));
-        ImageData image = ImageFactory.getImage(8, 8, 1, 1, circleData, new int[]{0, 0});
+        ImageData image = ImageDataFactory.create(8, 8, 1, 1, circleData, new int[]{0, 0});
         PdfImageXObject imageXObject = new PdfImageXObject(image);
         imageXObject.put(PdfName.ColorSpace, colorspace);
         imageXObject.makeIndirect(pdfDoc);

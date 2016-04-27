@@ -9,7 +9,7 @@ package com.itextpdf.samples.book.part2.chapter08;
 
 import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.io.image.ImageData;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.*;
@@ -158,7 +158,7 @@ public class Listing_08_01_Buttons extends GenericTest {
         rect = new Rectangle(300, 806, 370 - 300, 806 - 788);
 
         Button button = new Button("Buttons", "Push me", pdfDoc, rect);
-        button.setImage(ImageFactory.getImage(IMAGE));
+        button.setImage(ImageDataFactory.create(IMAGE));
         button.setButtonBackgroundColor(new DeviceGray(0.75f));
         button.setBorderColor(Color.DARK_GRAY);
         button.setFontSize(12);

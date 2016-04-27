@@ -8,7 +8,7 @@
 package com.itextpdf.samples.book.part2.chapter08;
 
 import com.itextpdf.io.image.ImageData;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.*;
@@ -65,7 +65,7 @@ public class Listing_08_06_ReplaceIcon extends GenericTest {
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         Document doc = new Document(pdfDoc);
         CustomButton ad = new CustomButton((PdfButtonFormField) form.getField("advertisement"));
-        ad.setImage(ImageFactory.getImage(RESOURCE));
+        ad.setImage(ImageDataFactory.create(RESOURCE));
         form.removeField("advertisement");
         doc.add(new Paragraph().add(ad));
         pdfDoc.close();

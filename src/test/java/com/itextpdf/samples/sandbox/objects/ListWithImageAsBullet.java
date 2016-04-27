@@ -8,7 +8,7 @@
 package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.io.image.ImageData;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
@@ -40,7 +40,7 @@ public class ListWithImageAsBullet extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
 
-        ImageData image = ImageFactory.getImage(IMG);
+        ImageData image = ImageDataFactory.create(IMG);
         PdfImageXObject xObject = new PdfImageXObject(image);
 //        image.scaleAbsolute(12, 12);
 //        image.setScaleToFitHeight(false);

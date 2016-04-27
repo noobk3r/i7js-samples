@@ -8,7 +8,7 @@
 package com.itextpdf.samples.book.part4.chapter15;
 
 import com.itextpdf.io.image.ImageData;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.PdfArray;
 import com.itextpdf.kernel.pdf.PdfDictionary;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -121,7 +121,7 @@ public class Listing_15_11_ObjectData extends GenericTest {
         float x = 11.5f;
         float y = 769.7f;
         for (Map.Entry<Movie, Integer> entry : map.entrySet()) {
-            img = ImageFactory.getImage(String.format(RESOURCE, entry.getKey().getImdb()));
+            img = ImageDataFactory.create(String.format(RESOURCE, entry.getKey().getImdb()));
             com.itextpdf.layout.element.Image image = new com.itextpdf.layout.element.Image(img);
             directors.get(entry.getValue()).addKid(new PdfStructElem(pdfDoc, image.getRole()));
             canvas.openTag(new CanvasTag(image.getRole()));

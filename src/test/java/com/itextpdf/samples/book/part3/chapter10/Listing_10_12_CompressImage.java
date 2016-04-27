@@ -7,7 +7,7 @@
 
 package com.itextpdf.samples.book.part3.chapter10;
 
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -42,7 +42,7 @@ public class Listing_10_12_CompressImage extends GenericTest {
     public void createPdf(String filename, boolean compress) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(filename));
         Document doc = new Document(pdfDoc);
-        Image img = new Image(ImageFactory.getImage(RESOURCE));
+        Image img = new Image(ImageDataFactory.create(RESOURCE));
         if (compress) {
             img.getXObject().getPdfObject().setCompressionLevel(9);
         }

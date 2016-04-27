@@ -7,7 +7,7 @@
 
 package com.itextpdf.samples.book.part1.chapter04;
 
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -42,10 +42,10 @@ public class Listing_04_15_XMen extends GenericTest {
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
 
         Image[] img = {
-                new Image(ImageFactory.getImage(String.format(RESOURCE, "0120903"))),
-                new Image(ImageFactory.getImage(String.format(RESOURCE, "0290334"))),
-                new Image(ImageFactory.getImage(String.format(RESOURCE, "0376994"))),
-                new Image(ImageFactory.getImage(String.format(RESOURCE, "0348150")))
+                new Image(ImageDataFactory.create(String.format(RESOURCE, "0120903"))),
+                new Image(ImageDataFactory.create(String.format(RESOURCE, "0290334"))),
+                new Image(ImageDataFactory.create(String.format(RESOURCE, "0376994"))),
+                new Image(ImageDataFactory.create(String.format(RESOURCE, "0348150")))
         };
         // Creates a table with 6 columns
         Table table = new Table(6);

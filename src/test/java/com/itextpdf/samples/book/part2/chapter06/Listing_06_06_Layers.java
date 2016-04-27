@@ -8,8 +8,8 @@
 package com.itextpdf.samples.book.part2.chapter06;
 
 import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.geom.PageSize;
-import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvasConstants;
@@ -123,7 +123,7 @@ public class Listing_06_06_Layers extends GenericTest {
         page = pdfDoc.getLastPage();
         under = new PdfCanvas(page.newContentStreamBefore(), page.getResources(), pdfDoc);
         drawRectangle(under, postCard.getWidth(), postCard.getHeight());
-        Image img = new Image(ImageFactory.getImage(RESOURCE));
+        Image img = new Image(ImageDataFactory.create(RESOURCE));
         img.setFixedPosition((postCard.getWidth() - img.getImageScaledWidth()) / 2,
                 (postCard.getHeight() - img.getImageScaledHeight()) / 2);
         doc.add(img);

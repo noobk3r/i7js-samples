@@ -7,7 +7,7 @@
 
 package com.itextpdf.samples.sandbox.tables;
 
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
@@ -46,7 +46,7 @@ public class RowspanAbsolutePosition extends GenericTest {
         table1.setWidth(555);
         Cell cell = new Cell(1, 2).add(new Paragraph("{Month}"));
         cell.setHorizontalAlignment(HorizontalAlignment.LEFT);
-        Image img = new Image(ImageFactory.getImage(IMG));
+        Image img = new Image(ImageDataFactory.create(IMG));
         img.scaleToFit(555f * 20f / 55f, 10000);
         Cell cell2 = new Cell(2, 1).add(img.setAutoScale(true));
         Cell cell3 = new Cell(1, 2).add(new Paragraph("Mr Fname Lname"));

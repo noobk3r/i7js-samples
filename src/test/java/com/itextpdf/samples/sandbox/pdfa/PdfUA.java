@@ -13,7 +13,7 @@ package com.itextpdf.samples.sandbox.pdfa;
 
 
 import com.itextpdf.io.font.PdfEncodings;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
@@ -67,14 +67,14 @@ public class PdfUA extends GenericTest {
         //==================
         Text c = new Text("The quick brown ");
         p.add(c);
-        Image i = new Image(ImageFactory.getImage(FOX));
+        Image i = new Image(ImageDataFactory.create(FOX));
         //PDF/UA
         //Set alt text
         i.getAccessibilityProperties().setAlternateDescription("Fox");
         //==============
         p.add(i);
         p.add(" jumps over the lazy ");
-        i = new Image(ImageFactory.getImage(DOG));
+        i = new Image(ImageDataFactory.create(DOG));
         //PDF/UA
         //Set alt text
         i.getAccessibilityProperties().setAlternateDescription("Dog");

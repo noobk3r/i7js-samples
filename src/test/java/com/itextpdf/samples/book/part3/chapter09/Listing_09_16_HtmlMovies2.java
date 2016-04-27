@@ -8,7 +8,7 @@
 package com.itextpdf.samples.book.part3.chapter09;
 
 import com.itextpdf.io.font.PdfEncodings;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.color.DeviceRgb;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
@@ -156,7 +156,7 @@ public class Listing_09_16_HtmlMovies2 extends Listing_09_15_HtmlMovies1 {
             } else if ("img".equals(qName)) {
                 String path = attributes.getValue("src");
                 try {
-                    img = new Image(ImageFactory.getImage(path));
+                    img = new Image(ImageDataFactory.create(path));
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }

@@ -11,8 +11,8 @@
  */
 package com.itextpdf.samples.sandbox.images;
 
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.color.DeviceGray;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -61,10 +61,10 @@ public class WatermarkedImages1 extends GenericTest {
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document doc = new Document(pdfDoc);
-        doc.add(getWatermarkedImage(doc, new Image(ImageFactory.getImage(IMAGE1)), "Bruno"));
-        doc.add(getWatermarkedImage(doc, new Image(ImageFactory.getImage(IMAGE2)), "Dog"));
-        doc.add(getWatermarkedImage(doc, new Image(ImageFactory.getImage(IMAGE3)), "Fox"));
-        Image image = new Image(ImageFactory.getImage(IMAGE4));
+        doc.add(getWatermarkedImage(doc, new Image(ImageDataFactory.create(IMAGE1)), "Bruno"));
+        doc.add(getWatermarkedImage(doc, new Image(ImageDataFactory.create(IMAGE2)), "Dog"));
+        doc.add(getWatermarkedImage(doc, new Image(ImageDataFactory.create(IMAGE3)), "Fox"));
+        Image image = new Image(ImageDataFactory.create(IMAGE4));
         image.scaleToFit(400, 700);
         doc.add(getWatermarkedImage(doc, image, "Bruno and Ingeborg"));
         doc.close();

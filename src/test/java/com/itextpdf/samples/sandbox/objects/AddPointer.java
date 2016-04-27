@@ -11,8 +11,8 @@
  */
 package com.itextpdf.samples.sandbox.objects;
 
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.geom.PageSize;
-import com.itextpdf.io.image.ImageFactory;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -41,7 +41,7 @@ public class AddPointer extends GenericTest {
 
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
-        Image img = new Image(ImageFactory.getImage(IMG));
+        Image img = new Image(ImageDataFactory.create(IMG));
         Document document = new Document(pdfDoc, new PageSize(img.getImageWidth(), img.getImageHeight()));
 
         img.setFixedPosition(0, 0);

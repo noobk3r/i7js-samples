@@ -8,7 +8,7 @@
 package com.itextpdf.samples.book.part3.chapter12;
 
 import com.itextpdf.forms.PdfAcroForm;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
@@ -80,7 +80,7 @@ public class Listing_12_15_Signatures extends SignatureTest {
         PdfSigner signer = new PdfSigner(reader, new FileOutputStream(dest), false);
         // appearance
         PdfSignatureAppearance appearance = signer.getSignatureAppearance();
-        appearance.setImage(ImageFactory.getImage(RESOURCE));
+        appearance.setImage(ImageDataFactory.create(RESOURCE));
         appearance.setReason("I've written this.");
         appearance.setLocation("Foobar");
         appearance.setPageRect(new Rectangle(72, 632, 150, 150));

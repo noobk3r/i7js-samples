@@ -11,7 +11,7 @@
  */
 package com.itextpdf.samples.sandbox.images;
 
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -41,7 +41,7 @@ public class ImageOnRotatedPage extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
-        Image img = new Image(ImageFactory.getImage(IMAGE));
+        Image img = new Image(ImageDataFactory.create(IMAGE));
         img.scaleToFit(770, 523);
         float offsetX = (770 - img.getImageScaledWidth()) / 2;
         float offsetY = (523 - img.getImageScaledHeight()) / 2;

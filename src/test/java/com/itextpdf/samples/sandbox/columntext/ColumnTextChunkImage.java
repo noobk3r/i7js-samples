@@ -12,7 +12,7 @@
 package com.itextpdf.samples.sandbox.columntext;
 
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
@@ -49,8 +49,8 @@ public class ColumnTextChunkImage extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
 
-        Image dog = new Image(ImageFactory.getImage(DOG));
-        Image fox = new Image(ImageFactory.getImage(FOX));
+        Image dog = new Image(ImageDataFactory.create(DOG));
+        Image fox = new Image(ImageDataFactory.create(FOX));
         Paragraph p = new Paragraph("quick brown fox jumps over the lazy dog.");
         p.add("Or, to say it in a more colorful way: quick brown ");
         p.add(fox);

@@ -7,7 +7,7 @@
 
 package com.itextpdf.samples.sandbox.tables;
 
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -36,7 +36,7 @@ public class ImagesNextToEachOther extends GenericTest {
     }
 
     public static Cell createImageCell(String path) throws MalformedURLException {
-        Image img = new Image(ImageFactory.getImage(path));
+        Image img = new Image(ImageDataFactory.create(path));
         return new Cell().add(img.setAutoScale(true));
     }
 
