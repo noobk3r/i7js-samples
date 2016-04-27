@@ -101,7 +101,7 @@ public class Listing_02_20_DirectorOverview2 extends GenericTest {
                     tab.setNextRenderer(new PositionedArrowTabRenderer(tab, doc, false));
                     paragraphtoAdd.add(tab);
                 }
-                movieitem = new ListItem().add(paragraphtoAdd);
+                movieitem = (ListItem) new ListItem().add(paragraphtoAdd);
                 list.add(movieitem);
             }
             // add the list to the document

@@ -50,7 +50,7 @@ public class WatermarkedImages3 extends GenericTest {
         PdfFormXObject template = new PdfFormXObject(new Rectangle(width, height));
         new Canvas(template, doc.getPdfDocument()).
                 add(img).
-                setProperty(Property.FONT_COLOR, DeviceGray.WHITE).
+                setFontColor(DeviceGray.WHITE).
                 showTextAligned(watermark, width / 2, height / 2, TextAlignment.CENTER, (float) Math.PI * 30f / 180f);
         return new Image(template);
     }

@@ -12,7 +12,6 @@ import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.property.Property;
 import com.itextpdf.layout.Style;
 import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.border.SolidBorder;
@@ -68,8 +67,8 @@ public class Listing_05_06_PressPreviews extends GenericTest {
         Cell cell;
 
         Style defaultCellStyle = new Style().setBorder(Border.NO_BORDER).
-                setProperty(Property.PADDING_BOTTOM, 5).setProperty(Property.PADDING_TOP, 5).
-                setProperty(Property.PADDING_LEFT, 5).setProperty(Property.PADDING_RIGHT, 5);
+                setPaddingBottom(5).setPaddingTop(5).
+                setPaddingLeft(5).setPaddingRight(5);
 
         for (int i = 0; i < 2; i++) {
             List<Cell> cells = new ArrayList<>();

@@ -14,12 +14,20 @@ import com.itextpdf.kernel.events.PdfDocumentEvent;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.pdf.*;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfOutline;
+import com.itextpdf.kernel.pdf.PdfPage;
+import com.itextpdf.kernel.pdf.PdfString;
+import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.navigation.PdfDestination;
 import com.itextpdf.layout.Canvas;
+import com.itextpdf.layout.element.AreaBreak;
+import com.itextpdf.layout.element.BlockElement;
+import com.itextpdf.layout.element.Div;
+import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.property.Property;
-import com.itextpdf.layout.element.*;
+import com.itextpdf.layout.renderer.AbstractRenderer;
 import com.itextpdf.layout.renderer.BlockRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -33,7 +41,8 @@ import com.lowagie.filmfestival.PojoFactory;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.Set;
+import java.util.TreeSet;
 
 import com.lowagie.filmfestival.PojoToElementFactory;
 import org.junit.experimental.categories.Category;
@@ -207,7 +216,7 @@ public class Listing_05_19_MovieHistory2 extends GenericTest {
         }
 
         @Override
-        protected SectionRenderer createSplitRenderer(int layoutResult) {
+        protected AbstractRenderer createSplitRenderer(int layoutResult) {
             SectionRenderer splitRenderer = getNextRenderer();
             splitRenderer.parent = parent;
             splitRenderer.modelElement = modelElement;
@@ -218,7 +227,7 @@ public class Listing_05_19_MovieHistory2 extends GenericTest {
             return splitRenderer;
         }
 
-        protected BlockRenderer createOverflowRenderer(int layoutResult) {
+        protected AbstractRenderer createOverflowRenderer(int layoutResult) {
             SectionRenderer overflowRenderer = getNextRenderer();
             overflowRenderer.parent = parent;
             overflowRenderer.modelElement = modelElement;

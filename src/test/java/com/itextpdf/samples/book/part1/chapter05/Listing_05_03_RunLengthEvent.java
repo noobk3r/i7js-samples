@@ -17,7 +17,6 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.property.Property;
 import com.itextpdf.layout.Style;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Cell;
@@ -84,10 +83,10 @@ public class Listing_05_03_RunLengthEvent extends GenericTest {
         style
                 .setBackgroundColor(Color.YELLOW)
                 .setTextAlignment(TextAlignment.LEFT)
-                .setProperty(Property.PADDING_LEFT, 3)
-                .setProperty(Property.PADDING_RIGHT, 3)
-                .setProperty(Property.PADDING_TOP, 3)
-                .setProperty(Property.PADDING_BOTTOM, 3);
+                .setPaddingLeft(3)
+                .setPaddingRight(3)
+                .setPaddingTop(3)
+                .setPaddingBottom(3);
         table.addHeaderCell(new Cell()
                 .add("Location")
                 .addStyle(style));

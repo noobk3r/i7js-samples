@@ -53,7 +53,7 @@ public class AddLinkImages extends GenericTest {
         p.add(createImage(DOG, "http://pages.itextpdf.com/ebook-stackoverflow-questions.html", pdfDoc));
         p.add(createImage(FOX, "http://stackoverflow.com/q/29388313/1622493", pdfDoc));
         p.add(new Image(new PdfFormXObject(new WmfImageData(BUTTERFLY), pdfDoc)).
-                setProperty(Property.ACTION, PdfAction.createURI("http://stackoverflow.com/questions/tagged/itext*")));
+                setAction(PdfAction.createURI("http://stackoverflow.com/questions/tagged/itext*")));
         doc.add(p);
         pdfDoc.close();
     }
