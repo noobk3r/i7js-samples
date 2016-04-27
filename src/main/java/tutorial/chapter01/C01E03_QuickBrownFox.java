@@ -3,12 +3,13 @@
  */
 package tutorial.chapter01;
 
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -41,8 +42,8 @@ public class C01E03_QuickBrownFox {
         Document document = new Document(pdf);
         
         // Compose Paragraph
-        Image fox = new Image(ImageFactory.getImage(FOX));
-        Image dog = new Image(ImageFactory.getImage(DOG));
+        Image fox = new Image(ImageDataFactory.create(FOX));
+        Image dog = new Image(ImageDataFactory.create(DOG));
         Paragraph p = new Paragraph("The quick brown ")
                 .add(fox)
                 .add(" jumps over the lazy ")

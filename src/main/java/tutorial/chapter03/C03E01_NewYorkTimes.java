@@ -4,7 +4,7 @@
 package tutorial.chapter03;
 
 import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
@@ -68,13 +68,13 @@ public class C03E01_NewYorkTimes {
                 new Rectangle(offSet + columnWidth * 2 + 5, offSet, columnWidth, columnHeight)};
         document.setRenderer(new ColumnDocumentRenderer(document, columns));
 
-        Image apple = new Image(ImageFactory.getImage(APPLE_IMG)).setWidth(columnWidth);
+        Image apple = new Image(ImageDataFactory.create(APPLE_IMG)).setWidth(columnWidth);
         String articleApple = new String(Files.readAllBytes(Paths.get(APPLE_TXT)), StandardCharsets.UTF_8);
         C03E01_NewYorkTimes.addArticle(document, "Apple Encryption Engineers, if Ordered to Unlock iPhone, Might Resist", "By JOHN MARKOFF MARCH 18, 2016", apple, articleApple);
-        Image facebook = new Image(ImageFactory.getImage(FACEBOOK_IMG)).setWidth(columnWidth);
+        Image facebook = new Image(ImageDataFactory.create(FACEBOOK_IMG)).setWidth(columnWidth);
         String articleFB = new String(Files.readAllBytes(Paths.get(FACEBOOK_TXT)), StandardCharsets.UTF_8);
         C03E01_NewYorkTimes.addArticle(document, "With \"Smog Jog\" Through Beijing, Zuckerberg Stirs Debate on Air Pollution", "By PAUL MOZUR MARCH 18, 2016", facebook, articleFB);
-        Image inst = new Image(ImageFactory.getImage(INST_IMG)).setWidth(columnWidth);
+        Image inst = new Image(ImageDataFactory.create(INST_IMG)).setWidth(columnWidth);
         String articleInstagram = new String(Files.readAllBytes(Paths.get(INST_TXT)), StandardCharsets.UTF_8);
         C03E01_NewYorkTimes.addArticle(document, "Instagram May Change Your Feed, Personalizing It With an Algorithm","By MIKE ISAAC MARCH 15, 2016", inst, articleInstagram);
 

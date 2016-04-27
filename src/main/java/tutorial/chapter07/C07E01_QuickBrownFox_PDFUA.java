@@ -4,10 +4,14 @@
 package tutorial.chapter07;
 
 import com.itextpdf.io.font.PdfEncodings;
-import com.itextpdf.io.image.ImageFactory;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
-import com.itextpdf.kernel.pdf.*;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfDocumentInfo;
+import com.itextpdf.kernel.pdf.PdfString;
+import com.itextpdf.kernel.pdf.PdfViewerPreferences;
+import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.xmp.XMPException;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Image;
@@ -49,12 +53,12 @@ public class C07E01_QuickBrownFox_PDFUA {
         Paragraph p = new Paragraph();
         p.setFont(font);
         p.add(new Text("The quick brown "));
-        Image foxImage = new Image(ImageFactory.getImage(FOX));
+        Image foxImage = new Image(ImageDataFactory.create(FOX));
         //PDF/UA: Set alt text
         foxImage.getAccessibilityProperties().setAlternateDescription("Fox");
         p.add(foxImage);
         p.add(" jumps over the lazy ");
-        Image dogImage = new Image(ImageFactory.getImage(DOG));
+        Image dogImage = new Image(ImageDataFactory.create(DOG));
         //PDF/UA: Set alt text
         dogImage.getAccessibilityProperties().setAlternateDescription("Dog");
         p.add(dogImage);
