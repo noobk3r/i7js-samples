@@ -8,7 +8,7 @@
 package com.itextpdf.samples.book.part3.chapter11;
 
 import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.io.font.FontFactory;
+import com.itextpdf.io.font.FontProgramFactory;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -42,7 +42,7 @@ public class Listing_11_20_FontSelectionExample extends GenericTest {
         // FontSelector selector = new FontSelector();
         PdfFont font1 = PdfFontFactory.createFont(FontConstants.TIMES_ROMAN);
         // f1.setColor(BaseColor.BLUE); // 12
-        PdfFont font2 = PdfFontFactory.createFont(FontFactory.createFont("MSung-Light"), "UniCNS-UCS2-H", false);
+        PdfFont font2 = PdfFontFactory.createFont(FontProgramFactory.createFont("MSung-Light"), "UniCNS-UCS2-H", false);
         // f2.setColor(BaseColor.RED);
         // selector.addFont(f1);
         // selector.addFont(f2);

@@ -11,8 +11,7 @@
  */
 package com.itextpdf.samples.sandbox.fonts;
 
-import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.io.font.FontFactory;
+import com.itextpdf.io.font.FontProgramFactory;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -54,7 +53,7 @@ public class FontTest extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
         PdfFontFactory.registerDirectory(FONTDIR);
-        Set<String> fonts = new TreeSet<String>(FontFactory.getRegisteredFonts());
+        Set<String> fonts = new TreeSet<String>(FontProgramFactory.getRegisteredFonts());
         for (String fontname : fonts) {
             showFontInfo(doc, fontname);
         }

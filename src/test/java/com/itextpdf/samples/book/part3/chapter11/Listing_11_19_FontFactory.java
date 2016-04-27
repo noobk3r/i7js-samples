@@ -9,7 +9,7 @@ package com.itextpdf.samples.book.part3.chapter11;
 
 import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.io.font.FontEncoding;
-import com.itextpdf.io.font.FontFactory;
+import com.itextpdf.io.font.FontProgramFactory;
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
@@ -45,7 +45,7 @@ public class Listing_11_19_FontFactory extends GenericTest {
         doc.add(new Paragraph("Times-Roman, Bold").setFont(fontBold));
         doc.add(new Paragraph("\n"));
 
-        FontFactory.register(FONT_DIR + "EBGaramond12-Regular.ttf", "my_bold_font");
+        FontProgramFactory.registerFont(FONT_DIR + "EBGaramond12-Regular.ttf", "my_bold_font");
         PdfFont myBoldFont = PdfFontFactory.createRegisteredFont("my_bold_font");
         doc.add(new Paragraph(font.getFontProgram().getFontNames().getFontName()).setFont(myBoldFont));
         String[][] name = myBoldFont.getFontProgram().getFontNames().getFullName();
@@ -60,8 +60,8 @@ public class Listing_11_19_FontFactory extends GenericTest {
 
         doc.add(new Paragraph("Registered fonts:"));
         // "./src/test/resources/font" include so many fonts that we decided to use the other directory
-        FontFactory.registerDirectory(FONT_DIR);
-        for (String f : FontFactory.getRegisteredFonts()) {
+        FontProgramFactory.registerFontDirectory(FONT_DIR);
+        for (String f : FontProgramFactory.getRegisteredFonts()) {
             doc.add(new Paragraph(f).setFont(PdfFontFactory.createRegisteredFont(f, "", true)));
         }
         doc.add(new Paragraph("\n"));
@@ -70,8 +70,8 @@ public class Listing_11_19_FontFactory extends GenericTest {
         doc.add(new Paragraph("Computer Modern").setFont(cmr10));
         doc.add(new Paragraph("\n"));
 
-        FontFactory.registerSystemDirectories();
-        for (String f : FontFactory.getRegisteredFamilies()) {
+        FontProgramFactory.registerSystemFontDirectories();
+        for (String f : FontProgramFactory.getRegisteredFontFamilies()) {
             doc.add(new Paragraph(f));
         }
         doc.add(new Paragraph("\n"));

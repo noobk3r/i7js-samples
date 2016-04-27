@@ -46,7 +46,7 @@
 ////            bold = BaseFont.createFont("resources/fonts/OpenSans-Bold.ttf", BaseFont.IDENTITY_H, true);
 ////        }
 ////
-////        public boolean isRegistered(String fontname) {
+////        public boolean isRegisteredFont(String fontname) {
 ////            return true;
 ////        }
 ////
