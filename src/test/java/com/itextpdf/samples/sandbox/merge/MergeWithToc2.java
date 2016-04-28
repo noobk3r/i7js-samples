@@ -39,7 +39,6 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.TreeMap;
 
-@Ignore
 @Category(SampleTest.class)
 public class MergeWithToc2 extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/merge/merge_with_toc2.pdf";
@@ -109,7 +108,7 @@ public class MergeWithToc2 extends GenericTest {
         PdfDocument resultDoc = new PdfDocument(new PdfWriter(dest));
         PdfDocument srcDoc = new PdfDocument(new PdfReader(
                 new RandomAccessSourceFactory().createSource(baos.toByteArray()), new ReaderProperties()));
-        srcDoc.getOutlines(false);
+        srcDoc.initializeOutlines();
         srcDoc.copyPagesTo(srcDoc.getNumberOfPages(), srcDoc.getNumberOfPages(), resultDoc);
         srcDoc.copyPagesTo(1, srcDoc.getNumberOfPages() - 1, resultDoc);
         srcDoc.close();

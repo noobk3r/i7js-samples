@@ -25,11 +25,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-@Ignore
 @Category(SampleTest.class)
 public class CircleAnnotation extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
     public static final String DEST = "./target/test/resources/sandbox/annotations/circle_annotation.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -41,7 +40,7 @@ public class CircleAnnotation extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)),
                 new PdfWriter(new FileOutputStream(DEST)));
-        Rectangle rect = new Rectangle(150, 770, 200 - 150, 820 - 770);
+        Rectangle rect = new Rectangle(150, 770, 50, 50);
 
         PdfAnnotation annotation = new PdfCircleAnnotation(rect)
                 .setContents("Circle")

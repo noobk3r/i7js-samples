@@ -43,7 +43,8 @@ public class SplittingNestedTable2 extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
-        Document doc = new Document(pdfDoc, new PageSize(300, 150)); // TODO DEVSIX-466 Change the height to see interesting results : 200, 150, 180
+        // TODO DEVSIX-466
+        Document doc = new Document(pdfDoc, new PageSize(300, 150));
         doc.add(new Paragraph("Table with setKeepTogether(false):"));
         Table table = new Table(2);
         table.setMarginTop(10);

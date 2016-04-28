@@ -23,7 +23,6 @@ import java.io.File;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
 public class DecryptPdf extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/security/decrypt_pdf.pdf";

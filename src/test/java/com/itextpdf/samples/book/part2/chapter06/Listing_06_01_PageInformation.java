@@ -22,12 +22,14 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
+import org.apache.regexp.RE;
+import org.junit.Assert;
 import org.junit.Ignore;
+import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-@Ignore
 @Category(SampleTest.class)
-public class Listing_06_01_PageInformation extends GenericTest {
+public class Listing_06_01_PageInformation {
     public static final String RESULT
             = "./target/test/resources/book/part2/chapter06/Listing_06_01_PageInformation.txt";
     public static final String CMP_RESULT
@@ -43,11 +45,11 @@ public class Listing_06_01_PageInformation extends GenericTest {
             = "./src/test/resources/book/part1/chapter05/cmp_Listing_05_15_Hero1.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
-        new Listing_06_01_PageInformation().manipulatePdf(RESULT);
+        new Listing_06_01_PageInformation().manipulatePdf();
     }
 
-    @Override
-    public void manipulatePdf(String dest) throws IOException, SQLException {
+    @Test
+    public void manipulatePdf() throws IOException {
         // Use old examples to create PDFs
         // Inspecting PDFs
         PrintWriter writer = new PrintWriter(new FileOutputStream(RESULT));
@@ -56,6 +58,8 @@ public class Listing_06_01_PageInformation extends GenericTest {
         inspect(writer, MOVIE_TEMPLATES);
         inspect(writer, HERO1);
         writer.close();
+
+        comparePdf(RESULT, CMP_RESULT);
     }
 
     public static void inspect(PrintWriter writer, String filename)
@@ -89,8 +93,7 @@ public class Listing_06_01_PageInformation extends GenericTest {
         reader.close();
     }
 
-    @Override
-    protected void comparePdf(String dest, String cmp) throws Exception {
+    protected void comparePdf(String dest, String cmp) throws IOException {
         //super.comparePdf(dest, cmp);
         BufferedReader destReader = new BufferedReader(new InputStreamReader(new FileInputStream(dest)));
         BufferedReader cmpReader = new BufferedReader(new InputStreamReader(new FileInputStream(cmp)));
@@ -98,28 +101,17 @@ public class Listing_06_01_PageInformation extends GenericTest {
         String curCmpStr;
         int row = 1;
         while ((curDestStr = destReader.readLine()) != null) {
-            if ((curCmpStr = cmpReader.readLine()) != null) {
-                addError("The lengths of files are different.");
+            if ((curCmpStr = cmpReader.readLine()) == null) {
+                Assert.fail("The lengths of files are different.");
             }
             if (!curCmpStr.equals(curDestStr)) {
-                addError("The files are different on the row " + row);
+                Assert.fail("The files are different on the row " + row);
             }
             row++;
         }
         if ((curCmpStr = cmpReader.readLine()) != null) {
-            addError("The lengths of files are different.");
+            Assert.fail("The lengths of files are different.");
         }
     }
 
-    @Override
-    protected String getDest() {
-        // dummy
-        return RESULT;
-    }
-
-    @Override
-    protected String getCmpPdf() {
-        // dummy
-        return CMP_RESULT;
-    }
 }

@@ -13,6 +13,7 @@ import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.tagging.PdfStructElem;
 import com.itextpdf.kernel.pdf.tagging.PdfStructTreeRoot;
+import com.itextpdf.kernel.pdf.tagutils.TagTreePointer;
 import com.itextpdf.layout.Document;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
@@ -57,15 +58,18 @@ public class Listing_15_16_StructuredContent extends GenericTest {
         root.getRoleMap().put(new PdfName("chapter"), PdfName.Sect);
         root.getRoleMap().put(new PdfName("title"), PdfName.H);
         root.getRoleMap().put(new PdfName("para"), PdfName.P);
-        PdfStructElem top = root.addKid(new PdfStructElem(pdfDoc, new PdfName("chapter")));
+        // See TaggingSamples for more information
+        TagTreePointer autoTaggingPointer = pdfDoc.getTagStructureContext().getAutoTaggingPointer();
+        // create a new tag, which will be a kid of the root element, and move to it
+        autoTaggingPointer.addTag(new PdfName("chapter"));
         SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
-        List<PdfStructElem> elements = new ArrayList<PdfStructElem>();
+        List<PdfName> roles = new ArrayList<PdfName>();
         parser.parse(
                 new InputSource(new FileInputStream(RESOURCE)),
-                new Listing_15_17_StructureParser(pdfDoc, top, elements));
+                new Listing_15_17_StructureParser(roles));
         parser.parse(
                 new InputSource(new FileInputStream(RESOURCE)),
-                new Listing_15_18_ContentParser(doc, elements));
-        pdfDoc.close();
+                new Listing_15_18_ContentParser(doc, roles));
+        doc.close();
     }
 }

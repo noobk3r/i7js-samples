@@ -7,22 +7,23 @@
 
 package com.itextpdf.samples.book.part2.chapter06;
 
+import com.itextpdf.io.source.RandomAccessSourceFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.samples.GenericTest;
+import com.itextpdf.kernel.pdf.ReaderProperties;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
+import org.junit.internal.ExactComparisonCriteria;
 
-import java.io.FileOutputStream;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
-
-@Ignore
 @Category(SampleTest.class)
-public class Listing_06_02_MemoryInfo extends GenericTest {
+public class Listing_06_02_MemoryInfo {
     public static final String RESULT
             = "./target/test/resources/book/part2/chapter06/Listing_06_02_MemoryInfo.txt";
     public static final String CMP_RESULT
@@ -31,19 +32,25 @@ public class Listing_06_02_MemoryInfo extends GenericTest {
             = "./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
 
     public static void main(String args[]) throws IOException, SQLException, NoSuchFieldException, IllegalAccessException {
-        new Listing_06_02_MemoryInfo().manipulatePdf(RESULT);
+        new Listing_06_02_MemoryInfo().manipulatePdf();
     }
 
-    public void manipulatePdf(String dest) throws IOException, SQLException, NoSuchFieldException, IllegalAccessException {
-        // Create a writer for a report file
-        PrintWriter writer = new PrintWriter(new FileOutputStream(RESULT));
-        garbageCollect();
-        // Do a full read
-        fullRead(writer, MOVIE_TEMPLATES);
-        // Do a partial read
-        partialRead(writer, MOVIE_TEMPLATES);
-        // Close the text file writer
-        writer.close();
+    @Test
+    public void manipulatePdf() {
+        try {
+            // Create a writer for a report file
+            PrintWriter writer = new PrintWriter(RESULT);
+            garbageCollect();
+            // Do a full read
+            fullRead(writer, MOVIE_TEMPLATES);
+            // Do a partial read
+            partialRead(writer, MOVIE_TEMPLATES);
+            // Close the text file writer
+            writer.close();
+        } catch (Exception e) {
+            Assert.fail();
+        }
+        // The test passes if there is no exception, because the results may vary on different machines
     }
 
     /**
@@ -73,9 +80,9 @@ public class Listing_06_02_MemoryInfo extends GenericTest {
      */
     public static void partialRead(PrintWriter writer, String fileName) throws IOException {
         long before = getMemoryUse();
-        PdfReader reader = new PdfReader(fileName,null);
+        PdfReader reader = new PdfReader(fileName);
 
-        PdfDocument pdfDocument = new PdfDocument(reader);
+        PdfDocument pdfDocument = new PdfDocument(new PdfReader(new RandomAccessSourceFactory().createSource(new FileInputStream(fileName)), new ReaderProperties()));
         pdfDocument.getNumberOfPages();
         writer.println(String.format("Memory used by partial read: %d",
                 getMemoryUse() - before));
@@ -118,20 +125,4 @@ public class Listing_06_02_MemoryInfo extends GenericTest {
         }
     }
 
-    @Override
-    protected void comparePdf(String dest, String cmp) throws Exception {
-        // Can't compare
-    }
-
-    @Override
-    protected String getDest() {
-        // dummy
-        return RESULT;
-    }
-
-    @Override
-    protected String getCmpPdf() {
-        // dummy
-        return CMP_RESULT;
-    }
 }

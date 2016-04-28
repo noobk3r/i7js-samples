@@ -36,7 +36,6 @@ import java.sql.SQLException;
 import java.util.Set;
 import java.util.TreeSet;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_13_13_Bookmarks2NamedDestinations extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part4/chapter13/Listing_13_13_Bookmarks2NamedDestinations_named_destinations.pdf";

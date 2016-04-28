@@ -42,7 +42,7 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
-@Ignore
+@Ignore("Put right property file with valid data and right dll path")
 @Category(SampleTest.class)
 public class C4_03_SignWithPKCS11SC extends C4_02_SignWithPKCS11USB {
     public static final String SRC = "./src/test/resources/pdfs/hello.pdf";

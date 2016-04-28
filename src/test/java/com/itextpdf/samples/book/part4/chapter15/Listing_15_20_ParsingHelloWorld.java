@@ -131,7 +131,7 @@ public class Listing_15_20_ParsingHelloWorld extends GenericTest {
             cmpReader = new BufferedReader(new InputStreamReader(new FileInputStream(CMP_TEXT[i])));
             int row = 1;
             while ((curDestStr = destReader.readLine()) != null) {
-                if ((curCmpStr = cmpReader.readLine()) != null) {
+                if ((curCmpStr = cmpReader.readLine()) == null) {
                     addError("The lengths of files are different.");
                 }
                 if (!curCmpStr.equals(curDestStr)) {

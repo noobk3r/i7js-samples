@@ -39,7 +39,6 @@ import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
 @Ignore("Put property file with valid data")
-
 @Category(SampleTest.class)
 public class C3_09_SignWithTSA extends C3_01_SignWithCAcert {
     public static final String SRC = "./src/test/resources/pdfs/hello.pdf";

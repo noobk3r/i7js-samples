@@ -9,13 +9,7 @@ package com.itextpdf.samples.book.part4.chapter15;
 
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
-import com.itextpdf.kernel.pdf.PdfArray;
-import com.itextpdf.kernel.pdf.PdfDictionary;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfNumber;
-import com.itextpdf.kernel.pdf.PdfString;
-import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.canvas.CanvasTag;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.tagging.PdfStructElem;
@@ -27,8 +21,8 @@ import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Director;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
+import org.junit.experimental.categories.Category;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -38,10 +32,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
-
-@Ignore
 @Category(SampleTest.class)
 public class Listing_15_11_ObjectData extends GenericTest {
     public static final String DEST
@@ -50,21 +40,17 @@ public class Listing_15_11_ObjectData extends GenericTest {
             = "./src/test/resources/img/posters/%s.jpg";
     public static final String SELECTDIRECTORS
             = "SELECT DISTINCT d.id, d.name, d.given_name, count(*) AS c "
-                    + "FROM film_director d, film_movie_director md "
-                    + "WHERE d.id = md.director_id AND d.id < 8 "
-                    + "GROUP BY d.id, d.name, d.given_name ORDER BY id";
+            + "FROM film_director d, film_movie_director md "
+            + "WHERE d.id = md.director_id AND d.id < 8 "
+            + "GROUP BY d.id, d.name, d.given_name ORDER BY id";
 
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_15_11_ObjectData().manipulatePdf(DEST);
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {
-        //Initialize writer
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-
         //Initialize document
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         pdfDoc.setTagged();
         pdfDoc.setUserProperties(true);
 

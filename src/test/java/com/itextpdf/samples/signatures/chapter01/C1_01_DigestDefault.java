@@ -29,10 +29,9 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
-@Ignore
+@Ignore("The result differs on different machines")
 @Category(SampleTest.class)
 public class C1_01_DigestDefault extends SignatureTest {
-    // The result differs on different machines
     public static final String expectedOutput = "Digest using MD5: 16\n" +
             "Digest: 5f4dcc3b5aa765d61d8327deb882cf99\n" +
             "Is the password 'password'? true\n" +

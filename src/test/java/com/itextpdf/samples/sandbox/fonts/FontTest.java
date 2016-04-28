@@ -20,19 +20,16 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.util.Set;
 import java.util.TreeSet;
 
-@Ignore
 @Category(SampleTest.class)
 public class FontTest extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/fonts/font_test.pdf";
-    public static final String FONTDIR = "./src/test/resources/font";
+    public static final String FONTDIR = "./src/test/resources/book/part3/chapter11/font";
     public static final String TEXT = "Quick brown fox jumps over the lazy dog; 0123456789";
     public static final String CP1250 = "Nikogar\u0161nja zemlja";
     public static final String CP1251 = "\u042f \u043b\u044e\u0431\u043b\u044e \u0442\u0435\u0431\u044f";
@@ -50,21 +47,21 @@ public class FontTest extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
         PdfFontFactory.registerDirectory(FONTDIR);
         Set<String> fonts = new TreeSet<String>(FontProgramFactory.getRegisteredFonts());
         for (String fontname : fonts) {
             showFontInfo(doc, fontname);
         }
-        pdfDoc.close();
+        doc.close();
     }
 
     protected void showFontInfo(Document doc, String fontname) {
         System.out.println(fontname);
-        PdfFont font = null;
+        PdfFont font;
         try {
-            font = PdfFontFactory.createRegisteredFont(fontname, "Identity-H", true, false);
+            font = PdfFontFactory.createRegisteredFont(fontname, "Identity-H", true);
         } catch (Exception e) {
             doc.add(new Paragraph(
                     String.format("The font %s doesn't have unicode support: %s", fontname, e.getMessage())));

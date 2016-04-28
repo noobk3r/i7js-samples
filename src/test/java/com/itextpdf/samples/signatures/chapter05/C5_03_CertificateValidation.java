@@ -56,8 +56,8 @@ public class C5_03_CertificateValidation extends C5_01_SignatureIntegrity {
             "=== Certificate 0 ===\n" +
             "Issuer: C=BE,ST=OVL,L=Ghent,O=iText Software,OU=IT,CN=Bruno Specimen\n" +
             "Subject: C=BE,ST=OVL,L=Ghent,O=iText Software,OU=IT,CN=Bruno Specimen\n" +
-            "Valid from: 2016-02-15 14:58:18.00\n" +
-            "Valid to: 2016-05-15 14:58:18.00\n" +
+            "Valid from: 2016-02-15\n" +
+            "Valid to: 2016-05-15\n" +
             "The certificate was valid at the time of signing.\n" +
             "The certificate is still valid.\n" +
             "=== Checking validity of the document at the time of signing ===\n" +
@@ -123,7 +123,7 @@ public class C5_03_CertificateValidation extends C5_01_SignatureIntegrity {
     public void showCertificateInfo(X509Certificate cert, Date signDate) {
         System.out.println("Issuer: " + cert.getIssuerDN());
         System.out.println("Subject: " + cert.getSubjectDN());
-        SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SS");
+        SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd");
         System.out.println("Valid from: " + date_format.format(cert.getNotBefore()));
         System.out.println("Valid to: " + date_format.format(cert.getNotAfter()));
         try {

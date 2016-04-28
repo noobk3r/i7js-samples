@@ -236,7 +236,6 @@ public class TaggingSamples extends ExtendedITextTest {
 
         // This marks the whole table contents as an Artifact.
         // NOTE: Only content that is already added before this call will be marked as Artifact. New content will be tagged, unless you make this call again.
-        // TODO may be just make a separate public method "propagateRoleToChildren"
         table.setRole(PdfName.Artifact);
         document.add(table);
 

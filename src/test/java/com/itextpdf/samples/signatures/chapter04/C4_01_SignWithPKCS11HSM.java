@@ -55,7 +55,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+@Ignore("Put property file with valid data")
 @Category(SampleTest.class)
 public class C4_01_SignWithPKCS11HSM extends SignatureTest {
     public static final String SRC = "./src/test/resources/pdfs/hello.pdf";

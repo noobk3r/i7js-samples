@@ -26,16 +26,15 @@ import com.itextpdf.signatures.PdfSignatureAppearance;
 import com.itextpdf.signatures.PdfSigner;
 import com.itextpdf.test.annotations.type.SampleTest;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.security.GeneralSecurityException;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
 import java.security.cert.Certificate;
+import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -46,7 +45,6 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
-@Ignore
 @Category(SampleTest.class)
 public class C4_07_ClientServerSigning extends SignatureTest {
     public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
@@ -154,5 +152,14 @@ public class C4_07_ClientServerSigning extends SignatureTest {
         if (error) {
             fail(accumulateErrors(errors));
         }
+    }
+
+    @Override
+    protected void initKeyStoreForVerification(KeyStore ks) throws IOException, NoSuchAlgorithmException, CertificateException, KeyStoreException {
+        super.initKeyStoreForVerification(ks);
+        URL certUrl = new URL(CERT);
+        CertificateFactory cf = CertificateFactory.getInstance("X.509");
+        Certificate itextCert = cf.generateCertificate(certUrl.openStream());
+        ks.setCertificateEntry("itext", itextCert);
     }
 }

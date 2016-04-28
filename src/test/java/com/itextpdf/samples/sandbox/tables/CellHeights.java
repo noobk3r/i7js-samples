@@ -49,7 +49,7 @@ public class CellHeights extends GenericTest {
         table.addCell(cell.clone(true));
         // the phrase doesn't fit the fixed height
         table.addCell("fixed height (not sufficient)");
-        // TODO DEVSIX-555 (Revise the entire sample)
+        // TODO DEVSIX-555
         cell.setHeight(36f);
         table.addCell(cell.clone(true));
         // The minimum height is exceeded

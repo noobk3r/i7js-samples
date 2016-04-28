@@ -58,7 +58,7 @@ public class C5_02_SignatureInfo extends C5_01_SignatureIntegrity {
             "Encryption algorithm: RSA\n" +
             "Filter subtype: /adbe.pkcs7.detached\n" +
             "Name of the signer: Alice Specimen\n" +
-            "Signed on: 2016-02-23 11:55:01.00\n" +
+            "Signed on: 2016-02-23\n" +
             "Location: \n" +
             "Reason: \n" +
             "Contact info: \n" +
@@ -77,7 +77,7 @@ public class C5_02_SignatureInfo extends C5_01_SignatureIntegrity {
             "Encryption algorithm: RSA\n" +
             "Filter subtype: /adbe.pkcs7.detached\n" +
             "Name of the signer: Bob Specimen\n" +
-            "Signed on: 2016-02-23 11:55:02.00\n" +
+            "Signed on: 2016-02-23\n" +
             "Location: \n" +
             "Reason: \n" +
             "Contact info: \n" +
@@ -99,7 +99,7 @@ public class C5_02_SignatureInfo extends C5_01_SignatureIntegrity {
             "Encryption algorithm: RSA\n" +
             "Filter subtype: /adbe.pkcs7.detached\n" +
             "Name of the signer: Carol Specimen\n" +
-            "Signed on: 2016-02-23 11:55:02.00\n" +
+            "Signed on: 2016-02-23\n" +
             "Location: \n" +
             "Reason: \n" +
             "Contact info: \n" +
@@ -124,7 +124,7 @@ public class C5_02_SignatureInfo extends C5_01_SignatureIntegrity {
             "Encryption algorithm: RSA\n" +
             "Filter subtype: /adbe.pkcs7.detached\n" +
             "Name of the signer: Dave Specimen\n" +
-            "Signed on: 2016-02-23 11:55:02.00\n" +
+            "Signed on: 2016-02-23\n" +
             "Location: \n" +
             "Reason: \n" +
             "Contact info: \n" +
@@ -144,7 +144,7 @@ public class C5_02_SignatureInfo extends C5_01_SignatureIntegrity {
             "Encryption algorithm: RSA\n" +
             "Filter subtype: /ETSI.CAdES.detached\n" +
             "Name of the signer: Bruno Specimen\n" +
-            "Signed on: 2016-02-23 12:24:30.00\n" +
+            "Signed on: 2016-02-23\n" +
             "Location: Ghent\n" +
             "Reason: Test 4\n" +
             "Contact info: \n" +
@@ -163,14 +163,14 @@ public class C5_02_SignatureInfo extends C5_01_SignatureIntegrity {
             "Filter subtype: /adbe.pkcs7.detached\n" +
             "Name of the signer: Bruno Specimen\n" +
             "Alternative name of the signer: Bruno L. Specimen\n" +
-            "Signed on: 2016-02-23 12:22:40.00\n" +
+            "Signed on: 2016-02-23\n" +
             "Location: Ghent\n" +
             "Reason: Test metadata\n" +
             "Contact info: 555 123 456\n" +
             "Signature type: approval\n" +
             "Filling out fields allowed: true\n" +
             "Adding annotations allowed: true\n" +
-            "\n"; 
+            "\n";
 
     public SignaturePermissions inspectSignature(PdfDocument pdfDoc, SignatureUtil signUtil, PdfAcroForm form, String name, SignaturePermissions perms) throws GeneralSecurityException, IOException {
         if (form.getField(name).getWidgets() != null && form.getField(name).getWidgets().size() > 0) {
@@ -201,7 +201,7 @@ public class C5_02_SignatureInfo extends C5_01_SignatureIntegrity {
         System.out.println("Name of the signer: " + CertificateInfo.getSubjectFields(cert).getField("CN"));
         if (pkcs7.getSignName() != null)
             System.out.println("Alternative name of the signer: " + pkcs7.getSignName());
-        SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SS");
+        SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd");
         System.out.println("Signed on: " + date_format.format(pkcs7.getSignDate().getTime()));
         if (pkcs7.getTimeStampDate() != null) {
             System.out.println("TimeStamp: " + date_format.format(pkcs7.getTimeStampDate().getTime()));

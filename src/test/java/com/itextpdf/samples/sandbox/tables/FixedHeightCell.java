@@ -54,7 +54,7 @@ public class FixedHeightCell extends GenericTest {
                     }
                 }
                 if (r == 'F') {
-                    // TODO DEVSIX-555 (Revise the entire sample)
+                    // TODO DEVSIX-555
                     cell.setHeight(60);
                     if (c == 2) {
                         cell.add(new Paragraph("This cell has more content than the other cells"));
