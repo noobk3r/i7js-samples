@@ -29,6 +29,7 @@ import com.itextpdf.test.annotations.type.SampleTest;
 import java.io.IOException;
 
 import org.junit.experimental.categories.Category;
+
 @Category(SampleTest.class)
 public class Listing_15_13_ReadOutLoud extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part4/chapter15/Listing_15_13_ReadOutLoud.pdf";
