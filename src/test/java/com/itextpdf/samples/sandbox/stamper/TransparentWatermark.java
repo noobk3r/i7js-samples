@@ -27,16 +27,15 @@ import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-
-import org.junit.experimental.categories.Category;
 
 
 @Category(SampleTest.class)
 public class TransparentWatermark extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/hero.pdf";
     public static final String DEST = "./target/test/resources/sandbox/stamper/transparent_watermark.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/hero.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -54,7 +53,6 @@ public class TransparentWatermark extends GenericTest {
         new Canvas(under, pdfDoc, pdfDoc.getDefaultPageSize())
                 .showTextAligned(p, 297, 550, 1, TextAlignment.CENTER, VerticalAlignment.TOP, 0);
         PdfCanvas over = new PdfCanvas(pdfDoc.getFirstPage());
-        // Problems with the source file, need to set the right color
         over.setFillColor(Color.BLACK);
         p = new Paragraph("This watermark is added ON TOP OF the existing content")
                 .setFont(font).setFontSize(15);

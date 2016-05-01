@@ -12,24 +12,23 @@ import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.layout.property.HorizontalAlignment;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class CellMethod extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/cell_method.pdf";
     public static final String FONT = "./src/test/resources/font/FreeSans.ttf";
+
     private static PdfFont czechFont = null;
     private static PdfFont defaultFont = null;
     private static PdfFont greekFont = null;
@@ -37,7 +36,6 @@ public class CellMethod extends GenericTest {
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
-
         new CellMethod().manipulatePdf(DEST);
     }
 
@@ -69,12 +67,12 @@ public class CellMethod extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         setCompareRenders(true);
+
         czechFont = PdfFontFactory.createFont(FONT, "Cp1250", true);
         greekFont = PdfFontFactory.createFont(FONT, "Cp1253", true);
         defaultFont = PdfFontFactory.createFont(FONT, null, true);
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
+
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
 
         Table table = new Table(2);

@@ -12,18 +12,11 @@
 package com.itextpdf.samples.sandbox.images;
 
 import com.itextpdf.io.source.ByteArrayOutputStream;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfIndirectReference;
-import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfNumber;
-import com.itextpdf.kernel.pdf.PdfObject;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfStream;
-import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.kernel.pdf.WriterProperties;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -31,12 +24,10 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
-import org.junit.experimental.categories.Category;
-
 @Category(SampleTest.class)
 public class ReduceSize extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/single_image.pdf";
     public static final String DEST = "./target/test/resources/sandbox/images/reduce_size.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/single_image.pdf";
     public static final float FACTOR = 0.5f;
 
     public static void main(String[] args) throws Exception {
@@ -53,21 +44,26 @@ public class ReduceSize extends GenericTest {
         PdfStream stream;
         for (PdfIndirectReference indRef : pdfDoc.listIndirectReferences()) {
             object = indRef.getRefersTo();
-            if (object == null || !object.isStream())
+            if (object == null || !object.isStream()) {
                 continue;
+            }
             stream = (PdfStream) object;
-            if (!PdfName.Image.equals(stream.getAsName(PdfName.Subtype)))
+            if (!PdfName.Image.equals(stream.getAsName(PdfName.Subtype))) {
                 continue;
-            if (!PdfName.DCTDecode.equals(stream.getAsName(PdfName.Filter)))
+            }
+            if (!PdfName.DCTDecode.equals(stream.getAsName(PdfName.Filter))) {
                 continue;
+            }
             PdfImageXObject image = new PdfImageXObject(stream);
             BufferedImage bi = image.getBufferedImage();
-            if (bi == null)
+            if (bi == null) {
                 continue;
+            }
             int width = (int) (bi.getWidth() * FACTOR);
             int height = (int) (bi.getHeight() * FACTOR);
-            if (width <= 0 || height <= 0)
+            if (width <= 0 || height <= 0) {
                 continue;
+            }
             BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
             AffineTransform at = AffineTransform.getScaleInstance(FACTOR, FACTOR);
             Graphics2D g = img.createGraphics();

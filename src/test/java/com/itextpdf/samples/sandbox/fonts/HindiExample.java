@@ -44,11 +44,15 @@ public class HindiExample extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         LicenseKey.loadLicenseFile(System.getenv("ITEXT7_LICENSEKEY") + "/itextkey-typography.xml");
+
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
-        PdfFont f = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H, true);
+
+        PdfFont f = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H);
+
         Paragraph p1 = new Paragraph("\u0915\u093e\u0930 \u092a\u093e\u0930\u094d\u0915\u093f\u0902\u0917").setFont(f);
         doc.add(p1);
+
         Paragraph p2 = new Paragraph("\\u0915 \u0915 \\u093e \u093e \\0930 \u0930\n"
                 + "\\u092a \u092a \\u093e \u093e \\u0930 \u0930 \\u094d \u094d"
                 + "\\u0915 \u0915 \\u093f \\u093f \u093f \\u0902 \u0902"
@@ -60,12 +64,12 @@ public class HindiExample extends GenericTest {
         Cell customerLblCell = new Cell().add("CUSTOMERS");
         Cell balanceLblCell = new Cell().add(new Paragraph("\u0915\u093e\u0930\u092a\u093e\u0930\u094d\u0915\u093f\u0902\u0917")
                 .setFont(f)
-                .setFontColor(new DeviceRgb(50, 205, 50))
-                .setFontSize(12));
+                .setFontColor(new DeviceRgb(50, 205, 50)));
         table.addCell(customerLblCell);
         table.addCell(balanceLblCell);
         table.setMarginTop(10);
         doc.add(table);
+
         doc.close();
     }
 }

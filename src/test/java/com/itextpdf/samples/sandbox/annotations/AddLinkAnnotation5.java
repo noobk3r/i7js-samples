@@ -45,6 +45,7 @@ public class AddLinkAnnotation5 extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
+        Document doc = new Document(pdfDoc);
         Link link = new Link("This is a link. Click it and you'll be forwarded to another page in this document.",
                 PdfAction.createGoTo(PdfExplicitDestination.createFit(3)));
         link.setBackgroundColor(Color.RED);
@@ -52,8 +53,8 @@ public class AddLinkAnnotation5 extends GenericTest {
 
         Paragraph p = new Paragraph(link).setWidth(240);
         // TODO DEVSIX-549
-        new Document(pdfDoc).showTextAligned(p, 320, 695, 1, TextAlignment.LEFT,
+        doc.showTextAligned(p, 320, 695, 1, TextAlignment.LEFT,
                 VerticalAlignment.TOP, 0);
-        pdfDoc.close();
+        doc.close();
     }
 }

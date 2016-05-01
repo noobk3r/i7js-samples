@@ -15,14 +15,12 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfOutline;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.test.annotations.type.SampleTest;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.List;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+
+import java.io.IOException;
+import java.util.List;
 
 @Category(SampleTest.class)
 public class FetchBookmarkTitles {
@@ -38,7 +36,7 @@ public class FetchBookmarkTitles {
 
     @Test
     public void manipulatePdf() throws IOException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC));
 
         PdfOutline outlines = pdfDoc.getOutlines(false);
         List<PdfOutline> bookmarks = outlines.getAllChildren().get(0).getAllChildren();
@@ -49,6 +47,7 @@ public class FetchBookmarkTitles {
         pdfDoc.close();
 
         System.out.println(stringBuffer.toString());
+
         Assert.assertArrayEquals(RESULT.getBytes(), stringBuffer.toString().getBytes());
     }
 

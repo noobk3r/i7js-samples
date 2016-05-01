@@ -10,21 +10,17 @@ package com.itextpdf.samples.sandbox.annotations;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfArray;
 import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfLinkAnnotation;
-import com.itextpdf.kernel.pdf.navigation.PdfDestination;
+import com.itextpdf.kernel.pdf.navigation.PdfExplicitDestination;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class AddLinkAnnotation extends GenericTest {
@@ -42,13 +38,9 @@ public class AddLinkAnnotation extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
         Rectangle linkLocation = new Rectangle(523, 770, 36, 36);
         int[] borders = {0, 0, 1};
-        PdfArray array = new PdfArray();
-        array.add(pdfDoc.getPage(3).getPdfObject());
-        array.add(PdfName.Fit);
-        PdfDestination destination = PdfDestination.makeDestination(array);
         PdfAnnotation annotation = new PdfLinkAnnotation(linkLocation)
                 .setHighlightMode(PdfAnnotation.HIGHLIGHT_INVERT)
-                .setAction(PdfAction.createGoTo(destination))
+                .setAction(PdfAction.createGoTo(PdfExplicitDestination.createFit(3)))
                 .setBorder(new PdfArray(borders));
         pdfDoc.getFirstPage().addAnnotation(annotation);
         pdfDoc.close();

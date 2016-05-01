@@ -21,7 +21,6 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.canvas.draw.DashedLine;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.property.Property;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Tab;
 import com.itextpdf.layout.element.TabStop;
@@ -62,6 +61,7 @@ public class MergeWithToc extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         pdfDoc.initializeOutlines();
         Document doc = new Document(pdfDoc);
+
         Map<Integer, String> toc = new TreeMap<Integer, String>();
         int n;
         int pageNo = 0;
@@ -74,14 +74,16 @@ public class MergeWithToc extends GenericTest {
                 entry.getValue().copyPagesTo(i, i, pdfDoc);
                 // Put the destination at the very first page of each merged document
                 if (i == 1) {
-                    text.setProperty(Property.DESTINATION, "p" + pageNo);
+                    text.setDestination("p" + pageNo);
                 }
                 doc.add(new Paragraph(text).setFixedPosition(pageNo, 549, 810, 40));
             }
         }
+
         PdfDocument tocDoc = new PdfDocument(new PdfReader(SRC3));
         tocDoc.copyPagesTo(1, 1, pdfDoc);
         tocDoc.close();
+
         float y = 770;
         for (Map.Entry<Integer, String> entry : toc.entrySet()) {
             Paragraph p = new Paragraph();
@@ -89,10 +91,11 @@ public class MergeWithToc extends GenericTest {
             p.add(entry.getValue());
             p.add(new Tab());
             p.add(String.valueOf(entry.getKey()));
-            p.setProperty(Property.ACTION, PdfAction.createGoTo("p" + entry.getKey()));
+            p.setAction(PdfAction.createGoTo("p" + entry.getKey()));
             doc.add(p.setFixedPosition(pdfDoc.getNumberOfPages(), 36, y, 595 - 72));
             y -= 20;
         }
+
         for (PdfDocument srcDoc : filesToMerge.values()) {
             srcDoc.close();
         }

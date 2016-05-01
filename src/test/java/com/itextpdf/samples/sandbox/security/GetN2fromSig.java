@@ -11,22 +11,17 @@
 */
 package com.itextpdf.samples.sandbox.security;
 
-import com.itextpdf.kernel.pdf.PdfDictionary;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfStream;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfFormField;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.test.annotations.type.SampleTest;
-
-import java.io.IOException;
-import java.util.Map;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+
+import java.io.IOException;
+import java.util.Map;
 
 @Category(SampleTest.class)
 public class GetN2fromSig {
@@ -64,7 +59,7 @@ public class GetN2fromSig {
     }
 
     @Test
-    public void comparePdf() throws IOException {
+    public void compareResults() throws IOException {
         Assert.assertEquals(CMP_RESULT.trim(), RESULT.trim());
     }
 }

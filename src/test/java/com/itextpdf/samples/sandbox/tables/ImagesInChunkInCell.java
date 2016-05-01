@@ -21,15 +21,14 @@ import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 
-import org.junit.experimental.categories.Category;
-
 @Category(SampleTest.class)
 public class ImagesInChunkInCell extends GenericTest {
-    public static final String IMG = "./src/test/resources/img/bulb.gif";
     public static final String DEST = "./target/test/resources/sandbox/tables/images_in_chunk_in_cell.pdf";
+    public static final String IMG = "./src/test/resources/img/bulb.gif";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

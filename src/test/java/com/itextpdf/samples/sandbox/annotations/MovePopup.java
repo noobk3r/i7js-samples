@@ -11,24 +11,18 @@
  */
 package com.itextpdf.samples.sandbox.annotations;
 
-import com.itextpdf.kernel.pdf.PdfArray;
-import com.itextpdf.kernel.pdf.PdfDictionary;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.layout.Document;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 
-import org.junit.experimental.categories.Category;
-
 @Category(SampleTest.class)
 public class MovePopup extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/hello_sticky_note.pdf";
     public static final String DEST = "./target/test/resources/sandbox/annotations/move_popup.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/hello_sticky_note.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -43,6 +37,7 @@ public class MovePopup extends GenericTest {
 
         PdfDictionary page = pdfDoc.getFirstPage().getPdfObject();
         PdfArray annots = page.getAsArray(PdfName.Annots);
+
         PdfDictionary sticky = annots.getAsDictionary(0);
         PdfArray stickyRect = sticky.getAsArray(PdfName.Rect);
         PdfArray stickyRectangle = new PdfArray(new float[]{
@@ -50,6 +45,7 @@ public class MovePopup extends GenericTest {
                 stickyRect.getAsNumber(2).floatValue(), stickyRect.getAsNumber(3).floatValue() - 30
         });
         sticky.put(PdfName.Rect, stickyRectangle);
+
         PdfDictionary popup = annots.getAsDictionary(1);
         PdfArray popupRect = popup.getAsArray(PdfName.Rect);
         PdfArray popupRectangle = new PdfArray(new float[]{

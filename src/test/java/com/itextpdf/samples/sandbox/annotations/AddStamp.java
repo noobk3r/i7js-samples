@@ -30,9 +30,9 @@ import java.io.File;
 
 @Category(SampleTest.class)
 public class AddStamp extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
-    public static final String IMG = "./src/test/resources/img/itext.png";
     public static final String DEST = "./target/test/resources/sandbox/annotations/add_stamp.pdf";
+    public static final String IMG = "./src/test/resources/img/itext.png";
+    public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

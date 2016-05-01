@@ -20,18 +20,17 @@ import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.experimental.categories.Category;
-
 
 @Category(SampleTest.class)
 public class AddOCG extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
     public static final String DEST = "./target/test/resources/sandbox/stamper/add_ocg.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -42,7 +41,7 @@ public class AddOCG extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
-        PdfCanvas canvas = new PdfCanvas(pdfDoc.getPage(1));
+        PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());
 
         PdfLayer nested = new PdfLayer("Nested layers", pdfDoc);
         PdfLayer nested_1 = new PdfLayer("Nested layer 1", pdfDoc);

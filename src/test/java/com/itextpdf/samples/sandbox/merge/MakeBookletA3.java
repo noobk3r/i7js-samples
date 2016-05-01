@@ -18,14 +18,12 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
-import com.itextpdf.layout.Document;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class MakeBookletA3 extends GenericTest {
@@ -52,8 +50,7 @@ public class MakeBookletA3 extends GenericTest {
         PageSize pageSize = new PageSize(
                 PageSize.A4.getWidth() * 2,
                 PageSize.A4.getHeight());
-        Document doc = new Document(pdfDoc, pageSize);
-
+        pdfDoc.setDefaultPageSize(pageSize);
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         float a4_width = PageSize.A4.getWidth();
         int n = srcDoc.getNumberOfPages();
@@ -69,7 +66,7 @@ public class MakeBookletA3 extends GenericTest {
             }
             p += 4;
         }
-        doc.close();
+        pdfDoc.close();
         srcDoc.close();
     }
 }

@@ -16,25 +16,17 @@
  */
 package com.itextpdf.samples.sandbox.stamper;
 
-import com.itextpdf.kernel.pdf.PdfDictionary;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfObject;
-import com.itextpdf.kernel.pdf.PdfPage;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfStream;
-import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 
-import org.junit.experimental.categories.Category;
-
 @Category(SampleTest.class)
 public class ReplaceStream extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
     public static final String DEST = "./target/test/resources/sandbox/stamper/replace_stream.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -45,7 +37,7 @@ public class ReplaceStream extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
-        PdfPage page = pdfDoc.getPage(1);
+        PdfPage page = pdfDoc.getFirstPage();
         PdfDictionary dict = page.getPdfObject();
         PdfObject object = dict.get(PdfName.Contents);
         if (object instanceof PdfStream) {

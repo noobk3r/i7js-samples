@@ -23,15 +23,13 @@ import com.itextpdf.kernel.pdf.canvas.parser.filter.TextRegionEventFilter;
 import com.itextpdf.kernel.pdf.canvas.parser.listener.FilteredEventListener;
 import com.itextpdf.kernel.pdf.canvas.parser.listener.LocationTextExtractionStrategy;
 import com.itextpdf.test.annotations.type.SampleTest;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+
+import java.io.File;
+import java.io.IOException;
 
 @Category(SampleTest.class)
 public class ParseCustom {
@@ -48,7 +46,7 @@ public class ParseCustom {
 
     @Test
     public void manipulatePdf() throws IOException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC));
         Rectangle rect = new Rectangle(36, 750, 523, 56);
 
         FontFilter fontFilter = new FontFilter(rect);

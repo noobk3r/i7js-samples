@@ -12,6 +12,7 @@
 package com.itextpdf.samples.sandbox.fonts;
 
 import com.itextpdf.io.font.FontProgramFactory;
+import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -61,7 +62,7 @@ public class FontTest extends GenericTest {
         System.out.println(fontname);
         PdfFont font;
         try {
-            font = PdfFontFactory.createRegisteredFont(fontname, "Identity-H", true);
+            font = PdfFontFactory.createRegisteredFont(fontname, PdfEncodings.IDENTITY_H);
         } catch (Exception e) {
             doc.add(new Paragraph(
                     String.format("The font %s doesn't have unicode support: %s", fontname, e.getMessage())));

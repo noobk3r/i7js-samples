@@ -11,19 +11,18 @@
  */
 package com.itextpdf.samples.sandbox.fonts;
 
+import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class MathSymbols extends GenericTest {
@@ -38,14 +37,17 @@ public class MathSymbols extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
-        PdfFont f1 = PdfFontFactory.createFont(FONT, "Cp1250", true);
-        Paragraph p1 = new Paragraph("Testing of letters \u010c,\u0106,\u0160,\u017d,\u0110").setFont(f1);
+
+        PdfFont f1 = PdfFontFactory.createFont(FONT, PdfEncodings.CP1250, true);
+                Paragraph p1 = new Paragraph("Testing of letters \u010c,\u0106,\u0160,\u017d,\u0110").setFont(f1);
         doc.add(p1);
-        PdfFont f2 = PdfFontFactory.createFont(FONT, "Identity-H", true);
+
+        PdfFont f2 = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H);
         Paragraph p2 = new Paragraph("Testing of letters \u010c,\u0106,\u0160,\u017d,\u0110").setFont(f2);
         doc.add(p2);
+
         doc.close();
     }
 }

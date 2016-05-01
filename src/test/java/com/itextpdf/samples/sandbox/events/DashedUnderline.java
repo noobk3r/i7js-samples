@@ -12,21 +12,19 @@
 package com.itextpdf.samples.sandbox.events;
 
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.TextRenderer;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class DashedUnderline extends GenericTest {
@@ -40,15 +38,15 @@ public class DashedUnderline extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
         doc.add(new Paragraph("This text is not underlined"));
-        Text chunk1 = new Text("This text is underlined with a solid line");
-        chunk1.setUnderline(1, -3);
-        doc.add(new Paragraph(chunk1));
-        Text chunk2 = new Text("This text is underlined with a dashed line");
-        chunk2.setNextRenderer(new DashedLineTextRenderer(chunk2));
-        doc.add(new Paragraph(chunk2));
+        Text text1 = new Text("This text is underlined with a solid line");
+        text1.setUnderline(1, -3);
+        doc.add(new Paragraph(text1));
+        Text text2 = new Text("This text is underlined with a dashed line");
+        text2.setNextRenderer(new DashedLineTextRenderer(text2));
+        doc.add(new Paragraph(text2));
         doc.close();
     }
 
@@ -63,12 +61,13 @@ public class DashedUnderline extends GenericTest {
             super.draw(drawContext);
             Rectangle rect = this.getOccupiedAreaBBox();
             PdfCanvas canvas = drawContext.getCanvas();
-            canvas.saveState();
-            canvas.setLineDash(3, 3);
-            canvas.moveTo(rect.getLeft(), rect.getBottom() - 3);
-            canvas.lineTo(rect.getRight(), rect.getBottom() - 3);
-            canvas.stroke();
-            canvas.restoreState();
+            canvas
+                    .saveState()
+                    .setLineDash(3, 3)
+                    .moveTo(rect.getLeft(), rect.getBottom() - 3)
+                    .lineTo(rect.getRight(), rect.getBottom() - 3)
+                    .stroke()
+                    .restoreState();
         }
     }
 }

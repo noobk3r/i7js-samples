@@ -22,16 +22,15 @@ import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-
-import org.junit.experimental.categories.Category;
 
 
 @Category(SampleTest.class)
 public class StampHeader3 extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/Wrong.pdf";
     public static final String DEST = "./target/test/resources/sandbox/stamper/stamp_header3.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/Wrong.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -42,10 +41,11 @@ public class StampHeader3 extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
-        Paragraph header = new Paragraph("Copy").setFont(
-                PdfFontFactory.createFont(FontConstants.HELVETICA)).setFontSize(6);
+        Paragraph header = new Paragraph("Copy")
+                .setFont(PdfFontFactory.createFont(FontConstants.HELVETICA))
+                .setFontSize(6);
         Document doc = new Document(pdfDoc);
-        float x=0, y=0;
+        float x, y;
         for (int i = 1; i <= pdfDoc.getNumberOfPages(); i++) {
             pdfDoc.getPage(i).setIgnorePageRotationForContent(true);
             System.out.println(pdfDoc.getPage(i).getRotation());

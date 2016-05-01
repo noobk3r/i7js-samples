@@ -23,12 +23,11 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.pdfa.PdfADocument;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class HelloPdfA2a extends GenericTest {
@@ -42,7 +41,7 @@ public class HelloPdfA2a extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException, XMPException {
-        PdfFont font = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H, true);
+        PdfFont font = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H);
         FileInputStream is = new FileInputStream("./src/test/resources/data/sRGB_CS_profile.icm");
         PdfADocument pdfDoc = new PdfADocument(new PdfWriter(dest), PdfAConformanceLevel.PDF_A_2A,
                 new PdfOutputIntent("Custom", "", "http://www.color.org", "sRGB IEC61966-2.1", is));

@@ -31,9 +31,9 @@ import java.io.IOException;
 @Category(SampleTest.class)
 public class PdfUA extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/pdfa/pdf_ua.pdf";
+    public static final String DOG = "./src/test/resources/img/dog.bmp";
     public static final String FONT = "./src/test/resources/font/FreeSans.ttf";
     public static final String FOX = "./src/test/resources/img/fox.bmp";
-    public static final String DOG = "./src/test/resources/img/dog.bmp";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

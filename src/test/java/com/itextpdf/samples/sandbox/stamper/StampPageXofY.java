@@ -16,15 +16,14 @@ import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 
-import org.junit.experimental.categories.Category;
-
 @Category(SampleTest.class)
 public class StampPageXofY extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/nameddestinations.pdf";
     public static final String DEST = "./target/test/resources/sandbox/stamper/stamp_page_x_of_y.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/nameddestinations.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

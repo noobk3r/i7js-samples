@@ -18,7 +18,6 @@ import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
@@ -55,7 +54,7 @@ public class MergeAndAddFont extends GenericTest {
     public static final String MERGED_C2 =
             "./target/test/resources/sandbox/fonts/testC_merged2.pdf";
 
-    // Since there are so many output files, we will check only one.
+    // we will check via CompareTool only one result file.
     public static final String DEST =
             MERGED_C1;
 
@@ -66,11 +65,11 @@ public class MergeAndAddFont extends GenericTest {
     }
 
     public void createPdf(String filename, String text, boolean embedded, boolean subset) throws IOException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(filename)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(filename));
         Document doc = new Document(pdfDoc);
         PdfFont font = PdfFontFactory.createFont(FONT, PdfEncodings.WINANSI, embedded);
         font.setSubset(subset);
-        doc.add(new Paragraph(text).setFont(font).setFontSize(12));
+        doc.add(new Paragraph(text).setFont(font));
         doc.close();
     }
 
@@ -108,7 +107,6 @@ public class MergeAndAddFont extends GenericTest {
         }
         app.mergeFiles(FILE_C, MERGED_C1, true);
         app.embedFont(MERGED_C1, FONT, MERGED_C2);
-
     }
 
     protected void embedFont(String merged, String fontfile, String result) throws IOException {
@@ -122,11 +120,10 @@ public class MergeAndAddFont extends GenericTest {
         stream.setCompressionLevel(CompressionConstants.DEFAULT_COMPRESSION);
         stream.put(PdfName.Length1, new PdfNumber(fontbytes.length));
         // create a reader object
-        PdfReader reader = new PdfReader(merged);
         PdfObject object;
         PdfDictionary font;
-        PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(result));
-        PdfName fontname = new PdfName(PdfFontFactory.createFont(fontfile, PdfEncodings.WINANSI, false)
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(merged), new PdfWriter(result));
+        PdfName fontname = new PdfName(PdfFontFactory.createFont(fontfile, PdfEncodings.WINANSI)
                 .getFontProgram().getFontNames().getFontName());
         int n = pdfDoc.getNumberOfPdfObjects();
         for (int i = 0; i < n; i++) {

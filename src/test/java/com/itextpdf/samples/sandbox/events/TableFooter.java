@@ -29,11 +29,9 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class TableFooter extends GenericTest {
@@ -47,8 +45,8 @@ public class TableFooter extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
-        Document doc = new Document(pdfDoc, new PageSize(PageSize.A4));
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
+        Document doc = new Document(pdfDoc, PageSize.A4);
         doc.setMargins(36, 36, 72, 36);
 
         Table table = new Table(1);
@@ -73,6 +71,7 @@ public class TableFooter extends GenericTest {
 
         doc.close();
     }
+
 
     protected class TableFooterEventHandler implements IEventHandler {
         private Table table;

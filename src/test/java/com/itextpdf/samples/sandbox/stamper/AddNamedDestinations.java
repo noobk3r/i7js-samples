@@ -11,15 +11,11 @@
  */
 package com.itextpdf.samples.sandbox.stamper;
 
-import com.itextpdf.kernel.pdf.PdfArray;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfNumber;
-import com.itextpdf.kernel.pdf.PdfObject;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
+import org.w3c.dom.Element;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -35,15 +31,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.experimental.categories.Category;
-import org.w3c.dom.Element;
-
 @Category(SampleTest.class)
 public class AddNamedDestinations extends GenericTest {
-    public static final String SRC
-            = "./src/test/resources/pdfs/primes.pdf";
     public static final String DEST
             = "./target/test/resources/sandbox/stamper/add_named_destinations.pdf";
+    public static final String SRC
+            = "./src/test/resources/pdfs/primes.pdf";
     public static final String XML
             = "./target/test/resources/sandbox/stamper/primes_with_destination.xml";
 

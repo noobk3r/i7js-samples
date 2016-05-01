@@ -20,12 +20,10 @@ import com.itextpdf.layout.element.TabStop;
 import com.itextpdf.layout.property.TabAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class TableTab extends GenericTest {
@@ -54,8 +52,9 @@ public class TableTab extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
+
         doc.add(createParagraphWithTab("Name: ", DATA[0][0], DATA[0][1]));
         doc.add(createParagraphWithTab("Surname: ", DATA[1][0], DATA[1][1]));
         doc.add(createParagraphWithTab("School: ", DATA[2][0], DATA[2][1]));

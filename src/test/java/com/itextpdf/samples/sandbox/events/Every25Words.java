@@ -12,20 +12,19 @@
 package com.itextpdf.samples.sandbox.events;
 
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.TextRenderer;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.*;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Every25Words extends GenericTest {
@@ -50,20 +49,19 @@ public class Every25Words extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
-        // writer.setInitialLeading(16);
         String[] words = readFile().split("\\s+");
         Paragraph paragraph = new Paragraph();
-        Text chunk = null;
+        Text text = null;
         int i = 0;
         for (String word : words) {
-            if (chunk != null) {
-                paragraph.add(new Text(" "));
+            if (text != null) {
+                paragraph.add(" ");
             }
-            chunk = new Text(word);
-            chunk.setNextRenderer(new Word25TextRenderer(chunk, ++i));
-            paragraph.add(chunk);
+            text = new Text(word);
+            text.setNextRenderer(new Word25TextRenderer(text, ++i));
+            paragraph.add(text);
         }
         doc.add(paragraph);
         doc.close();
@@ -85,14 +83,14 @@ public class Every25Words extends GenericTest {
                 Rectangle rect = getOccupiedAreaBBox();
                 int pageNumber = getOccupiedArea().getPageNumber();
                 PdfCanvas canvas = drawContext.getCanvas();
-                canvas.saveState();
-                canvas.setLineDash(5, 5);
-                canvas.moveTo(drawContext.getDocument().getPage(pageNumber).getPageSize().getLeft(), rect.getBottom());
-                canvas.lineTo(rect.getRight(), rect.getBottom());
-                canvas.lineTo(rect.getRight(), rect.getTop());
-                canvas.lineTo(drawContext.getDocument().getDefaultPageSize().getRight(), rect.getTop());
-                canvas.stroke();
-                canvas.restoreState();
+                canvas.saveState()
+                        .setLineDash(5, 5)
+                        .moveTo(drawContext.getDocument().getPage(pageNumber).getPageSize().getLeft(), rect.getBottom())
+                        .lineTo(rect.getRight(), rect.getBottom())
+                        .lineTo(rect.getRight(), rect.getTop())
+                        .lineTo(drawContext.getDocument().getDefaultPageSize().getRight(), rect.getTop())
+                        .stroke()
+                        .restoreState();
             }
         }
     }

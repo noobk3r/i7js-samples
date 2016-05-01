@@ -12,16 +12,12 @@
 package com.itextpdf.samples.sandbox.images;
 
 import com.itextpdf.io.image.ImageDataFactory;
-import com.itextpdf.kernel.pdf.PdfDictionary;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfStream;
-import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -29,12 +25,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 
-import org.junit.experimental.categories.Category;
-
 @Category(SampleTest.class)
 public class ReplaceImage extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/image.pdf";
     public static final String DEST = "./target/test/resources/sandbox/images/replace_image.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/image.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

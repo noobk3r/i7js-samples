@@ -14,21 +14,16 @@ package com.itextpdf.samples.sandbox.objects;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.element.Cell;
-import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.element.Tab;
-import com.itextpdf.layout.element.TabStop;
-import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.border.Border;
+import com.itextpdf.layout.element.*;
 import com.itextpdf.layout.property.TabAlignment;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class LeftRight extends GenericTest {
@@ -41,7 +36,7 @@ public class LeftRight extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
 
         Paragraph p = new Paragraph("Text to the left");
@@ -49,6 +44,7 @@ public class LeftRight extends GenericTest {
         p.addTabStops(new TabStop(1000, TabAlignment.RIGHT));
         p.add("Text to the right");
         doc.add(p);
+
         Table table = new Table(3);
         table.addCell(getCell("Text to the left", TextAlignment.LEFT));
         table.addCell(getCell("Text in the middle", TextAlignment.CENTER));
@@ -62,7 +58,7 @@ public class LeftRight extends GenericTest {
         Cell cell = new Cell().add(new Paragraph(text));
         cell.setPadding(0);
         cell.setTextAlignment(alignment);
-        cell.setBorder(null);
+        cell.setBorder(Border.NO_BORDER);
         return cell;
     }
 }

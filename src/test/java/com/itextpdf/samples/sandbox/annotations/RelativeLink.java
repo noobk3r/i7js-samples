@@ -19,16 +19,14 @@ import com.itextpdf.layout.element.Link;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class RelativeLink extends GenericTest {
-    public static final String XML = "./src/test/resources/xml/data.xml";
     public static final String DEST = "./target/test/resources/sandbox/annotations/relative_link.pdf";
+    public static final String XML = "./src/test/resources/xml/data.xml";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -38,7 +36,7 @@ public class RelativeLink extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
 
         Paragraph chunk = new Paragraph(new Link("Click me", PdfAction.createURI("../../../../." + XML)));

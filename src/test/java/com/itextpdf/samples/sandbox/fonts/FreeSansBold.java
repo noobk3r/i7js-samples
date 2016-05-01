@@ -20,10 +20,9 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class FreeSansBold extends GenericTest {
@@ -44,12 +43,15 @@ public class FreeSansBold extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
-        PdfFont font = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H, true);
-        Paragraph p = new Paragraph("FreeSans regular: \u0110").setFont(font).setFontSize(12);
+
+        PdfFont font = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H);
+        Paragraph p = new Paragraph("FreeSans regular: \u0110").setFont(font);
         doc.add(p);
-        PdfFont bold = PdfFontFactory.createFont(FONTBOLD, PdfEncodings.IDENTITY_H, true);
-        p = new Paragraph("FreeSans bold: \u0110").setFont(bold).setFontSize(12);
+
+        PdfFont bold = PdfFontFactory.createFont(FONTBOLD, PdfEncodings.IDENTITY_H);
+        p = new Paragraph("FreeSans bold: \u0110").setFont(bold);
         doc.add(p);
+
         doc.close();
     }
 }

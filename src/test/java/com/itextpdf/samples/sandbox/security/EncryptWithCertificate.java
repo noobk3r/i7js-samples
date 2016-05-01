@@ -18,21 +18,18 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.junit.Ignore;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.security.Security;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
-
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
 
 /**
  * The file created using this example can not be opened, unless
@@ -51,31 +48,12 @@ public class EncryptWithCertificate extends GenericTest {
             = "./src/test/resources/encryption/test.cer";
 
     public static void main(String[] args) throws Exception {
-        try {
-            Field field = Class.forName("javax.crypto.JceSecurity").
-                    getDeclaredField("isRestricted");
-            field.setAccessible(true);
-            field.set(null, java.lang.Boolean.FALSE);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
         File file = new File(DEST);
         file.getParentFile().mkdirs();
         new EncryptWithCertificate().manipulatePdf(DEST);
-        try {
-            Field field = Class.forName("javax.crypto.JceSecurity").
-                    getDeclaredField("isRestricted");
-            if (field.isAccessible()) {
-                field.set(null, java.lang.Boolean.TRUE);
-                field.setAccessible(false);
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
     }
 
-    public Certificate getPublicCertificate(String path)
-            throws IOException, CertificateException {
+    public Certificate getPublicCertificate(String path) throws IOException, CertificateException {
         FileInputStream is = new FileInputStream(path);
         CertificateFactory cf = CertificateFactory.getInstance("X.509");
         X509Certificate cert = (X509Certificate) cf.generateCertificate(is);
@@ -87,7 +65,7 @@ public class EncryptWithCertificate extends GenericTest {
         Security.addProvider(new BouncyCastleProvider());
 
         Certificate cert = getPublicCertificate(PUBLIC);
-        PdfWriter writer = new PdfWriter(new FileOutputStream(DEST), new WriterProperties()
+        PdfWriter writer = new PdfWriter(DEST, new WriterProperties()
                 .setPublicKeyEncryption(
                         new Certificate[]{cert},
                         new int[]{EncryptionConstants.ALLOW_PRINTING},

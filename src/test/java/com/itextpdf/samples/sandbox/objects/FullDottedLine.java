@@ -13,20 +13,20 @@
  */
 package com.itextpdf.samples.sandbox.objects;
 
-import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvasConstants;
+import com.itextpdf.kernel.pdf.canvas.draw.DottedLine;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.LineSeparator;
+import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class FullDottedLine extends GenericTest {
@@ -39,27 +39,27 @@ public class FullDottedLine extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
-        PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
-        canvas
-                .beginText()
-                .moveText(36, 750)
-                .setFontAndSize(PdfFontFactory.createFont(FontConstants.HELVETICA), 12)
-                .showText("Before dotted line")
-                .stroke();
-        canvas
-                .saveState()
-                .setLineDash(0, 4, 4 / 2)
-                .setLineCapStyle(PdfCanvasConstants.LineCapStyle.ROUND)
-                .moveTo(0, 700)
-                .lineTo(595, 700)
-                .stroke()
-                .restoreState();
-        canvas
-                .moveTextWithLeading(0, -100)
-                .showText("After dotted line")
-                .endText()
-                .stroke();
-        pdfDoc.close();
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
+        Document doc = new Document(pdfDoc);
+
+        doc.add(new Paragraph("Before dotted line"));
+        doc.add(new LineSeparator(new CustomDottedLine(pdfDoc.getDefaultPageSize())));
+        doc.add(new Paragraph("After dotted line"));
+
+        doc.close();
+    }
+
+
+    class CustomDottedLine extends DottedLine {
+        protected Rectangle pageSize;
+
+        public CustomDottedLine(Rectangle pageSize) {
+            this.pageSize = pageSize;
+        }
+
+        @Override
+        public void draw(PdfCanvas canvas, Rectangle drawArea) {
+            super.draw(canvas, new Rectangle(pageSize.getLeft(), drawArea.getBottom(), pageSize.getWidth(), drawArea.getHeight()));
+        }
     }
 }

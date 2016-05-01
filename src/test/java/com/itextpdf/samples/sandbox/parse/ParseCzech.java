@@ -22,7 +22,6 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -40,7 +39,7 @@ public class ParseCzech {
 
     @Test
     public void manipulatePdf() throws IOException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC));
         FileOutputStream fos = new FileOutputStream(DEST);
 
         LocationTextExtractionStrategy strategy = new LocationTextExtractionStrategy();

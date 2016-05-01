@@ -14,19 +14,13 @@ package com.itextpdf.samples.sandbox.objects;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.element.Cell;
-import com.itextpdf.layout.element.List;
-import com.itextpdf.layout.element.ListItem;
-import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.element.*;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class RemoveListSymbol extends GenericTest {
@@ -39,7 +33,7 @@ public class RemoveListSymbol extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
 
         List list = new List();
@@ -53,7 +47,7 @@ public class RemoveListSymbol extends GenericTest {
 
         Table phraseTable = new Table(2);
         phraseTable.setMarginTop(5);
-        phraseTable.addCell(new Cell().add(new Paragraph("List:")));
+        phraseTable.addCell(new Cell().add("List:"));
         phraseTable.addCell(list);
 
         doc.add(phraseTable);

@@ -22,18 +22,17 @@ import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
 
 @Category(SampleTest.class)
 public class PortableCollection extends GenericTest {
     public static final String DATA
             = "./src/test/resources/data/united_states.csv";
+    public static final String DEST
+            = "./target/test/resources/sandbox/collections/portable_collection.pdf";
     public static final String HELLO
             = "./src/test/resources/pdfs/hello.pdf";
     public static final String IMG =
             "./src/test/resources/img/berlin2013.jpg";
-    public static final String DEST
-            = "./target/test/resources/sandbox/collections/portable_collection.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -43,7 +42,7 @@ public class PortableCollection extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
         doc.add(new Paragraph("Portable collection"));
         PdfCollection collection = new PdfCollection();

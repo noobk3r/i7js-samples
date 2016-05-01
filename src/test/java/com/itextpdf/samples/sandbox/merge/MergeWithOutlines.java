@@ -22,11 +22,10 @@ import com.itextpdf.kernel.pdf.navigation.PdfExplicitDestination;
 import com.itextpdf.kernel.utils.PdfMerger;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class MergeWithOutlines extends GenericTest {
@@ -49,25 +48,30 @@ public class MergeWithOutlines extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         PdfMerger merger = new PdfMerger(pdfDoc);
         PdfOutline rootOutline = pdfDoc.getOutlines(false);
-        int page = 1;
-        PdfDocument pdfDoc1 = new PdfDocument(new PdfReader(SRC1));
-        merger.merge(pdfDoc1, 1, pdfDoc1.getNumberOfPages());
 
-        PdfDocument pdfDoc2 = new PdfDocument(new PdfReader(SRC2));
-        PdfDocument pdfDoc3 = new PdfDocument(new PdfReader(SRC3));
+        int page = 1;
+
+        PdfDocument srcDoc1 = new PdfDocument(new PdfReader(SRC1));
+        merger.merge(srcDoc1, 1, srcDoc1.getNumberOfPages());
+
+        PdfDocument srcDoc2 = new PdfDocument(new PdfReader(SRC2));
+        PdfDocument srcDoc3 = new PdfDocument(new PdfReader(SRC3));
         merger.setCloseSourceDocuments(true)
-                .merge(pdfDoc2, 1, pdfDoc2.getNumberOfPages())
-                .merge(pdfDoc3, 1, pdfDoc3.getNumberOfPages());
+                .merge(srcDoc2, 1, srcDoc2.getNumberOfPages())
+                .merge(srcDoc3, 1, srcDoc3.getNumberOfPages());
 
         PdfOutline helloWorld = rootOutline.addOutline("Hello World");
         helloWorld.addDestination(PdfExplicitDestination.createFit(pdfDoc.getPage(page)));
-        page += pdfDoc1.getNumberOfPages();
+        page += srcDoc1.getNumberOfPages();
+
         PdfOutline link1 = helloWorld.addOutline("link1");
         link1.addDestination(PdfExplicitDestination.createFit(pdfDoc.getPage(page)));
-        page += pdfDoc1.getNumberOfPages();
+        page += srcDoc1.getNumberOfPages();
+
         PdfOutline link2 = rootOutline.addOutline("Link 2");
         link2.addDestination(PdfExplicitDestination.createFit(pdfDoc.getPage(page)));
-        pdfDoc1.close();
+
+        srcDoc1.close();
         pdfDoc.close();
     }
 }

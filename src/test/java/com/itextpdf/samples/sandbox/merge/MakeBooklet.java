@@ -19,14 +19,12 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
-import com.itextpdf.layout.Document;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class MakeBooklet extends GenericTest {
@@ -39,8 +37,7 @@ public class MakeBooklet extends GenericTest {
         new MakeBooklet().manipulatePdf(DEST);
     }
 
-    public void addPage(PdfCanvas canvas,
-                        PdfDocument srcDoc, PdfDocument pdfDoc, int p, float x) throws IOException {
+    public void addPage(PdfCanvas canvas, PdfDocument srcDoc, PdfDocument pdfDoc, int p, float x) throws IOException {
         if (p > srcDoc.getNumberOfPages()) {
             return;
         }
@@ -52,19 +49,12 @@ public class MakeBooklet extends GenericTest {
         PdfDocument srcDoc = new PdfDocument(new PdfReader(SRC));
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
 
-//        PageSize pagesize = new PageSize(new Rectangle(
-//                -PageSize.A4.getWidth() * 2,
-//                -PageSize.A4.getHeight(),
-//                PageSize.A4.getWidth() * 4,
-//                PageSize.A4.getHeight() * 2));
-
-        PageSize pagesize = new PageSize(
-                PageSize.A4.getWidth() * 4,
-                PageSize.A4.getHeight() * 2);
-        Document doc = new Document(pdfDoc, pagesize);
-        PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         float a4_width = PageSize.A4.getWidth();
         float a4_height = PageSize.A4.getHeight();
+        PageSize pagesize = new PageSize(a4_width * 4, a4_height * 2);
+        pdfDoc.setDefaultPageSize(pagesize);
+
+        PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         int n = srcDoc.getNumberOfPages();
         int p = 1;
         while ((p - 1) / 16 <= n / 16) {
@@ -100,7 +90,7 @@ public class MakeBooklet extends GenericTest {
             }
             p += 16;
         }
-        doc.close();
+        pdfDoc.close();
         srcDoc.close();
     }
 }

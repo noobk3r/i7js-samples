@@ -16,17 +16,15 @@ import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class ColoredLetters extends GenericTest {
@@ -39,16 +37,16 @@ public class ColoredLetters extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
 
         Paragraph p = new Paragraph();
         String s = "all text is written in red, except the letters b and g; they are written in blue and green.";
         for (int i = 0; i < s.length(); i++) {
-            p.add(returnCorrectColor( s.charAt(i)));
+            p.add(returnCorrectColor(s.charAt(i)));
         }
         doc.add(p);
-        
+
         doc.close();
     }
 
@@ -56,17 +54,16 @@ public class ColoredLetters extends GenericTest {
         if (letter == 'b') {
             return new Text("b")
                     .setFontColor(Color.BLUE)
-                    .setFont(PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD))
-                    .setFontSize(12);
+                    .setFont(PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD));
         } else if (letter == 'g') {
             return new Text("g")
                     .setFontColor(Color.GREEN)
                     .setFont(PdfFontFactory.createFont(FontConstants.HELVETICA))
-                    .setFontSize(12)
                     .setItalic();
+        } else {
+            return new Text(String.valueOf(letter))
+                    .setFontColor(Color.RED)
+                    .setFont(PdfFontFactory.createFont(FontConstants.HELVETICA));
         }
-        return new Text(String.valueOf(letter))
-                .setFontColor(Color.RED)
-                .setFont(PdfFontFactory.createFont(FontConstants.HELVETICA));
     }
 }

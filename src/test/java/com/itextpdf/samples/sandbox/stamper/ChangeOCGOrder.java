@@ -11,25 +11,17 @@
  */
 package com.itextpdf.samples.sandbox.stamper;
 
-import com.itextpdf.kernel.pdf.PdfArray;
-import com.itextpdf.kernel.pdf.PdfCatalog;
-import com.itextpdf.kernel.pdf.PdfDictionary;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfObject;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 
-import org.junit.experimental.categories.Category;
-
 @Category(SampleTest.class)
 public class ChangeOCGOrder extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/ocg.pdf";
     public static final String DEST = "./target/test/resources/sandbox/stamper/change_ocg_order.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/ocg.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

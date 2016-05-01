@@ -13,7 +13,6 @@ package com.itextpdf.samples.sandbox.merge;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
@@ -31,6 +30,7 @@ public class TilingHero extends GenericTest {
             = "./target/test/resources/sandbox/merge/tiling_hero.pdf";
     public static final String RESOURCE
             = "./src/test/resources/pdfs/hero.pdf";
+
     public static void main(String[] args) throws IOException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
@@ -45,21 +45,21 @@ public class TilingHero extends GenericTest {
         float height = pageSize.getHeight();
         Rectangle mediaBox = new Rectangle(0, 3 * height, width, height);
 
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
-        pdfDoc.setDefaultPageSize(new PageSize(mediaBox));
-        PdfFormXObject page = srcDoc.getFirstPage().copyAsFormXObject(pdfDoc);
+        PdfDocument resultDoc = new PdfDocument(new PdfWriter(DEST));
+        resultDoc.setDefaultPageSize(new PageSize(mediaBox));
+        PdfFormXObject page = srcDoc.getFirstPage().copyAsFormXObject(resultDoc);
         PdfCanvas canvas;
         for (int i = 0; i < 16; ) {
-            canvas = new PdfCanvas(pdfDoc.addNewPage());
+            canvas = new PdfCanvas(resultDoc.addNewPage());
             canvas.addXObject(page, 4, 0, 0, 4, 0, 0);
             i++;
             mediaBox = new Rectangle(
                     (i % 4) * width, (4 - (i / 4)) * height,
                     width, - height);
-            pdfDoc.setDefaultPageSize(new PageSize(mediaBox));
+            resultDoc.setDefaultPageSize(new PageSize(mediaBox));
         }
 
         srcDoc.close();
-        pdfDoc.close();
+        resultDoc.close();
     }
 }

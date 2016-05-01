@@ -17,32 +17,23 @@ import com.itextpdf.kernel.pdf.PdfNumber;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.action.PdfTargetDictionary;
-import com.itextpdf.kernel.pdf.collection.PdfCollection;
-import com.itextpdf.kernel.pdf.collection.PdfCollectionField;
-import com.itextpdf.kernel.pdf.collection.PdfCollectionItem;
-import com.itextpdf.kernel.pdf.collection.PdfCollectionSchema;
-import com.itextpdf.kernel.pdf.collection.PdfCollectionSort;
+import com.itextpdf.kernel.pdf.collection.*;
 import com.itextpdf.kernel.pdf.filespec.PdfFileSpec;
 import com.itextpdf.kernel.pdf.navigation.PdfNamedDestination;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.element.Cell;
-import com.itextpdf.layout.element.Image;
-import com.itextpdf.layout.element.Link;
-import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.element.*;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
+import org.junit.experimental.categories.Category;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_16_09_KubrickMovies extends GenericTest {
@@ -156,6 +147,7 @@ public class Listing_16_09_KubrickMovies extends GenericTest {
         target.setTarget(new PdfTargetDictionary(PdfName.P));
         Link link = new Link("Go to original document",
                 PdfAction.createGoToE(new PdfNamedDestination("movies"), false, target));
+        // TODO
         doc.add(new Paragraph(link));
         doc.close();
         return baos.toByteArray();

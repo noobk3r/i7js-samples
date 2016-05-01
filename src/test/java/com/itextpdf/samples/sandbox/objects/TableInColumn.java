@@ -22,12 +22,10 @@ import com.itextpdf.layout.renderer.IRenderer;
 import com.itextpdf.layout.renderer.TableRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class TableInColumn extends GenericTest {
@@ -40,8 +38,7 @@ public class TableInColumn extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
-        pdfDoc.addNewPage();
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
 
         Table table;
@@ -60,15 +57,15 @@ public class TableInColumn extends GenericTest {
         table.addCell(cell.clone(true));
         table.setNextRenderer(new CustomTableRenderer(table, addTable(doc, table)));
         doc.add(table);
+
         doc.close();
     }
 
     public Rectangle addTable(Document doc, Table table) {
         Rectangle pageDimension = new Rectangle(36, 36, 523, 770);
-        final Rectangle rect;
         IRenderer tableRenderer = table.createRendererSubTree().setParent(doc.getRenderer());
-
         LayoutResult tableLayoutResult = tableRenderer.layout(new LayoutContext(new LayoutArea(0, pageDimension)));
+        Rectangle rect;
         if (LayoutResult.PARTIAL == tableLayoutResult.getStatus()) {
             rect = pageDimension;
         } else {
@@ -84,7 +81,7 @@ public class TableInColumn extends GenericTest {
 
         public CustomTableRenderer(Table modelElement, Rectangle rect) {
             super(modelElement);
-            this.rect = new Rectangle(rect);
+            this.rect = rect;
         }
 
         @Override

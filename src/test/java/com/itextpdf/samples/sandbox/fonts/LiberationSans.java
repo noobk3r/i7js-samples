@@ -11,19 +11,18 @@
  */
 package com.itextpdf.samples.sandbox.fonts;
 
+import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class LiberationSans extends GenericTest {
@@ -38,12 +37,15 @@ public class LiberationSans extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
+
         PdfFontFactory.register(FONT, "Greek-Regular");
-        PdfFont f = PdfFontFactory.createRegisteredFont("Greek-Regular", "CP1253", true);
+        PdfFont f = PdfFontFactory.createRegisteredFont("Greek-Regular", PdfEncodings.CP1253, true);
+
         Paragraph p = new Paragraph("\u039d\u03cd\u03c6\u03b5\u03c2").setFont(f);
         doc.add(p);
+
         doc.close();
     }
 }

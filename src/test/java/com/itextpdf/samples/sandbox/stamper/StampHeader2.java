@@ -22,16 +22,15 @@ import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-
-import org.junit.experimental.categories.Category;
 
 
 @Category(SampleTest.class)
 public class StampHeader2 extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/Wrong.pdf";
     public static final String DEST = "./target/test/resources/sandbox/stamper/stamp_header2.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/Wrong.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -44,8 +43,9 @@ public class StampHeader2 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
 
-        Paragraph header = new Paragraph("Copy").setFont(
-                PdfFontFactory.createFont(FontConstants.HELVETICA)).setFontSize(14);
+        Paragraph header = new Paragraph("Copy")
+                .setFont(PdfFontFactory.createFont(FontConstants.HELVETICA))
+                .setFontSize(14);
         for (int i = 1; i <= pdfDoc.getNumberOfPages(); i++) {
             float x = pdfDoc.getPage(i).getPageSize().getWidth() / 2;
             float y = pdfDoc.getPage(i).getPageSize().getTop() - 20;

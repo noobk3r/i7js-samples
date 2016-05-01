@@ -12,25 +12,15 @@
 package com.itextpdf.samples.sandbox.annotations;
 
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.pdf.PdfArray;
-import com.itextpdf.kernel.pdf.PdfDictionary;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfPage;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfString;
-import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfTextAnnotation;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.util.List;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class AddInReplyTo extends GenericTest {
@@ -48,8 +38,7 @@ public class AddInReplyTo extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
         PdfPage page = pdfDoc.getFirstPage();
         List<PdfAnnotation> annots = page.getAnnotations();
-        PdfDictionary sticky = annots.get(0).getPdfObject();
-        Rectangle stickyRectangle = sticky.getAsArray(PdfName.Rect).toRectangle();
+        Rectangle stickyRectangle = annots.get(0).getRectangle().toRectangle();
         PdfAnnotation replySticky = new PdfTextAnnotation(stickyRectangle)
                 .setIconName(new PdfName("Comment"))
                 .setInReplyTo(annots.get(0))

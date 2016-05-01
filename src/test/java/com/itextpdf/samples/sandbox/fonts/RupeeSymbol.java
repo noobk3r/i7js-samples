@@ -11,19 +11,19 @@
  */
 package com.itextpdf.samples.sandbox.fonts;
 
+import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileOutputStream;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class RupeeSymbol extends GenericTest {
@@ -44,15 +44,15 @@ public class RupeeSymbol extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
         Document doc = new Document(pdfDoc);
-        PdfFont font1 = PdfFontFactory.createFont(FONT1, "Identity-H", true);
-        PdfFont font2 = PdfFontFactory.createFont(FONT2, "Identity-H", true);
-        PdfFont font3 = PdfFontFactory.createFont(FONT3, "Identity-H", true);
-        PdfFont font4 = PdfFontFactory.createFont(FONT3, "WINANSI", true);
+        PdfFont font1 = PdfFontFactory.createFont(FONT1, PdfEncodings.IDENTITY_H);
+        PdfFont font2 = PdfFontFactory.createFont(FONT2, PdfEncodings.IDENTITY_H);
+        PdfFont font3 = PdfFontFactory.createFont(FONT3, PdfEncodings.IDENTITY_H);
+        PdfFont font4 = PdfFontFactory.createFont(FONT3, PdfEncodings.WINANSI, true);
 
-        doc.add(new Paragraph(RUPEE).setFont(font1).setFontSize(12));
-        doc.add(new Paragraph(RUPEE).setFont(font2).setFontSize(12));
-        doc.add(new Paragraph(RUPEE).setFont(font3).setFontSize(12));
-        doc.add(new Paragraph(RUPEE).setFont(font4).setFontSize(12));
+        doc.add(new Paragraph(RUPEE).setFont(font1));
+        doc.add(new Paragraph(RUPEE).setFont(font2));
+        doc.add(new Paragraph(RUPEE).setFont(font3));
+        doc.add(new Paragraph(RUPEE).setFont(font4));
         doc.close();
     }
 }

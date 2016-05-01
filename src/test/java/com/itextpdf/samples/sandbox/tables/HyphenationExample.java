@@ -7,10 +7,8 @@
 
 package com.itextpdf.samples.sandbox.tables;
 
-import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
@@ -20,11 +18,11 @@ import com.itextpdf.layout.hyphenation.Hyphenation;
 import com.itextpdf.layout.hyphenation.HyphenationConfig;
 import com.itextpdf.layout.hyphenation.Hyphenator;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileOutputStream;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class HyphenationExample extends GenericTest {
@@ -44,17 +42,17 @@ public class HyphenationExample extends GenericTest {
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc, PageSize.A4.clone());
+        Document doc = new Document(pdfDoc);
         doc.setMargins(0, 0, 0, 0);
         Table table = new Table(1);
         table.setWidthPercent(10);
         Text text = new Text("Leistungsscheinziffer");
         text.setHyphenation(new HyphenationConfig("de", "DE", 2, 2));
         table.addCell(new Cell().add(new Paragraph(text)));
-        Paragraph phrase = new Paragraph();
-        phrase.setHyphenation(new HyphenationConfig("de", "DE", 2, 2));
-        phrase.add("Leistungsscheinziffer");
-        table.addCell(new Cell().add(phrase));
+        Paragraph paragraph = new Paragraph();
+        paragraph.setHyphenation(new HyphenationConfig("de", "DE", 2, 2));
+        paragraph.add("Leistungsscheinziffer");
+        table.addCell(new Cell().add(paragraph));
 
         // soft hyphens
         table.addCell(new Cell().add(new Paragraph("Le\u00adistun\u00ADgssch\u00ADeinziffe\u00ADr").setHyphenation(new HyphenationConfig(3, 2))));

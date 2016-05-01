@@ -11,27 +11,25 @@
  */
 package com.itextpdf.samples.sandbox.events;
 
-import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.events.Event;
 import com.itextpdf.kernel.events.IEventHandler;
 import com.itextpdf.kernel.events.PdfDocumentEvent;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class PageBackgrounds extends GenericTest {
@@ -56,14 +54,13 @@ public class PageBackgrounds extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         pdfDoc.addEventHandler(PdfDocumentEvent.START_PAGE, new PageBackgroundsEventHandler());
         Document doc = new Document(pdfDoc);
         doc.add(new Paragraph("Prime Numbers"));
         doc.add(new AreaBreak());
         doc.add(new Paragraph("An overview"));
         doc.add(new AreaBreak());
-        // step 4
         List<Integer> factors;
         for (int i = 2; i < 301; i++) {
             factors = getFactors(i);
@@ -88,8 +85,9 @@ public class PageBackgrounds extends GenericTest {
             PdfPage page = docEvent.getPage();
 
             int pagenumber = docEvent.getDocument().getNumberOfPages();
-            if (pagenumber % 2 == 1 && pagenumber != 1)
+            if (pagenumber % 2 == 1 && pagenumber != 1) {
                 return;
+            }
             PdfCanvas canvas = new PdfCanvas(page);
             Rectangle rect = page.getPageSize();
             canvas

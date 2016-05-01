@@ -19,14 +19,7 @@ import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.pdf.PdfAConformanceLevel;
-import com.itextpdf.kernel.pdf.PdfDate;
-import com.itextpdf.kernel.pdf.PdfDictionary;
-import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfOutputIntent;
-import com.itextpdf.kernel.pdf.PdfPage;
-import com.itextpdf.kernel.pdf.PdfString;
-import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.kernel.xmp.XMPException;
@@ -37,22 +30,17 @@ import com.itextpdf.layout.element.Table;
 import com.itextpdf.pdfa.PdfADocument;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.StringTokenizer;
-
 import org.junit.experimental.categories.Category;
+
+import java.io.*;
+import java.util.StringTokenizer;
 
 @Category(SampleTest.class)
 public class PdfA1a extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox//pdfa/pdf_a_1a.pdf";
+    public static final String BOLD = "./src/test/resources/font/OpenSans-Bold.ttf";
     public static final String DATA = "./src/test/resources/data/united_states.csv";
     public static final String FONT = "./src/test/resources/font/OpenSans-Regular.ttf";
-    public static final String BOLD = "./src/test/resources/font/OpenSans-Bold.ttf";
 
     protected PdfFormXObject template;
     protected Image total;
@@ -66,8 +54,8 @@ public class PdfA1a extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException, XMPException {
-        font = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H, true);
-        bold = PdfFontFactory.createFont(BOLD, PdfEncodings.IDENTITY_H, true);
+        font = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H);
+        bold = PdfFontFactory.createFont(BOLD, PdfEncodings.IDENTITY_H);
         FileInputStream is = new FileInputStream("./src/test/resources/data/sRGB_CS_profile.icm");
         PdfADocument pdfDoc = new PdfADocument(new PdfWriter(dest), PdfAConformanceLevel.PDF_A_1A,
                 new PdfOutputIntent("Custom", "", "http://www.color.org", "sRGB IEC61966-2.1", is));

@@ -19,11 +19,9 @@ import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
-
-import org.junit.experimental.categories.Category;
 
 
 @Category(SampleTest.class)
@@ -40,9 +38,7 @@ public class PositionContentInCell2 extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         // 1. Create a Document which contains a table:
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
         Table table = new Table(2);
         Cell cell1 = new Cell();

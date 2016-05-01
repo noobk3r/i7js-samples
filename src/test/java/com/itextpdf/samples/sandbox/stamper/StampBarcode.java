@@ -8,8 +8,8 @@
 package com.itextpdf.samples.sandbox.stamper;
 
 import com.itextpdf.barcodes.BarcodeEAN;
-import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -17,10 +17,9 @@ import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-
-import org.junit.experimental.categories.Category;
 
 /**
  * Example written by Bruno Lowagie in answer to:
@@ -28,8 +27,8 @@ import org.junit.experimental.categories.Category;
  */
 @Category(SampleTest.class)
 public class StampBarcode extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/superman.pdf";
     public static final String DEST = "./target/test/resources/sandbox/stamper/stamp_barcode.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/superman.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

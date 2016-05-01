@@ -37,7 +37,7 @@ public class PojoFactory {
     private PojoFactory() throws ClassNotFoundException, SQLException {
         Class.forName("org.hsqldb.jdbcDriver");
         connection = DriverManager.getConnection(
-            "jdbc:hsqldb:./src/test/resources/zugferd/db/invoices", "SA", "");
+            "jdbc:hsqldb:src/test/resources/zugferd/db/invoices", "SA", "");
         getCustomer = connection.prepareStatement("SELECT * FROM Customer WHERE id = ?");
         getProduct = connection.prepareStatement("SELECT * FROM Product WHERE id = ?");
         getItems = connection.prepareStatement("SELECT * FROM Item WHERE invoiceid = ?");

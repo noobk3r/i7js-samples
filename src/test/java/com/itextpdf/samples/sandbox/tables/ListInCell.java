@@ -10,20 +10,13 @@ package com.itextpdf.samples.sandbox.tables;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.element.Cell;
-import com.itextpdf.layout.element.List;
-import com.itextpdf.layout.element.ListItem;
-import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.element.*;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
-
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
 
 
 @Category(SampleTest.class)
@@ -38,10 +31,10 @@ public class ListInCell extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc, PageSize.A4.rotate());
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
+        // Note that it is not necessary to create new PageSize object,
+        // but for testing reasons (connected to parallelization) we call constructor here
+        Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
 
         // This is how not to do it (but it works anyway):
         // We create a list:
@@ -49,8 +42,6 @@ public class ListInCell extends GenericTest {
         list.add(new ListItem("Item 1"));
         list.add(new ListItem("Item 2"));
         list.add(new ListItem("Item 3"));
-
-
 
         Cell phraseCell = new Cell();
         phraseCell.add(list);
@@ -61,15 +52,12 @@ public class ListInCell extends GenericTest {
         phraseTable.addCell("List wrapped in a phrase:");
         phraseTable.addCell(phraseCell);
 
-
-
         // We add these nested tables to the document:
         doc.add(new Paragraph("A list, wrapped in a phrase, wrapped in a cell, " +
                 "wrapped in a table, wrapped in a phrase:"));
         phraseTable.setMarginTop(5);
         doc.add(phraseTable);
 
-        // This is how to do it:
 
         // We add the list directly to a cell:
         Cell cell = new Cell();
@@ -86,7 +74,6 @@ public class ListInCell extends GenericTest {
         doc.add(table);
 
         // Avoid adding tables to phrase (but it works anyway):
-
 
         doc.add(new Paragraph("A list, wrapped in a cell, wrapped in a table, wrapped in a phrase:"));
         table.setMarginTop(5);

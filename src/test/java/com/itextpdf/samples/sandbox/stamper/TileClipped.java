@@ -14,24 +14,22 @@ package com.itextpdf.samples.sandbox.stamper;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 
-import org.junit.experimental.categories.Category;
-
 @Category(SampleTest.class)
 public class TileClipped extends GenericTest {
-    public static final String SRC =
-            "./src/test/resources/pdfs/hero.pdf";
     public static final String DEST =
             "./target/test/resources/sandbox/stamper/tile_clipped.pdf";
+    public static final String SRC =
+            "./src/test/resources/pdfs/hero.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

@@ -18,22 +18,21 @@ import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 
-import org.junit.experimental.categories.Category;
-
 @Category(SampleTest.class)
 public class SuperImpose extends GenericTest {
-    public static final String SRC =
-            "./src/test/resources/pdfs/primes.pdf";
+    public static final String DEST =
+            "./target/test/resources/sandbox/stamper/super_impose.pdf";
     public static final String[] EXTRA = {
             "./src/test/resources/pdfs/hello.pdf",
             "./src/test/resources/pdfs/base_url.pdf",
             "./src/test/resources/pdfs/state.pdf"
     };
-    public static final String DEST =
-            "./target/test/resources/sandbox/stamper/super_impose.pdf";
+    public static final String SRC =
+            "./src/test/resources/pdfs/primes.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

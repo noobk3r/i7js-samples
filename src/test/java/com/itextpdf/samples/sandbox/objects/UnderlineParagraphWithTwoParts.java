@@ -12,26 +12,21 @@
 package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.draw.SolidLine;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.element.LineSeparator;
-import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.element.Tab;
-import com.itextpdf.layout.element.TabStop;
-import com.itextpdf.layout.element.Text;
+import com.itextpdf.layout.element.*;
 import com.itextpdf.layout.property.TabAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class UnderlineParagraphWithTwoParts extends GenericTest {
@@ -44,11 +39,11 @@ public class UnderlineParagraphWithTwoParts extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
 
         pdfDoc.addNewPage();
-        PdfFont font = PdfFontFactory.createFont(FontConstants.COURIER, "WinAnsi", false);
+        PdfFont font = PdfFontFactory.createFont(FontConstants.COURIER, PdfEncodings.WINANSI, false);
         float charWidth = font.getWidth(" ");
         int charactersPerLine = 101;
         float pageWidth = pdfDoc.getPage(1).getPageSize().getWidth() - doc.getLeftMargin() - doc.getRightMargin();

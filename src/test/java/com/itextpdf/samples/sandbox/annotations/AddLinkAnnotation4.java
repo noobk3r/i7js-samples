@@ -12,10 +12,10 @@
 package com.itextpdf.samples.sandbox.annotations;
 
 import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.io.font.FontProgramFactory;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.layout.Document;
@@ -29,13 +29,12 @@ import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
 
 @Category(SampleTest.class)
 @Ignore
 public class AddLinkAnnotation4 extends GenericTest {
-    //    public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
     public static final String DEST = "./target/test/resources/sandbox/annotations/add_link_annotation4.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -45,17 +44,18 @@ public class AddLinkAnnotation4 extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
-        PdfFont bold = PdfFontFactory.createFont(FontProgramFactory.createFont(FontConstants.HELVETICA_BOLD));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
+        Document doc = new Document(pdfDoc);
+        PdfFont bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
         Link link = new Link("The Best iText Questions on StackOverflow",
                 PdfAction.createURI("http://pages.itextpdf.com/ebook-stackoverflow-questions.html"));
-        link.setFont(bold).setFontSize(12);
+        link.setFont(bold);
         Paragraph p = new Paragraph("Download ");
         p.add(link);
         p.add(" and discover \nmore than 200 questions and answers.");
         // TODO DEVSIX-549
-        new Document(pdfDoc).showTextAligned(p, 30, 600, 1, TextAlignment.LEFT,
+        doc.showTextAligned(p, 30, 600, 1, TextAlignment.LEFT,
                 VerticalAlignment.TOP, (float) Math.PI / 2);
-        pdfDoc.close();
+        doc.close();
     }
 }

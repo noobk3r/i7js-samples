@@ -11,22 +11,19 @@
  */
 package com.itextpdf.samples.sandbox.objects;
 
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.colorspace.PdfDeviceCs;
 import com.itextpdf.kernel.pdf.colorspace.PdfPattern;
 import com.itextpdf.kernel.pdf.colorspace.PdfShading;
-import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.layout.Document;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class ShadedFill extends GenericTest {
@@ -39,8 +36,7 @@ public class ShadedFill extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
-        Document doc = new Document(pdfDoc);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
 
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         float x = 36;
@@ -55,6 +51,6 @@ public class ShadedFill extends GenericTest {
         canvas.lineTo(x + (side / 2), (float) (y + (side * Math.sin(Math.PI / 3))));
         canvas.closePathFillStroke();
 
-        doc.close();
+        pdfDoc.close();
     }
 }

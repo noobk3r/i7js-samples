@@ -13,26 +13,18 @@
  */
 package com.itextpdf.samples.sandbox.images;
 
-import com.itextpdf.kernel.pdf.PdfArray;
-import com.itextpdf.kernel.pdf.PdfDictionary;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfStream;
-import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileInputStream;
-
-import org.junit.experimental.categories.Category;
 
 
 @Category(SampleTest.class)
 public class FlateCompressJPEG2Passes extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/image.pdf";
     public static final String DEST = "./target/test/resources/sandbox/images/flate_compress_jpeg_2passes.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/image.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -42,21 +34,21 @@ public class FlateCompressJPEG2Passes extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfReader reader = new PdfReader(new FileInputStream(SRC));
-        PdfDocument pdfDoc = new PdfDocument(reader);
+        PdfReader reader = new PdfReader(SRC);
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
+
         PdfDictionary pageDict = pdfDoc.getPage(1).getPdfObject();
         PdfDictionary pageResources = pageDict.getAsDictionary(PdfName.Resources);
         PdfDictionary pageXObjects = pageResources.getAsDictionary(PdfName.XObject);
         PdfName imgName = pageXObjects.keySet().iterator().next();
         PdfStream imgStream = pageXObjects.getAsStream(imgName);
         imgStream.setData(reader.readStreamBytesRaw(imgStream));
-        imgStream.setCompressionLevel(-1);
+
         PdfArray array = new PdfArray();
         array.add(PdfName.FlateDecode);
         array.add(PdfName.DCTDecode);
         imgStream.put(PdfName.Filter, array);
-        pdfDoc.close();
-        pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
+
         pdfDoc.close();
     }
 }

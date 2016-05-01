@@ -12,30 +12,23 @@
 package com.itextpdf.samples.sandbox.annotations;
 
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.pdf.PdfArray;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfLinkAnnotation;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
-import com.itextpdf.kernel.pdf.navigation.PdfDestination;
+import com.itextpdf.kernel.pdf.navigation.PdfExplicitDestination;
 import com.itextpdf.layout.Document;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class AddPolygonLink extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
     public static final String DEST = "./target/test/resources/sandbox/annotations/add_polygon_link.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -45,26 +38,24 @@ public class AddPolygonLink extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)),
-                new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
+
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());
-        canvas.moveTo(36, 700);
-        canvas.lineTo(72, 760);
-        canvas.lineTo(144, 720);
-        canvas.lineTo(72, 730);
-        canvas.closePathStroke();
+        canvas.moveTo(36, 700)
+                .lineTo(72, 760)
+                .lineTo(144, 720)
+                .lineTo(72, 730)
+                .closePathStroke();
         Rectangle linkLocation = new Rectangle(36, 700, 144, 760);
-        PdfArray arrayOfQuadPoints = new PdfArray(new int[]{72, 730, 144, 720, 72, 760, 36, 700});
-        PdfArray array = new PdfArray();
-        array.add(doc.getPdfDocument().getPage(1).getPdfObject());
-        array.add(PdfName.Fit);
-        PdfDestination destination = PdfDestination.makeDestination(array);
         PdfLinkAnnotation linkAnnotation = new PdfLinkAnnotation(linkLocation)
                 .setHighlightMode(PdfAnnotation.HIGHLIGHT_INVERT)
-                .setAction(PdfAction.createGoTo(destination));
+                .setAction(PdfAction.createGoTo(PdfExplicitDestination.createFit(1)));
+        PdfArray arrayOfQuadPoints = new PdfArray(new int[]{72, 730, 144, 720, 72, 760, 36, 700});
         linkAnnotation.put(PdfName.QuadPoints, arrayOfQuadPoints);
+        
         pdfDoc.getFirstPage().addAnnotation(linkAnnotation);
+
         doc.close();
     }
 }

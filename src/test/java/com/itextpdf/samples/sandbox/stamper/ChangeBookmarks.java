@@ -11,25 +11,18 @@
  */
 package com.itextpdf.samples.sandbox.stamper;
 
-import com.itextpdf.kernel.pdf.PdfArray;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfNumber;
-import com.itextpdf.kernel.pdf.PdfOutline;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.util.List;
 
-import org.junit.experimental.categories.Category;
-
 @Category(SampleTest.class)
 public class ChangeBookmarks extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/bookmarks.pdf";
     public static final String DEST = "./target/test/resources/sandbox/stamper/change_bookmarks.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/bookmarks.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

@@ -11,19 +11,12 @@
  */
 package com.itextpdf.samples.sandbox.security;
 
-import com.itextpdf.kernel.pdf.EncryptionConstants;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.kernel.pdf.ReaderProperties;
-import com.itextpdf.kernel.pdf.WriterProperties;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class EncryptPdfWithoutUserPassword extends GenericTest {
@@ -39,7 +32,7 @@ public class EncryptPdfWithoutUserPassword extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfReader reader = new PdfReader(SRC, new ReaderProperties().setPassword("World".getBytes()));
-        PdfWriter writer = new PdfWriter(new FileOutputStream(DEST),
+        PdfWriter writer = new PdfWriter(DEST,
                 new WriterProperties().setStandardEncryption(null, "World".getBytes(), EncryptionConstants.ALLOW_PRINTING,
                         EncryptionConstants.ENCRYPTION_AES_128 | EncryptionConstants.DO_NOT_ENCRYPT_METADATA));
         PdfDocument pdfDoc = new PdfDocument(reader, writer);

@@ -21,8 +21,8 @@ import com.itextpdf.samples.GenericTest;
 import java.io.File;
 
 public class ChangeVersion extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/OCR.pdf";
     public static final String DEST = "./target/test/resources/sandbox/stamper/change_version.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/OCR.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

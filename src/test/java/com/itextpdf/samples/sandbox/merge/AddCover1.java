@@ -17,18 +17,17 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.utils.PdfMerger;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.IOException;
 
-import org.junit.experimental.categories.Category;
-
 @Category(SampleTest.class)
 public class AddCover1 extends GenericTest {
-    public static final String DEST
-            = "./target/test/resources/sandbox/merge/add_cover.pdf";
     public static final String COVER
             = "./src/test/resources/pdfs/hero.pdf";
+    public static final String DEST
+            = "./target/test/resources/sandbox/merge/add_cover.pdf";
     public static final String RESOURCE
             = "./src/test/resources/pdfs/pages.pdf";
 

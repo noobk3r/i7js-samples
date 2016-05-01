@@ -12,25 +12,17 @@
  */
 package com.itextpdf.samples.sandbox.annotations;
 
-import com.itextpdf.kernel.pdf.PdfArray;
-import com.itextpdf.kernel.pdf.PdfDictionary;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class RemoveEmbeddedFile extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/hello_with_attachment.pdf";
     public static final String DEST = "./target/test/resources/sandbox/annotations/remove_embedded_file.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/hello_with_attachment.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -40,8 +32,7 @@ public class RemoveEmbeddedFile extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)),
-                new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
         PdfDictionary root = pdfDoc.getCatalog().getPdfObject();
         PdfDictionary names = root.getAsDictionary(PdfName.Names);
         PdfDictionary embeddedFiles = names.getAsDictionary(PdfName.EmbeddedFiles);

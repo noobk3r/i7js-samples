@@ -21,12 +21,10 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class ColumnTextAscender extends GenericTest {
@@ -39,16 +37,15 @@ public class ColumnTextAscender extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
         Rectangle[] areas = new Rectangle[] {new Rectangle(50, 750, 200, 50), new Rectangle(300, 750, 200, 50)};
+        // for canvas usage one should create a page
         pdfDoc.addNewPage();
         for (Rectangle rect : areas) {
             new PdfCanvas(pdfDoc.getFirstPage()).setLineWidth(0.5f).setStrokeColor(Color.RED).rectangle(rect).stroke();
         }
         doc.setRenderer(new ColumnDocumentRenderer(doc, areas));
-        // for canvas usage one should create a page
-        pdfDoc.addNewPage();
         addColumn(doc, false);
         addColumn(doc, true);
         doc.close();
@@ -56,7 +53,7 @@ public class ColumnTextAscender extends GenericTest {
 
     public void addColumn(Document doc, boolean useAscender) {
         Paragraph p = new Paragraph("This text is added at the top of the column.");
-        // No setUseAscender(boolean). We can change leading instead. This is a but different, but
+        // No setUseAscender(boolean). We can change leading instead. This is a bit different, but
         // for now we do not see the need to implement this method in iText7
         if (useAscender) {
             p.setMargin(0);

@@ -18,14 +18,12 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
-import com.itextpdf.layout.Document;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class MakeA3Booklet extends GenericTest {
@@ -41,7 +39,9 @@ public class MakeA3Booklet extends GenericTest {
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument srcDoc = new PdfDocument(new PdfReader(SRC));
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
-        Document doc = new Document(pdfDoc, new PageSize(PageSize.A3).rotate());
+        // Note that it is not necessary to create new PageSize object,
+        // but for testing reasons (connected to parallelization) we call constructor here
+        pdfDoc.setDefaultPageSize(new PageSize(PageSize.A3).rotate());
 
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         float a4_width = PageSize.A4.getWidth();
@@ -58,7 +58,7 @@ public class MakeA3Booklet extends GenericTest {
                 canvas = new PdfCanvas(pdfDoc.addNewPage());
             }
         }
-        doc.close();
+        pdfDoc.close();
         srcDoc.close();
     }
 }

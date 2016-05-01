@@ -30,11 +30,10 @@ import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class RotatedText extends GenericTest {
@@ -51,9 +50,9 @@ public class RotatedText extends GenericTest {
         Document doc = new Document(pdfDoc, new PageSize(60, 140));
         doc.setMargins(5, 5, 5, 5);
 
-
         PdfFont bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
         PdfFont regular = PdfFontFactory.createFont(FontConstants.HELVETICA);
+
         Paragraph p1 = new Paragraph();
         p1.add(new Text("23").setFont(bold).setFontSize(12));
         p1.add(new Text("000").setFont(bold).setFontSize(6));
@@ -69,8 +68,8 @@ public class RotatedText extends GenericTest {
         Rectangle rect = barcode.getBarcodeSize();
         PdfFormXObject template = new PdfFormXObject(new Rectangle(rect.getWidth(), rect.getHeight() + 10));
         PdfCanvas templateCanvas = new PdfCanvas(template, pdfDoc);
-        new Canvas(templateCanvas, pdfDoc, new Rectangle(rect.getWidth(), rect.getHeight() + 10)).
-                showTextAligned(new Paragraph("DARK GRAY").setFont(regular).setFontSize(6), 0, rect.getHeight() + 2, TextAlignment.LEFT);
+        new Canvas(templateCanvas, pdfDoc, new Rectangle(rect.getWidth(), rect.getHeight() + 10))
+                .showTextAligned(new Paragraph("DARK GRAY").setFont(regular).setFontSize(6), 0, rect.getHeight() + 2, TextAlignment.LEFT);
         barcode.placeBarcode(templateCanvas, Color.BLACK, Color.BLACK);
         Image image = new Image(template);
         image.setRotationAngle(Math.toRadians(90));

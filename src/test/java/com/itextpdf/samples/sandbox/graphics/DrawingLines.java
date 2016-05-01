@@ -18,10 +18,9 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class DrawingLines extends GenericTest {
@@ -38,12 +37,12 @@ public class DrawingLines extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         Color magentaColor = new DeviceCmyk(0.f, 1.f, 0.f, 0.f);
-        canvas.setStrokeColor(magentaColor);
-        canvas.moveTo(36, 36);
-        canvas.lineTo(36, 806);
-        canvas.lineTo(559, 36);
-        canvas.lineTo(559, 806);
-        canvas.closePathStroke();
+        canvas.setStrokeColor(magentaColor)
+                .moveTo(36, 36)
+                .lineTo(36, 806)
+                .lineTo(559, 36)
+                .lineTo(559, 806)
+                .closePathStroke();
         pdfDoc.close();
     }
 }

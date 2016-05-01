@@ -10,28 +10,20 @@ package com.itextpdf.samples.sandbox.stamper;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.color.DeviceCmyk;
-import com.itextpdf.kernel.pdf.PdfArray;
-import com.itextpdf.kernel.pdf.PdfDictionary;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfNumber;
-import com.itextpdf.kernel.pdf.PdfPage;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-
-import org.junit.experimental.categories.Category;
 
 
 @Category(SampleTest.class)
 public class AddSpotColorImage extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/image.pdf";
     public static final String DEST = "./target/test/resources/sandbox/stamper/add_spot_color_image.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/image.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

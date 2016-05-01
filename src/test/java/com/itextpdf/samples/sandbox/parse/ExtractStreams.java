@@ -17,18 +17,16 @@ import com.itextpdf.kernel.pdf.PdfObject;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfStream;
 import com.itextpdf.test.annotations.type.SampleTest;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Category(SampleTest.class)
 public class ExtractStreams {
@@ -47,7 +45,7 @@ public class ExtractStreams {
 
     @Test
     public void manipulatePdf() throws IOException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC));
         PdfObject obj;
         List<Integer> streamLengths = new ArrayList<>();
         for (int i = 1; i <= pdfDoc.getNumberOfPdfObjects(); i++) {

@@ -14,12 +14,10 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 /**
  * Example written by Bruno Lowagie in answer to the following question:
@@ -40,8 +38,8 @@ public class ChangeMargin extends GenericTest {
         float right = 30;
         float top = 60;
         float bottom = 0;
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
-        Document doc = new Document(pdfDoc, new PageSize(PageSize.A4));
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
+        Document doc = new Document(pdfDoc, PageSize.A4);
         doc.setMargins(top, right, bottom, left);
         // Add something in order to begin the page, otherwise you will lose the initial margins
         doc.add(new Paragraph("This is a test"));

@@ -8,10 +8,10 @@
 package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.color.DeviceGray;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
@@ -21,11 +21,9 @@ import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class ColumnWidthExample extends GenericTest {
@@ -39,21 +37,22 @@ public class ColumnWidthExample extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc, PageSize.A4.rotate());
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
+        // Note that it is not necessary to create new PageSize object,
+        // but for testing reasons (connected to parallelization) we call constructor here
+        Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
 
         float[] columnWidths = {1, 5, 5};
         Table table = new Table(columnWidths);
         table.setWidthPercent(100);
         PdfFont f = PdfFontFactory.createFont(FontConstants.HELVETICA);
-        Cell cell = new Cell(1, 3).add(new Paragraph("This is a header")).
-                setFont(f).
-                setFontSize(13).
-                setFontColor(DeviceGray.WHITE).
-                setBackgroundColor(DeviceGray.BLACK).
-                setTextAlignment(TextAlignment.CENTER);
+        Cell cell = new Cell(1, 3)
+                .add(new Paragraph("This is a header"))
+                .setFont(f)
+                .setFontSize(13)
+                .setFontColor(DeviceGray.WHITE)
+                .setBackgroundColor(DeviceGray.BLACK)
+                .setTextAlignment(TextAlignment.CENTER);
         table.addHeaderCell(cell);
         for (int i = 0; i < 2; i++) {
             Cell[] headerFooter = new Cell[] {

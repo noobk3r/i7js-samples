@@ -38,18 +38,18 @@ public class TileInTwo2 extends GenericTest {
         new TileInTwo2().manipulatePdf(DEST);
     }
 
-    public static Rectangle getHalfPageSize(Rectangle pageSize) {
+    public static PageSize getHalfPageSize(Rectangle pageSize) {
         float width = pageSize.getWidth();
         float height = pageSize.getHeight();
-        return new Rectangle(width / 2, height);
+        return new PageSize(width / 2, height);
     }
 
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument srcDoc = new PdfDocument(new PdfReader(SRC));
-        Rectangle mediaBox = new Rectangle(getHalfPageSize(srcDoc.getFirstPage().getPageSizeWithRotation()));
+        PageSize mediaBox = getHalfPageSize(srcDoc.getFirstPage().getPageSizeWithRotation());
 
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
-        pdfDoc.setDefaultPageSize(new PageSize(mediaBox));
+        pdfDoc.setDefaultPageSize(mediaBox);
 
         PdfCanvas canvas;
         int n = srcDoc.getNumberOfPages();
@@ -63,8 +63,8 @@ public class TileInTwo2 extends GenericTest {
             if (++i > n) {
                 break;
             }
-            mediaBox = new Rectangle(getHalfPageSize(srcDoc.getPage(i).getPageSizeWithRotation()));
-            pdfDoc.setDefaultPageSize(new PageSize(mediaBox));
+            mediaBox = getHalfPageSize(srcDoc.getPage(i).getPageSizeWithRotation());
+            pdfDoc.setDefaultPageSize(mediaBox);
         }
         pdfDoc.close();
         srcDoc.close();

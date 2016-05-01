@@ -15,15 +15,13 @@ import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class RawImages extends GenericTest {
@@ -37,10 +35,10 @@ public class RawImages extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc, PageSize.A4.rotate());
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
+        // Note that it is not necessary to create new PageSize object,
+        // but for testing reasons (connected to parallelization) we call constructor here
+        Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
 
         Image gray = new Image(ImageDataFactory.create(1, 1, 1, 8,
                 new byte[]{(byte) 0x80}, null));

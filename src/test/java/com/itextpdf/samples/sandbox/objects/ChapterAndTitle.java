@@ -16,19 +16,17 @@ import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfOutline;
+import com.itextpdf.kernel.pdf.PdfString;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.kernel.pdf.navigation.PdfNamedDestination;
+import com.itextpdf.kernel.pdf.navigation.PdfDestination;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class ChapterAndTitle extends GenericTest {
@@ -41,7 +39,7 @@ public class ChapterAndTitle extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
 
         PdfFont chapterFont = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLDOBLIQUE);
@@ -50,7 +48,7 @@ public class ChapterAndTitle extends GenericTest {
         doc.add(title);
 
         PdfOutline root = pdfDoc.getOutlines(false);
-        root.addOutline("This is the title").addDestination(new PdfNamedDestination("title"));
+        root.addOutline("This is the title").addDestination(PdfDestination.makeDestination(new PdfString("title")));
 
         Paragraph p = new Paragraph("This is the paragraph");
         doc.add(p);

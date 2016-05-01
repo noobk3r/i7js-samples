@@ -11,27 +11,17 @@
  */
 package com.itextpdf.samples.sandbox.events;
 
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.events.Event;
 import com.itextpdf.kernel.events.IEventHandler;
 import com.itextpdf.kernel.events.PdfDocumentEvent;
-import com.itextpdf.kernel.pdf.PdfArray;
-import com.itextpdf.kernel.pdf.PdfDictionary;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfNumber;
-import com.itextpdf.kernel.pdf.PdfPage;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.*;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class ScaleDown extends GenericTest {
@@ -47,22 +37,26 @@ public class ScaleDown extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         // Create the source document
-        PdfDocument srcDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)));
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument srcDoc = new PdfDocument(new PdfReader(SRC));
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         float scale = 0.5f;
         ScaleDownEventHandler eventHandler = new ScaleDownEventHandler(scale);
         int n = srcDoc.getNumberOfPages();
         pdfDoc.addEventHandler(PdfDocumentEvent.START_PAGE, eventHandler);
 
+        PdfCanvas canvas;
+        PdfFormXObject page;
         for (int p = 1; p <= n; p++) {
             eventHandler.setPageDict(srcDoc.getPage(p).getPdfObject());
-            PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
-            PdfFormXObject page = srcDoc.getPage(p).copyAsFormXObject(pdfDoc);
+            canvas = new PdfCanvas(pdfDoc.addNewPage());
+            page = srcDoc.getPage(p).copyAsFormXObject(pdfDoc);
             canvas.addXObject(page, scale, 0f, 0f, scale, 0f, 0f);
         }
+
         pdfDoc.close();
         srcDoc.close();
     }
+
 
     protected class ScaleDownEventHandler implements IEventHandler {
         protected float scale = 1;
@@ -89,10 +83,8 @@ public class ScaleDown extends GenericTest {
         protected void scaleDown(PdfPage destPage, PdfDictionary pageDictSrc, PdfName box, float scale) {
             PdfArray original = pageDictSrc.getAsArray(box);
             if (original != null) {
-                float width = original.getAsNumber(2).floatValue()
-                        - original.getAsNumber(0).floatValue();
-                float height = original.getAsNumber(3).floatValue()
-                        - original.getAsNumber(1).floatValue();
+                float width = original.getAsNumber(2).floatValue() - original.getAsNumber(0).floatValue();
+                float height = original.getAsNumber(3).floatValue() - original.getAsNumber(1).floatValue();
                 PdfArray result = new PdfArray();
                 result.add(new PdfNumber(0));
                 result.add(new PdfNumber(0));

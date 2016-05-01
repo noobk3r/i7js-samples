@@ -13,25 +13,23 @@
  */
 package com.itextpdf.samples.sandbox.objects;
 
-import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class RectangleInCell extends GenericTest {
@@ -44,16 +42,16 @@ public class RectangleInCell extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
 
         doc.add(new Paragraph("Option 1:"));
         Table table = new Table(3);
-        table.addCell(new Cell().add(new Paragraph("A rectangle:)")));
+        table.addCell(new Cell().add("A rectangle:)"));
         PdfFormXObject template = new PdfFormXObject(new Rectangle(120, 80));
-        new PdfCanvas(template, pdfDoc).setFillColor(Color.RED).
-                rectangle(0, 0, 120, 80).
-                fill();
+        new PdfCanvas(template, pdfDoc).setFillColor(Color.RED)
+                .rectangle(0, 0, 120, 80)
+                .fill();
         table.addCell(new Cell().add(new Image(template).setAutoScale(true)).setPadding(3));
         table.addCell("The rectangle is scaled to fit inside the cell, you see a padding.");
         doc.add(table);

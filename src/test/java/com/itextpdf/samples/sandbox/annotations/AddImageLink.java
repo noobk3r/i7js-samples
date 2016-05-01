@@ -11,25 +11,23 @@
  */
 package com.itextpdf.samples.sandbox.annotations;
 
-import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfArray;
 import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfLinkAnnotation;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
-import com.itextpdf.kernel.pdf.navigation.PdfDestination;
+import com.itextpdf.kernel.pdf.navigation.PdfExplicitDestination;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class AddImageLink extends GenericTest {
@@ -57,13 +55,10 @@ public class AddImageLink extends GenericTest {
                 .addImage(img, x, y, false);
         Rectangle linkLocation = new Rectangle(x, y, w, h);
 
-        PdfArray array = new PdfArray();
-        array.add(pdfDoc.getLastPage().getPdfObject());
-        array.add(PdfName.Fit);
-        PdfDestination destination = PdfDestination.makeDestination(array);
         PdfAnnotation annotation = new PdfLinkAnnotation(linkLocation)
                 .setHighlightMode(PdfAnnotation.HIGHLIGHT_INVERT)
-                .setAction(PdfAction.createGoTo(destination)).setBorder(new PdfArray(new float[]{0, 0, 0}));
+                .setAction(PdfAction.createGoTo(PdfExplicitDestination.createFit(pdfDoc.getLastPage())))
+                .setBorder(new PdfArray(new float[]{0, 0, 0}));
         pdfDoc.getFirstPage().addAnnotation(annotation);
 
         pdfDoc.close();

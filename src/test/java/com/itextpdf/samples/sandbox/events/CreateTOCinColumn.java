@@ -13,32 +13,20 @@
 package com.itextpdf.samples.sandbox.events;
 
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.pdf.PdfArray;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfNumber;
-import com.itextpdf.kernel.pdf.PdfOutline;
-import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.navigation.PdfDestination;
 import com.itextpdf.kernel.pdf.navigation.PdfExplicitDestination;
 import com.itextpdf.layout.ColumnDocumentRenderer;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.element.AreaBreak;
-import com.itextpdf.layout.element.Cell;
-import com.itextpdf.layout.element.Link;
-import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.element.Table;
-import com.itextpdf.layout.element.Text;
+import com.itextpdf.layout.element.*;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.TextRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class CreateTOCinColumn extends GenericTest {
@@ -52,9 +40,13 @@ public class CreateTOCinColumn extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
-        Rectangle[] columns = {new Rectangle(36, 36, 173, 770), new Rectangle(213, 36, 173, 770), new Rectangle(389, 36, 173, 770)};
+        Rectangle[] columns = {
+                new Rectangle(36, 36, 173, 770),
+                new Rectangle(213, 36, 173, 770),
+                new Rectangle(389, 36, 173, 770)
+        };
         doc.setRenderer(new ColumnDocumentRenderer(doc, columns));
         PdfOutline root = pdfDoc.getOutlines(false);
         int start;
@@ -93,8 +85,8 @@ public class CreateTOCinColumn extends GenericTest {
         protected String title;
         protected PdfDestination dest;
 
-        public TOCEntry(String title, PdfArray array) {
-            this.dest = new PdfExplicitDestination(array);
+        public TOCEntry(String title, PdfDestination dest) {
+            this.dest = dest;
             this.title = title;
         }
     }
@@ -115,15 +107,11 @@ public class CreateTOCinColumn extends GenericTest {
         public void draw(DrawContext drawContext) {
             super.draw(drawContext);
             Rectangle rect = getOccupiedAreaBBox();
-            PdfArray array = new PdfArray();
-            array.add(drawContext.getDocument().getLastPage().getPdfObject());
-            array.add(PdfName.XYZ);
-            array.add(new PdfNumber(rect.getLeft()));
-            array.add(new PdfNumber(rect.getTop()));
-            array.add(new PdfNumber(0));
+            PdfDestination dest = PdfExplicitDestination.createXYZ(drawContext.getDocument().getLastPage(),
+                    rect.getLeft(), rect.getTop(), 0);
+            list.add(new TOCEntry(((Text) modelElement).getText(), dest));
+
             PdfOutline curOutline = root.addOutline(((Text) modelElement).getText());
-            PdfDestination dest = PdfDestination.makeDestination(array);
-            list.add(new TOCEntry(((Text) modelElement).getText(), array));
             curOutline.addDestination(dest);
         }
     }

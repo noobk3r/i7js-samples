@@ -12,22 +12,20 @@
 package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.layout.LayoutArea;
 import com.itextpdf.layout.layout.LayoutResult;
 import com.itextpdf.layout.renderer.DocumentRenderer;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class ColumnTextParagraphs extends GenericTest {
@@ -35,8 +33,8 @@ public class ColumnTextParagraphs extends GenericTest {
     public static final String TEXT = "This is some long paragraph " +
             "that will be added over and over again to prove a point.";
     public static final Rectangle[] COLUMNS = {
-            new Rectangle(36, 36, 290 - 36, 806 - 36),
-            new Rectangle(305, 36, 559 - 305, 806 - 36)
+            new Rectangle(36, 36, 254, 770),
+            new Rectangle(305, 36, 254, 770)
     };
 
     public static void main(String[] args) throws Exception {
@@ -46,8 +44,8 @@ public class ColumnTextParagraphs extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
-        final Document doc = new Document(pdfDoc);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
+        Document doc = new Document(pdfDoc);
 
         doc.setRenderer(new DocumentRenderer(doc) {
             int nextAreaNumber = 0;

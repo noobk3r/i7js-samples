@@ -14,8 +14,10 @@ package com.itextpdf.samples.sandbox.images;
 
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.color.DeviceRgb;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Image;
@@ -27,19 +29,17 @@ import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class WatermarkedImages2 extends GenericTest {
+    public static final String DEST = "./target/test/resources/sandbox/images/watermarked_images2.pdf";
     public static final String IMAGE1 = "./src/test/resources/img/bruno.jpg";
     public static final String IMAGE2 = "./src/test/resources/img/dog.bmp";
     public static final String IMAGE3 = "./src/test/resources/img/fox.bmp";
     public static final String IMAGE4 = "./src/test/resources/img/bruno_ingeborg.jpg";
-    public static final String DEST = "./target/test/resources/sandbox/images/watermarked_images2.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -49,9 +49,7 @@ public class WatermarkedImages2 extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
 
         Table table = new Table(1);
@@ -69,7 +67,7 @@ public class WatermarkedImages2 extends GenericTest {
         cell.setNextRenderer(new WatermarkedCellRenderer(cell, "Fox"));
         table.addCell(cell);
 
-        cell = new Cell().add(new Image(ImageDataFactory.create(IMAGE4)).setAutoScale(true));
+        cell = new Cell().add(new Image(ImageDataFactory.create(IMAGE4)).setAutoScaleWidth(true));
         cell.setNextRenderer(new WatermarkedCellRenderer(cell, "Bruno and Ingeborg"));
         table.addCell(cell);
 
@@ -94,13 +92,11 @@ public class WatermarkedImages2 extends GenericTest {
         @Override
         public void draw(DrawContext drawContext) {
             super.draw(drawContext);
-            new Document(drawContext.getDocument()).showTextAligned(new Paragraph(content).setFontColor(DeviceRgb.WHITE),
-                (getOccupiedAreaBBox().getLeft() + getOccupiedAreaBBox().getRight()) / 2,
-                (getOccupiedAreaBBox().getTop() + getOccupiedAreaBBox().getBottom()) / 2,
-                occupiedArea.getPageNumber(),
-                TextAlignment.CENTER,
-                VerticalAlignment.MIDDLE,
-                (float)Math.PI / 180 * 30);
+            Paragraph p = new Paragraph(content).setFontColor(DeviceRgb.WHITE);
+            Rectangle rect = getOccupiedAreaBBox();
+            new Canvas(drawContext.getCanvas(), drawContext.getDocument(), getOccupiedAreaBBox())
+                    .showTextAligned(p, (rect.getLeft() + rect.getRight()) / 2, (rect.getBottom() + rect.getTop()) / 2,
+                            getOccupiedArea().getPageNumber(), TextAlignment.CENTER, VerticalAlignment.MIDDLE, (float) Math.PI / 6);
         }
     }
 }

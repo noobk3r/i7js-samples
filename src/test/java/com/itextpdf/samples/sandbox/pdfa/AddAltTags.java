@@ -11,20 +11,13 @@
  */
 package com.itextpdf.samples.sandbox.pdfa;
 
-import com.itextpdf.kernel.pdf.PdfArray;
-import com.itextpdf.kernel.pdf.PdfDictionary;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfString;
-import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class AddAltTags extends GenericTest {
@@ -46,14 +39,18 @@ public class AddAltTags extends GenericTest {
     }
 
     public void manipulate(PdfDictionary element) {
-        if (element == null)
+        if (element == null) {
             return;
+        }
         if (PdfName.Figure.equals(element.get(PdfName.S))) {
             element.put(PdfName.Alt, new PdfString("Figure without an Alt description"));
         }
         PdfArray kids = element.getAsArray(PdfName.K);
-        if (kids == null) return;
-        for (int i = 0; i < kids.size(); i++)
+        if (kids == null) {
+            return;
+        }
+        for (int i = 0; i < kids.size(); i++) {
             manipulate(kids.getAsDictionary(i));
+        }
     }
 }

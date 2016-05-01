@@ -22,7 +22,6 @@ import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.canvas.draw.DashedLine;
 import com.itextpdf.kernel.pdf.navigation.PdfDestination;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.property.Property;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Tab;
 import com.itextpdf.layout.element.TabStop;
@@ -30,7 +29,6 @@ import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.property.TabAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 import java.io.ByteArrayOutputStream;
@@ -66,6 +64,7 @@ public class MergeWithToc2 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(baos));
         Document doc = new Document(pdfDoc);
         PdfOutline rootOutLine = pdfDoc.getOutlines(false);
+
         Map<Integer, String> toc = new TreeMap<Integer, String>();
         int n;
         int pageNo = 0;
@@ -78,16 +77,18 @@ public class MergeWithToc2 extends GenericTest {
                 entry.getValue().copyPagesTo(i, i, pdfDoc);
                 // Put the destination at the very first page of each merged document
                 if (i == 1) {
-                    text.setProperty(Property.DESTINATION, "p" + pageNo);
+                    text.setDestination("p" + pageNo);
                     PdfOutline outline = rootOutLine.addOutline("p" + pageNo);
                     outline.addDestination(PdfDestination.makeDestination(new PdfString("p" + pageNo)));
                 }
                 doc.add(new Paragraph(text).setFixedPosition(pageNo, 549, 810, 40));
             }
         }
+
         PdfDocument tocDoc = new PdfDocument(new PdfReader(SRC3));
         tocDoc.copyPagesTo(1, 1, pdfDoc);
         tocDoc.close();
+
         float y = 770;
         for (Map.Entry<Integer, String> entry : toc.entrySet()) {
             Paragraph p = new Paragraph();
@@ -95,19 +96,18 @@ public class MergeWithToc2 extends GenericTest {
             p.add(entry.getValue());
             p.add(new Tab());
             p.add(String.valueOf(entry.getKey()));
-            p.setProperty(Property.ACTION, PdfAction.createGoTo("p" + entry.getKey()));
+            p.setAction(PdfAction.createGoTo("p" + entry.getKey()));
             doc.add(p.setFixedPosition(pdfDoc.getNumberOfPages(), 36, y, 595 - 72));
             y -= 20;
         }
+
         for (PdfDocument srcDoc : filesToMerge.values()) {
             srcDoc.close();
         }
         doc.close();
 
-
         PdfDocument resultDoc = new PdfDocument(new PdfWriter(dest));
-        PdfDocument srcDoc = new PdfDocument(new PdfReader(
-                new RandomAccessSourceFactory().createSource(baos.toByteArray()), new ReaderProperties()));
+        PdfDocument srcDoc = new PdfDocument(new PdfReader(new RandomAccessSourceFactory().createSource(baos.toByteArray()), new ReaderProperties()));
         srcDoc.initializeOutlines();
         srcDoc.copyPagesTo(srcDoc.getNumberOfPages(), srcDoc.getNumberOfPages(), resultDoc);
         srcDoc.copyPagesTo(1, srcDoc.getNumberOfPages() - 1, resultDoc);

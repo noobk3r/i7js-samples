@@ -13,23 +13,17 @@
  */
 package com.itextpdf.samples.sandbox.stamper;
 
-import com.itextpdf.kernel.pdf.PdfDictionary;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfNumber;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 
-import org.junit.experimental.categories.Category;
-
 @Category(SampleTest.class)
 public class ScaleRotate extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/pages.pdf";
     public static final String DEST = "./target/test/resources/sandbox/stamper/scale_rotate.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/pages.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -44,8 +38,9 @@ public class ScaleRotate extends GenericTest {
         PdfDictionary page;
         for (int p = 1; p <= n; p++) {
             page = pdfDoc.getPage(p).getPdfObject();
-            if (page.getAsNumber(PdfName.UserUnit) == null)
+            if (page.getAsNumber(PdfName.UserUnit) == null) {
                 page.put(PdfName.UserUnit, new PdfNumber(2.5f));
+            }
             page.remove(PdfName.Rotate);
         }
         pdfDoc.close();

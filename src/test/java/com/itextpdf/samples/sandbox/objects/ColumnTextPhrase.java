@@ -12,22 +12,22 @@
 package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.layout.Document;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class ColumnTextPhrase extends GenericTest {
@@ -41,17 +41,17 @@ public class ColumnTextPhrase extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)),
-                new PdfWriter(new FileOutputStream(dest)));
-        Document doc = new Document(pdfDoc);
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(dest));
 
         PdfFont f = PdfFontFactory.createFont(FontConstants.HELVETICA);
         Paragraph pz = new Paragraph("Hello World!").setFont(f).setFixedLeading(20);
-        doc.add(pz.setWidth(200 - 120).setHeight(600 - 200).setMarginLeft(120));
-        f = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD, "Cp1252", true);
+        new Canvas(new PdfCanvas(pdfDoc.getFirstPage()), pdfDoc, new Rectangle(120, 48, 80, 480))
+                .add(pz);
+        f = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD, PdfEncodings.CP1252, true);
         pz = new Paragraph("Hello World!").setFont(f).setFontSize(13);
-        doc.add(pz.setWidth(200 - 120).setHeight(700 - 48).setMarginLeft(120));
+        new Canvas(new PdfCanvas(pdfDoc.getFirstPage()), pdfDoc, new Rectangle(120, 48, 80, 580))
+                .add(pz);
 
-        doc.close();
+        pdfDoc.close();
     }
 }

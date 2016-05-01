@@ -7,22 +7,20 @@
 
 package com.itextpdf.samples.sandbox.tables;
 
-import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.color.DeviceRgb;
+import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.layout.property.TextAlignment;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class FullPageTable extends GenericTest {
@@ -36,19 +34,17 @@ public class FullPageTable extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc, new PageSize(595, 842));
         doc.setMargins(0, 0, 0, 0);
 
         Table table = new Table(10);
-        table.setMarginTop(0f);
-        table.setMarginBottom(0f);
+        table.setMarginTop(0);
+        table.setMarginBottom(0);
         // first row
         Cell cell = new Cell(1, 10).add(new Paragraph("DateRange"));
         cell.setTextAlignment(TextAlignment.CENTER);
-        cell.setPadding(5.0f);
+        cell.setPadding(5);
         cell.setBackgroundColor(new DeviceRgb(140, 221, 8));
         table.addCell(cell);
 

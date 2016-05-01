@@ -15,22 +15,21 @@
 package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class ChunkBackground extends GenericTest {
@@ -43,16 +42,17 @@ public class ChunkBackground extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
 
-        PdfFont f = PdfFontFactory.createFont(FontConstants.TIMES_BOLD, "WinAnsi");
-        Text c = new Text("White text on red background")
+        PdfFont f = PdfFontFactory.createFont(FontConstants.TIMES_BOLD, PdfEncodings.WINANSI);
+        Text text = new Text("White text on red background")
                 .setFont(f)
                 .setFontSize(25.0f)
                 .setFontColor(Color.WHITE)
                 .setBackgroundColor(Color.RED);
-        Paragraph p = new Paragraph(c);
+
+        Paragraph p = new Paragraph(text);
         doc.add(p);
 
         doc.close();

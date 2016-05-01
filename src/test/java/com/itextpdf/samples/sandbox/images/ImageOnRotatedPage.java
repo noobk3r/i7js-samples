@@ -19,17 +19,15 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
-
-import org.junit.experimental.categories.Category;
 
 
 @Category(SampleTest.class)
 public class ImageOnRotatedPage extends GenericTest {
-    public static final String IMAGE = "./src/test/resources/img/cardiogram.png";
     public static final String DEST = "./target/test/resources/sandbox/images/image_on_rotated_page.pdf";
+    public static final String IMAGE = "./src/test/resources/img/cardiogram.png";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -39,7 +37,9 @@ public class ImageOnRotatedPage extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
+        // Note that it is not necessary to create new PageSize object,
+        // but for testing reasons (connected to parallelization) we call constructor here
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
         Image img = new Image(ImageDataFactory.create(IMAGE));
         img.scaleToFit(770, 523);

@@ -16,15 +16,14 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class DecryptPdf2 extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/security/decrypt_pdf2.pdf";
-    public static String SRC = "./src/test/resources/pdfs/encrypt_pdf_without_user_password.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/encrypt_pdf_without_user_password.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

@@ -10,19 +10,17 @@
  */
 package com.itextpdf.samples.sandbox.fonts;
 
+import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.*;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class UnembedFont extends GenericTest {
@@ -39,10 +37,11 @@ public class UnembedFont extends GenericTest {
      * Creates a PDF with an embedded font.
      */
     public void createPdf(String file) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(file)));
-        PdfFont font = PdfFontFactory.createFont("./src/test/resources/font/PT_Serif-Web-Regular.ttf", "WINANSI", true);
-        new Document(pdfDoc).add(new Paragraph("This is a test with Times New Roman.").setFont(font));
-        pdfDoc.close();
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(file));
+        Document doc = new Document(pdfDoc);
+        PdfFont font = PdfFontFactory.createFont("./src/test/resources/font/PT_Serif-Web-Regular.ttf", PdfEncodings.WINANSI, true);
+        doc.add(new Paragraph("This is a test with Times New Roman.").setFont(font));
+        doc.close();
     }
 
     /**
@@ -76,8 +75,7 @@ public class UnembedFont extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         createPdf(SRC);
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(
-                new FileInputStream(SRC)), new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
 
         // / we loop over all objects
         PdfObject obj;

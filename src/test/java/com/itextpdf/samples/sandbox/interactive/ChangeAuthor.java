@@ -12,15 +12,12 @@
 package com.itextpdf.samples.sandbox.interactive;
 
 import com.itextpdf.kernel.pdf.*;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class ChangeAuthor extends GenericTest {
@@ -34,8 +31,7 @@ public class ChangeAuthor extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(new FileInputStream(SRC)),
-                new PdfWriter(new FileOutputStream(dest)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(dest));
 
         PdfDictionary pageDict = pdfDoc.getFirstPage().getPdfObject();
         PdfArray annots = pageDict.getAsArray(PdfName.Annots);
@@ -44,14 +40,20 @@ public class ChangeAuthor extends GenericTest {
                 changeAuthor(annots.getAsDictionary(i));
             }
         }
+
         pdfDoc.close();
     }
 
     public void changeAuthor(PdfDictionary annotation) {
-        if (annotation == null) return;
+        if (annotation == null) {
+            return;
+        }
         PdfString t = annotation.getAsString(PdfName.T);
-        if (t == null) return;
-        if ("iText".equals(t.toString()))
+        if (t == null) {
+            return;
+        }
+        if ("iText".equals(t.toString())){
             annotation.put(PdfName.T, new PdfString("Bruno Lowagie"));
+        }
     }
 }

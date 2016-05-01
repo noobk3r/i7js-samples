@@ -8,28 +8,20 @@
 package com.itextpdf.samples.sandbox.images;
 
 import com.itextpdf.kernel.geom.PageSize;
-import com.itextpdf.kernel.pdf.PdfDictionary;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfStream;
-import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.property.Property;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class ReuseImage extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/single_image.pdf";
     public static final String DEST = "./target/test/resources/sandbox/images/reuse_image.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/single_image.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -39,28 +31,27 @@ public class ReuseImage extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC));
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc2 = new PdfDocument(writer);
+        PdfDocument srcDoc = new PdfDocument(new PdfReader(SRC));
 
-        PdfDictionary pageDict = pdfDoc.getPage(1).getPdfObject();
+        PdfDocument resultDoc = new PdfDocument(new PdfWriter(dest));
+        // Note that it is not necessary to create new PageSize object,
+        // but for testing reasons (connected to parallelization) we call constructor here
+        Document doc = new Document(resultDoc, new PageSize(PageSize.A4).rotate());
+
+        PdfDictionary pageDict = srcDoc.getFirstPage().getPdfObject();
         PdfDictionary pageResources = pageDict.getAsDictionary(PdfName.Resources);
         PdfDictionary pageXObjects = pageResources.getAsDictionary(PdfName.XObject);
         PdfName imgRef = pageXObjects.keySet().iterator().next();
         PdfStream imgStream = pageXObjects.getAsStream(imgRef);
-        PdfImageXObject imgObject = new PdfImageXObject(imgStream.copyTo(pdfDoc2));
-        pdfDoc.close();
+        PdfImageXObject imgObject = new PdfImageXObject(imgStream.copyTo(resultDoc));
+
+        srcDoc.close();
+
         Image image = new Image(imgObject);
         image.scaleToFit(842, 595);
-        image.setFixedPosition((842 -
-                        image.getImageWidth() * (Float) image.getProperty(Property.HORIZONTAL_SCALING)) / 2,
-                (595 - image.getImageHeight() * (Float) image.getProperty(Property.VERTICAL_SCALING)) / 2);
-        image.setWidth(image.getImageWidth() * (Float) image.getProperty(Property.HORIZONTAL_SCALING));
-        image.setHeight(image.getImageHeight() * (Float) image.getProperty(Property.VERTICAL_SCALING));
-
-        Document doc = new Document(pdfDoc2, PageSize.A4.rotate());
+        image.setFixedPosition((842 - image.getImageScaledWidth()) / 2, (595 - image.getImageScaledHeight()) / 2);
         doc.add(image);
+
         doc.close();
     }
 }

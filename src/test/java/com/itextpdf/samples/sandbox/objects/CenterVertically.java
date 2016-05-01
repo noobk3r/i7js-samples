@@ -25,12 +25,10 @@ import com.itextpdf.layout.renderer.IRenderer;
 import com.itextpdf.layout.renderer.TableRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class CenterVertically extends GenericTest {
@@ -44,7 +42,7 @@ public class CenterVertically extends GenericTest {
 
     public Rectangle addTable(Document doc, Table table) {
         Rectangle pageDimension = new Rectangle(36, 36, 523, 770);
-        final Rectangle rect;
+        Rectangle rect;
         IRenderer tableRenderer = table.createRendererSubTree().setParent(doc.getRenderer());
         LayoutResult tableLayoutResult = tableRenderer.layout(new LayoutContext(new LayoutArea(0, pageDimension)));
         if (LayoutResult.PARTIAL == tableLayoutResult.getStatus()) {
@@ -58,7 +56,7 @@ public class CenterVertically extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws IOException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
 
         Table table;
@@ -66,6 +64,7 @@ public class CenterVertically extends GenericTest {
         for (int i = 1; i <= 5; i++) {
             cell.add("Line " + i);
         }
+
         table = new Table(1);
         table.addCell(cell);
         table.addCell(cell.clone(true));
@@ -73,6 +72,7 @@ public class CenterVertically extends GenericTest {
         table.setNextRenderer(new CustomTableRenderer(table, addTable(doc, table)));
         doc.add(table);
         doc.add(new AreaBreak());
+
         table = new Table(1);
         table.addCell(cell.clone(true));
         table.addCell(cell.clone(true));

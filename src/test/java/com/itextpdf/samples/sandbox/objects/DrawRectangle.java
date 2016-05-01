@@ -12,18 +12,15 @@
 package com.itextpdf.samples.sandbox.objects;
 
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.layout.Document;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class DrawRectangle extends GenericTest {
@@ -36,17 +33,14 @@ public class DrawRectangle extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException {
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
-        Document doc = new Document(pdfDoc);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
 
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
-        Rectangle rect = new Rectangle(36, 36, 559 - 36, 806 - 36);
+        Rectangle rect = new Rectangle(36, 36, 523, 770);
         canvas.setLineWidth(2);
         canvas.rectangle(rect);
         canvas.stroke();
 
-        doc.close();
+        pdfDoc.close();
     }
 }

@@ -15,15 +15,14 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 
-import org.junit.experimental.categories.Category;
-
 @Category(SampleTest.class)
 public class AddLongTable extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
     public static final String DEST = "./target/test/resources/sandbox/stamper/add_long_table.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -34,7 +33,7 @@ public class AddLongTable extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
-        Document doc = new Document(pdfDoc, PageSize.A4.clone());
+        Document doc = new Document(pdfDoc, PageSize.A4);
         doc.setTopMargin(72);
         Table table = new Table(2);
         for (int i = 0; i < 250; ) {

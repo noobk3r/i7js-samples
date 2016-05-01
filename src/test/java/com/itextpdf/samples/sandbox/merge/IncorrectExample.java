@@ -42,12 +42,12 @@ public class IncorrectExample extends GenericTest {
         PdfDocument srcDoc = new PdfDocument(new PdfReader(SOURCE));
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
 
-        Rectangle pageSize;
+        PageSize pageSize;
         PdfCanvas canvas;
         PdfFormXObject page;
         for (int i = 1; i <= srcDoc.getNumberOfPages(); i++) {
             pageSize = getPageSize(srcDoc, i);
-            pdfDoc.setDefaultPageSize(new PageSize(pageSize));
+            pdfDoc.setDefaultPageSize(pageSize);
             canvas = new PdfCanvas(pdfDoc.addNewPage());
             page = srcDoc.getPage(i).copyAsFormXObject(pdfDoc);
             if (isPortrait(srcDoc, i)) {
@@ -61,9 +61,9 @@ public class IncorrectExample extends GenericTest {
         srcDoc.close();
     }
 
-    public Rectangle getPageSize(PdfDocument pdfDoc, int pageNumber) {
+    public PageSize getPageSize(PdfDocument pdfDoc, int pageNumber) {
         Rectangle pageSize = pdfDoc.getPage(pageNumber).getPageSize();
-        return new Rectangle(
+        return new PageSize(
                 Math.min(pageSize.getWidth(), pageSize.getHeight()),
                 Math.max(pageSize.getWidth(), pageSize.getHeight()));
     }

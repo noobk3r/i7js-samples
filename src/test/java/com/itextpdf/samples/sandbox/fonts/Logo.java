@@ -21,11 +21,9 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Logo extends GenericTest {
@@ -40,7 +38,7 @@ public class Logo extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(DEST)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
 
         float linewidth = 125;
@@ -96,6 +94,6 @@ public class Logo extends GenericTest {
         p = new Paragraph("I\nT\nE\nX\nT").setFixedLeading(20).setFont(t3).setFontSize(20);
         doc.add(p);
 
-        pdfDoc.close();
+        doc.close();
     }
 }

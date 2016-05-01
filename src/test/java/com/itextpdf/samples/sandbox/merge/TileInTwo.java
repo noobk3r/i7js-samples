@@ -38,35 +38,36 @@ public class TileInTwo extends GenericTest {
         new TileInTwo().manipulatePdf(DEST);
     }
 
-    public static Rectangle getHalfPageSize(Rectangle pagesize) {
+    public static PageSize getHalfPageSize(Rectangle pagesize) {
         float width = pagesize.getWidth();
         float height = pagesize.getHeight();
-        return new Rectangle(width, height / 2);
+        return new PageSize(width, height / 2);
     }
 
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument srcDoc = new PdfDocument(new PdfReader(SRC));
-        Rectangle mediaBox = new Rectangle(getHalfPageSize(srcDoc.getFirstPage().getPageSizeWithRotation()));
+        PageSize mediaBox = getHalfPageSize(srcDoc.getFirstPage().getPageSizeWithRotation());
 
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
-        pdfDoc.setDefaultPageSize(new PageSize(mediaBox));
+        PdfDocument resultDoc = new PdfDocument(new PdfWriter(DEST));
+        resultDoc.setDefaultPageSize(mediaBox);
 
         PdfCanvas canvas;
         int n = srcDoc.getNumberOfPages();
         int i = 1;
         while (true) {
-            PdfFormXObject page = srcDoc.getPage(i).copyAsFormXObject(pdfDoc);
-            canvas = new PdfCanvas(pdfDoc.addNewPage());
+            PdfFormXObject page = srcDoc.getPage(i).copyAsFormXObject(resultDoc);
+            canvas = new PdfCanvas(resultDoc.addNewPage());
             canvas.addXObject(page, 0, -mediaBox.getHeight());
-            canvas = new PdfCanvas(pdfDoc.addNewPage());
+            canvas = new PdfCanvas(resultDoc.addNewPage());
             canvas.addXObject(page, 0, 0);
             if (++i > n) {
                 break;
             }
-            mediaBox = new Rectangle(getHalfPageSize(srcDoc.getPage(i).getPageSizeWithRotation()));
-            pdfDoc.setDefaultPageSize(new PageSize(mediaBox));
+            mediaBox = getHalfPageSize(srcDoc.getPage(i).getPageSizeWithRotation());
+            resultDoc.setDefaultPageSize(mediaBox);
         }
-        pdfDoc.close();
+
+        resultDoc.close();
         srcDoc.close();
     }
 }

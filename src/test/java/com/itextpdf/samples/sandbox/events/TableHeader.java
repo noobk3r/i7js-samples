@@ -6,9 +6,9 @@
 */
 
 /**
-* Example written by Bruno Lowagie in answer to:
-* http://stackoverflow.com/questions/35449606
-*/
+ * Example written by Bruno Lowagie in answer to:
+ * http://stackoverflow.com/questions/35449606
+ */
 package com.itextpdf.samples.sandbox.events;
 
 import com.itextpdf.kernel.events.Event;
@@ -48,7 +48,7 @@ public class TableHeader extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
-        Document doc = new Document(pdfDoc, new PageSize(PageSize.A4));
+        Document doc = new Document(pdfDoc, PageSize.A4);
 
         TableHeaderEventHandler handler = new TableHeaderEventHandler(doc);
         pdfDoc.addEventHandler(PdfDocumentEvent.END_PAGE, handler);
@@ -60,8 +60,10 @@ public class TableHeader extends GenericTest {
         doc.add(new Paragraph("Hello World!"));
         doc.add(new AreaBreak());
         doc.add(new Paragraph("Hello World!"));
+
         doc.close();
     }
+
 
     public class TableHeaderEventHandler implements IEventHandler {
         protected Table table;
@@ -86,9 +88,9 @@ public class TableHeader extends GenericTest {
             PdfDocument pdfDoc = docEvent.getDocument();
             PdfPage page = docEvent.getPage();
             PdfCanvas canvas = new PdfCanvas(page.newContentStreamBefore(), page.getResources(), pdfDoc);
-            new Canvas(canvas, pdfDoc, new Rectangle(pdfDoc.getDefaultPageSize().getX()+doc.getLeftMargin(),
-                    pdfDoc.getDefaultPageSize().getTop() - doc.getTopMargin(),
-                    100, getTableHeight()))
+            Rectangle rect = new Rectangle(pdfDoc.getDefaultPageSize().getX() + doc.getLeftMargin(),
+                    pdfDoc.getDefaultPageSize().getTop() - doc.getTopMargin(), 100, getTableHeight());
+            new Canvas(canvas, pdfDoc, rect)
                     .add(table);
         }
 

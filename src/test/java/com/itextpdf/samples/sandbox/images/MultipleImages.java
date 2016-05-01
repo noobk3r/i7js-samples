@@ -22,17 +22,16 @@ import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
 
 @Category(SampleTest.class)
 public class MultipleImages extends GenericTest {
+    public static final String DEST =
+            "./target/test/resources/sandbox/images/multiple_images.pdf";
     public static final String[] IMAGES = {
             "./src/test/resources/img/berlin2013.jpg",
             "./src/test/resources/img/javaone2013.jpg",
             "./src/test/resources/img/map_cic.png"
     };
-    public static final String DEST =
-            "./target/test/resources/sandbox/images/multiple_images.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -43,9 +42,7 @@ public class MultipleImages extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         Image image = new Image(ImageDataFactory.create(IMAGES[0]));
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc, new PageSize(image.getImageWidth(), image.getImageHeight()));
         for (int i = 0; i < IMAGES.length; i++) {
             image = new Image(ImageDataFactory.create(IMAGES[i]));

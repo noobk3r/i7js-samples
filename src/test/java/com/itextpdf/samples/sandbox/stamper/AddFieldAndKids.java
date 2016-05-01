@@ -11,24 +11,23 @@
  */
 package com.itextpdf.samples.sandbox.stamper;
 
+import com.itextpdf.forms.PdfAcroForm;
+import com.itextpdf.forms.fields.PdfFormField;
+import com.itextpdf.forms.fields.PdfTextFormField;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.forms.PdfAcroForm;
-import com.itextpdf.forms.fields.PdfFormField;
-import com.itextpdf.forms.fields.PdfTextFormField;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 
-import org.junit.experimental.categories.Category;
-
 @Category(SampleTest.class)
 public class AddFieldAndKids extends GenericTest {
-    public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
     public static final String DEST = "./target/test/resources/sandbox/stamper/add_field_and_kids.pdf";
+    public static final String SRC = "./src/test/resources/pdfs/hello.pdf";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -39,15 +38,17 @@ public class AddFieldAndKids extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
+
         PdfFormField personal = PdfFormField.createEmptyField(pdfDoc);
         personal.setFieldName("personal");
         PdfTextFormField name =
-                PdfFormField.createText(pdfDoc, new Rectangle(36, 760, 144 - 36, 790 - 760), "name", "");
+                PdfFormField.createText(pdfDoc, new Rectangle(36, 760, 108, 30), "name", "");
         personal.addKid(name);
         PdfTextFormField password =
-                PdfFormField.createText(pdfDoc, new Rectangle(150, 760, 450 - 150, 790 - 760), "password", "");
+                PdfFormField.createText(pdfDoc, new Rectangle(150, 760, 300, 30), "password", "");
         personal.addKid(password);
-        PdfAcroForm.getAcroForm(pdfDoc, true).addField(personal, pdfDoc.getPage(1));
+
+        PdfAcroForm.getAcroForm(pdfDoc, true).addField(personal, pdfDoc.getFirstPage());
         pdfDoc.close();
     }
 }

@@ -17,15 +17,14 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.ColumnDocumentRenderer;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.property.ListNumberingType;
 import com.itextpdf.layout.element.List;
+import com.itextpdf.layout.property.ListNumberingType;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class ListInColumn extends GenericTest {
@@ -41,7 +40,7 @@ public class ListInColumn extends GenericTest {
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(DEST));
         while (pdfDoc.getNumberOfPages() > 2) {
-            pdfDoc.removePage(3);
+            pdfDoc.removePage(pdfDoc.getLastPage());
         }
         Document doc = new Document(pdfDoc);
         doc.setRenderer(new ColumnDocumentRenderer(doc, new Rectangle[] {new Rectangle(250, 400, 250, 406)}));

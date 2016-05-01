@@ -21,12 +21,10 @@ import com.itextpdf.layout.element.LineSeparator;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class CustomDashedLine extends GenericTest {
@@ -37,6 +35,22 @@ public class CustomDashedLine extends GenericTest {
         file.getParentFile().mkdirs();
         new CustomDashedLine().manipulatePdf(DEST);
     }
+
+    public void manipulatePdf(String dest) throws IOException {
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
+        Document doc = new Document(pdfDoc);
+
+        doc.add(new Paragraph("Before dashed line"));
+        CustomDashedLineSeparator separator = new CustomDashedLineSeparator();
+        separator.setDash(10);
+        separator.setGap(7);
+        separator.setLineWidth(3);
+        doc.add(new LineSeparator(separator));
+        doc.add(new Paragraph("After dashed line"));
+
+        doc.close();
+    }
+
 
     class CustomDashedLineSeparator extends DottedLine {
         protected float dash = 5;
@@ -68,20 +82,5 @@ public class CustomDashedLine extends GenericTest {
                     .stroke()
                     .restoreState();
         }
-    }
-
-    public void manipulatePdf(String dest) throws IOException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
-        Document doc = new Document(pdfDoc);
-
-        doc.add(new Paragraph("Before dashed line"));
-        CustomDashedLineSeparator separator = new CustomDashedLineSeparator();
-        separator.setDash(10);
-        separator.setGap(7);
-        separator.setLineWidth(3);
-        doc.add(new LineSeparator(separator));
-        doc.add(new Paragraph("After dashed line"));
-
-        doc.close();
     }
 }
