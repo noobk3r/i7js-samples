@@ -21,13 +21,14 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.TreeSet;
 
+@Ignore
 @Category(SampleTest.class)
 public class FontTest extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/fonts/font_test.pdf";
@@ -51,7 +52,6 @@ public class FontTest extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
-        PdfFontFactory.register(LiberationSans.FONT, "Greek-Regular");
         PdfFontFactory.registerDirectory(FONTDIR);
         Set<String> fonts = new HashSet<String>(FontProgramFactory.getRegisteredFonts());
         for (String fontname : fonts) {
