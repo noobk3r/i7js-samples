@@ -51,6 +51,7 @@ public class FontTest extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
+        PdfFontFactory.register(LiberationSans.FONT, "Greek-Regular");
         PdfFontFactory.registerDirectory(FONTDIR);
         Set<String> fonts = new HashSet<String>(FontProgramFactory.getRegisteredFonts());
         for (String fontname : fonts) {
