@@ -24,6 +24,7 @@ import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -51,7 +52,7 @@ public class FontTest extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
         PdfFontFactory.registerDirectory(FONTDIR);
-        Set<String> fonts = new TreeSet<String>(FontProgramFactory.getRegisteredFonts());
+        Set<String> fonts = new HashSet<String>(FontProgramFactory.getRegisteredFonts());
         for (String fontname : fonts) {
             showFontInfo(doc, fontname);
         }
