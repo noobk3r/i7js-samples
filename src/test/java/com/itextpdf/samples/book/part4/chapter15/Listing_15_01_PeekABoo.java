@@ -42,8 +42,7 @@ public class Listing_15_01_PeekABoo extends GenericTest {
 
     public void createPdf(String dest, boolean on) throws IOException {
         //Initialize writer
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos, new WriterProperties().setPdfVersion(PdfVersion.PDF_1_5));
+        PdfWriter writer = new PdfWriter(dest, new WriterProperties().setPdfVersion(PdfVersion.PDF_1_5));
 
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(writer);
@@ -54,13 +53,19 @@ public class Listing_15_01_PeekABoo extends GenericTest {
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         PdfLayer layer = new PdfLayer("Do you see me?", pdfDoc);
         layer.setOn(on);
-        canvas.beginText().setFontAndSize(PdfFontFactory.createFont(FontConstants.HELVETICA), 18).
-                moveText(50, 760).showText("Do you see me?").
-                beginLayer(layer).moveText(0, -30).showText("Peek-A-Boo!!!").endLayer().
-                endText();
-        canvas.release();
+        canvas.beginText().setFontAndSize(PdfFontFactory.createFont(FontConstants.HELVETICA), 18)
+                .moveText(50, 760)
+                .showText("Do you see me?")
+                .beginLayer(layer)
+                .moveText(0, -30)
+                .showText("Peek-A-Boo!!!")
+                .endLayer()
+                .endText()
+                .release();
 
         //Close document
         pdfDoc.close();
     }
+
+
 }

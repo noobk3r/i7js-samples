@@ -8,7 +8,6 @@
 package com.itextpdf.samples.book.part4.chapter15;
 
 import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.tagging.PdfStructElem;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;

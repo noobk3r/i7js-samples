@@ -10,10 +10,9 @@ package com.itextpdf.samples.book.part4.chapter15;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.*;
-import com.itextpdf.kernel.pdf.canvas.CanvasTag;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
-import com.itextpdf.kernel.pdf.tagging.PdfStructElem;
-import com.itextpdf.kernel.pdf.tagging.PdfStructTreeRoot;
+import com.itextpdf.kernel.pdf.tagutils.TagTreePointer;
+import com.itextpdf.layout.element.Image;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
@@ -27,7 +26,6 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -61,19 +59,18 @@ public class Listing_15_11_ObjectData extends GenericTest {
 
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
 
-        PdfStructTreeRoot tree = pdfDoc.getStructTreeRoot();
-        PdfStructElem top = tree.addKid(new PdfStructElem(pdfDoc, new PdfName("Directors")));
+        TagTreePointer tagPointer = new TagTreePointer(pdfDoc);
+        tagPointer.setPageForTagging(pdfDoc.addNewPage());
+        tagPointer.addTag(new PdfName("Directors"));
 
-        Map<Integer, PdfStructElem> directors = new HashMap<Integer, PdfStructElem>();
         Statement stm = connection.createStatement();
         ResultSet rs = stm.executeQuery(SELECTDIRECTORS);
+
         int id;
         Director director;
-        PdfStructElem e;
         while (rs.next()) {
             id = rs.getInt("id");
             director = PojoFactory.getDirector(rs);
-            e = top.addKid(new PdfStructElem(pdfDoc, new PdfName("director" + id)));
             PdfDictionary userproperties = new PdfDictionary();
             userproperties.put(PdfName.O, new PdfName("UserProperties"));
             PdfArray properties = new PdfArray();
@@ -90,8 +87,8 @@ public class Listing_15_11_ObjectData extends GenericTest {
             property3.put(PdfName.V, new PdfNumber(rs.getInt("c")));
             properties.add(property3);
             userproperties.put(PdfName.P, properties);
-            e.put(PdfName.A, userproperties);
-            directors.put(id, e);
+            tagPointer.addTag(new PdfName("director" + id)).getProperties().addAttributes(userproperties);
+            tagPointer.moveToParent();
         }
 
         Map<Movie, Integer> map = new TreeMap<Movie, Integer>();
@@ -101,18 +98,21 @@ public class Listing_15_11_ObjectData extends GenericTest {
                 map.put(movie, i);
             }
         }
-
-        PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
+        PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());
         ImageData img;
         float x = 11.5f;
         float y = 769.7f;
         for (Map.Entry<Movie, Integer> entry : map.entrySet()) {
             img = ImageDataFactory.create(String.format(RESOURCE, entry.getKey().getImdb()));
-            com.itextpdf.layout.element.Image image = new com.itextpdf.layout.element.Image(img);
-            directors.get(entry.getValue()).addKid(new PdfStructElem(pdfDoc, image.getRole()));
-            canvas.openTag(new CanvasTag(image.getRole()));
-            canvas.addImage(img, x + (45 - 30) / 2, y, 30, true);
+            Image image = new Image(img);
+            tagPointer.moveToKid(entry.getValue() - 1);
+            tagPointer.addTag(image.getRole());
+            canvas.openTag(tagPointer.getTagReference());
+            canvas.addImage(img, x + (45 - 30) / 2, y, 30, false);
             canvas.closeTag();
+            tagPointer.moveToParent();
+            tagPointer.moveToParent();
+
             x += 48;
             if (x > 578) {
                 x = 11.5f;

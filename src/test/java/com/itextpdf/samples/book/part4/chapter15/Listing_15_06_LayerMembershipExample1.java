@@ -36,8 +36,7 @@ public class Listing_15_06_LayerMembershipExample1 extends GenericTest {
 
     public void manipulatePdf(String dest) throws IOException {
         //Initialize writer
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos, new WriterProperties().setPdfVersion(PdfVersion.PDF_1_5));
+        PdfWriter writer = new PdfWriter(dest, new WriterProperties().setPdfVersion(PdfVersion.PDF_1_5));
 
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(writer);
