@@ -57,11 +57,11 @@ public class DiagonalCell extends GenericTest {
         table.addCell(new Cell().add("5").setHeight(30));
         for (int i = 0; i < 5; ) {
             table.addCell(new Cell().add(String.valueOf(++i)).setHeight(30));
-            table.addCell(new Cell().add("").setHeight(30));
-            table.addCell(new Cell().add("").setHeight(30));
-            table.addCell(new Cell().add("").setHeight(30));
-            table.addCell(new Cell().add("").setHeight(30));
-            table.addCell(new Cell().add("").setHeight(30));
+            table.addCell(new Cell().setHeight(30));
+            table.addCell(new Cell().setHeight(30));
+            table.addCell(new Cell().setHeight(30));
+            table.addCell(new Cell().setHeight(30));
+            table.addCell(new Cell().setHeight(30));
         }
 
         doc.add(table);
