@@ -23,9 +23,10 @@ import com.itextpdf.layout.renderer.IRenderer;
 import com.itextpdf.layout.renderer.TableRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
 import java.io.File;
+
+import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class NestedTables3 extends GenericTest {
@@ -75,7 +76,6 @@ public class NestedTables3 extends GenericTest {
         doc.close();
     }
 
-
     private class InnerTableRenderer extends TableRenderer {
         public InnerTableRenderer(Table modelElement, Table.RowRange rowRange) {
             super(modelElement, rowRange);
@@ -83,11 +83,6 @@ public class NestedTables3 extends GenericTest {
 
         protected InnerTableRenderer(Table modelElement) {
             super(modelElement);
-        }
-
-        @Override
-        public void addChild(IRenderer renderer) {
-            super.addChild(renderer);
         }
 
         @Override
