@@ -7,7 +7,7 @@
     <artifactId>tutorial</artifactId>
     <name>iText 7 - tutorial</name>
     <url>http://itextpdf.com/</url>
-    <version>7.0.0-SNAPSHOT</version>
+    <version>7.0.0</version>
 
     <dependencies>
         <dependency>
@@ -25,12 +25,6 @@
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>layout</artifactId>
-            <version>${project.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.itextpdf</groupId>
-            <artifactId>typography</artifactId>
             <version>${project.version}</version>
             <scope>compile</scope>
         </dependency>
