@@ -5,10 +5,12 @@
     <parent>
         <groupId>com.itextpdf</groupId>
         <artifactId>root</artifactId>
-        <version>7.0.0-SNAPSHOT</version>
+        <version>7.0.0</version>
+        <relativePath />
     </parent>
 
     <artifactId>samples</artifactId>
+    <version>7.0.0-SNAPSHOT</version>
     <name>iText 7 - samples</name>
     <url>http://itextpdf.com/</url>
 
@@ -17,8 +19,12 @@
         <url>scm:git:git@gitlab.itextsupport.com:itext7/samples.git</url>
     </scm>
 
-
     <properties>
+        <itext.version>7.0.0</itext.version>
+        <typography.version>1.0.0</typography.version>
+        <zugferd.version>1.0.0</zugferd.version>
+        <cleanup.version>1.0.0</cleanup.version>
+        <licensekey.version>2.0.0</licensekey.version>
         <assertj.version>2.3.0</assertj.version>
         <bouncycastle.version>1.49</bouncycastle.version>
         <checkstyle.version>2.15</checkstyle.version>
@@ -49,62 +55,80 @@
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>pdftest</artifactId>
-            <version>${project.version}</version>
+            <version>${itext.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>kernel</artifactId>
-            <version>${project.version}</version>
+            <version>${itext.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>layout</artifactId>
-            <version>${project.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.itextpdf</groupId>
-            <artifactId>typography</artifactId>
-            <version>${project.version}</version>
+            <version>${itext.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>forms</artifactId>
-            <version>${project.version}</version>
+            <version>${itext.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>barcodes</artifactId>
-            <version>${project.version}</version>
+            <version>${itext.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>sign</artifactId>
-            <version>${project.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.itextpdf</groupId>
-            <artifactId>itext-licensekey</artifactId>
-            <version>2.0.0-SNAPSHOT</version>
+            <version>${itext.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>hyph</artifactId>
-            <version>${project.version}</version>
+            <version>${itext.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>font-asian</artifactId>
-            <version>${project.version}</version>
+            <version>${itext.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>pdfa</artifactId>
+            <version>${itext.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>typography</artifactId>
+            <version>${typography.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>zugferd</artifactId>
+            <version>${zugferd.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>cleanup</artifactId>
+            <version>${cleanup.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itext-licensekey</artifactId>
+            <version>${licensekey.version}</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.hsqldb</groupId>
@@ -130,24 +154,6 @@
             <optional>true</optional>
         </dependency>
         <dependency>
-            <groupId>com.itextpdf</groupId>
-            <artifactId>pdfa</artifactId>
-            <version>${project.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.itextpdf</groupId>
-            <artifactId>zugferd</artifactId>
-            <version>${project.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.itextpdf</groupId>
-            <artifactId>cleanup</artifactId>
-            <version>${project.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.jfree</groupId>
             <artifactId>jfreechart</artifactId>
             <version>${jfreechart.version}</version>
@@ -165,6 +171,19 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>itext-snapshot</id>
+            <name>iText Repository - snapshots</name>
+            <url>https://repo.itextsupport.com/snapshot</url>
+        </repository>
+        <repository>
+            <id>itext-releases</id>
+            <name>iText Repository - releases</name>
+            <url>https://repo.itextsupport.com/releases</url>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>
