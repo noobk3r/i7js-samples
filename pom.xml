@@ -5,12 +5,12 @@
     <parent>
         <groupId>com.itextpdf</groupId>
         <artifactId>root</artifactId>
-        <version>7.0.0</version>
+        <version>7.0.1-SNAPSHOT</version>
         <relativePath />
     </parent>
 
     <artifactId>samples</artifactId>
-    <version>7.0.0</version>
+    <version>7.0.1-SNAPSHOT</version>
     <name>iText 7 - samples</name>
     <url>http://itextpdf.com/</url>
 
