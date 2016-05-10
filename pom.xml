@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>samples</artifactId>
-    <version>7.0.0-SNAPSHOT</version>
+    <version>7.0.0</version>
     <name>iText 7 - samples</name>
     <url>http://itextpdf.com/</url>
 
