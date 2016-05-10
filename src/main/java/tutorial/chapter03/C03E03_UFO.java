@@ -105,18 +105,18 @@ public class C03E03_UFO {
             PdfPage page = docEvent.getPage();
             int pageNumber = pdfDoc.getPageNumber(page);
             Rectangle pageSize = page.getPageSize();
-            PdfCanvas canvas = new PdfCanvas(page.newContentStreamBefore(), page.getResources(), pdfDoc);
+            PdfCanvas pdfCanvas = new PdfCanvas(page.newContentStreamBefore(), page.getResources(), pdfDoc);
 
             //Set background
             Color limeColor = new DeviceCmyk(0.208f, 0, 0.584f, 0);
             Color blueColor = new DeviceCmyk(0.445f, 0.0546f, 0, 0.0667f);
-            canvas.saveState()
+            pdfCanvas.saveState()
                     .setFillColor(pageNumber % 2 == 1 ? limeColor : blueColor)
                     .rectangle(pageSize.getLeft(), pageSize.getBottom(), pageSize.getWidth(), pageSize.getHeight())
                     .fill().restoreState();
 
             //Add header and footer
-            canvas.beginText()
+            pdfCanvas.beginText()
                     .setFontAndSize(helvetica, 9)
                     .moveText(pageSize.getWidth() / 2 - 60, pageSize.getTop() - 20)
                     .showText("THE TRUTH IS OUT THERE")
@@ -125,14 +125,14 @@ public class C03E03_UFO {
                     .endText();
 
             //Add watermark
-            Canvas canvas2 = new Canvas(canvas, pdfDoc, page.getPageSize());
-            canvas2.setProperty(Property.FONT_COLOR, Color.WHITE);
-            canvas2.setProperty(Property.FONT_SIZE, 60);
-            canvas2.setProperty(Property.FONT, helveticaBold);
-            canvas2.showTextAligned(new Paragraph("CONFIDENTIAL"), 298, 421, pdfDoc.getPageNumber(page),
+            Canvas canvas = new Canvas(pdfCanvas, pdfDoc, page.getPageSize());
+            canvas.setProperty(Property.FONT_COLOR, Color.WHITE);
+            canvas.setProperty(Property.FONT_SIZE, 60);
+            canvas.setProperty(Property.FONT, helveticaBold);
+            canvas.showTextAligned(new Paragraph("CONFIDENTIAL"), 298, 421, pdfDoc.getPageNumber(page),
                             TextAlignment.CENTER, VerticalAlignment.MIDDLE, 45);
 
-            canvas.release();
+            pdfCanvas.release();
         }
     }
 }
