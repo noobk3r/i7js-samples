@@ -12,8 +12,8 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.samples.GenericTest;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,7 +21,6 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
@@ -44,6 +43,7 @@ public class Listing_16_03_ListUsedFonts {
 
     @Test
     public void manipulatePdf() throws Exception {
+        new File(RESULT).getParentFile().mkdirs();
         Set<String> set = listFonts(FONT_TYPES);
         StringBuffer buffer = new StringBuffer();
         for (String fontName : set) {

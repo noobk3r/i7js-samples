@@ -19,6 +19,7 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -53,11 +54,12 @@ public class Listing_12_11_EncryptWithCertificate extends GenericTest {
 
     public static Properties properties = new Properties();
 
-    public static void main(String args[]) throws IOException {
-        new Listing_12_01_MetadataPdf().manipulatePdf(RESULT1);
+    public static void main(String args[]) throws IOException, GeneralSecurityException {
+        new Listing_12_11_EncryptWithCertificate().manipulatePdf(RESULT1);
     }
 
     public void manipulatePdf(String dest) throws IOException, GeneralSecurityException {
+        new File(RESULT1).getParentFile().mkdirs();
         Security.addProvider(new BouncyCastleProvider());
         properties.load(new FileInputStream(PATH));
         createPdf(RESULT1);
