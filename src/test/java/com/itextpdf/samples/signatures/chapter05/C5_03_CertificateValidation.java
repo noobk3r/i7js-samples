@@ -56,8 +56,8 @@ public class C5_03_CertificateValidation extends C5_01_SignatureIntegrity {
             "=== Certificate 0 ===\n" +
             "Issuer: C=BE,ST=OVL,L=Ghent,O=iText Software,OU=IT,CN=Bruno Specimen\n" +
             "Subject: C=BE,ST=OVL,L=Ghent,O=iText Software,OU=IT,CN=Bruno Specimen\n" +
-            "Valid from: 2016-02-15\n" +
-            "Valid to: 2016-05-15\n" +
+            "Valid from: 2012-08-04\n" +
+            "Valid to: 2112-07-11\n" +
             "The certificate was valid at the time of signing.\n" +
             "The certificate is still valid.\n" +
             "=== Checking validity of the document at the time of signing ===\n" +
