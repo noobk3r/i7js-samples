@@ -8,13 +8,7 @@
 package com.itextpdf.samples.book.part4.chapter16;
 
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.pdf.PdfArray;
-import com.itextpdf.kernel.pdf.PdfDictionary;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfString;
-import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.annot.PdfFileAttachmentAnnotation;
 import com.itextpdf.kernel.pdf.filespec.PdfFileSpec;
 import com.itextpdf.layout.Document;
@@ -30,16 +24,14 @@ import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
+import org.junit.experimental.categories.Category;
 
 import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Set;
 import java.util.TreeSet;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_16_05_KubrickDvds extends GenericTest {
@@ -137,7 +129,7 @@ public class Listing_16_05_KubrickDvds extends GenericTest {
             try {
                 fs = PdfFileSpec.createEmbeddedFileSpec(drawContext.getDocument(),
                         filePath, null, fileDisplay, null, null, false);
-            } catch (FileNotFoundException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
             Rectangle rect = new Rectangle(getOccupiedAreaBBox().getRight(),

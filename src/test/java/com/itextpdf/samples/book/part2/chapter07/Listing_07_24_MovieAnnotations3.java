@@ -14,24 +14,22 @@ import com.itextpdf.kernel.pdf.PdfString;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.annot.PdfFileAttachmentAnnotation;
 import com.itextpdf.kernel.pdf.filespec.PdfFileSpec;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.TextRenderer;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.PojoToElementFactory;
+import org.junit.experimental.categories.Category;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_07_24_MovieAnnotations3 extends GenericTest {
@@ -88,7 +86,7 @@ public class Listing_07_24_MovieAnnotations3 extends GenericTest {
             PdfFileSpec fs = null;
             try {
                 fs = PdfFileSpec.createEmbeddedFileSpec(drawContext.getDocument(), filePath, null, fileDisplay, null, null, false);
-            } catch (FileNotFoundException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
             Rectangle rect = new Rectangle(getOccupiedAreaBBox().getLeft() + getOccupiedAreaBBox().getWidth() / 4,
