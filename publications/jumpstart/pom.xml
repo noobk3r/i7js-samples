@@ -5,7 +5,7 @@
 
     <groupId>com.itextpdf</groupId>
     <artifactId>tutorial</artifactId>
-    <name>iText 7 - tutorial</name>
+    <name>Publications: iText 7 Tutorial</name>
     <url>http://itextpdf.com/</url>
     <version>7.0.1-SNAPSHOT</version>
 
