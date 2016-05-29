@@ -5,7 +5,11 @@
 
     <groupId>com.itextpdf</groupId>
     <artifactId>tutorial</artifactId>
+<<<<<<< HEAD
     <name>iText 7 - jump-start tutorial</name>
+=======
+    <name>Publications: iText 7 Tutorial</name>
+>>>>>>> 5ca0fcd482bf2756e2cd2702724c7f78008a9c52
     <url>http://itextpdf.com/</url>
     <version>7.0.1-SNAPSHOT</version>
 

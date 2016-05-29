@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>com.itextpdf</groupId>
     <artifactId>highlevel</artifactId>
+<<<<<<< HEAD
     <name>iText 7 - layout objects</name>
     <url>http://itextpdf.com/</url>
+=======
+>>>>>>> 5ca0fcd482bf2756e2cd2702724c7f78008a9c52
     <version>7.0.1-SNAPSHOT</version>
+    <name>Publications: highlevel</name>
+    <url>http://itextpdf.com/</url>
     <packaging>jar</packaging>
 
     <dependencies>

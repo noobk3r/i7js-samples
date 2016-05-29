@@ -22,7 +22,14 @@ import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.pdf.*;
+import com.itextpdf.kernel.pdf.PdfArray;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfName;
+import com.itextpdf.kernel.pdf.PdfPage;
+import com.itextpdf.kernel.pdf.PdfReader;
+import com.itextpdf.kernel.pdf.PdfResources;
+import com.itextpdf.kernel.pdf.PdfStream;
+import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.tagutils.AccessibilityProperties;
 import com.itextpdf.kernel.pdf.tagutils.IAccessibleElement;
@@ -50,10 +57,11 @@ import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Director;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
-import org.junit.experimental.categories.Category;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+
+import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_08_16_MovieAds extends GenericTest {
@@ -171,9 +179,9 @@ public class Listing_08_16_MovieAds extends GenericTest {
         PdfFont bold = null;
         PdfFont italic = null;
         try {
-            normal = PdfFontFactory.createFont(FontConstants.HELVETICA);
-            bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
-            italic = PdfFontFactory.createFont(FontConstants.HELVETICA_OBLIQUE);
+            normal = PdfFontFactory.createFont(FontConstants.HELVETICA, "", false, true);
+            bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD, "", false, true);
+            italic = PdfFontFactory.createFont(FontConstants.HELVETICA_OBLIQUE, "", false, true);
         } catch (IOException e) {
             e.printStackTrace();
         }
