@@ -4,14 +4,9 @@
 
     <groupId>com.itextpdf</groupId>
     <artifactId>highlevel</artifactId>
-<<<<<<< HEAD
     <name>iText 7 - layout objects</name>
     <url>http://itextpdf.com/</url>
-=======
->>>>>>> 5ca0fcd482bf2756e2cd2702724c7f78008a9c52
     <version>7.0.1-SNAPSHOT</version>
-    <name>Publications: highlevel</name>
-    <url>http://itextpdf.com/</url>
     <packaging>jar</packaging>
 
     <dependencies>
