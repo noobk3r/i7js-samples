@@ -8,7 +8,7 @@
 /**
  * Example written by Bruno Lowagie in answer to:
  * http://stackoverflow.com/questions/21548552/create-index-filetoc-for-merged-pdf-using-itext-library-in-java
- *
+ * <p>
  * When concatenating documents, we add a named destination every time
  * a new document is started. After we've finished merging, we add an extra
  * page with the table of contents and links to the named destinations.
@@ -28,6 +28,7 @@ import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.property.TabAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;

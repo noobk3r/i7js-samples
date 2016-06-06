@@ -12,6 +12,7 @@ package com.itextpdf.samples.sandbox.zugferd.pojo;
 
 /**
  * Plain Old Java Object containing info about a Product.
+ *
  * @author Bruno Lowagie (iText Software)
  */
 public class Product {
@@ -51,7 +52,7 @@ public class Product {
     public void setVat(double vat) {
         this.vat = vat;
     }
-    
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

@@ -17,6 +17,7 @@ import com.itextpdf.kernel.pdf.PdfObject;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfStream;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -55,7 +56,7 @@ public class ExtractStreams {
                 try {
                     b = ((PdfStream) obj).getBytes();
                 } catch (PdfException exc) {
-                    b = ((PdfStream)obj).getBytes(false);
+                    b = ((PdfStream) obj).getBytes(false);
                 }
                 System.out.println(b.length);
                 FileOutputStream fos = new FileOutputStream(String.format(DEST, i));
@@ -65,7 +66,7 @@ public class ExtractStreams {
                 fos.close();
             }
         }
-        Assert.assertArrayEquals(new Integer[] {30965, 74}, streamLengths.toArray(new Integer[streamLengths.size()]));
+        Assert.assertArrayEquals(new Integer[]{30965, 74}, streamLengths.toArray(new Integer[streamLengths.size()]));
         pdfDoc.close();
     }
 }

@@ -18,6 +18,7 @@ import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -33,6 +34,7 @@ public class CheckBoxValues {
     public static final String DEST = "./target/test/resources/sandbox/acroforms/check_box_values.pdf";
     public static final String FIELD = "CP_1";
     public static final String SRC = "./src/test/resources/pdfs/datasheet.pdf";
+
     @BeforeClass
     public static void beforeClass() throws Exception {
         new CheckBoxValues().manipulatePdf();

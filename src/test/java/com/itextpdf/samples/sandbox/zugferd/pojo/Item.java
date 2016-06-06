@@ -12,6 +12,7 @@ package com.itextpdf.samples.sandbox.zugferd.pojo;
 
 /**
  * Plain Old Java Object containing info about an Item.
+ *
  * @author Bruno Lowagie (iText Software)
  */
 public class Item {
@@ -51,7 +52,7 @@ public class Item {
     public void setCost(double cost) {
         this.cost = cost;
     }
-    
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

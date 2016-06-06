@@ -17,6 +17,7 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
@@ -30,6 +31,7 @@ public class AddCover2 extends GenericTest {
             = "./src/test/resources/pdfs/hero.pdf";
     public static final String RESOURCE
             = "./src/test/resources/pdfs/pages.pdf";
+
     public static void main(String[] args) throws IOException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();

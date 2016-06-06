@@ -12,6 +12,7 @@ package com.itextpdf.samples.sandbox.zugferd.pojo;
 
 /**
  * Plain Old Java Object containing info about a Customer.
+ *
  * @author Bruno Lowagie (iText Software)
  */
 public class Customer {
@@ -78,7 +79,7 @@ public class Customer {
     public void setCountryId(String countryId) {
         this.countryId = countryId;
     }
-    
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

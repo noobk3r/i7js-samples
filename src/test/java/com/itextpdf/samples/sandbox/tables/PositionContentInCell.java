@@ -29,6 +29,7 @@ import com.itextpdf.layout.renderer.DocumentRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
@@ -119,12 +120,12 @@ public class PositionContentInCell extends GenericTest {
             switch (position) {
                 case TOP_LEFT:
                     x = getOccupiedAreaBBox().getLeft() + 3;
-                    y = getOccupiedAreaBBox().getTop() - defaultFontSize*leading.getValue();
+                    y = getOccupiedAreaBBox().getTop() - defaultFontSize * leading.getValue();
                     alignment = TextAlignment.LEFT;
                     break;
                 case TOP_RIGHT:
                     x = getOccupiedAreaBBox().getRight() - 3;
-                    y = getOccupiedAreaBBox().getTop() - defaultFontSize*leading.getValue();
+                    y = getOccupiedAreaBBox().getTop() - defaultFontSize * leading.getValue();
                     alignment = TextAlignment.RIGHT;
                     break;
                 case BOTTOM_LEFT:

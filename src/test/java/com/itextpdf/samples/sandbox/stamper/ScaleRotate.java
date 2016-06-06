@@ -8,7 +8,7 @@
 /**
  * Example written by Bruno Lowagie in answer to:
  * http://stackoverflow.com/questions/21871027/rotating-in-itextsharp-while-preserving-comment-location-orientation
- *
+ * <p>
  * Example that shows how to scale an existing PDF using the UserUnit and how to remove the rotation of a page.
  */
 package com.itextpdf.samples.sandbox.stamper;
@@ -16,6 +16,7 @@ package com.itextpdf.samples.sandbox.stamper;
 import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;

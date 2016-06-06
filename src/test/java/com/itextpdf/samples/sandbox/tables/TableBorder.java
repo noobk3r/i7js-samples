@@ -6,9 +6,9 @@
 */
 
 /**
-* Example written by Bruno Lowagie in answer to the following question:
-* http://stackoverflow.com/questions/35340003
-*/
+ * Example written by Bruno Lowagie in answer to the following question:
+ * http://stackoverflow.com/questions/35340003
+ */
 package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.kernel.geom.Rectangle;
@@ -42,7 +42,7 @@ public class TableBorder extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
         Table table = new Table(4);
-        for(int aw = 0; aw < 16; aw++){
+        for (int aw = 0; aw < 16; aw++) {
             table.addCell(new Cell().add("hi").setBorder(Border.NO_BORDER));
         }
         // Notice that one should set renderer after table completion

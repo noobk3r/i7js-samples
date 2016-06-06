@@ -20,6 +20,7 @@ import com.itextpdf.zugferd.validation.basic.TaxIDTypeCode;
 import com.itextpdf.zugferd.exceptions.DataIncompleteException;
 import com.itextpdf.zugferd.exceptions.InvalidCodeException;
 import com.itextpdf.zugferd.profiles.BasicProfileImp;
+
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -37,7 +38,7 @@ public class XML4Basic {
         BasicProfileImp data = new BasicProfileImp();
         // SpecifiedExchangedDocumentContext
         data.setTest(true);
-        
+
         // HeaderExchangedDocument
         data.setId("HeaderExchangedDocument.ID");
         data.setName("HeaderExchangedDocument.Name");
@@ -46,7 +47,7 @@ public class XML4Basic {
         data.addNote(new String[]{"HeaderExchangedDocument.Note[0][0]", "HeaderExchangedDocument.Note[0][1]"});
         data.addNote(new String[]{"HeaderExchangedDocument.Note[1][0]", "HeaderExchangedDocument.Note[1][1]"});
         data.addNote(new String[]{"HeaderExchangedDocument.Note[2][0]", "HeaderExchangedDocument.Note[2][1]"});
-        
+
         // SpecifiedSupplyChainTradeTransaction>
         // Seller
         data.setSellerName("SellerTradeParty.Name");
@@ -66,10 +67,10 @@ public class XML4Basic {
         data.setBuyerCountryID("FR");
         data.addBuyerTaxRegistration(TaxIDTypeCode.VAT, "BuyerTradeParty.SpecifiedTaxRegistration.SchemeID[0]");
         data.addBuyerTaxRegistration(TaxIDTypeCode.FISCAL_NUMBER, "BuyerTradeParty.SpecifiedTaxRegistration.SchemeID[1]");
-        
+
         // ApplicableSupplyChainTradeDelivery
         data.setDeliveryDate(sdf.parse("2015/04/01"), DateFormatCode.YYYYMMDD);
-        
+
         // ApplicableSupplyChainTradeSettlement
         data.setPaymentReference("ApplicableSupplyChainTradeSettlement.PaymentReference");
         data.setInvoiceCurrencyCode("EUR");
@@ -79,11 +80,11 @@ public class XML4Basic {
         data.addPaymentMeans("SpecifiedTradeSettlementPaymentMeans.schemeAgencyID[1]", "SpecifiedTradeSettlementPaymentMeans.ID[1]",
                 "SpecifiedTradeSettlementPaymentMeans.IBANID[1]", "SpecifiedTradeSettlementPaymentMeans.AccountName[1]", "SpecifiedTradeSettlementPaymentMeans.ProprietaryID[1]",
                 "SpecifiedTradeSettlementPaymentMeans.BICID[1]", "SpecifiedTradeSettlementPaymentMeans.GermanBankleitzahlID[1]", "SpecifiedTradeSettlementPaymentMeans.Name[1]");
-        
+
         // ram:ApplicableTradeTax
         data.addApplicableTradeTax("6.00", "EUR", "VAT", "100.00", "EUR", "6.00");
         data.addApplicableTradeTax("21.00", "EUR", "VAT", "100.00", "EUR", "21.00");
-        
+
         // SpecifiedTradeSettlementMonetarySummation
         data.setMonetarySummation("1000.00", "EUR",
                 "0.00", "EUR",
@@ -91,7 +92,7 @@ public class XML4Basic {
                 "1000.00", "EUR",
                 "210.00", "EUR",
                 "1210.00", "EUR");
-        
+
         data.addIncludedSupplyChainTradeLineItem("1.0000",
                 MeasurementUnitCode.DAY,
                 "IncludedSupplyChainTradeLineItem.SpecifiedTradeProduct.Name[0]");
@@ -101,7 +102,7 @@ public class XML4Basic {
         data.addIncludedSupplyChainTradeLineItem("3.0000",
                 MeasurementUnitCode.MIN,
                 "IncludedSupplyChainTradeLineItem.SpecifiedTradeProduct.Name[2]");
-        
+
         // Create the XML
         InvoiceDOM dom = new InvoiceDOM(data);
         byte[] xml = dom.toXML();

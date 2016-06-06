@@ -23,6 +23,7 @@ import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.TextRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.util.ArrayList;

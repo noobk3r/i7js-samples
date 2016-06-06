@@ -29,28 +29,27 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- *
  * @author Bruno Lowagie (iText Software)
  */
 public class InvoiceData {
-    
+
     public InvoiceData() {
     }
-    
+
     public IBasicProfile createBasicProfileData(Invoice invoice) {
         BasicProfileImp profileImp = new BasicProfileImp();
         importData(profileImp, invoice);
         importBasicData(profileImp, invoice);
         return profileImp;
     }
-    
+
     public IComfortProfile createComfortProfileData(Invoice invoice) {
         ComfortProfileImp profileImp = new ComfortProfileImp();
         importData(profileImp, invoice);
         importComfortData(profileImp, invoice);
         return profileImp;
     }
-   
+
     public void importData(BasicProfileImp profileImp, Invoice invoice) {
         profileImp.setTest(true);
         profileImp.setId(String.format("I/%05d", invoice.getId()));
@@ -74,20 +73,19 @@ public class InvoiceData {
         profileImp.setPaymentReference(String.format("%09d", invoice.getId()));
         profileImp.setInvoiceCurrencyCode("EUR");
     }
-    
+
     public void importBasicData(BasicProfileImp profileImp, Invoice invoice) {
         profileImp.addNote(
-            new String[]{"This is a test invoice.\nNothing on this invoice is real.\nThis invoice is part of a tutorial."});
+                new String[]{"This is a test invoice.\nNothing on this invoice is real.\nThis invoice is part of a tutorial."});
         profileImp.addPaymentMeans("", "", "BE 41 7360 0661 9710", "", "", "KREDBEBB", "", "KBC");
         profileImp.addPaymentMeans("", "", "BE 56 0015 4298 7888", "", "", "GEBABEBB", "", "BNP Paribas");
-        Map<Double,Double> taxes = new TreeMap<Double, Double>();
+        Map<Double, Double> taxes = new TreeMap<Double, Double>();
         double tax;
         for (Item item : invoice.getItems()) {
             tax = item.getProduct().getVat();
             if (taxes.containsKey(tax)) {
                 taxes.put(tax, taxes.get(tax) + item.getCost());
-            }
-            else {
+            } else {
                 taxes.put(tax, item.getCost());
             }
             profileImp.addIncludedSupplyChainTradeLineItem(format4dec(item.getQuantity()), "C62", item.getProduct().getName());
@@ -106,17 +104,17 @@ public class InvoiceData {
             profileImp.addApplicableTradeTax(format2dec(total - tA), "EUR", TaxTypeCode.VALUE_ADDED_TAX, format2dec(tA), "EUR", format2dec(tax));
         }
         profileImp.setMonetarySummation(format2dec(ltN), "EUR",
-            format2dec(0), "EUR",
-            format2dec(0), "EUR",
-            format2dec(ltN), "EUR",
-            format2dec(ttA), "EUR",
-            format2dec(gtA), "EUR");
+                format2dec(0), "EUR",
+                format2dec(0), "EUR",
+                format2dec(ltN), "EUR",
+                format2dec(ttA), "EUR",
+                format2dec(gtA), "EUR");
     }
-   
+
     public void importComfortData(ComfortProfileImp profileImp, Invoice invoice) {
         profileImp.addNote(
-            new String[]{"This is a test invoice.\nNothing on this invoice is real.\nThis invoice is part of a tutorial."},
-            FreeTextSubjectCode.REGULATORY_INFORMATION);
+                new String[]{"This is a test invoice.\nNothing on this invoice is real.\nThis invoice is part of a tutorial."},
+                FreeTextSubjectCode.REGULATORY_INFORMATION);
         profileImp.addPaymentMeans(
                 PaymentMeansCode.PAYMENT_TO_BANK_ACCOUNT,
                 new String[]{"This is the preferred bank account."},
@@ -133,7 +131,7 @@ public class InvoiceData {
                 "BE 56 0015 4298 7888", "", "",
                 "", "", "",
                 "GEBABEBB", "", "BNP Paribas");
-        Map<Double,Double> taxes = new TreeMap<Double, Double>();
+        Map<Double, Double> taxes = new TreeMap<Double, Double>();
         double tax;
         int counter = 0;
         for (Item item : invoice.getItems()) {
@@ -141,8 +139,7 @@ public class InvoiceData {
             tax = item.getProduct().getVat();
             if (taxes.containsKey(tax)) {
                 taxes.put(tax, taxes.get(tax) + item.getCost());
-            }
-            else {
+            } else {
                 taxes.put(tax, item.getCost());
             }
             profileImp.addIncludedSupplyChainTradeLineItem(
@@ -179,25 +176,25 @@ public class InvoiceData {
                     TaxCategoryCode.STANDARD_RATE, format2dec(tax));
         }
         profileImp.setMonetarySummation(format2dec(ltN), "EUR",
-            format2dec(0), "EUR",
-            format2dec(0), "EUR",
-            format2dec(ltN), "EUR",
-            format2dec(ttA), "EUR",
-            format2dec(gtA), "EUR");
+                format2dec(0), "EUR",
+                format2dec(0), "EUR",
+                format2dec(ltN), "EUR",
+                format2dec(ttA), "EUR",
+                format2dec(gtA), "EUR");
     }
-    
+
     public static double round(double d) {
         d = d * 100;
         long tmp = Math.round(d);
         return (double) tmp / 100;
     }
-    
+
     public static String format2dec(double d) {
         return String.format("%.2f", d);
     }
-    
+
     public static String format4dec(double d) {
         return String.format("%.4f", d);
     }
-    
+
 }

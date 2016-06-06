@@ -25,13 +25,14 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.IntegrationTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.IOException;
 
 /**
-* Creates a simple PDF with images and text.
-*/
+ * Creates a simple PDF with images and text.
+ */
 @Category(IntegrationTest.class)
 public class C2E1_SimplePdf extends GenericTest {
     public static final String FOX = "./src/test/resources/img/fox.bmp";
@@ -41,10 +42,11 @@ public class C2E1_SimplePdf extends GenericTest {
 
     /**
      * Creates a simple PDF with images and text
+     *
      * @throws java.io.IOException
      */
     @Override
-    protected void manipulatePdf(String dest ) throws IOException, InterruptedException {
+    protected void manipulatePdf(String dest) throws IOException, InterruptedException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest, new WriterProperties().setPdfVersion(PdfVersion.PDF_1_7)));
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
         Paragraph p = new Paragraph();

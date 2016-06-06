@@ -8,7 +8,7 @@
 /**
  * Example written by Bruno Lowagie in answer to:
  * http://stackoverflow.com/questions/21617218/itext-or-itextsharp-rudimentary-text-edit
- *
+ * <p>
  * This is only a partial answer. It's a quick and dirty method showing how to
  * change a stream inside a PDF. Obviously, you'll have to detect words that are
  * stored in Form XObjects too, and you can seriously screw up the layout when
@@ -19,6 +19,7 @@ package com.itextpdf.samples.sandbox.stamper;
 import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;

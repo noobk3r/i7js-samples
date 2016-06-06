@@ -7,7 +7,7 @@
 
 /**
  * Example written by Bruno Lowagie in answer to a question on StackOverflow
- *
+ * <p>
  * When concatenating documents, we add a named destination every time
  * a new document is started. After we've finished merging, we add an extra
  * page with the table of contents and links to the named destinations.
@@ -22,6 +22,7 @@ import com.itextpdf.kernel.pdf.navigation.PdfExplicitDestination;
 import com.itextpdf.kernel.utils.PdfMerger;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;

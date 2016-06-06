@@ -25,12 +25,13 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.IntegrationTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.IOException;
 
 /**
-* Creates a Tagged PDF with images and text.
+ * Creates a Tagged PDF with images and text.
  */
 @Category(IntegrationTest.class)
 public class C2E2_TaggedPdf extends GenericTest {
@@ -41,8 +42,8 @@ public class C2E2_TaggedPdf extends GenericTest {
 
     /**
      * Creates a tagged PDF with images and text.
-     * @throws java.io.IOException
-     *      * @throws InterruptedException
+     *
+     * @throws java.io.IOException * @throws InterruptedException
      */
     @Override
     protected void manipulatePdf(String dest) throws IOException, InterruptedException {

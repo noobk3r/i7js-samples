@@ -8,7 +8,7 @@
 /**
  * This code sample was written by Bruno Lowagie in answer to this question:
  * http://stackoverflow.com/questions/21720802/how-to-make-text-invisible-in-an-existing-pdf
- *
+ * <p>
  * In this example, we take an image that is present in the background,
  * and we add the same image (by its reference) to the foreground so that
  * it covers the OCR'd text.
@@ -23,6 +23,7 @@ import com.itextpdf.layout.border.SolidBorder;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;

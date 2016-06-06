@@ -47,7 +47,7 @@ public class NestedTables3 extends GenericTest {
 
         Table table = new Table(2);
         table.setNextRenderer(new InnerTableRenderer(table, new Table.RowRange(0, 0)));
-        Cell cell = new Cell(1,2).add("This outer header is repeated on every page");
+        Cell cell = new Cell(1, 2).add("This outer header is repeated on every page");
         table.addHeaderCell(cell);
         Table inner1 = new Table(1);
         cell = new Cell();
@@ -91,11 +91,11 @@ public class NestedTables3 extends GenericTest {
                     new Table.RowRange(rowRange.getStartRow(), rowRange.getStartRow() + row));
             splitRenderer.rows = rows.subList(0, row);
             InnerTableRenderer overflowRenderer = (InnerTableRenderer) createOverflowRenderer(
-                    new Table.RowRange(rowRange.getStartRow() + row,rowRange.getFinishRow()));
+                    new Table.RowRange(rowRange.getStartRow() + row, rowRange.getFinishRow()));
             overflowRenderer.rows = rows.subList(row, rows.size());
             splitRenderer.occupiedArea = occupiedArea;
 
-            return new TableRenderer[] {splitRenderer, overflowRenderer};
+            return new TableRenderer[]{splitRenderer, overflowRenderer};
         }
 
         @Override
@@ -104,7 +104,7 @@ public class NestedTables3 extends GenericTest {
             for (IRenderer renderer : childRenderers) {
                 PdfCanvas canvas = drawContext.getCanvas();
                 canvas.beginText();
-                Rectangle box = ((AbstractRenderer)renderer).getInnerAreaBBox();
+                Rectangle box = ((AbstractRenderer) renderer).getInnerAreaBBox();
                 canvas.moveText(box.getLeft(), box.getTop() - this.getPropertyAsFloat(Property.FONT_SIZE));
                 canvas.setFontAndSize(this.getPropertyAsFont(Property.FONT),
                         this.getPropertyAsFloat(Property.FONT_SIZE));

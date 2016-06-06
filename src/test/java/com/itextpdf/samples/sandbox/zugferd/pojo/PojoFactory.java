@@ -22,10 +22,11 @@ import java.util.List;
 
 /**
  * Factory that creates Invoice, Customer, Product, and Item classes.
+ *
  * @author Bruno Lowagie (iText Software)
  */
 public class PojoFactory {
-    
+
     protected static PojoFactory factory = null;
     protected Connection connection;
     protected HashMap<Integer, Customer> customerCache = new HashMap<Integer, Customer>();
@@ -33,16 +34,16 @@ public class PojoFactory {
     protected PreparedStatement getCustomer;
     protected PreparedStatement getProduct;
     protected PreparedStatement getItems;
-    
+
     private PojoFactory() throws ClassNotFoundException, SQLException {
         Class.forName("org.hsqldb.jdbcDriver");
         connection = DriverManager.getConnection(
-            "jdbc:hsqldb:src/test/resources/zugferd/db/invoices", "SA", "");
+                "jdbc:hsqldb:src/test/resources/zugferd/db/invoices", "SA", "");
         getCustomer = connection.prepareStatement("SELECT * FROM Customer WHERE id = ?");
         getProduct = connection.prepareStatement("SELECT * FROM Product WHERE id = ?");
         getItems = connection.prepareStatement("SELECT * FROM Item WHERE invoiceid = ?");
     }
-    
+
     public static PojoFactory getInstance() throws SQLException {
         if (factory == null || factory.connection.isClosed()) {
             try {
@@ -53,11 +54,11 @@ public class PojoFactory {
         }
         return factory;
     }
-    
+
     public void close() throws SQLException {
         connection.close();
     }
-    
+
     public List<Invoice> getInvoices() throws SQLException {
         List<Invoice> invoices = new ArrayList<Invoice>();
         Statement stm = connection.createStatement();
@@ -68,7 +69,7 @@ public class PojoFactory {
         stm.close();
         return invoices;
     }
-    
+
     public Invoice getInvoice(ResultSet rs) throws SQLException {
         Invoice invoice = new Invoice();
         invoice.setId(rs.getInt("id"));
@@ -82,7 +83,7 @@ public class PojoFactory {
         invoice.setInvoiceDate(rs.getDate("invoicedate"));
         return invoice;
     }
-    
+
     public Item getItem(ResultSet rs) throws SQLException {
         Item item = new Item();
         item.setItem(rs.getInt("Item"));
@@ -92,7 +93,7 @@ public class PojoFactory {
         item.setCost(item.getQuantity() * product.getPrice());
         return item;
     }
-    
+
     public Customer getCustomer(int id) throws SQLException {
         if (customerCache.containsKey(id))
             return customerCache.get(id);
@@ -112,7 +113,7 @@ public class PojoFactory {
         }
         return null;
     }
-    
+
     public Product getProduct(int id) throws SQLException {
         if (productCache.containsKey(id))
             return productCache.get(id);
@@ -129,7 +130,7 @@ public class PojoFactory {
         }
         return null;
     }
-    
+
     public List<Item> getItems(int invoiceid) throws SQLException {
         List items = new ArrayList<Item>();
         getItems.setInt(1, invoiceid);

@@ -30,6 +30,7 @@ import com.itextpdf.layout.renderer.IRenderer;
 import com.itextpdf.layout.renderer.TableRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
@@ -46,13 +47,13 @@ public class NestedTables4 extends GenericTest {
     }
 
     @Override
-    protected void manipulatePdf(String dest) throws Exception { 
+    protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         // Note that it is not necessary to create new PageSize object,
         // but for testing reasons (connected to parallelization) we call constructor here
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
 
-        Table table = new Table(new float[] {1, 12, 8, 1});
+        Table table = new Table(new float[]{1, 12, 8, 1});
         table.setBorder(new SolidBorder(1));
         table.setWidthPercent(100);
         // first row
@@ -92,6 +93,6 @@ public class NestedTables4 extends GenericTest {
 
         doc.add(table);
         doc.close();
-        
+
     }
 }

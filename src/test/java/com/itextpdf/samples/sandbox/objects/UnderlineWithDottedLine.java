@@ -8,7 +8,7 @@
 /**
  * Example written by Bruno Lowagie in answer to:
  * http://stackoverflow.com/questions/22382717/write-two-itext-paragraphs-on-the-same-position
- *
+ * <p>
  * We create a Chunk and add a background color.
  */
 package com.itextpdf.samples.sandbox.objects;
@@ -21,6 +21,7 @@ import com.itextpdf.layout.element.LineSeparator;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;

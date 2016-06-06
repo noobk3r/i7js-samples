@@ -8,7 +8,7 @@
 /**
  * Example written by Bruno Lowagie in answer to:
  * http://stackoverflow.com/questions/21342034/resizing-a-form-field-in-itextsharp
- *
+ * <p>
  * Given a cell, how do you add a check box with a specific size at a specific position.
  */
 package com.itextpdf.samples.sandbox.acroforms;

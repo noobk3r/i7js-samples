@@ -28,6 +28,7 @@ import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
@@ -58,7 +59,7 @@ public class TransparentWatermark3 extends GenericTest {
         float h = img.getHeight();
         // transparency
         PdfExtGState gs1 = new PdfExtGState();
-         gs1.setFillOpacity(0.5f);
+        gs1.setFillOpacity(0.5f);
         // properties
         PdfCanvas over;
         Rectangle pagesize;

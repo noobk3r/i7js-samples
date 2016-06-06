@@ -15,6 +15,7 @@ import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
@@ -44,7 +45,7 @@ public class SimpleTable5 extends GenericTest {
         table.setSkipFirstHeader(true);
         table.setSkipLastFooter(true);
         for (int i = 0; i < 350; i++) {
-            table.addCell(String.valueOf(i+1));
+            table.addCell(String.valueOf(i + 1));
         }
 
         doc.add(table);

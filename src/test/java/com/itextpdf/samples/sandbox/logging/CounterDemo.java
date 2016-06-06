@@ -132,7 +132,7 @@ public class CounterDemo extends GenericTest {
     }
 
     private String fileToString(String filePath) throws IOException {
-        FileInputStream fin =  new FileInputStream(filePath);
+        FileInputStream fin = new FileInputStream(filePath);
         BufferedReader myInput = new BufferedReader(new InputStreamReader(fin));
         StringBuilder sb = new StringBuilder();
         String thisLine;

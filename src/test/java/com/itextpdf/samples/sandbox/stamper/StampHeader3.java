@@ -22,6 +22,7 @@ import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
@@ -52,8 +53,7 @@ public class StampHeader3 extends GenericTest {
             if (pdfDoc.getPage(i).getRotation() % 180 == 0) {
                 x = pdfDoc.getPage(i).getPageSize().getWidth() / 2;
                 y = pdfDoc.getPage(i).getPageSize().getTop() - 20;
-            }
-            else {
+            } else {
                 System.out.println("rotated");
                 x = pdfDoc.getPage(i).getPageSize().getHeight() / 2;
                 y = pdfDoc.getPage(i).getPageSize().getRight() - 20;

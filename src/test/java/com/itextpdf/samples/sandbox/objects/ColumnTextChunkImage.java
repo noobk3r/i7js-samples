@@ -16,6 +16,7 @@ import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
@@ -40,12 +41,12 @@ public class ColumnTextChunkImage extends GenericTest {
         PdfImageXObject dog = new PdfImageXObject(ImageDataFactory.create(DOG));
         PdfImageXObject fox = new PdfImageXObject(ImageDataFactory.create(FOX));
         Paragraph p = new Paragraph("quick brown fox jumps over the lazy dog.").
-            add("Or, to say it in a more colorful way: quick brown ").
-            add(new Image(fox)).
-            add(" jumps over the lazy ").
-            add(new Image(dog)).
-            add(".").
-            setMultipliedLeading(1);
+                add("Or, to say it in a more colorful way: quick brown ").
+                add(new Image(fox)).
+                add(" jumps over the lazy ").
+                add(new Image(dog)).
+                add(".").
+                setMultipliedLeading(1);
         doc.add(p);
 
         doc.close();

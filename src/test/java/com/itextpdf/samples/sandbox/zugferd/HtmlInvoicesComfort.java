@@ -14,6 +14,7 @@ import com.itextpdf.zugferd.InvoiceDOM;
 import com.itextpdf.zugferd.exceptions.DataIncompleteException;
 import com.itextpdf.zugferd.exceptions.InvalidCodeException;
 import com.itextpdf.zugferd.profiles.IComfortProfile;
+
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -34,7 +35,7 @@ public class HtmlInvoicesComfort {
     public static final String XSL = "./src/main/resources/xml/invoice.xsl";
     public static final String CSS = "./src/main/resources/data/invoice.css";
     public static final String LOGO = "./src/main/resources/img/logo.png";
-    
+
     public static void main(String[] args) throws SQLException, IOException, ParserConfigurationException, SAXException, DataIncompleteException, InvalidCodeException, TransformerException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
@@ -50,7 +51,7 @@ public class HtmlInvoicesComfort {
         }
         factory.close();
     }
-    
+
     public void createHtml(Invoice invoice, Writer writer) throws IOException, ParserConfigurationException, SAXException, DataIncompleteException, InvalidCodeException, TransformerException {
         IComfortProfile comfort = new InvoiceData().createComfortProfileData(invoice);
         InvoiceDOM dom = new InvoiceDOM(comfort);
@@ -62,7 +63,7 @@ public class HtmlInvoicesComfort {
         writer.flush();
         writer.close();
     }
-    
+
     private static void copyFile(File source, File dest) throws IOException {
         InputStream input = new FileInputStream(source);
         OutputStream output = new FileOutputStream(dest);

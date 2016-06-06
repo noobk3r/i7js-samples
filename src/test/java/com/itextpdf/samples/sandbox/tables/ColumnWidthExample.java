@@ -21,6 +21,7 @@ import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
@@ -55,7 +56,7 @@ public class ColumnWidthExample extends GenericTest {
                 .setTextAlignment(TextAlignment.CENTER);
         table.addHeaderCell(cell);
         for (int i = 0; i < 2; i++) {
-            Cell[] headerFooter = new Cell[] {
+            Cell[] headerFooter = new Cell[]{
                     new Cell().setBackgroundColor(new DeviceGray(0.75f)).add("#"),
                     new Cell().setBackgroundColor(new DeviceGray(0.75f)).add("Key"),
                     new Cell().setBackgroundColor(new DeviceGray(0.75f)).add("Value")

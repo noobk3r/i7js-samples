@@ -15,6 +15,7 @@ import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
@@ -38,8 +39,7 @@ public class SplitRowAtSpecificRow extends GenericTest {
             Cell cell;
             if (i == 5) {
                 cell = new Cell().add("Three\nLines\nHere");
-            }
-            else {
+            } else {
                 cell = new Cell().add(Integer.toString(i));
             }
             table.addCell(cell);

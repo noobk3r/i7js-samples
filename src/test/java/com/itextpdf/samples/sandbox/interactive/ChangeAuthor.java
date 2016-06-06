@@ -14,6 +14,7 @@ package com.itextpdf.samples.sandbox.interactive;
 import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
@@ -52,7 +53,7 @@ public class ChangeAuthor extends GenericTest {
         if (t == null) {
             return;
         }
-        if ("iText".equals(t.toString())){
+        if ("iText".equals(t.toString())) {
             annotation.put(PdfName.T, new PdfString("Bruno Lowagie"));
         }
     }

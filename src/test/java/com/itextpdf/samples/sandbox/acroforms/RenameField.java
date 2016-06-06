@@ -8,7 +8,7 @@
 /**
  * Example written by Bruno Lowagie in answer to:
  * http://stackoverflow.com/questions/21344750/itextsharp-renamefield-bug
- *
+ * <p>
  * When renaming a field, you need to respect the existing hierarchy.
  */
 package com.itextpdf.samples.sandbox.acroforms;

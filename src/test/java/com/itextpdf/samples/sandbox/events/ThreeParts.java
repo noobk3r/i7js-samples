@@ -25,6 +25,7 @@ import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.ParagraphRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.*;
@@ -85,7 +86,7 @@ public class ThreeParts extends GenericTest {
             // french
             addSection(pdfDoc, createParagraph(String.format("./src/test/resources/txt/liber1_%s_fr.txt", section + 1)), firstPageNumber, 0);
 
-            firstPageNumber = pdfDoc.getNumberOfPages()+1;
+            firstPageNumber = pdfDoc.getNumberOfPages() + 1;
         }
 
         pdfDoc.close();

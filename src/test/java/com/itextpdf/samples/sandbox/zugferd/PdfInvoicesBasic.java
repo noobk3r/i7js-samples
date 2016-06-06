@@ -35,6 +35,7 @@ import com.itextpdf.zugferd.ZugferdXMPUtil;
 import com.itextpdf.zugferd.exceptions.DataIncompleteException;
 import com.itextpdf.zugferd.exceptions.InvalidCodeException;
 import com.itextpdf.zugferd.profiles.IBasicProfile;
+
 import org.junit.experimental.categories.Category;
 import org.xml.sax.SAXException;
 

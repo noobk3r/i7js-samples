@@ -8,7 +8,7 @@
 /**
  * Example written by Bruno Lowagie in answer to:
  * http://thread.gmane.org/gmane.comp.java.lib.itext.general/65892
- *
+ * <p>
  * Some text displayed using a Small Caps font.
  */
 package com.itextpdf.samples.sandbox.fonts;
@@ -22,6 +22,7 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;

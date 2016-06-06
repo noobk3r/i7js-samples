@@ -8,7 +8,7 @@
 /**
  * This sample is written by Bruno Lowagie in answer to the following question:
  * http://stackoverflow.com/questions/21958449/can-itextsharp-generate-pdf-with-jpeg-images-that-are-multi-stage-filtered-both
- *
+ * <p>
  * The question was about adding compression to an image that already used /DCTDecode
  */
 package com.itextpdf.samples.sandbox.images;
@@ -16,6 +16,7 @@ package com.itextpdf.samples.sandbox.images;
 import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;

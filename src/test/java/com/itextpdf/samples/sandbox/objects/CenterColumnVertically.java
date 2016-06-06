@@ -16,6 +16,7 @@ import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
@@ -37,7 +38,7 @@ public class CenterColumnVertically extends GenericTest {
         float lly = 650;
         float urx = 400;
         float ury = 800;
-        Rectangle rect = new Rectangle(llx, lly, urx-llx, ury-lly);
+        Rectangle rect = new Rectangle(llx, lly, urx - llx, ury - lly);
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         canvas
                 .setStrokeColor(Color.RED)
@@ -47,7 +48,7 @@ public class CenterColumnVertically extends GenericTest {
         Paragraph p = new Paragraph("This text is centered vertically. " +
                 "It is rendered in the middle of the red rectangle.");
         new Canvas(canvas, pdfDoc, rect)
-                .add(p.setFixedPosition(llx, (ury + lly) / 2, urx-llx));
+                .add(p.setFixedPosition(llx, (ury + lly) / 2, urx - llx));
         pdfDoc.close();
     }
 }

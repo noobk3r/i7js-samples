@@ -6,9 +6,9 @@
 */
 
 /**
-* Example written by Bruno Lowagie in answer to the following question:
-* http://stackoverflow.com/questions/35356847
-*/
+ * Example written by Bruno Lowagie in answer to the following question:
+ * http://stackoverflow.com/questions/35356847
+ */
 package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.kernel.geom.PageSize;
@@ -23,6 +23,7 @@ import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 

@@ -21,6 +21,7 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
@@ -39,7 +40,7 @@ public class ColumnTextAscender extends GenericTest {
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
-        Rectangle[] areas = new Rectangle[] {new Rectangle(50, 750, 200, 50), new Rectangle(300, 750, 200, 50)};
+        Rectangle[] areas = new Rectangle[]{new Rectangle(50, 750, 200, 50), new Rectangle(300, 750, 200, 50)};
         // for canvas usage one should create a page
         pdfDoc.addNewPage();
         for (Rectangle rect : areas) {

@@ -7,7 +7,7 @@
 
 /**
  * Example written by Michaël Demey to demonstrate the use of the new Tab functionality.
- *
+ * <p>
  * The code adds three paragraphs:
  * 1. Without a tab
  * 2. With a leading tab
@@ -25,6 +25,7 @@ import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.property.TabAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;

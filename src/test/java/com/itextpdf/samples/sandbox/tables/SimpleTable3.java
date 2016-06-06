@@ -15,6 +15,7 @@ import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
@@ -40,15 +41,15 @@ public class SimpleTable3 extends GenericTest {
         table.setWidth(pdfDoc.getDefaultPageSize().getWidth() - 80);
         Cell contractor = new Cell(1, 5).add("XXXXXXXXXXXXX");
         table.addCell(contractor);
-        Cell workType = new Cell(1,5).add("Refractory Works");
+        Cell workType = new Cell(1, 5).add("Refractory Works");
         table.addCell(workType);
-        Cell supervisor = new Cell(1,4).add("XXXXXXXXXXXXXX");
+        Cell supervisor = new Cell(1, 4).add("XXXXXXXXXXXXXX");
         table.addCell(supervisor);
-        Cell paySlipHead = new Cell(1,10).add("XXXXXXXXXXXXXXXX");
+        Cell paySlipHead = new Cell(1, 10).add("XXXXXXXXXXXXXXXX");
         table.addCell(paySlipHead);
-        Cell paySlipMonth = new Cell(1,2).add("XXXXXXX");
+        Cell paySlipMonth = new Cell(1, 2).add("XXXXXXX");
         table.addCell(paySlipMonth);
-        Cell blank = new Cell(1,9).add("");
+        Cell blank = new Cell(1, 9).add("");
         table.addCell(blank);
         doc.add(table);
 

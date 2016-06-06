@@ -10,20 +10,20 @@
  */
 package com.itextpdf.samples.sandbox.acroforms;
 
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.xfa.XfaForm;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import java.io.File;
-import java.io.FileOutputStream;
 
 import org.junit.experimental.categories.Category;
 import org.w3c.dom.Node;
@@ -52,14 +52,14 @@ public class ReadXFA extends GenericTest {
         Node node = xfa.getDatasetsNode();
         NodeList list = node.getChildNodes();
         for (int i = 0; i < list.getLength(); i++) {
-            if("data".equals(list.item(i).getLocalName())) {
+            if ("data".equals(list.item(i).getLocalName())) {
                 node = list.item(i);
                 break;
             }
         }
         list = node.getChildNodes();
         for (int i = 0; i < list.getLength(); i++) {
-            if("movies".equals(list.item(i).getLocalName())) {
+            if ("movies".equals(list.item(i).getLocalName())) {
                 node = list.item(i);
                 break;
             }

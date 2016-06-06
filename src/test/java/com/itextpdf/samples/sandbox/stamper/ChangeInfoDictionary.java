@@ -8,7 +8,7 @@
 /**
  * Example written by Bruno Lowagie in answer to:
  * http://stackoverflow.com/questions/21607286/unicode-characters-in-document-info-dictionary-keys
- *
+ * <p>
  * A user wants to update a Document Info Dictionary (DID)
  * introducing a custom key with a Unicode character.
  */
@@ -20,6 +20,7 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;

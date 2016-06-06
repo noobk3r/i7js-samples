@@ -8,7 +8,7 @@
 /**
  * Example written by Bruno Lowagie in answer to:
  * http://stackoverflow.com/questions/21579204/how-to-set-label-to-itext-list
- *
+ * <p>
  * Workaround to add a label to a list.
  */
 package com.itextpdf.samples.sandbox.objects;
@@ -21,6 +21,7 @@ import com.itextpdf.layout.element.*;
 import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;

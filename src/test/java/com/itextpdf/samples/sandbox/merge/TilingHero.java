@@ -19,6 +19,7 @@ import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
@@ -55,7 +56,7 @@ public class TilingHero extends GenericTest {
             i++;
             mediaBox = new Rectangle(
                     (i % 4) * width, (4 - (i / 4)) * height,
-                    width, - height);
+                    width, -height);
             resultDoc.setDefaultPageSize(new PageSize(mediaBox));
         }
 

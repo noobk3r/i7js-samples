@@ -14,6 +14,7 @@ import com.itextpdf.zugferd.InvoiceDOM;
 import com.itextpdf.zugferd.exceptions.DataIncompleteException;
 import com.itextpdf.zugferd.exceptions.InvalidCodeException;
 import com.itextpdf.zugferd.profiles.IBasicProfile;
+
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -26,11 +27,11 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * @author  Bruno Lowagie
+ * @author Bruno Lowagie
  */
 public class XmlInvoicesComfort {
     public static final String DEST = "./target/test/com/itextpdf/zugferd/pdfa/comfort%05d.xml";
-    
+
     public static void main(String[] args) throws SQLException, ParserConfigurationException, SAXException, IOException, TransformerException, DataIncompleteException, InvalidCodeException {
         Locale.setDefault(Locale.ENGLISH);
         File file = new File(DEST);

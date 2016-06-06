@@ -16,6 +16,7 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.canvas.parser.PdfCanvasProcessor;
 import com.itextpdf.kernel.pdf.canvas.parser.listener.LocationTextExtractionStrategy;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;

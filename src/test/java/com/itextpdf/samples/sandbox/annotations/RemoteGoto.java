@@ -6,11 +6,11 @@
 */
 
 /**
-* Example written by Bruno Lowagie in answer to:
-* http://stackoverflow.com/questions/19999048/how-to-create-hyperlink-from-a-pdf-to-another-pdf-to-a-specified-page-using-itex
-*
-* Creating a link from one PDF to another
-*/
+ * Example written by Bruno Lowagie in answer to:
+ * http://stackoverflow.com/questions/19999048/how-to-create-hyperlink-from-a-pdf-to-another-pdf-to-a-specified-page-using-itex
+ * <p>
+ * Creating a link from one PDF to another
+ */
 package com.itextpdf.samples.sandbox.annotations;
 
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -49,7 +49,7 @@ public class RemoteGoto extends GenericTest {
         app.createPdf2(DEST);
     }
 
-    private void createPdf(String src) throws Exception{
+    private void createPdf(String src) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(new FileOutputStream(src)));
         Document doc = new Document(pdfDoc);
         Paragraph anchor = new Paragraph("This is a destination");

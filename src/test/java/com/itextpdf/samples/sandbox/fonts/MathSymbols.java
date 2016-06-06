@@ -20,6 +20,7 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
@@ -41,7 +42,7 @@ public class MathSymbols extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         PdfFont f1 = PdfFontFactory.createFont(FONT, PdfEncodings.CP1250, true);
-                Paragraph p1 = new Paragraph("Testing of letters \u010c,\u0106,\u0160,\u017d,\u0110").setFont(f1);
+        Paragraph p1 = new Paragraph("Testing of letters \u010c,\u0106,\u0160,\u017d,\u0110").setFont(f1);
         doc.add(p1);
 
         PdfFont f2 = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H);

@@ -21,6 +21,7 @@ import com.itextpdf.layout.element.List;
 import com.itextpdf.layout.property.ListNumberingType;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
@@ -43,7 +44,7 @@ public class ListInColumn extends GenericTest {
             pdfDoc.removePage(pdfDoc.getLastPage());
         }
         Document doc = new Document(pdfDoc);
-        doc.setRenderer(new ColumnDocumentRenderer(doc, new Rectangle[] {new Rectangle(250, 400, 250, 406)}));
+        doc.setRenderer(new ColumnDocumentRenderer(doc, new Rectangle[]{new Rectangle(250, 400, 250, 406)}));
 
         List list = new List(ListNumberingType.DECIMAL);
         for (int i = 0; i < 10; i++) {

@@ -15,6 +15,7 @@ import com.itextpdf.kernel.pdf.colorspace.PdfSpecialCs;
 import com.itextpdf.kernel.pdf.function.PdfFunction;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
@@ -50,7 +51,7 @@ public class AddSpotColorShape extends GenericTest {
         pdfDoc.close();
     }
 
-    private PdfSpecialCs.Separation createCmykColorSpace( float c, float m, float y, float k) {
+    private PdfSpecialCs.Separation createCmykColorSpace(float c, float m, float y, float k) {
         float[] c0 = new float[]{0, 0, 0, 0};
         float[] c1 = new float[]{c, m, y, k};
         PdfFunction f = new PdfFunction.Type2(new PdfArray(new float[]{0, 1}), null, new PdfArray(c0), new PdfArray(c1), new PdfNumber(1));

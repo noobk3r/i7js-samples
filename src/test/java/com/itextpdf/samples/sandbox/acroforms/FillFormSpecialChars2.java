@@ -8,7 +8,7 @@
 /**
  * Example written by Bruno Lowagie in answer to:
  * http://stackoverflow.com/questions/31335715/cannot-show-special-character-in-acro-form-field
- *
+ * <p>
  * Sometimes you need to change the font of a field.
  */
 package com.itextpdf.samples.sandbox.acroforms;

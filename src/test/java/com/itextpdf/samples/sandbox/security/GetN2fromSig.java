@@ -6,15 +6,16 @@
 */
 
 /**
-* Example written by Bruno Lowagie in answer to:
-* http://stackoverflow.com/questions/27867868/how-can-i-decrypt-a-pdf-document-with-the-owner-password
-*/
+ * Example written by Bruno Lowagie in answer to:
+ * http://stackoverflow.com/questions/27867868/how-can-i-decrypt-a-pdf-document-with-the-owner-password
+ */
 package com.itextpdf.samples.sandbox.security;
 
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

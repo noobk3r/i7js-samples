@@ -8,7 +8,7 @@
 /**
  * Example written by Bruno Lowagie in answer to:
  * http://stackoverflow.com/questions/21575630/adding-watermark-directly-to-the-stream
- *
+ * <p>
  * Adding a watermark to the document immediately using a page event.
  */
 package com.itextpdf.samples.sandbox.events;
@@ -33,6 +33,7 @@ import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.BufferedReader;

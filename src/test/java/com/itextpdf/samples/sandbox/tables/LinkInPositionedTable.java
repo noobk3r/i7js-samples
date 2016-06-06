@@ -6,9 +6,9 @@
 */
 
 /**
-* Example written in answer to:
-* http://stackoverflow.com/questions/33633363/itextpdf-cannot-use-writeselectedrows-on-a-table-where-an-anchor-has-been-in
-*/
+ * Example written in answer to:
+ * http://stackoverflow.com/questions/33633363/itextpdf-cannot-use-writeselectedrows-on-a-table-where-an-anchor-has-been-in
+ */
 package com.itextpdf.samples.sandbox.tables;
 
 import com.itextpdf.kernel.pdf.PdfDocument;

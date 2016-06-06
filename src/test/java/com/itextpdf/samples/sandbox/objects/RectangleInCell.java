@@ -8,7 +8,7 @@
 /**
  * Example written by Bruno Lowagie in answer to:
  * http://stackoverflow.com/questions/21625435/c-sharp-add-rectangle-into-pdfpcell-itextsharp
- *
+ * <p>
  * Adding a Rectangle object inside a table cell.
  */
 package com.itextpdf.samples.sandbox.objects;
@@ -26,6 +26,7 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;

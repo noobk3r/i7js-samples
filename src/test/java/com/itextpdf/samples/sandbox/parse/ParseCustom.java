@@ -23,6 +23,7 @@ import com.itextpdf.kernel.pdf.canvas.parser.filter.TextRegionEventFilter;
 import com.itextpdf.kernel.pdf.canvas.parser.listener.FilteredEventListener;
 import com.itextpdf.kernel.pdf.canvas.parser.listener.LocationTextExtractionStrategy;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;

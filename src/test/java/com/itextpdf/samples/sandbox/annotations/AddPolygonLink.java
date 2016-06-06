@@ -21,6 +21,7 @@ import com.itextpdf.kernel.pdf.navigation.PdfExplicitDestination;
 import com.itextpdf.layout.Document;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
@@ -53,7 +54,7 @@ public class AddPolygonLink extends GenericTest {
                 .setAction(PdfAction.createGoTo(PdfExplicitDestination.createFit(1)));
         PdfArray arrayOfQuadPoints = new PdfArray(new int[]{72, 730, 144, 720, 72, 760, 36, 700});
         linkAnnotation.put(PdfName.QuadPoints, arrayOfQuadPoints);
-        
+
         pdfDoc.getFirstPage().addAnnotation(linkAnnotation);
 
         doc.close();

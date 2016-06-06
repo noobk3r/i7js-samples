@@ -15,6 +15,7 @@ import java.util.List;
 
 /**
  * Plain Old Java Object containing info about an Invoice.
+ *
  * @author Bruno Lowagie (iText Software)
  */
 public class Invoice {
@@ -63,7 +64,7 @@ public class Invoice {
     public void setInvoiceDate(Date invoiceDate) {
         this.invoiceDate = invoiceDate;
     }
-    
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

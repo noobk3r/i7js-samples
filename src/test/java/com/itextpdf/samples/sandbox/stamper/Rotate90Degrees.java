@@ -14,6 +14,7 @@ package com.itextpdf.samples.sandbox.stamper;
 import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
@@ -40,8 +41,7 @@ public class Rotate90Degrees extends GenericTest {
             rotate = page.getPdfObject().getAsNumber(PdfName.Rotate);
             if (rotate == null) {
                 page.setRotation(90);
-            }
-            else {
+            } else {
                 page.setRotation((rotate.intValue() + 90) % 360);
             }
         }

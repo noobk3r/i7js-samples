@@ -16,6 +16,7 @@ import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
@@ -44,7 +45,7 @@ public class ShrinkPdf extends GenericTest {
             if (media == null) {
                 media = page.getMediaBox();
             }
-            crop = new Rectangle(0, 0, media.getWidth()/2, media.getHeight()/2);
+            crop = new Rectangle(0, 0, media.getWidth() / 2, media.getHeight() / 2);
             page.setMediaBox(crop);
             page.setCropBox(crop);
             new PdfCanvas(pdfDoc.getPage(p).newContentStreamBefore(),

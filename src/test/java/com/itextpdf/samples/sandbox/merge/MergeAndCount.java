@@ -16,6 +16,7 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.utils.PageRange;
 import com.itextpdf.kernel.utils.PdfSplitter;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.FileNotFoundException;
@@ -38,6 +39,7 @@ public class MergeAndCount {
 
         List<PdfDocument> splitDocuments = new PdfSplitter(pdfDoc) {
             int partNumber = 1;
+
             @Override
             protected PdfWriter getNextPdfWriter(PageRange documentPageRange) {
                 try {

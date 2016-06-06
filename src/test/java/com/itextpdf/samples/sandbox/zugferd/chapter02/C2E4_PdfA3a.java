@@ -25,6 +25,7 @@ import com.itextpdf.kernel.pdf.PdfAConformanceLevel;
 import com.itextpdf.pdfa.PdfADocument;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.IntegrationTest;
+
 import org.junit.experimental.categories.Category;
 
 import java.io.FileInputStream;
@@ -32,8 +33,8 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
-* Creates a PDF that conforms with PDF/A-3 Level A.
-*/
+ * Creates a PDF that conforms with PDF/A-3 Level A.
+ */
 @Category(IntegrationTest.class)
 public class C2E4_PdfA3a extends GenericTest {
     public static final String ICC = "./src/test/resources/data/sRGB_CS_profile.icm";

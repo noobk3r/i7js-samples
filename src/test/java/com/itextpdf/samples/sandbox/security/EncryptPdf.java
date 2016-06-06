@@ -6,15 +6,16 @@
 */
 
 /**
-* Example written by Bruno Lowagie in answer to:
-* http://stackoverflow.com/questions/27867868/how-can-i-decrypt-a-pdf-document-with-the-owner-password
-*/
+ * Example written by Bruno Lowagie in answer to:
+ * http://stackoverflow.com/questions/27867868/how-can-i-decrypt-a-pdf-document-with-the-owner-password
+ */
 package com.itextpdf.samples.sandbox.security;
 
 import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.utils.CompareTool;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import org.junit.Assert;
 import org.junit.experimental.categories.Category;
 
@@ -48,8 +49,8 @@ public class EncryptPdf extends GenericTest {
         CompareTool compareTool = new CompareTool();
         String outPath = new File(dest).getParent();
         new File(outPath).mkdirs();
-        if (compareXml){
-            if(!compareTool.compareXmls(dest,cmp)){
+        if (compareXml) {
+            if (!compareTool.compareXmls(dest, cmp)) {
                 addError("The XML structures are different.");
             }
         } else {
