@@ -25,15 +25,21 @@ import ch.qos.logback.classic.Logger;
 @Category(SampleTest.class)
 public class GenericTest {
 
-    /** The logger class */
+    /**
+     * The logger class
+     */
     private static final Logger LOGGER = (Logger) LoggerFactory.getLogger(GenericTest.class.getName());
 
     protected boolean compareRenders = false;
 
     protected boolean compareXml = false;
-    /** An error message */
+    /**
+     * An error message
+     */
     protected String errorMessage;
-    /** A prefix that is part of the error message. */
+    /**
+     * A prefix that is part of the error message.
+     */
     protected String differenceImagePrefix = "difference";
 
     /**
@@ -45,7 +51,6 @@ public class GenericTest {
     public void setup() {
 
     }*/
-
     protected void beforeManipulatePdf() {
     }
 
@@ -82,7 +87,8 @@ public class GenericTest {
     /**
      * Manupulates a PDF by invoking the manipulatePdf() method in the
      * original sample class.
-     * @param	dest	the resulting PDF
+     *
+     * @param    dest    the resulting PDF
      */
     protected void manipulatePdf(String dest) throws Exception {
     }
@@ -90,7 +96,8 @@ public class GenericTest {
     /**
      * Gets the path to the resulting PDF from the sample class;
      * this method also creates directories if necessary.
-     * @return	a path to a resulting PDF
+     *
+     * @return a path to a resulting PDF
      */
     protected String getDest() {
         String dest = getStringField("DEST");
@@ -104,39 +111,41 @@ public class GenericTest {
     /**
      * Returns a string value that is stored as a static variable
      * inside an example class.
-     * @param name	the name of the variable
-     * @return	the value of the variable
+     *
+     * @param name the name of the variable
+     * @return the value of the variable
      */
     protected String getStringField(String name) {
         try {
             Field field = getClass().getField(name);
-            if (field == null)
+            if (field == null) {
                 return null;
+            }
             Object obj = field.get(null);
-            if (obj == null || ! (obj instanceof String))
+            if (obj == null || !(obj instanceof String))
                 return null;
-            return (String)obj;
-        }
-        catch(Exception e) {
+            return (String) obj;
+        } catch (Exception e) {
             return null;
         }
     }
 
     /**
      * Compares two PDF files using iText's CompareTool.
-     * @param	dest	the PDF that resulted from the test
-     * @param	cmp		the reference PDF
+     *
+     * @param    dest    the PDF that resulted from the test
+     * @param    cmp        the reference PDF
      */
     protected void comparePdf(String dest, String cmp) throws Exception {
         if (cmp == null || cmp.length() == 0) return;
         CompareTool compareTool = new CompareTool();
         String outPath = new File(dest).getParent();
         new File(outPath).mkdirs();
-        if(compareXml){
-            if(!compareTool.compareXmls(dest,cmp)){
+        if (compareXml) {
+            if (!compareTool.compareXmls(dest, cmp)) {
                 addError("The XML structures are different.");
             }
-        }else {
+        } else {
             if (compareRenders) {
                 addError(compareTool.compareVisually(dest, cmp, outPath, differenceImagePrefix));
                 addError(compareTool.compareLinkAnnotations(dest, cmp));
@@ -147,7 +156,9 @@ public class GenericTest {
         }
 
 
-        if (errorMessage != null) Assert.fail(errorMessage);
+        if (errorMessage != null) {
+            Assert.fail(errorMessage);
+        }
     }
 
     /**
@@ -155,22 +166,25 @@ public class GenericTest {
      */
     protected String getCmpPdf() {
         String tmp = getDest();
-        if (tmp == null)
+        if (tmp == null) {
             return null;
+        }
         int i = tmp.lastIndexOf("/");
-        return "./src"+tmp.substring(8, i + 1) + "cmp_" + tmp.substring(i + 1);
+        return "./src" + tmp.substring(8, i + 1) + "cmp_" + tmp.substring(i + 1);
     }
 
     /**
      * Helper method to construct error messages.
-     * @param	error	part of an error message.
+     *
+     * @param    error    part of an error message.
      */
     protected void addError(String error) {
         if (error != null && error.length() > 0) {
-            if (errorMessage == null)
+            if (errorMessage == null) {
                 errorMessage = "";
-            else
+            } else {
                 errorMessage += "\n";
+            }
 
             errorMessage += error;
         }

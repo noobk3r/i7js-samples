@@ -70,6 +70,7 @@ public class ReadXFA extends GenericTest {
         tf.setOutputProperty(OutputKeys.INDENT, "yes");
         FileOutputStream os = new FileOutputStream(DEST);
         tf.transform(new DOMSource(node), new StreamResult(os));
+        os.close();
 
         pdfDoc.close();
     }
