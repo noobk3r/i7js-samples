@@ -11,18 +11,16 @@
  */
 package com.itextpdf.samples.sandbox.acroforms;
 
+import com.itextpdf.forms.PdfAcroForm;
+import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.forms.PdfAcroForm;
-import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.util.Map;
 
 import org.junit.experimental.categories.Category;
@@ -47,11 +45,11 @@ public class RemoveXFA extends GenericTest {
         form.removeXfaForm();
 
         Map<String, PdfFormField> fields = form.getFormFields();
-        for (String name : fields.keySet()) {
-            if (name.indexOf("Total") > 0) {
-                fields.get(name).getWidgets().get(0).setColor(Color.RED);
+        for (Map.Entry<String, PdfFormField> name : fields.entrySet()) {
+            if (name.getKey().indexOf("Total") > 0) {
+                name.getValue().getWidgets().get(0).setColor(Color.RED);
             }
-            form.getField(name).setValue("X");
+            name.getValue().setValue("X");
         }
 
         pdfDoc.close();

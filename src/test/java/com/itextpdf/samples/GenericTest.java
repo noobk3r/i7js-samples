@@ -7,21 +7,19 @@
 
 package com.itextpdf.samples;
 
-import ch.qos.logback.classic.Logger;
 import com.itextpdf.kernel.utils.CompareTool;
 import com.itextpdf.test.annotations.type.SampleTest;
 
-
-import javax.management.OperationsException;
 import java.io.File;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-
+import javax.management.OperationsException;
 
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.slf4j.LoggerFactory;
+
+import ch.qos.logback.classic.Logger;
 
 
 @Category(SampleTest.class)
@@ -87,9 +85,6 @@ public class GenericTest {
      * @param	dest	the resulting PDF
      */
     protected void manipulatePdf(String dest) throws Exception {
-        LOGGER.info("Manipulating PDF.");
-        Method method = getClass().getDeclaredMethod("manipulatePdf", String.class);
-        method.invoke(getClass().getConstructor().newInstance(), dest);
     }
 
     /**
