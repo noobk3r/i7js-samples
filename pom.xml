@@ -204,7 +204,7 @@
                         <include>**/*.java</include>
                     </includes>
                     <groups>${sampletests}</groups>
-                    <parallel>all</parallel>
+                    <parallel>none</parallel>
                     <threadCount>10</threadCount>
                     <useUnlimitedThreads>true</useUnlimitedThreads>
                 </configuration>
