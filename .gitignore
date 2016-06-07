@@ -158,5 +158,7 @@ nbactions*.xml
 
 # Ignore generated files
 filmfestival.log
+invoices.log
+*.lck
 
 .vagrant/

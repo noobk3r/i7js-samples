@@ -3,11 +3,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.itextpdf</groupId>
+    <parent>
+        <groupId>com.itextpdf</groupId>
+        <artifactId>publications</artifactId>
+        <version>7.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
     <artifactId>tutorial</artifactId>
-    <name>iText 7 - jump-start tutorial</name>
+
+    <name>iText 7 Publications: Jump-start Tutorial</name>
     <url>http://itextpdf.com/</url>
-    <version>7.0.1-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
@@ -20,55 +26,42 @@
             <groupId>com.itextpdf</groupId>
             <artifactId>kernel</artifactId>
             <version>${project.version}</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>layout</artifactId>
             <version>${project.version}</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>forms</artifactId>
             <version>${project.version}</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>barcodes</artifactId>
             <version>${project.version}</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>hyph</artifactId>
             <version>${project.version}</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>io</artifactId>
             <version>${project.version}</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>pdfa</artifactId>
             <version>${project.version}</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.7.18</version>
         </dependency>
-
     </dependencies>
-
-    <build>
-        <plugins>
-        </plugins>
-    </build>
 
 </project>

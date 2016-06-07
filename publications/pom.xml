@@ -4,15 +4,22 @@
 
     <parent>
         <groupId>com.itextpdf</groupId>
-        <artifactId>publications</artifactId>
+        <artifactId>examples</artifactId>
         <version>7.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>com.itextpdf.samples</groupId>
-    <artifactId>signatures</artifactId>
+    <artifactId>publications</artifactId>
+    <packaging>pom</packaging>
 
-    <name>iText 7 Publications: Signatures</name>
+    <name>iText 7 Publications</name>
     <url>http://itextpdf.com/</url>
+
+    <modules>
+        <module>book</module>
+        <module>highlevel</module>
+        <module>jumpstart</module>
+        <module>signatures</module>
+    </modules>
 
 </project>
