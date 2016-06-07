@@ -7,23 +7,25 @@
 
 package com.itextpdf.samples.book.part2.chapter06;
 
+import static org.junit.Assert.fail;
+
 import com.itextpdf.io.source.RandomAccessSourceFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.ReaderProperties;
+import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import org.junit.internal.ExactComparisonCriteria;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
+
 @Category(SampleTest.class)
-public class Listing_06_02_MemoryInfo {
+public class Listing_06_02_MemoryInfo extends GenericTest {
     public static final String RESULT
             = "./target/test/resources/book/part2/chapter06/Listing_06_02_MemoryInfo.txt";
     public static final String CMP_RESULT
@@ -32,14 +34,21 @@ public class Listing_06_02_MemoryInfo {
             = "./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
 
     public static void main(String args[]) throws IOException, SQLException, NoSuchFieldException, IllegalAccessException {
-        new Listing_06_02_MemoryInfo().manipulatePdf();
+        new Listing_06_02_MemoryInfo().manipulatePdf(RESULT);
     }
 
-    @Test
-    public void manipulatePdf() {
+    @Test(timeout = 120000)
+    public void test() throws IOException {
+        LOGGER.info("Starting test " + getClass().getName() + ".");
+        manipulatePdf(RESULT);
+        System.out.println(RESULT + "\n" + CMP_RESULT);
+        LOGGER.info("Test complete.");
+    }
+
+    public void manipulatePdf(String dest) {
         try {
             // Create a writer for a report file
-            PrintWriter writer = new PrintWriter(RESULT);
+            PrintWriter writer = new PrintWriter(dest);
             garbageCollect();
             // Do a full read
             fullRead(writer, MOVIE_TEMPLATES);
@@ -48,7 +57,7 @@ public class Listing_06_02_MemoryInfo {
             // Close the text file writer
             writer.close();
         } catch (Exception e) {
-            Assert.fail();
+            fail();
         }
         // The test passes if there is no exception, because the results may vary on different machines
     }

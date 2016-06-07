@@ -7,20 +7,21 @@
 
 package com.itextpdf.samples;
 
+import static org.junit.Assert.assertNull;
+
 import com.itextpdf.kernel.utils.CompareTool;
 import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.lang.reflect.Field;
+
 import javax.management.OperationsException;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.slf4j.LoggerFactory;
 
 import ch.qos.logback.classic.Logger;
-
 
 @Category(SampleTest.class)
 public class GenericTest {
@@ -28,7 +29,7 @@ public class GenericTest {
     /**
      * The logger class
      */
-    private static final Logger LOGGER = (Logger) LoggerFactory.getLogger(GenericTest.class.getName());
+    protected static final Logger LOGGER = (Logger) LoggerFactory.getLogger(GenericTest.class.getName());
 
     protected boolean compareRenders = false;
 
@@ -155,10 +156,7 @@ public class GenericTest {
             addError(compareTool.compareDocumentInfo(dest, cmp));
         }
 
-
-        if (errorMessage != null) {
-            Assert.fail(errorMessage);
-        }
+        assertNull(errorMessage);
     }
 
     /**

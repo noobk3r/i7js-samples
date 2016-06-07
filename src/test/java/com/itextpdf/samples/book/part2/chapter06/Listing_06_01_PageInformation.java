@@ -7,9 +7,12 @@
 
 package com.itextpdf.samples.book.part2.chapter06;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -22,14 +25,14 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
-import org.apache.regexp.RE;
-import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+import org.slf4j.LoggerFactory;
+
+import ch.qos.logback.classic.Logger;
 
 @Category(SampleTest.class)
-public class Listing_06_01_PageInformation {
+public class Listing_06_01_PageInformation extends GenericTest {
     public static final String RESULT
             = "./target/test/resources/book/part2/chapter06/Listing_06_01_PageInformation.txt";
     public static final String CMP_RESULT
@@ -45,21 +48,27 @@ public class Listing_06_01_PageInformation {
             = "./src/test/resources/book/part1/chapter05/cmp_Listing_05_15_Hero1.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
-        new Listing_06_01_PageInformation().manipulatePdf();
+        new Listing_06_01_PageInformation().manipulatePdf(RESULT);
     }
 
-    @Test
-    public void manipulatePdf() throws IOException {
+    @Test(timeout = 120000)
+    public void test() throws IOException {
+        LOGGER.info("Starting test " + getClass().getName() + ".");
+        manipulatePdf(RESULT);
+        System.out.println(RESULT + "\n" + CMP_RESULT);
+        comparePdf(RESULT, CMP_RESULT);
+        LOGGER.info("Test complete.");
+    }
+
+    public void manipulatePdf(String dest) throws IOException {
         // Use old examples to create PDFs
         // Inspecting PDFs
-        PrintWriter writer = new PrintWriter(new FileOutputStream(RESULT));
+        PrintWriter writer = new PrintWriter(new FileOutputStream(dest));
         inspect(writer, HELLO_WORLD_LANDSCAPE1);
         inspect(writer, HELLO_WORLD_LANDSCAPE2);
         inspect(writer, MOVIE_TEMPLATES);
         inspect(writer, HERO1);
         writer.close();
-
-        comparePdf(RESULT, CMP_RESULT);
     }
 
     public static void inspect(PrintWriter writer, String filename)
@@ -94,24 +103,19 @@ public class Listing_06_01_PageInformation {
     }
 
     protected void comparePdf(String dest, String cmp) throws IOException {
-        //super.comparePdf(dest, cmp);
         BufferedReader destReader = new BufferedReader(new InputStreamReader(new FileInputStream(dest)));
         BufferedReader cmpReader = new BufferedReader(new InputStreamReader(new FileInputStream(cmp)));
         String curDestStr;
         String curCmpStr;
         int row = 1;
         while ((curDestStr = destReader.readLine()) != null) {
-            if ((curCmpStr = cmpReader.readLine()) == null) {
-                Assert.fail("The lengths of files are different.");
-            }
-            if (!curCmpStr.equals(curDestStr)) {
-                Assert.fail("The files are different on the row " + row);
-            }
+            assertNotNull("The lengths of files are different.", curCmpStr = cmpReader.readLine());
+            assertEquals("The files are different on the row " + row, curCmpStr, curDestStr);
             row++;
         }
-        if ((curCmpStr = cmpReader.readLine()) != null) {
-            Assert.fail("The lengths of files are different.");
-        }
+        assertNull("The lengths of files are different.", curCmpStr = cmpReader.readLine());
+        destReader.close();
+        cmpReader.close();
     }
 
 }
