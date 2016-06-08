@@ -28,7 +28,6 @@
             <groupId>com.itextpdf</groupId>
             <artifactId>pdftest</artifactId>
             <version>${project.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.itextpdf</groupId>
@@ -134,6 +133,16 @@
             <groupId>com.itextpdf.samples</groupId>
             <artifactId>signatures</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
         </dependency>
     </dependencies>
 
