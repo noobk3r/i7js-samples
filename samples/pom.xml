@@ -130,6 +130,11 @@
             <version>1.7</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.itextpdf.samples</groupId>
+            <artifactId>signatures</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
