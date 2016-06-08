@@ -36,6 +36,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 @Category(SampleTest.class)
 public class C5_03_CertificateValidation extends C5_01_SignatureIntegrity {
@@ -56,8 +57,8 @@ public class C5_03_CertificateValidation extends C5_01_SignatureIntegrity {
             "=== Certificate 0 ===\n" +
             "Issuer: C=BE,ST=OVL,L=Ghent,O=iText Software,OU=IT,CN=Bruno Specimen\n" +
             "Subject: C=BE,ST=OVL,L=Ghent,O=iText Software,OU=IT,CN=Bruno Specimen\n" +
-            "Valid from: 2012-08-04\n" +
-            "Valid to: 2112-07-11\n" +
+            "Valid from: 2012-08-03-21-00\n" +
+            "Valid to: 2112-07-10-21-00\n" +
             "The certificate was valid at the time of signing.\n" +
             "The certificate is still valid.\n" +
             "=== Checking validity of the document at the time of signing ===\n" +
@@ -123,7 +124,8 @@ public class C5_03_CertificateValidation extends C5_01_SignatureIntegrity {
     public void showCertificateInfo(X509Certificate cert, Date signDate) {
         System.out.println("Issuer: " + cert.getIssuerDN());
         System.out.println("Subject: " + cert.getSubjectDN());
-        SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd-HH-mm");
+        date_format.setTimeZone(TimeZone.getTimeZone("Universal"));
         System.out.println("Valid from: " + date_format.format(cert.getNotBefore()));
         System.out.println("Valid to: " + date_format.format(cert.getNotAfter()));
         try {
