@@ -13,6 +13,9 @@
 package com.itextpdf.samples.sandbox.zugferd.test;
 
 import com.itextpdf.zugferd.InvoiceDOM;
+import com.itextpdf.zugferd.exceptions.DataIncompleteException;
+import com.itextpdf.zugferd.exceptions.InvalidCodeException;
+import com.itextpdf.zugferd.profiles.ComfortProfileImp;
 import com.itextpdf.zugferd.validation.basic.DateFormatCode;
 import com.itextpdf.zugferd.validation.basic.DocumentTypeCode;
 import com.itextpdf.zugferd.validation.basic.MeasurementUnitCode;
@@ -20,17 +23,14 @@ import com.itextpdf.zugferd.validation.basic.TaxIDTypeCode;
 import com.itextpdf.zugferd.validation.comfort.FreeTextSubjectCode;
 import com.itextpdf.zugferd.validation.comfort.GlobalIdentifierCode;
 import com.itextpdf.zugferd.validation.comfort.PaymentMeansCode;
-import com.itextpdf.zugferd.exceptions.DataIncompleteException;
-import com.itextpdf.zugferd.exceptions.InvalidCodeException;
-import com.itextpdf.zugferd.profiles.ComfortProfileImp;
 
-import org.xml.sax.SAXException;
-
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+
+import org.xml.sax.SAXException;
 
 /**
  * @author Bruno Lowagie (iText Software)
@@ -169,7 +169,7 @@ public class XML4Comfort {
                         "IncludedSupplyChainTradeLineItem[0].AssociatedDocumentLineDocument.IncludedNote[1].Content[1]"},
                 {"IncludedSupplyChainTradeLineItem[0].AssociatedDocumentLineDocument.IncludedNote[2].Content[0]"}
         };
-        Boolean[] indicator = {true, false, true};
+        boolean[] indicator = {true, false, true};
         String[] actualamount = {"1.0000", "2.0000", "3.0000"};
         String[] actualamountCurr = {"USD", "USD", "USD"};
         String[] reason = {
@@ -210,7 +210,7 @@ public class XML4Comfort {
                         "IncludedSupplyChainTradeLineItem.ram:AssociatedDocumentLineDocument[1].IncludedNote[0].Content[1]"},
                 {"IncludedSupplyChainTradeLineItem.ram:AssociatedDocumentLineDocument[1].IncludedNote[1].Content[0]"}
         };
-        Boolean[] indicator1 = {false, true, false};
+        boolean[] indicator1 = {false, true, false};
         String[] actualamount1 = {"4.0000", "5.0000", "6.0000"};
         String[] actualamountCurr1 = {"USD", "USD", "USD"};
         String[] reason1 = {
