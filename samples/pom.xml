@@ -175,7 +175,7 @@
                         <include>**/Listing_*.java</include>
                         <include>**/*.java</include>
                     </includes>
-                    <groups>${sampletests}</groups>
+                    <groups>${sampletests},${integrationtests}</groups>
                     <parallel>none</parallel>
                 </configuration>
             </plugin>
