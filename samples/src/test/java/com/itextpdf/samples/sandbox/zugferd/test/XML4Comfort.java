@@ -41,7 +41,7 @@ public class XML4Comfort {
         LicenseKey.loadLicenseFile(System.getenv("ITEXT7_LICENSEKEY") + "/itextkey-multiple-products.xml");
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 
-        ComfortProfileImp data = new ComfortProfileImp();
+        ComfortProfileImp data = new ComfortProfileImp(true);
         // SpecifiedExchangedDocumentContext
         data.setTest(true);
 
