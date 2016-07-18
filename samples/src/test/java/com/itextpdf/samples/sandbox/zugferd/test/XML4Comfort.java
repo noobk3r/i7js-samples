@@ -12,6 +12,7 @@
  */
 package com.itextpdf.samples.sandbox.zugferd.test;
 
+import com.itextpdf.licensekey.LicenseKey;
 import com.itextpdf.zugferd.InvoiceDOM;
 import com.itextpdf.zugferd.exceptions.DataIncompleteException;
 import com.itextpdf.zugferd.exceptions.InvalidCodeException;
@@ -37,6 +38,7 @@ import org.xml.sax.SAXException;
  */
 public class XML4Comfort {
     public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, DataIncompleteException, TransformerException, InvalidCodeException, ParseException {
+        LicenseKey.loadLicenseFile(System.getenv("ITEXT7_LICENSEKEY") + "/itextkey-multiple-products.xml");
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 
         ComfortProfileImp data = new ComfortProfileImp();
