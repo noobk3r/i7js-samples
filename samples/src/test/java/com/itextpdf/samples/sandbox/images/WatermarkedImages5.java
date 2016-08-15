@@ -26,6 +26,9 @@ import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.layout.LayoutArea;
 import com.itextpdf.layout.layout.LayoutContext;
 import com.itextpdf.layout.layout.LayoutResult;
+import com.itextpdf.layout.property.Property;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.renderer.DocumentRenderer;
 import com.itextpdf.layout.renderer.TableRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -61,13 +64,14 @@ public class WatermarkedImages5 extends GenericTest {
         table.addCell(new Cell().add("Test4").setBorder(new SolidBorder(Color.YELLOW, 1)));
 
         // find the height of the table
-        TableRenderer renderer = (TableRenderer) table.createRendererSubTree();
+        TableRenderer renderer = (TableRenderer)table.createRendererSubTree();
+        renderer.setParent(new DocumentRenderer(new Document(pdfDocument)));
         LayoutResult result = renderer.layout(new LayoutContext(new LayoutArea(1, new Rectangle(10000, 10000))));
 
         Canvas canvas = new Canvas(template, pdfDocument);
         canvas.add(img);
         canvas = new Canvas(template, pdfDocument);
-        canvas.add(table.setFixedPosition(0, height - result.getOccupiedArea().getBBox().getHeight(), width));
+        canvas.add(table.setFixedPosition(0, height-result.getOccupiedArea().getBBox().getHeight(), width));
 
         return new Image(template);
     }
@@ -76,7 +80,7 @@ public class WatermarkedImages5 extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
-        
+
         doc.add(getWatermarkedImage(pdfDoc, new Image(ImageDataFactory.create(IMAGE1))));
         doc.add(getWatermarkedImage(pdfDoc, new Image(ImageDataFactory.create(IMAGE2))));
         doc.add(getWatermarkedImage(pdfDoc, new Image(ImageDataFactory.create(IMAGE3))));
