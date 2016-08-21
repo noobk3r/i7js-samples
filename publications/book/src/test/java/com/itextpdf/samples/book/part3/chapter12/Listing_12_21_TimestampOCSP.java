@@ -14,13 +14,17 @@ import com.itextpdf.signatures.BouncyCastleDigest;
 import com.itextpdf.signatures.IExternalDigest;
 import com.itextpdf.signatures.IExternalSignature;
 import com.itextpdf.signatures.IOcspClient;
+import com.itextpdf.signatures.ITSAClient;
 import com.itextpdf.signatures.OcspClientBouncyCastle;
 import com.itextpdf.signatures.PdfSignatureAppearance;
 import com.itextpdf.signatures.PdfSigner;
 import com.itextpdf.signatures.PrivateKeySignature;
-import com.itextpdf.signatures.ITSAClient;
 import com.itextpdf.signatures.TSAClientBouncyCastle;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -35,10 +39,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
 @Ignore("Put property file with valid data")
@@ -69,7 +69,7 @@ public class Listing_12_21_TimestampOCSP extends SignatureTest {
      */
     public static String PATH
             = "./src/test/resources/encryption/key.properties";
-    // public static String PATH = "c:/users/ars18wrw/key.properties";
+
     public static Properties properties = new Properties();
 
     public void signPdf(String src, String dest, boolean withTS, boolean withOCSP)
@@ -79,8 +79,8 @@ public class Listing_12_21_TimestampOCSP extends SignatureTest {
         String password = properties.getProperty("PASSWORD");
         KeyStore ks = KeyStore.getInstance("PKCS12", "BC");
         ks.load(new FileInputStream(keystore), password.toCharArray());
-        String alias = (String)ks.aliases().nextElement();
-        PrivateKey pk = (PrivateKey)ks.getKey(alias, password.toCharArray());
+        String alias = (String) ks.aliases().nextElement();
+        PrivateKey pk = (PrivateKey) ks.getKey(alias, password.toCharArray());
         Certificate[] chain = ks.getCertificateChain(alias);
         // Creating the reader and the signer
         PdfReader reader = new PdfReader(SRC);
@@ -98,9 +98,9 @@ public class Listing_12_21_TimestampOCSP extends SignatureTest {
         // If we add a time stamp:
         ITSAClient tsc = null;
         if (withTS) {
-            String tsa_url    = properties.getProperty("TSA");
-            String tsa_login  = properties.getProperty("TSA_LOGIN");
-            String tsa_passw  = properties.getProperty("TSA_PASSWORD");
+            String tsa_url = properties.getProperty("TSA");
+            String tsa_login = properties.getProperty("TSA_LOGIN");
+            String tsa_passw = properties.getProperty("TSA_PASSWORD");
             tsc = new TSAClientBouncyCastle(tsa_url, tsa_login, tsa_passw);
         }
         // If we use OCSP:
@@ -133,9 +133,11 @@ public class Listing_12_21_TimestampOCSP extends SignatureTest {
         String[] errors = new String[RESULT.length];
         boolean error = false;
 
-        HashMap<Integer, List<Rectangle>> ignoredAreas = new HashMap<Integer, List<Rectangle>>() { {
-            put(1, Arrays.asList(new Rectangle(72, 632, 200, 100)));
-        }};
+        HashMap<Integer, List<Rectangle>> ignoredAreas = new HashMap<Integer, List<Rectangle>>() {
+            {
+                put(1, Arrays.asList(new Rectangle(72, 632, 200, 100)));
+            }
+        };
 
         for (int i = 0; i < RESULT.length; i++) {
             String fileErrors = checkForErrors(RESULT[i], CMP_RESULT[i], "./target/test/resources/book/part3/chapter12/", ignoredAreas);

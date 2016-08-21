@@ -63,7 +63,6 @@ public class Listing_12_13_SignatureField extends SignatureTest {
      */
     public static String PATH
             = "./src/test/resources/encryption/key.properties";
-    // public static String PATH = "c:/users/ars18wrw/key.properties";
 
     public static Properties properties = new Properties();
 

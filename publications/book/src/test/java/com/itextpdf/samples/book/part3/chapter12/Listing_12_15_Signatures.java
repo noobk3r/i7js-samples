@@ -53,7 +53,6 @@ public class Listing_12_15_Signatures extends SignatureTest {
      */
     public static String PATH
             = "./src/test/resources/encryption/key.properties";
-    // public static String PATH = "c:/users/ars18wrw/key.properties";
 
     public static Properties properties = new Properties();
     public static final String RESOURCE = "./src/test/resources/img/logo.gif";

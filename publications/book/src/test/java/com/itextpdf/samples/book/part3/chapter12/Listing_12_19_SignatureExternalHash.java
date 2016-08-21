@@ -17,6 +17,9 @@ import com.itextpdf.signatures.PdfSignatureAppearance;
 import com.itextpdf.signatures.PdfSigner;
 import com.itextpdf.signatures.PrivateKeySignature;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -31,9 +34,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
 @Category(SampleTest.class)
@@ -46,7 +46,6 @@ public class Listing_12_19_SignatureExternalHash extends SignatureTest {
      */
     public static String PATH
             = "./src/test/resources/encryption/key.properties";
-    // public static String PATH = "c:/users/ars18wrw/key.properties";
     public static Properties properties = new Properties();
 
     public static String SIGNED1 = "./target/test/resources/book/part3/chapter12/Listing_12_19_Signatures_externalhash_1.pdf";
@@ -100,15 +99,17 @@ public class Listing_12_19_SignatureExternalHash extends SignatureTest {
         String[] errors = new String[1];
         boolean error = false;
 
-        HashMap<Integer, List<Rectangle>> ignoredAreas = new HashMap<Integer, List<Rectangle>>() { {
-            put(1, Arrays.asList(new Rectangle(72, 632, 200, 100)));
-        }};
+        HashMap<Integer, List<Rectangle>> ignoredAreas = new HashMap<Integer, List<Rectangle>>() {
+            {
+                put(1, Arrays.asList(new Rectangle(72, 632, 200, 100)));
+            }
+        };
 
         for (int i = 0; i < 1; i++) {
             String fileErrors = checkForErrors(SIGNED1, CMP_SIGNED1, "./target/test/resources/book/part3/chapter12/", ignoredAreas);
             if (fileErrors != null) {
-                    errors[i] = fileErrors;
-                    error = true;
+                errors[i] = fileErrors;
+                error = true;
             }
         }
 
