@@ -12,12 +12,14 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.test.annotations.WrapToTest;
 import java.io.File;
 import java.io.IOException;
 
 /**
  * @author bruno
  */
+@WrapToTest
 public class KeyValueTable {
    
     public static final String DEST = "results/tables/key_value_table.pdf";
