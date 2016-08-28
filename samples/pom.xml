@@ -20,7 +20,7 @@
     </scm>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>1.7</java.version>
     </properties>
 
     <dependencies>
@@ -128,11 +128,6 @@
             <artifactId>batik-bridge</artifactId>
             <version>1.7</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.itextpdf.samples</groupId>
-            <artifactId>signatures</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
