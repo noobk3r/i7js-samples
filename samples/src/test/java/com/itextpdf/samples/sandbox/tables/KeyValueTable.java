@@ -1,4 +1,11 @@
 /*
+
+    This file is part of the iText (R) project.
+    Copyright (c) 1998-2016 iText Group NV
+
+*/
+
+/**
  * This question was written by Bruno Lowagie in answer to:
  * http://stackoverflow.com/questions/39190026
  */
@@ -12,33 +19,26 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.WrapToTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
+
 import java.io.File;
 import java.io.IOException;
 
-/**
- * @author bruno
- */
-@WrapToTest
-public class KeyValueTable {
-   
-    public static final String DEST = "results/tables/key_value_table.pdf";
+@Category(SampleTest.class)
+public class KeyValueTable extends GenericTest {
+    public static final String DEST = "./target/test/resources/sandbox/tables/key_value_table.pdf";
     
-    public final PdfFont regular;
-    public final PdfFont bold;
-    
-    public static void main(String[] args) throws IOException {
-        File file = new File(DEST);
-        file.getParentFile().mkdirs();
-        new KeyValueTable().createPdf(DEST);
-    }
+    protected PdfFont regular;
+    protected PdfFont bold;
 
-    public KeyValueTable() throws IOException {
-        this.regular = PdfFontFactory.createFont(FontConstants.TIMES_ROMAN);
-        this.bold = PdfFontFactory.createFont(FontConstants.TIMES_BOLD);
-    }
-    
-    public void createPdf(String dest) throws IOException {
+    @Override
+    public void manipulatePdf(String dest) throws IOException {
+        regular = PdfFontFactory.createFont(FontConstants.TIMES_ROMAN);
+        bold = PdfFontFactory.createFont(FontConstants.TIMES_BOLD);
+
         UserObject rohit = new UserObject();
         rohit.setName("Rohit");
         rohit.setId("6633429");
@@ -73,9 +73,9 @@ public class KeyValueTable {
         table.addCell(new Cell().setFont(regular).add(user.getJobtitle()));
         return table;
     }
-            
+
+
     class UserObject {
-        
         protected String name;
         protected String id;
         protected int reputation;
