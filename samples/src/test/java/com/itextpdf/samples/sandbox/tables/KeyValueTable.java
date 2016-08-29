@@ -20,17 +20,15 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.WrapToTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
 
-import java.io.File;
 import java.io.IOException;
 
 @Category(SampleTest.class)
 public class KeyValueTable extends GenericTest {
     public static final String DEST = "./target/test/resources/sandbox/tables/key_value_table.pdf";
-    
+
     protected PdfFont regular;
     protected PdfFont bold;
 
@@ -44,20 +42,20 @@ public class KeyValueTable extends GenericTest {
         rohit.setId("6633429");
         rohit.setReputation(1);
         rohit.setJobtitle("Copy/paste artist");
-        
+
         UserObject bruno = new UserObject();
         bruno.setName("Bruno Lowagie");
         bruno.setId("1622493");
         bruno.setReputation(42690);
         bruno.setJobtitle("Java Rockstar");
-        
+
         PdfDocument pdf = new PdfDocument(new PdfWriter(dest));
         Document document = new Document(pdf);
         document.add(createTable(rohit));
         document.add(createTable(bruno));
         document.close();
     }
-    
+
     public Table createTable(UserObject user) {
         Table table = new Table(2);
         table.setWidthPercent(30).setMarginBottom(10);
