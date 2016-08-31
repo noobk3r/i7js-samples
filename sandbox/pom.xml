@@ -11,7 +11,7 @@
 
     <artifactId>sandbox</artifactId>
 
-    <name>iText 7 Publications: various examples</name>
+    <name>iText 7 Sandbox: various examples</name>
     <url>http://itextpdf.com/</url>
 
     <dependencies>
@@ -33,6 +33,11 @@
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>hyph</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>forms</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

@@ -5,39 +5,35 @@
  * This is the iText 7 version of one of the examples.
  */
 package com.itextpdf.sandbox.javaone16;
-/*
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.pdf.AcroFields;
-import com.itextpdf.text.pdf.PdfReader;
-import com.itextpdf.text.pdf.PdfStamper;
 
+import com.itextpdf.forms.PdfAcroForm;
+import com.itextpdf.forms.fields.PdfFormField;
+import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfReader;
+import com.itextpdf.kernel.pdf.PdfWriter;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import sandbox.WrapToTest;
 
-@WrapToTest*/
 public class FormFilling {
-/*
-    public static final String SRC = "resources/pdfs/hello_form.pdf";
-    public static final String DEST = "results/javaone/edition16/form_filling.pdf";
+    public static final String SRC = "src/main/resources/pdfs/hello_form.pdf";
+    public static final String DEST = "results/javaone16/form_filling.pdf";
     
 
-    public static void main(String[] args) throws DocumentException, IOException {
+    public static void main(String[] args) throws IOException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
         new FormFilling().manipulatePdf(SRC, DEST);
     }
 
-    public void manipulatePdf(String src, String dest) throws DocumentException, IOException {
+    public void manipulatePdf(String src, String dest) throws IOException {
         PdfReader reader = new PdfReader(src);
-        PdfStamper stamper = new PdfStamper(reader, new FileOutputStream(dest));
-        AcroFields fields = stamper.getAcroFields();
-        fields.setFieldProperty("text", "textcolor", BaseColor.BLUE, null);
-        fields.setFieldProperty("text", "bordercolor", BaseColor.RED, null);
-        fields.setField("text", "Field Text");
-        stamper.close();
-        reader.close();
-    }*/
+        PdfDocument pdf = new PdfDocument(reader, new PdfWriter(dest));
+        PdfAcroForm form = PdfAcroForm.getAcroForm(pdf, true);
+        PdfFormField tf = form.getFormFields().get("text");
+        tf.setBorderColor(Color.RED)
+            .setColor(Color.BLUE)
+            .setValue("Field Text");
+        pdf.close();
+    }
 }
