@@ -35,11 +35,11 @@ public class HelloWorldInternational {
         PdfDocument pdf = new PdfDocument(new PdfWriter(dest));
         try (Document document = new Document(pdf)) {
             PdfFont font = PdfFontFactory.createFont(FontConstants.TIMES_ROMAN);
-            document.setFont(font);
             PdfFont russian = PdfFontFactory.createFont(
                 "src/main/resources/fonts/FreeSans.ttf", "CP1251", true);
             PdfFont cjk = PdfFontFactory.createFont(
                 "src/main/resources/fonts/NotoSansCJKsc-Regular.otf", PdfEncodings.IDENTITY_H, true);
+            document.setFont(font);
             Paragraph p = new Paragraph("Hello World! ")
                 .add(new Text("Hallo Wereld! ").setFontSize(14))
                 .add(new Text("Bonjour le monde! ").setFontSize(10).setTextRise(4))

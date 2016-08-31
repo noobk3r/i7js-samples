@@ -109,8 +109,6 @@ public class Text2PdfPageEvents2 {
                     rectangle.getWidth() + 2, rectangle.getHeight() + 2, 5).stroke();
                 }
             };
-        }
-        
-        
+        } 
     }
 }
