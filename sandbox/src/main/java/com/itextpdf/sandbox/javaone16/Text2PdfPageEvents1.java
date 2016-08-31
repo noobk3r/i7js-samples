@@ -31,16 +31,16 @@ import java.io.FileReader;
 import java.io.IOException;
 
 @WrapToTest
-public class Text2PdfPageEvents {
+public class Text2PdfPageEvents1 {
     public static final String TEXT
         = "src/main/resources/txt/jekyll_hyde.txt";
     public static final String DEST
-        = "results/javaone16/text2pdf_page_events.pdf";
+        = "results/javaone16/text2pdf_page_events1.pdf";
 
     public static void main(String[] args) throws IOException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
-    	new Text2PdfPageEvents().createPdf(DEST);
+    	new Text2PdfPageEvents1().createPdf(DEST);
     }
     
     public void createPdf(String dest) throws IOException {
