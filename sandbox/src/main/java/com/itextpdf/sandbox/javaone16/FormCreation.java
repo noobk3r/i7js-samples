@@ -35,7 +35,8 @@ public class FormCreation {
             pdf, new Rectangle(110, 780, 70, 26), "text", "Text Field")
             .setBorderColor(Color.BLUE)
             .setBorderWidth(2)
-            .setColor(Color.RED);
+            .setColor(Color.RED)
+            .setFontSize(12);
         form.addField(tf);
         pdf.close();
     }

@@ -33,6 +33,7 @@ public class FormFilling {
         PdfFormField tf = form.getFormFields().get("text");
         tf.setBorderColor(Color.RED)
             .setColor(Color.BLUE)
+            .setFontSize(14)
             .setValue("Field Text");
         pdf.close();
     }
