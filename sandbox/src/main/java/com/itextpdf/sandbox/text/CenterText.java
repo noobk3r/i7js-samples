@@ -1,5 +1,6 @@
 /*
- * TExample written in answer to a question on StackOverflow.
+ * Example written in answer to a question on StackOverflow.
+ * http://stackoverflow.com/questions/39437838
  */
 package com.itextpdf.sandbox.text;
 
