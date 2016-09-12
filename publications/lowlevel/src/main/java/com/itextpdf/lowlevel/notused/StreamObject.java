@@ -2,7 +2,7 @@
  * This example was written by Bruno Lowagie
  * in the context of the book: iText 7 the ABC of PDF
  */
-package com.itextpdf.lowlevel;
+package com.itextpdf.lowlevel.notused;
 
 import com.itextpdf.kernel.pdf.PdfArray;
 import com.itextpdf.kernel.pdf.PdfBoolean;
@@ -15,25 +15,23 @@ import com.itextpdf.kernel.pdf.PdfStream;
 import com.itextpdf.kernel.pdf.PdfString;
 
 /**
+ *
  * @author Bruno Lowagie (iText Software)
  */
-public class DictionaryObject {
-    
+public class StreamObject {
     public static void main(String[] args) {
-        PdfDictionary dict = new PdfDictionary();
-        dict.put(new PdfName("Entry1"), PdfName.First);
-        dict.put(new PdfName("Entry2"), new PdfString("Second"));
-        dict.put(new PdfName("3rd"), new PdfNumber(3));
-        dict.put(new PdfName("Fourth"), PdfBoolean.FALSE);
-        showDictionary(dict);
+        PdfStream stream = new PdfStream(
+            "Long stream of data stored in a FlateDecode compressed stream object"
+            .getBytes());
+        showStream(stream);
     }
     
-    public static void showDictionary(PdfDictionary object) {
+    public static void showStream(PdfStream object) {
         System.out.println("PdfDictionary:");
         System.out.println("> type: " + (int)object.getType());
-        System.out.println("> isDictionary: " + object.isDictionary());
+        System.out.println("> isStream: " + object.isStream());
         System.out.println("> toString: " + object.toString());
-        System.out.println("> size: " + object.size());
+        System.out.println("> content: " + new String(object.getBytes()));
         PdfObject o;
         for (PdfName name : object.keySet()) {
             System.out.print(name.toString());

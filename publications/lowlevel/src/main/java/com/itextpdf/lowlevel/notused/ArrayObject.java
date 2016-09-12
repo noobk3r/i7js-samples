@@ -2,7 +2,7 @@
  * This example was written by Bruno Lowagie
  * in the context of the book: iText 7 the ABC of PDF
  */
-package com.itextpdf.lowlevel;
+package com.itextpdf.lowlevel.notused;
 
 import com.itextpdf.kernel.pdf.PdfArray;
 import com.itextpdf.kernel.pdf.PdfBoolean;
@@ -18,25 +18,25 @@ import com.itextpdf.kernel.pdf.PdfString;
  *
  * @author Bruno Lowagie (iText Software)
  */
-public class StreamObject {
+public class ArrayObject {
     public static void main(String[] args) {
-        PdfStream stream = new PdfStream(
-            "Long stream of data stored in a FlateDecode compressed stream object"
-            .getBytes());
-        showStream(stream);
+        PdfArray array = new PdfArray();
+        array.add(PdfName.First);
+        array.add(new PdfString("Second"));
+        array.add(new PdfNumber(3));
+        array.add(PdfBoolean.FALSE);
+        showArray(array);
     }
     
-    public static void showStream(PdfStream object) {
-        System.out.println("PdfDictionary:");
+    public static void showArray(PdfArray object) {
+        System.out.println("PdfName:");
         System.out.println("> type: " + (int)object.getType());
-        System.out.println("> isStream: " + object.isStream());
+        System.out.println("> isArray: " + object.isArray());
         System.out.println("> toString: " + object.toString());
-        System.out.println("> content: " + new String(object.getBytes()));
+        System.out.println("> size: " + object.size());
         PdfObject o;
-        for (PdfName name : object.keySet()) {
-            System.out.print(name.toString());
-            System.out.print(": ");
-            o = object.get(name);
+        for (int i = 0; i < object.size(); i++) {
+            o = object.get(i);
             switch (o.getType()) {
                 case PdfObject.ARRAY:
                     ArrayObject.showArray((PdfArray)o);

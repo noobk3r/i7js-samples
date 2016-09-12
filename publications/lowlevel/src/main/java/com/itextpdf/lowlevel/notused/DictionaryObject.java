@@ -2,7 +2,7 @@
  * This example was written by Bruno Lowagie
  * in the context of the book: iText 7 the ABC of PDF
  */
-package com.itextpdf.lowlevel;
+package com.itextpdf.lowlevel.notused;
 
 import com.itextpdf.kernel.pdf.PdfArray;
 import com.itextpdf.kernel.pdf.PdfBoolean;
@@ -15,28 +15,30 @@ import com.itextpdf.kernel.pdf.PdfStream;
 import com.itextpdf.kernel.pdf.PdfString;
 
 /**
- *
  * @author Bruno Lowagie (iText Software)
  */
-public class ArrayObject {
+public class DictionaryObject {
+    
     public static void main(String[] args) {
-        PdfArray array = new PdfArray();
-        array.add(PdfName.First);
-        array.add(new PdfString("Second"));
-        array.add(new PdfNumber(3));
-        array.add(PdfBoolean.FALSE);
-        showArray(array);
+        PdfDictionary dict = new PdfDictionary();
+        dict.put(new PdfName("Entry1"), PdfName.First);
+        dict.put(new PdfName("Entry2"), new PdfString("Second"));
+        dict.put(new PdfName("3rd"), new PdfNumber(3));
+        dict.put(new PdfName("Fourth"), PdfBoolean.FALSE);
+        showDictionary(dict);
     }
     
-    public static void showArray(PdfArray object) {
-        System.out.println("PdfName:");
+    public static void showDictionary(PdfDictionary object) {
+        System.out.println("PdfDictionary:");
         System.out.println("> type: " + (int)object.getType());
-        System.out.println("> isArray: " + object.isArray());
+        System.out.println("> isDictionary: " + object.isDictionary());
         System.out.println("> toString: " + object.toString());
         System.out.println("> size: " + object.size());
         PdfObject o;
-        for (int i = 0; i < object.size(); i++) {
-            o = object.get(i);
+        for (PdfName name : object.keySet()) {
+            System.out.print(name.toString());
+            System.out.print(": ");
+            o = object.get(name);
             switch (o.getType()) {
                 case PdfObject.ARRAY:
                     ArrayObject.showArray((PdfArray)o);
