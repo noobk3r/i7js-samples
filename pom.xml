@@ -22,24 +22,26 @@
     </modules>
 
     <properties>
-        <assertj.version>2.3.0</assertj.version>
-        <bouncycastle.version>1.49</bouncycastle.version>
-        <checkstyle.version>2.15</checkstyle.version>
+        <itext.version>7.0.2-SNAPSHOT</itext.version>
+        <itext.legacy.version>5.5.9</itext.legacy.version>
         <cleanup.version>1.0.2-SNAPSHOT</cleanup.version>
+        <typography.version>1.0.2-SNAPSHOT</typography.version>
+        <zugferd.version>1.0.2-SNAPSHOT</zugferd.version>
+        <licensekey.version>2.0.3-SNAPSHOT</licensekey.version>
+        <bouncycastle.version>1.49</bouncycastle.version>
+        <assertj.version>2.3.0</assertj.version>
+        <checkstyle.version>2.15</checkstyle.version>
         <failsafe.version>2.18.1</failsafe.version>
         <fb-contrib.version>6.2.1</fb-contrib.version>
         <findbugs.version>3.0.1</findbugs.version>
         <hsqldb.version>2.3.3</hsqldb.version>
         <integrationtests>com.itextpdf.test.annotations.type.IntegrationTest</integrationtests>
-        <itext.legacy.version>5.5.9</itext.legacy.version>
-        <itext.version>7.0.2-SNAPSHOT</itext.version>
         <jacoco.version>0.7.5.201505241946</jacoco.version>
         <java.version>1.7</java.version>
         <javadoc.version>2.10.3</javadoc.version>
         <jfreechart.version>1.0.19</jfreechart.version>
         <junit.version>4.12</junit.version>
         <junitparams.version>1.0.4</junitparams.version>
-        <licensekey.version>2.0.1</licensekey.version>
         <logback.version>1.1.3</logback.version>
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
         <performancetests>com.itextpdf.test.annotations.type.PerformanceTest</performancetests>
@@ -50,9 +52,7 @@
         <sampletests>com.itextpdf.test.annotations.type.SampleTest</sampletests>
         <slf4j.version>1.7.13</slf4j.version>
         <surefire.version>2.18.1</surefire.version>
-        <typography.version>1.0.2-SNAPSHOT</typography.version>
         <unittests>com.itextpdf.test.annotations.type.UnitTest</unittests>
-        <zugferd.version>1.0.2-SNAPSHOT</zugferd.version>
     </properties>
 
     <repositories>
