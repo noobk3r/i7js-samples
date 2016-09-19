@@ -53,7 +53,7 @@
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>typography</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
+            <version>${typography.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>

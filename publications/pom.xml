@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.itextpdf</groupId>
         <artifactId>examples</artifactId>
-        <version>7.0.1-SNAPSHOT</version>
+        <version>7.0.2-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -19,6 +19,7 @@
         <module>book</module>
         <module>highlevel</module>
         <module>jumpstart</module>
+        <module>lowlevel</module>
         <module>signatures</module>
     </modules>
 
