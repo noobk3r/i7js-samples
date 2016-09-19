@@ -1,3 +1,11 @@
+# Added by Bruno
+
+samples/results/
+sandbox/results/
+publications/highlevel/results/
+publications/highlevel/src/main/resources/license/
+publications/jumpstart/results/
+
 # Created by https://www.gitignore.io
 
 ### Java ###
@@ -152,5 +160,7 @@ nbactions*.xml
 
 # Ignore generated files
 filmfestival.log
+invoices.log
+*.lck
 
 .vagrant/

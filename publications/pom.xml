@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.itextpdf</groupId>
+        <artifactId>examples</artifactId>
+        <version>7.0.1</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>publications</artifactId>
+    <packaging>pom</packaging>
+
+    <name>iText 7 Publications</name>
+    <url>http://itextpdf.com/</url>
+
+    <modules>
+        <module>book</module>
+        <module>highlevel</module>
+        <module>jumpstart</module>
+        <module>signatures</module>
+    </modules>
+
+</project>
